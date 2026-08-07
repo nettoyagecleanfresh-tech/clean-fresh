@@ -130,18 +130,42 @@ export async function sendBookingEmails(b: BookingPayload): Promise<string> {
 
   const fullAddress = `${b.client_street}, ${b.client_zip} ${b.client_city}`;
 
-  const formuleNames = b.items.map(i => i.formule_name).join(" + ");
-  const formulePrices = b.items.map(i => `${i.formule_price}€`).join(" + ");
+  const itemsHtml = b.items.map(item => {
+    let html = `
+    <tr>
+      <td width="70%" style="padding:12px 8px 4px 20px; font-family:Helvetica, Arial, sans-serif; font-size:15px; color:#0f2c3f; vertical-align:top;">
+        <strong>${item.formule_name}</strong>
+      </td>
+      <td width="30%" align="right" style="padding:12px 20px 4px 8px; font-family:Helvetica, Arial, sans-serif; font-size:15px; color:#0f2c3f; vertical-align:top;">
+        <strong>${item.formule_price} &euro;</strong>
+      </td>
+    </tr>
+    `;
+    
+    if (item.options && item.options.length > 0) {
+      item.options.forEach(opt => {
+        html += `
+        <tr>
+          <td width="70%" style="padding:2px 8px 2px 30px; font-family:Helvetica, Arial, sans-serif; font-size:13px; color:#5b7b8e; vertical-align:top;">
+            + ${opt.name}
+          </td>
+          <td width="30%" align="right" style="padding:2px 20px 2px 8px; font-family:Helvetica, Arial, sans-serif; font-size:13px; color:#5b7b8e; vertical-align:top;">
+            +${opt.price} &euro;
+          </td>
+        </tr>
+        `;
+      });
+    }
+    return html;
+  }).join("");
 
   const common = {
     client_name: b.client_name,
     client_phone: b.client_phone,
     client_email: b.client_email,
     client_address: fullAddress,
-    formule_name: formuleNames,
-    formule_price: formulePrices, // tarif de base sans options
-    options_list: optionsList,
-    total_price: String(b.total_price), // tarif total avec options
+    items_html: itemsHtml,
+    total_price: String(b.total_price),
     booking_date: b.booking_date,
     booking_time: b.booking_time,
     service_tip: tip,

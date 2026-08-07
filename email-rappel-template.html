@@ -133,14 +133,7 @@
           <tr>
             <td colspan="2" style="padding:16px 20px 8px 20px; font-family:Helvetica, Arial, sans-serif; font-size:11px; font-weight:bold; letter-spacing:1.1px; text-transform:uppercase; color:#5b7b8e;">Options pr&eacute;vues</td>
           </tr>
-          <!-- DÉBUT boucle options -->
-          {{#options}}
-          <tr>
-            <td width="70%" class="col-name" style="padding:6px 8px 6px 20px; font-family:Helvetica, Arial, sans-serif; font-size:14px; line-height:21px; color:#1e3f55; vertical-align:top;">{{option_name}}</td>
-            <td width="30%" align="right" class="col-price" style="padding:6px 20px 6px 8px; font-family:Helvetica, Arial, sans-serif; font-size:14px; line-height:21px; color:#1e3f55; vertical-align:top;">{{option_price}} &euro;</td>
-          </tr>
-          {{/options}}
-          <!-- FIN boucle options -->
+          {{{items_html}}}
           <tr>
             <td width="70%" bgcolor="#f6faff" class="grand-total-label" style="padding:14px 8px 14px 20px; border-top:1px solid #e7eef6; font-family:Helvetica, Arial, sans-serif; font-size:14px; line-height:20px; color:#0f2c3f;"><strong>Montant total estim&eacute;</strong></td>
             <td width="30%" bgcolor="#f6faff" align="right" class="grand-total-price" style="padding:14px 20px 14px 8px; border-top:1px solid #e7eef6; font-family:Helvetica, Arial, sans-serif; font-size:19px; line-height:24px; color:#0093cc;"><strong>{{total_price}} &euro;</strong></td>
