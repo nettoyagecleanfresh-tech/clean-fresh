@@ -35,9 +35,6 @@ function NotFoundComponent() {
           <span className="text-[9rem] font-black leading-none tracking-tighter opacity-10 select-none">
             404
           </span>
-          <div className="absolute inset-0 flex items-center justify-center">
-            <Sparkles className="size-16 text-primary drop-shadow-lg" />
-          </div>
         </div>
 
         <h1 className="mt-2 text-3xl font-bold md:text-4xl">
