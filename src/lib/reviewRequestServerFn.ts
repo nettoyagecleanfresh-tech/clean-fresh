@@ -12,7 +12,7 @@ const ReviewRequestSchema = z.object({
 export type ReviewRequestInput = z.infer<typeof ReviewRequestSchema>;
 
 const GOOGLE_REVIEW_URL =
-  "https://g.page/r/VOTRE_ID_GOOGLE/review"; // ← À remplacer par votre vrai lien Google
+  "https://g.page/r/CaKxSyOiBkq8EBE/review";
 
 export const sendReviewRequestServerFn = createServerFn({ method: "POST" })
   .validator((data: ReviewRequestInput) => ReviewRequestSchema.parse(data))
