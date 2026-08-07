@@ -33,8 +33,8 @@ async function main() {
   console.log(`Creating Test Event for cherkinicolas@gmail.com on ${dateStr}...`);
   
   const clientEmail = "cherkinicolas@gmail.com";
-  const formuleName = "Test Client 2";
-  const time = "16:30";
+  const formuleName = "Test Final Reprog";
+  const time = "10:00";
   const durationMin = 120;
   
   const tempGcalId = "temp_" + Math.random().toString(36).substring(2, 15);
@@ -50,7 +50,7 @@ async function main() {
     durationMin
   );
   
-  const cancelUrl = `https://fresh-sparkle-toulouse-6hqe.vercel.app/annuler?token=${cancelToken}`;
+  const cancelUrl = `https://www.cleanetfresh.fr/annuler?token=${cancelToken}`;
   
   const startObj = new Date(`${dateStr}T${time}:00+02:00`);
   const endObj = new Date(startObj.getTime() + durationMin * 60_000);
