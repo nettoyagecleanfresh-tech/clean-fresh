@@ -173,7 +173,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="fr" className="overflow-x-hidden w-full">
+    <html lang="fr" className="overflow-x-clip w-full">
       <head>
         <HeadContent />
         {/* Google Tag — Analytics + Ads */}
@@ -186,7 +186,7 @@ function RootShell({ children }: { children: ReactNode }) {
           gtag('config', 'AW-17507775021');
         `}} />
       </head>
-      <body className="overflow-x-hidden w-full">
+      <body className="overflow-x-clip w-full">
         {children}
         <script dangerouslySetInnerHTML={{__html: `if(window.location.hostname.includes('lovable.app')||window.location.hostname.includes('vercel.app')) { var m = document.createElement('meta'); m.name = 'robots'; m.content = 'noindex, nofollow'; document.head.appendChild(m); }`}} />
         <ScrollRestoration />
@@ -206,7 +206,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="flex min-h-screen flex-col overflow-x-hidden w-full">
+      <div className="flex min-h-screen flex-col overflow-x-clip w-full">
         <div className="sticky top-0 z-50">
           <TopBanner />
           <Header />
