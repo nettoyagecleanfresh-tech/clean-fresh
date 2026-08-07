@@ -340,12 +340,19 @@ export async function sendBookingEmails(b: BookingPayload): Promise<string> {
       </table>
     </td></tr>
 
-    <!-- Lien gestion -->
+    <!-- Actions Admin -->
     <tr><td class="px" style="padding:20px 28px 32px 28px;">
-      <table border="0" cellpadding="0" cellspacing="0">
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
         <tr>
-          <td bgcolor="#e8f4ff" style="border-radius:8px;padding:12px 20px;font-size:13px;color:#0066aa;">
-            <a href="${b.cancel_url}" style="color:#0066aa;font-weight:bold;text-decoration:underline;">📎 Voir le lien de gestion du RDV client</a>
+          <td bgcolor="#fbbc04" style="border-radius:8px;padding:14px 20px;text-align:center;box-shadow:0 3px 10px rgba(251,188,4,0.3);margin-bottom:12px;display:block;">
+            <a href="${process.env["VITE_SITE_URL"] ?? "https://www.cleanetfresh.fr"}/envoyer-avis?n=${encodeURIComponent(b.client_name)}&e=${encodeURIComponent(b.client_email)}&f=${encodeURIComponent(formuleName)}&d=${encodeURIComponent(b.booking_date)}" style="color:#1a1a1a;font-weight:bold;text-decoration:none;font-size:15px;display:block;">
+              ⭐ Envoyer une demande d'avis à ce client
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <td bgcolor="#e8f4ff" style="border-radius:8px;padding:12px 20px;font-size:13px;color:#0066aa;text-align:center;">
+            <a href="${b.cancel_url}" style="color:#0066aa;font-weight:bold;text-decoration:underline;">📎 Voir le lien de gestion du RDV (Reprog/Annuler)</a>
           </td>
         </tr>
       </table>

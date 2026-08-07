@@ -14,6 +14,7 @@ import { Route as AProposRouteImport } from './routes/a-propos'
 import { Route as AnnulerRouteImport } from './routes/annuler'
 import { Route as CgvRouteImport } from './routes/cgv'
 import { Route as ContactezNousRouteImport } from './routes/contactez-nous'
+import { Route as EnvoyerAvisRouteImport } from './routes/envoyer-avis'
 import { Route as FormulesRouteImport } from './routes/formules'
 import { Route as MentionsLegalesRouteImport } from './routes/mentions-legales'
 import { Route as NettoyageAucamvilleRouteImport } from './routes/nettoyage-aucamville'
@@ -100,6 +101,11 @@ const CgvRoute = CgvRouteImport.update({
 const ContactezNousRoute = ContactezNousRouteImport.update({
   id: '/contactez-nous',
   path: '/contactez-nous',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnvoyerAvisRoute = EnvoyerAvisRouteImport.update({
+  id: '/envoyer-avis',
+  path: '/envoyer-avis',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FormulesRoute = FormulesRouteImport.update({
@@ -440,6 +446,7 @@ export interface FileRoutesByFullPath {
   '/annuler': typeof AnnulerRoute
   '/cgv': typeof CgvRoute
   '/contactez-nous': typeof ContactezNousRoute
+  '/envoyer-avis': typeof EnvoyerAvisRoute
   '/formules': typeof FormulesRoute
   '/mentions-legales': typeof MentionsLegalesRoute
   '/nettoyage-aucamville': typeof NettoyageAucamvilleRoute
@@ -509,6 +516,7 @@ export interface FileRoutesByTo {
   '/annuler': typeof AnnulerRoute
   '/cgv': typeof CgvRoute
   '/contactez-nous': typeof ContactezNousRoute
+  '/envoyer-avis': typeof EnvoyerAvisRoute
   '/formules': typeof FormulesRoute
   '/mentions-legales': typeof MentionsLegalesRoute
   '/nettoyage-aucamville': typeof NettoyageAucamvilleRoute
@@ -579,6 +587,7 @@ export interface FileRoutesById {
   '/annuler': typeof AnnulerRoute
   '/cgv': typeof CgvRoute
   '/contactez-nous': typeof ContactezNousRoute
+  '/envoyer-avis': typeof EnvoyerAvisRoute
   '/formules': typeof FormulesRoute
   '/mentions-legales': typeof MentionsLegalesRoute
   '/nettoyage-aucamville': typeof NettoyageAucamvilleRoute
@@ -650,6 +659,7 @@ export interface FileRouteTypes {
     | '/annuler'
     | '/cgv'
     | '/contactez-nous'
+    | '/envoyer-avis'
     | '/formules'
     | '/mentions-legales'
     | '/nettoyage-aucamville'
@@ -719,6 +729,7 @@ export interface FileRouteTypes {
     | '/annuler'
     | '/cgv'
     | '/contactez-nous'
+    | '/envoyer-avis'
     | '/formules'
     | '/mentions-legales'
     | '/nettoyage-aucamville'
@@ -788,6 +799,7 @@ export interface FileRouteTypes {
     | '/annuler'
     | '/cgv'
     | '/contactez-nous'
+    | '/envoyer-avis'
     | '/formules'
     | '/mentions-legales'
     | '/nettoyage-aucamville'
@@ -858,6 +870,7 @@ export interface RootRouteChildren {
   AnnulerRoute: typeof AnnulerRoute
   CgvRoute: typeof CgvRoute
   ContactezNousRoute: typeof ContactezNousRoute
+  EnvoyerAvisRoute: typeof EnvoyerAvisRoute
   FormulesRoute: typeof FormulesRoute
   MentionsLegalesRoute: typeof MentionsLegalesRoute
   NettoyageAucamvilleRoute: typeof NettoyageAucamvilleRoute
@@ -957,6 +970,13 @@ declare module '@tanstack/react-router' {
       path: '/contactez-nous'
       fullPath: '/contactez-nous'
       preLoaderRoute: typeof ContactezNousRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/envoyer-avis': {
+      id: '/envoyer-avis'
+      path: '/envoyer-avis'
+      fullPath: '/envoyer-avis'
+      preLoaderRoute: typeof EnvoyerAvisRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/formules': {
@@ -1402,6 +1422,7 @@ const rootRouteChildren: RootRouteChildren = {
   AnnulerRoute: AnnulerRoute,
   CgvRoute: CgvRoute,
   ContactezNousRoute: ContactezNousRoute,
+  EnvoyerAvisRoute: EnvoyerAvisRoute,
   FormulesRoute: FormulesRoute,
   MentionsLegalesRoute: MentionsLegalesRoute,
   NettoyageAucamvilleRoute: NettoyageAucamvilleRoute,
