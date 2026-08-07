@@ -19,15 +19,26 @@ async function main() {
     items: [
       {
         service_name: "Nettoyage Canapé",
-        formule_name: "Canapé d'angle",
-        formule_price: 120,
-        options: []
+        formule_name: "Pack Or",
+        formule_price: 129,
+        options: [
+          { name: "Traitement anti-acariens et bactériens", price: 19 },
+          { name: "Détachage intensif — siège très taché", price: 19 }
+        ]
+      },
+      {
+        service_name: "Nettoyage Tapis",
+        formule_name: "3 Tapis",
+        formule_price: 99,
+        options: [
+          { name: "Traitement anti-odeur", price: 15 }
+        ]
       }
     ]
   });
 
   await createCalendarEvent({
-    summary: "🛋️ Canapé d'angle — Nicolas Cherki test",
+    summary: "🛋️ Pack Or + 3 Tapis — Nicolas Cherki test",
     description: desc,
     location: "15 Rue d'Alsace Lorraine, 31000 Toulouse",
     start: { dateTime: "2026-08-16T18:00:00", timeZone: "Europe/Paris" },

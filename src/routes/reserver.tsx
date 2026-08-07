@@ -663,7 +663,7 @@ function ReserverPage() {
     };
     const baseToken = btoa(unescape(encodeURIComponent(JSON.stringify(baseTokenData))));
 
-    const siteUrl = "https://fresh-sparkle-toulouse-6hqe.vercel.app";
+    const siteUrl = "https://www.cleanetfresh.fr";
 
     let gcalId: string | null = null;
     try {
@@ -759,7 +759,7 @@ function ReserverPage() {
 
   // ── CONFIRMATION ──────────────────────────────────────────────────────────
   if (done) {
-    const siteUrl = "https://fresh-sparkle-toulouse-6hqe.vercel.app";
+    const siteUrl = "https://www.cleanetfresh.fr";
     const cancelUrl = cancelToken ? `${siteUrl}/annuler?token=${cancelToken}` : null;
     const fullAddress = `${form.street}, ${form.zip} ${form.city}`;
 
