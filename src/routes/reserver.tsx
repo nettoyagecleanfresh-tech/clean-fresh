@@ -476,7 +476,21 @@ function ReserverPage() {
       console.error("[GCal] Erreur création calendrier :", gcalErr);
     }
 
-    const cancelUrl = `${siteUrl}/annuler?token=${cancelToken}`;
+    // ⚠️ IMPORTANT : Regénérer le token avec le VRAI ID de l'événement GCal
+    // Sinon la reprogrammation ne peut pas fonctionner (PATCH sur mauvais ID)
+    const finalGcalId = gcalId ?? preGeneratedGcalId;
+    const finalTokenData = {
+      i: finalGcalId,
+      n: form.name.substring(0, 30),
+      e: form.email,
+      d: bookingDate,
+      t: selectedTime,
+      f: formuleSummary.substring(0, 30),
+      dur: totalDuration
+    };
+    const finalCancelToken = btoa(unescape(encodeURIComponent(JSON.stringify(finalTokenData))));
+
+    const cancelUrl = `${siteUrl}/annuler?token=${finalCancelToken}`;
 
     try {
       await sendBookingEmails({
@@ -496,7 +510,7 @@ function ReserverPage() {
       console.error("[Email] Erreur envoi email :", emailErr);
     }
 
-    setCancelToken(cancelToken);
+    setCancelToken(finalCancelToken);
     setDone(true);
     setSubmitting(false);
   };
