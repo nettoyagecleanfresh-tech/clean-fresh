@@ -1,21 +1,21 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ServicePage } from "@/components/site/ServicePage";
-import { getService } from "@/data/site";
+import { getService, SITE_URL } from "@/data/site";
 
 const service = getService("/nettoyage-toiture-toulouse");
 
 export const Route = createFileRoute("/nettoyage-toiture-toulouse")({
   head: () => ({
     meta: [
-      { title: "Nettoyage toiture Toulouse \u2014 d\u00e9moussage | Clean&Fresh" },
-      { name: "description", content: "Nettoyage et d\u00e9moussage toiture \u00e0 Toulouse et dans le 31. Traitement hydrofuge, anti-algues, anti-lichens garanti. Prolongez la dur\u00e9e de votre toit. Devis !" },
-      { property: "og:title", content: "Nettoyage toiture Toulouse \u2014 d\u00e9moussage | Clean&Fresh" },
-      { property: "og:description", content: "Nettoyage et d\u00e9moussage toiture \u00e0 Toulouse et dans le 31. Traitement hydrofuge, anti-algues, anti-lichens garanti. Prolongez la dur\u00e9e de votre toit. Devis !" },
-      { property: "og:url", content: "https://cleanetfresh.fr/nettoyage-toiture-toulouse" },
-      { name: "twitter:title", content: "Nettoyage toiture Toulouse — démoussage | Clean&Fresh" },
-      { name: "twitter:description", content: "Nettoyage et démoussage toiture à Toulouse et dans le 31. Traitement hydrofuge, anti-algues, anti-lichens garanti. Prolongez la durée de votre toit. Devis !" },
+      { title: service.metaTitle },
+      { name: "description", content: service.metaDescription },
+      { property: "og:title", content: service.metaTitle },
+      { property: "og:description", content: service.metaDescription },
+      { property: "og:url", content: `${SITE_URL}${service.slug}` },
+      { name: "twitter:title", content: service.metaTitle },
+      { name: "twitter:description", content: service.metaDescription },
     ],
-    links: [{ rel: "canonical", href: "https://cleanetfresh.fr/nettoyage-toiture-toulouse" }],
+    links: [{ rel: "canonical", href: `${SITE_URL}${service.slug}` }],
   }),
   component: () => <ServicePage service={service} />,
 });

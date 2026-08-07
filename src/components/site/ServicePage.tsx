@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { COMMUNES, COMPANY, SERVICES, type Service } from "@/data/site";
 import { ReviewsCarousel } from "@/components/site/ReviewsCarousel";
 import { FadeIn } from "@/components/ui/fade-in";
+import { SchemaService, SchemaFAQ, SchemaBreadcrumb } from "@/components/site/SchemaOrg";
 
 const PHOTOS_BY_CATEGORY: Record<string, string[]> = {
   canape: ["/realisations/photo-04.jpg", "/realisations/photo-05.jpg", "/realisations/photo-08.jpg", "/realisations/photo-13.jpg"],
@@ -81,6 +82,29 @@ export function ServicePage({ service }: { service: Service }) {
   const [introExpanded, setIntroExpanded] = useState(false);
   const others = SERVICES.filter((s) => s.slug !== service.slug).slice(0, 6);
   const bookingServiceId = getBookingServiceId(service.slug);
+  return (
+    <>
+      <SchemaService service={service} />
+      <SchemaFAQ service={service} />
+      <SchemaBreadcrumb service={service} />
+      <ServicePageContent
+        service={service}
+        introExpanded={introExpanded}
+        setIntroExpanded={setIntroExpanded}
+        others={others}
+        bookingServiceId={bookingServiceId}
+      />
+    </>
+  );
+}
+
+function ServicePageContent({ service, introExpanded, setIntroExpanded, others, bookingServiceId }: {
+  service: Service;
+  introExpanded: boolean;
+  setIntroExpanded: (v: boolean) => void;
+  others: Service[];
+  bookingServiceId: string | null;
+}) {
   const serviceOptions = bookingServiceId ? (OPTIONS_BY_SERVICE[bookingServiceId] ?? []) : [];
   
   const categoryImages =
@@ -101,20 +125,6 @@ export function ServicePage({ service }: { service: Service }) {
           <li className="text-foreground font-medium truncate">{service.navLabel}</li>
         </ol>
       </nav>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            itemListElement: [
-              { "@type": "ListItem", position: 1, name: "Accueil", item: "https://cleanetfresh.fr" },
-              { "@type": "ListItem", position: 2, name: "Nos services", item: "https://cleanetfresh.fr/nos-services" },
-              { "@type": "ListItem", position: 3, name: service.navLabel, item: `https://cleanetfresh.fr${service.slug}` },
-            ],
-          }),
-        }}
-      />
 
       {/* ── HERO ── */}
       <section className="relative overflow-hidden bg-hero-gradient text-ink-foreground">

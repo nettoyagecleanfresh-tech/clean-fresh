@@ -34,9 +34,9 @@ import apresCanape from "@/assets/apres-canape.jpg";
 import avantAuto from "@/assets/avant-auto.jpg";
 import apresAuto from "@/assets/apres-auto.jpg";
 
-const TITLE = "Nettoyage à domicile à Toulouse — Clean&Fresh Haute-Garonne";
+const TITLE = "Entreprise de Nettoyage à Toulouse — Canapé, Matelas, Tapis | Clean&Fresh";
 const DESC =
-  "Clean&Fresh, entreprise de nettoyage à Toulouse : canapé, matelas, tapis, auto, vitres, façade, fin de chantier. Résultat soigné. Devis gratuit sous 24h !";
+  "Clean&Fresh, entreprise de nettoyage à Toulouse : canapé, matelas, tapis, auto, vitres, façade, fin de chantier. 4.9★ sur Google · 500+ interventions · Devis gratuit sous 24h !";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -56,12 +56,17 @@ export const Route = createFileRoute("/")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "LocalBusiness",
+          "@id": `${SITE_URL}/#business`,
           name: "Clean&Fresh",
-          url: "https://cleanetfresh.fr",
-          description: "Entreprise de nettoyage à Toulouse pour particuliers et professionnels : canapé, matelas, tapis, auto, vitres, terrasse, toiture, façade, fin de chantier.",
+          description: "Entreprise de nettoyage professionnelle à Toulouse et Haute-Garonne. Canapé, matelas, tapis, auto, vitres, façade, fin de chantier, fin de bail, Diogène.",
+          url: SITE_URL,
           telephone: "+33767127500",
+          email: "cleanetfresh31@gmail.com",
+          logo: `${SITE_URL}/logo.png`,
+          image: `${SITE_URL}/realisations/photo-02.jpg`,
           priceRange: "€€",
-          image: "https://cleanetfresh.fr/realisations/photo-02.jpg",
+          currenciesAccepted: "EUR",
+          paymentAccepted: "Cash, Credit Card",
           address: {
             "@type": "PostalAddress",
             addressLocality: "Toulouse",
@@ -69,31 +74,52 @@ export const Route = createFileRoute("/")({
             postalCode: "31000",
             addressCountry: "FR",
           },
-          openingHoursSpecification: {
-            "@type": "OpeningHoursSpecification",
-            dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-            opens: "08:00",
-            closes: "21:00",
+          geo: {
+            "@type": "GeoCoordinates",
+            latitude: 43.6047,
+            longitude: 1.4442,
           },
-          areaServed: [
-            { "@type": "City", name: "Toulouse" },
-            { "@type": "City", name: "Blagnac" },
-            { "@type": "City", name: "Colomiers" },
-            { "@type": "City", name: "Tournefeuille" },
-            { "@type": "City", name: "Balma" },
-            { "@type": "City", name: "L'Union" },
-            { "@type": "City", name: "Muret" },
-            { "@type": "City", name: "Cugnaux" },
+          areaServed: {
+            "@type": "GeoCircle",
+            geoMidpoint: { "@type": "GeoCoordinates", latitude: 43.6047, longitude: 1.4442 },
+            geoRadius: "30000",
+          },
+          openingHoursSpecification: [
+            {
+              "@type": "OpeningHoursSpecification",
+              dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+              opens: "08:00",
+              closes: "19:00",
+            },
+            {
+              "@type": "OpeningHoursSpecification",
+              dayOfWeek: ["Saturday", "Sunday"],
+              opens: "09:00",
+              closes: "18:00",
+            },
           ],
           aggregateRating: {
             "@type": "AggregateRating",
             ratingValue: "4.9",
-            reviewCount: "102",
+            reviewCount: "101",
+            bestRating: "5",
+            worstRating: "1",
           },
           sameAs: [
             "https://www.instagram.com/cleanetfresh31",
             "https://www.facebook.com/profile.php?id=61579620873055",
           ],
+          hasOfferCatalog: {
+            "@type": "OfferCatalog",
+            name: "Services de nettoyage",
+            itemListElement: [
+              { "@type": "Offer", itemOffered: { "@type": "Service", name: "Nettoyage canapé Toulouse" } },
+              { "@type": "Offer", itemOffered: { "@type": "Service", name: "Nettoyage matelas Toulouse" } },
+              { "@type": "Offer", itemOffered: { "@type": "Service", name: "Nettoyage fin de bail Toulouse" } },
+              { "@type": "Offer", itemOffered: { "@type": "Service", name: "Nettoyage auto Toulouse" } },
+              { "@type": "Offer", itemOffered: { "@type": "Service", name: "Nettoyage Diogène Toulouse" } },
+            ],
+          },
         }),
       },
     ],

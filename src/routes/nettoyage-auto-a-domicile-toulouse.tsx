@@ -1,21 +1,21 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ServicePage } from "@/components/site/ServicePage";
-import { getService } from "@/data/site";
+import { getService, SITE_URL } from "@/data/site";
 
 const service = getService("/nettoyage-auto-a-domicile-toulouse");
 
 export const Route = createFileRoute("/nettoyage-auto-a-domicile-toulouse")({
   head: () => ({
     meta: [
-      { title: "Nettoyage auto \u00e0 domicile Toulouse \u2014 int\u00e9rieur | Clean&Fresh" },
-      { name: "description", content: "Nettoyage auto \u00e0 domicile \u00e0 Toulouse et dans le 31. Int\u00e9rieur, ext\u00e9rieur, sellerie, vitres \u2014 un expert se d\u00e9place chez vous. Prix r\u00e9duit. Devis gratuit !" },
-      { property: "og:title", content: "Nettoyage auto \u00e0 domicile Toulouse \u2014 int\u00e9rieur | Clean&Fresh" },
-      { property: "og:description", content: "Nettoyage auto \u00e0 domicile \u00e0 Toulouse et dans le 31. Int\u00e9rieur, ext\u00e9rieur, sellerie, vitres \u2014 un expert se d\u00e9place chez vous. Prix r\u00e9duit. Devis gratuit !" },
-      { property: "og:url", content: "https://cleanetfresh.fr/nettoyage-auto-a-domicile-toulouse" },
-      { name: "twitter:title", content: "Nettoyage auto à domicile Toulouse — intérieur | Clean&Fresh" },
-      { name: "twitter:description", content: "Nettoyage auto à domicile à Toulouse et dans le 31. Intérieur, extérieur, sellerie, vitres — un expert se déplace chez vous. Prix réduit. Devis gratuit !" },
+      { title: service.metaTitle },
+      { name: "description", content: service.metaDescription },
+      { property: "og:title", content: service.metaTitle },
+      { property: "og:description", content: service.metaDescription },
+      { property: "og:url", content: `${SITE_URL}${service.slug}` },
+      { name: "twitter:title", content: service.metaTitle },
+      { name: "twitter:description", content: service.metaDescription },
     ],
-    links: [{ rel: "canonical", href: "https://cleanetfresh.fr/nettoyage-auto-a-domicile-toulouse" }],
+    links: [{ rel: "canonical", href: `${SITE_URL}${service.slug}` }],
   }),
   component: () => <ServicePage service={service} />,
 });
