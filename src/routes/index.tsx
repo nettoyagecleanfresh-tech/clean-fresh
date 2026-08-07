@@ -317,12 +317,15 @@ function Index() {
           className="relative"
           style={{ background: "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.55) 35%, rgba(0,0,0,0.80) 100%)" }}
         >
-          <div className="mx-auto max-w-6xl grid grid-cols-6 divide-x divide-white/10 md:divide-none">
+          <div className="mx-auto max-w-6xl grid grid-cols-3 md:grid-cols-6">
             {QUICK_SERVICES.map((s, i) => (
               <Link
                 key={s.slug}
                 to={s.slug}
-                className="group flex flex-col items-center gap-2 pt-6 pb-5 px-1 text-center transition-colors hover:bg-white/8"
+                className={`group flex flex-col items-center gap-2 pt-6 pb-5 px-1 text-center transition-colors hover:bg-white/8 ${
+                  // Add subtle borders for the grid without breaking wrap
+                  "border-white/10" + (i % 3 !== 2 ? " border-r" : "") + (i > 2 ? " border-t md:border-t-0" : "") + (i % 6 !== 5 ? " md:border-r" : " md:border-r-0")
+                }`}
               >
                 <span className="text-accent transition-transform group-hover:scale-110 duration-200">{s.icon}</span>
                 <span className="hidden md:inline text-[11px] font-bold uppercase tracking-widest text-white/90 leading-tight">
