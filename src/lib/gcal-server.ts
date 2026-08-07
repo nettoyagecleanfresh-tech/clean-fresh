@@ -362,7 +362,6 @@ ${itemsDetails}
 
 💶 TOTAL : ${params.total_price} €
 
-❌ Annuler le rendez-vous : 
-${params.cancel_url}
+❌ <a href="${params.cancel_url}">Cliquez ici pour annuler le rendez-vous</a>
 `.trim();
 }
