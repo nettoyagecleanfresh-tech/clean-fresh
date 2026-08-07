@@ -8,6 +8,16 @@ RewriteEngine On
 # RewriteCond %{HTTPS} off
 # RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
+# 301 redirects — anciennes URLs WordPress courtes → nouvelles URLs React
+Redirect 301 /nettoyage-canape /nettoyage-canape-toulouse
+Redirect 301 /nettoyage-canape/ /nettoyage-canape-toulouse
+Redirect 301 /nettoyage-tapis /nettoyage-tapis-toulouse
+Redirect 301 /nettoyage-tapis/ /nettoyage-tapis-toulouse
+Redirect 301 /nettoyage-matelas /nettoyage-matelas-toulouse
+Redirect 301 /nettoyage-matelas/ /nettoyage-matelas-toulouse
+Redirect 301 /nettoyage-de-fin-de-chantier /nettoyage-de-fin-de-chantier-toulouse
+Redirect 301 /nettoyage-de-fin-de-chantier/ /nettoyage-de-fin-de-chantier-toulouse
+
 # Servir les fichiers/dossiers existants directement (assets JS, CSS, images...)
 RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d

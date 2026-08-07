@@ -10,33 +10,82 @@ import {
   useLocation,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
+import { Home, CalendarCheck, Sofa, Sparkles, Phone } from "lucide-react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
-import { OG_IMAGE } from "@/data/site";
+import { OG_IMAGE, COMPANY } from "@/data/site";
 import { Header } from "@/components/site/Header";
 import { Footer, StickyCallCta } from "@/components/site/Footer";
 import { TopBanner } from "@/components/site/TopBanner";
 import { Toaster } from "@/components/ui/sonner";
 import { Chatbot } from "@/components/site/Chatbot";
+import { Button } from "@/components/ui/button";
 
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
-        </p>
-        <div className="mt-6">
-          <Link
-            to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            Go home
-          </Link>
+    <div className="relative flex min-h-[80vh] items-center justify-center overflow-hidden bg-hero-gradient px-4 py-20">
+      {/* Blob décoratif */}
+      <div className="pointer-events-none absolute -left-32 -top-32 size-96 rounded-full bg-primary/20 blur-3xl" />
+      <div className="pointer-events-none absolute -bottom-32 -right-32 size-96 rounded-full bg-accent/20 blur-3xl" />
+
+      <div className="relative z-10 max-w-lg text-center text-ink-foreground">
+        {/* Numéro 404 stylisé */}
+        <div className="relative inline-block">
+          <span className="text-[9rem] font-black leading-none tracking-tighter opacity-10 select-none">
+            404
+          </span>
+          <div className="absolute inset-0 flex items-center justify-center">
+            <Sparkles className="size-16 text-primary drop-shadow-lg" />
+          </div>
         </div>
+
+        <h1 className="mt-2 text-3xl font-bold md:text-4xl">
+          Cette page est introuvable
+        </h1>
+        <p className="mx-auto mt-4 max-w-sm text-sm leading-relaxed text-ink-foreground/70">
+          La page que vous cherchez n'existe pas ou a été déplacée.
+          Pas de panique — nos équipes sont toujours là pour vous aider !
+        </p>
+
+        {/* Boutons principaux */}
+        <div className="mt-8 flex flex-wrap justify-center gap-3">
+          <Button asChild size="lg" className="bg-accent-gradient text-accent-foreground font-bold shadow-[var(--shadow-card)] hover:opacity-90">
+            <Link to="/"><Home className="size-4" /> Retour à l'accueil</Link>
+          </Button>
+          <Button asChild variant="onDark" size="lg">
+            <Link to="/formules"><CalendarCheck className="size-4" /> Réserver une prestation</Link>
+          </Button>
+        </div>
+
+        {/* Liens rapides */}
+        <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3">
+          {[
+            { to: "/nettoyage-canape-toulouse", label: "Canapé", icon: Sofa },
+            { to: "/nettoyage-matelas-toulouse", label: "Matelas", icon: Sparkles },
+            { to: "/nettoyage-auto-a-domicile-toulouse", label: "Auto", icon: Sparkles },
+            { to: "/nettoyage-tapis-toulouse", label: "Tapis", icon: Sparkles },
+            { to: "/nos-services", label: "Tous les services", icon: Sparkles },
+            { to: "/contactez-nous", label: "Nous contacter", icon: Phone },
+          ].map(({ to, label, icon: Icon }) => (
+            <Link
+              key={to}
+              to={to}
+              className="flex items-center justify-center gap-2 rounded-xl border border-ink-foreground/20 bg-ink-foreground/10 px-3 py-3 text-xs font-semibold backdrop-blur transition-colors hover:bg-ink-foreground/20"
+            >
+              <Icon className="size-3.5 shrink-0" />
+              {label}
+            </Link>
+          ))}
+        </div>
+
+        {/* Téléphone */}
+        <p className="mt-10 text-sm text-ink-foreground/60">
+          Besoin d'aide ?{" "}
+          <a href={COMPANY.phoneHref} className="font-semibold text-ink-foreground hover:underline">
+            {COMPANY.phone}
+          </a>
+        </p>
       </div>
     </div>
   );
