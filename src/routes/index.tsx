@@ -34,9 +34,9 @@ import apresCanape from "@/assets/apres-canape.jpg";
 import avantAuto from "@/assets/avant-auto.jpg";
 import apresAuto from "@/assets/apres-auto.jpg";
 
-const TITLE = "Entreprise de nettoyage à Toulouse — Clean&Fresh";
+const TITLE = "Nettoyage à domicile à Toulouse — Clean&Fresh Haute-Garonne";
 const DESC =
-  "Clean&Fresh, entreprise de nettoyage à Toulouse pour particuliers et professionnels : canapé, matelas, tapis, auto, vitres, terrasse, toiture, fin de chantier. Devis gratuit sous 24h.";
+  "Clean&Fresh, entreprise de nettoyage à Toulouse : canapé, matelas, tapis, auto, vitres, façade, fin de chantier. Résultat soigné. Devis gratuit sous 24h !";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -58,8 +58,10 @@ export const Route = createFileRoute("/")({
           "@type": "LocalBusiness",
           name: "Clean&Fresh",
           url: "https://cleanetfresh.fr",
+          description: "Entreprise de nettoyage à Toulouse pour particuliers et professionnels : canapé, matelas, tapis, auto, vitres, terrasse, toiture, façade, fin de chantier.",
           telephone: "+33767127500",
-          email: "nettoyagecleanfresh@gmail.com",
+          priceRange: "€€",
+          image: "https://cleanetfresh.fr/realisations/photo-02.jpg",
           address: {
             "@type": "PostalAddress",
             addressLocality: "Toulouse",
@@ -67,8 +69,22 @@ export const Route = createFileRoute("/")({
             postalCode: "31000",
             addressCountry: "FR",
           },
-          areaServed: { "@type": "AdministrativeArea", name: "Haute-Garonne" },
-          priceRange: "€€",
+          openingHoursSpecification: {
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+            opens: "08:00",
+            closes: "21:00",
+          },
+          areaServed: [
+            { "@type": "City", name: "Toulouse" },
+            { "@type": "City", name: "Blagnac" },
+            { "@type": "City", name: "Colomiers" },
+            { "@type": "City", name: "Tournefeuille" },
+            { "@type": "City", name: "Balma" },
+            { "@type": "City", name: "L'Union" },
+            { "@type": "City", name: "Muret" },
+            { "@type": "City", name: "Cugnaux" },
+          ],
           aggregateRating: {
             "@type": "AggregateRating",
             ratingValue: "4.9",

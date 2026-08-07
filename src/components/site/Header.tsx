@@ -21,7 +21,7 @@ export function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-50 transition-all duration-300 ${
+      className={`transition-all duration-300 ${
         scrolled
           ? "border-b border-border/60 bg-background/95 shadow-[var(--shadow-soft)] backdrop-blur"
           : "bg-background/80 backdrop-blur"

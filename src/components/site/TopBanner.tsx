@@ -9,18 +9,21 @@ export function TopBanner() {
 
   return (
     <div className="relative z-50 bg-accent-gradient text-accent-foreground">
-      <Link
-        to="/formules"
-        className="flex items-center justify-center gap-3 px-4 py-2.5 hover:opacity-90 transition-opacity"
-      >
+      <div className="flex items-center justify-center gap-3 px-4 py-2 pr-10">
         <CalendarCheck className="size-4 shrink-0" />
-        <p className="text-sm font-semibold">
+        <p className="text-sm font-semibold hidden sm:block">
           Consultez les prochains créneaux disponibles — réservez votre nettoyage en ligne en 2 minutes
         </p>
-        <span className="hidden shrink-0 rounded-full border border-accent-foreground/30 bg-accent-foreground/15 px-3 py-0.5 text-xs font-bold uppercase tracking-wider sm:inline-block">
-          Réserver ici →
-        </span>
-      </Link>
+        <p className="text-sm font-semibold sm:hidden">
+          Réservez votre nettoyage en ligne
+        </p>
+        <Link
+          to="/formules"
+          className="shrink-0 rounded-full border border-accent-foreground/40 bg-accent-foreground/20 px-3 py-1 text-xs font-bold uppercase tracking-wider hover:bg-accent-foreground/30 transition-colors"
+        >
+          Réserver →
+        </Link>
+      </div>
       <button
         onClick={() => setVisible(false)}
         aria-label="Fermer"

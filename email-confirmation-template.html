@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="x-apple-disable-message-reformatting">
+<meta name="color-scheme" content="light only">
+<meta name="supported-color-schemes" content="light only">
+<title>Confirmation de votre demande — Clean&amp;Fresh</title>
+<style>
+  :root { color-scheme: light only; }
+  img { max-width: 100% !important; height: auto !important; }
+  table { border-collapse: collapse; }
+  /* Force light mode — override dark mode email clients */
+  @media (prefers-color-scheme: dark) {
+    .email-body { background-color: #eef4f9 !important; }
+    .email-container { background-color: #ffffff !important; border-color: #d7e3ee !important; }
+    .header-bg { background-color: #00b8ff !important; border-color: #0093cc !important; }
+    .logo-cell { background-color: #ffffff !important; }
+    .hero-bg { background-color: #f6faff !important; }
+    .footer-bg { background-color: #f6faff !important; }
+  }
+  /* Gmail dark mode (data-ogsc) */
+  [data-ogsc] .email-body { background-color: #eef4f9 !important; }
+  [data-ogsc] .email-container { background-color: #ffffff !important; }
+  [data-ogsc] .header-bg { background-color: #00b8ff !important; }
+  [data-ogsc] .logo-cell { background-color: #ffffff !important; }
+  [data-ogsb] .logo-cell { background-color: #ffffff !important; }
+  @media only screen and (max-width: 620px) {
+    .outer { padding: 16px 8px !important; }
+    .container { width: 100% !important; max-width: 100% !important; }
+    .px { padding-left: 16px !important; padding-right: 16px !important; }
+    /* Stacking rows (détails intervention) */
+    .stack { display: block !important; width: 100% !important; max-width: 100% !important; text-align: left !important; border-bottom: 0 !important; }
+    .label { padding: 8px 0 2px 0 !important; }
+    .value { padding: 0 0 10px 0 !important; border-bottom: 1px solid #e7eef6 !important; }
+    /* Colonnes récap commande */
+    .col-name { display: block !important; width: 100% !important; max-width: 100% !important; padding: 10px 16px 0 16px !important; }
+    .col-price { display: block !important; width: 100% !important; max-width: 100% !important; text-align: left !important; padding: 2px 16px 10px 16px !important; white-space: normal !important; }
+    /* Lignes totaux */
+    .total-label { font-size: 12px !important; padding: 6px 8px 2px 16px !important; }
+    .total-price { font-size: 13px !important; padding: 2px 16px 6px 8px !important; white-space: normal !important; }
+    .grand-total-label { padding: 12px 8px 12px 16px !important; font-size: 13px !important; }
+    .grand-total-price { font-size: 16px !important; padding: 12px 16px 12px 8px !important; white-space: normal !important; }
+    /* Upsell */
+    .upsell-name { display: block !important; width: 100% !important; max-width: 100% !important; padding: 14px 16px 6px 16px !important; }
+    .upsell-price { display: block !important; width: 100% !important; max-width: 100% !important; text-align: left !important; padding: 0 16px 14px 16px !important; }
+    .upsell-price table { margin-left: 0 !important; float: none !important; }
+    .upsell-btn { margin-left: 0 !important; float: none !important; margin-top: 8px !important; }
+    /* En-tête */
+    .header-badge { font-size: 10px !important; padding: 5px 10px !important; letter-spacing: 0.3px !important; }
+    .box { padding-left: 14px !important; padding-right: 14px !important; }
+  }
+</style>
+</head>
+<body class="email-body" style="margin:0; padding:0; background-color:#eef4f9;">
+<span style="display:none; font-size:1px; color:#eef4f9; line-height:1px; max-height:0; max-width:0; opacity:0; overflow:hidden;">Votre demande {{formule_name}} est confirmée pour le {{booking_date}} à {{booking_time}}.</span>
+
+<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#eef4f9;">
+<tr>
+<td align="center" class="outer" style="padding:32px 12px;">
+
+  <table role="presentation" class="container email-container" border="0" cellpadding="0" cellspacing="0" width="100%" style="width:100%; max-width:600px; background-color:#ffffff; border:1px solid #d7e3ee; border-radius:14px; overflow:hidden; font-family:Helvetica, Arial, sans-serif;">
+
+    <!-- En-tête -->
+    <tr>
+      <td class="header-bg" style="background-color:#00b8ff; padding:22px 28px; border-bottom:3px solid #0093cc;">
+        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+          <tr>
+            <td width="60%" align="left" style="vertical-align:middle;">
+              <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td class="logo-cell" bgcolor="#ffffff" style="border-radius:8px; padding:5px 10px; background-color:#ffffff; line-height:0;">
+                    <img src="https://www.cleanetfresh.fr/logo.png" width="110" alt="Clean&amp;Fresh" style="display:block; width:110px; max-width:110px; height:auto; border:0; outline:none; text-decoration:none; font-family:Helvetica,Arial,sans-serif; font-size:14px; font-weight:bold; color:#0093cc;">
+                  </td>
+                </tr>
+              </table>
+            </td>
+            <td width="40%" align="right" style="vertical-align:middle;">
+              <table role="presentation" border="0" cellpadding="0" cellspacing="0" align="right">
+                <tr>
+                  <td bgcolor="#ffffff" class="header-badge" style="border-radius:30px; padding:7px 15px; font-family:Helvetica, Arial, sans-serif; font-size:11px; font-weight:bold; letter-spacing:0.6px; color:#0093cc; white-space:nowrap;">DEMANDE CONFIRM&Eacute;E</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    <!-- Corps -->
+    <tr>
+      <td class="px" style="padding:32px 28px 8px 28px;">
+        <h1 style="margin:0 0 10px 0; font-family:Helvetica, Arial, sans-serif; font-size:23px; line-height:30px; mso-line-height-rule:exactly; font-weight:bold; color:#0f2c3f;">Bonjour {{client_name}},</h1>
+        <p style="margin:0; font-family:Helvetica, Arial, sans-serif; font-size:15px; line-height:24px; mso-line-height-rule:exactly; color:#2f4d64;">
+          Nous vous confirmons que votre demande pour la prestation <strong style="color:#0f2c3f;">{{formule_name}}</strong> a bien &eacute;t&eacute; prise en compte. Voici le r&eacute;capitulatif complet de votre commande&nbsp;<strong style="color:#0f2c3f;">n&deg;{{order_number}}</strong>.
+        </p>
+      </td>
+    </tr>
+
+    <!-- Détails de l'intervention -->
+    <tr>
+      <td class="px" style="padding:24px 28px 0 28px;">
+        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#f6faff; border:1px solid #dce7f2; border-radius:12px;">
+          <tr>
+            <td style="padding:18px 20px 4px 20px; font-family:Helvetica, Arial, sans-serif; font-size:11px; font-weight:bold; letter-spacing:1.2px; text-transform:uppercase; color:#3b6a7c;">D&eacute;tails de l'intervention</td>
+          </tr>
+          <tr>
+            <td style="padding:0 20px 18px 20px;">
+              <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                  <td class="stack label" width="150" style="padding:10px 0; border-bottom:1px solid #e7eef6; font-family:Helvetica, Arial, sans-serif; font-size:13px; line-height:20px; color:#5b7b8e; vertical-align:top;">Date et heure</td>
+                  <td class="stack value" style="padding:10px 0; border-bottom:1px solid #e7eef6; font-family:Helvetica, Arial, sans-serif; font-size:15px; line-height:22px; color:#0f2c3f; vertical-align:top;"><strong>{{booking_date}} &agrave; {{booking_time}}</strong></td>
+                </tr>
+                <tr>
+                  <td class="stack label" width="150" style="padding:10px 0; border-bottom:1px solid #e7eef6; font-family:Helvetica, Arial, sans-serif; font-size:13px; line-height:20px; color:#5b7b8e; vertical-align:top;">Dur&eacute;e estim&eacute;e</td>
+                  <td class="stack value" style="padding:10px 0; border-bottom:1px solid #e7eef6; font-family:Helvetica, Arial, sans-serif; font-size:14px; line-height:22px; color:#0f2c3f; vertical-align:top;">{{estimated_duration}}</td>
+                </tr>
+                <tr>
+                  <td class="stack label" width="150" style="padding:10px 0; border-bottom:1px solid #e7eef6; font-family:Helvetica, Arial, sans-serif; font-size:13px; line-height:20px; color:#5b7b8e; vertical-align:top;">Lieu d'intervention</td>
+                  <td class="stack value" style="padding:10px 0; border-bottom:1px solid #e7eef6; font-family:Helvetica, Arial, sans-serif; font-size:14px; line-height:22px; color:#0f2c3f; vertical-align:top;">{{client_address}}</td>
+                </tr>
+                <tr>
+                  <td class="stack label" width="150" style="padding:10px 0 0 0; font-family:Helvetica, Arial, sans-serif; font-size:13px; line-height:20px; color:#5b7b8e; vertical-align:top;">Contact</td>
+                  <td class="stack value" style="padding:10px 0 0 0; font-family:Helvetica, Arial, sans-serif; font-size:14px; line-height:22px; color:#0f2c3f; vertical-align:top;">{{client_phone}}</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    <!-- Récapitulatif de la commande -->
+    <tr>
+      <td class="px" style="padding:16px 28px 0 28px;">
+        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="border:1px solid #dce7f2; border-radius:12px;">
+          <tr>
+            <td colspan="2" style="padding:18px 20px 12px 20px; font-family:Helvetica, Arial, sans-serif; font-size:11px; font-weight:bold; letter-spacing:1.2px; text-transform:uppercase; color:#3b6a7c;">R&eacute;capitulatif de la commande</td>
+          </tr>
+
+          <!-- Prestation principale -->
+          <tr>
+            <td width="70%" class="col-name" style="padding:0 8px 12px 20px; font-family:Helvetica, Arial, sans-serif; font-size:15px; line-height:21px; color:#0f2c3f; vertical-align:top;">
+              <strong>{{formule_name}}</strong><br>
+              <span style="font-size:12px; line-height:18px; color:#6b8ba0;">{{formule_description}}</span>
+            </td>
+            <td width="30%" align="right" class="col-price" style="padding:0 20px 12px 8px; font-family:Helvetica, Arial, sans-serif; font-size:15px; line-height:21px; color:#0f2c3f; vertical-align:top;"><strong>{{formule_price}} &euro;</strong></td>
+          </tr>
+
+          <tr>
+            <td colspan="2" style="padding:0 20px;"><div style="height:1px; background-color:#e7eef6; line-height:1px; font-size:0;">&nbsp;</div></td>
+          </tr>
+
+          <!-- Options -->
+          <tr>
+            <td colspan="2" style="padding:14px 20px 6px 20px; font-family:Helvetica, Arial, sans-serif; font-size:11px; font-weight:bold; letter-spacing:1px; text-transform:uppercase; color:#5b7b8e;">Options incluses</td>
+          </tr>
+          <!-- DÉBUT boucle options -->
+          {{#options}}
+          <tr>
+            <td width="70%" class="col-name" style="padding:6px 8px 6px 20px; font-family:Helvetica, Arial, sans-serif; font-size:14px; line-height:21px; color:#1e3f55; vertical-align:top;">{{option_name}}</td>
+            <td width="30%" align="right" class="col-price" style="padding:6px 20px 6px 8px; font-family:Helvetica, Arial, sans-serif; font-size:14px; line-height:21px; color:#1e3f55; vertical-align:top;">{{option_price}} &euro;</td>
+          </tr>
+          {{/options}}
+          <!-- FIN boucle options -->
+
+          <tr>
+            <td colspan="2" style="padding:12px 20px 0 20px;"><div style="height:1px; background-color:#e7eef6; line-height:1px; font-size:0;">&nbsp;</div></td>
+          </tr>
+
+          <!-- Totaux — classes responsive ajoutées -->
+          <tr>
+            <td width="70%" class="total-label" style="padding:12px 8px 4px 20px; font-family:Helvetica, Arial, sans-serif; font-size:13px; line-height:20px; color:#5b7b8e;">Sous-total</td>
+            <td width="30%" align="right" class="total-price" style="padding:12px 20px 4px 8px; font-family:Helvetica, Arial, sans-serif; font-size:14px; line-height:20px; color:#1e3f55;">{{subtotal}} &euro;</td>
+          </tr>
+          <tr>
+            <td width="70%" class="total-label" style="padding:4px 8px 4px 20px; font-family:Helvetica, Arial, sans-serif; font-size:13px; line-height:20px; color:#5b7b8e;">Frais de d&eacute;placement</td>
+            <td width="30%" align="right" class="total-price" style="padding:4px 20px 4px 8px; font-family:Helvetica, Arial, sans-serif; font-size:14px; line-height:20px; color:#1e3f55;">{{travel_fee}} &euro;</td>
+          </tr>
+          <tr>
+            <td width="70%" class="total-label" style="padding:4px 8px 12px 20px; font-family:Helvetica, Arial, sans-serif; font-size:13px; line-height:20px; color:#2c5546;">Remise {{discount_label}}</td>
+            <td width="30%" align="right" class="total-price" style="padding:4px 20px 12px 8px; font-family:Helvetica, Arial, sans-serif; font-size:14px; line-height:20px; color:#2c5546;">&minus;{{discount_amount}} &euro;</td>
+          </tr>
+          <tr>
+            <td width="70%" bgcolor="#f6faff" class="grand-total-label" style="padding:16px 8px 16px 20px; border-top:1px solid #dce7f2; font-family:Helvetica, Arial, sans-serif; font-size:14px; line-height:22px; color:#0f2c3f;"><strong>Montant total estim&eacute;</strong></td>
+            <td width="30%" bgcolor="#f6faff" align="right" class="grand-total-price" style="padding:16px 20px 16px 8px; border-top:1px solid #dce7f2; font-family:Helvetica, Arial, sans-serif; font-size:20px; line-height:24px; color:#0093cc;"><strong>{{total_price}} &euro;</strong></td>
+          </tr>
+          <tr>
+            <td colspan="2" bgcolor="#f6faff" style="padding:0 20px 16px 20px; font-family:Helvetica, Arial, sans-serif; font-size:11px; line-height:17px; color:#6b8ba0;">Paiement apr&egrave;s l'intervention. Montant susceptible d'&eacute;voluer si l'&eacute;tat du bien diff&egrave;re des informations transmises.</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    <!-- Upsell -->
+    <tr>
+      <td class="px" style="padding:24px 28px 0 28px;">
+        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#f2f9f6; border:1px solid #cfe3d9; border-radius:12px;">
+          <tr>
+            <td style="padding:18px 20px 0 20px; font-family:Helvetica, Arial, sans-serif; font-size:11px; font-weight:bold; letter-spacing:1.2px; text-transform:uppercase; color:#4a7a66;">Compl&eacute;tez votre prestation</td>
+          </tr>
+          <tr>
+            <td style="padding:6px 20px 14px 20px; font-family:Helvetica, Arial, sans-serif; font-size:14px; line-height:22px; color:#2c5546;">Ces options peuvent encore &ecirc;tre ajout&eacute;es jusqu'&agrave; 24&nbsp;h avant l'intervention, sans frais de d&eacute;placement suppl&eacute;mentaires.</td>
+          </tr>
+
+          <!-- DÉBUT boucle upsell -->
+          {{#upsells}}
+          <tr>
+            <td style="padding:0 20px 10px 20px;">
+              <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#ffffff; border:1px solid #dceae3; border-radius:10px;">
+                <tr>
+                  <!-- Nom + description -->
+                  <td width="60%" class="upsell-name" style="padding:14px 8px 14px 16px; font-family:Helvetica, Arial, sans-serif; font-size:14px; line-height:20px; color:#0f2c3f; vertical-align:middle;">
+                    <strong>{{upsell_name}}</strong><br>
+                    <span style="font-size:12px; line-height:18px; color:#6b8ba0;">{{upsell_description}}</span>
+                  </td>
+                  <!-- Prix + bouton -->
+                  <td width="40%" class="upsell-price" align="right" style="padding:14px 16px 14px 8px; vertical-align:middle; text-align:right;">
+                    <div style="font-family:Helvetica, Arial, sans-serif; font-size:15px; line-height:20px; color:#0093cc;"><strong>+{{upsell_price}} &euro;</strong></div>
+                    <!-- Bouton Ajouter — margin-left:auto pour aligner à droite sur desktop, reset sur mobile -->
+                    <table role="presentation" class="upsell-btn" border="0" cellpadding="0" cellspacing="0" style="margin-top:8px; margin-left:auto;">
+                      <tr>
+                        <td bgcolor="#6fa58b" style="border-radius:40px;">
+                          <a href="{{upsell_url}}" style="display:block; padding:8px 16px; font-family:Helvetica, Arial, sans-serif; font-size:12px; font-weight:bold; color:#ffffff; text-decoration:none; white-space:nowrap;">Ajouter</a>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          {{/upsells}}
+          <!-- FIN boucle upsell -->
+
+          <tr>
+            <td style="padding:2px 20px 18px 20px; font-family:Helvetica, Arial, sans-serif; font-size:12px; line-height:19px; color:#4a7a66;">Vous pouvez aussi <a href="{{manage_url}}" style="color:#2c5546; text-decoration:underline;">g&eacute;rer votre commande en ligne</a> ou r&eacute;pondre &agrave; cet e-mail.</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    <!-- Message -->
+    <tr>
+      <td class="px" style="padding:26px 28px 0 28px;">
+        <p style="margin:0 0 16px 0; font-family:Helvetica, Arial, sans-serif; font-size:14px; line-height:23px; mso-line-height-rule:exactly; color:#1e3f55;">Nous pr&eacute;parons tout pour vous offrir la meilleure exp&eacute;rience possible.</p>
+        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+          <tr>
+            <td style="padding:14px 18px; background-color:#f6faff; border-left:3px solid #00b8ff; border-radius:6px; font-family:Helvetica, Arial, sans-serif; font-size:14px; line-height:22px; color:#1e3f55; font-style:italic;">{{service_tip}}</td>
+          </tr>
+        </table>
+        <p style="margin:16px 0 0 0; font-family:Helvetica, Arial, sans-serif; font-size:14px; line-height:23px; mso-line-height-rule:exactly; color:#1e3f55;">Si vous avez la moindre question d'ici l&agrave;, n'h&eacute;sitez pas &agrave; r&eacute;pondre directement &agrave; cet e-mail.</p>
+      </td>
+    </tr>
+
+    <!-- Action -->
+    <tr>
+      <td class="px" style="padding:26px 28px 32px 28px;">
+        <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td bgcolor="#ffffff" style="border:1px solid #e0a8ae; border-radius:40px;">
+              <a href="{{cancel_url}}" style="display:block; padding:12px 24px; font-family:Helvetica, Arial, sans-serif; font-size:13px; font-weight:bold; color:#c22a38; text-decoration:none;">Annuler ma demande</a>
+            </td>
+          </tr>
+        </table>
+        <p style="margin:12px 0 0 0; font-family:Helvetica, Arial, sans-serif; font-size:12px; line-height:19px; color:#6b8ba0;">En cas d'impr&eacute;vu, vous pouvez annuler votre demande en cliquant sur le bouton ci-dessus.</p>
+      </td>
+    </tr>
+
+    <!-- Pied -->
+    <tr>
+      <td style="background-color:#f6faff; padding:22px 28px; border-top:1px solid #dce7f2; text-align:center; font-family:Helvetica, Arial, sans-serif; font-size:13px; line-height:21px; color:#12364d;">
+        &Agrave; tr&egrave;s bient&ocirc;t,<br>
+        <strong style="color:#0093cc;">L'&eacute;quipe Clean&amp;Fresh</strong><br>
+        <span style="font-size:12px; color:#527a92;">Toulouse et Haute-Garonne</span><br>
+        <span style="font-size:12px; color:#527a92;"><a href="https://www.cleanetfresh.fr" style="color:#0093cc; text-decoration:none;">cleanetfresh.fr</a></span>
+      </td>
+    </tr>
+  </table>
+
+  <p style="margin:16px auto 0 auto; max-width:600px; font-family:Helvetica, Arial, sans-serif; font-size:11px; line-height:17px; color:#7f9aad; text-align:center;">Cet e-mail vous est envoy&eacute; suite &agrave; votre demande de prestation n&deg;{{order_number}} sur cleanetfresh.fr.</p>
+
+</td>
+</tr>
+</table>
+</body>
+</html>

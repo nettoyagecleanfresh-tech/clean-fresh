@@ -75,6 +75,7 @@ import { Route as NosServicesRouteImport } from './routes/nos-services'
 import { Route as PolitiqueConfidentialiteRouteImport } from './routes/politique-confidentialite'
 import { Route as ReserverRouteImport } from './routes/reserver'
 import { Route as TestRappelRouteImport } from './routes/test-rappel'
+import { Route as UpsellRouteImport } from './routes/upsell'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -427,6 +428,11 @@ const TestRappelRoute = TestRappelRouteImport.update({
   path: '/test-rappel',
   getParentRoute: () => rootRouteImport,
 } as any)
+const UpsellRoute = UpsellRouteImport.update({
+  id: '/upsell',
+  path: '/upsell',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -495,6 +501,7 @@ export interface FileRoutesByFullPath {
   '/politique-confidentialite': typeof PolitiqueConfidentialiteRoute
   '/reserver': typeof ReserverRoute
   '/test-rappel': typeof TestRappelRoute
+  '/upsell': typeof UpsellRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -563,6 +570,7 @@ export interface FileRoutesByTo {
   '/politique-confidentialite': typeof PolitiqueConfidentialiteRoute
   '/reserver': typeof ReserverRoute
   '/test-rappel': typeof TestRappelRoute
+  '/upsell': typeof UpsellRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -632,6 +640,7 @@ export interface FileRoutesById {
   '/politique-confidentialite': typeof PolitiqueConfidentialiteRoute
   '/reserver': typeof ReserverRoute
   '/test-rappel': typeof TestRappelRoute
+  '/upsell': typeof UpsellRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -702,6 +711,7 @@ export interface FileRouteTypes {
     | '/politique-confidentialite'
     | '/reserver'
     | '/test-rappel'
+    | '/upsell'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -770,6 +780,7 @@ export interface FileRouteTypes {
     | '/politique-confidentialite'
     | '/reserver'
     | '/test-rappel'
+    | '/upsell'
   id:
     | '__root__'
     | '/'
@@ -838,6 +849,7 @@ export interface FileRouteTypes {
     | '/politique-confidentialite'
     | '/reserver'
     | '/test-rappel'
+    | '/upsell'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -907,6 +919,7 @@ export interface RootRouteChildren {
   PolitiqueConfidentialiteRoute: typeof PolitiqueConfidentialiteRoute
   ReserverRoute: typeof ReserverRoute
   TestRappelRoute: typeof TestRappelRoute
+  UpsellRoute: typeof UpsellRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -1373,6 +1386,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TestRappelRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/upsell': {
+      id: '/upsell'
+      path: '/upsell'
+      fullPath: '/upsell'
+      preLoaderRoute: typeof UpsellRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -1443,6 +1463,7 @@ const rootRouteChildren: RootRouteChildren = {
   PolitiqueConfidentialiteRoute: PolitiqueConfidentialiteRoute,
   ReserverRoute: ReserverRoute,
   TestRappelRoute: TestRappelRoute,
+  UpsellRoute: UpsellRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

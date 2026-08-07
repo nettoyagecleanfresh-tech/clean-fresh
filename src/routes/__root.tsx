@@ -143,18 +143,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:image:height", content: "630" },
       { property: "og:image:alt", content: "Clean&Fresh — nettoyage professionnel Toulouse" },
       { name: "twitter:image", content: OG_IMAGE },
-      { title: "Entreprise de nettoyage à Toulouse | Clean&Fresh" },
-      { property: "og:title", content: "Entreprise de nettoyage à Toulouse | Clean&Fresh" },
-      { name: "twitter:title", content: "Entreprise de nettoyage à Toulouse | Clean&Fresh" },
-      { name: "description", content: "Entreprise de nettoyage à Toulouse et dans le 31 — canapé, matelas, tapis, auto, vitres, façade, fin de chantier. À domicile, Résultat soigné. Devis gratuit !" },
-      { property: "og:description", content: "Entreprise de nettoyage à Toulouse et dans le 31 — canapé, matelas, tapis, auto, vitres, façade, fin de chantier. À domicile, Résultat soigné. Devis gratuit !" },
-      { name: "twitter:description", content: "Entreprise de nettoyage à Toulouse et dans le 31 — canapé, matelas, tapis, auto, vitres, façade, fin de chantier. À domicile, Résultat soigné. Devis gratuit !" },
+      { title: "Nettoyage à domicile à Toulouse — Clean&Fresh Haute-Garonne" },
+      { property: "og:title", content: "Nettoyage à domicile à Toulouse — Clean&Fresh Haute-Garonne" },
+      { name: "twitter:title", content: "Nettoyage à domicile à Toulouse — Clean&Fresh Haute-Garonne" },
+      { name: "description", content: "Clean&Fresh, entreprise de nettoyage à Toulouse : canapé, matelas, tapis, auto, vitres, façade, fin de chantier. Résultat soigné. Devis gratuit sous 24h !" },
+      { property: "og:description", content: "Clean&Fresh, entreprise de nettoyage à Toulouse : canapé, matelas, tapis, auto, vitres, façade, fin de chantier. Résultat soigné. Devis gratuit sous 24h !" },
+      { name: "twitter:description", content: "Clean&Fresh, entreprise de nettoyage à Toulouse : canapé, matelas, tapis, auto, vitres, façade, fin de chantier. Résultat soigné. Devis gratuit sous 24h !" },
     ],
     links: [
-      {
-        rel: "canonical",
-        href: `https://cleanetfresh.fr${(ctx as { location?: { pathname?: string } })?.location?.pathname ?? ""}`,
-      },
       {
         rel: "stylesheet",
         href: appCss,
@@ -167,46 +163,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { rel: "icon", href: "/logo.png", type: "image/png" },
     ],
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "LocalBusiness",
-          name: "Clean&Fresh",
-          url: "https://cleanetfresh.fr",
-          description:
-            "Entreprise de nettoyage à Toulouse pour particuliers et professionnels : canapé, matelas, tapis, auto, vitres, terrasse, toiture, façade, fin de chantier.",
-          telephone: "+33767127500",
-          email: "nettoyagecleanfresh@gmail.com",
-          priceRange: "€€",
-          image: "https://cleanetfresh.fr/realisations/photo-02.jpg",
-          openingHoursSpecification: {
-            "@type": "OpeningHoursSpecification",
-            dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-            opens: "08:00",
-            closes: "21:00",
-          },
-          areaServed: [
-            { "@type": "City", name: "Toulouse" },
-            { "@type": "City", name: "Blagnac" },
-            { "@type": "City", name: "Colomiers" },
-            { "@type": "City", name: "Tournefeuille" },
-            { "@type": "City", name: "Balma" },
-            { "@type": "City", name: "L'Union" },
-            { "@type": "City", name: "Muret" },
-            { "@type": "City", name: "Cugnaux" },
-          ],
-          address: {
-            "@type": "PostalAddress",
-            addressLocality: "Toulouse",
-            addressRegion: "Haute-Garonne",
-            postalCode: "31000",
-            addressCountry: "FR",
-          },
-        }),
-      },
-    ],
+    scripts: [],
   }),
   shellComponent: RootShell,
   component: RootComponent,
@@ -250,8 +207,10 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <div className="flex min-h-screen flex-col overflow-x-hidden w-full">
-        <TopBanner />
-        <Header />
+        <div className="sticky top-0 z-50">
+          <TopBanner />
+          <Header />
+        </div>
         {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
         <main className="flex-1">
           <Outlet />

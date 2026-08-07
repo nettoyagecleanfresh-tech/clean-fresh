@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="x-apple-disable-message-reformatting">
+<meta name="color-scheme" content="light only">
+<meta name="supported-color-schemes" content="light only">
+<title>Rappel de rendez-vous — Clean&amp;Fresh</title>
+<style>
+  :root { color-scheme: light only; }
+  body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+  table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+  img { -ms-interpolation-mode: bicubic; border: 0; outline: none; text-decoration: none; max-width: 100% !important; height: auto !important; }
+  table { border-collapse: collapse; }
+  /* Force light mode */
+  @media (prefers-color-scheme: dark) {
+    .email-body { background-color: #eef4f9 !important; }
+    .email-container { background-color: #ffffff !important; }
+    .header-bg { background-color: #00b8ff !important; border-color: #0093cc !important; }
+    .logo-cell { background-color: #ffffff !important; }
+    .hero-bg { background-color: #f6faff !important; }
+    .footer-bg { background-color: #f6faff !important; }
+  }
+  [data-ogsc] .email-body { background-color: #eef4f9 !important; }
+  [data-ogsc] .email-container { background-color: #ffffff !important; }
+  [data-ogsc] .header-bg { background-color: #00b8ff !important; }
+  [data-ogsc] .logo-cell { background-color: #ffffff !important; }
+  [data-ogsb] .logo-cell { background-color: #ffffff !important; }
+  @media only screen and (max-width: 620px) {
+    .outer { padding: 16px 8px !important; }
+    .container { width: 100% !important; max-width: 100% !important; }
+    .px { padding-left: 16px !important; padding-right: 16px !important; }
+    .hero { padding: 28px 18px !important; }
+    .hero h1 { font-size: 21px !important; line-height: 28px !important; }
+    /* Stacking lignes recap */
+    .stack { display: block !important; width: 100% !important; max-width: 100% !important; text-align: left !important; border-bottom: 0 !important; }
+    .label { padding: 8px 0 2px 0 !important; }
+    .value { padding: 0 0 10px 0 !important; text-align: left !important; border-bottom: 1px solid #e7eef6 !important; }
+    /* Colonnes options */
+    .col-name { display: block !important; width: 100% !important; max-width: 100% !important; padding: 10px 16px 0 16px !important; }
+    .col-price { display: block !important; width: 100% !important; max-width: 100% !important; text-align: left !important; padding: 2px 16px 10px 16px !important; white-space: normal !important; }
+    /* Ligne total */
+    .grand-total-label { font-size: 13px !important; padding: 10px 8px 10px 16px !important; }
+    .grand-total-price { font-size: 15px !important; padding: 10px 16px 10px 8px !important; white-space: normal !important; }
+  }
+</style>
+</head>
+<body class="email-body" style="margin:0; padding:0; background-color:#eef4f9;">
+<span style="display:none; font-size:1px; color:#eef4f9; line-height:1px; max-height:0; max-width:0; opacity:0; overflow:hidden;">Rappel : votre prestation {{formule_name}} a lieu demain {{booking_date}} à {{booking_time}}.</span>
+
+<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#eef4f9;">
+<tr>
+<td align="center" class="outer" style="padding:32px 12px;">
+
+  <table role="presentation" class="container email-container" border="0" cellpadding="0" cellspacing="0" width="100%" style="width:100%; max-width:600px; background-color:#ffffff; border-radius:16px; overflow:hidden; border:1px solid #d7e3ee; font-family:Helvetica, Arial, sans-serif;">
+
+    <!-- En-tête -->
+    <tr>
+      <td class="header-bg" style="background-color:#00b8ff; padding:22px 28px; border-bottom:3px solid #0093cc;">
+        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+          <tr>
+            <td width="60%" align="left" style="vertical-align:middle;">
+              <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td class="logo-cell" bgcolor="#ffffff" style="border-radius:8px; padding:5px 10px; background-color:#ffffff; line-height:0;">
+                    <img src="https://www.cleanetfresh.fr/logo.png" width="110" alt="Clean&amp;Fresh" style="display:block; width:110px; max-width:110px; height:auto; border:0; outline:none; text-decoration:none; font-family:Helvetica,Arial,sans-serif; font-size:14px; font-weight:bold; color:#0093cc;">
+                  </td>
+                </tr>
+              </table>
+            </td>
+            <td width="40%" align="right" style="vertical-align:middle;">
+              <table role="presentation" border="0" cellpadding="0" cellspacing="0" align="right">
+                <tr>
+                  <td bgcolor="#ffffff" style="border-radius:30px; padding:7px 15px; font-family:Helvetica, Arial, sans-serif; font-size:11px; font-weight:bold; letter-spacing:0.6px; color:#0093cc; white-space:nowrap;">RAPPEL &mdash; J&minus;1</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    <!-- Hero -->
+    <tr>
+      <td align="center" class="hero" style="background-color:#f6faff; padding:36px 30px; border-bottom:1px solid #dce7f2;">
+        <h1 style="margin:0; color:#0f2c3f; font-size:24px; line-height:32px; mso-line-height-rule:exactly; font-family:Helvetica, Arial, sans-serif; font-weight:bold;">Votre prestation c'est demain ! &#9203;</h1>
+        <p style="margin:15px 0 0 0; color:#2f4d64; font-size:16px; line-height:24px; mso-line-height-rule:exactly; font-family:Helvetica, Arial, sans-serif;">Nous sommes pr&ecirc;ts &agrave; faire briller votre int&eacute;rieur. Voici un petit r&eacute;capitulatif pour vous pr&eacute;parer.</p>
+      </td>
+    </tr>
+
+    <!-- Contenu -->
+    <tr>
+      <td class="px" style="padding:36px 30px 0 30px;">
+        <p style="margin:0 0 20px 0; color:#0f2c3f; font-size:18px; line-height:26px; font-weight:bold; font-family:Helvetica, Arial, sans-serif;">Bonjour {{client_name}},</p>
+
+        <!-- Récapitulatif -->
+        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#f6faff; border-radius:12px; border:1px solid #e7eef6;">
+          <tr>
+            <td style="padding:8px 20px 14px 20px;">
+              <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                  <td class="stack label" width="120" style="padding:12px 0; border-bottom:1px solid #e7eef6; font-family:Helvetica, Arial, sans-serif; font-size:12px; font-weight:bold; letter-spacing:0.8px; text-transform:uppercase; color:#5b7b8e; vertical-align:top;">Prestation</td>
+                  <td class="stack value" align="right" style="padding:12px 0; border-bottom:1px solid #e7eef6; font-family:Helvetica, Arial, sans-serif; font-size:15px; line-height:22px; font-weight:bold; color:#0f2c3f; vertical-align:top;">{{formule_name}}</td>
+                </tr>
+                <tr>
+                  <td class="stack label" width="120" style="padding:12px 0; border-bottom:1px solid #e7eef6; font-family:Helvetica, Arial, sans-serif; font-size:12px; font-weight:bold; letter-spacing:0.8px; text-transform:uppercase; color:#5b7b8e; vertical-align:top;">Date</td>
+                  <td class="stack value" align="right" style="padding:12px 0; border-bottom:1px solid #e7eef6; font-family:Helvetica, Arial, sans-serif; font-size:16px; line-height:22px; font-weight:bold; color:#0093cc; vertical-align:top;">{{booking_date}}</td>
+                </tr>
+                <tr>
+                  <td class="stack label" width="120" style="padding:12px 0; border-bottom:1px solid #e7eef6; font-family:Helvetica, Arial, sans-serif; font-size:12px; font-weight:bold; letter-spacing:0.8px; text-transform:uppercase; color:#5b7b8e; vertical-align:top;">Heure</td>
+                  <td class="stack value" align="right" style="padding:12px 0; border-bottom:1px solid #e7eef6; font-family:Helvetica, Arial, sans-serif; font-size:16px; line-height:22px; font-weight:bold; color:#0093cc; vertical-align:top;">{{booking_time}}</td>
+                </tr>
+                <tr>
+                  <td class="stack label" width="120" style="padding:12px 0; border-bottom:1px solid #e7eef6; font-family:Helvetica, Arial, sans-serif; font-size:12px; font-weight:bold; letter-spacing:0.8px; text-transform:uppercase; color:#5b7b8e; vertical-align:top;">Dur&eacute;e</td>
+                  <td class="stack value" align="right" style="padding:12px 0; border-bottom:1px solid #e7eef6; font-family:Helvetica, Arial, sans-serif; font-size:14px; line-height:22px; color:#0f2c3f; vertical-align:top;">{{estimated_duration}}</td>
+                </tr>
+                <tr>
+                  <td class="stack label" width="120" style="padding:12px 0; font-family:Helvetica, Arial, sans-serif; font-size:12px; font-weight:bold; letter-spacing:0.8px; text-transform:uppercase; color:#5b7b8e; vertical-align:top;">Adresse</td>
+                  <td class="stack value" align="right" style="padding:12px 0; font-family:Helvetica, Arial, sans-serif; font-size:14px; line-height:20px; color:#0f2c3f; vertical-align:top;">{{client_address}}</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    <!-- Options prévues -->
+    <tr>
+      <td class="px" style="padding:16px 30px 0 30px;">
+        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="border:1px solid #e7eef6; border-radius:12px;">
+          <tr>
+            <td colspan="2" style="padding:16px 20px 8px 20px; font-family:Helvetica, Arial, sans-serif; font-size:11px; font-weight:bold; letter-spacing:1.1px; text-transform:uppercase; color:#5b7b8e;">Options pr&eacute;vues</td>
+          </tr>
+          <!-- DÉBUT boucle options -->
+          {{#options}}
+          <tr>
+            <td width="70%" class="col-name" style="padding:6px 8px 6px 20px; font-family:Helvetica, Arial, sans-serif; font-size:14px; line-height:21px; color:#1e3f55; vertical-align:top;">{{option_name}}</td>
+            <td width="30%" align="right" class="col-price" style="padding:6px 20px 6px 8px; font-family:Helvetica, Arial, sans-serif; font-size:14px; line-height:21px; color:#1e3f55; vertical-align:top;">{{option_price}} &euro;</td>
+          </tr>
+          {{/options}}
+          <!-- FIN boucle options -->
+          <tr>
+            <td width="70%" bgcolor="#f6faff" class="grand-total-label" style="padding:14px 8px 14px 20px; border-top:1px solid #e7eef6; font-family:Helvetica, Arial, sans-serif; font-size:14px; line-height:20px; color:#0f2c3f;"><strong>Montant total estim&eacute;</strong></td>
+            <td width="30%" bgcolor="#f6faff" align="right" class="grand-total-price" style="padding:14px 20px 14px 8px; border-top:1px solid #e7eef6; font-family:Helvetica, Arial, sans-serif; font-size:19px; line-height:24px; color:#0093cc;"><strong>{{total_price}} &euro;</strong></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    <!-- Astuce -->
+    <tr>
+      <td class="px" style="padding:20px 30px 0 30px;">
+        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#f6faff; border-left:3px solid #00b8ff; border-radius:6px;">
+          <tr>
+            <td style="padding:15px 18px; color:#1e3f55; font-size:14px; line-height:22px; font-family:Helvetica, Arial, sans-serif;">{{service_tip}}</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    <!-- Annulation -->
+    <tr>
+      <td class="px" style="padding:28px 30px 36px 30px;">
+        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="border-top:1px solid #e7eef6;">
+          <tr>
+            <td align="center" style="padding-top:26px;">
+              <p style="color:#5b7b8e; font-size:14px; line-height:21px; margin:0 0 15px 0; font-family:Helvetica, Arial, sans-serif;">Un emp&ecirc;chement de derni&egrave;re minute ?</p>
+              <table role="presentation" border="0" cellpadding="0" cellspacing="0" align="center">
+                <tr>
+                  <td align="center" bgcolor="#ffffff" style="border-radius:40px; border:1px solid #e0a8ae;">
+                    <a href="{{cancel_url}}" target="_blank" style="display:block; padding:12px 24px; font-size:14px; font-family:Helvetica, Arial, sans-serif; font-weight:bold; color:#c22a38; text-decoration:none;">Annuler ma r&eacute;servation</a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    <!-- Pied -->
+    <tr>
+      <td align="center" style="background-color:#f6faff; padding:25px; border-top:1px solid #dce7f2;">
+        <p style="margin:0 0 10px 0; color:#5b7b8e; font-size:13px; line-height:20px; font-family:Helvetica, Arial, sans-serif;">Besoin d'aide ? Appelez le <a href="tel:{{owner_phone}}" style="color:#0093cc; font-weight:bold; text-decoration:none;">{{owner_phone}}</a></p>
+        <p style="margin:0; color:#527a92; font-size:12px; line-height:18px; font-family:Helvetica, Arial, sans-serif;">&copy; 2026 Clean&amp;Fresh. Nettoyage professionnel.<br>Toulouse et Haute-Garonne</p>
+      </td>
+    </tr>
+
+  </table>
+</td>
+</tr>
+</table>
+</body>
+</html>

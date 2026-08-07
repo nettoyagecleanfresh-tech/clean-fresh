@@ -62,7 +62,7 @@ function AnnulerPage() {
             Pour annuler, appelez-nous au{" "}
             <a href={COMPANY.phoneHref} className="font-semibold text-primary hover:underline">{COMPANY.phone}</a>
             {" "}ou écrivez à{" "}
-            <a href={`mailto:${COMPANY.email}`} className="font-semibold text-primary hover:underline">{COMPANY.email}</a>
+            <a href={`mailto:${COMPANY.email}`} className="font-semibold text-primary hover:underline">nous écrire</a>
           </p>
           <Link to="/" className="mt-6 inline-block text-sm text-muted-foreground hover:text-foreground">← Retour à l'accueil</Link>
         </div>
@@ -154,7 +154,7 @@ function AnnulerPage() {
             <Phone className="size-4" /> {COMPANY.phone}
           </a>
           <a href={`mailto:${COMPANY.email}`} className="flex items-center justify-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
-            <Mail className="size-4" /> {COMPANY.email}
+            <Mail className="size-4" /> Envoyer un e-mail
           </a>
         </div>
       </div>
