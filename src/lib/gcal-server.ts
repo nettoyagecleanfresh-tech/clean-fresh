@@ -342,14 +342,18 @@ export function buildEventDescription(params: {
   const address = `${params.client_street}, ${params.client_zip} ${params.client_city}`;
 
   const itemsDetails = params.items.map((item) => {
-    const opt = item.options.length > 0
-      ? ` (+ ${item.options.map(o => o.name).join(", ")})`
-      : "";
-    return `• ${item.service_name} : ${item.formule_name}${opt} — ${item.formule_price} €`;
-  }).join("\n");
+    let text = `• ${item.service_name} : ${item.formule_name} — ${item.formule_price} €`;
+    if (item.options && item.options.length > 0) {
+      const opts = item.options.map(o => `   + ${o.name} (+${o.price} €)`).join("\n");
+      text += `\n${opts}`;
+    }
+    return text;
+  }).join("\n\n");
 
   return `
-👤 Client : ${params.client_name} | 📞 ${params.client_phone} | ✉️ ${params.client_email}
+👤 Client : ${params.client_name}
+📞 Téléphone : ${params.client_phone}
+✉️ Email : ${params.client_email}
 📍 Lieu : ${address}
 
 🛠 PRESTATIONS :
@@ -357,7 +361,7 @@ ${itemsDetails}
 
 💶 TOTAL : ${params.total_price} €
 
-❌ Annulation : ${params.cancel_url}
-📞 Nous contacter : ${params.owner_phone}
+❌ Annuler le rendez-vous : 
+${params.cancel_url}
 `.trim();
 }
