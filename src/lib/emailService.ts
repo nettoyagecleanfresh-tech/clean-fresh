@@ -42,6 +42,7 @@ const CFG = {
   tplCancel:   import.meta.env["VITE_EMAILJS_TEMPLATE_CANCEL"] as string,
   tplReminder: import.meta.env["VITE_EMAILJS_TEMPLATE_REMINDER"] as string,
   tplContact:  import.meta.env["VITE_EMAILJS_TEMPLATE_CONTACT"] as string,
+  tplReschedule: import.meta.env["VITE_EMAILJS_TEMPLATE_RESCHEDULE"] as string,
 };
 
 function configured() {
@@ -255,5 +256,38 @@ export async function sendContactMessage(c: ContactPayload) {
     // Add extra params just in case template requires them
     formule_name: "Demande de contact", 
     booking_date: new Date().toLocaleDateString("fr-FR"),
+  });
+}
+
+/**
+ * Envoi un email de reprogrammation au client et au propriétaire.
+ */
+export async function sendRescheduleEmail(info: {
+  client_name: string;
+  client_email: string;
+  formule: string;
+  new_date: string;
+  new_time: string;
+  cancel_url: string;
+}) {
+  const ownerPhone = import.meta.env["VITE_OWNER_PHONE"] ?? "07 67 12 75 00";
+  // On utilise le template spécifique, ou à défaut on renvoie le template de confirmation classique (s'il s'adapte)
+  const tplId = CFG.tplReschedule || CFG.tplClient;
+  if (!tplId) return;
+
+  await send(tplId, {
+    client_name: info.client_name,
+    client_email: info.client_email,
+    formule_name: info.formule,
+    booking_date: info.new_date,
+    booking_time: info.new_time,
+    cancel_url: info.cancel_url,
+    owner_phone: ownerPhone,
+    // Add extra params just in case fallback template requires them
+    client_phone: "Non renseigné",
+    client_address: "Non renseigné",
+    items_html: `<tr><td style="padding:12px 20px;"><strong>${info.formule}</strong></td></tr>`,
+    total_price: "-",
+    service_tip: "",
   });
 }

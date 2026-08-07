@@ -323,6 +323,41 @@ export async function deleteCalendarEvent(
   }
 }
 
+export async function updateCalendarEvent(
+  eventId: string,
+  updates: {
+    start?: { dateTime: string; timeZone: string };
+    end?: { dateTime: string; timeZone: string };
+  }
+): Promise<boolean> {
+  const { email, key, calId } = getConfig();
+  if (!email || !key || !calId || !eventId) return false;
+
+  try {
+    const token = await getAccessToken(email, key);
+    const url = `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(calId)}/events/${eventId}?sendUpdates=all`;
+
+    const res = await fetch(url, {
+      method: "PATCH",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updates),
+    });
+
+    if (!res.ok) {
+      const err = await res.text();
+      throw new Error(`[GCal] Erreur mise à jour événement: ${err}`);
+    }
+
+    return true;
+  } catch (err) {
+    console.error("[GCal] updateCalendarEvent :", err);
+    return false;
+  }
+}
+
 export function buildEventDescription(params: {
   client_name: string;
   client_phone: string;

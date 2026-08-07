@@ -135,12 +135,16 @@ async function main() {
     };
     const preGeneratedGcalId = generateGcalId();
 
+    const totalDuration = test.items.reduce((sum, item) => sum + 60, 0); // Mock duration
+
     const shortTokenData = {
       i: preGeneratedGcalId,
       n: test.client_name.substring(0, 30),
+      e: test.client_email,
       d: test.start.split("T")[0],
       t: test.start.split("T")[1].substring(0, 5),
-      f: summaryTitle.substring(0, 30)
+      f: summaryTitle.substring(0, 30),
+      dur: totalDuration
     };
     const validCancelToken = btoa(unescape(encodeURIComponent(JSON.stringify(shortTokenData))));
     const realCancelUrl = `https://www.cleanetfresh.fr/annuler?token=${validCancelToken}`;
