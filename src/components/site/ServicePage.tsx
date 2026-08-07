@@ -509,14 +509,28 @@ export function ServicePage({ service }: { service: Service }) {
                     { "@type": "AdministrativeArea", name: "Haute-Garonne" },
                   ],
                   ...(service.prices && service.prices.length > 0
-                    ? {
-                        offers: service.prices.map((p) => ({
-                          "@type": "Offer",
-                          name: p.label,
-                          price: p.price.replace(/[^0-9]/g, ""),
-                          priceCurrency: "EUR",
-                        })),
-                      }
+                    ? (() => {
+                        const numPrices = service.prices!.map((p) => parseInt(p.price.replace(/[^0-9]/g, ""), 10)).filter(Boolean);
+                        const low = Math.min(...numPrices);
+                        const high = Math.max(...numPrices);
+                        return {
+                          offers: {
+                            "@type": "AggregateOffer",
+                            lowPrice: String(low),
+                            highPrice: String(high),
+                            priceCurrency: "EUR",
+                            offerCount: String(service.prices!.length),
+                            offers: service.prices!.map((p) => ({
+                              "@type": "Offer",
+                              name: p.label,
+                              price: p.price.replace(/[^0-9]/g, ""),
+                              priceCurrency: "EUR",
+                              availability: "https://schema.org/InStock",
+                              areaServed: { "@type": "City", name: "Toulouse" },
+                            })),
+                          },
+                        };
+                      })()
                     : {}),
                 }),
               }}

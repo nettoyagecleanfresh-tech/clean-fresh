@@ -106,6 +106,17 @@ function LocalPage() {
               se présente à votre adresse à {CITY} avec son équipement complet. Nous protégeons les zones environnantes, puis procédons
               au traitement : aspiration minutieuse, application des produits détachants, brossage, et enfin injection-extraction.
             </p>
+
+            <h2>Nos services de nettoyage à Portet-sur-Garonne</h2>
+            <p>
+              Clean&Fresh intervient à Portet-sur-Garonne pour l'ensemble de ses prestations : 
+              <Link to="/nettoyage-canape-toulouse" className="text-primary font-medium hover:underline">nettoyage de canapé</Link>, 
+              <Link to="/nettoyage-matelas-toulouse" className="text-primary font-medium hover:underline">nettoyage de matelas</Link>, 
+              <Link to="/nettoyage-tapis-toulouse" className="text-primary font-medium hover:underline">shampouinage de tapis</Link>, 
+              <Link to="/nettoyage-moquette-toulouse" className="text-primary font-medium hover:underline">nettoyage de moquette</Link> 
+              et <Link to="/nettoyage-auto-a-domicile-toulouse" className="text-primary font-medium hover:underline">nettoyage intérieur auto à domicile</Link>.
+              Mêmes tarifs, même qualité et même équipement professionnel que dans toute l'agglomération toulousaine.
+            </p>
           </div>
         </section>
       </FadeIn>

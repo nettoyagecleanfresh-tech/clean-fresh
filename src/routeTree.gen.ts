@@ -50,6 +50,7 @@ import { Route as NettoyageLabegeRouteImport } from './routes/nettoyage-labege'
 import { Route as NettoyageLaunaguetRouteImport } from './routes/nettoyage-launaguet'
 import { Route as NettoyageLeguevinRouteImport } from './routes/nettoyage-leguevin'
 import { Route as NettoyageMatelasToulouseRouteImport } from './routes/nettoyage-matelas-toulouse'
+import { Route as NettoyageMoquetteToulouseRouteImport } from './routes/nettoyage-moquette-toulouse'
 import { Route as NettoyageMuretRouteImport } from './routes/nettoyage-muret'
 import { Route as NettoyagePibracRouteImport } from './routes/nettoyage-pibrac'
 import { Route as NettoyagePinsJustaretRouteImport } from './routes/nettoyage-pins-justaret'
@@ -291,6 +292,12 @@ const NettoyageMatelasToulouseRoute =
     path: '/nettoyage-matelas-toulouse',
     getParentRoute: () => rootRouteImport,
   } as any)
+const NettoyageMoquetteToulouseRoute =
+  NettoyageMoquetteToulouseRouteImport.update({
+    id: '/nettoyage-moquette-toulouse',
+    path: '/nettoyage-moquette-toulouse',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const NettoyageMuretRoute = NettoyageMuretRouteImport.update({
   id: '/nettoyage-muret',
   path: '/nettoyage-muret',
@@ -463,6 +470,7 @@ export interface FileRoutesByFullPath {
   '/nettoyage-launaguet': typeof NettoyageLaunaguetRoute
   '/nettoyage-leguevin': typeof NettoyageLeguevinRoute
   '/nettoyage-matelas-toulouse': typeof NettoyageMatelasToulouseRoute
+  '/nettoyage-moquette-toulouse': typeof NettoyageMoquetteToulouseRoute
   '/nettoyage-muret': typeof NettoyageMuretRoute
   '/nettoyage-pibrac': typeof NettoyagePibracRoute
   '/nettoyage-pins-justaret': typeof NettoyagePinsJustaretRoute
@@ -530,6 +538,7 @@ export interface FileRoutesByTo {
   '/nettoyage-launaguet': typeof NettoyageLaunaguetRoute
   '/nettoyage-leguevin': typeof NettoyageLeguevinRoute
   '/nettoyage-matelas-toulouse': typeof NettoyageMatelasToulouseRoute
+  '/nettoyage-moquette-toulouse': typeof NettoyageMoquetteToulouseRoute
   '/nettoyage-muret': typeof NettoyageMuretRoute
   '/nettoyage-pibrac': typeof NettoyagePibracRoute
   '/nettoyage-pins-justaret': typeof NettoyagePinsJustaretRoute
@@ -598,6 +607,7 @@ export interface FileRoutesById {
   '/nettoyage-launaguet': typeof NettoyageLaunaguetRoute
   '/nettoyage-leguevin': typeof NettoyageLeguevinRoute
   '/nettoyage-matelas-toulouse': typeof NettoyageMatelasToulouseRoute
+  '/nettoyage-moquette-toulouse': typeof NettoyageMoquetteToulouseRoute
   '/nettoyage-muret': typeof NettoyageMuretRoute
   '/nettoyage-pibrac': typeof NettoyagePibracRoute
   '/nettoyage-pins-justaret': typeof NettoyagePinsJustaretRoute
@@ -667,6 +677,7 @@ export interface FileRouteTypes {
     | '/nettoyage-launaguet'
     | '/nettoyage-leguevin'
     | '/nettoyage-matelas-toulouse'
+    | '/nettoyage-moquette-toulouse'
     | '/nettoyage-muret'
     | '/nettoyage-pibrac'
     | '/nettoyage-pins-justaret'
@@ -734,6 +745,7 @@ export interface FileRouteTypes {
     | '/nettoyage-launaguet'
     | '/nettoyage-leguevin'
     | '/nettoyage-matelas-toulouse'
+    | '/nettoyage-moquette-toulouse'
     | '/nettoyage-muret'
     | '/nettoyage-pibrac'
     | '/nettoyage-pins-justaret'
@@ -801,6 +813,7 @@ export interface FileRouteTypes {
     | '/nettoyage-launaguet'
     | '/nettoyage-leguevin'
     | '/nettoyage-matelas-toulouse'
+    | '/nettoyage-moquette-toulouse'
     | '/nettoyage-muret'
     | '/nettoyage-pibrac'
     | '/nettoyage-pins-justaret'
@@ -869,6 +882,7 @@ export interface RootRouteChildren {
   NettoyageLaunaguetRoute: typeof NettoyageLaunaguetRoute
   NettoyageLeguevinRoute: typeof NettoyageLeguevinRoute
   NettoyageMatelasToulouseRoute: typeof NettoyageMatelasToulouseRoute
+  NettoyageMoquetteToulouseRoute: typeof NettoyageMoquetteToulouseRoute
   NettoyageMuretRoute: typeof NettoyageMuretRoute
   NettoyagePibracRoute: typeof NettoyagePibracRoute
   NettoyagePinsJustaretRoute: typeof NettoyagePinsJustaretRoute
@@ -1184,6 +1198,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NettoyageMatelasToulouseRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/nettoyage-moquette-toulouse': {
+      id: '/nettoyage-moquette-toulouse'
+      path: '/nettoyage-moquette-toulouse'
+      fullPath: '/nettoyage-moquette-toulouse'
+      preLoaderRoute: typeof NettoyageMoquetteToulouseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/nettoyage-muret': {
       id: '/nettoyage-muret'
       path: '/nettoyage-muret'
@@ -1397,6 +1418,7 @@ const rootRouteChildren: RootRouteChildren = {
   NettoyageLaunaguetRoute: NettoyageLaunaguetRoute,
   NettoyageLeguevinRoute: NettoyageLeguevinRoute,
   NettoyageMatelasToulouseRoute: NettoyageMatelasToulouseRoute,
+  NettoyageMoquetteToulouseRoute: NettoyageMoquetteToulouseRoute,
   NettoyageMuretRoute: NettoyageMuretRoute,
   NettoyagePibracRoute: NettoyagePibracRoute,
   NettoyagePinsJustaretRoute: NettoyagePinsJustaretRoute,
