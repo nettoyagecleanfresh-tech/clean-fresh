@@ -171,7 +171,7 @@ function wrapEmail(content: string): string {
 // 1. CONFIRMATION DE RÉSERVATION
 // ═══════════════════════════════════════════════════════════════════════════════
 
-export async function sendBookingEmails(b: BookingPayload): Promise<string> {
+export async function sendBookingEmailsRaw(b: BookingPayload): Promise<string> {
   const ownerEmail = process.env["VITE_OWNER_EMAIL"] ?? "nettoyagecleanfresh@gmail.com";
   const fullAddress = `${b.client_street}, ${b.client_zip} ${b.client_city}`;
   const tip = b.items.map(i => SERVICE_TIP[i.service_id]).filter(Boolean).join("<br><br>") || "";
@@ -369,7 +369,7 @@ export async function sendBookingEmails(b: BookingPayload): Promise<string> {
 // 2. RAPPEL 24H AVANT
 // ═══════════════════════════════════════════════════════════════════════════════
 
-export async function sendReminderEmail(params: {
+export async function sendReminderEmailRaw(params: {
   client_name: string;
   client_phone: string;
   client_email: string;
@@ -509,7 +509,7 @@ export async function sendReminderEmail(params: {
 // 3. ANNULATION
 // ═══════════════════════════════════════════════════════════════════════════════
 
-export async function sendCancellationEmail(info: {
+export async function sendCancellationEmailRaw(info: {
   client_name: string;
   client_phone: string;
   client_email: string;
@@ -635,7 +635,7 @@ export async function sendCancellationEmail(info: {
 // 4. REPROGRAMMATION
 // ═══════════════════════════════════════════════════════════════════════════════
 
-export async function sendRescheduleEmail(info: {
+export async function sendRescheduleEmailRaw(info: {
   client_name: string;
   client_email: string;
   formule: string;
@@ -728,7 +728,7 @@ export async function sendRescheduleEmail(info: {
 // 5. FORMULAIRE DE CONTACT
 // ═══════════════════════════════════════════════════════════════════════════════
 
-export async function sendContactMessage(c: ContactPayload) {
+export async function sendContactMessageRaw(c: ContactPayload) {
   const ownerEmail = process.env["VITE_OWNER_EMAIL"] ?? "nettoyagecleanfresh@gmail.com";
   const html = wrapEmail(`
     ${emailHeader("💬 NOUVEAU MESSAGE", "#0093cc")}

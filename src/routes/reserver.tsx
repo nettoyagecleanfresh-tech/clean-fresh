@@ -14,7 +14,7 @@ import { COMPANY } from "@/data/site";
 import { fetchBusySlots, buildSlots } from "@/lib/gcal";
 import { CalendarPicker } from "@/components/CalendarPicker";
 import { TimeSlotPicker } from "@/components/TimeSlotPicker";
-import { sendBookingEmails } from "@/lib/emailService";
+import { sendBookingEmailsFn } from "@/lib/emailServerFns";
 import { createBookingServerFn } from "@/lib/bookingServerFn";
 
 export const Route = createFileRoute("/reserver")({
@@ -493,8 +493,9 @@ function ReserverPage() {
     const cancelUrl = `${siteUrl}/annuler?token=${finalCancelToken}`;
 
     try {
-      await sendBookingEmails({
-        items: mappedItems,
+      await sendBookingEmailsFn({
+        data: {
+          items: mappedItems,
         total_price:  total,
         booking_date: bookingDate,
         booking_time: selectedTime,
@@ -505,6 +506,7 @@ function ReserverPage() {
         client_zip:   form.zip,
         client_city:  form.city,
         cancel_url:   cancelUrl,
+        }
       });
     } catch (emailErr) {
       console.error("[Email] Erreur envoi email :", emailErr);

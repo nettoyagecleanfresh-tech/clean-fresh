@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { COMPANY } from "@/data/site";
 import { cancelBookingServerFn } from "@/lib/cancelServerFn";
 import { rescheduleBookingServerFn } from "@/lib/rescheduleServerFn";
-import { sendRescheduleEmail } from "@/lib/emailService";
+import { sendCancellationEmailFn, sendRescheduleEmailFn } from "@/lib/emailServerFns";
 import { CalendarPicker } from "@/components/CalendarPicker";
 import { TimeSlotPicker } from "@/components/TimeSlotPicker";
 
@@ -91,14 +91,16 @@ function AnnulerPage() {
       }
 
       // Envoi de l'email
-      const siteUrl = "https://www.cleanetfresh.fr";
-      await sendRescheduleEmail({
-        client_name: info.name,
-        client_email: info.email,
-        formule: info.formule,
-        new_date: newDateStr,
-        new_time: selectedTime,
-        cancel_url: `${siteUrl}/annuler?token=${token}`, // Re-use old token (gcal_id is same)
+      await sendRescheduleEmailFn({
+        data: {
+          client_name: info.name,
+          client_email: info.email,
+          formule: info.formule,
+          old_date: info.date,
+          old_time: info.time,
+          new_date: newDateStr,
+          new_time: selectedTime,
+        }
       }).catch(console.error);
 
       setStep("done_reschedule");

@@ -38,8 +38,8 @@ export const cancelBookingServerFn = createServerFn({ method: "POST" })
 
     // Envoyer l'email d'annulation (au client ET à l'admin)
     try {
-      const { sendCancellationEmail } = await import("@/lib/emailService");
-      await sendCancellationEmail({
+      const { sendCancellationEmailRaw } = await import("@/lib/emailService");
+      await sendCancellationEmailRaw({
         client_name: data.client_name,
         client_phone: data.client_phone ?? "",
         client_email: data.client_email ?? "",
