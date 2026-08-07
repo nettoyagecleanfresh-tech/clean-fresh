@@ -33,8 +33,8 @@ async function main() {
   console.log(`Creating Test Event for cherkinicolas@gmail.com on ${dateStr}...`);
   
   const clientEmail = "cherkinicolas@gmail.com";
-  const formuleName = "Test Client Complet";
-  const time = "14:00";
+  const formuleName = "Test Client 2";
+  const time = "16:30";
   const durationMin = 120;
   
   const tempGcalId = "temp_" + Math.random().toString(36).substring(2, 15);
