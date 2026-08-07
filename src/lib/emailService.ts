@@ -32,6 +32,8 @@
  *  {{owner_email}}      — Email professionnel du propriétaire
  */
 
+import { sendNodemailerServerFn } from "@/lib/nodemailerServerFn";
+
 const BASE = "https://api.emailjs.com/api/v1.0/email/send";
 
 const CFG = {
@@ -270,24 +272,71 @@ export async function sendRescheduleEmail(info: {
   new_time: string;
   cancel_url: string;
 }) {
-  const ownerPhone = import.meta.env["VITE_OWNER_PHONE"] ?? "07 67 12 75 00";
-  // On utilise le template spécifique, ou à défaut on renvoie le template de confirmation classique (s'il s'adapte)
-  const tplId = CFG.tplReschedule || CFG.tplClient;
-  if (!tplId) return;
+  const htmlTemplate = `<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Votre rendez-vous a été reprogrammé</title>
+</head>
+<body style="margin:0; padding:0; background-color:#f6faff;">
+  <div style="background-color:#ffffff; max-width:600px; margin:20px auto; border-radius:12px; font-family:Helvetica, Arial, sans-serif; box-shadow:0 4px 20px rgba(0,0,0,0.05); overflow:hidden;">
+    <div style="background-color:#00b8ff; padding:40px 20px; text-align:center;">
+      <h1 style="color:#ffffff; font-size:24px; margin:0;">Rendez-vous reprogrammé ! 📅</h1>
+      <p style="color:rgba(255,255,255,0.9); font-size:16px; margin:10px 0 0 0;">Votre nouvelle date a bien été prise en compte.</p>
+    </div>
+    <div style="padding:40px 30px;">
+      <p style="margin:0 0 20px 0; font-size:16px; color:#1e3f55; line-height:1.5;">Bonjour <strong>{{client_name}}</strong>,</p>
+      <p style="margin:0 0 30px 0; font-size:16px; color:#1e3f55; line-height:1.5;">
+        Nous vous confirmons que votre prestation <strong>{{formule}}</strong> a bien été reprogrammée.
+      </p>
+      <div style="background-color:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:20px; margin-bottom:30px;">
+        <h2 style="margin:0 0 15px 0; font-size:14px; text-transform:uppercase; color:#64748b; letter-spacing:1px;">Nouveau rendez-vous</h2>
+        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="font-size:15px; color:#1e3f55;">
+          <tr>
+            <td style="padding-bottom:10px; width:40%;"><strong>Date :</strong></td>
+            <td style="padding-bottom:10px; color:#00b8ff; font-weight:bold;">{{booking_date}}</td>
+          </tr>
+          <tr>
+            <td style="padding-bottom:0;"><strong>Heure d'arrivée :</strong></td>
+            <td style="padding-bottom:0; color:#00b8ff; font-weight:bold;">{{booking_time}}</td>
+          </tr>
+        </table>
+      </div>
+      <p style="margin:0 0 30px 0; font-size:15px; color:#64748b; line-height:1.5; text-align:center;">
+        Si vous avez un imprévu, vous pouvez toujours annuler ou reprogrammer depuis ce lien :
+      </p>
+      <div style="text-align:center;">
+        <a href="{{cancel_url}}" style="display:inline-block; padding:12px 24px; background-color:#f1f5f9; color:#64748b; text-decoration:none; border-radius:6px; font-weight:bold; font-size:14px;">Gérer mon rendez-vous</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>`;
 
-  await send(tplId, {
-    client_name: info.client_name,
-    client_email: info.client_email,
-    formule_name: info.formule,
-    booking_date: info.new_date,
-    booking_time: info.new_time,
-    cancel_url: info.cancel_url,
-    owner_phone: ownerPhone,
-    // Add extra params just in case fallback template requires them
-    client_phone: "Non renseigné",
-    client_address: "Non renseigné",
-    items_html: `<tr><td style="padding:12px 20px;"><strong>${info.formule}</strong></td></tr>`,
-    total_price: "-",
-    service_tip: "",
-  });
+  const htmlBody = htmlTemplate
+    .replace(/{{client_name}}/g, info.client_name)
+    .replace(/{{formule}}/g, info.formule)
+    .replace(/{{booking_date}}/g, info.new_date)
+    .replace(/{{booking_time}}/g, info.new_time)
+    .replace(/{{cancel_url}}/g, info.cancel_url);
+
+  // Send to client
+  await sendNodemailerServerFn({
+    data: {
+      to: info.client_email,
+      subject: `Rendez-vous reprogrammé : ${info.formule}`,
+      html: htmlBody,
+    },
+  }).catch(console.error);
+
+  // Send to owner
+  const ownerEmail = import.meta.env["VITE_OWNER_EMAIL"] ?? "nettoyagecleanfresh@gmail.com";
+  await sendNodemailerServerFn({
+    data: {
+      to: ownerEmail,
+      subject: `[PRO] Rendez-vous reprogrammé : ${info.client_name}`,
+      html: htmlBody,
+    },
+  }).catch(console.error);
 }
