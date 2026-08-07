@@ -136,6 +136,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:locale", content: "fr_FR" },
       { property: "og:type", content: "website" },
       { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
+      { name: "google-site-verification", content: "ABQ3uT20R9t8NJRf3v977Rn1qXstEM8j6XQoYgigONo" },
       { name: "twitter:card", content: "summary_large_image" },
       { property: "og:image", content: OG_IMAGE },
       { property: "og:image:width", content: "1200" },
