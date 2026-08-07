@@ -22,7 +22,18 @@ function AnnulerPage() {
   // Décoder les infos du token base64
   let info: { name: string; email: string; phone: string; formule: string; date: string; time: string; gcal_event_id?: string } | null = null;
   try {
-    info = JSON.parse(decodeURIComponent(escape(atob(token))));
+    const raw = JSON.parse(decodeURIComponent(escape(atob(token))));
+    if (raw.n || raw.name) {
+      info = {
+        name: raw.n || raw.name,
+        email: raw.email || "",
+        phone: raw.phone || "",
+        formule: raw.f || raw.formule,
+        date: raw.d || raw.date,
+        time: raw.t || raw.time,
+        gcal_event_id: raw.i || raw.gcal_event_id
+      };
+    }
   } catch {
     info = null;
   }

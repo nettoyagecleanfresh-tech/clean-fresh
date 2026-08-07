@@ -32,6 +32,7 @@ export const BookingInputSchema = z.object({
   client_zip: z.string(),
   client_city: z.string(),
   cancel_token: z.string(), // token base64 déjà généré côté client
+  gcal_event_id: z.string().optional(),
 });
 
 export type BookingInput = z.infer<typeof BookingInputSchema>;
@@ -147,6 +148,7 @@ export const createBookingServerFn = createServerFn({ method: "POST" })
       const summaryTitle = data.items.length > 1 ? `${firstItem?.formule_name} + ${data.items.length - 1} autre(s)` : firstItem?.formule_name;
       
       const gcalEvent = {
+        id: data.gcal_event_id,
         summary: `${emoji} ${summaryTitle} — ${data.client_name}`,
         description,
         location: fullAddress,

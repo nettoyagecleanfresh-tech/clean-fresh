@@ -12,8 +12,8 @@ import { deleteCalendarEvent } from "@/lib/gcal-server";
 const CancelInputSchema = z.object({
   gcal_event_id: z.string().optional().nullable(),
   client_name: z.string(),
-  client_phone: z.string(),
-  client_email: z.string(),
+  client_phone: z.string().optional(),
+  client_email: z.string().optional(),
   formule: z.string(),
   date: z.string(),
   time: z.string(),

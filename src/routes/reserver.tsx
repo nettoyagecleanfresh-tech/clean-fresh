@@ -657,11 +657,25 @@ function ReserverPage() {
     // Generate a summary for the token and cancel URL
     const formuleSummary = mappedItems.map(i => i.formule_name).join(" + ");
     
-    const baseTokenData = {
-      name: form.name, email: form.email, phone: form.phone,
-      formule: formuleSummary, date: bookingDate, time: selectedTime,
+    // Generate valid GCal ID (base32hex)
+    const generateGcalId = () => {
+      const chars = '0123456789abcdefghijklmnopqrstuv';
+      let id = '';
+      for (let i = 0; i < 32; i++) {
+        id += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+      return id;
     };
-    const baseToken = btoa(unescape(encodeURIComponent(JSON.stringify(baseTokenData))));
+    const preGeneratedGcalId = generateGcalId();
+    
+    const shortTokenData = {
+      i: preGeneratedGcalId,
+      n: form.name.substring(0, 30),
+      d: bookingDate,
+      t: selectedTime,
+      f: formuleSummary.substring(0, 30)
+    };
+    const cancelToken = btoa(unescape(encodeURIComponent(JSON.stringify(shortTokenData))));
 
     const siteUrl = "https://www.cleanetfresh.fr";
 
@@ -680,7 +694,8 @@ function ReserverPage() {
           client_street: form.street,
           client_zip:   form.zip,
           client_city:  form.city,
-          cancel_token: baseToken,
+          cancel_token: cancelToken,
+          gcal_event_id: preGeneratedGcalId,
         },
       });
 
@@ -694,14 +709,13 @@ function ReserverPage() {
         return;
       }
 
-      gcalId = serverResult?.gcal_event_id ?? null;
+      gcalId = serverResult?.gcal_event_id ?? preGeneratedGcalId;
       if (gcalId) setGcalEventId(gcalId);
     } catch (gcalErr) {
       console.error("[GCal] Erreur création calendrier :", gcalErr);
     }
 
-    const enrichedToken = btoa(unescape(encodeURIComponent(JSON.stringify({ ...baseTokenData, gcal_event_id: gcalId }))));
-    const cancelUrl = `${siteUrl}/annuler?token=${enrichedToken}`;
+    const cancelUrl = `${siteUrl}/annuler?token=${cancelToken}`;
 
     try {
       await sendBookingEmails({
@@ -721,7 +735,7 @@ function ReserverPage() {
       console.error("[Email] Erreur envoi email :", emailErr);
     }
 
-    setCancelToken(enrichedToken);
+    setCancelToken(cancelToken);
     setDone(true);
     setSubmitting(false);
   };
