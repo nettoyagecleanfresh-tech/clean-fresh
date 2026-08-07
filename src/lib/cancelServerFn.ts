@@ -36,5 +36,20 @@ export const cancelBookingServerFn = createServerFn({ method: "POST" })
       gcal_deleted = await deleteCalendarEvent(data.gcal_event_id);
     }
 
+    // Envoyer l'email d'annulation (au client ET à l'admin)
+    try {
+      const { sendCancellationEmail } = await import("@/lib/emailService");
+      await sendCancellationEmail({
+        client_name: data.client_name,
+        client_phone: data.client_phone ?? "",
+        client_email: data.client_email ?? "",
+        formule: data.formule,
+        date: data.date,
+        time: data.time,
+      });
+    } catch (e) {
+      console.error("Erreur envoi email annulation:", e);
+    }
+
     return { success: true, gcal_deleted };
   });
