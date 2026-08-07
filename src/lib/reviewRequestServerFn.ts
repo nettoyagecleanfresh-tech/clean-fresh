@@ -1,6 +1,6 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
-import { sendNodemailerServerFn } from "@/lib/nodemailerServerFn";
+import { sendMailRaw } from "@/lib/mailer";
 
 const ReviewRequestSchema = z.object({
   client_name: z.string(),
@@ -149,12 +149,10 @@ export const sendReviewRequestServerFn = createServerFn({ method: "POST" })
 </body>
 </html>`;
 
-    await sendNodemailerServerFn({
-      data: {
-        to: data.client_email,
-        subject: `⭐ ${data.client_name}, votre avis nous est précieux !`,
-        html,
-      },
+    await sendMailRaw({
+      to: data.client_email,
+      subject: `⭐ ${data.client_name}, votre avis nous est précieux !`,
+      html,
     });
 
     return { success: true };

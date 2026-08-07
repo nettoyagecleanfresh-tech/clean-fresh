@@ -6,7 +6,7 @@ import {
   sendCancellationEmail, 
   sendRescheduleEmail 
 } from '@/lib/emailService';
-import { sendNodemailerServerFn } from '@/lib/nodemailerServerFn';
+import { sendMailRaw } from '@/lib/mailer';
 import { useState } from 'react';
 
 const testAllEmailsFn = createServerFn({ method: "POST" })
@@ -96,12 +96,10 @@ const testAllEmailsFn = createServerFn({ method: "POST" })
 </td></tr></table>
 </body></html>`;
 
-    await sendNodemailerServerFn({
-      data: {
-        to: targetEmail,
-        subject: "⭐ Nicolas Cherki (Test), votre avis nous est précieux !",
-        html: reviewHtml,
-      }
+    await sendMailRaw({
+      to: targetEmail,
+      subject: "⭐ Nicolas Cherki (Test), votre avis nous est précieux !",
+      html: reviewHtml,
     });
 
     return { success: true };

@@ -75,7 +75,7 @@ import { Route as NosRealisationsRouteImport } from './routes/nos-realisations'
 import { Route as NosServicesRouteImport } from './routes/nos-services'
 import { Route as PolitiqueConfidentialiteRouteImport } from './routes/politique-confidentialite'
 import { Route as ReserverRouteImport } from './routes/reserver'
-import { Route as TestRappelRouteImport } from './routes/test-rappel'
+import { Route as TestEmailsRouteImport } from './routes/test-emails'
 import { Route as UpsellRouteImport } from './routes/upsell'
 
 const IndexRoute = IndexRouteImport.update({
@@ -429,9 +429,9 @@ const ReserverRoute = ReserverRouteImport.update({
   path: '/reserver',
   getParentRoute: () => rootRouteImport,
 } as any)
-const TestRappelRoute = TestRappelRouteImport.update({
-  id: '/test-rappel',
-  path: '/test-rappel',
+const TestEmailsRoute = TestEmailsRouteImport.update({
+  id: '/test-emails',
+  path: '/test-emails',
   getParentRoute: () => rootRouteImport,
 } as any)
 const UpsellRoute = UpsellRouteImport.update({
@@ -507,7 +507,7 @@ export interface FileRoutesByFullPath {
   '/nos-services': typeof NosServicesRoute
   '/politique-confidentialite': typeof PolitiqueConfidentialiteRoute
   '/reserver': typeof ReserverRoute
-  '/test-rappel': typeof TestRappelRoute
+  '/test-emails': typeof TestEmailsRoute
   '/upsell': typeof UpsellRoute
 }
 export interface FileRoutesByTo {
@@ -577,7 +577,7 @@ export interface FileRoutesByTo {
   '/nos-services': typeof NosServicesRoute
   '/politique-confidentialite': typeof PolitiqueConfidentialiteRoute
   '/reserver': typeof ReserverRoute
-  '/test-rappel': typeof TestRappelRoute
+  '/test-emails': typeof TestEmailsRoute
   '/upsell': typeof UpsellRoute
 }
 export interface FileRoutesById {
@@ -648,7 +648,7 @@ export interface FileRoutesById {
   '/nos-services': typeof NosServicesRoute
   '/politique-confidentialite': typeof PolitiqueConfidentialiteRoute
   '/reserver': typeof ReserverRoute
-  '/test-rappel': typeof TestRappelRoute
+  '/test-emails': typeof TestEmailsRoute
   '/upsell': typeof UpsellRoute
 }
 export interface FileRouteTypes {
@@ -720,7 +720,7 @@ export interface FileRouteTypes {
     | '/nos-services'
     | '/politique-confidentialite'
     | '/reserver'
-    | '/test-rappel'
+    | '/test-emails'
     | '/upsell'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -790,7 +790,7 @@ export interface FileRouteTypes {
     | '/nos-services'
     | '/politique-confidentialite'
     | '/reserver'
-    | '/test-rappel'
+    | '/test-emails'
     | '/upsell'
   id:
     | '__root__'
@@ -860,7 +860,7 @@ export interface FileRouteTypes {
     | '/nos-services'
     | '/politique-confidentialite'
     | '/reserver'
-    | '/test-rappel'
+    | '/test-emails'
     | '/upsell'
   fileRoutesById: FileRoutesById
 }
@@ -931,7 +931,7 @@ export interface RootRouteChildren {
   NosServicesRoute: typeof NosServicesRoute
   PolitiqueConfidentialiteRoute: typeof PolitiqueConfidentialiteRoute
   ReserverRoute: typeof ReserverRoute
-  TestRappelRoute: typeof TestRappelRoute
+  TestEmailsRoute: typeof TestEmailsRoute
   UpsellRoute: typeof UpsellRoute
 }
 
@@ -1399,11 +1399,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ReserverRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/test-rappel': {
-      id: '/test-rappel'
-      path: '/test-rappel'
-      fullPath: '/test-rappel'
-      preLoaderRoute: typeof TestRappelRouteImport
+    '/test-emails': {
+      id: '/test-emails'
+      path: '/test-emails'
+      fullPath: '/test-emails'
+      preLoaderRoute: typeof TestEmailsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/upsell': {
@@ -1483,7 +1483,7 @@ const rootRouteChildren: RootRouteChildren = {
   NosServicesRoute: NosServicesRoute,
   PolitiqueConfidentialiteRoute: PolitiqueConfidentialiteRoute,
   ReserverRoute: ReserverRoute,
-  TestRappelRoute: TestRappelRoute,
+  TestEmailsRoute: TestEmailsRoute,
   UpsellRoute: UpsellRoute,
 }
 export const routeTree = rootRouteImport

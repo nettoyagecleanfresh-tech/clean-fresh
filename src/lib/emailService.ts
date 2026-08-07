@@ -10,7 +10,7 @@
  *  - sendContactMessage()    : contact      → admin
  */
 
-import { sendNodemailerServerFn } from "@/lib/nodemailerServerFn";
+import { sendMailRaw } from "@/lib/mailer";
 
 // ─── Tips par service ─────────────────────────────────────────────────────────
 const SERVICE_TIP: Record<string, string> = {
@@ -53,7 +53,7 @@ export type ContactPayload = {
 
 // ─── Helper: envoi Gmail ──────────────────────────────────────────────────────
 async function sendGmail(to: string, subject: string, html: string) {
-  await sendNodemailerServerFn({ data: { to, subject, html } }).catch(console.error);
+  await sendMailRaw({ to, subject, html }).catch(console.error);
 }
 
 // ─── Helper: ligne de prestation HTML ────────────────────────────────────────
