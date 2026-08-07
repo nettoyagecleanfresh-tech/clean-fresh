@@ -118,7 +118,7 @@ function emailHeader(badgeText: string, color = "#00b8ff") {
               <table border="0" cellpadding="0" cellspacing="0">
                 <tr>
                   <td bgcolor="#ffffff" style="border-radius:8px;padding:5px 10px;">
-                    <img src="https://www.cleanetfresh.fr/logo.png" width="110" alt="Clean&amp;Fresh" style="display:block;width:110px;height:auto;border:0;">
+                    <img src="https://www.cleanetfresh.fr/logo-email.png" width="110" alt="Clean&amp;Fresh" style="display:block;width:110px;height:auto;border:0;">
                   </td>
                 </tr>
               </table>
@@ -172,7 +172,7 @@ function wrapEmail(content: string): string {
 // ═══════════════════════════════════════════════════════════════════════════════
 
 export async function sendBookingEmails(b: BookingPayload): Promise<string> {
-  const ownerEmail = import.meta.env["VITE_OWNER_EMAIL"] ?? "nettoyagecleanfresh@gmail.com";
+  const ownerEmail = process.env["VITE_OWNER_EMAIL"] ?? "nettoyagecleanfresh@gmail.com";
   const fullAddress = `${b.client_street}, ${b.client_zip} ${b.client_city}`;
   const tip = b.items.map(i => SERVICE_TIP[i.service_id]).filter(Boolean).join("<br><br>") || "";
   const itemsHtml = buildItemsHtml(b.items);
@@ -379,7 +379,7 @@ export async function sendReminderEmail(params: {
   client_address: string;
   cancel_url: string;
 }) {
-  const ownerEmail = import.meta.env["VITE_OWNER_EMAIL"] ?? "nettoyagecleanfresh@gmail.com";
+  const ownerEmail = process.env["VITE_OWNER_EMAIL"] ?? "nettoyagecleanfresh@gmail.com";
   const formattedDate = (() => {
     try {
       const d = new Date(params.booking_date);
@@ -517,8 +517,8 @@ export async function sendCancellationEmail(info: {
   date: string;
   time: string;
 }) {
-  const ownerEmail = import.meta.env["VITE_OWNER_EMAIL"] ?? "nettoyagecleanfresh@gmail.com";
-  const siteUrl = import.meta.env["VITE_SITE_URL"] ?? "https://www.cleanetfresh.fr";
+  const ownerEmail = process.env["VITE_OWNER_EMAIL"] ?? "nettoyagecleanfresh@gmail.com";
+  const siteUrl = process.env["VITE_SITE_URL"] ?? "https://www.cleanetfresh.fr";
   const formattedDate = (() => {
     try {
       const d = new Date(info.date);
@@ -643,7 +643,7 @@ export async function sendRescheduleEmail(info: {
   new_time: string;
   cancel_url: string;
 }) {
-  const ownerEmail = import.meta.env["VITE_OWNER_EMAIL"] ?? "nettoyagecleanfresh@gmail.com";
+  const ownerEmail = process.env["VITE_OWNER_EMAIL"] ?? "nettoyagecleanfresh@gmail.com";
   const formattedDate = (() => {
     try {
       const d = new Date(info.new_date);
@@ -729,7 +729,7 @@ export async function sendRescheduleEmail(info: {
 // ═══════════════════════════════════════════════════════════════════════════════
 
 export async function sendContactMessage(c: ContactPayload) {
-  const ownerEmail = import.meta.env["VITE_OWNER_EMAIL"] ?? "nettoyagecleanfresh@gmail.com";
+  const ownerEmail = process.env["VITE_OWNER_EMAIL"] ?? "nettoyagecleanfresh@gmail.com";
   const html = wrapEmail(`
     ${emailHeader("💬 NOUVEAU MESSAGE", "#0093cc")}
     <tr><td class="px" style="padding:28px 28px 8px 28px;">

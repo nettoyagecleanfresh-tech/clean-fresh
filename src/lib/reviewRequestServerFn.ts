@@ -62,7 +62,7 @@ export const sendReviewRequestServerFn = createServerFn({ method: "POST" })
               <table border="0" cellpadding="0" cellspacing="0">
                 <tr>
                   <td bgcolor="#ffffff" style="border-radius:8px;padding:5px 10px;">
-                    <img src="${siteUrl}/logo.png" width="110" alt="Clean&amp;Fresh" style="display:block;width:110px;height:auto;border:0;">
+                    <img src="${siteUrl}/logo-email.png" width="110" alt="Clean&amp;Fresh" style="display:block;width:110px;height:auto;border:0;">
                   </td>
                 </tr>
               </table>
