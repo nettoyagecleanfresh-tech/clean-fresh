@@ -21,6 +21,7 @@ export const Route = createFileRoute("/reserver")({
   validateSearch: (search: Record<string, unknown>) => ({
     service: (search["service"] as string) ?? "",
     formule: (search["formule"] as string) ?? "",
+    from: (search["from"] as string) ?? "",
   }),
   head: () => ({
     meta: [
@@ -309,7 +310,7 @@ function Sidebar({
 
 function ReserverPage() {
   const navigate = useNavigate();
-  const { service: serviceParam, formule: formuleParam } = Route.useSearch();
+  const { service: serviceParam, formule: formuleParam, from } = Route.useSearch();
   const preselected = SERVICES.find(s => s.id === SLUG_TO_SERVICE[serviceParam]) ?? null;
   const preselectedFormule = preselected?.formules.find(f => f.id === formuleParam) ?? null;
 
@@ -320,7 +321,7 @@ function ReserverPage() {
   const [formule, setFormule] = useState<Formule | null>(preselectedFormule);
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
   const [showCategories, setShowCategories] = useState(!preselected);
-  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+  const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
   const [form, setForm] = useState({ name: "", phone: "", email: "", street: "", zip: "", city: "" });
   const [submitting, setSubmitting] = useState(false);
@@ -362,27 +363,35 @@ function ReserverPage() {
       setStep(s => (s - 1) as 1|2|3|4);
     } else if (step === 2) {
       if (preselected && serviceParam) {
-        const SERVICE_URLS: Record<string, string> = {
-          canape: "/nettoyage-canape-toulouse",
-          tapis: "/nettoyage-tapis-toulouse",
-          matelas: "/nettoyage-matelas-toulouse",
-          auto: "/nettoyage-auto-a-domicile-toulouse",
-        };
-        const targetUrl = SERVICE_URLS[serviceParam] || "/formules";
-        navigate({ to: targetUrl });
+        if (from === "formules") {
+          navigate({ to: "/formules" });
+        } else {
+          const SERVICE_URLS: Record<string, string> = {
+            canape: "/nettoyage-canape-toulouse",
+            tapis: "/nettoyage-tapis-toulouse",
+            matelas: "/nettoyage-matelas-toulouse",
+            auto: "/nettoyage-auto-a-domicile-toulouse",
+          };
+          const targetUrl = SERVICE_URLS[serviceParam] || "/formules";
+          navigate({ to: targetUrl });
+        }
       } else {
         setStep(1);
       }
     } else if (step === 1) {
       if (preselected && serviceParam) {
-        const SERVICE_URLS: Record<string, string> = {
-          canape: "/nettoyage-canape-toulouse",
-          tapis: "/nettoyage-tapis-toulouse",
-          matelas: "/nettoyage-matelas-toulouse",
-          auto: "/nettoyage-auto-a-domicile-toulouse",
-        };
-        const targetUrl = SERVICE_URLS[serviceParam] || "/formules";
-        navigate({ to: targetUrl });
+        if (from === "formules") {
+          navigate({ to: "/formules" });
+        } else {
+          const SERVICE_URLS: Record<string, string> = {
+            canape: "/nettoyage-canape-toulouse",
+            tapis: "/nettoyage-tapis-toulouse",
+            matelas: "/nettoyage-matelas-toulouse",
+            auto: "/nettoyage-auto-a-domicile-toulouse",
+          };
+          const targetUrl = SERVICE_URLS[serviceParam] || "/formules";
+          navigate({ to: targetUrl });
+        }
       } else if (!preselected && !showCategories && cart.length === 0) {
         setShowCategories(true); setService(null); setFormule(null);
       } else {

@@ -137,7 +137,7 @@ function MiniPriceCard({ title, price, items, badge, featured, icon }: {
           </li>
         ))}
       </ul>
-      <Link to="/reserver"
+      <Link to="/reserver" search={{ from: "formules" }}
         className={[
           "mt-4 inline-flex w-full items-center justify-center gap-1.5 rounded-xl py-2.5 text-xs font-bold transition-opacity hover:opacity-90",
           featured ? "bg-white text-primary" : "bg-primary text-white",
@@ -252,7 +252,7 @@ function CanapeDetail() {
                 </p>
               )}
             </div>
-            <Link to="/reserver" search={{ service: "canape", formule: selected }} onClick={() => window.scrollTo(0,0)}
+            <Link to="/reserver" search={{ service: "canape", formule: selected, from: "formules" }} onClick={() => window.scrollTo(0,0)}
               className="inline-flex items-center justify-center gap-2 w-full rounded-xl bg-primary px-6 py-3.5 text-sm font-bold text-white shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
               <CalendarCheck className="size-4" /> Je réserve
             </Link>
@@ -465,7 +465,7 @@ function TapisDetail() {
                 </p>
               )}
             </div>
-            <Link to="/reserver" search={{ service: "tapis", formule: selected }} onClick={() => window.scrollTo(0,0)}
+            <Link to="/reserver" search={{ service: "tapis", formule: selected, from: "formules" }} onClick={() => window.scrollTo(0,0)}
               className="inline-flex items-center justify-center gap-2 w-full rounded-xl bg-primary px-6 py-3.5 text-sm font-bold text-white shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
               <CalendarCheck className="size-4" /> Je réserve
             </Link>
@@ -557,7 +557,7 @@ function AutoDetail() {
                 </p>
               )}
             </div>
-            <Link to="/reserver" search={{ service: "auto", formule: selected }} onClick={() => window.scrollTo(0,0)}
+            <Link to="/reserver" search={{ service: "auto", formule: selected, from: "formules" }} onClick={() => window.scrollTo(0,0)}
               className="inline-flex items-center justify-center gap-2 w-full rounded-xl bg-primary px-6 py-3.5 text-sm font-bold text-white shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
               <CalendarCheck className="size-4" /> Je réserve
             </Link>
@@ -651,7 +651,7 @@ function MatelasDetail() {
                 </p>
               )}
             </div>
-            <Link to="/reserver" search={{ service: "matelas", formule: selected }} onClick={() => window.scrollTo(0,0)}
+            <Link to="/reserver" search={{ service: "matelas", formule: selected, from: "formules" }} onClick={() => window.scrollTo(0,0)}
               className="inline-flex items-center justify-center gap-2 w-full rounded-xl bg-primary px-6 py-3.5 text-sm font-bold text-white shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
               <CalendarCheck className="size-4" /> Je réserve
             </Link>
@@ -849,7 +849,7 @@ function FormulesPage() {
         <p className="mt-1 text-sm text-muted-foreground">Réservation en ligne en 2 minutes, confirmation immédiate.</p>
         <div className="mt-5 flex flex-wrap gap-3 justify-center">
           <Button asChild size="xl" className="font-bold">
-            <Link to="/reserver"><CalendarCheck className="size-5" /> Réserver maintenant</Link>
+            <Link to="/reserver" search={{ from: "formules" }}><CalendarCheck className="size-5" /> Réserver maintenant</Link>
           </Button>
           <Button asChild variant="outline" size="xl">
             <a href={COMPANY.phoneHref}><Phone className="size-4" /> {COMPANY.phone}</a>
