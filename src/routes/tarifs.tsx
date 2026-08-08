@@ -131,6 +131,8 @@ function PriceCard({
   note,
   highlight,
   img,
+  serviceId,
+  formuleId,
 }: {
   label: string;
   price: string;
@@ -138,47 +140,82 @@ function PriceCard({
   note?: string;
   highlight?: boolean;
   img?: string;
+  serviceId?: string;
+  formuleId?: string;
 }) {
-  return (
-    <div
-      className={`relative rounded-2xl border p-5 flex flex-col gap-3 transition-shadow ${
-        highlight
-          ? "border-primary bg-primary/5 shadow-[var(--shadow-card)]"
-          : "border-border bg-card shadow-[var(--shadow-soft)]"
-      }`}
-    >
+  const content = (
+    <>
       {note && (
         <span className="absolute -top-3 left-4 rounded-full bg-primary px-3 py-0.5 text-[10px] font-bold uppercase tracking-wider text-primary-foreground">
           {note}
         </span>
       )}
       {img && (
-        <div className="flex items-center justify-center w-full h-28 bg-slate-50 border border-slate-100 rounded-xl overflow-hidden">
+        <div className="flex items-center justify-center w-full h-28 bg-slate-50 border border-slate-100 rounded-xl overflow-hidden transition-colors group-hover:border-primary/20">
           <img
             src={img}
             alt={label}
-            className="w-full h-full object-contain mix-blend-multiply hover:scale-105 transition-transform duration-200"
+            className="w-full h-full object-contain mix-blend-multiply transition-transform duration-200 group-hover:scale-110"
             loading="lazy"
           />
         </div>
       )}
-      <div className="flex items-start justify-between gap-2">
-        <p className="font-semibold text-foreground leading-tight">{label}</p>
+      <div className="flex items-start justify-between gap-2 mt-1">
+        <p className="font-semibold text-foreground leading-tight group-hover:text-primary transition-colors">{label}</p>
         <p className="text-xl font-black text-primary shrink-0">{price}</p>
       </div>
       {items && (
-        <ul className="space-y-1.5">
+        <ul className="space-y-1.5 mt-1">
           {items.map((item) => (
-            <li key={item} className="flex items-start gap-2 text-xs text-muted-foreground">
+            <li key={item} className="flex items-start gap-2 text-xs text-muted-foreground group-hover:text-foreground/80 transition-colors">
               <CheckCircle2 className="mt-0.5 size-3.5 shrink-0 text-primary" />
               {item}
             </li>
           ))}
         </ul>
       )}
+      {serviceId && formuleId && (
+        <div className="mt-auto pt-3">
+          <div className="flex w-full items-center justify-center gap-1.5 rounded-xl bg-primary/10 px-4 py-2.5 text-sm font-bold text-primary transition-colors group-hover:bg-primary group-hover:text-white">
+            <ChevronRight className="size-4" /> Choisir
+          </div>
+        </div>
+      )}
+    </>
+  );
+
+  const baseClass = `relative h-full rounded-[20px] border p-5 flex flex-col gap-3 transition-all duration-300 ${
+    highlight
+      ? "border-primary bg-primary/5 shadow-[var(--shadow-card)]"
+      : "border-border bg-card shadow-[var(--shadow-soft)]"
+  }`;
+
+  if (serviceId && formuleId) {
+    return (
+      <Link
+        to="/reserver"
+        search={{ service: serviceId, formule: formuleId, from: "tarifs" }}
+        className={`${baseClass} cursor-pointer hover:border-primary/40 hover:shadow-lg hover:-translate-y-1 group`}
+      >
+        {content}
+      </Link>
+    );
+  }
+
+  return (
+    <div className={baseClass}>
+      {content}
     </div>
   );
 }
+
+const getServiceId = (slug: string) => {
+  if (slug.includes("canape")) return "canape";
+  if (slug.includes("tapis")) return "tapis";
+  if (slug.includes("matelas")) return "matelas";
+  if (slug.includes("auto")) return "auto";
+  return "";
+};
 
 function TarifsPage() {
   return (
@@ -248,6 +285,8 @@ function TarifsPage() {
                   note={price.note}
                   highlight={!!price.note}
                   img={price.formuleId ? FORMULE_IMAGES[price.formuleId] : undefined}
+                  serviceId={getServiceId(service.slug)}
+                  formuleId={price.formuleId}
                 />
               ))}
             </div>
