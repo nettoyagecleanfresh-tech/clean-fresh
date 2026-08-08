@@ -95,11 +95,13 @@ function AnnulerPage() {
         data: {
           client_name: info.name,
           client_email: info.email,
+          client_phone: info.phone,
           formule: info.formule,
           old_date: info.date,
           old_time: info.time,
           new_date: newDateStr,
           new_time: selectedTime,
+          cancel_url: typeof window !== "undefined" ? window.location.href : "",
         }
       }).catch(console.error);
 

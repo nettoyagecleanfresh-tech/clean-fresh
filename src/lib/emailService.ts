@@ -546,19 +546,43 @@ export async function sendCancellationEmailRaw(info: {
 
   // ── EMAIL CLIENT ────────────────────────────────────────────────────────────
   const clientContent = `
-    ${emailHeader("❌ ANNULATION CONFIRMÉE", "#c22a38")}
+    ${emailHeader("ANNULATION CONFIRMÉE", "#c22a38")}
     <tr><td class="px" style="padding:32px 28px 8px 28px;">
-      <h1 style="margin:0 0 10px 0;font-size:22px;font-weight:bold;color:#0f2c3f;">Votre annulation est prise en compte</h1>
+      <h1 style="margin:0 0 10px 0;font-size:24px;font-weight:900;color:#0f2c3f;letter-spacing:-0.5px;">Votre annulation est confirmée.</h1>
       <p style="margin:0;font-size:15px;line-height:24px;color:#2f4d64;">
         Bonjour <strong>${info.client_name}</strong>,<br>
-        Nous vous confirmons l'annulation de votre rendez-vous. Voici le récapitulatif.
+        Nous vous confirmons que votre prestation a bien été annulée. Quel dommage ! 😔<br>
+        Nous espérons avoir le plaisir de prendre soin de votre intérieur une prochaine fois.
       </p>
+    </td></tr>
+
+    <!-- Coordonnées client -->
+    <tr><td class="px" style="padding:20px 28px 0 28px;">
+      <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#f6faff;border:1px solid #dce7f2;border-radius:12px;">
+        <tr><td style="padding:16px 20px 4px 20px;font-size:11px;font-weight:bold;letter-spacing:1.2px;text-transform:uppercase;color:#3b6a7c;">Vos coordonnées</td></tr>
+        <tr><td style="padding:0 20px 16px 20px;">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <tr>
+              <td class="stack" width="160" style="padding:8px 0;border-bottom:1px solid #e7eef6;font-size:13px;color:#5b7b8e;vertical-align:top;">Nom & Prénom</td>
+              <td class="stack" style="padding:8px 0;border-bottom:1px solid #e7eef6;font-size:14px;color:#0f2c3f;vertical-align:top;"><strong>${info.client_name}</strong></td>
+            </tr>
+            <tr>
+              <td class="stack" width="160" style="padding:8px 0;border-bottom:1px solid #e7eef6;font-size:13px;color:#5b7b8e;vertical-align:top;">Adresse mail</td>
+              <td class="stack" style="padding:8px 0;border-bottom:1px solid #e7eef6;font-size:14px;color:#0093cc;vertical-align:top;"><a href="mailto:${info.client_email}" style="color:#0093cc;text-decoration:none;">${info.client_email}</a></td>
+            </tr>
+            <tr>
+              <td class="stack" width="160" style="padding:8px 0;font-size:13px;color:#5b7b8e;vertical-align:top;">Numéro de téléphone</td>
+              <td class="stack" style="padding:8px 0;font-size:14px;color:#0f2c3f;vertical-align:top;">${info.client_phone}</td>
+            </tr>
+          </table>
+        </td></tr>
+      </table>
     </td></tr>
 
     <!-- Détails annulés -->
     <tr><td class="px" style="padding:20px 28px 0 28px;">
       <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#fdf2f2;border:1px solid #fca5a5;border-radius:12px;">
-        <tr><td style="padding:14px 20px 4px 20px;font-size:11px;font-weight:bold;letter-spacing:1.2px;text-transform:uppercase;color:#991b1b;">❌ Rendez-vous annulé</td></tr>
+        <tr><td style="padding:16px 20px 4px 20px;font-size:11px;font-weight:bold;letter-spacing:1.2px;text-transform:uppercase;color:#991b1b;">❌ Rendez-vous annulé</td></tr>
         <tr><td style="padding:0 20px 16px 20px;">
           <table border="0" cellpadding="0" cellspacing="0" width="100%">
             <tr>
@@ -580,8 +604,8 @@ export async function sendCancellationEmailRaw(info: {
 
     <!-- Invitation à re-réserver -->
     <tr><td class="px" style="padding:20px 28px 0 28px;">
-      <div style="padding:16px 20px;background-color:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px;font-size:14px;line-height:22px;color:#065f46;">
-        <strong>Vous souhaitez planifier une nouvelle date ?</strong><br>
+      <div style="padding:16px 20px;background-color:#fffbed;border-left:4px solid #fbbc04;border-radius:6px;font-size:14px;line-height:22px;color:#5a4700;">
+        💡 <strong>Vous souhaitez planifier une nouvelle date ?</strong><br>
         Retrouvez-nous sur notre site pour réserver un nouveau créneau à votre convenance. Nous serons ravis de vous accueillir !
       </div>
     </td></tr>
@@ -591,13 +615,10 @@ export async function sendCancellationEmailRaw(info: {
       <table border="0" cellpadding="0" cellspacing="0">
         <tr>
           <td bgcolor="#0093cc" style="border-radius:40px;">
-            <a href="${siteUrl}/reserver" style="display:block;padding:14px 28px;font-size:14px;font-weight:bold;color:#ffffff;text-decoration:none;">📅 Réserver un nouveau créneau</a>
+            <a href="${siteUrl}/reserver" style="display:block;padding:14px 28px;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:bold;color:#ffffff;text-decoration:none;">📅 Réserver un nouveau créneau</a>
           </td>
         </tr>
       </table>
-      <p style="margin:12px 0 0 0;font-size:12px;color:#6b8ba0;">
-        Des questions ? Appelez-nous au <a href="tel:0767127500" style="color:#0093cc;text-decoration:none;">07 67 12 75 00</a>
-      </p>
     </td></tr>
     ${emailFooter()}`;
 
@@ -670,31 +691,56 @@ export async function sendRescheduleEmailRaw(info: {
   })();
 
   const html = wrapEmail(`
-    ${emailHeader("📅 RENDEZ-VOUS REPROGRAMMÉ", "#00b8ff")}
+    ${emailHeader("RENDEZ-VOUS REPROGRAMMÉ", "#00b8ff")}
     <tr><td class="px" style="padding:32px 28px 8px 28px;">
-      <h1 style="margin:0 0 10px 0;font-size:22px;font-weight:bold;color:#0f2c3f;">Rendez-vous reprogrammé avec succès !</h1>
+      <h1 style="margin:0 0 10px 0;font-size:24px;font-weight:900;color:#0f2c3f;letter-spacing:-0.5px;">Rendez-vous reprogrammé avec succès ! 🎉</h1>
       <p style="margin:0;font-size:15px;line-height:24px;color:#2f4d64;">
         Bonjour <strong>${info.client_name}</strong>,<br>
-        Nous vous confirmons que votre prestation <strong>${info.formule}</strong> a bien été reprogrammée à une nouvelle date.
+        Nous vous confirmons que votre prestation a bien été reprogrammée à la nouvelle date choisie.
       </p>
+    </td></tr>
+
+    <!-- Coordonnées client -->
+    <tr><td class="px" style="padding:20px 28px 0 28px;">
+      <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#f6faff;border:1px solid #dce7f2;border-radius:12px;">
+        <tr><td style="padding:16px 20px 4px 20px;font-size:11px;font-weight:bold;letter-spacing:1.2px;text-transform:uppercase;color:#3b6a7c;">Vos coordonnées</td></tr>
+        <tr><td style="padding:0 20px 16px 20px;">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <tr>
+              <td class="stack" width="160" style="padding:8px 0;border-bottom:1px solid #e7eef6;font-size:13px;color:#5b7b8e;vertical-align:top;">Nom & Prénom</td>
+              <td class="stack" style="padding:8px 0;border-bottom:1px solid #e7eef6;font-size:14px;color:#0f2c3f;vertical-align:top;"><strong>${info.client_name}</strong></td>
+            </tr>
+            <tr>
+              <td class="stack" width="160" style="padding:8px 0;border-bottom:1px solid #e7eef6;font-size:13px;color:#5b7b8e;vertical-align:top;">Adresse mail</td>
+              <td class="stack" style="padding:8px 0;border-bottom:1px solid #e7eef6;font-size:14px;color:#0093cc;vertical-align:top;"><a href="mailto:${info.client_email}" style="color:#0093cc;text-decoration:none;">${info.client_email}</a></td>
+            </tr>
+            ${(info as any).client_phone ? `
+            <tr>
+              <td class="stack" width="160" style="padding:8px 0;font-size:13px;color:#5b7b8e;vertical-align:top;">Numéro de téléphone</td>
+              <td class="stack" style="padding:8px 0;font-size:14px;color:#0f2c3f;vertical-align:top;">${(info as any).client_phone}</td>
+            </tr>
+            ` : ""}
+          </table>
+        </td></tr>
+      </table>
     </td></tr>
 
     <!-- Nouvelle date -->
     <tr><td class="px" style="padding:20px 28px 0 28px;">
-      <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#f0f9ff;border:1px solid #bae6fd;border-radius:12px;">
-        <tr><td style="padding:14px 20px 4px 20px;font-size:11px;font-weight:bold;letter-spacing:1.2px;text-transform:uppercase;color:#0369a1;">📅 Nouveau rendez-vous</td></tr>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#ffffff;border:1px solid #dce7f2;border-radius:12px;">
+        <tr><td style="padding:16px 20px 4px 20px;font-size:11px;font-weight:bold;letter-spacing:1.2px;text-transform:uppercase;color:#3b6a7c;">📅 Nouveau rendez-vous</td></tr>
         <tr><td style="padding:0 20px 16px 20px;">
           <table border="0" cellpadding="0" cellspacing="0" width="100%">
             <tr>
-              <td width="140" style="padding:8px 0;border-bottom:1px solid #bae6fd;font-size:13px;color:#0369a1;">Prestation</td>
-              <td style="padding:8px 0;border-bottom:1px solid #bae6fd;font-size:14px;color:#0f2c3f;"><strong>${info.formule}</strong></td>
+              <td width="140" style="padding:8px 0;border-bottom:1px solid #e7eef6;font-size:13px;color:#5b7b8e;">Prestation</td>
+              <td style="padding:8px 0;border-bottom:1px solid #e7eef6;font-size:14px;color:#0f2c3f;"><strong>${info.formule}</strong></td>
             </tr>
             <tr>
-              <td width="140" style="padding:8px 0;border-bottom:1px solid #bae6fd;font-size:13px;color:#0369a1;">Nouvelle date</td>
-              <td style="padding:8px 0;border-bottom:1px solid #bae6fd;font-size:15px;color:#0f2c3f;"><strong>${formattedDate}</strong></td>
+              <td width="140" style="padding:8px 0;border-bottom:1px solid #e7eef6;font-size:13px;color:#5b7b8e;">Nouvelle date</td>
+              <td style="padding:8px 0;border-bottom:1px solid #e7eef6;font-size:15px;color:#0f2c3f;"><strong>${formattedDate}</strong></td>
             </tr>
             <tr>
-              <td width="140" style="padding:8px 0;font-size:13px;color:#0369a1;">Nouvelle heure</td>
+              <td width="140" style="padding:8px 0;font-size:13px;color:#5b7b8e;">Nouvelle heure</td>
               <td style="padding:8px 0;font-size:15px;color:#0093cc;"><strong>${info.new_time}</strong></td>
             </tr>
           </table>
@@ -705,12 +751,12 @@ export async function sendRescheduleEmailRaw(info: {
     <!-- Action -->
     <tr><td class="px" style="padding:24px 28px 32px 28px;">
       <p style="margin:0 0 16px 0;font-size:14px;line-height:22px;color:#2f4d64;">
-        Si vous avez encore un imprévu, vous pouvez de nouveau reprogrammer ou annuler depuis le lien ci-dessous.
+        Si vous avez un nouvel imprévu, vous pouvez de nouveau reprogrammer ou annuler depuis le lien ci-dessous.
       </p>
       <table border="0" cellpadding="0" cellspacing="0">
         <tr>
-          <td bgcolor="#ffffff" style="border:1px solid #bae6fd;border-radius:40px;">
-            <a href="${info.cancel_url}" style="display:block;padding:12px 24px;font-size:13px;font-weight:bold;color:#0369a1;text-decoration:none;">📅 Gérer mon rendez-vous</a>
+          <td bgcolor="#ffffff" style="border:1px solid #e0a8ae;border-radius:40px;">
+            <a href="${info.cancel_url}" style="display:block;padding:12px 24px;font-family:Helvetica,Arial,sans-serif;font-size:13px;font-weight:bold;color:#c22a38;text-decoration:none;">📅 Gérer mon rendez-vous</a>
           </td>
         </tr>
       </table>
