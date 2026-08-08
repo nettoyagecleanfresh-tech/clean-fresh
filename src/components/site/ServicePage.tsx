@@ -8,11 +8,11 @@ import { FadeIn } from "@/components/ui/fade-in";
 import { SchemaService, SchemaFAQ, SchemaBreadcrumb } from "@/components/site/SchemaOrg";
 
 const PHOTOS_BY_CATEGORY: Record<string, string[]> = {
-  canape: ["/realisations/photo-04.jpg", "/realisations/photo-05.jpg", "/realisations/photo-08.jpg", "/realisations/photo-13.jpg"],
-  auto: ["/realisations/photo-02.jpg", "/realisations/photo-03.jpg", "/realisations/photo-10.jpg", "/realisations/photo-16.jpg"],
-  tapis: ["/realisations/photo-07.jpg", "/realisations/photo-28.jpg", "/realisations/photo-36.jpg", "/realisations/photo-21.jpg"],
-  matelas: ["/realisations/photo-09.jpg", "/realisations/photo-15.jpg", "/realisations/photo-31.jpg", "/realisations/photo-22.jpg"],
-  batiment: ["/realisations/photo-06.jpg", "/realisations/photo-32.jpg", "/realisations/photo-11.jpg", "/realisations/photo-12.jpg"]
+  canape: ["/realisations/photo-04.webp", "/realisations/photo-05.webp", "/realisations/photo-08.webp", "/realisations/photo-13.webp"],
+  auto: ["/realisations/photo-02.webp", "/realisations/photo-03.webp", "/realisations/photo-10.webp", "/realisations/photo-16.webp"],
+  tapis: ["/realisations/photo-07.webp", "/realisations/photo-28.webp", "/realisations/photo-36.webp", "/realisations/photo-21.webp"],
+  matelas: ["/realisations/photo-09.webp", "/realisations/photo-15.webp", "/realisations/photo-31.webp", "/realisations/photo-22.webp"],
+  batiment: ["/realisations/photo-06.webp", "/realisations/photo-32.webp", "/realisations/photo-11.webp", "/realisations/photo-12.webp"]
 };
 
 function getBookingServiceId(slug: string): string | null {

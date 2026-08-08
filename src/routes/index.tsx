@@ -28,11 +28,11 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { COMMUNES, COMPANY, SERVICES, SITE_URL } from "@/data/site";
 import { ReviewsCarousel } from "@/components/site/ReviewsCarousel";
 import { FadeIn } from "@/components/ui/fade-in";
-import heroImg from "@/assets/hero-nettoyage.jpg";
-import avantCanape from "@/assets/avant-canape.jpg";
-import apresCanape from "@/assets/apres-canape.jpg";
-import avantAuto from "@/assets/avant-auto.jpg";
-import apresAuto from "@/assets/apres-auto.jpg";
+import heroImg from "@/assets/hero-nettoyage.webp";
+import avantCanape from "@/assets/avant-canape.webp";
+import apresCanape from "@/assets/apres-canape.webp";
+import avantAuto from "@/assets/avant-auto.webp";
+import apresAuto from "@/assets/apres-auto.webp";
 
 const TITLE = "Entreprise de Nettoyage à Toulouse — Canapé, Matelas, Tapis | Clean&Fresh";
 const DESC =
@@ -63,7 +63,7 @@ export const Route = createFileRoute("/")({
           telephone: "+33767127500",
           email: "cleanetfresh31@gmail.com",
           logo: `${SITE_URL}/logo.png`,
-          image: `${SITE_URL}/realisations/photo-02.jpg`,
+          image: `${SITE_URL}/realisations/photo-02.webp`,
           priceRange: "€€",
           currenciesAccepted: "EUR",
           paymentAccepted: "Cash, Credit Card",
@@ -452,6 +452,9 @@ function Index() {
               </Link>
             </Button>
             <Button asChild variant="outline" size="xl">
+              <Link to="/tarifs">Voir les tarifs</Link>
+            </Button>
+            <Button asChild variant="ghost" size="xl">
               <a href={COMPANY.phoneHref}><Phone /> {COMPANY.phone}</a>
             </Button>
           </div>

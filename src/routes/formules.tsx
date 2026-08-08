@@ -9,9 +9,8 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { COMPANY, SITE_URL } from "@/data/site";
 import { FadeIn } from "@/components/ui/fade-in";
 
-const TITLE = "Tarifs nettoyage à domicile Toulouse — Clean&Fresh";
-const DESC =
-  "Tarifs nettoyage canapé, tapis, auto et matelas à Toulouse. À partir de 15 €. Intervention à domicile 7j/7. 91 avis 5★. Réservation en ligne en 2 min.";
+const TITLE = "Réserver un Nettoyage à Toulouse — Canapé, Matelas, Auto | Clean&Fresh";
+const DESC = "Réservez votre nettoyage en ligne : canapé dès 79 €, matelas dès 59 €, auto dès 69 €. Intervention à domicile à Toulouse et agglomération. Simple et rapide.";
 
 type FormulesSearch = {
   service?: string;
@@ -25,13 +24,15 @@ export const Route = createFileRoute("/formules")({
   },
   head: () => ({
     meta: [
-      { title: TITLE },
-      { name: "description", content: DESC },
-      { property: "og:title", content: TITLE },
-      { property: "og:description", content: DESC },
-      { property: "og:url", content: "https://cleanetfresh.fr/formules" },
+      { title: `Réserver un Nettoyage à Toulouse — Canapé, Matelas, Auto | Clean&Fresh` },
+      { name: "description", content: `Réservez votre nettoyage en ligne : canapé dès 79 €, matelas dès 59 €, auto dès 69 €. Intervention à domicile à Toulouse et agglomération. Simple et rapide.` },
+      { property: "og:title", content: `Réserver un Nettoyage à Toulouse — Canapé, Matelas, Auto | Clean&Fresh` },
+      { property: "og:description", content: `Réservez votre nettoyage en ligne : canapé dès 79 €, matelas dès 59 €, auto dès 69 €. Intervention à domicile à Toulouse et agglomération. Simple et rapide.` },
+      { property: "og:url", content: `https://cleanetfresh.fr/formules` },
+      { name: "twitter:title", content: `Réserver un Nettoyage à Toulouse — Canapé, Matelas, Auto | Clean&Fresh` },
+      { name: "twitter:description", content: `Réservez votre nettoyage en ligne : canapé dès 79 €, matelas dès 59 €, auto dès 69 €. Intervention à domicile à Toulouse et agglomération. Simple et rapide.` },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/formules` }],
+    links: [{ rel: "canonical", href: `https://cleanetfresh.fr/formules` }],
   }),
   component: FormulesPage,
 });

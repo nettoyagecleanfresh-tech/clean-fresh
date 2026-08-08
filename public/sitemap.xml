@@ -1,167 +1,380 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- ── Pages principales ── -->
+
+  <!-- ── PAGE D'ACCUEIL ── -->
   <url>
     <loc>https://cleanetfresh.fr/</loc>
-    <lastmod>2026-08-06</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-  <url>
-    <loc>https://cleanetfresh.fr/nos-services</loc>
-    <lastmod>2026-08-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://cleanetfresh.fr/formules</loc>
-    <lastmod>2026-08-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://cleanetfresh.fr/nos-realisations</loc>
-    <lastmod>2026-08-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cleanetfresh.fr/contactez-nous</loc>
-    <lastmod>2026-08-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cleanetfresh.fr/a-propos</loc>
-    <lastmod>2026-08-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <!-- ── Services textile ── -->
+
+  <!-- ── SERVICES TEXTILE ── -->
   <url>
     <loc>https://cleanetfresh.fr/nettoyage-canape-toulouse</loc>
-    <lastmod>2026-08-06</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://cleanetfresh.fr/nettoyage-matelas-toulouse</loc>
-    <lastmod>2026-08-06</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://cleanetfresh.fr/nettoyage-tapis-toulouse</loc>
-    <lastmod>2026-08-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cleanetfresh.fr/nettoyage-moquette-toulouse</loc>
-    <lastmod>2026-08-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cleanetfresh.fr/nettoyage-auto-a-domicile-toulouse</loc>
-    <lastmod>2026-08-06</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-  <!-- ── Services bâtiment ── -->
+  <url>
+    <loc>https://cleanetfresh.fr/nettoyage-auto-a-domicile-toulouse</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://cleanetfresh.fr/nettoyage-moquette-toulouse</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- ── SERVICES BÂTIMENT ── -->
   <url>
     <loc>https://cleanetfresh.fr/nettoyage-de-vitres-toulouse</loc>
-    <lastmod>2026-08-06</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cleanetfresh.fr/nettoyage-terrasse-toulouse</loc>
-    <lastmod>2026-08-06</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cleanetfresh.fr/nettoyage-toiture-toulouse</loc>
-    <lastmod>2026-08-06</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cleanetfresh.fr/nettoyage-facade-toulouse</loc>
-    <lastmod>2026-08-06</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cleanetfresh.fr/nettoyage-dappartement-ou-maison</loc>
-    <lastmod>2026-08-06</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cleanetfresh.fr/nettoyage-de-fin-de-chantier-toulouse</loc>
-    <lastmod>2026-08-06</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cleanetfresh.fr/nettoyage-fin-de-bail-toulouse</loc>
-    <lastmod>2026-08-06</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cleanetfresh.fr/nettoyage-diogene-toulouse</loc>
-    <lastmod>2026-08-06</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cleanetfresh.fr/nettoyage-extreme-toulouse</loc>
-    <lastmod>2026-08-06</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-  <!-- ── Pages communes ── -->
-  <url><loc>https://cleanetfresh.fr/nettoyage-toulouse</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://cleanetfresh.fr/nettoyage-blagnac</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://cleanetfresh.fr/nettoyage-colomiers</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://cleanetfresh.fr/nettoyage-tournefeuille</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://cleanetfresh.fr/nettoyage-balma</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://cleanetfresh.fr/nettoyage-l-union</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://cleanetfresh.fr/nettoyage-muret</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://cleanetfresh.fr/nettoyage-cugnaux</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://cleanetfresh.fr/nettoyage-ramonville-saint-agne</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://cleanetfresh.fr/nettoyage-castanet-tolosan</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://cleanetfresh.fr/nettoyage-plaisance-du-touch</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://cleanetfresh.fr/nettoyage-saint-orens-de-gameville</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://cleanetfresh.fr/nettoyage-fonsorbes</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://cleanetfresh.fr/nettoyage-villeneuve-tolosane</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://cleanetfresh.fr/nettoyage-portet-sur-garonne</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://cleanetfresh.fr/nettoyage-aucamville</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://cleanetfresh.fr/nettoyage-castelginest</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://cleanetfresh.fr/nettoyage-launaguet</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://cleanetfresh.fr/nettoyage-saint-jean</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://cleanetfresh.fr/nettoyage-frouzins</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://cleanetfresh.fr/nettoyage-seysses</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://cleanetfresh.fr/nettoyage-cornebarrieu</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://cleanetfresh.fr/nettoyage-beauzelle</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://cleanetfresh.fr/nettoyage-aussonne</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://cleanetfresh.fr/nettoyage-pibrac</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://cleanetfresh.fr/nettoyage-leguevin</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://cleanetfresh.fr/nettoyage-escalquens</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://cleanetfresh.fr/nettoyage-labege</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://cleanetfresh.fr/nettoyage-saint-alban</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://cleanetfresh.fr/nettoyage-fenouillet</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://cleanetfresh.fr/nettoyage-quint-fonsegrives</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://cleanetfresh.fr/nettoyage-saint-lys</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://cleanetfresh.fr/nettoyage-eaunes</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://cleanetfresh.fr/nettoyage-roques</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://cleanetfresh.fr/nettoyage-bruguieres</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://cleanetfresh.fr/nettoyage-la-salvetat-saint-gilles</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://cleanetfresh.fr/nettoyage-castelmaurou</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://cleanetfresh.fr/nettoyage-auzeville-tolosane</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://cleanetfresh.fr/nettoyage-pins-justaret</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://cleanetfresh.fr/nettoyage-gratentour</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- ── PAGES INSTITUTIONNELLES ── -->
+  <url>
+    <loc>https://cleanetfresh.fr/nos-services</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cleanetfresh.fr/tarifs</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cleanetfresh.fr/nos-realisations</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://cleanetfresh.fr/formules</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://cleanetfresh.fr/contactez-nous</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://cleanetfresh.fr/a-propos</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- ── COMMUNES ── -->
+  <url>
+    <loc>https://cleanetfresh.fr/nettoyage-toulouse</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cleanetfresh.fr/nettoyage-blagnac</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://cleanetfresh.fr/nettoyage-colomiers</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://cleanetfresh.fr/nettoyage-tournefeuille</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://cleanetfresh.fr/nettoyage-muret</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://cleanetfresh.fr/nettoyage-cugnaux</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://cleanetfresh.fr/nettoyage-balma</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://cleanetfresh.fr/nettoyage-ramonville-saint-agne</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://cleanetfresh.fr/nettoyage-castanet-tolosan</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://cleanetfresh.fr/nettoyage-plaisance-du-touch</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://cleanetfresh.fr/nettoyage-saint-orens-de-gameville</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://cleanetfresh.fr/nettoyage-l-union</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://cleanetfresh.fr/nettoyage-fonsorbes</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://cleanetfresh.fr/nettoyage-villeneuve-tolosane</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://cleanetfresh.fr/nettoyage-portet-sur-garonne</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://cleanetfresh.fr/nettoyage-aucamville</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://cleanetfresh.fr/nettoyage-castelginest</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://cleanetfresh.fr/nettoyage-launaguet</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://cleanetfresh.fr/nettoyage-saint-jean</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://cleanetfresh.fr/nettoyage-frouzins</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://cleanetfresh.fr/nettoyage-seysses</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://cleanetfresh.fr/nettoyage-cornebarrieu</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://cleanetfresh.fr/nettoyage-beauzelle</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://cleanetfresh.fr/nettoyage-aussonne</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://cleanetfresh.fr/nettoyage-pibrac</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://cleanetfresh.fr/nettoyage-leguevin</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://cleanetfresh.fr/nettoyage-escalquens</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://cleanetfresh.fr/nettoyage-labege</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://cleanetfresh.fr/nettoyage-saint-alban</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://cleanetfresh.fr/nettoyage-fenouillet</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://cleanetfresh.fr/nettoyage-quint-fonsegrives</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://cleanetfresh.fr/nettoyage-saint-lys</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://cleanetfresh.fr/nettoyage-eaunes</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://cleanetfresh.fr/nettoyage-roques</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://cleanetfresh.fr/nettoyage-bruguieres</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://cleanetfresh.fr/nettoyage-la-salvetat-saint-gilles</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://cleanetfresh.fr/nettoyage-castelmaurou</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://cleanetfresh.fr/nettoyage-auzeville-tolosane</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://cleanetfresh.fr/nettoyage-pins-justaret</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://cleanetfresh.fr/nettoyage-gratentour</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
 </urlset>

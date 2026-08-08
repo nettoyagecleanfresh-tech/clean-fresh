@@ -18,21 +18,23 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { COMPANY, SITE_URL, SERVICES } from "@/data/site";
-import heroImg from "@/assets/hero-nettoyage.jpg";
+import heroImg from "@/assets/hero-nettoyage.webp";
 
-const TITLE = "Nos services de nettoyage à Toulouse — Clean&Fresh";
-const DESC =
-  "13 services de nettoyage à Toulouse : canapé, matelas, tapis, auto, vitres, terrasse, toiture, façade, appartement, fin de chantier. Particuliers & professionnels. Devis sous 24h.";
+const TITLE = "Nos Services de Nettoyage à Toulouse — Canapé, Matelas, Auto | Clean&Fresh";
+const DESC = "Découvrez tous les services Clean&Fresh : nettoyage canapé, matelas, tapis, moquette, auto, vitres, terrasse, façade, fin de chantier. À domicile Toulouse et 31.";
 
 export const Route = createFileRoute("/nos-services")({
   head: () => ({
     meta: [
-      { title: TITLE },
-      { name: "description", content: DESC },
-      { property: "og:title", content: TITLE },
-      { property: "og:description", content: DESC },
+      { title: `Nos Services de Nettoyage à Toulouse — Canapé, Matelas, Auto | Clean&Fresh` },
+      { name: "description", content: `Découvrez tous les services Clean&Fresh : nettoyage canapé, matelas, tapis, moquette, auto, vitres, terrasse, façade, fin de chantier. À domicile Toulouse et 31.` },
+      { property: "og:title", content: `Nos Services de Nettoyage à Toulouse — Canapé, Matelas, Auto | Clean&Fresh` },
+      { property: "og:description", content: `Découvrez tous les services Clean&Fresh : nettoyage canapé, matelas, tapis, moquette, auto, vitres, terrasse, façade, fin de chantier. À domicile Toulouse et 31.` },
+      { property: "og:url", content: `https://cleanetfresh.fr/nos-services` },
+      { name: "twitter:title", content: `Nos Services de Nettoyage à Toulouse — Canapé, Matelas, Auto | Clean&Fresh` },
+      { name: "twitter:description", content: `Découvrez tous les services Clean&Fresh : nettoyage canapé, matelas, tapis, moquette, auto, vitres, terrasse, façade, fin de chantier. À domicile Toulouse et 31.` },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/nos-services` }],
+    links: [{ rel: "canonical", href: `https://cleanetfresh.fr/nos-services` }],
   }),
   component: ServicesPage,
 });
@@ -151,6 +153,9 @@ function ServicesPage() {
             <p className="mt-0.5 text-sm text-muted-foreground">Réponse garantie sous 24h.</p>
           </div>
           <div className="flex flex-wrap gap-3">
+            <Button asChild variant="ghost" size="sm">
+              <Link to="/tarifs">Voir les tarifs</Link>
+            </Button>
             <Button asChild variant="outline" size="sm">
               <Link to="/contactez-nous">Demander un devis</Link>
             </Button>

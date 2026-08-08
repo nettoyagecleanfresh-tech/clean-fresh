@@ -2,19 +2,22 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SITE_URL } from "@/data/site";
 import { FadeIn } from "@/components/ui/fade-in";
 
-const TITLE = "Politique de Confidentialité — Clean&Fresh";
-const DESC = "Politique de confidentialité et traitement des données personnelles de Clean&Fresh.";
+const TITLE = "Politique de Confidentialité — Clean&Fresh Toulouse";
+const DESC = "Politique de confidentialité de Clean&Fresh, entreprise de nettoyage à domicile à Toulouse.";
 
 export const Route = createFileRoute("/politique-confidentialite")({
   head: () => ({
     meta: [
-      { title: TITLE },
-      { name: "description", content: DESC },
-      { property: "og:title", content: TITLE },
-      { property: "og:description", content: DESC },
-      { property: "og:url", content: `${SITE_URL}/politique-confidentialite` },
+      { title: `Politique de Confidentialité — Clean&Fresh Toulouse` },
+      { name: "robots", content: "noindex, follow" },
+      { name: "description", content: `Politique de confidentialité de Clean&Fresh, entreprise de nettoyage à domicile à Toulouse.` },
+      { property: "og:title", content: `Politique de Confidentialité — Clean&Fresh Toulouse` },
+      { property: "og:description", content: `Politique de confidentialité de Clean&Fresh, entreprise de nettoyage à domicile à Toulouse.` },
+      { property: "og:url", content: `https://cleanetfresh.fr/politique-confidentialite` },
+      { name: "twitter:title", content: `Politique de Confidentialité — Clean&Fresh Toulouse` },
+      { name: "twitter:description", content: `Politique de confidentialité de Clean&Fresh, entreprise de nettoyage à domicile à Toulouse.` },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/politique-confidentialite` }],
+    links: [{ rel: "canonical", href: `https://cleanetfresh.fr/politique-confidentialite` }],
   }),
   component: PrivacyPage,
 });

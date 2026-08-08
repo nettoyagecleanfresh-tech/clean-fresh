@@ -2,19 +2,22 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SITE_URL } from "@/data/site";
 import { FadeIn } from "@/components/ui/fade-in";
 
-const TITLE = "Mentions Légales — Clean&Fresh";
-const DESC = "Mentions légales de Clean&Fresh, entreprise de nettoyage à Toulouse.";
+const TITLE = "Mentions Légales — Clean&Fresh Toulouse";
+const DESC = "Mentions légales de Clean&Fresh, entreprise de nettoyage à domicile à Toulouse.";
 
 export const Route = createFileRoute("/mentions-legales")({
   head: () => ({
     meta: [
-      { title: TITLE },
-      { name: "description", content: DESC },
-      { property: "og:title", content: TITLE },
-      { property: "og:description", content: DESC },
-      { property: "og:url", content: `${SITE_URL}/mentions-legales` },
+      { title: `Mentions Légales — Clean&Fresh Toulouse` },
+      { name: "robots", content: "noindex, follow" },
+      { name: "description", content: `Mentions légales de Clean&Fresh, entreprise de nettoyage à domicile à Toulouse.` },
+      { property: "og:title", content: `Mentions Légales — Clean&Fresh Toulouse` },
+      { property: "og:description", content: `Mentions légales de Clean&Fresh, entreprise de nettoyage à domicile à Toulouse.` },
+      { property: "og:url", content: `https://cleanetfresh.fr/mentions-legales` },
+      { name: "twitter:title", content: `Mentions Légales — Clean&Fresh Toulouse` },
+      { name: "twitter:description", content: `Mentions légales de Clean&Fresh, entreprise de nettoyage à domicile à Toulouse.` },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/mentions-legales` }],
+    links: [{ rel: "canonical", href: `https://cleanetfresh.fr/mentions-legales` }],
   }),
   component: MentionsLegalesPage,
 });

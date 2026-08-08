@@ -2,19 +2,22 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SITE_URL } from "@/data/site";
 import { FadeIn } from "@/components/ui/fade-in";
 
-const TITLE = "Conditions Générales de Vente (CGV) — Clean&Fresh";
-const DESC = "Conditions Générales de Vente des prestations de nettoyage proposées par Clean&Fresh à Toulouse.";
+const TITLE = "Conditions Générales de Vente — Clean&Fresh Toulouse";
+const DESC = "Conditions Générales de Vente de Clean&Fresh, entreprise de nettoyage professionnelle à Toulouse.";
 
 export const Route = createFileRoute("/cgv")({
   head: () => ({
     meta: [
-      { title: TITLE },
-      { name: "description", content: DESC },
-      { property: "og:title", content: TITLE },
-      { property: "og:description", content: DESC },
-      { property: "og:url", content: `${SITE_URL}/cgv` },
+      { title: `Conditions Générales de Vente — Clean&Fresh Toulouse` },
+      { name: "robots", content: "noindex, follow" },
+      { name: "description", content: `Conditions Générales de Vente de Clean&Fresh, entreprise de nettoyage professionnelle à Toulouse.` },
+      { property: "og:title", content: `Conditions Générales de Vente — Clean&Fresh Toulouse` },
+      { property: "og:description", content: `Conditions Générales de Vente de Clean&Fresh, entreprise de nettoyage professionnelle à Toulouse.` },
+      { property: "og:url", content: `https://cleanetfresh.fr/cgv` },
+      { name: "twitter:title", content: `Conditions Générales de Vente — Clean&Fresh Toulouse` },
+      { name: "twitter:description", content: `Conditions Générales de Vente de Clean&Fresh, entreprise de nettoyage professionnelle à Toulouse.` },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/cgv` }],
+    links: [{ rel: "canonical", href: `https://cleanetfresh.fr/cgv` }],
   }),
   component: CGVPage,
 });

@@ -75,6 +75,7 @@ import { Route as NosRealisationsRouteImport } from './routes/nos-realisations'
 import { Route as NosServicesRouteImport } from './routes/nos-services'
 import { Route as PolitiqueConfidentialiteRouteImport } from './routes/politique-confidentialite'
 import { Route as ReserverRouteImport } from './routes/reserver'
+import { Route as TarifsRouteImport } from './routes/tarifs'
 import { Route as UpsellRouteImport } from './routes/upsell'
 
 const IndexRoute = IndexRouteImport.update({
@@ -428,6 +429,11 @@ const ReserverRoute = ReserverRouteImport.update({
   path: '/reserver',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TarifsRoute = TarifsRouteImport.update({
+  id: '/tarifs',
+  path: '/tarifs',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const UpsellRoute = UpsellRouteImport.update({
   id: '/upsell',
   path: '/upsell',
@@ -501,6 +507,7 @@ export interface FileRoutesByFullPath {
   '/nos-services': typeof NosServicesRoute
   '/politique-confidentialite': typeof PolitiqueConfidentialiteRoute
   '/reserver': typeof ReserverRoute
+  '/tarifs': typeof TarifsRoute
   '/upsell': typeof UpsellRoute
 }
 export interface FileRoutesByTo {
@@ -570,6 +577,7 @@ export interface FileRoutesByTo {
   '/nos-services': typeof NosServicesRoute
   '/politique-confidentialite': typeof PolitiqueConfidentialiteRoute
   '/reserver': typeof ReserverRoute
+  '/tarifs': typeof TarifsRoute
   '/upsell': typeof UpsellRoute
 }
 export interface FileRoutesById {
@@ -640,6 +648,7 @@ export interface FileRoutesById {
   '/nos-services': typeof NosServicesRoute
   '/politique-confidentialite': typeof PolitiqueConfidentialiteRoute
   '/reserver': typeof ReserverRoute
+  '/tarifs': typeof TarifsRoute
   '/upsell': typeof UpsellRoute
 }
 export interface FileRouteTypes {
@@ -711,6 +720,7 @@ export interface FileRouteTypes {
     | '/nos-services'
     | '/politique-confidentialite'
     | '/reserver'
+    | '/tarifs'
     | '/upsell'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -780,6 +790,7 @@ export interface FileRouteTypes {
     | '/nos-services'
     | '/politique-confidentialite'
     | '/reserver'
+    | '/tarifs'
     | '/upsell'
   id:
     | '__root__'
@@ -849,6 +860,7 @@ export interface FileRouteTypes {
     | '/nos-services'
     | '/politique-confidentialite'
     | '/reserver'
+    | '/tarifs'
     | '/upsell'
   fileRoutesById: FileRoutesById
 }
@@ -919,6 +931,7 @@ export interface RootRouteChildren {
   NosServicesRoute: typeof NosServicesRoute
   PolitiqueConfidentialiteRoute: typeof PolitiqueConfidentialiteRoute
   ReserverRoute: typeof ReserverRoute
+  TarifsRoute: typeof TarifsRoute
   UpsellRoute: typeof UpsellRoute
 }
 
@@ -1386,6 +1399,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ReserverRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tarifs': {
+      id: '/tarifs'
+      path: '/tarifs'
+      fullPath: '/tarifs'
+      preLoaderRoute: typeof TarifsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/upsell': {
       id: '/upsell'
       path: '/upsell'
@@ -1463,6 +1483,7 @@ const rootRouteChildren: RootRouteChildren = {
   NosServicesRoute: NosServicesRoute,
   PolitiqueConfidentialiteRoute: PolitiqueConfidentialiteRoute,
   ReserverRoute: ReserverRoute,
+  TarifsRoute: TarifsRoute,
   UpsellRoute: UpsellRoute,
 }
 export const routeTree = rootRouteImport

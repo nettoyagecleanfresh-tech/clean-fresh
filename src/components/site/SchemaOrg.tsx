@@ -21,7 +21,7 @@ export function SchemaLocalBusiness() {
     telephone: COMPANY.phoneHref.replace("tel:", ""),
     email: COMPANY.email,
     logo: `${SITE_URL}/logo.png`,
-    image: `${SITE_URL}/realisations/photo-02.jpg`,
+    image: `${SITE_URL}/realisations/photo-02.webp`,
     priceRange: "€€",
     currenciesAccepted: "EUR",
     paymentAccepted: "Cash, Credit Card",

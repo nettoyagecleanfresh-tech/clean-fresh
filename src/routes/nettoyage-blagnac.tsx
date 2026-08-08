@@ -1,12 +1,12 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { MapPin, Clock, Shield, Sparkles, CheckCircle2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { SITE_URL, COMPANY } from "@/data/site";
-import { FadeIn } from "@/components/ui/fade-in";
-import { ReviewsCarousel } from "@/components/site/ReviewsCarousel";
+import { createFileRoute } from "@tanstack/react-router";
+import { SITE_URL } from "@/data/site";
+import { getCommuneData } from "@/data/communes";
+import { LocalCityPage } from "@/components/site/LocalCityPage";
 
-const TITLE = "Entreprise de nettoyage à Blagnac — Clean&Fresh";
-const DESC = "Nettoyage canapé, matelas, tapis et auto à Blagnac dès 49 €. Déplacement à domicile, produits certifiés, résultat garanti. Devis gratuit sous 24h.";
+const CITY = "Blagnac";
+const SLUG = "/nettoyage-blagnac";
+const TITLE = `Nettoyage à domicile à ${CITY} — Canapé, Matelas, Tapis | Clean&Fresh`;
+const DESC = `Nettoyage canapé dès 49 €, matelas dès 39 €, tapis dès 49 €, auto dès 69 € à ${CITY}. À domicile, produits Écolabel, 4.9★ Google. Devis gratuit sous 24h.`;
 
 export const Route = createFileRoute("/nettoyage-blagnac")({
   head: () => ({
@@ -15,11 +15,11 @@ export const Route = createFileRoute("/nettoyage-blagnac")({
       { name: "description", content: DESC },
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESC },
-      { property: "og:url", content: `${SITE_URL}/nettoyage-blagnac` },
+      { property: "og:url", content: `${SITE_URL}${SLUG}` },
       { name: "twitter:title", content: TITLE },
       { name: "twitter:description", content: DESC },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/nettoyage-blagnac` }],
+    links: [{ rel: "canonical", href: `${SITE_URL}${SLUG}` }],
     scripts: [
       {
         type: "application/ld+json",
@@ -28,7 +28,7 @@ export const Route = createFileRoute("/nettoyage-blagnac")({
           "@type": "BreadcrumbList",
           itemListElement: [
             { "@type": "ListItem", position: 1, name: "Accueil", item: "https://cleanetfresh.fr" },
-            { "@type": "ListItem", position: 2, name: "Nettoyage Blagnac", item: "https://cleanetfresh.fr/nettoyage-blagnac" },
+            { "@type": "ListItem", position: 2, name: `Nettoyage ${CITY}`, item: `https://cleanetfresh.fr${SLUG}` },
           ],
         }),
       },
@@ -38,9 +38,9 @@ export const Route = createFileRoute("/nettoyage-blagnac")({
           "@context": "https://schema.org",
           "@type": "LocalBusiness",
           name: "Clean&Fresh",
-          url: "https://cleanetfresh.fr/nettoyage-blagnac",
+          url: `https://cleanetfresh.fr${SLUG}`,
           telephone: "+33767127500",
-          areaServed: { "@type": "City", name: "Blagnac" },
+          areaServed: { "@type": "City", name: CITY },
           address: { "@type": "PostalAddress", addressLocality: "Toulouse", addressRegion: "Haute-Garonne", postalCode: "31000", addressCountry: "FR" },
           priceRange: "€€",
           aggregateRating: { "@type": "AggregateRating", ratingValue: "4.9", reviewCount: "102" },
@@ -52,100 +52,6 @@ export const Route = createFileRoute("/nettoyage-blagnac")({
 });
 
 function LocalPage() {
-  return (
-    <div className="pb-24 lg:pb-0">
-      {/* ── HERO ── */}
-      <section className="relative overflow-hidden bg-hero-gradient text-ink-foreground">
-        <div className="pointer-events-none absolute -right-24 -top-24 size-96 rounded-full bg-primary/20 blur-3xl" />
-        <div className="relative mx-auto max-w-4xl px-4 py-8 md:py-20 text-center">
-          <span className="inline-flex items-center gap-2 rounded-full border border-ink-foreground/20 bg-ink-foreground/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider backdrop-blur">
-            <MapPin className="size-3" /> Intervention à Blagnac
-          </span>
-          <h1 className="mt-3 text-3xl font-bold leading-tight tracking-tight md:mt-5 md:text-6xl">
-            Entreprise de nettoyage à Blagnac
-          </h1>
-          <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-ink-foreground/80 md:mt-5 md:text-base">
-            Entreprise de nettoyage intervenant à Blagnac, nous proposons des services d'entretien sur-mesure pour vos intérieurs, véhicules et locaux. Nos techniciens se déploient avec le matériel professionnel pour un résultat optimal.
-          </p>
-          <div className="mt-4 flex flex-wrap justify-center gap-2.5 md:mt-8">
-            <Button asChild size="xl" className="bg-accent-gradient text-accent-foreground font-bold shadow-[var(--shadow-card)] hover:opacity-90 px-4 md:px-6 h-10 md:h-12 text-xs md:text-sm">
-              <Link to="/formules">Réserver en ligne</Link>
-            </Button>
-            <Button asChild variant="onDark" size="xl" className="px-4 md:px-6 h-10 md:h-12 text-xs md:text-sm">
-              <Link to="/contactez-nous">Demander un devis</Link>
-            </Button>
-          </div>
-          <div className="hidden md:flex mt-6 flex-wrap justify-center gap-4 text-xs text-ink-foreground/60">
-            <span className="inline-flex items-center gap-1"><Clock className="size-3" /> Devis sous 24h</span>
-            <span className="inline-flex items-center gap-1"><CheckCircle2 className="size-3" /> Séchage rapide</span>
-            <span className="inline-flex items-center gap-1"><Shield className="size-3" /> Produits Écolabel</span>
-          </div>
-        </div>
-      </section>
-
-      {/* ── CONTENU SEO ── */}
-      <FadeIn delay={0.1}>
-        <section className="mx-auto max-w-4xl px-4 py-16">
-          <div className="prose prose-sm md:prose-base max-w-none text-muted-foreground [&>p]:mb-5 [&>ul]:mb-5 [&>h2]:mt-10 [&>h2]:mb-4">
-            <h2>Nos prestations de nettoyage à Blagnac</h2>
-            <p>
-              À 9 km au nord-ouest de Toulouse, Blagnac abrite le siège d'Airbus et l'aéroport international Toulouse-Blagnac. Ville de cadres et de familles exigeantes, elle concentre de nombreux appartements modernes et maisons récentes dont les textiles d'ameublement méritent un entretien professionnel régulier.
-            </p>
-            <ul>
-              <li><strong>Nettoyage de canapés et fauteuils :</strong> Traitement des taches, ravivement des couleurs et traitement anti-odeur pour vos salons en tissu, cuir ou velours.</li>
-              <li><strong>Entretien de matelas :</strong> Désinfection approfondie, traitement anti-acariens (traitement professionnel) et traitement des auréoles.</li>
-              <li><strong>Shampouinage de tapis et moquettes :</strong> Nettoyage recto-verso et extraction des salissures incrustées au cœur des fibres.</li>
-              <li><strong>Nettoyage automobile à domicile :</strong> Lavage intérieur complet de votre véhicule directement chez vous à Blagnac.</li>
-              <li><strong>Prestations pour le bâtiment :</strong> Nettoyage de fin de chantier, fin de bail, vitrerie, terrasses et façades.</li>
-            </ul>
-
-            <h2>Pourquoi faire appel à notre entreprise ?</h2>
-            <p>Blagnac est l'une de nos zones d'intervention prioritaires. Nos techniciens y interviennent plusieurs fois par semaine : canapés en tissu ou cuir dans les appartements du centre, matelas dans les pavillons du Ritouret, tapis dans les villas du secteur Andromède. Zéro frais de déplacement.</p>
-            <p>Les résidents blagnacais — souvent des professionnels de l'aéronautique avec des intérieurs soignés — apprécient notre rigueur et la qualité des produits Écolabel que nous utilisons. Nos machines d'injection-extraction haute puissance garantissent un résultat visible immédiatement et un séchage en 2 à 4h. Devis gratuit sous 24h.</p>
-            
-            <h2>Comment se déroule notre intervention ?</h2>
-            <p>
-              Le processus est simple : vous prenez rendez-vous en ligne ou par téléphone. À la date convenue, notre technicien se présente à votre adresse à Blagnac avec son équipement complet. 
-              Nous protégeons les zones environnantes, puis procédons au traitement : aspiration minutieuse, application des produits détachants, brossage, et enfin injection-extraction.
-            </p>
-
-            <h2>Nos services de nettoyage à Blagnac</h2>
-            <p>
-              Clean&Fresh intervient à Blagnac pour l'ensemble de ses prestations :{" "}
-              <Link to="/nettoyage-canape-toulouse" className="text-primary font-medium hover:underline">nettoyage de canapé</Link>,{" "}
-              <Link to="/nettoyage-matelas-toulouse" className="text-primary font-medium hover:underline">nettoyage de matelas</Link>,{" "}
-              <Link to="/nettoyage-tapis-toulouse" className="text-primary font-medium hover:underline">shampouinage de tapis</Link>{" "}
-              et <Link to="/nettoyage-auto-a-domicile-toulouse" className="text-primary font-medium hover:underline">nettoyage intérieur auto à domicile</Link>.
-              Mêmes tarifs, même qualité et même équipement professionnel que dans toute l'agglomération toulousaine.
-            </p>
-          </div>
-        </section>
-      </FadeIn>
-
-      {/* ── AVIS ── */}
-      <ReviewsCarousel />
-
-      {/* ── CTA ── */}
-      <FadeIn delay={0.2}>
-        <section className="mx-auto max-w-4xl px-4 pb-16">
-          <div className="rounded-3xl border border-primary/20 bg-card p-8 text-center shadow-[var(--shadow-soft)]">
-            <Sparkles className="mx-auto mb-4 size-10 text-primary" />
-            <h2 className="text-2xl font-bold">Besoin d'une intervention à Blagnac ?</h2>
-            <p className="mt-2 text-muted-foreground">
-              Obtenez un devis gratuit sous 24h ou réservez directement votre créneau.
-            </p>
-            <div className="mt-6 flex flex-wrap justify-center gap-4">
-              <Button asChild size="lg" className="bg-accent-gradient text-accent-foreground font-bold hover:opacity-90">
-                <Link to="/formules">Réserver en ligne</Link>
-              </Button>
-              <Button asChild variant="outline" size="lg">
-                <a href={COMPANY.phoneHref}>Appeler le {COMPANY.phone}</a>
-              </Button>
-            </div>
-
-          </div>
-        </section>
-      </FadeIn>
-    </div>
-  );
+  const commune = getCommuneData("nettoyage-blagnac")!;
+  return <LocalCityPage commune={commune} />;
 }

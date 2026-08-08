@@ -9,20 +9,21 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { COMMUNES, COMPANY, SITE_URL } from "@/data/site";
 
-const TITLE = "Contact — Clean&Fresh, nettoyage à Toulouse";
-const DESC =
-  "Contactez Clean&Fresh à Toulouse : 07 67 12 75 00 ou formulaire en ligne. Devis gratuit sous 24h pour tous vos besoins de nettoyage, particuliers et professionnels.";
+const TITLE = "Contactez Clean&Fresh — Devis gratuit nettoyage Toulouse";
+const DESC = "Contactez Clean&Fresh pour un devis gratuit sous 24h : nettoyage canapé, matelas, tapis, auto à domicile à Toulouse. Réponse rapide, tarifs clairs.";
 
 export const Route = createFileRoute("/contactez-nous")({
   head: () => ({
     meta: [
-      { title: TITLE },
-      { name: "description", content: DESC },
-      { property: "og:title", content: TITLE },
-      { property: "og:description", content: DESC },
-      { property: "og:url", content: "/contactez-nous" },
+      { title: `Contactez Clean&Fresh — Devis gratuit nettoyage Toulouse` },
+      { name: "description", content: `Contactez Clean&Fresh pour un devis gratuit sous 24h : nettoyage canapé, matelas, tapis, auto à domicile à Toulouse. Réponse rapide, tarifs clairs.` },
+      { property: "og:title", content: `Contactez Clean&Fresh — Devis gratuit nettoyage Toulouse` },
+      { property: "og:description", content: `Contactez Clean&Fresh pour un devis gratuit sous 24h : nettoyage canapé, matelas, tapis, auto à domicile à Toulouse. Réponse rapide, tarifs clairs.` },
+      { property: "og:url", content: `https://cleanetfresh.fr/contactez-nous` },
+      { name: "twitter:title", content: `Contactez Clean&Fresh — Devis gratuit nettoyage Toulouse` },
+      { name: "twitter:description", content: `Contactez Clean&Fresh pour un devis gratuit sous 24h : nettoyage canapé, matelas, tapis, auto à domicile à Toulouse. Réponse rapide, tarifs clairs.` },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/contactez-nous` }],
+    links: [{ rel: "canonical", href: `https://cleanetfresh.fr/contactez-nous` }],
   }),
   component: ContactPage,
 });

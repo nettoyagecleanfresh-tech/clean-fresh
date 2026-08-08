@@ -4,20 +4,21 @@ import { Button } from "@/components/ui/button";
 import { SITE_URL } from "@/data/site";
 import { FadeIn } from "@/components/ui/fade-in";
 
-const TITLE = "À Propos de Clean&Fresh — Artisan Nettoyeur à Toulouse";
-const DESC =
-  "Découvrez Clean&Fresh, votre artisan nettoyeur local à Toulouse. Une entreprise fondée sur la transparence, des prix clairs et la qualité de service.";
+const TITLE = "À propos de Clean&Fresh — Entreprise de nettoyage Toulouse";
+const DESC = "Clean&Fresh, votre entreprise de nettoyage à domicile à Toulouse depuis 2020. 4.9★ sur Google · 500+ clients satisfaits · Produits Écolabel · 6j/7.";
 
 export const Route = createFileRoute("/a-propos")({
   head: () => ({
     meta: [
-      { title: TITLE },
-      { name: "description", content: DESC },
-      { property: "og:title", content: TITLE },
-      { property: "og:description", content: DESC },
-      { property: "og:url", content: `${SITE_URL}/a-propos` },
+      { title: `À propos de Clean&Fresh — Entreprise de nettoyage Toulouse` },
+      { name: "description", content: `Clean&Fresh, votre entreprise de nettoyage à domicile à Toulouse depuis 2020. 4.9★ sur Google · 500+ clients satisfaits · Produits Écolabel · 6j/7.` },
+      { property: "og:title", content: `À propos de Clean&Fresh — Entreprise de nettoyage Toulouse` },
+      { property: "og:description", content: `Clean&Fresh, votre entreprise de nettoyage à domicile à Toulouse depuis 2020. 4.9★ sur Google · 500+ clients satisfaits · Produits Écolabel · 6j/7.` },
+      { property: "og:url", content: `https://cleanetfresh.fr/a-propos` },
+      { name: "twitter:title", content: `À propos de Clean&Fresh — Entreprise de nettoyage Toulouse` },
+      { name: "twitter:description", content: `Clean&Fresh, votre entreprise de nettoyage à domicile à Toulouse depuis 2020. 4.9★ sur Google · 500+ clients satisfaits · Produits Écolabel · 6j/7.` },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/a-propos` }],
+    links: [{ rel: "canonical", href: `https://cleanetfresh.fr/a-propos` }],
   }),
   component: AboutPage,
 });

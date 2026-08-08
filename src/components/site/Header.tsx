@@ -87,7 +87,7 @@ export function Header() {
           <Link to="/nos-realisations" className="px-3 py-2 text-sm font-medium text-foreground/75 transition-colors hover:text-primary">
             Réalisations
           </Link>
-          <Link to="/formules" className="px-3 py-2 text-sm font-medium text-foreground/75 transition-colors hover:text-primary">
+          <Link to="/tarifs" className="px-3 py-2 text-sm font-medium text-foreground/75 transition-colors hover:text-primary">
             Tarifs
           </Link>
           <Link to="/contactez-nous" className="px-3 py-2 text-sm font-medium text-foreground/75 transition-colors hover:text-primary">
@@ -185,7 +185,7 @@ export function Header() {
             <Link to="/nos-realisations" onClick={close} className="block rounded-xl px-3 py-2.5 font-semibold text-foreground hover:bg-secondary hover:text-primary transition-colors">
               Réalisations
             </Link>
-            <Link to="/formules" onClick={close} className="block rounded-xl px-3 py-2.5 font-semibold text-foreground hover:bg-secondary hover:text-primary transition-colors">
+            <Link to="/tarifs" onClick={close} className="block rounded-xl px-3 py-2.5 font-semibold text-foreground hover:bg-secondary hover:text-primary transition-colors">
               Tarifs
             </Link>
             <Link to="/contactez-nous" onClick={close} className="block rounded-xl px-3 py-2.5 font-semibold text-foreground hover:bg-secondary hover:text-primary transition-colors">

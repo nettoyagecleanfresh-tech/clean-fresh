@@ -1,12 +1,12 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { MapPin, Clock, Shield, Sparkles, CheckCircle2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { SITE_URL, COMPANY } from "@/data/site";
-import { FadeIn } from "@/components/ui/fade-in";
-import { ReviewsCarousel } from "@/components/site/ReviewsCarousel";
+import { createFileRoute } from "@tanstack/react-router";
+import { SITE_URL } from "@/data/site";
+import { getCommuneData } from "@/data/communes";
+import { LocalCityPage } from "@/components/site/LocalCityPage";
 
-const TITLE = "Entreprise de nettoyage à Balma — Clean&Fresh";
-const DESC = "Nettoyage canapé, matelas, tapis et auto à Balma dès 49 €. Un technicien se déplace chez vous, résultat garanti. Devis gratuit sous 24h.";
+const CITY = "Balma";
+const SLUG = "/nettoyage-balma";
+const TITLE = `Nettoyage à domicile à ${CITY} — Canapé, Matelas, Tapis | Clean&Fresh`;
+const DESC = `Nettoyage canapé dès 49 €, matelas dès 39 €, tapis dès 49 €, auto dès 69 € à ${CITY}. À domicile, produits Écolabel, 4.9★ Google. Devis gratuit sous 24h.`;
 
 export const Route = createFileRoute("/nettoyage-balma")({
   head: () => ({
@@ -15,11 +15,11 @@ export const Route = createFileRoute("/nettoyage-balma")({
       { name: "description", content: DESC },
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESC },
-      { property: "og:url", content: `${SITE_URL}/nettoyage-balma` },
+      { property: "og:url", content: `${SITE_URL}${SLUG}` },
       { name: "twitter:title", content: TITLE },
       { name: "twitter:description", content: DESC },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/nettoyage-balma` }],
+    links: [{ rel: "canonical", href: `${SITE_URL}${SLUG}` }],
     scripts: [
       {
         type: "application/ld+json",
@@ -28,7 +28,7 @@ export const Route = createFileRoute("/nettoyage-balma")({
           "@type": "BreadcrumbList",
           itemListElement: [
             { "@type": "ListItem", position: 1, name: "Accueil", item: "https://cleanetfresh.fr" },
-            { "@type": "ListItem", position: 2, name: "Nettoyage Balma", item: "https://cleanetfresh.fr/nettoyage-balma" },
+            { "@type": "ListItem", position: 2, name: `Nettoyage ${CITY}`, item: `https://cleanetfresh.fr${SLUG}` },
           ],
         }),
       },
@@ -38,9 +38,9 @@ export const Route = createFileRoute("/nettoyage-balma")({
           "@context": "https://schema.org",
           "@type": "LocalBusiness",
           name: "Clean&Fresh",
-          url: "https://cleanetfresh.fr/nettoyage-balma",
+          url: `https://cleanetfresh.fr${SLUG}`,
           telephone: "+33767127500",
-          areaServed: { "@type": "City", name: "Balma" },
+          areaServed: { "@type": "City", name: CITY },
           address: { "@type": "PostalAddress", addressLocality: "Toulouse", addressRegion: "Haute-Garonne", postalCode: "31000", addressCountry: "FR" },
           priceRange: "€€",
           aggregateRating: { "@type": "AggregateRating", ratingValue: "4.9", reviewCount: "102" },
@@ -52,100 +52,6 @@ export const Route = createFileRoute("/nettoyage-balma")({
 });
 
 function LocalPage() {
-  return (
-    <div className="pb-24 lg:pb-0">
-      {/* ── HERO ── */}
-      <section className="relative overflow-hidden bg-hero-gradient text-ink-foreground">
-        <div className="pointer-events-none absolute -right-24 -top-24 size-96 rounded-full bg-primary/20 blur-3xl" />
-        <div className="relative mx-auto max-w-4xl px-4 py-8 md:py-20 text-center">
-          <span className="inline-flex items-center gap-2 rounded-full border border-ink-foreground/20 bg-ink-foreground/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider backdrop-blur">
-            <MapPin className="size-3" /> Intervention à Balma
-          </span>
-          <h1 className="mt-3 text-3xl font-bold leading-tight tracking-tight md:mt-5 md:text-6xl">
-            Entreprise de nettoyage à Balma
-          </h1>
-          <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-ink-foreground/80 md:mt-5 md:text-base">
-            Experts en propreté, nous proposons nos services de nettoyage de précision à Balma, avec un équipement professionnel et des produits certifiés. Nos techniciens se déploient avec le matériel professionnel pour un résultat optimal.
-          </p>
-          <div className="mt-4 flex flex-wrap justify-center gap-2.5 md:mt-8">
-            <Button asChild size="xl" className="bg-accent-gradient text-accent-foreground font-bold shadow-[var(--shadow-card)] hover:opacity-90 px-4 md:px-6 h-10 md:h-12 text-xs md:text-sm">
-              <Link to="/formules">Réserver en ligne</Link>
-            </Button>
-            <Button asChild variant="onDark" size="xl" className="px-4 md:px-6 h-10 md:h-12 text-xs md:text-sm">
-              <Link to="/contactez-nous">Demander un devis</Link>
-            </Button>
-          </div>
-          <div className="hidden md:flex mt-6 flex-wrap justify-center gap-4 text-xs text-ink-foreground/60">
-            <span className="inline-flex items-center gap-1"><Clock className="size-3" /> Devis sous 24h</span>
-            <span className="inline-flex items-center gap-1"><CheckCircle2 className="size-3" /> Séchage rapide</span>
-            <span className="inline-flex items-center gap-1"><Shield className="size-3" /> Produits Écolabel</span>
-          </div>
-        </div>
-      </section>
-
-      {/* ── CONTENU SEO ── */}
-      <FadeIn delay={0.1}>
-        <section className="mx-auto max-w-4xl px-4 py-16">
-          <div className="prose prose-sm md:prose-base max-w-none text-muted-foreground [&>p]:mb-5 [&>ul]:mb-5 [&>h2]:mt-10 [&>h2]:mb-4">
-            <h2>Nos prestations de nettoyage à Balma</h2>
-            <p>
-              Balma, à 8 km à l'est de Toulouse, est une commune résidentielle calme de 13 000 habitants, avec de nombreuses villas et maisons de qualité dans les quartiers du Bouloc, du Garossos et des Tournesols. Proche du parc d'activités de Gramont, elle attire de nombreux cadres toulousains qui apprécient son cadre de vie soigné.
-            </p>
-            <ul>
-              <li><strong>Nettoyage de canapés et fauteuils :</strong> Traitement des taches, ravivement des couleurs et traitement anti-odeur pour vos salons en tissu, cuir ou velours.</li>
-              <li><strong>Entretien de matelas :</strong> Désinfection approfondie, traitement anti-acariens (traitement professionnel) et traitement des auréoles.</li>
-              <li><strong>Shampouinage de tapis et moquettes :</strong> Nettoyage recto-verso et extraction des salissures incrustées au cœur des fibres.</li>
-              <li><strong>Nettoyage automobile à domicile :</strong> Lavage intérieur complet de votre véhicule directement chez vous à Balma.</li>
-              <li><strong>Prestations pour le bâtiment :</strong> Nettoyage de fin de chantier, fin de bail, vitrerie, terrasses et façades.</li>
-            </ul>
-
-            <h2>Pourquoi faire appel à notre entreprise ?</h2>
-            <p>Clean&Fresh intervient régulièrement à Balma pour le nettoyage de canapés, tapis et matelas dans les maisons individuelles et appartements de la commune. L'accès est rapide depuis Toulouse par la D112, et nos techniciens arrivent équipés et à l'heure.</p>
-            <p>La clientèle de Balma est souvent exigeante sur la qualité et apprécie nos produits certifiés Écolabel, sans résidu ni odeur chimique après séchage. Nos machines professionnelles garantissent un résultat visible dès la fin de l'intervention. Devis gratuit sous 24h.</p>
-            
-            <h2>Comment se déroule notre intervention ?</h2>
-            <p>
-              Le processus est simple : vous prenez rendez-vous en ligne ou par téléphone. À la date convenue, notre technicien se présente à votre adresse à Balma avec son équipement complet. 
-              Nous protégeons les zones environnantes, puis procédons au traitement : aspiration minutieuse, application des produits détachants, brossage, et enfin injection-extraction.
-            </p>
-
-            <h2>Nos services de nettoyage à Balma</h2>
-            <p>
-              Clean&Fresh intervient à Balma pour l'ensemble de ses prestations :{" "}
-              <Link to="/nettoyage-canape-toulouse" className="text-primary font-medium hover:underline">nettoyage de canapé</Link>,{" "}
-              <Link to="/nettoyage-matelas-toulouse" className="text-primary font-medium hover:underline">nettoyage de matelas</Link>,{" "}
-              <Link to="/nettoyage-tapis-toulouse" className="text-primary font-medium hover:underline">shampouinage de tapis</Link>{" "}
-              et <Link to="/nettoyage-auto-a-domicile-toulouse" className="text-primary font-medium hover:underline">nettoyage intérieur auto à domicile</Link>.
-              Mêmes tarifs, même qualité et même équipement professionnel que dans toute l'agglomération toulousaine.
-            </p>
-          </div>
-        </section>
-      </FadeIn>
-
-      {/* ── AVIS ── */}
-      <ReviewsCarousel />
-
-      {/* ── CTA ── */}
-      <FadeIn delay={0.2}>
-        <section className="mx-auto max-w-4xl px-4 pb-16">
-          <div className="rounded-3xl border border-primary/20 bg-card p-8 text-center shadow-[var(--shadow-soft)]">
-            <Sparkles className="mx-auto mb-4 size-10 text-primary" />
-            <h2 className="text-2xl font-bold">Besoin d'une intervention à Balma ?</h2>
-            <p className="mt-2 text-muted-foreground">
-              Obtenez un devis gratuit sous 24h ou réservez directement votre créneau.
-            </p>
-            <div className="mt-6 flex flex-wrap justify-center gap-4">
-              <Button asChild size="lg" className="bg-accent-gradient text-accent-foreground font-bold hover:opacity-90">
-                <Link to="/formules">Réserver en ligne</Link>
-              </Button>
-              <Button asChild variant="outline" size="lg">
-                <a href={COMPANY.phoneHref}>Appeler le {COMPANY.phone}</a>
-              </Button>
-            </div>
-
-          </div>
-        </section>
-      </FadeIn>
-    </div>
-  );
+  const commune = getCommuneData("nettoyage-balma")!;
+  return <LocalCityPage commune={commune} />;
 }

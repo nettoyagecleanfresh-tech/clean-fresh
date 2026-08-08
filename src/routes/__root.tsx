@@ -154,10 +154,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:description", content: "Clean&Fresh, entreprise de nettoyage à Toulouse : canapé, matelas, tapis, auto, vitres, façade, fin de chantier. Résultat soigné. Devis gratuit sous 24h !" },
     ],
     links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
+      { rel: "stylesheet", href: appCss },
+      // Preload de l'image hero — améliore le LCP (Largest Contentful Paint)
+      { rel: "preload", as: "image", href: "/assets/hero-nettoyage.webp", type: "image/webp" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
@@ -165,6 +164,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: "https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Figtree:wght@400;500;600&display=swap",
       },
       { rel: "icon", href: "/logo.png", type: "image/png" },
+      // DNS prefetch pour les services tiers
+      { rel: "dns-prefetch", href: "https://api.web3forms.com" },
     ],
     scripts: [],
   }),

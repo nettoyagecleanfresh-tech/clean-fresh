@@ -100,10 +100,18 @@ export function Footer() {
             <li className="text-ink-foreground/45">Toulouse & agglomération (31)</li>
             <li>
               <Link
+                to="/tarifs"
+                className="hover:text-ink-foreground transition-colors font-medium"
+              >
+                → Tarifs & prix
+              </Link>
+            </li>
+            <li>
+              <Link
                 to="/formules"
                 className="hover:text-ink-foreground transition-colors font-medium"
               >
-                → Tarifs & formules
+                → Réserver en ligne
               </Link>
             </li>
             <li>

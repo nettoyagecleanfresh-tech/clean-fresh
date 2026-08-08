@@ -1,4 +1,10 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://cleanetfresh.fr/sitemap.xml
+# Pages utilitaires — pas besoin d'indexer
+Disallow: /annuler
+Disallow: /envoyer-avis
+Disallow: /upsell
+
+# Sitemap
+Sitemap: https://www.cleanetfresh.fr/sitemap.xml
