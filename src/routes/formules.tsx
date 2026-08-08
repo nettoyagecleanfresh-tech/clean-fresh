@@ -106,6 +106,17 @@ const AUTO_PACKS = [
       { name: "Nettoyage du ciel de toit", price: 29, popular: false },
     ],
   },
+  {
+    id: "siege", emoji: "💺", name: "Rénovation siège", price: "59 €", tagline: "Ciblé", duration: "45 min",
+    badge: null as string | null, featured: false,
+    included: ["Injection-extraction d'un siège", "Élimination des taches tenaces", "Traitement des auréoles", "Résultat visible immédiatement"],
+    options: [
+      { name: "Traitement anti-acariens et bactériens", price: 19, popular: true },
+      { name: "Élimination des poils d'animaux", price: 25, popular: false },
+      { name: "Détachage intensif — siège très taché", price: 19, popular: false },
+      { name: "Traitement anti-odeur (tabac, animaux)", price: 15, popular: true },
+    ],
+  },
 ];
 
 // ─── SHARED COMPONENTS ────────────────────────────────────────────────────────
@@ -485,6 +496,7 @@ const AUTO_IMAGES: Record<string, string> = {
   "bronze": "/images/auto/bronze.png",
   "argent": "/images/auto/argent.png",
   "or": "/images/auto/or.png",
+  "siege": "/images/auto/renov.png",
 };
 
 const AUTO_GRID_ITEMS = [
@@ -497,7 +509,7 @@ function AutoDetail() {
 
   return (
     <div>
-      <div className="grid grid-cols-3 gap-3 mb-6">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
         {AUTO_GRID_ITEMS.map((c) => {
           const isSelected = selected === c.id;
           return (
