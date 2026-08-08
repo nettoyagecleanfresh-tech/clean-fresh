@@ -24,6 +24,7 @@ const Chatbot = lazy(() =>
   import("@/components/site/Chatbot").then((m) => ({ default: m.Chatbot }))
 );
 import { Button } from "@/components/ui/button";
+import { Analytics } from "@vercel/analytics/react";
 
 function NotFoundComponent() {
   return (
@@ -226,6 +227,7 @@ function RootComponent() {
         <Chatbot />
       </Suspense>
       <Toaster />
+      <Analytics />
     </QueryClientProvider>
   );
 }
