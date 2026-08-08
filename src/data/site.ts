@@ -122,7 +122,7 @@ export const SERVICES: Service[] = [
     ],
     prices: [
       { label: "Fauteuil", price: "49 €", items: ["Nettoyage assise, dossier et coussin", "Élimination des taches et auréoles", "Neutralisation des mauvaises odeurs", "Séchage rapide — réutilisable le jour même"], formuleId: "fauteuil" },
-      { label: "Canapé 2/3 places", price: "79 €", items: ["Nettoyage assise, dossier et coussins", "Élimination des taches et auréoles", "Neutralisation des mauvaises odeurs", "Séchage rapide — réutilisable le jour même"], note: "Le plus demandé", formuleId: "canape-2" },
+      { label: "Canapé 2/3 places", price: "79 €", items: ["Nettoyage assise, dossier et coussins", "Élimination des taches et auréoles", "Neutralisation des mauvaises odeurs", "Séchage rapide — réutilisable le jour même"], formuleId: "canape-2" },
       { label: "Canapé 4/5 places", price: "99 €", items: ["Nettoyage assise, dossier et coussins", "Élimination des taches et auréoles", "Neutralisation des mauvaises odeurs", "Séchage rapide — réutilisable le jour même"], formuleId: "canape-45" },
       { label: "Canapé en U / Angle", price: "99 €", items: ["Grande surface traitée en profondeur", "Élimination des taches et auréoles", "Neutralisation des mauvaises odeurs", "Séchage rapide — réutilisable le jour même"], formuleId: "canape-angle" },
       { label: "Pouf", price: "19 €", items: ["Tissu, velours, toutes matières", "Élimination des taches et auréoles", "Neutralisation des mauvaises odeurs"], formuleId: "pouf" },
@@ -239,7 +239,7 @@ export const SERVICES: Service[] = [
     ],
     prices: [
       { label: "1 tapis", price: "49 €", items: ["Nettoyage en profondeur par injection-extraction", "Fibres et couleurs ravivées", "Élimination des taches et auréoles", "Neutralisation des mauvaises odeurs"], formuleId: "tapis-1" },
-      { label: "2 tapis", price: "79 €", items: ["Nettoyage en profondeur par injection-extraction", "Fibres et couleurs ravivées", "Élimination des taches et auréoles", "Neutralisation des mauvaises odeurs"], note: "Économique", formuleId: "tapis-2" },
+      { label: "2 tapis", price: "79 €", items: ["Nettoyage en profondeur par injection-extraction", "Fibres et couleurs ravivées", "Élimination des taches et auréoles", "Neutralisation des mauvaises odeurs"], formuleId: "tapis-2" },
       { label: "3 tapis", price: "99 €", items: ["Nettoyage en profondeur par injection-extraction", "Fibres et couleurs ravivées", "Élimination des taches et auréoles", "Neutralisation des mauvaises odeurs"], formuleId: "tapis-3" },
     ],
     priceNote: "Tarifs sur devis selon la surface et la nature de la fibre — réponse sous 24h.",
@@ -291,9 +291,9 @@ export const SERVICES: Service[] = [
       "Poussière et sable dans les moquettes",
     ],
     prices: [
-      { label: "🥉 Pack Bronze", price: "69 €", items: ["Aspiration complète habitacle + coffre", "Nettoyage et rénovation des plastiques", "Remise en état visuel de l'habitacle"], note: "Idéal pour un entretien rapide et retrouver un intérieur propre au quotidien", formuleId: "bronze" },
-      { label: "🥈 Pack Argent", price: "99 €", items: ["Tout le Pack Bronze inclus", "Injection-extraction des sièges tissu", "Vitres intérieures nettoyées sans traces", "Élimination des taches incrustées"], note: "Le plus vendu — habitacle transformé en 1h30", formuleId: "argent" },
-      { label: "🥇 Pack Or", price: "129 €", items: ["Tout le Pack Argent inclus", "Injection-extraction moquettes + coffre", "Shampouinage des tapis de sol", "Nettoyage contour et bas de porte"], note: "Idéal avant une revente — objectif état showroom", formuleId: "or" },
+      { label: "🥉 Pack Bronze", price: "69 €", items: ["Aspiration complète habitacle + coffre", "Nettoyage et rénovation des plastiques", "Remise en état visuel de l'habitacle"], formuleId: "bronze" },
+      { label: "🥈 Pack Argent", price: "99 €", items: ["Tout le Pack Bronze inclus", "Injection-extraction des sièges tissu", "Vitres intérieures nettoyées sans traces", "Élimination des taches incrustées"], formuleId: "argent" },
+      { label: "🥇 Pack Or", price: "129 €", items: ["Tout le Pack Argent inclus", "Injection-extraction moquettes + coffre", "Shampouinage des tapis de sol", "Nettoyage contour et bas de porte"], formuleId: "or" },
       { label: "Rénovation siège auto", price: "59 €", items: ["Siège traité en profondeur (tissu/Alcantara)", "Élimination des taches incrustées", "Neutralisation des mauvaises odeurs"], formuleId: "siege" },
     ],
     priceNote: "Tarifs sur devis selon la taille du véhicule et son état — réponse sous 24h.",
