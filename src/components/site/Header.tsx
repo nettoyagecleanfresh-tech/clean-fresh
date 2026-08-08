@@ -52,7 +52,7 @@ export function Header() {
             <button className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-foreground/75 transition-colors hover:text-primary">
               Nos services <ChevronDown className={`size-3.5 transition-transform ${desktopOpen ? "rotate-180" : ""}`} />
             </button>
-            <div className={`absolute left-0 top-full w-80 rounded-2xl border border-border bg-card pt-2 shadow-[var(--shadow-card)] ${desktopOpen ? "block" : "hidden"}`}>
+            <div className={`absolute left-0 top-full w-80 rounded-2xl border border-border bg-card pt-2 shadow-[var(--shadow-card)] max-h-[calc(100vh-5rem)] overflow-y-auto ${desktopOpen ? "block" : "hidden"}`}>
               <div className="px-3 pb-2">
                 <p className="px-2 py-1.5 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Textile &amp; Auto</p>
                 {MENU_TEXTILE.map((s) => (
