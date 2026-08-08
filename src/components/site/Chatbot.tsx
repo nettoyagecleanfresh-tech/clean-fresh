@@ -71,6 +71,7 @@ async function sendViaWeb3Forms(data: {
 // Sends query to Ollama or compatible API (e.g. Hostinger API Gateway)
 async function queryOllama(userMessage: string): Promise<string> {
   const apiURL = import.meta.env.VITE_OLLAMA_API_URL || "http://localhost:11434/api/chat";
+  // Ne jamais logguer ni exposer apiKey — uniquement utilisé dans les headers Authorization
   const apiKey = import.meta.env.VITE_OLLAMA_API_KEY || "";
   const apiModel = import.meta.env.VITE_OLLAMA_MODEL || "llama3";
 

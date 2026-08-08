@@ -9,7 +9,7 @@ import {
   ScrollRestoration,
   useLocation,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { useEffect, lazy, Suspense, type ReactNode } from "react";
 import { Home, CalendarCheck, Sofa, Sparkles, Phone } from "lucide-react";
 
 import appCss from "../styles.css?url";
@@ -19,7 +19,10 @@ import { Header } from "@/components/site/Header";
 import { Footer, StickyCallCta } from "@/components/site/Footer";
 import { TopBanner } from "@/components/site/TopBanner";
 import { Toaster } from "@/components/ui/sonner";
-import { Chatbot } from "@/components/site/Chatbot";
+// Chatbot chargé en lazy — évite d'alourdir le bundle initial (Framer Motion + FAQ + Ollama)
+const Chatbot = lazy(() =>
+  import("@/components/site/Chatbot").then((m) => ({ default: m.Chatbot }))
+);
 import { Button } from "@/components/ui/button";
 
 function NotFoundComponent() {
@@ -218,7 +221,9 @@ function RootComponent() {
         <Footer />
       </div>
       <StickyCallCta />
-      <Chatbot />
+      <Suspense fallback={null}>
+        <Chatbot />
+      </Suspense>
       <Toaster />
     </QueryClientProvider>
   );

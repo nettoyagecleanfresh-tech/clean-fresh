@@ -1,11 +1,12 @@
 import nodemailer from "nodemailer";
 
 export async function sendMailRaw({ to, subject, html }: { to: string; subject: string; html: string }) {
-  const user = process.env.VITE_GMAIL_USER;
-  const pass = process.env.VITE_GMAIL_APP_PASSWORD;
+  // GMAIL_USER / GMAIL_APP_PASSWORD sans préfixe VITE_ → jamais exposés dans le bundle client
+  const user = process.env.GMAIL_USER ?? process.env.VITE_GMAIL_USER;
+  const pass = process.env.GMAIL_APP_PASSWORD ?? process.env.VITE_GMAIL_APP_PASSWORD;
 
   if (!user || !pass) {
-    console.warn("[Nodemailer] VITE_GMAIL_USER ou VITE_GMAIL_APP_PASSWORD manquant.");
+    console.warn("[Nodemailer] GMAIL_USER ou GMAIL_APP_PASSWORD manquant.");
     return { success: false, error: "Identifiants manquants" };
   }
 
