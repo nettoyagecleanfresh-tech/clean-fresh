@@ -735,7 +735,7 @@ function FormulesPage() {
                 <Link
                   key={cat.id}
                   to="/reserver"
-                  search={{ service: cat.id, formule: "" }}
+                  search={{ service: cat.id, formule: "", from: "formules" }}
                   onClick={() => window.scrollTo(0, 0)}
                   className="relative flex flex-col rounded-2xl border border-border bg-white p-4 md:p-5 text-left transition-all shadow-sm hover:shadow-md hover:border-primary/40 hover:-translate-y-0.5 group"
                 >
