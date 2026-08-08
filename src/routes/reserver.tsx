@@ -215,7 +215,7 @@ function Sidebar({
     "";
 
   return (
-    <aside className="sticky top-24 rounded-2xl border border-border bg-card p-6 shadow-[var(--shadow-card)] hidden lg:block">
+    <aside className="sticky top-24 rounded-2xl border border-border bg-card p-6 shadow-[var(--shadow-card)] hidden lg:block max-h-[calc(100vh-8rem)] overflow-y-auto">
       <h2 className="text-lg font-bold">Votre réservation</h2>
 
       <div className="mt-4 border-t border-border pt-4 space-y-3">
