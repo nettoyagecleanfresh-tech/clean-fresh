@@ -25,7 +25,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { COMMUNES, COMPANY, SERVICES, SITE_URL } from "@/data/site";
+import { COMMUNES, COMPANY, SERVICES, SITE_URL, GOOGLE_REVIEW_COUNT } from "@/data/site";
 import { ReviewsCarousel } from "@/components/site/ReviewsCarousel";
 import { FadeIn } from "@/components/ui/fade-in";
 import heroImg from "@/assets/hero-nettoyage.webp";
@@ -101,7 +101,7 @@ export const Route = createFileRoute("/")({
           aggregateRating: {
             "@type": "AggregateRating",
             ratingValue: "4.9",
-            reviewCount: "101",
+            reviewCount: String(GOOGLE_REVIEW_COUNT),
             bestRating: "5",
             worstRating: "1",
           },
@@ -270,7 +270,7 @@ function Index() {
                         <Star className="size-3.5 fill-current" />
                         <Star className="size-3.5 fill-current" />
                       </div>
-                      <span className="text-xs text-gray-500 font-medium ml-0.5">(101 avis)</span>
+                      <span className="text-xs text-gray-500 font-medium ml-0.5">({GOOGLE_REVIEW_COUNT} avis)</span>
                     </div>
                   </div>
                 </a>
@@ -378,7 +378,7 @@ function Index() {
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <p className="text-xs font-bold uppercase tracking-widest text-primary">Nos prestations</p>
-            <h2 className="mt-2 text-4xl font-bold tracking-tight">13 services de nettoyage</h2>
+            <h2 className="mt-2 text-4xl font-bold tracking-tight">14 services de nettoyage</h2>
             <p className="mt-2 max-w-2xl text-muted-foreground">
               À domicile ou sur site, pour particuliers et professionnels à Toulouse et sa banlieue.
             </p>

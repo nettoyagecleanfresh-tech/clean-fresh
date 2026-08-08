@@ -1,6 +1,7 @@
 import { Star, ExternalLink, ChevronRight, ChevronLeft } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 import { useCallback, useEffect, useState } from "react";
+import { GOOGLE_REVIEW_COUNT } from "@/data/site";
 
 const ALL_REVIEWS = [
   {
@@ -257,7 +258,7 @@ export function ReviewsCarousel({ category }: { category?: string }) {
                     </span>
                   </span>
                 </div>
-                <span className="text-sm text-muted-foreground">(101 avis)</span>
+                <span className="text-sm text-muted-foreground">({GOOGLE_REVIEW_COUNT} avis)</span>
               </div>
             </div>
           </div>

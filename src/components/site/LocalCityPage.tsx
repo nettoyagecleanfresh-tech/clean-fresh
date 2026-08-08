@@ -21,7 +21,7 @@ export function LocalCityPage({ commune }: Props) {
             <MapPin className="size-3" /> Intervention à {name}
           </span>
           <h1 className="mt-3 text-3xl font-bold leading-tight tracking-tight md:mt-5 md:text-5xl">
-            Entreprise de nettoyage à {name}
+            {name === "Toulouse" ? "Nettoyage à domicile à Toulouse" : `Entreprise de nettoyage à ${name}`}
           </h1>
           <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-ink-foreground/80 md:mt-5 md:text-base">
             {para1}
@@ -84,7 +84,9 @@ export function LocalCityPage({ commune }: Props) {
 
             <h2>Nos tarifs à {name}</h2>
             <p>
-              Nos prix à {name} sont identiques à ceux pratiqués à Toulouse — aucun supplément selon la commune.{" "}
+              {name === "Toulouse"
+                ? "Nos tarifs sont transparents et identiques dans toute notre zone d'intervention autour de Toulouse."
+                : `Nos prix à ${name} sont identiques à ceux pratiqués à Toulouse — aucun supplément selon la commune.`}{" "}
               Retrouvez tous nos tarifs détaillés sur la <Link to="/tarifs" className="text-primary font-medium hover:underline">page tarifs</Link>{" "}
               ou contactez-nous pour un devis personnalisé selon votre situation.
             </p>

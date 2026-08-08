@@ -1,4 +1,4 @@
-import { SITE_URL, COMPANY, type Service } from "@/data/site";
+import { SITE_URL, COMPANY, GOOGLE_REVIEW_COUNT, type Service } from "@/data/site";
 
 // ──────────────────────────────────────────────────────────────────────────────
 // SchemaOrg — JSON-LD injection component
@@ -63,7 +63,7 @@ export function SchemaLocalBusiness() {
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: "4.9",
-      reviewCount: "101",
+      reviewCount: String(GOOGLE_REVIEW_COUNT),
       bestRating: "5",
       worstRating: "1",
     },
