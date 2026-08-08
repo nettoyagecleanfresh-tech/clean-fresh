@@ -192,23 +192,47 @@ export async function sendBookingEmailsRaw(b: BookingPayload): Promise<string> {
 
   // ── EMAIL CLIENT ────────────────────────────────────────────────────────────
   const clientContent = `
-    ${emailHeader("RÉSERVATION CONFIRMÉE")}
+    ${emailHeader("COMMANDE CONFIRMÉE", "#00b8ff")}
     <tr><td class="px" style="padding:32px 28px 8px 28px;">
-      <h1 style="margin:0 0 10px 0;font-size:22px;font-weight:bold;color:#0f2c3f;">Bonjour ${b.client_name},</h1>
+      <h1 style="margin:0 0 10px 0;font-size:24px;font-weight:900;color:#0f2c3f;letter-spacing:-0.5px;">Félicitations pour votre réservation ! 🎉</h1>
       <p style="margin:0;font-size:15px;line-height:24px;color:#2f4d64;">
-        Votre demande pour la prestation <strong style="color:#0f2c3f;">${formuleName}</strong> a bien été enregistrée.<br>
-        Voici le récapitulatif complet de votre commande&nbsp;<strong>n°${orderNumber}</strong>.
+        Bonjour <strong>${b.client_name}</strong>,<br>
+        Votre commande pour la prestation <strong style="color:#0f2c3f;">${formuleName}</strong> est confirmée avec succès.<br>
+        Préparez-vous à redécouvrir votre intérieur sous son meilleur jour ! ✨ Nos experts ont hâte de prendre soin de votre bien avec nos méthodes professionnelles.
       </p>
+    </td></tr>
+
+    <!-- Coordonnées client -->
+    <tr><td class="px" style="padding:20px 28px 0 28px;">
+      <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#f6faff;border:1px solid #dce7f2;border-radius:12px;">
+        <tr><td style="padding:16px 20px 4px 20px;font-size:11px;font-weight:bold;letter-spacing:1.2px;text-transform:uppercase;color:#3b6a7c;">Vos coordonnées</td></tr>
+        <tr><td style="padding:0 20px 16px 20px;">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <tr>
+              <td class="stack" width="160" style="padding:8px 0;border-bottom:1px solid #e7eef6;font-size:13px;color:#5b7b8e;vertical-align:top;">Nom & Prénom</td>
+              <td class="stack" style="padding:8px 0;border-bottom:1px solid #e7eef6;font-size:14px;color:#0f2c3f;vertical-align:top;"><strong>${b.client_name}</strong></td>
+            </tr>
+            <tr>
+              <td class="stack" width="160" style="padding:8px 0;border-bottom:1px solid #e7eef6;font-size:13px;color:#5b7b8e;vertical-align:top;">Adresse mail</td>
+              <td class="stack" style="padding:8px 0;border-bottom:1px solid #e7eef6;font-size:14px;color:#0093cc;vertical-align:top;"><a href="mailto:${b.client_email}" style="color:#0093cc;text-decoration:none;">${b.client_email}</a></td>
+            </tr>
+            <tr>
+              <td class="stack" width="160" style="padding:8px 0;font-size:13px;color:#5b7b8e;vertical-align:top;">Numéro de téléphone</td>
+              <td class="stack" style="padding:8px 0;font-size:14px;color:#0f2c3f;vertical-align:top;">${b.client_phone}</td>
+            </tr>
+          </table>
+        </td></tr>
+      </table>
     </td></tr>
 
     <!-- Détails intervention -->
     <tr><td class="px" style="padding:20px 28px 0 28px;">
-      <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#f6faff;border:1px solid #dce7f2;border-radius:12px;">
-        <tr><td style="padding:16px 20px 4px 20px;font-size:11px;font-weight:bold;letter-spacing:1.2px;text-transform:uppercase;color:#3b6a7c;">📅 Détails de l'intervention</td></tr>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#ffffff;border:1px solid #dce7f2;border-radius:12px;">
+        <tr><td style="padding:16px 20px 4px 20px;font-size:11px;font-weight:bold;letter-spacing:1.2px;text-transform:uppercase;color:#3b6a7c;">📅 Date & Lieu</td></tr>
         <tr><td style="padding:0 20px 16px 20px;">
           <table border="0" cellpadding="0" cellspacing="0" width="100%">
             <tr>
-              <td class="stack" width="160" style="padding:8px 0;border-bottom:1px solid #e7eef6;font-size:13px;color:#5b7b8e;vertical-align:top;">Date</td>
+              <td class="stack" width="160" style="padding:8px 0;border-bottom:1px solid #e7eef6;font-size:13px;color:#5b7b8e;vertical-align:top;">Date d'intervention</td>
               <td class="stack" style="padding:8px 0;border-bottom:1px solid #e7eef6;font-size:15px;color:#0f2c3f;vertical-align:top;"><strong>${formattedDate}</strong></td>
             </tr>
             <tr>
@@ -220,12 +244,8 @@ export async function sendBookingEmailsRaw(b: BookingPayload): Promise<string> {
               <td class="stack" style="padding:8px 0;border-bottom:1px solid #e7eef6;font-size:14px;color:#0f2c3f;vertical-align:top;">${duration}</td>
             </tr>
             <tr>
-              <td class="stack" width="160" style="padding:8px 0;border-bottom:1px solid #e7eef6;font-size:13px;color:#5b7b8e;vertical-align:top;">Adresse</td>
-              <td class="stack" style="padding:8px 0;border-bottom:1px solid #e7eef6;font-size:14px;color:#0f2c3f;vertical-align:top;">${fullAddress}</td>
-            </tr>
-            <tr>
-              <td class="stack" width="160" style="padding:8px 0;font-size:13px;color:#5b7b8e;vertical-align:top;">Téléphone client</td>
-              <td class="stack" style="padding:8px 0;font-size:14px;color:#0f2c3f;vertical-align:top;">${b.client_phone}</td>
+              <td class="stack" width="160" style="padding:8px 0;font-size:13px;color:#5b7b8e;vertical-align:top;">Adresse</td>
+              <td class="stack" style="padding:8px 0;font-size:14px;color:#0f2c3f;vertical-align:top;">${fullAddress}</td>
             </tr>
           </table>
         </td></tr>
@@ -233,30 +253,29 @@ export async function sendBookingEmailsRaw(b: BookingPayload): Promise<string> {
     </td></tr>
 
     <!-- Récap commande -->
-    <tr><td class="px" style="padding:16px 28px 0 28px;">
+    <tr><td class="px" style="padding:20px 28px 0 28px;">
       <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border:1px solid #dce7f2;border-radius:12px;">
-        <tr><td colspan="2" style="padding:16px 20px 10px 20px;font-size:11px;font-weight:bold;letter-spacing:1.2px;text-transform:uppercase;color:#3b6a7c;">🧾 Récapitulatif de la commande</td></tr>
+        <tr><td colspan="2" style="padding:16px 20px 10px 20px;font-size:11px;font-weight:bold;letter-spacing:1.2px;text-transform:uppercase;color:#3b6a7c;">🧾 Détail de votre prestation</td></tr>
         ${itemsHtml}
         <tr><td colspan="2" style="padding:10px 20px 0 20px;"><div style="height:1px;background-color:#e7eef6;font-size:0;">&nbsp;</div></td></tr>
         <tr>
           <td width="70%" style="padding:14px 8px 14px 20px;border-top:1px solid #dce7f2;font-size:14px;color:#0f2c3f;background-color:#f6faff;"><strong>Total estimé</strong></td>
-          <td width="30%" align="right" style="padding:14px 20px 14px 8px;border-top:1px solid #dce7f2;font-size:20px;color:#0093cc;background-color:#f6faff;"><strong>${b.total_price}&nbsp;&euro;</strong></td>
+          <td width="30%" align="right" style="padding:14px 20px 14px 8px;border-top:1px solid #dce7f2;font-size:22px;color:#0093cc;background-color:#f6faff;"><strong>${b.total_price}&nbsp;&euro;</strong></td>
         </tr>
-        <tr><td colspan="2" style="padding:0 20px 14px 20px;font-size:11px;color:#6b8ba0;background-color:#f6faff;">Paiement après l'intervention. Montant susceptible d'évoluer si l'état du bien diffère des informations transmises.</td></tr>
+        <tr><td colspan="2" style="padding:0 20px 14px 20px;font-size:11px;color:#6b8ba0;background-color:#f6faff;">Paiement sur place après intervention. Le montant final est susceptible d'évoluer si l'état réel diffère des informations transmises.</td></tr>
       </table>
     </td></tr>
 
     ${tip ? `
     <!-- Conseil -->
     <tr><td class="px" style="padding:20px 28px 0 28px;">
-      <div style="padding:14px 18px;background-color:#f6faff;border-left:3px solid #00b8ff;border-radius:6px;font-size:14px;line-height:22px;color:#1e3f55;font-style:italic;">${tip}</div>
+      <div style="padding:16px 20px;background-color:#fffbed;border-left:4px solid #fbbc04;border-radius:6px;font-size:14px;line-height:22px;color:#5a4700;font-style:italic;">💡 <strong>Conseil Pro :</strong> ${tip}</div>
     </td></tr>` : ""}
 
     <!-- Action -->
     <tr><td class="px" style="padding:24px 28px 32px 28px;">
       <p style="margin:0 0 16px 0;font-size:14px;line-height:22px;color:#2f4d64;">
-        Si vous avez un imprévu ou souhaitez modifier votre rendez-vous, vous pouvez le faire depuis le lien ci-dessous.<br>
-        En cas de question, n'hésitez pas à nous appeler ou à répondre à cet email.
+        Vous avez un imprévu ? Vous pouvez reprogrammer ou annuler votre rendez-vous très facilement.
       </p>
       <table border="0" cellpadding="0" cellspacing="0">
         <tr>
@@ -265,7 +284,6 @@ export async function sendBookingEmailsRaw(b: BookingPayload): Promise<string> {
           </td>
         </tr>
       </table>
-      <p style="margin:10px 0 0 0;font-size:12px;color:#6b8ba0;">Depuis ce lien, vous pouvez reprogrammer ou annuler votre rendez-vous.</p>
     </td></tr>
     ${emailFooter()}`;
 
@@ -359,8 +377,8 @@ export async function sendBookingEmailsRaw(b: BookingPayload): Promise<string> {
     </td></tr>
     ${emailFooter()}`;
 
-  await sendGmail(b.client_email, `✅ Confirmation de votre réservation — ${formuleName}`, wrapEmail(clientContent));
-  await sendGmail(ownerEmail, `🆕 [Réservation] ${b.client_name} — ${formattedDate} à ${b.booking_time}`, wrapEmail(adminContent));
+  await sendGmail(b.client_email, `Commande confirmée pour ${b.client_name} — Clean&Fresh`, wrapEmail(clientContent));
+  await sendGmail(ownerEmail, `Nouvelle commande pour ${b.client_name} — ${b.items.length} prestation(s)`, wrapEmail(adminContent));
 
   return "";
 }
