@@ -155,7 +155,7 @@ const QUICK_SERVICES = [
 const STATS = [
   { value: "500+", label: "Interventions réalisées" },
   { value: "24h", label: "Délai devis" },
-  { value: "13", label: "Prestations" },
+  { value: "14", label: "Prestations" },
   { value: "Pro", label: "Matériel professionnel" },
 ];
 
@@ -304,7 +304,7 @@ function Index() {
                       <Star className="size-3.5 fill-current" />
                       <Star className="size-3.5 fill-current" />
                     </div>
-                    <span className="text-xs text-gray-500 font-medium ml-0.5">(101 avis)</span>
+                    <span className="text-xs text-gray-500 font-medium ml-0.5">({GOOGLE_REVIEW_COUNT} avis)</span>
                   </div>
                 </div>
               </a>

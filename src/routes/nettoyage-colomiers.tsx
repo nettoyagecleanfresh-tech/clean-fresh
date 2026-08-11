@@ -43,7 +43,7 @@ export const Route = createFileRoute("/nettoyage-colomiers")({
           areaServed: { "@type": "City", name: CITY },
           address: { "@type": "PostalAddress", addressLocality: "Toulouse", addressRegion: "Haute-Garonne", postalCode: "31000", addressCountry: "FR" },
           priceRange: "€€",
-          aggregateRating: { "@type": "AggregateRating", ratingValue: "4.9", reviewCount: "102" },
+          aggregateRating: { "@type": "AggregateRating", ratingValue: "4.9", reviewCount: "103" },
         }),
       },
     ],

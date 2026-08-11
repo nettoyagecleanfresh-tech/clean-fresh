@@ -14,8 +14,15 @@ const TARIF_CATEGORIES = [
     id: "canape",
     icon: <Armchair className="size-7" />,
     title: "Nettoyage Canapé & Fauteuil",
-    priceFrom: "15 €",
+    priceFrom: "49 €",
     bullets: ["Fauteuil, canapé 2/3, 4/5 places", "Canapé U/angle, pouf, chaise", "Options anti-acariens, anti-odeur"],
+  },
+  {
+    id: "cuir",
+    icon: <Armchair className="size-7" />,
+    title: "Nettoyage Cuir",
+    priceFrom: "49 €",
+    bullets: ["Fauteuil, canapé 2/3, 4/5 places", "Sièges auto cuir", "Soin nourrissant protecteur"],
   },
   {
     id: "tapis",

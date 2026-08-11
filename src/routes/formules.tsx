@@ -55,6 +55,19 @@ const CANAPE_OPTIONS = [
   { name: "Traitement anti-odeur", price: 15, desc: "Neutralisation moléculaire des mauvaises odeurs incrustées.", popular: true },
 ];
 
+const CUIR_ITEMS = [
+  { id: "cuir-fauteuil",  label: "Fauteuil",           price: "49 €",        duration: "45 min", desc: "Nettoyage manuel doux et respectueux." },
+  { id: "cuir-canape-2",  label: "Canapé 2/3 places",  price: "79 €",       duration: "1h",     popular: true, desc: "Soin complet et nettoyage à la main." },
+  { id: "cuir-canape-angle", label: "Canapé d'angle",  price: "99 €",       duration: "1h",     desc: "Nettoyage intégral grand format." },
+  { id: "cuir-auto",      label: "Sièges auto",        price: "69 €",       duration: "1h",     desc: "Habitacle complet, nettoyage cuir auto." },
+];
+
+const CUIR_OPTIONS = [
+  { name: "Soin nourrissant & protecteur cuir", price: 35, desc: "Hydrate, assouplit et protège le cuir contre le craquèlement.", popular: true },
+  { name: "Détachage intensif", price: 19, desc: "Traitement ciblé pour les taches spécifiques.", popular: false },
+  { name: "Traitement anti-odeur", price: 15, desc: "Neutralisation moléculaire des mauvaises odeurs incrustées.", popular: false },
+];
+
 const TAPIS_OPTIONS = [
   { name: "Traitement anti-acariens et bactériens", price: 19, desc: "Élimination des acariens et bactéries (traitement professionnel) dans les fibres du tapis.", popular: true },
   { name: "Nettoyage recto-verso", price: 25, desc: "Nettoyage des deux faces du tapis pour un résultat total." },
@@ -72,35 +85,41 @@ const AUTO_PACKS = [
   {
     id: "bronze", emoji: "🥉", name: "Pack Bronze", price: "69 €", tagline: "Entretien régulier", duration: "1h",
     badge: null as string | null, featured: false,
-    included: ["Aspiration complète de l'habitacle", "Nettoyage des plastiques et tableau de bord", "Nettoyage des vitres intérieures", "Nettoyage des tapis de sol", "Résultat professionnel"],
+    included: ["Aspiration complète de l'habitacle", "Nettoyage des plastiques et tableau de bord", "Nettoyage des vitres intérieures", "Nettoyage des tapis de sol"],
     options: [
-      { name: "Traitement anti-acariens et bactériens", price: 19, popular: true },
+      { name: "Protection UV & antistatique plastiques", price: 19, popular: true },
+      { name: "Traitement anti-acariens et bactériens", price: 19, popular: false },
       { name: "Élimination des poils d'animaux", price: 25, popular: false },
-      { name: "Shampouinage des tapis de sol", price: 15, popular: false },
-      { name: "Détachage intensif sur siège", price: 19, popular: false },
       { name: "Traitement anti-odeur (tabac, animaux)", price: 15, popular: true },
       { name: "Nettoyage du ciel de toit", price: 29, popular: false },
+      { name: "Shampouinage des sièges auto", price: 39, popular: false },
     ],
   },
   {
     id: "argent", emoji: "🥈", name: "Pack Argent", price: "99 €", tagline: "Nettoyage complet", duration: "1h30",
     badge: "⭐ Le + vendu" as string | null, featured: true,
-    included: ["Tout le Pack Bronze inclus", "Injection-extraction des sièges tissu", "Vitres sans traces (intérieur + extérieur)", "Joints et recoins traités en détail", "Résultat professionnel"],
+    included: ["Tout le Pack Bronze inclus", "Injection-extraction des sièges tissu", "Vitres sans traces (intérieur + extérieur)", "Joints et recoins traités en détail"],
     options: [
-      { name: "Traitement anti-acariens et bactériens", price: 19, popular: true },
+      { name: "Traitement hydrophobe & anti-taches", price: 55, popular: true },
+      { name: "Traitement enzymatique intensif", price: 19, popular: false },
+      { name: "Protection UV & antistatique plastiques", price: 19, popular: false },
+      { name: "Traitement anti-acariens et bactériens", price: 19, popular: false },
       { name: "Élimination des poils d'animaux", price: 25, popular: false },
-      { name: "Shampouinage des tapis de sol", price: 15, popular: false },
       { name: "Détachage intensif — siège très taché", price: 19, popular: false },
       { name: "Traitement anti-odeur (tabac, animaux)", price: 15, popular: true },
       { name: "Nettoyage du ciel de toit", price: 29, popular: false },
+      { name: "Shampouinage des tapis de sol", price: 15, popular: false },
     ],
   },
   {
     id: "or", emoji: "🥇", name: "Pack Or", price: "129 €", tagline: "État showroom", duration: "2h",
     badge: "✨ Premium" as string | null, featured: false,
-    included: ["Tout le Pack Argent inclus", "Shampouinage injection-extraction moquettes", "Nettoyage complet du coffre", "Nettoyage contour et bas de porte", "Idéal avant revente ou reprise"],
+    included: ["Tout le Pack Argent inclus", "Shampouinage injection-extraction moquettes", "Nettoyage complet du coffre", "Nettoyage contour et bas de porte"],
     options: [
-      { name: "Traitement anti-acariens et bactériens", price: 19, popular: true },
+      { name: "Traitement hydrophobe & anti-taches", price: 99, popular: true },
+      { name: "Traitement enzymatique intensif", price: 19, popular: false },
+      { name: "Protection UV & antistatique plastiques", price: 19, popular: false },
+      { name: "Traitement anti-acariens et bactériens", price: 19, popular: false },
       { name: "Élimination des poils d'animaux", price: 25, popular: false },
       { name: "Détachage intensif — tâche résistante", price: 19, popular: false },
       { name: "Traitement anti-odeur (tabac, animaux)", price: 15, popular: true },
@@ -112,6 +131,7 @@ const AUTO_PACKS = [
     badge: null as string | null, featured: false,
     included: ["Injection-extraction d'un siège", "Élimination des taches tenaces", "Traitement des auréoles", "Résultat visible immédiatement"],
     options: [
+      { name: "Traitement enzymatique intensif", price: 19, popular: false },
       { name: "Traitement anti-acariens et bactériens", price: 19, popular: true },
       { name: "Élimination des poils d'animaux", price: 25, popular: false },
       { name: "Détachage intensif — siège très taché", price: 19, popular: false },
@@ -274,6 +294,88 @@ function CanapeDetail() {
       </div>
 
       <OptionsBlock options={CANAPE_OPTIONS} />
+    </div>
+  );
+}
+
+// ─── CUIR DETAIL ──────────────────────────────────────────────────────────────
+
+const CUIR_IMAGES: Record<string, string> = {
+  "cuir-fauteuil": "/images/canape/fauteuil.png",
+  "cuir-canape-2": "/images/canape/canape-2-3.png",
+  "cuir-canape-angle": "/images/canape/canape-u.png",
+  "cuir-auto": "/images/auto/renov.png",
+};
+
+function CuirDetail() {
+  const [selected, setSelected] = useState("cuir-canape-2");
+  const item = CUIR_ITEMS.find((i) => i.id === selected)!;
+
+  return (
+    <div>
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
+        {CUIR_ITEMS.map((c) => {
+          const isSelected = selected === c.id;
+          return (
+            <button
+              key={c.id}
+              onClick={() => setSelected(c.id)}
+              className={isSelected ? CARD_SELECTED_CLASS : CARD_UNSELECTED_CLASS}
+            >
+
+              <div className={`flex items-center justify-center w-full h-24 sm:h-32 mb-3 mt-1 px-0 transition-colors ${isSelected ? "text-[#1a2b4c]" : "text-primary/70"}`}>
+                <img src={CUIR_IMAGES[c.id]} alt={c.label} className="w-full h-full object-contain mix-blend-multiply scale-125 sm:scale-[1.35]" loading="lazy" />
+              </div>
+
+              <p className="text-[9px] font-semibold uppercase tracking-widest text-muted-foreground/80 leading-none">Dès</p>
+              <p className={`text-lg font-bold leading-tight mt-1 ${isSelected ? "text-[#1a2b4c]" : "text-foreground"}`}>
+                {c.price}
+              </p>
+              <p className="text-[11px] font-medium text-muted-foreground leading-snug mt-1.5 text-center px-1">
+                {c.label}
+              </p>
+              {"duration" in c && c.duration && (
+                <p className="mt-1 flex items-center justify-center gap-1 text-[10px] text-muted-foreground/60 leading-none">
+                  <Clock className="size-2.5 shrink-0" /> {(c as { duration: string }).duration}
+                </p>
+              )}
+            </button>
+          );
+        })}
+      </div>
+
+      <div className="rounded-[24px] border border-primary/10 bg-white p-7 shadow-lg">
+        <div className="flex flex-col sm:flex-row sm:items-start gap-8">
+          <div className="flex-1">
+            <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
+            <div className="mt-5 space-y-2.5">
+              {["Nettoyage manuel professionnel", "Respect du cuir (pH neutre)", "Résultat immédiat", "Option nourrissante disponible"].map((pt) => (
+                <div key={pt} className="flex items-center gap-3 text-sm text-foreground/80 font-medium">
+                  <CheckCircle2 className="size-4.5 shrink-0 text-primary" /> {pt}
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="flex flex-col items-start sm:items-end shrink-0 gap-4 bg-secondary/30 p-5 rounded-2xl w-full sm:w-auto">
+            <div className="sm:text-right">
+              <p className="text-xs text-muted-foreground uppercase tracking-widest font-bold">À partir de</p>
+              <p className="text-5xl font-black text-primary leading-none mt-1">{item.price}</p>
+              {"duration" in item && item.duration && (
+                <p className="flex items-center gap-1.5 sm:justify-end text-xs text-muted-foreground font-medium mt-1.5">
+                  <Clock className="size-3.5 shrink-0" /> {(item as { duration: string }).duration} d'intervention
+                </p>
+              )}
+            </div>
+            <Link to="/reserver" search={{ service: "cuir", formule: selected, from: "formules" }} onClick={() => window.scrollTo(0,0)}
+              className="inline-flex items-center justify-center gap-2 w-full rounded-xl bg-primary px-6 py-3.5 text-sm font-bold text-white shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
+              <CalendarCheck className="size-4" /> Je réserve
+            </Link>
+            <p className="text-xs text-muted-foreground/80 font-medium">Déplacement gratuit · Paiement sur place</p>
+          </div>
+        </div>
+      </div>
+
+      <OptionsBlock options={CUIR_OPTIONS} />
     </div>
   );
 }
@@ -686,10 +788,20 @@ const CATEGORIES = [
     icon: <Armchair className="size-7" />,
     title: "Nettoyage Canapé & Fauteuil",
     sub: "Injection-extraction · Séchage rapide",
-    priceFrom: "15 €",
+    priceFrom: "49 €",
     bullets: ["Fauteuil, canapé 2/3, 4/5 places", "Canapé U/angle, pouf, chaise", "Options anti-acariens, anti-odeur"],
     recommended: false,
     content: <CanapeDetail />,
+  },
+  {
+    id: "cuir",
+    icon: <Armchair className="size-7" />,
+    title: "Nettoyage Cuir",
+    sub: "Nettoyage manuel doux · Soin nourrissant",
+    priceFrom: "49 €",
+    bullets: ["Fauteuil, canapé 2/3, 4/5 places", "Sièges auto cuir", "Traitement nourrissant en option"],
+    recommended: false,
+    content: <CuirDetail />,
   },
   {
     id: "tapis",

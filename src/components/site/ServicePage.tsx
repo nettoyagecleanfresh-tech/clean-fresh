@@ -2,7 +2,7 @@ import { useState, type ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { CalendarCheck, Check, MapPin, Phone, Sparkles, ArrowRight, Clock, Shield, PawPrint, Eraser, Wind, RotateCcw, Sofa, Car as CarIcon, Star, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { COMMUNES, COMPANY, SERVICES, type Service } from "@/data/site";
+import { COMMUNES, COMPANY, SERVICES, type Service, GOOGLE_REVIEW_COUNT } from "@/data/site";
 import { ReviewsCarousel } from "@/components/site/ReviewsCarousel";
 import { FadeIn } from "@/components/ui/fade-in";
 import { SchemaService, SchemaFAQ, SchemaBreadcrumb } from "@/components/site/SchemaOrg";
@@ -299,7 +299,7 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
                         ))}
                         <span className="ml-1 text-sm font-bold">4.9</span>
                       </div>
-                      <p className="text-xs text-muted-foreground mt-0.5">102 avis vérifiés sur Google</p>
+                      <p className="text-xs text-muted-foreground mt-0.5">{GOOGLE_REVIEW_COUNT} avis vérifiés sur Google</p>
                     </div>
                     <ArrowRight className="size-4 text-muted-foreground shrink-0" />
                   </a>
@@ -511,7 +511,7 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
                     aggregateRating: {
                       "@type": "AggregateRating",
                       ratingValue: "4.9",
-                      reviewCount: "102",
+                      reviewCount: GOOGLE_REVIEW_COUNT.toString(),
                     },
                   },
                   areaServed: [

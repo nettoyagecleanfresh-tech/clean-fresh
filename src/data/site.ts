@@ -95,10 +95,10 @@ export const SERVICES: Service[] = [
     h1: "Nettoyage canapé à Toulouse",
     short: "Nettoyage canapé Toulouse",
     subtitle:
-      "Nettoyage en profondeur de vos canapés et fauteuils à domicile, par injection-extraction, à Toulouse et dans toute l'agglomération.",
+      "Nettoyage en profondeur de vos canapés et fauteuils à domicile. À Toulouse et dans toute l'agglomération.",
     metaTitle: "Nettoyage Canapé Toulouse — dès 49 € à domicile | Clean&Fresh",
     metaDescription:
-      "Nettoyage canapé tissu, cuir et microfibre à Toulouse. Injection-extraction, traitement anti-acariens, séchage 2-4h. À domicile. 4.9★ sur Google. Devis gratuit sous 24h !",
+      "Nettoyage canapé tissu, cuir et microfibre à Toulouse. Traitement anti-acariens, séchage 2-4h. À domicile. 4.9★ sur Google. Devis gratuit sous 24h !",
     group: "textile",
     booking: true,
     intro: [
@@ -106,7 +106,7 @@ export const SERVICES: Service[] = [
       "Chaque prestation comprend le nettoyage en profondeur de l'assise, du dossier et des coussins, l'élimination des taches et auréoles ainsi que la neutralisation des mauvaises odeurs. Tissu, microfibre, velours ou cuir : nous adaptons notre méthode à chaque matière pour un résultat impeccable dans le respect du revêtement.",
       "Le nettoyage canapé cuir à Toulouse est l'une de nos spécialités. Contrairement au tissu, le cuir ne supporte pas l'injection-extraction : nous utilisons des nettoyants pH neutre spécifiques, appliqués manuellement, suivis d'un nourrissant protecteur qui restaure la souplesse et l'éclat du revêtement. Le procédé élimine les traces grasses, les auréoles et les micro-rayures sans assécher la surface. Cuir naturel, cuir synthétique ou éco-cuir — le résultat est visible dès la première intervention.",
       "Un canapé en tissu ou en velours se nettoie idéalement une à deux fois par an, ou dès l'apparition d'une tache incrustée. Pour les familles avec enfants ou animaux, un nettoyage régulier élimine les allergènes accumulés dans les fibres et prolonge la durée de vie du meuble. Notre traitement anti-acariens en option est particulièrement recommandé pour les personnes souffrant d'allergies respiratoires.",
-      "Le nettoyage canapé à domicile chez Clean&Fresh utilise exclusivement la technique d'injection-extraction : le produit nettoyant pénètre dans les fibres puis est aspiré avec les salissures et l'eau. Résultat : aucun résidu de mousse, un séchage rapide en 2 à 4 heures et des fibres ravivées sans sur-mouillage.",
+      "Pour les textiles, Clean&Fresh utilise principalement l’injection-extraction afin d’extraire les salissures incrustées. Les surfaces en cuir bénéficient d’un nettoyage manuel professionnel spécifique afin de respecter la matière.",
       "Beaucoup de clients recherchent une shampouineuse canapé à louer ou un nettoyage canapé à la vapeur. Notre injecteur extracteur professionnel va bien au-delà : contrairement à une shampouineuse canapé classique ou à un nettoyeur vapeur canapé, il extrait réellement les salissures incrustées dans les fibres plutôt que de les repousser en profondeur. Le shampouinage canapé par injecteur extracteur donne un résultat visible dès la première intervention, sur tissu comme sur microfibre.",
       "Nous intervenons à Toulouse et dans toute la Haute-Garonne — Blagnac, Colomiers, Tournefeuille, Balma, Cugnaux, Muret, Ramonville-Saint-Agne, Castanet-Tolosan, Plaisance-du-Touch et dans l'ensemble des communes du 31. Devis gratuit sous 24h, intervention possible dès le lendemain.",
     ],
@@ -161,10 +161,10 @@ export const SERVICES: Service[] = [
     h1: "Nettoyage matelas à Toulouse",
     short: "Nettoyage matelas Toulouse",
     subtitle:
-      "Traitement anti-acariens et désinfection de votre matelas à domicile, par injection-extraction, à Toulouse et alentours.",
+      "Nettoyage en profondeur du matelas par injection-extraction. Traitements complémentaires disponibles en option : anti-acariens, anti-odeur, enzymatique et protection textile.",
     metaTitle: "Nettoyage Matelas Toulouse — Anti-acariens à domicile | Clean&Fresh",
     metaDescription:
-      "Nettoyage et désinfection de matelas à domicile à Toulouse. Traitement anti-acariens, élimination allergènes et mauvaises odeurs. 4.9★ Google. Devis gratuit sous 24h.",
+      "Nettoyage de matelas à domicile à Toulouse. Traitements complémentaires disponibles en option : anti-acariens, anti-odeur, enzymatique et protection textile. 4.9★ Google. Devis gratuit sous 24h.",
     group: "textile",
     booking: true,
     intro: [
@@ -294,10 +294,10 @@ export const SERVICES: Service[] = [
       "Poussière et sable dans les moquettes",
     ],
     prices: [
-      { label: "🥉 Pack Bronze", price: "69 €", items: ["Aspiration complète habitacle + coffre", "Nettoyage et rénovation des plastiques", "Remise en état visuel de l'habitacle"], formuleId: "bronze" },
-      { label: "🥈 Pack Argent", price: "99 €", items: ["Tout le Pack Bronze inclus", "Injection-extraction des sièges tissu", "Vitres intérieures nettoyées sans traces", "Élimination des taches incrustées"], formuleId: "argent" },
-      { label: "🥇 Pack Or", price: "129 €", items: ["Tout le Pack Argent inclus", "Injection-extraction moquettes + coffre", "Shampouinage des tapis de sol", "Nettoyage contour et bas de porte"], formuleId: "or" },
-      { label: "Rénovation siège auto", price: "59 €", items: ["Siège traité en profondeur (tissu/Alcantara)", "Élimination des taches incrustées", "Neutralisation des mauvaises odeurs"], formuleId: "siege" },
+      { label: "🥉 Pack Bronze", price: "69 €", items: ["Aspiration complète de l'habitacle", "Nettoyage des plastiques et tableau de bord", "Nettoyage des vitres intérieures", "Nettoyage des tapis de sol"], formuleId: "bronze" },
+      { label: "🥈 Pack Argent", price: "99 €", items: ["Tout le Pack Bronze inclus", "Injection-extraction des sièges tissu", "Vitres sans traces (intérieur + extérieur)", "Joints et recoins traités en détail"], formuleId: "argent" },
+      { label: "🥇 Pack Or", price: "129 €", items: ["Tout le Pack Argent inclus", "Shampouinage injection-extraction moquettes", "Nettoyage complet du coffre", "Nettoyage contour et bas de porte"], formuleId: "or" },
+      { label: "Rénovation siège auto", price: "59 €", items: ["Injection-extraction d'un siège", "Élimination des taches tenaces", "Traitement des auréoles", "Résultat visible immédiatement"], formuleId: "siege" },
     ],
     priceNote: "Tarifs sur devis selon la taille du véhicule et son état — réponse sous 24h.",
     soils: ["Nourriture et boissons", "Tabac", "Poils d'animaux", "Transpiration", "Boue"],
@@ -778,6 +778,60 @@ export const SERVICES: Service[] = [
       { q: "Peut-on enlever des taches anciennes de café ou de vin sur une moquette ?", a: "Oui, dans la majorité des cas. Notre technique d'injection-extraction et nos produits professionnels traitent efficacement les taches incrustées. Plus la tache est ancienne, plus le prétraitement est intensif — mais les résultats sont souvent remarquables, même sur des taches de plusieurs années." },
       { q: "Nettoyez-vous les moquettes de bureaux et de commerces à Toulouse ?", a: "Oui, nous intervenons pour les professionnels : bureaux, hôtels, cabinets médicaux, commerces. Nous proposons des contrats d'entretien régulier en dehors des heures d'activité, avec tarifs dégressifs pour les grandes surfaces." },
       { q: "Quelle différence entre un nettoyage vapeur et votre méthode injection-extraction ?", a: "La vapeur humidifie en surface sans vraiment extraire les salissures. L'injection-extraction injecte une solution nettoyante dans les fibres et l'aspire avec les saletés — résultat plus profond, fibres réellement nettoyées et séchage comparable." },
+    ],
+  },
+  {
+    slug: "/nettoyage-cuir-toulouse",
+    navLabel: "Nettoyage cuir Toulouse",
+    h1: "Nettoyage cuir professionnel à Toulouse – Canapé, fauteuil et sièges auto",
+    short: "Nettoyage cuir Toulouse",
+    subtitle:
+      "Soin complet pour vos canapés, fauteuils et sièges auto en cuir. Nettoyage doux et traitement protecteur.",
+    metaTitle: "Nettoyage cuir Toulouse | Canapé, fauteuil & sièges auto",
+    metaDescription:
+      "Nettoyage professionnel du cuir à Toulouse : canapé, fauteuil et sièges auto. Nettoyage doux, soin et protection du cuir à domicile.",
+    group: "textile",
+    booking: true,
+    intro: [
+      "Clean&Fresh réalise le nettoyage professionnel du cuir à Toulouse et en Haute-Garonne : canapés, fauteuils et sièges automobiles.",
+      "Le cuir bénéficie d’un protocole spécifique avec nettoyage manuel doux, brosse adaptée et produit professionnel, sans injection-extraction sur le cuir véritable.",
+      "Un traitement nourrissant et protecteur peut ensuite être appliqué en option afin de préserver la souplesse et l’aspect naturel du cuir.",
+      "Nous adaptons nos techniques et produits professionnels (pH neutre) pour éliminer les salissures de surface et les traces de gras sans abîmer ou assécher la matière.",
+    ],
+    treated: [
+      "Canapés et fauteuils en cuir véritable",
+      "Sièges auto en cuir",
+      "Simili-cuir et éco-cuir de qualité",
+      "Chaises et poufs en cuir",
+    ],
+    problems: [
+      "Cuir encrassé et terne",
+      "Traces de transpiration et de gras",
+      "Manque de souplesse",
+      "Taches légères et salissures du quotidien",
+    ],
+    prices: [
+      { label: "Fauteuil cuir", price: "49 €", items: ["Nettoyage manuel doux", "Brosse adaptée", "Séchage immédiat"], formuleId: "fauteuil" },
+      { label: "Canapé cuir 2/3 places", price: "79 €", items: ["Nettoyage manuel doux", "Brosse adaptée", "Séchage immédiat"], formuleId: "canape-2" },
+      { label: "Canapé cuir 4/5 places", price: "99 €", items: ["Nettoyage manuel doux", "Brosse adaptée", "Séchage immédiat"], formuleId: "canape-45" },
+      { label: "Sièges auto cuir", price: "Sur devis", items: ["Nettoyage complet habitacle", "Traitement du cuir", "Soin adapté"], formuleId: "argent" },
+    ],
+    priceNote:
+      "Inclus : nettoyage manuel sans injection-extraction. Un traitement nourrissant et protecteur est fortement recommandé en option.",
+    soils: [
+      "Salissures incrustées",
+      "Traces de stylo légères",
+      "Résidus gras",
+    ],
+    method: [
+      "Diagnostic du type de cuir (véritable, synthétique).",
+      "Nettoyage manuel à l'aide de brosses souples et de nettoyant doux pH neutre.",
+      "Essuyage avec microfibres propres.",
+      "Optionnel : application d'une lotion nourrissante et protectrice pour assouplir le cuir.",
+    ],
+    faq: [
+      { q: "Pourquoi ne pas utiliser l'injection-extraction sur le cuir ?", a: "L'injection-extraction gorge la matière d'eau, ce qui détruit le cuir naturel en l'asséchant au séchage. Le cuir nécessite un nettoyage de surface manuel avec une hydratation adaptée." },
+      { q: "Proposez-vous une prestation pour reteindre le cuir ?", a: "Non, notre prestation est un nettoyage professionnel et un soin hydratant/protecteur. Nous ne réalisons pas de rénovation pigmentaire ou de recoloration de cuir abîmé." },
     ],
   },
 ];

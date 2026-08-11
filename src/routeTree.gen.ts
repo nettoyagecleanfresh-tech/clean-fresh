@@ -32,6 +32,7 @@ import { Route as NettoyageCastelmaurouRouteImport } from './routes/nettoyage-ca
 import { Route as NettoyageColomiersRouteImport } from './routes/nettoyage-colomiers'
 import { Route as NettoyageCornebarrieuRouteImport } from './routes/nettoyage-cornebarrieu'
 import { Route as NettoyageCugnauxRouteImport } from './routes/nettoyage-cugnaux'
+import { Route as NettoyageCuirToulouseRouteImport } from './routes/nettoyage-cuir-toulouse'
 import { Route as NettoyageDappartementOuMaisonRouteImport } from './routes/nettoyage-dappartement-ou-maison'
 import { Route as NettoyageDeFinDeChantierToulouseRouteImport } from './routes/nettoyage-de-fin-de-chantier-toulouse'
 import { Route as NettoyageDeVitresToulouseRouteImport } from './routes/nettoyage-de-vitres-toulouse'
@@ -194,6 +195,11 @@ const NettoyageCornebarrieuRoute = NettoyageCornebarrieuRouteImport.update({
 const NettoyageCugnauxRoute = NettoyageCugnauxRouteImport.update({
   id: '/nettoyage-cugnaux',
   path: '/nettoyage-cugnaux',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NettoyageCuirToulouseRoute = NettoyageCuirToulouseRouteImport.update({
+  id: '/nettoyage-cuir-toulouse',
+  path: '/nettoyage-cuir-toulouse',
   getParentRoute: () => rootRouteImport,
 } as any)
 const NettoyageDappartementOuMaisonRoute =
@@ -464,6 +470,7 @@ export interface FileRoutesByFullPath {
   '/nettoyage-colomiers': typeof NettoyageColomiersRoute
   '/nettoyage-cornebarrieu': typeof NettoyageCornebarrieuRoute
   '/nettoyage-cugnaux': typeof NettoyageCugnauxRoute
+  '/nettoyage-cuir-toulouse': typeof NettoyageCuirToulouseRoute
   '/nettoyage-dappartement-ou-maison': typeof NettoyageDappartementOuMaisonRoute
   '/nettoyage-de-fin-de-chantier-toulouse': typeof NettoyageDeFinDeChantierToulouseRoute
   '/nettoyage-de-vitres-toulouse': typeof NettoyageDeVitresToulouseRoute
@@ -534,6 +541,7 @@ export interface FileRoutesByTo {
   '/nettoyage-colomiers': typeof NettoyageColomiersRoute
   '/nettoyage-cornebarrieu': typeof NettoyageCornebarrieuRoute
   '/nettoyage-cugnaux': typeof NettoyageCugnauxRoute
+  '/nettoyage-cuir-toulouse': typeof NettoyageCuirToulouseRoute
   '/nettoyage-dappartement-ou-maison': typeof NettoyageDappartementOuMaisonRoute
   '/nettoyage-de-fin-de-chantier-toulouse': typeof NettoyageDeFinDeChantierToulouseRoute
   '/nettoyage-de-vitres-toulouse': typeof NettoyageDeVitresToulouseRoute
@@ -605,6 +613,7 @@ export interface FileRoutesById {
   '/nettoyage-colomiers': typeof NettoyageColomiersRoute
   '/nettoyage-cornebarrieu': typeof NettoyageCornebarrieuRoute
   '/nettoyage-cugnaux': typeof NettoyageCugnauxRoute
+  '/nettoyage-cuir-toulouse': typeof NettoyageCuirToulouseRoute
   '/nettoyage-dappartement-ou-maison': typeof NettoyageDappartementOuMaisonRoute
   '/nettoyage-de-fin-de-chantier-toulouse': typeof NettoyageDeFinDeChantierToulouseRoute
   '/nettoyage-de-vitres-toulouse': typeof NettoyageDeVitresToulouseRoute
@@ -677,6 +686,7 @@ export interface FileRouteTypes {
     | '/nettoyage-colomiers'
     | '/nettoyage-cornebarrieu'
     | '/nettoyage-cugnaux'
+    | '/nettoyage-cuir-toulouse'
     | '/nettoyage-dappartement-ou-maison'
     | '/nettoyage-de-fin-de-chantier-toulouse'
     | '/nettoyage-de-vitres-toulouse'
@@ -747,6 +757,7 @@ export interface FileRouteTypes {
     | '/nettoyage-colomiers'
     | '/nettoyage-cornebarrieu'
     | '/nettoyage-cugnaux'
+    | '/nettoyage-cuir-toulouse'
     | '/nettoyage-dappartement-ou-maison'
     | '/nettoyage-de-fin-de-chantier-toulouse'
     | '/nettoyage-de-vitres-toulouse'
@@ -817,6 +828,7 @@ export interface FileRouteTypes {
     | '/nettoyage-colomiers'
     | '/nettoyage-cornebarrieu'
     | '/nettoyage-cugnaux'
+    | '/nettoyage-cuir-toulouse'
     | '/nettoyage-dappartement-ou-maison'
     | '/nettoyage-de-fin-de-chantier-toulouse'
     | '/nettoyage-de-vitres-toulouse'
@@ -888,6 +900,7 @@ export interface RootRouteChildren {
   NettoyageColomiersRoute: typeof NettoyageColomiersRoute
   NettoyageCornebarrieuRoute: typeof NettoyageCornebarrieuRoute
   NettoyageCugnauxRoute: typeof NettoyageCugnauxRoute
+  NettoyageCuirToulouseRoute: typeof NettoyageCuirToulouseRoute
   NettoyageDappartementOuMaisonRoute: typeof NettoyageDappartementOuMaisonRoute
   NettoyageDeFinDeChantierToulouseRoute: typeof NettoyageDeFinDeChantierToulouseRoute
   NettoyageDeVitresToulouseRoute: typeof NettoyageDeVitresToulouseRoute
@@ -1096,6 +1109,13 @@ declare module '@tanstack/react-router' {
       path: '/nettoyage-cugnaux'
       fullPath: '/nettoyage-cugnaux'
       preLoaderRoute: typeof NettoyageCugnauxRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/nettoyage-cuir-toulouse': {
+      id: '/nettoyage-cuir-toulouse'
+      path: '/nettoyage-cuir-toulouse'
+      fullPath: '/nettoyage-cuir-toulouse'
+      preLoaderRoute: typeof NettoyageCuirToulouseRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/nettoyage-dappartement-ou-maison': {
@@ -1440,6 +1460,7 @@ const rootRouteChildren: RootRouteChildren = {
   NettoyageColomiersRoute: NettoyageColomiersRoute,
   NettoyageCornebarrieuRoute: NettoyageCornebarrieuRoute,
   NettoyageCugnauxRoute: NettoyageCugnauxRoute,
+  NettoyageCuirToulouseRoute: NettoyageCuirToulouseRoute,
   NettoyageDappartementOuMaisonRoute: NettoyageDappartementOuMaisonRoute,
   NettoyageDeFinDeChantierToulouseRoute: NettoyageDeFinDeChantierToulouseRoute,
   NettoyageDeVitresToulouseRoute: NettoyageDeVitresToulouseRoute,
