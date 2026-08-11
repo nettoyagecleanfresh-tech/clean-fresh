@@ -301,10 +301,10 @@ function CanapeDetail() {
 // ─── CUIR DETAIL ──────────────────────────────────────────────────────────────
 
 const CUIR_IMAGES: Record<string, string> = {
-  "cuir-fauteuil": "/images/canape/fauteuil.png",
-  "cuir-canape-2": "/images/canape/canape-2-3.png",
-  "cuir-canape-angle": "/images/canape/canape-u.png",
-  "cuir-auto": "/images/auto/renov.png",
+  "cuir-fauteuil": "/images/cuir/fauteuil.png",
+  "cuir-canape-2": "/images/cuir/canape-2.png",
+  "cuir-canape-angle": "/images/cuir/canape-angle.png",
+  "cuir-auto": "/images/cuir/siege-auto.png",
 };
 
 function CuirDetail() {
