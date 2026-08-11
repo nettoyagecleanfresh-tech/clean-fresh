@@ -86,7 +86,7 @@ function ServicesPage() {
           Nos prestations
         </span>
         <h1 className="mt-5 font-display text-5xl font-bold tracking-tight md:text-6xl lg:text-7xl">
-          14 services de nettoyage
+          15 services de nettoyage
         </h1>
         <p className="mx-auto mt-4 max-w-xl text-base text-muted-foreground leading-relaxed">
           À domicile ou sur site, pour particuliers et professionnels à Toulouse et sa banlieue.

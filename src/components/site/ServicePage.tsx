@@ -20,6 +20,7 @@ function getBookingServiceId(slug: string): string | null {
   if (slug.includes("matelas")) return "matelas";
   if (slug.includes("tapis")) return "tapis";
   if (slug.includes("auto")) return "auto";
+  if (slug.includes("cuir")) return "cuir";
   return null;
 }
 
@@ -76,6 +77,13 @@ const FORMULE_IMAGES: Record<string, string> = {
   "matelas-enfant": "/images/matelas/enfant.png",
   "matelas-1": "/images/matelas/1-place.png",
   "matelas-2": "/images/matelas/2-places.png",
+  // Cuir
+  "cuir-fauteuil": "/images/cuir/fauteuil.png",
+  "cuir-canape-2": "/images/cuir/canape-2.png",
+  "cuir-canape-angle": "/images/cuir/canape-angle.png",
+  "cuir-pouf": "/images/cuir/pouf.png",
+  "cuir-chaise": "/images/cuir/chaise.png",
+  "cuir-auto": "/images/cuir/siege-auto.png",
 };
 
 export function ServicePage({ service }: { service: Service }) {

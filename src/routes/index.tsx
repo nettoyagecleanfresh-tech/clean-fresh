@@ -153,9 +153,9 @@ const QUICK_SERVICES = [
 ];
 
 const STATS = [
-  { value: "500+", label: "Interventions réalisées" },
-  { value: "24h", label: "Délai devis" },
-  { value: "14", label: "Prestations" },
+  { value: "103", label: "Avis Clients 5/5" },
+  { value: "15", label: "Prestations" },
+  { value: "7j/7", label: "Intervention" },
   { value: "Pro", label: "Matériel professionnel" },
 ];
 
@@ -378,7 +378,7 @@ function Index() {
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <p className="text-xs font-bold uppercase tracking-widest text-primary">Nos prestations</p>
-            <h2 className="mt-2 text-4xl font-bold tracking-tight">14 services de nettoyage</h2>
+            <h2 className="mt-2 text-4xl font-bold tracking-tight">15 services de nettoyage</h2>
             <p className="mt-2 max-w-2xl text-muted-foreground">
               À domicile ou sur site, pour particuliers et professionnels à Toulouse et sa banlieue.
             </p>

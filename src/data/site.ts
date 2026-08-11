@@ -297,8 +297,7 @@ export const SERVICES: Service[] = [
       { label: "🥉 Pack Bronze", price: "69 €", items: ["Aspiration complète de l'habitacle", "Nettoyage des plastiques et tableau de bord", "Nettoyage des vitres intérieures", "Nettoyage des tapis de sol"], formuleId: "bronze" },
       { label: "🥈 Pack Argent", price: "99 €", items: ["Tout le Pack Bronze inclus", "Injection-extraction des sièges tissu", "Vitres sans traces (intérieur + extérieur)", "Joints et recoins traités en détail"], formuleId: "argent" },
       { label: "🥇 Pack Or", price: "129 €", items: ["Tout le Pack Argent inclus", "Shampouinage injection-extraction moquettes", "Nettoyage complet du coffre", "Nettoyage contour et bas de porte"], formuleId: "or" },
-      { label: "Rénovation siège auto", price: "59 €", items: ["Injection-extraction d'un siège ou nettoyage intégral du cuir", "Élimination des taches tenaces", "Traitement des auréoles", "Résultat visible immédiatement"], formuleId: "siege" },
-      { label: "Soin nourrissant et protecteur cuir", price: "55 €", items: ["Application manuelle du soin spécial cuir", "Nourrit et protège la surface", "Prolonge la durée de vie du cuir"], formuleId: "cuir-care" },
+      { label: "Rénovation siège auto", price: "59 €", items: ["Injection-extraction des sièges ou nettoyage intégral du cuir", "Élimination des taches tenaces", "Traitement des auréoles", "Résultat visible immédiatement"], formuleId: "siege" },
     ],
     priceNote: "Tarifs sur devis selon la taille du véhicule et son état — réponse sous 24h.",
     soils: ["Nourriture et boissons", "Tabac", "Poils d'animaux", "Transpiration", "Boue"],
@@ -814,9 +813,11 @@ export const SERVICES: Service[] = [
     prices: [
       { label: "Fauteuil cuir", price: "49 €", items: ["Nettoyage manuel doux", "Brosse adaptée", "Séchage immédiat"], formuleId: "cuir-fauteuil" },
       { label: "Canapé cuir 2/3 places", price: "79 €", items: ["Nettoyage manuel doux", "Brosse adaptée", "Séchage immédiat"], formuleId: "cuir-canape-2" },
-      { label: "Canapé cuir 4/5 places", price: "99 €", items: ["Nettoyage manuel doux", "Brosse adaptée", "Séchage immédiat"], formuleId: "cuir-canape-angle" },
+      { label: "Canapé cuir 4/5 places", price: "99 €", items: ["Nettoyage manuel doux", "Brosse adaptée", "Séchage immédiat"], formuleId: "cuir-canape-45" },
       { label: "Canapé cuir d'angle", price: "99 €", items: ["Nettoyage manuel doux", "Brosse adaptée", "Séchage immédiat"], formuleId: "cuir-canape-angle" },
-      { label: "Sièges auto cuir", price: "69 €", items: ["Nettoyage manuel doux", "Brosse adaptée", "Séchage immédiat"], formuleId: "cuir-auto" },
+      { label: "Pouf cuir", price: "19 €", items: ["Nettoyage manuel doux", "Brosse adaptée", "Séchage immédiat"], formuleId: "cuir-pouf" },
+      { label: "Chaise cuir", price: "15 €", items: ["Nettoyage manuel doux", "Brosse adaptée", "Séchage immédiat"], formuleId: "cuir-chaise" },
+      { label: "Sièges auto cuir", price: "59 €", items: ["Nettoyage manuel doux", "Brosse adaptée", "Séchage immédiat"], formuleId: "cuir-auto" },
     ],
     priceNote:
       "Inclus : nettoyage manuel sans injection-extraction. Un traitement nourrissant et protecteur est fortement recommandé en option.",
