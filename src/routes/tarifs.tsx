@@ -67,6 +67,10 @@ const FORMULE_IMAGES: Record<string, string> = {
   "matelas-enfant": "/images/matelas/enfant.png",
   "matelas-1": "/images/matelas/1-place.png",
   "matelas-2": "/images/matelas/2-places.png",
+  "cuir-fauteuil": "/images/canape/fauteuil.png",
+  "cuir-canape-2": "/images/canape/canape-2-3.png",
+  "cuir-canape-angle": "/images/canape/canape-u.png",
+  "cuir-auto": "/images/auto/renov.png",
 };
 
 // Services textiles avec prix affichés
@@ -221,6 +225,7 @@ const getServiceId = (slug: string) => {
   if (slug.includes("tapis")) return "tapis";
   if (slug.includes("matelas")) return "matelas";
   if (slug.includes("auto")) return "auto";
+  if (slug.includes("cuir")) return "cuir";
   return "";
 };
 

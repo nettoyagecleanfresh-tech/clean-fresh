@@ -129,8 +129,9 @@ const AUTO_PACKS = [
   {
     id: "siege", emoji: "💺", name: "Rénovation siège", price: "59 €", tagline: "Ciblé", duration: "45 min",
     badge: null as string | null, featured: false,
-    included: ["Injection-extraction d'un siège", "Élimination des taches tenaces", "Traitement des auréoles", "Résultat visible immédiatement"],
+    included: ["Injection-extraction d'un siège ou nettoyage intégral du cuir", "Élimination des taches tenaces", "Traitement des auréoles", "Résultat visible immédiatement"],
     options: [
+      { name: "Soin nourrissant et protecteur cuir", price: 55, popular: true },
       { name: "Traitement enzymatique intensif", price: 19, popular: false },
       { name: "Traitement anti-acariens et bactériens", price: 19, popular: true },
       { name: "Élimination des poils d'animaux", price: 25, popular: false },
