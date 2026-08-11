@@ -18,11 +18,11 @@ const TARIF_CATEGORIES = [
     bullets: ["Fauteuil, canapé 2/3, 4/5 places", "Canapé U/angle, pouf, chaise", "Options anti-acariens, anti-odeur"],
   },
   {
-    id: "cuir",
-    icon: <Armchair className="size-7" />,
-    title: "Nettoyage Cuir",
-    priceFrom: "49 €",
-    bullets: ["Fauteuil, canapé 2/3, 4/5 places", "Sièges auto cuir", "Soin nourrissant protecteur"],
+    id: "matelas",
+    icon: <BedDouble className="size-7" />,
+    title: "Nettoyage Matelas",
+    priceFrom: "39 €",
+    bullets: ["Matelas enfant, 1 place, 2 places", "Traitement anti-acariens en option", "Idéal pour les allergiques"],
   },
   {
     id: "tapis",
@@ -39,11 +39,11 @@ const TARIF_CATEGORIES = [
     bullets: ["Pack Bronze, Argent, Or", "Sièges, plastiques, vitres, coffre", "Options poils, anti-odeur, ciel de toit"],
   },
   {
-    id: "matelas",
-    icon: <BedDouble className="size-7" />,
-    title: "Nettoyage Matelas",
-    priceFrom: "39 €",
-    bullets: ["Matelas enfant, 1 place, 2 places", "Traitement anti-acariens en option", "Idéal pour les allergiques"],
+    id: "cuir",
+    icon: <Armchair className="size-7" />,
+    title: "Nettoyage Cuir",
+    priceFrom: "49 €",
+    bullets: ["Fauteuil, canapé 2/3, 4/5 places", "Sièges auto cuir", "Soin nourrissant protecteur"],
   },
 ];
 
@@ -67,10 +67,12 @@ const FORMULE_IMAGES: Record<string, string> = {
   "matelas-enfant": "/images/matelas/enfant.png",
   "matelas-1": "/images/matelas/1-place.png",
   "matelas-2": "/images/matelas/2-places.png",
-  "cuir-fauteuil": "/images/canape/fauteuil.png",
-  "cuir-canape-2": "/images/canape/canape-2-3.png",
-  "cuir-canape-angle": "/images/canape/canape-u.png",
-  "cuir-auto": "/images/auto/renov.png",
+  "cuir-fauteuil": "/images/cuir/fauteuil.png",
+  "cuir-canape-2": "/images/cuir/canape-2.png",
+  "cuir-canape-angle": "/images/cuir/canape-angle.png",
+  "cuir-pouf": "/images/cuir/pouf.png",
+  "cuir-chaise": "/images/cuir/chaise.png",
+  "cuir-auto": "/images/cuir/siege-auto.png",
 };
 
 // Services textiles avec prix affichés

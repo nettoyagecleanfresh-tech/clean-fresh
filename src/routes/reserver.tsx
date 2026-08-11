@@ -98,7 +98,7 @@ const SERVICES: ServiceDef[] = [
     formules: [
       { id: "cuir-fauteuil",     name: "Fauteuil cuir",             desc: "Nettoyage manuel 1 place.", price: 49,  duration: "45 min",  durationMin: 45,  options: [OC_35, OD, OO] },
       { id: "cuir-canape-2",     name: "Canapé cuir 2/3 places",    desc: "Nettoyage manuel pour 2 à 3 assises.", price: 79,  duration: "1h",      durationMin: 60,  options: [OC_55, OD, OO] },
-      { id: "cuir-canape-angle", name: "Canapé cuir angle ou 4/5",  desc: "Nettoyage manuel grand format.", price: 99,  duration: "1h",      durationMin: 60,  options: [OC_75, OD, OO] },
+      { id: "cuir-canape-angle", name: "Canapé cuir en U ou en angle",  desc: "Nettoyage manuel grand format.", price: 99,  duration: "1h",      durationMin: 60,  options: [OC_75, OD, OO] },
       { id: "cuir-pouf",         name: "Pouf cuir",                 desc: "Nettoyage manuel.",         price: 19,  duration: "30 min",  durationMin: 30,  options: [OC_35, OD, OO] },
       { id: "cuir-chaise",       name: "Chaise cuir",               desc: "Nettoyage manuel à l'unité.",price: 15,  duration: "20 min",  durationMin: 20,  options: [OC_35, OD, OO] },
       { id: "cuir-auto",         name: "Sièges auto cuir",          desc: "Nettoyage complet sièges habitacle.", price: 59,  duration: "1h",      durationMin: 60,  options: [OC_55, OD, OO] },

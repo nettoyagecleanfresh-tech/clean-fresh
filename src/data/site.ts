@@ -813,8 +813,7 @@ export const SERVICES: Service[] = [
     prices: [
       { label: "Fauteuil cuir", price: "49 €", items: ["Nettoyage manuel doux", "Brosse adaptée", "Séchage immédiat"], formuleId: "cuir-fauteuil" },
       { label: "Canapé cuir 2/3 places", price: "79 €", items: ["Nettoyage manuel doux", "Brosse adaptée", "Séchage immédiat"], formuleId: "cuir-canape-2" },
-      { label: "Canapé cuir 4/5 places", price: "99 €", items: ["Nettoyage manuel doux", "Brosse adaptée", "Séchage immédiat"], formuleId: "cuir-canape-45" },
-      { label: "Canapé cuir d'angle", price: "99 €", items: ["Nettoyage manuel doux", "Brosse adaptée", "Séchage immédiat"], formuleId: "cuir-canape-angle" },
+      { label: "Canapé cuir en U ou en angle", price: "99 €", items: ["Nettoyage manuel doux", "Brosse adaptée", "Séchage immédiat"], formuleId: "cuir-canape-angle" },
       { label: "Pouf cuir", price: "19 €", items: ["Nettoyage manuel doux", "Brosse adaptée", "Séchage immédiat"], formuleId: "cuir-pouf" },
       { label: "Chaise cuir", price: "15 €", items: ["Nettoyage manuel doux", "Brosse adaptée", "Séchage immédiat"], formuleId: "cuir-chaise" },
       { label: "Sièges auto cuir", price: "59 €", items: ["Nettoyage manuel doux", "Brosse adaptée", "Séchage immédiat"], formuleId: "cuir-auto" },

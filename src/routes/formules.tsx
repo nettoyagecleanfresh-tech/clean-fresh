@@ -58,8 +58,8 @@ const CANAPE_OPTIONS = [
 const CUIR_ITEMS = [
   { id: "cuir-fauteuil",  label: "Fauteuil",           price: "49 €",        duration: "45 min", desc: "Nettoyage manuel doux et respectueux." },
   { id: "cuir-canape-2",  label: "Canapé 2/3 places",  price: "79 €",       duration: "1h",     popular: true, desc: "Soin complet et nettoyage à la main." },
-  { id: "cuir-canape-angle", label: "Canapé d'angle",  price: "99 €",       duration: "1h",     desc: "Nettoyage intégral grand format." },
-  { id: "cuir-auto",      label: "Sièges auto",        price: "69 €",       duration: "1h",     desc: "Habitacle complet, nettoyage cuir auto." },
+  { id: "cuir-canape-angle", label: "Canapé en U ou en angle", price: "99 €", duration: "1h", desc: "Nettoyage intégral grand format." },
+  { id: "cuir-auto",      label: "Sièges auto",        price: "59 €",       duration: "1h",     desc: "Habitacle complet, nettoyage cuir auto." },
 ];
 
 const CUIR_OPTIONS = [
