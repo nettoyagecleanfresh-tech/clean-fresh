@@ -27,7 +27,7 @@ const TARIF_CATEGORIES = [
   {
     id: "tapis",
     icon: <Layers className="size-7" />,
-    title: "Shampouinage Tapis & Moquette",
+    title: "Nettoyage Tapis & Moquette",
     priceFrom: "49 €",
     bullets: ["1 tapis, 2 tapis, 3 tapis", "Toutes tailles et matières", "Options anti-acariens, recto-verso"],
   },
@@ -69,6 +69,7 @@ const FORMULE_IMAGES: Record<string, string> = {
   "matelas-2": "/images/matelas/2-places.png",
   "cuir-fauteuil": "/images/cuir/fauteuil.png",
   "cuir-canape-2": "/images/cuir/canape-2.png",
+  "cuir-canape-4": "/images/cuir/canape-4.png",
   "cuir-canape-angle": "/images/cuir/canape-angle.png",
   "cuir-pouf": "/images/cuir/pouf.png",
   "cuir-chaise": "/images/cuir/chaise.png",

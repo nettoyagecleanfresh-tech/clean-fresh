@@ -147,14 +147,14 @@ const QUICK_SERVICES = [
   { slug: "/nettoyage-canape-toulouse",          line1: "Nettoyage",    line2: "Canapé",             short: "Canapé",    icon: <Armchair className="size-5 md:size-7 stroke-[1.4]" /> },
   { slug: "/nettoyage-auto-a-domicile-toulouse", line1: "Nettoyage",    line2: "Intérieur Auto",     short: "Auto",      icon: <Car      className="size-5 md:size-7 stroke-[1.4]" /> },
   { slug: "/nettoyage-matelas-toulouse",         line1: "Nettoyage",    line2: "Matelas",            short: "Matelas",   icon: <BedDouble className="size-5 md:size-7 stroke-[1.4]" /> },
-  { slug: "/nettoyage-tapis-toulouse",           line1: "Shampouinage", line2: "Tapis",              short: "Tapis",     icon: <Layers  className="size-5 md:size-7 stroke-[1.4]" /> },
+  { slug: "/nettoyage-tapis-toulouse",           line1: "Nettoyage",    line2: "Tapis",              short: "Tapis",     icon: <Layers  className="size-5 md:size-7 stroke-[1.4]" /> },
   { slug: "/nettoyage-fin-de-bail-toulouse",     line1: "Nettoyage",    line2: "Fin de bail",        short: "Bail",      icon: <KeyRound className="size-5 md:size-7 stroke-[1.4]" /> },
   { slug: "/nettoyage-diogene-toulouse",         line1: "Nettoyage",    line2: "Diogène / Extrême",  short: "Diogène",   icon: <PackageOpen className="size-5 md:size-7 stroke-[1.4]" /> },
 ];
 
 const STATS = [
-  { value: "103", label: "Avis Clients 5/5" },
-  { value: "15", label: "Prestations" },
+  { value: "24 h", label: "Délai de devis" },
+  { value: "15", label: "types de prestations" },
   { value: "7j/7", label: "Intervention" },
   { value: "Pro", label: "Matériel professionnel" },
 ];

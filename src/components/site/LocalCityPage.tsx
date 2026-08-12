@@ -86,7 +86,7 @@ export function LocalCityPage({ commune }: Props) {
             <p>
               {name === "Toulouse"
                 ? "Nos tarifs sont transparents et identiques dans toute notre zone d'intervention autour de Toulouse."
-                : `Nos prix à ${name} sont identiques à ceux pratiqués à Toulouse — aucun supplément selon la commune.`}{" "}
+                : `Nos tarifs à ${name} sont identiques à nos tarifs habituels dans notre zone d'intervention.`}{" "}
               Retrouvez tous nos tarifs détaillés sur la <Link to="/tarifs" className="text-primary font-medium hover:underline">page tarifs</Link>{" "}
               ou contactez-nous pour un devis personnalisé selon votre situation.
             </p>
@@ -96,7 +96,7 @@ export function LocalCityPage({ commune }: Props) {
               Clean&Fresh intervient à {name} pour l'ensemble de ses prestations :{" "}
               <Link to="/nettoyage-canape-toulouse" className="text-primary font-medium hover:underline">nettoyage de canapé</Link>,{" "}
               <Link to="/nettoyage-matelas-toulouse" className="text-primary font-medium hover:underline">nettoyage de matelas</Link>,{" "}
-              <Link to="/nettoyage-tapis-toulouse" className="text-primary font-medium hover:underline">shampouinage de tapis</Link>,{" "}
+              <Link to="/nettoyage-tapis-toulouse" className="text-primary font-medium hover:underline">nettoyage de tapis</Link>,{" "}
               <Link to="/nettoyage-moquette-toulouse" className="text-primary font-medium hover:underline">nettoyage de moquette</Link>{" "}
               et{" "}
               <Link to="/nettoyage-auto-a-domicile-toulouse" className="text-primary font-medium hover:underline">nettoyage intérieur auto à domicile</Link>.{" "}

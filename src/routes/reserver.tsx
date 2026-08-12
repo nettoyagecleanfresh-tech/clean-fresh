@@ -41,7 +41,7 @@ type CartItem = { service: ServiceDef; formule: Formule; options: string[] };
 
 // ─── OPTIONS PARTAGÉES ───────────────────────────────────────────────────────
 
-const OA: Option = { id: "acariens",  name: "Traitement anti-acariens et bactériens",  desc: "Élimination des acariens et bactéries (traitement professionnel). Idéal pour les personnes sensibles.",                      price: 19, popular: true, icon: <Shield className="size-5" /> };
+const OA: Option = { id: "acariens",  name: "Traitement anti-acariens et bactériens",  desc: "Traitement complémentaire des sièges, moquettes, textiles et principales surfaces compatibles.", price: 19, popular: true, icon: <Shield className="size-5" /> };
 const OP: Option = { id: "poils",     name: "Élimination des poils d'animaux",          desc: "Brossage mécanique spécifique avant l'injection-extraction.",                                           price: 15, popular: true, icon: <Dog className="size-5" /> };
 const OPA: Option= { id: "poils",     name: "Élimination des poils d'animaux",          desc: "Brossage spécifique avant nettoyage des sièges et moquettes.",                                          price: 25, icon: <Dog className="size-5" /> };
 const OD: Option = { id: "detachage", name: "Détachage intensif",                        desc: "Traitement ciblé pour les tâches anciennes (sang, vin, encre, café).",                                  price: 19, icon: <Droplets className="size-5" /> };
@@ -51,24 +51,26 @@ const ORV:Option = { id: "rectoverso",name: "Nettoyage recto-verso",            
 const OV: Option = { id: "vitres",    name: "Vitres sans traces",                        desc: "Nettoyage intérieur des vitres, sans auréoles.",                                                         price: 9, icon: <Sparkles className="size-5" />  };
 const OTS:Option = { id: "tapis-sol", name: "Shampouinage des tapis de sol",             desc: "Nettoyage injection-extraction des tapis de sol du véhicule.",                                          price: 15, icon: <Droplets className="size-5" /> };
 const OC: Option = { id: "ciel",      name: "Nettoyage du ciel de toit",                 desc: "Nettoyage en profondeur du revêtement du plafond de l'habitacle.",                                      price: 29, icon: <Sparkles className="size-5" /> };
-const OSA:Option = { id: "sieges",    name: "Shampouinage des sièges auto",              desc: "Injection-extraction complète des sièges tissu ou Alcantara.",                                           price: 39, icon: <Droplets className="size-5" /> };
+const OSA:Option = { id: "sieges",    name: "Nettoyage des sièges auto",              desc: "Nettoyage complet des sièges : injection-extraction pour les sièges en tissu ou Alcantara compatibles, ou nettoyage manuel professionnel adapté pour les sièges en cuir.", price: 39, icon: <Droplets className="size-5" /> };
 
 // ── NOUVELLES OPTIONS PREMIUM ──
-const OE: Option = { id: "enzyme", name: "Traitement enzymatique intensif", desc: "Élimination des taches organiques coriaces (sang, urine, vomi).", price: 19, icon: <Droplets className="size-5" /> };
-const OUV: Option = { id: "uv", name: "Protection UV & antistatique plastiques", desc: "Protège les plastiques intérieurs du ternissement et repousse la poussière.", price: 19, icon: <Sun className="size-5" /> };
+const OE: Option = { id: "enzyme", name: "Traitement enzymatique intensif", desc: "Traitement ciblé des résidus organiques responsables des odeurs tenaces : urine, vomi, transpiration, animaux et autres contaminations organiques sur textiles compatibles.", price: 19, icon: <Droplets className="size-5" /> };
+const OUV: Option = { id: "uv", name: "Protection UV & antistatique plastiques", desc: "Aide à protéger les plastiques intérieurs contre les UV et le ternissement, avec finition satinée et effet antistatique limitant l'adhérence de la poussière.", price: 19, icon: <Sun className="size-5" /> };
 // Hydrophobe
-const OH_35: Option = { id: "hydro", name: "Traitement hydrophobe & anti-taches", desc: "Imperméabilisation des fibres, effet déperlant et protection longue durée.", price: 35, icon: <Shield className="size-5" /> };
-const OH_45: Option = { id: "hydro", name: "Traitement hydrophobe & anti-taches", desc: "Imperméabilisation des fibres, effet déperlant et protection longue durée.", price: 45, icon: <Shield className="size-5" /> };
-const OH_55: Option = { id: "hydro", name: "Traitement hydrophobe & anti-taches", desc: "Imperméabilisation des fibres, effet déperlant et protection longue durée.", price: 55, icon: <Shield className="size-5" /> };
-const OH_65: Option = { id: "hydro", name: "Traitement hydrophobe & anti-taches", desc: "Imperméabilisation des fibres, effet déperlant et protection longue durée.", price: 65, icon: <Shield className="size-5" /> };
-const OH_69: Option = { id: "hydro", name: "Traitement hydrophobe & anti-taches", desc: "Imperméabilisation des fibres, effet déperlant et protection longue durée.", price: 69, icon: <Shield className="size-5" /> };
-const OH_75: Option = { id: "hydro", name: "Traitement hydrophobe & anti-taches", desc: "Imperméabilisation des fibres, effet déperlant et protection longue durée.", price: 75, icon: <Shield className="size-5" /> };
-const OH_85: Option = { id: "hydro", name: "Traitement hydrophobe & anti-taches", desc: "Imperméabilisation des fibres, effet déperlant et protection longue durée.", price: 85, icon: <Shield className="size-5" /> };
-const OH_99: Option = { id: "hydro", name: "Traitement hydrophobe & anti-taches", desc: "Imperméabilisation des fibres, effet déperlant et protection longue durée.", price: 99, icon: <Shield className="size-5" /> };
+const OH_DESC = "Protection hydrophobe des fibres, effet déperlant et protection contre les nouvelles salissures. Facilite l'entretien futur du textile.";
+const OH_35: Option = { id: "hydro", name: "Traitement hydrophobe & anti-taches", desc: OH_DESC, price: 35, icon: <Shield className="size-5" /> };
+const OH_45: Option = { id: "hydro", name: "Traitement hydrophobe & anti-taches", desc: OH_DESC, price: 45, icon: <Shield className="size-5" /> };
+const OH_55: Option = { id: "hydro", name: "Traitement hydrophobe & anti-taches", desc: OH_DESC, price: 55, icon: <Shield className="size-5" /> };
+const OH_65: Option = { id: "hydro", name: "Traitement hydrophobe & anti-taches", desc: OH_DESC, price: 65, icon: <Shield className="size-5" /> };
+const OH_69: Option = { id: "hydro", name: "Traitement hydrophobe & anti-taches", desc: OH_DESC, price: 69, icon: <Shield className="size-5" /> };
+const OH_75: Option = { id: "hydro", name: "Traitement hydrophobe & anti-taches", desc: OH_DESC, price: 75, icon: <Shield className="size-5" /> };
+const OH_85: Option = { id: "hydro", name: "Traitement hydrophobe & anti-taches", desc: OH_DESC, price: 85, icon: <Shield className="size-5" /> };
+const OH_99: Option = { id: "hydro", name: "Traitement hydrophobe & anti-taches", desc: OH_DESC, price: 99, icon: <Shield className="size-5" /> };
 // Cuir protecteur
-const OC_35: Option = { id: "cuir_prot", name: "Soin nourrissant & protecteur cuir", desc: "Hydrate, assouplit et protège le cuir contre le craquèlement.", price: 35, icon: <Shield className="size-5" /> };
-const OC_55: Option = { id: "cuir_prot", name: "Soin nourrissant & protecteur cuir", desc: "Hydrate, assouplit et protège le cuir contre le craquèlement.", price: 55, icon: <Shield className="size-5" /> };
-const OC_75: Option = { id: "cuir_prot", name: "Soin nourrissant & protecteur cuir", desc: "Hydrate, assouplit et protège le cuir contre le craquèlement.", price: 75, icon: <Shield className="size-5" /> };
+const OC_DESC = "Soin professionnel appliqué après le nettoyage du cuir afin d'aider à préserver sa souplesse, son aspect naturel et sa protection contre le dessèchement et l'usure quotidienne.";
+const OC_35: Option = { id: "cuir_prot", name: "Soin nourrissant & protecteur du cuir", desc: OC_DESC, price: 35, icon: <Shield className="size-5" /> };
+const OC_55: Option = { id: "cuir_prot", name: "Soin nourrissant & protecteur du cuir", desc: OC_DESC, price: 55, icon: <Shield className="size-5" /> };
+const OC_75: Option = { id: "cuir_prot", name: "Soin nourrissant & protecteur du cuir", desc: OC_DESC, price: 75, icon: <Shield className="size-5" /> };
 
 const CAN = [OA, OP, OD, OO, OE];
 const TAP = [OA, ORV, OD, OO, OE];
@@ -102,7 +104,7 @@ const SERVICES: ServiceDef[] = [
     ],
   },
   {
-    id: "tapis", label: "Shampouinage Tapis & Moquette", shortLabel: "Tapis",
+    id: "tapis", label: "Nettoyage Tapis & Moquette", shortLabel: "Tapis",
     desc: "Restauration des fibres, traitement anti-tâches et désodorisation en profondeur.",
     from: 49, icon: <Layers className="size-8" strokeWidth={1.5} />,
     features: ["1 tapis, 2 tapis, 3 tapis", "Toutes tailles et matières", "Options anti-acariens, recto-verso"],
@@ -118,10 +120,10 @@ const SERVICES: ServiceDef[] = [
     from: 69, icon: <Car className="size-8" strokeWidth={1.5} />,
     features: ["Pack Bronze, Argent, Or", "Sièges, plastiques, vitres, coffre", "Options poils, anti-odeur, ciel de toit"],
     formules: [
-      { id: "bronze", name: "Pack Bronze", desc: "Aspiration habitacle + coffre + nettoyage plastiques.",          price: 69,  duration: "1h",    durationMin: 60,  options: [OUV, OA, OPA, OV, OTS, OC, OSA, OO] },
-      { id: "argent", name: "Pack Argent", desc: "Pack Bronze + shampouinage sièges + vitres sans traces.",        price: 99,  duration: "1h30",  durationMin: 90,  options: [OUV, OH_55, OE, OA, ODA, OPA, OTS, OC, OO] },
-      { id: "or",     name: "Pack Or",     desc: "Pack Argent + shampouinage tapis de sol et moquettes.",          price: 129, duration: "2h",    durationMin: 120, options: [OUV, OH_99, OE, OA, ODA, OPA, OC, OO] },
-      { id: "siege",  name: "Rénovation siège auto", desc: "Injection-extraction des sièges ou nettoyage intégral du cuir.",  price: 59,  duration: "45 min",durationMin: 45,  options: [OE, OA, ODA, OPA, OO] },
+      { id: "bronze", name: "Pack Bronze", desc: "Aspiration habitacle + coffre + nettoyage plastiques.",          price: 69,  duration: "1h",    durationMin: 60,  options: [OUV, OA, OPA, OV, OTS, OC, OSA, OO, OC_55] },
+      { id: "argent", name: "Pack Argent", desc: "Pack Bronze + shampouinage sièges + vitres sans traces.",        price: 99,  duration: "1h30",  durationMin: 90,  options: [OUV, OH_55, OE, OA, ODA, OPA, OTS, OC, OO, OC_55] },
+      { id: "or",     name: "Pack Or",     desc: "Pack Argent + nettoyage tapis de sol et moquettes.",          price: 129, duration: "2h",    durationMin: 120, options: [OUV, OH_99, OE, OA, ODA, OPA, OC, OO, OC_55] },
+      { id: "siege",  name: "Rénovation siège auto", desc: "Nettoyage des sièges avec méthode adaptée au revêtement (tissu, alcantara ou cuir).",  price: 59,  duration: "45 min",durationMin: 45,  options: [OE, OA, ODA, OPA, OO, OC_55] },
     ],
   },
   {
@@ -132,6 +134,7 @@ const SERVICES: ServiceDef[] = [
     formules: [
       { id: "cuir-fauteuil",     name: "Fauteuil cuir",             desc: "Nettoyage manuel 1 place.", price: 49,  duration: "45 min",  durationMin: 45,  options: [OC_35, OD, OO] },
       { id: "cuir-canape-2",     name: "Canapé cuir 2/3 places",    desc: "Nettoyage manuel pour 2 à 3 assises.", price: 79,  duration: "1h",      durationMin: 60,  options: [OC_55, OD, OO] },
+      { id: "cuir-canape-4",     name: "Canapé cuir 4/5 places",    desc: "Nettoyage manuel pour 4 à 5 assises.", price: 89,  duration: "1h",      durationMin: 60,  options: [OC_75, OD, OO] },
       { id: "cuir-canape-angle", name: "Canapé cuir en U ou en angle",  desc: "Nettoyage manuel grand format.", price: 99,  duration: "1h",      durationMin: 60,  options: [OC_75, OD, OO] },
       { id: "cuir-pouf",         name: "Pouf cuir",                 desc: "Nettoyage manuel.",         price: 19,  duration: "30 min",  durationMin: 30,  options: [OC_35, OD, OO] },
       { id: "cuir-chaise",       name: "Chaise cuir",               desc: "Nettoyage manuel à l'unité.",price: 15,  duration: "20 min",  durationMin: 20,  options: [OC_35, OD, OO] },

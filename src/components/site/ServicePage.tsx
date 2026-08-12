@@ -80,6 +80,7 @@ const FORMULE_IMAGES: Record<string, string> = {
   // Cuir
   "cuir-fauteuil": "/images/cuir/fauteuil.png",
   "cuir-canape-2": "/images/cuir/canape-2.png",
+  "cuir-canape-4": "/images/cuir/canape-4.png",
   "cuir-canape-angle": "/images/cuir/canape-angle.png",
   "cuir-pouf": "/images/cuir/pouf.png",
   "cuir-chaise": "/images/cuir/chaise.png",

@@ -58,6 +58,7 @@ const CANAPE_OPTIONS = [
 const CUIR_ITEMS = [
   { id: "cuir-fauteuil",  label: "Fauteuil",           price: "49 €",        duration: "45 min", desc: "Nettoyage manuel doux et respectueux." },
   { id: "cuir-canape-2",  label: "Canapé 2/3 places",  price: "79 €",       duration: "1h",     popular: true, desc: "Soin complet et nettoyage à la main." },
+  { id: "cuir-canape-4",  label: "Canapé 4/5 places",  price: "89 €",       duration: "1h",     desc: "Soin complet et nettoyage à la main pour grand canapé." },
   { id: "cuir-canape-angle", label: "Canapé en U ou en angle", price: "99 €", duration: "1h", desc: "Nettoyage intégral grand format." },
   { id: "cuir-auto",      label: "Sièges auto",        price: "59 €",       duration: "1h",     desc: "Habitacle complet, nettoyage cuir auto." },
 ];
@@ -92,7 +93,8 @@ const AUTO_PACKS = [
       { name: "Élimination des poils d'animaux", price: 25, popular: false },
       { name: "Traitement anti-odeur (tabac, animaux)", price: 15, popular: true },
       { name: "Nettoyage du ciel de toit", price: 29, popular: false },
-      { name: "Shampouinage des sièges auto", price: 39, popular: false },
+      { name: "Nettoyage des sièges auto", price: 39, popular: false },
+      { name: "Soin nourrissant & protecteur du cuir", price: 55, popular: false },
     ],
   },
   {
@@ -109,12 +111,13 @@ const AUTO_PACKS = [
       { name: "Traitement anti-odeur (tabac, animaux)", price: 15, popular: true },
       { name: "Nettoyage du ciel de toit", price: 29, popular: false },
       { name: "Shampouinage des tapis de sol", price: 15, popular: false },
+      { name: "Soin nourrissant & protecteur du cuir", price: 55, popular: false },
     ],
   },
   {
     id: "or", emoji: "🥇", name: "Pack Or", price: "129 €", tagline: "État showroom", duration: "2h",
     badge: "✨ Premium" as string | null, featured: false,
-    included: ["Tout le Pack Argent inclus", "Shampouinage injection-extraction moquettes", "Nettoyage complet du coffre", "Nettoyage contour et bas de porte"],
+    included: ["Tout le Pack Argent inclus", "Nettoyage injection-extraction moquettes", "Nettoyage complet du coffre", "Nettoyage contour et bas de porte"],
     options: [
       { name: "Traitement hydrophobe & anti-taches", price: 99, popular: true },
       { name: "Traitement enzymatique intensif", price: 19, popular: false },
@@ -124,18 +127,20 @@ const AUTO_PACKS = [
       { name: "Détachage intensif — tâche résistante", price: 19, popular: false },
       { name: "Traitement anti-odeur (tabac, animaux)", price: 15, popular: true },
       { name: "Nettoyage du ciel de toit", price: 29, popular: false },
+      { name: "Soin nourrissant & protecteur du cuir", price: 55, popular: false },
     ],
   },
   {
     id: "siege", emoji: "💺", name: "Rénovation siège", price: "59 €", tagline: "Ciblé", duration: "45 min",
     badge: null as string | null, featured: false,
-    included: ["Injection-extraction des sièges ou nettoyage intégral du cuir", "Élimination des taches tenaces", "Traitement des auréoles", "Résultat visible immédiatement"],
+    included: ["Nettoyage des sièges avec méthode adaptée au revêtement (tissu, alcantara ou cuir)", "Élimination des taches tenaces", "Traitement des auréoles", "Résultat visible immédiatement"],
     options: [
       { name: "Traitement enzymatique intensif", price: 19, popular: false },
       { name: "Traitement anti-acariens et bactériens", price: 19, popular: true },
       { name: "Élimination des poils d'animaux", price: 25, popular: false },
       { name: "Détachage intensif — siège très taché", price: 19, popular: false },
       { name: "Traitement anti-odeur (tabac, animaux)", price: 15, popular: true },
+      { name: "Soin nourrissant & protecteur du cuir", price: 55, popular: false },
     ],
   },
 ];
@@ -303,6 +308,7 @@ function CanapeDetail() {
 const CUIR_IMAGES: Record<string, string> = {
   "cuir-fauteuil": "/images/cuir/fauteuil.png",
   "cuir-canape-2": "/images/cuir/canape-2.png",
+  "cuir-canape-4": "/images/cuir/canape-4.png",
   "cuir-canape-angle": "/images/cuir/canape-angle.png",
   "cuir-auto": "/images/cuir/siege-auto.png",
 };
@@ -806,7 +812,7 @@ const CATEGORIES = [
   {
     id: "tapis",
     icon: <Layers className="size-7" />,
-    title: "Shampouinage Tapis & Moquette",
+    title: "Nettoyage Tapis & Moquette",
     sub: "Fibres ravivées · Séchage dans la journée",
     priceFrom: "49 €",
     bullets: ["1 tapis, 2 tapis, 3 tapis", "Toutes tailles et matières", "Options anti-acariens, recto-verso"],
