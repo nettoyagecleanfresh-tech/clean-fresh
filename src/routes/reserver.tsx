@@ -175,10 +175,13 @@ const FORMULE_IMAGES: Record<string, Record<string, string>> = {
     "matelas-2":      "/images/matelas/2-places.png",
   },
   cuir: {
-    "cuir-fauteuil":     "/images/canape/fauteuil.png",
-    "cuir-canape-2":     "/images/canape/canape-2-3.png",
-    "cuir-canape-angle": "/images/canape/canape-u.png",
-    "cuir-auto":         "/images/auto/renov.png",
+    "cuir-fauteuil":     "/images/cuir/fauteuil.png",
+    "cuir-canape-2":     "/images/cuir/canape-2.png",
+    "cuir-canape-4":     "/images/cuir/canape-4.png",
+    "cuir-canape-angle": "/images/cuir/canape-angle.png",
+    "cuir-pouf":         "/images/cuir/pouf.png",
+    "cuir-chaise":       "/images/cuir/chaise.png",
+    "cuir-auto":         "/images/cuir/siege-auto.png",
   },
 };
 
