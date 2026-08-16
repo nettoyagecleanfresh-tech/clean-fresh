@@ -19,7 +19,7 @@ type FormulesSearch = {
 export const Route = createFileRoute("/formules")({
   validateSearch: (search: Record<string, unknown>): FormulesSearch => {
     return {
-      service: search.service as string | undefined,
+      service: search.service as any,
     };
   },
   head: () => ({
@@ -58,9 +58,11 @@ const CANAPE_OPTIONS = [
 const CUIR_ITEMS = [
   { id: "cuir-fauteuil",  label: "Fauteuil",           price: "49 €",        duration: "45 min", desc: "Nettoyage manuel doux et respectueux." },
   { id: "cuir-canape-2",  label: "Canapé 2/3 places",  price: "79 €",       duration: "1h",     popular: true, desc: "Soin complet et nettoyage à la main." },
-  { id: "cuir-canape-4",  label: "Canapé 4/5 places",  price: "89 €",       duration: "1h",     desc: "Soin complet et nettoyage à la main pour grand canapé." },
+  { id: "cuir-canape-4",  label: "Canapé 4/5 places",  price: "99 €",       duration: "1h",     desc: "Soin complet et nettoyage à la main pour grand canapé." },
   { id: "cuir-canape-angle", label: "Canapé en U ou en angle", price: "99 €", duration: "1h", desc: "Nettoyage intégral grand format." },
-  { id: "cuir-auto",      label: "Sièges auto",        price: "59 €",       duration: "1h",     desc: "Habitacle complet, nettoyage cuir auto." },
+  { id: "cuir-pouf",      label: "Pouf",               price: "19 €",       duration: "30 min", desc: "Nettoyage manuel doux." },
+  { id: "cuir-chaise",    label: "Chaise",             price: "15 € / pièce", duration: "20 min", desc: "Nettoyage manuel doux et respectueux." },
+  { id: "cuir-auto",      label: "Rénovation siège auto", price: "59 €",    duration: "1h",     desc: "Tous les sièges du véhicule en cuir sont nettoyés pour 59 €." },
 ];
 
 const CUIR_OPTIONS = [
@@ -174,7 +176,7 @@ function MiniPriceCard({ title, price, items, badge, featured, icon }: {
           </li>
         ))}
       </ul>
-      <Link to="/reserver" search={{ from: "formules" }}
+      <Link to="/reserver" search={{ from: "formules" } as any}
         className={[
           "mt-4 inline-flex w-full items-center justify-center gap-1.5 rounded-xl py-2.5 text-xs font-bold transition-opacity hover:opacity-90",
           featured ? "bg-white text-primary" : "bg-primary text-white",
@@ -310,6 +312,8 @@ const CUIR_IMAGES: Record<string, string> = {
   "cuir-canape-2": "/images/cuir/canape-2.png",
   "cuir-canape-4": "/images/cuir/canape-4.png",
   "cuir-canape-angle": "/images/cuir/canape-angle.png",
+  "cuir-pouf": "/images/cuir/pouf.png",
+  "cuir-chaise": "/images/cuir/chaise.png",
   "cuir-auto": "/images/cuir/siege-auto.png",
 };
 
@@ -980,7 +984,7 @@ function FormulesPage() {
         <p className="mt-1 text-sm text-muted-foreground">Réservation en ligne en 2 minutes, confirmation immédiate.</p>
         <div className="mt-5 flex flex-wrap gap-3 justify-center">
           <Button asChild size="xl" className="font-bold">
-            <Link to="/reserver" search={{ from: "formules" }}><CalendarCheck className="size-5" /> Réserver maintenant</Link>
+            <Link to="/reserver" search={{ from: "formules" } as any}><CalendarCheck className="size-5" /> Réserver maintenant</Link>
           </Button>
           <Button asChild variant="outline" size="xl">
             <a href={COMPANY.phoneHref}><Phone className="size-4" /> {COMPANY.phone}</a>
