@@ -48,7 +48,8 @@ export const fetchBusySlotsServerFn = createServerFn({ method: "POST" })
       const json = (await res.json()) as {
         calendars?: Record<string, { busy?: BusySlot[] }>;
       };
-      return json.calendars?.[calId]?.busy ?? [];
+      const cals = json.calendars || {};
+      return cals[calId]?.busy || Object.values(cals)[0]?.busy || [];
     } catch (err) {
       console.error("[GCal freeBusy]", err);
       return [];

@@ -388,7 +388,7 @@ function ReserverPage() {
     setFormule(f);
     setSelectedOptions([]);
     setStep(2);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    // window.scrollTo({ top: 0, behavior: "smooth" });
   };
   const handleSelectDate = (d: Date) => { setSelectedDate(d); setSelectedTime(null); setSlotTaken(false); };
 
@@ -411,7 +411,7 @@ function ReserverPage() {
       }
     }
     setStep(s => (s < 4 ? (s + 1) as 1|2|3|4 : s));
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    // window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const handleAddAnother = () => {
@@ -423,7 +423,7 @@ function ReserverPage() {
     setFormule(null);
     setSelectedOptions([]);
     setShowCategories(true);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    // window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const handleBack = () => {
@@ -545,7 +545,7 @@ function ReserverPage() {
         setSelectedTime(null);
         setStep(3);
         setSubmitting(false);
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        // window.scrollTo({ top: 0, behavior: "smooth" });
         return;
       }
 

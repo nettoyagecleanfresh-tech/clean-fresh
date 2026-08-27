@@ -267,7 +267,8 @@ export async function checkSlotAvailable(
     const json = (await res.json()) as {
       calendars?: Record<string, { busy?: { start: string; end: string }[] }>;
     };
-    const busy = json.calendars?.[calId]?.busy ?? [];
+    const cals = json.calendars || {};
+    const busy = cals[calId]?.busy || Object.values(cals)[0]?.busy || [];
 
     const BUFFER_MS = 20 * 60_000; // 20 min marge trajet
     const slotStartMs = slotStart.getTime();
