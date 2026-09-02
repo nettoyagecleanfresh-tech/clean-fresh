@@ -249,9 +249,9 @@ export async function checkSlotAvailable(
     const slotStart = parisLocalToUtc(y!, mo!, d!, h!, mi!);
     const slotEnd   = new Date(slotStart.getTime() + duration_min * 60_000);
 
-    // Fenêtre de requête : la journée entière en UTC (+marge)
-    const timeMin = new Date(Date.UTC(y!, mo! - 1, d!, 0, 0, 0)).toISOString();
-    const timeMax = new Date(Date.UTC(y!, mo! - 1, d!, 23, 59, 59)).toISOString();
+    // Fenêtre de requête : la journée entière en heure locale (Paris) convertie en UTC
+    const timeMin = parisLocalToUtc(y!, mo!, d!, 0, 0).toISOString();
+    const timeMax = parisLocalToUtc(y!, mo!, d!, 23, 59).toISOString();
 
     const res = await fetch("https://www.googleapis.com/calendar/v3/freeBusy", {
       method: "POST",
@@ -273,10 +273,15 @@ export async function checkSlotAvailable(
     const BUFFER_MS = 20 * 60_000; // 20 min marge trajet
     const slotStartMs = slotStart.getTime();
     const slotEndMs   = slotEnd.getTime();
+    
+    const debutDuCreneau = slotStartMs - BUFFER_MS;
+    const finDuCreneau = slotEndMs + BUFFER_MS;
+
     const conflict = busy.some(b => {
-      const bs = new Date(b.start).getTime();
-      const be = new Date(b.end).getTime();
-      return slotStartMs < be + BUFFER_MS && slotEndMs + BUFFER_MS > bs;
+      const debutDeLevenement = new Date(b.start).getTime();
+      const finDeLevenement = new Date(b.end).getTime();
+      // Règle de conflit : "débutDuCréneau < finDeLEvénement" ET "finDuCréneau > débutDeLEvénement"
+      return debutDuCreneau < finDeLevenement && finDuCreneau > debutDeLevenement;
     });
 
     return !conflict;

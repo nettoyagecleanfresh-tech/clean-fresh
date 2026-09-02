@@ -16,7 +16,7 @@ export function Footer() {
         {/* Brand */}
         <div className="col-span-2 md:col-span-1">
           <Link to="/" className="inline-block">
-            <img src="/logo.png" alt="Clean & Fresh Logo" className="h-20 w-auto object-contain" />
+            <img src="/logo.webp" alt="Clean & Fresh Logo" width="400" height="400" className="h-20 w-auto object-contain" />
           </Link>
           <p className="mt-3 text-sm text-ink-foreground/70 leading-relaxed">{COMPANY.slogan}</p>
           <p className="mt-4 text-sm text-ink-foreground/50 leading-relaxed">

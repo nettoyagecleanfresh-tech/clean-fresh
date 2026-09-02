@@ -47,13 +47,16 @@ export function isSlotFree(
 ): boolean {
   const slotStartMs = slotStart.getTime();
   const slotEndMs = slotStartMs + durationMin * 60_000;
+  
+  const debutDuCreneau = slotStartMs - TRAVEL_BUFFER_MS;
+  const finDuCreneau = slotEndMs + TRAVEL_BUFFER_MS;
+
   return !busy.some((b) => {
     const bs = new Date(b.start).getTime();
     const be = new Date(b.end).getTime();
-    // Conflit si le nouveau créneau (+ marge trajet) chevauche une période occupée
-    // → slotStart doit être ≥ be + 1h20 (arriver après la fin du RDV précédent + trajet)
-    // → slotEnd + 1h20 doit être ≤ bs (partir assez tôt pour arriver au RDV suivant)
-    return slotStartMs < be + TRAVEL_BUFFER_MS && slotEndMs + TRAVEL_BUFFER_MS > bs;
+    
+    // Règle de conflit stricte : "débutDuCréneau < finDeLEvénement" ET "finDuCréneau > débutDeLEvénement"
+    return debutDuCreneau < be && finDuCreneau > bs;
   });
 }
 

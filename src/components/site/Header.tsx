@@ -34,7 +34,7 @@ export function Header() {
 
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2.5 shrink-0" onClick={close}>
-          <img src="/logo.png" alt="Clean & Fresh Logo" className="h-11 md:h-16 w-auto object-contain" />
+          <img src="/logo.webp" alt="Clean & Fresh Logo" width="400" height="400" className="h-11 md:h-16 w-auto object-contain" />
         </Link>
 
         {/* Desktop nav */}

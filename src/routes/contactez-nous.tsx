@@ -19,11 +19,11 @@ export const Route = createFileRoute("/contactez-nous")({
       { name: "description", content: `Contactez Clean&Fresh pour un devis gratuit sous 24h : nettoyage canapé, matelas, tapis, auto à domicile à Toulouse. Réponse rapide, tarifs clairs.` },
       { property: "og:title", content: `Contactez Clean&Fresh — Devis gratuit nettoyage Toulouse` },
       { property: "og:description", content: `Contactez Clean&Fresh pour un devis gratuit sous 24h : nettoyage canapé, matelas, tapis, auto à domicile à Toulouse. Réponse rapide, tarifs clairs.` },
-      { property: "og:url", content: `https://cleanetfresh.fr/contactez-nous` },
+      { property: "og:url", content: `https://www.cleanetfresh.fr/contactez-nous` },
       { name: "twitter:title", content: `Contactez Clean&Fresh — Devis gratuit nettoyage Toulouse` },
       { name: "twitter:description", content: `Contactez Clean&Fresh pour un devis gratuit sous 24h : nettoyage canapé, matelas, tapis, auto à domicile à Toulouse. Réponse rapide, tarifs clairs.` },
     ],
-    links: [{ rel: "canonical", href: `https://cleanetfresh.fr/contactez-nous` }],
+    links: [{ rel: "canonical", href: `https://www.cleanetfresh.fr/contactez-nous` }],
   }),
   component: ContactPage,
 });

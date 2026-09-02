@@ -113,8 +113,8 @@ const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://cleanetfresh.fr" },
-    { "@type": "ListItem", position: 2, name: "Tarifs", item: "https://cleanetfresh.fr/tarifs" },
+    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://www.cleanetfresh.fr" },
+    { "@type": "ListItem", position: 2, name: "Tarifs", item: "https://www.cleanetfresh.fr/tarifs" },
   ],
 };
 

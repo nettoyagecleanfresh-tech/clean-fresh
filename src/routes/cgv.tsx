@@ -13,11 +13,11 @@ export const Route = createFileRoute("/cgv")({
       { name: "description", content: `Conditions Générales de Vente de Clean&Fresh, entreprise de nettoyage professionnelle à Toulouse.` },
       { property: "og:title", content: `Conditions Générales de Vente — Clean&Fresh Toulouse` },
       { property: "og:description", content: `Conditions Générales de Vente de Clean&Fresh, entreprise de nettoyage professionnelle à Toulouse.` },
-      { property: "og:url", content: `https://cleanetfresh.fr/cgv` },
+      { property: "og:url", content: `https://www.cleanetfresh.fr/cgv` },
       { name: "twitter:title", content: `Conditions Générales de Vente — Clean&Fresh Toulouse` },
       { name: "twitter:description", content: `Conditions Générales de Vente de Clean&Fresh, entreprise de nettoyage professionnelle à Toulouse.` },
     ],
-    links: [{ rel: "canonical", href: `https://cleanetfresh.fr/cgv` }],
+    links: [{ rel: "canonical", href: `https://www.cleanetfresh.fr/cgv` }],
   }),
   component: CGVPage,
 });

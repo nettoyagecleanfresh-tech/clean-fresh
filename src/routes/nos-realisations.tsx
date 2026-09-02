@@ -14,11 +14,11 @@ export const Route = createFileRoute("/nos-realisations")({
       { name: "description", content: `Photos avant/après de nos interventions à Toulouse et agglomération : canapés, matelas, tapis, voitures. Résultats garantis. 4.9★ sur Google.` },
       { property: "og:title", content: `Réalisations Avant/Après — Nettoyage Canapé Matelas Toulouse | Clean&Fresh` },
       { property: "og:description", content: `Photos avant/après de nos interventions à Toulouse et agglomération : canapés, matelas, tapis, voitures. Résultats garantis. 4.9★ sur Google.` },
-      { property: "og:url", content: `https://cleanetfresh.fr/nos-realisations` },
+      { property: "og:url", content: `https://www.cleanetfresh.fr/nos-realisations` },
       { name: "twitter:title", content: `Réalisations Avant/Après — Nettoyage Canapé Matelas Toulouse | Clean&Fresh` },
       { name: "twitter:description", content: `Photos avant/après de nos interventions à Toulouse et agglomération : canapés, matelas, tapis, voitures. Résultats garantis. 4.9★ sur Google.` },
     ],
-    links: [{ rel: "canonical", href: `https://cleanetfresh.fr/nos-realisations` }],
+    links: [{ rel: "canonical", href: `https://www.cleanetfresh.fr/nos-realisations` }],
   }),
   component: GaleriePage,
 });

@@ -28,11 +28,11 @@ export const Route = createFileRoute("/formules")({
       { name: "description", content: `Réservez votre nettoyage en ligne : canapé dès 79 €, matelas dès 59 €, auto dès 69 €. Intervention à domicile à Toulouse et agglomération. Simple et rapide.` },
       { property: "og:title", content: `Réserver un Nettoyage à Toulouse — Canapé, Matelas, Auto | Clean&Fresh` },
       { property: "og:description", content: `Réservez votre nettoyage en ligne : canapé dès 79 €, matelas dès 59 €, auto dès 69 €. Intervention à domicile à Toulouse et agglomération. Simple et rapide.` },
-      { property: "og:url", content: `https://cleanetfresh.fr/formules` },
+      { property: "og:url", content: `https://www.cleanetfresh.fr/formules` },
       { name: "twitter:title", content: `Réserver un Nettoyage à Toulouse — Canapé, Matelas, Auto | Clean&Fresh` },
       { name: "twitter:description", content: `Réservez votre nettoyage en ligne : canapé dès 79 €, matelas dès 59 €, auto dès 69 €. Intervention à domicile à Toulouse et agglomération. Simple et rapide.` },
     ],
-    links: [{ rel: "canonical", href: `https://cleanetfresh.fr/formules` }],
+    links: [{ rel: "canonical", href: `https://www.cleanetfresh.fr/formules` }],
   }),
   component: FormulesPage,
 });
@@ -857,6 +857,7 @@ function FormulesPage() {
 
   return (
     <div className="bg-[#f4f6f9] pb-24 lg:pb-0">
+      <h1 className="sr-only">Réserver un nettoyage à domicile à Toulouse (canapé, matelas, auto, tapis)</h1>
 
       {/* ── CATEGORY GRID ── */}
       {!selectedService && (

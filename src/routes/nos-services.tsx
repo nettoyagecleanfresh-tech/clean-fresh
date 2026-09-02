@@ -30,11 +30,11 @@ export const Route = createFileRoute("/nos-services")({
       { name: "description", content: `Découvrez tous les services Clean&Fresh : nettoyage canapé, matelas, tapis, moquette, auto, vitres, terrasse, façade, fin de chantier. À domicile Toulouse et 31.` },
       { property: "og:title", content: `Nos Services de Nettoyage à Toulouse — Canapé, Matelas, Auto | Clean&Fresh` },
       { property: "og:description", content: `Découvrez tous les services Clean&Fresh : nettoyage canapé, matelas, tapis, moquette, auto, vitres, terrasse, façade, fin de chantier. À domicile Toulouse et 31.` },
-      { property: "og:url", content: `https://cleanetfresh.fr/nos-services` },
+      { property: "og:url", content: `https://www.cleanetfresh.fr/nos-services` },
       { name: "twitter:title", content: `Nos Services de Nettoyage à Toulouse — Canapé, Matelas, Auto | Clean&Fresh` },
       { name: "twitter:description", content: `Découvrez tous les services Clean&Fresh : nettoyage canapé, matelas, tapis, moquette, auto, vitres, terrasse, façade, fin de chantier. À domicile Toulouse et 31.` },
     ],
-    links: [{ rel: "canonical", href: `https://cleanetfresh.fr/nos-services` }],
+    links: [{ rel: "canonical", href: `https://www.cleanetfresh.fr/nos-services` }],
   }),
   component: ServicesPage,
 });

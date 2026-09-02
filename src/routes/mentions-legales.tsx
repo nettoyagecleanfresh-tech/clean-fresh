@@ -13,11 +13,11 @@ export const Route = createFileRoute("/mentions-legales")({
       { name: "description", content: `Mentions légales de Clean&Fresh, entreprise de nettoyage à domicile à Toulouse.` },
       { property: "og:title", content: `Mentions Légales — Clean&Fresh Toulouse` },
       { property: "og:description", content: `Mentions légales de Clean&Fresh, entreprise de nettoyage à domicile à Toulouse.` },
-      { property: "og:url", content: `https://cleanetfresh.fr/mentions-legales` },
+      { property: "og:url", content: `https://www.cleanetfresh.fr/mentions-legales` },
       { name: "twitter:title", content: `Mentions Légales — Clean&Fresh Toulouse` },
       { name: "twitter:description", content: `Mentions légales de Clean&Fresh, entreprise de nettoyage à domicile à Toulouse.` },
     ],
-    links: [{ rel: "canonical", href: `https://cleanetfresh.fr/mentions-legales` }],
+    links: [{ rel: "canonical", href: `https://www.cleanetfresh.fr/mentions-legales` }],
   }),
   component: MentionsLegalesPage,
 });

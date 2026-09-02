@@ -27,6 +27,10 @@ export const Route = createFileRoute("/reserver")({
     meta: [
       { title: "Réserver — Clean&Fresh Toulouse" },
       { name: "description", content: "Réservez votre nettoyage à domicile à Toulouse en 2 minutes." },
+      { name: "robots", content: "noindex, nofollow" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://www.cleanetfresh.fr/reserver" },
     ],
   }),
   component: ReserverPage,
@@ -472,6 +476,7 @@ function ReserverPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (submitting) return;
     if (!formule || !selectedDate || !selectedTime || !service) return;
     setSubmitting(true);
 
@@ -609,6 +614,7 @@ function ReserverPage() {
           }))
         }
       });
+      (window as any).dataLayer.push({ event: "booking_success" });
     }
   };
 
@@ -867,9 +873,13 @@ function ReserverPage() {
                             <div className="flex size-12 items-center justify-center opacity-60">{service.icon}</div>
                           )}
                         </div>
-                        <p className="text-[10px] md:text-xs font-semibold uppercase tracking-widest text-muted-foreground/80 leading-none mt-1">Dès</p>
+                        {f.id.includes('chaise') ? (
+                          <div className="h-[10px] md:h-3 mt-1"></div>
+                        ) : (
+                          <p className="text-[10px] md:text-xs font-semibold uppercase tracking-widest text-muted-foreground/80 leading-none mt-1">Dès</p>
+                        )}
                         <p className={`text-lg md:text-2xl font-bold leading-tight mt-1.5 ${active ? "text-[#1a2b4c]" : "text-foreground"}`}>
-                          {f.price} €
+                          {f.price} € {f.id.includes('chaise') && <span className="text-sm font-normal">/ unité</span>}
                         </p>
                         <p className="text-sm md:text-base font-bold text-foreground/90 leading-snug mt-2 px-1 w-full text-center">{f.name}</p>
                         {f.desc && (

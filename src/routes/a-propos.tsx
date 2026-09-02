@@ -14,11 +14,11 @@ export const Route = createFileRoute("/a-propos")({
       { name: "description", content: `Clean&Fresh, votre entreprise de nettoyage à domicile à Toulouse depuis 2020. 4.9★ sur Google · 500+ clients satisfaits · Produits Écolabel · 6j/7.` },
       { property: "og:title", content: `À propos de Clean&Fresh — Entreprise de nettoyage Toulouse` },
       { property: "og:description", content: `Clean&Fresh, votre entreprise de nettoyage à domicile à Toulouse depuis 2020. 4.9★ sur Google · 500+ clients satisfaits · Produits Écolabel · 6j/7.` },
-      { property: "og:url", content: `https://cleanetfresh.fr/a-propos` },
+      { property: "og:url", content: `https://www.cleanetfresh.fr/a-propos` },
       { name: "twitter:title", content: `À propos de Clean&Fresh — Entreprise de nettoyage Toulouse` },
       { name: "twitter:description", content: `Clean&Fresh, votre entreprise de nettoyage à domicile à Toulouse depuis 2020. 4.9★ sur Google · 500+ clients satisfaits · Produits Écolabel · 6j/7.` },
     ],
-    links: [{ rel: "canonical", href: `https://cleanetfresh.fr/a-propos` }],
+    links: [{ rel: "canonical", href: `https://www.cleanetfresh.fr/a-propos` }],
   }),
   component: AboutPage,
 });

@@ -13,11 +13,11 @@ export const Route = createFileRoute("/politique-confidentialite")({
       { name: "description", content: `Politique de confidentialité de Clean&Fresh, entreprise de nettoyage à domicile à Toulouse.` },
       { property: "og:title", content: `Politique de Confidentialité — Clean&Fresh Toulouse` },
       { property: "og:description", content: `Politique de confidentialité de Clean&Fresh, entreprise de nettoyage à domicile à Toulouse.` },
-      { property: "og:url", content: `https://cleanetfresh.fr/politique-confidentialite` },
+      { property: "og:url", content: `https://www.cleanetfresh.fr/politique-confidentialite` },
       { name: "twitter:title", content: `Politique de Confidentialité — Clean&Fresh Toulouse` },
       { name: "twitter:description", content: `Politique de confidentialité de Clean&Fresh, entreprise de nettoyage à domicile à Toulouse.` },
     ],
-    links: [{ rel: "canonical", href: `https://cleanetfresh.fr/politique-confidentialite` }],
+    links: [{ rel: "canonical", href: `https://www.cleanetfresh.fr/politique-confidentialite` }],
   }),
   component: PrivacyPage,
 });
