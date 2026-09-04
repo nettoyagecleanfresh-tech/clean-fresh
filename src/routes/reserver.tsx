@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useLayoutEffect, useState } from "react";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "framer-motion";
 import {
@@ -376,6 +376,17 @@ function ReserverPage() {
   const [gcalEventId, setGcalEventId] = useState<string | null>(null);
   const [showSummaryMobile, setShowSummaryMobile] = useState(false);
 
+  useLayoutEffect(() => {
+    const root = document.documentElement;
+    const previousScrollBehavior = root.style.scrollBehavior;
+
+    root.style.scrollBehavior = "auto";
+    window.scrollTo(0, 0);
+    root.scrollTop = 0;
+    document.body.scrollTop = 0;
+    root.style.scrollBehavior = previousScrollBehavior;
+  }, [step, showCategories, service?.id, formule?.id]);
+
   const toggleOption = (id: string) =>
     setSelectedOptions(prev => prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]);
 
@@ -392,7 +403,6 @@ function ReserverPage() {
     setFormule(f);
     setSelectedOptions([]);
     setStep(2);
-    // window.scrollTo({ top: 0, behavior: "smooth" });
   };
   const handleSelectDate = (d: Date) => { setSelectedDate(d); setSelectedTime(null); setSlotTaken(false); };
 
@@ -415,7 +425,6 @@ function ReserverPage() {
       }
     }
     setStep(s => (s < 4 ? (s + 1) as 1|2|3|4 : s));
-    // window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const handleAddAnother = () => {
@@ -427,7 +436,6 @@ function ReserverPage() {
     setFormule(null);
     setSelectedOptions([]);
     setShowCategories(true);
-    // window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const handleBack = () => {
@@ -550,7 +558,6 @@ function ReserverPage() {
         setSelectedTime(null);
         setStep(3);
         setSubmitting(false);
-        // window.scrollTo({ top: 0, behavior: "smooth" });
         return;
       }
 
