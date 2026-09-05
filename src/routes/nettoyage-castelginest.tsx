@@ -5,8 +5,8 @@ import { LocalCityPage } from "@/components/site/LocalCityPage";
 
 const CITY = "Castelginest";
 const SLUG = "/nettoyage-castelginest";
-const TITLE = `Nettoyage à domicile à ${CITY} — Canapé, Matelas, Tapis | Clean&Fresh`;
-const DESC = `Nettoyage canapé dès 49 €, matelas dès 39 €, tapis dès 49 €, auto dès 69 € à ${CITY}. À domicile, produits Écolabel, 4.9★ Google. Devis gratuit sous 24h.`;
+const TITLE = `Nettoyage à domicile à ${CITY} | Clean&Fresh`;
+const DESC = `Nettoyage canapé, matelas, tapis et auto à domicile à ${CITY}. Tarifs clairs, produits professionnels et devis gratuit sous 24h.`;
 
 export const Route = createFileRoute("/nettoyage-castelginest")({
   head: () => ({
@@ -43,7 +43,6 @@ export const Route = createFileRoute("/nettoyage-castelginest")({
           areaServed: { "@type": "City", name: CITY },
           address: { "@type": "PostalAddress", addressLocality: "Toulouse", addressRegion: "Haute-Garonne", postalCode: "31000", addressCountry: "FR" },
           priceRange: "€€",
-          aggregateRating: { "@type": "AggregateRating", ratingValue: "4.9", reviewCount: "103" },
         }),
       },
     ],
