@@ -385,7 +385,7 @@ function ReserverPage() {
     root.scrollTop = 0;
     document.body.scrollTop = 0;
     root.style.scrollBehavior = previousScrollBehavior;
-  }, [step, showCategories, service?.id, formule?.id]);
+  }, [done, step, showCategories, service?.id, formule?.id]);
 
   const toggleOption = (id: string) =>
     setSelectedOptions(prev => prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]);
