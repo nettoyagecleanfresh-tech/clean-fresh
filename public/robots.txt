@@ -2,7 +2,6 @@ User-agent: *
 Allow: /
 
 # Pages utilitaires — pas besoin d'indexer
-Disallow: /annuler
 Disallow: /envoyer-avis
 Disallow: /upsell
 
