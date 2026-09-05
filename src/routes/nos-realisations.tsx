@@ -4,8 +4,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { X, ChevronLeft, ChevronRight, CalendarCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const TITLE = "Réalisations Avant/Après — Nettoyage Canapé Matelas Toulouse | Clean&Fresh";
-const DESC = "Photos avant/après de nos interventions à Toulouse et agglomération : canapés, matelas, tapis, voitures. Résultats garantis. 4.9★ sur Google.";
+const TITLE = "Réalisations avant/après Toulouse | Clean&Fresh";
+const DESC = "Découvrez les photos avant/après de nos nettoyages de canapés, matelas, tapis et voitures à Toulouse et dans son agglomération.";
 
 export const Route = createFileRoute("/nos-realisations")({
   head: () => ({

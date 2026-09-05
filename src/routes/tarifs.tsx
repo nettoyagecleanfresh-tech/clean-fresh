@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { SITE_URL, COMPANY, SERVICES } from "@/data/site";
 import { FadeIn } from "@/components/ui/fade-in";
 
-const TITLE = "Tarifs Nettoyage Toulouse — Prix clairs dès 39 € | Clean&Fresh";
+const TITLE = "Tarifs nettoyage Toulouse dès 39 € | Clean&Fresh";
 const DESC =
   "Tous les tarifs Clean&Fresh : nettoyage canapé dès 49 €, matelas dès 39 €, auto dès 69 €, tapis dès 49 €. Devis gratuit sous 24h. Intervention à domicile Toulouse et 31.";
 
@@ -412,7 +412,7 @@ function TarifsPage() {
               },
               {
                 q: "Pouvez-vous intervenir le soir ou le week-end ?",
-                a: "Oui, nous sommes disponibles 6j/7, y compris le samedi et le dimanche matin. Créneaux disponibles à la réservation en ligne.",
+                a: "Oui, nous sommes disponibles 7j/7, de 8h00 à 21h00 selon les créneaux proposés à la réservation en ligne.",
               },
             ].map(({ q, a }) => (
               <details

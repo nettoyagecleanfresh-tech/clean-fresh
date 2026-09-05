@@ -14,7 +14,11 @@ export const Route = createFileRoute("/annuler")({
     token: (s["token"] as string) ?? "",
   }),
   head: () => ({
-    meta: [{ title: "Gérer mon rendez-vous — Clean&Fresh" }],
+    meta: [
+      { title: "Gérer mon rendez-vous — Clean&Fresh" },
+      { name: "robots", content: "noindex, nofollow, noarchive" },
+      { name: "referrer", content: "no-referrer" },
+    ],
   }),
   component: AnnulerPage,
 });

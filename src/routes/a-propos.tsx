@@ -4,19 +4,19 @@ import { Button } from "@/components/ui/button";
 import { SITE_URL } from "@/data/site";
 import { FadeIn } from "@/components/ui/fade-in";
 
-const TITLE = "À propos de Clean&Fresh — Entreprise de nettoyage Toulouse";
-const DESC = "Clean&Fresh, votre entreprise de nettoyage à domicile à Toulouse depuis 2020. 4.9★ sur Google · 500+ clients satisfaits · Produits Écolabel · 6j/7.";
+const TITLE = "À propos de Clean&Fresh Toulouse";
+const DESC = "Clean&Fresh, entreprise de nettoyage à domicile à Toulouse depuis 2020. 4.9★ Google, 500+ clients satisfaits, produits professionnels et service 7j/7.";
 
 export const Route = createFileRoute("/a-propos")({
   head: () => ({
     meta: [
       { title: `À propos de Clean&Fresh — Entreprise de nettoyage Toulouse` },
-      { name: "description", content: `Clean&Fresh, votre entreprise de nettoyage à domicile à Toulouse depuis 2020. 4.9★ sur Google · 500+ clients satisfaits · Produits Écolabel · 6j/7.` },
+      { name: "description", content: DESC },
       { property: "og:title", content: `À propos de Clean&Fresh — Entreprise de nettoyage Toulouse` },
-      { property: "og:description", content: `Clean&Fresh, votre entreprise de nettoyage à domicile à Toulouse depuis 2020. 4.9★ sur Google · 500+ clients satisfaits · Produits Écolabel · 6j/7.` },
+      { property: "og:description", content: DESC },
       { property: "og:url", content: `https://www.cleanetfresh.fr/a-propos` },
       { name: "twitter:title", content: `À propos de Clean&Fresh — Entreprise de nettoyage Toulouse` },
-      { name: "twitter:description", content: `Clean&Fresh, votre entreprise de nettoyage à domicile à Toulouse depuis 2020. 4.9★ sur Google · 500+ clients satisfaits · Produits Écolabel · 6j/7.` },
+      { name: "twitter:description", content: DESC },
     ],
     links: [{ rel: "canonical", href: `https://www.cleanetfresh.fr/a-propos` }],
   }),

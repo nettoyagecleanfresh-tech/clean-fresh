@@ -6,7 +6,6 @@ import {
   useRouter,
   HeadContent,
   Scripts,
-  ScrollRestoration,
   useLocation,
 } from "@tanstack/react-router";
 import { useEffect, lazy, Suspense, type ReactNode } from "react";
@@ -104,10 +103,10 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <h1 className="text-xl font-semibold tracking-tight text-foreground">
-          This page didn't load
+          Cette page n’a pas pu se charger
         </h1>
         <p className="mt-2 text-sm text-muted-foreground">
-          Something went wrong on our end. You can try refreshing or head back home.
+          Une erreur est survenue. Vous pouvez réessayer ou revenir à l’accueil.
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
@@ -117,13 +116,13 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
             }}
             className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
-            Try again
+            Réessayer
           </button>
           <a
             href="/"
             className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
           >
-            Go home
+            Revenir à l’accueil
           </a>
         </div>
       </div>
@@ -157,15 +156,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      // Preload de l'image hero — améliore le LCP (Largest Contentful Paint)
-      { rel: "preload", as: "image", href: "/assets/hero-nettoyage.webp", type: "image/webp" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Figtree:wght@400;500;600&display=swap",
       },
-      { rel: "icon", href: "/logo.png", type: "image/png" },
+      { rel: "icon", href: "/favicon.ico", sizes: "64x64" },
       // DNS prefetch pour les services tiers
       { rel: "dns-prefetch", href: "https://api.web3forms.com" },
     ],
@@ -195,7 +192,6 @@ function RootShell({ children }: { children: ReactNode }) {
       <body className="overflow-x-clip w-full">
         {children}
         <script dangerouslySetInnerHTML={{__html: `if(window.location.hostname.includes('lovable.app')||window.location.hostname.includes('vercel.app')) { var m = document.createElement('meta'); m.name = 'robots'; m.content = 'noindex, nofollow'; document.head.appendChild(m); }`}} />
-        <ScrollRestoration />
         <Scripts />
       </body>
     </html>

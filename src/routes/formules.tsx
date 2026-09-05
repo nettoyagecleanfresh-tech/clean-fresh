@@ -9,8 +9,8 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { COMPANY, SITE_URL } from "@/data/site";
 import { FadeIn } from "@/components/ui/fade-in";
 
-const TITLE = "Réserver un Nettoyage à Toulouse — Canapé, Matelas, Auto | Clean&Fresh";
-const DESC = "Réservez votre nettoyage en ligne : canapé dès 79 €, matelas dès 59 €, auto dès 69 €. Intervention à domicile à Toulouse et agglomération. Simple et rapide.";
+const TITLE = "Réserver un nettoyage à Toulouse | Clean&Fresh";
+const DESC = "Réservez en ligne votre nettoyage à domicile à Toulouse : canapé dès 49 €, matelas dès 39 €, tapis dès 49 € et auto dès 69 €.";
 
 type FormulesSearch = {
   service?: string;

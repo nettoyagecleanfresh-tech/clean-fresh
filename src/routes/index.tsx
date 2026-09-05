@@ -34,9 +34,9 @@ import apresCanape from "@/assets/apres-canape.webp";
 import avantAuto from "@/assets/avant-auto.webp";
 import apresAuto from "@/assets/apres-auto.webp";
 
-const TITLE = "Entreprise de Nettoyage à Toulouse — Canapé, Matelas, Tapis | Clean&Fresh";
+const TITLE = "Entreprise de nettoyage à Toulouse | Clean&Fresh";
 const DESC =
-  "Clean&Fresh, entreprise de nettoyage à Toulouse : canapé, matelas, tapis, auto, vitres, façade, fin de chantier. 4.9★ sur Google · 500+ interventions · Devis gratuit sous 24h !";
+  "Clean&Fresh intervient à Toulouse pour le nettoyage de canapés, matelas, tapis, autos et logements. Devis gratuit sous 24h.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -49,7 +49,10 @@ export const Route = createFileRoute("/")({
       { name: "twitter:title", content: TITLE },
       { name: "twitter:description", content: DESC },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/` }],
+    links: [
+      { rel: "canonical", href: `${SITE_URL}/` },
+      { rel: "preload", as: "image", href: heroImg, type: "image/webp", fetchPriority: "high" },
+    ],
     scripts: [
       {
         type: "application/ld+json",
@@ -84,27 +87,12 @@ export const Route = createFileRoute("/")({
             geoMidpoint: { "@type": "GeoCoordinates", latitude: 43.6047, longitude: 1.4442 },
             geoRadius: "30000",
           },
-          openingHoursSpecification: [
-            {
-              "@type": "OpeningHoursSpecification",
-              dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-              opens: "08:00",
-              closes: "19:00",
-            },
-            {
-              "@type": "OpeningHoursSpecification",
-              dayOfWeek: ["Saturday", "Sunday"],
-              opens: "09:00",
-              closes: "18:00",
-            },
-          ],
-          aggregateRating: {
-            "@type": "AggregateRating",
-            ratingValue: "4.9",
-            reviewCount: String(GOOGLE_REVIEW_COUNT),
-            bestRating: "5",
-            worstRating: "1",
-          },
+          openingHoursSpecification: [{
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+            opens: "08:00",
+            closes: "21:00",
+          }],
           sameAs: [
             "https://www.instagram.com/cleanetfresh31",
             "https://www.facebook.com/profile.php?id=61579620873055",

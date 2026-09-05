@@ -20,8 +20,8 @@ import { Button } from "@/components/ui/button";
 import { COMPANY, SITE_URL, SERVICES } from "@/data/site";
 import heroImg from "@/assets/hero-nettoyage.webp";
 
-const TITLE = "Nos Services de Nettoyage à Toulouse — Canapé, Matelas, Auto | Clean&Fresh";
-const DESC = "Découvrez tous les services Clean&Fresh : nettoyage canapé, matelas, tapis, moquette, auto, vitres, terrasse, façade, fin de chantier. À domicile Toulouse et 31.";
+const TITLE = "Services de nettoyage Toulouse | Clean&Fresh";
+const DESC = "Découvrez les services Clean&Fresh à Toulouse : canapé, matelas, tapis, auto, vitres, terrasse, façade et remise en état.";
 
 export const Route = createFileRoute("/nos-services")({
   head: () => ({
