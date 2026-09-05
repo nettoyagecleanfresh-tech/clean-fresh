@@ -96,9 +96,9 @@ export const SERVICES: Service[] = [
     short: "Nettoyage canapé Toulouse",
     subtitle:
       "Nettoyage en profondeur de vos canapés et fauteuils à domicile. À Toulouse et dans toute l'agglomération.",
-    metaTitle: "Nettoyage Canapé Toulouse — dès 49 € à domicile | Clean&Fresh",
+    metaTitle: "Nettoyage canapé Toulouse dès 49 € | Clean&Fresh",
     metaDescription:
-      "Nettoyage canapé tissu, cuir et microfibre à Toulouse. Traitement anti-acariens, séchage 2-4h. À domicile. 4.9★ sur Google. Devis gratuit sous 24h !",
+      "Nettoyage de canapé à domicile à Toulouse dès 49 €. Tissu, cuir et microfibre, options anti-acariens. Devis gratuit sous 24h.",
     group: "textile",
     booking: true,
     intro: [
@@ -162,9 +162,9 @@ export const SERVICES: Service[] = [
     short: "Nettoyage matelas Toulouse",
     subtitle:
       "Nettoyage en profondeur du matelas par injection-extraction. Traitements complémentaires disponibles en option : anti-acariens, anti-odeur, traitement enzymatique et protection hydrophobe & anti-taches.",
-    metaTitle: "Nettoyage Matelas Toulouse — Anti-acariens à domicile | Clean&Fresh",
+    metaTitle: "Nettoyage matelas Toulouse dès 39 € | Clean&Fresh",
     metaDescription:
-      "Nettoyage de matelas à domicile à Toulouse. Traitements complémentaires disponibles en option : anti-acariens, anti-odeur, traitement enzymatique et protection hydrophobe & anti-taches. 4.9⭐ Google. Devis gratuit sous 24h.",
+      "Nettoyage de matelas à domicile à Toulouse dès 39 €. Options anti-acariens, anti-odeur et protection anti-taches. Devis gratuit sous 24h.",
     group: "textile",
     booking: true,
     intro: [
@@ -215,7 +215,7 @@ export const SERVICES: Service[] = [
     short: "Nettoyage tapis Toulouse",
     subtitle:
       "Nettoyage professionnel de tapis et moquettes à domicile, à Toulouse et dans toute la Haute-Garonne.",
-    metaTitle: "Nettoyage Tapis & Moquette Toulouse — À domicile | Clean&Fresh",
+    metaTitle: "Nettoyage tapis Toulouse dès 49 € | Clean&Fresh",
     metaDescription:
       "Shampouinage et nettoyage professionnel de tapis à Toulouse. Toutes fibres, toutes tailles. Taches, odeurs, poils d'animaux éliminés. Devis gratuit sous 24h.",
     group: "textile",
@@ -268,9 +268,9 @@ export const SERVICES: Service[] = [
     short: "Nettoyage auto Toulouse",
     subtitle:
       "Nettoyage complet de l'habitacle de votre véhicule, chez vous ou sur votre lieu de travail, à Toulouse et son agglomération.",
-    metaTitle: "Nettoyage Auto à Domicile Toulouse — Intérieur complet | Clean&Fresh",
+    metaTitle: "Nettoyage auto à domicile Toulouse | Clean&Fresh",
     metaDescription:
-      "Nettoyage intérieur voiture à domicile à Toulouse. Sièges, moquette, tableau de bord, vitres. Résultat showroom. Particuliers et professionnels. Devis gratuit sous 24h.",
+      "Nettoyage intérieur de voiture à domicile à Toulouse dès 69 €. Sièges, moquette, tableau de bord et vitres. Devis gratuit sous 24h.",
     group: "textile",
     booking: true,
     intro: [
@@ -322,9 +322,9 @@ export const SERVICES: Service[] = [
     short: "Nettoyage vitres Toulouse",
     subtitle:
       "Vitres d'habitations, vitrines de commerces et baies de bureaux nettoyées sans traces, à Toulouse et alentours.",
-    metaTitle: "Nettoyage de Vitres Toulouse — Sans traces, pro & particuliers | Clean&Fresh",
+    metaTitle: "Nettoyage de vitres Toulouse | Clean&Fresh",
     metaDescription:
-      "Nettoyage vitres et vitrines à Toulouse : habitations, commerces, bureaux. Résultat sans traces garanti. Entretien ponctuel ou contrat régulier. Devis gratuit sous 24h.",
+      "Nettoyage de vitres et vitrines à Toulouse pour habitations, commerces et bureaux. Entretien ponctuel ou régulier, devis gratuit sous 24h.",
     group: "batiment",
     intro: [
       "Des vitres impeccables, c'est une image soignée pour votre domicile ou votre commerce. Notre service de nettoyage de vitres à Toulouse intervient chez les particuliers comme chez les professionnels avec un matériel adapté, garantissant un résultat sans traces.",
@@ -367,9 +367,9 @@ export const SERVICES: Service[] = [
     short: "Nettoyage terrasse Toulouse",
     subtitle:
       "Dalles, béton, carrelage extérieur et bois : nettoyage haute pression de votre terrasse à Toulouse.",
-    metaTitle: "Nettoyage Terrasse Toulouse — Haute pression, dalles & bois | Clean&Fresh",
+    metaTitle: "Nettoyage terrasse Toulouse | Clean&Fresh",
     metaDescription:
-      "Nettoyage de terrasse à haute pression à Toulouse. Dalles, béton, carrelage, bois. Mousse et salissures éliminées. Traitement anti-mousse inclus. Devis gratuit sous 24h.",
+      "Nettoyage de terrasse à Toulouse : dalles, béton, carrelage et bois. Traitement des mousses et salissures. Devis gratuit sous 24h.",
     group: "batiment",
     intro: [
       "Mousses, lichens et noircissement rendent votre terrasse glissante et terne. Notre service de nettoyage de terrasse à Toulouse intervient au nettoyeur haute pression, avec un réglage adapté à chaque support pour ne pas l'endommager.",
@@ -413,7 +413,7 @@ export const SERVICES: Service[] = [
     short: "Nettoyage toiture Toulouse",
     subtitle:
       "Démoussage et nettoyage haute pression de votre toiture à Toulouse et en Haute-Garonne.",
-    metaTitle: "Nettoyage Toiture Toulouse — Démoussage haute pression | Clean&Fresh",
+    metaTitle: "Nettoyage toiture Toulouse | Clean&Fresh",
     metaDescription:
       "Démoussage et nettoyage de toiture à Toulouse. Tuiles, ardoises, gouttières. Traitement anti-mousse durable inclus. Devis gratuit sur photos sous 24h.",
     group: "batiment",
@@ -458,9 +458,9 @@ export const SERVICES: Service[] = [
     short: "Nettoyage façade Toulouse",
     subtitle:
       "Façades de maisons et d'immeubles nettoyées en profondeur, à Toulouse et dans l'agglomération.",
-    metaTitle: "Nettoyage Façade Toulouse — Maisons & copropriétés | Clean&Fresh",
+    metaTitle: "Nettoyage façade Toulouse | Clean&Fresh",
     metaDescription:
-      "Nettoyage de façade à Toulouse : crépi, enduit, brique, béton. Élimination mousses, pollution et traces noires. Traitement hydrofuge en option. Devis gratuit sous 24h.",
+      "Nettoyage de façade à Toulouse : crépi, enduit, brique et béton. Traitement des mousses et traces noires. Devis gratuit sous 24h.",
     group: "batiment",
     intro: [
       "Pollution, mousses et coulures noircissent les façades toulousaines au fil des années. Notre service de nettoyage de façade à Toulouse redonne leur teinte d'origine aux murs sans travaux lourds ni ravalement complet.",
@@ -504,9 +504,9 @@ export const SERVICES: Service[] = [
     short: "Nettoyage Appartement / maison Toulouse",
     subtitle:
       "Grand ménage ponctuel ou entretien régulier de votre logement, à Toulouse et dans toute l'agglomération.",
-    metaTitle: "Nettoyage Appartement ou Maison Toulouse — Grand ménage | Clean&Fresh",
+    metaTitle: "Nettoyage maison et appartement Toulouse | Clean&Fresh",
     metaDescription:
-      "Nettoyage complet d'appartement ou maison à Toulouse : grand ménage, entre deux locataires, après déménagement. Produits professionnels sélectionnés. Devis gratuit sous 24h.",
+      "Nettoyage complet de maison ou appartement à Toulouse : grand ménage, déménagement et remise en état. Devis gratuit sous 24h.",
     group: "batiment",
     intro: [
       "Grand ménage de printemps, remise en état avant l'entrée d'un locataire, nettoyage après déménagement ou entretien régulier : notre service de nettoyage d'appartement et de maison à Toulouse prend en charge l'ensemble du logement.",
@@ -550,7 +550,7 @@ export const SERVICES: Service[] = [
     short: "Nettoyage Fin de chantier Toulouse",
     subtitle:
       "Poussières, résidus et traces de peinture éliminés après vos travaux, à Toulouse et en Haute-Garonne.",
-    metaTitle: "Nettoyage Fin de Chantier Toulouse — Livraison clé en main | Clean&Fresh",
+    metaTitle: "Nettoyage fin de chantier Toulouse | Clean&Fresh",
     metaDescription:
       "Nettoyage après travaux à Toulouse : poussières, résidus de peinture, vitres. Particuliers et professionnels. Livraison prête sous 24-48h. Devis gratuit rapide.",
     group: "batiment",
@@ -596,9 +596,9 @@ export const SERVICES: Service[] = [
     short: "Nettoyage Fin de bail Toulouse",
     subtitle:
       "Remise en état complète de votre logement pour l'état des lieux de sortie, à Toulouse et en Haute-Garonne.",
-    metaTitle: "Nettoyage Fin de Bail Toulouse — Récupérez votre caution | Clean&Fresh",
+    metaTitle: "Nettoyage fin de bail Toulouse | Clean&Fresh",
     metaDescription:
-      "Nettoyage de fin de bail à Toulouse pour récupérer votre dépôt de garantie. Remise en état complète, état des lieux de sortie. Intervention rapide. Devis sous 24h.",
+      "Nettoyage de fin de bail à Toulouse : remise en état complète avant l'état des lieux de sortie. Intervention rapide et devis sous 24h.",
     group: "batiment",
     intro: [
       "Vous quittez votre logement et voulez récupérer votre dépôt de garantie intégralement ? Notre service de nettoyage fin de bail à Toulouse prend en charge la remise en état complète avant l'état des lieux de sortie : cuisine, salle de bain, sols, vitres et parties communes.",
@@ -642,7 +642,7 @@ export const SERVICES: Service[] = [
     short: "Nettoyage Syndrome de Diogène Toulouse",
     subtitle:
       "Désencombrement, débarras et remise en état de logements en syndrome de Diogène, à Toulouse et en Haute-Garonne.",
-    metaTitle: "Nettoyage Syndrome de Diogène Toulouse — Discret & rapide | Clean&Fresh",
+    metaTitle: "Nettoyage Diogène Toulouse | Clean&Fresh",
     metaDescription:
       "Spécialiste du nettoyage de logements Diogène à Toulouse. Débarras, désinfection et remise en état avec discrétion et bienveillance. Devis confidentiel sous 24h.",
     group: "batiment",
@@ -688,9 +688,9 @@ export const SERVICES: Service[] = [
     short: "Nettoyage extrême Toulouse",
     subtitle:
       "Intervention lourde sur logement très dégradé, insalubre ou encombré, à Toulouse et alentours.",
-    metaTitle: "Nettoyage Extrême Toulouse — Logement insalubre, discret | Clean&Fresh",
+    metaTitle: "Nettoyage extrême Toulouse | Clean&Fresh",
     metaDescription:
-      "Nettoyage extrême à Toulouse : logement insalubre, squatté ou abandonné. Débarras, désinfection complète. Intervention rapide, discrète et sans jugement. Devis sous 24h.",
+      "Nettoyage extrême à Toulouse : logement insalubre, squatté ou abandonné. Débarras et désinfection, intervention discrète, devis sous 24h.",
     group: "batiment",
     intro: [
       "Logement très encombré, insalubre ou laissé à l'abandon : notre service de nettoyage extrême à Toulouse prend en charge les situations que personne ne veut traiter, avec discrétion et sans jugement.",
@@ -734,7 +734,7 @@ export const SERVICES: Service[] = [
     short: "Nettoyage moquette Toulouse",
     subtitle:
       "Shampouinage et nettoyage en profondeur de moquettes et sols textiles à domicile à Toulouse et dans toute la Haute-Garonne.",
-    metaTitle: "Nettoyage Moquette Toulouse — Shampouinage professionnel | Clean&Fresh",
+    metaTitle: "Nettoyage moquette Toulouse | Clean&Fresh",
     metaDescription:
       "Nettoyage de moquette à domicile à Toulouse : injection-extraction, taches, odeurs et acariens éliminés. Particuliers et professionnels. Devis gratuit sous 24h.",
     group: "textile",
