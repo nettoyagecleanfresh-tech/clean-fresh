@@ -24,7 +24,7 @@ export async function sendMailRaw({ to, subject, html }: { to: string; subject: 
       to,
       subject,
       html,
-      text: html.replace(/<br\s*[\/]?>/gi, '\n').replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').trim(),
+      text: html.replace(/<br\s*[/]?>/gi, "\n").replace(/<[^>]+>/g, "").replace(/&nbsp;/g, " ").trim(),
     });
     return { success: true };
   } catch (err: any) {
