@@ -36,7 +36,7 @@ export const faqData: FAQNode[] = [
       {
         id: "horaires",
         question: "Quels sont vos horaires et travaillez-vous le dimanche ?",
-        answer: "Nous travaillons du lundi au dimanche, 7j/7, de 6h00 à 23h00 selon les disponibilités du planning. Des interventions sont tout à fait possibles le dimanche."
+        answer: "Nous travaillons du lundi au dimanche, 7j/7, de 8h00 à 21h00 selon les disponibilités du planning. Des interventions sont possibles le dimanche."
       },
       {
         id: "devis-photos",
