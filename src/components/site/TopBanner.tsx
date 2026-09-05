@@ -27,7 +27,7 @@ export function TopBanner() {
       <button
         onClick={() => setVisible(false)}
         aria-label="Fermer"
-        className="absolute right-3 top-1/2 -translate-y-1/2 rounded p-0.5 opacity-70 hover:opacity-100 transition-opacity"
+        className="absolute right-1 top-1/2 flex size-11 -translate-y-1/2 items-center justify-center rounded opacity-70 hover:opacity-100 transition-opacity"
       >
         <X className="size-3.5" />
       </button>

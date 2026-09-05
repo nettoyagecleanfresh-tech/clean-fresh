@@ -1,4 +1,4 @@
-import { SITE_URL, COMPANY, GOOGLE_REVIEW_COUNT, type Service } from "@/data/site";
+import { SITE_URL, COMPANY, type Service } from "@/data/site";
 
 // ──────────────────────────────────────────────────────────────────────────────
 // SchemaOrg — JSON-LD injection component
@@ -46,27 +46,12 @@ export function SchemaLocalBusiness() {
       },
       geoRadius: "30000",
     },
-    openingHoursSpecification: [
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        opens: "08:00",
-        closes: "19:00",
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Saturday", "Sunday"],
-        opens: "09:00",
-        closes: "18:00",
-      },
-    ],
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.9",
-      reviewCount: String(GOOGLE_REVIEW_COUNT),
-      bestRating: "5",
-      worstRating: "1",
-    },
+    openingHoursSpecification: [{
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      opens: "08:00",
+      closes: "21:00",
+    }],
     sameAs: [
       "https://www.instagram.com/cleanetfresh31",
       "https://www.facebook.com/profile.php?id=61579620873055",

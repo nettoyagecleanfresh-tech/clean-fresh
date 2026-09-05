@@ -111,7 +111,7 @@ export function Header() {
 
         {/* Mobile hamburger */}
         <button
-          className="flex size-9 md:size-10 items-center justify-center rounded-lg border border-border bg-card text-foreground/70 shadow-sm hover:bg-secondary lg:hidden"
+          className="flex size-11 items-center justify-center rounded-lg border border-border bg-card text-foreground/70 shadow-sm hover:bg-secondary lg:hidden"
           aria-label="Ouvrir le menu"
           onClick={() => setOpen((v) => !v)}
         >
