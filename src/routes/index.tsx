@@ -171,42 +171,52 @@ const WHY_US = [
 const HERO_DESKTOP_REVIEWS = [
   {
     name: "Steeven Machin",
+    avatarUrl: "https://lh3.googleusercontent.com/a/ACg8ocJc55PDjxZtWR6xh5g7oh5PLQuG3-Vu3tUd9sXMRbF18BJiNw=s96-c-rp-mo-br100",
     text: "Un excellent nettoyage de la voiture. Elle était vraiment dans un sale état et je suis plus que satisfait du résultat. Travail vraiment professionnel.",
   },
   {
     name: "Nsta4.20 Razlion",
+    avatarUrl: "https://lh3.googleusercontent.com/a/ACg8ocI53RraVDl2eFkTJpwM4BAWK1-TM9WQfckvmaWydzf6cg7BfQ=s96-c-rp-mo-br100",
     text: "Très satisfait du nettoyage de mes tapis. Le résultat est vraiment impressionnant : propres, frais et comme neufs. Travail soigné, professionnel et efficace.",
   },
   {
     name: "Adeline Brt",
+    avatarUrl: "https://lh3.googleusercontent.com/a/ACg8ocItwWpTclJGJQNK1D1F-009i2wRukdQWd5ktFW4W0xlwaZcxg=s96-c-rp-mo-br100",
     text: "L’appartement était impeccable, jusque dans les moindres recoins. Un travail de très grande qualité, avec beaucoup de soin et d’attention aux détails.",
   },
   {
     name: "Cambiocorsa",
+    avatarUrl: "https://lh3.googleusercontent.com/a-/ALV-UjUMdw5VXKKckgqYdl6enh11qL0rA0xWl1lGBl3AvEF0tv1ef94=s96-c-rp-mo-br100",
     text: "Personne ponctuelle et très souriante, travail ultra sérieux sur mon grand matelas qui n’a plus aucune tâche aujourd’hui. Le rendu était proche du neuf.",
   },
   {
     name: "Sofiene",
+    avatarUrl: "https://lh3.googleusercontent.com/a/ACg8ocLZ7z-vk06KWiT7KfRv1TafcwFtHHIpJyasv8W0tuWrvwqk-w=s96-c-rp-mo-br100",
     text: "Excellente prestation de nettoyage auto à domicile sur Toulouse. Le véhicule était super propre. Les intervenants ont été très ponctuels et très sympas.",
   },
   {
     name: "JM Balza",
+    avatarUrl: "https://lh3.googleusercontent.com/a-/ALV-UjXiFfW3zzqEbfqHJRVZsjJBV7TOIWsrZ_ZMmUKxeoTaKEkZc04=s96-c-rp-mo-br100",
     text: "Nous avons fait appel à Clean&Fresh pour le nettoyage de notre canapé et le résultat est parfait ! Travail professionnel et de grande qualité.",
   },
   {
     name: "David Anglézi",
+    avatarUrl: "https://lh3.googleusercontent.com/a-/ALV-UjVwxgdN4UuH7jtKPqBRqhNmv3UOskfvRvGv5A1gSwVldjnExfddQg=s96-c-rp-mo-ba12-br100",
     text: "Un travail professionnel et irréprochable. Je retrouve ma voiture ! Merci encore pour le temps consacré et l’aménagement des horaires.",
   },
   {
     name: "Babette Duchesne",
+    avatarUrl: "https://lh3.googleusercontent.com/a/ACg8ocJtorN3If9THIqBYgd6wU38GjOGTkvXTsPNLGvHJsyj8ov2-A=s96-c-rp-mo-br100",
     text: "Un travail d’une qualité irréprochable ! Professionnel, ponctuel, poli ! Je recommande vivement et je ne manquerai pas de refaire appel à vous.",
   },
   {
     name: "Nicolas",
+    avatarUrl: "https://lh3.googleusercontent.com/a/ACg8ocJcuqKD2OaeQKAeAEeWFIcWaoPhuYvI6mMhAlR22IhFnmUdRA=s96-c-rp-mo-br100",
     text: "Le résultat est impeccable. Travail soigné, personnel sérieux et à l’écoute. Je recommande vivement pour le nettoyage auto à domicile.",
   },
   {
     name: "Mohammed Daoughi",
+    avatarUrl: "https://lh3.googleusercontent.com/a/ACg8ocKtgN7UCmUwOt8ZTEJkUeeMcs4rhqEM2fiAvoePrQfwlb2LhA=s96-c-rp-mo-br100",
     text: "Un grand merci pour le nettoyage de mon canapé et mes matelas. Jeune homme très pro et surtout efficace. Je recommande vivement Clean&Fresh.",
   },
 ];
@@ -229,9 +239,9 @@ function DesktopHeroReviews() {
       <AnimatePresence mode="wait" initial={false}>
         <motion.figure
           key={review.name}
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -12 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
           transition={{ duration: 0.35, ease: "easeOut" }}
           className="absolute inset-0 flex flex-col p-5"
         >
@@ -251,11 +261,24 @@ function DesktopHeroReviews() {
               ))}
             </div>
           </div>
-          <blockquote className="mt-4 flex-1 text-[15px] font-semibold leading-[1.55] text-slate-800">
+          <blockquote className="mt-4 flex-1 text-base font-bold leading-[1.5] tracking-[-0.01em] text-slate-900 antialiased">
             “{review.text}”
           </blockquote>
           <figcaption className="mt-3 flex items-center justify-between gap-2 border-t border-slate-100 pt-3">
-            <span className="text-sm font-extrabold text-slate-950">{review.name}</span>
+            <span className="flex min-w-0 items-center gap-2.5">
+              <span className="relative flex size-9 shrink-0 items-center justify-center overflow-hidden rounded-full bg-gradient-to-br from-blue-50 to-blue-100 text-sm font-black text-blue-700 ring-2 ring-white shadow-sm">
+                {review.name.charAt(0)}
+                <img
+                  src={review.avatarUrl}
+                  alt={`Photo de profil Google de ${review.name}`}
+                  loading="lazy"
+                  referrerPolicy="no-referrer"
+                  className="absolute inset-0 size-full object-cover"
+                  onError={(event) => { event.currentTarget.style.display = "none"; }}
+                />
+              </span>
+              <span className="truncate text-sm font-black text-slate-950">{review.name}</span>
+            </span>
             <span className="rounded-full bg-slate-100 px-2 py-1 text-[10px] font-bold text-slate-500">{reviewIndex + 1}/{HERO_DESKTOP_REVIEWS.length}</span>
           </figcaption>
         </motion.figure>
@@ -365,7 +388,7 @@ function Index() {
             </div>
 
             {/* Google badge — desktop uniquement, colonne droite */}
-            <div className="hidden w-[340px] shrink-0 flex-col gap-3 lg:flex lg:-translate-y-5">
+            <div className="hidden w-[340px] shrink-0 flex-col gap-3 lg:relative lg:-top-5 lg:flex">
               <a
                 href="https://www.google.com/search?q=clean+fresh+toulouse+avis"
                 target="_blank"
