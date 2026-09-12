@@ -2,7 +2,7 @@ export const SITE_URL = "https://www.cleanetfresh.fr";
 export const OG_IMAGE = `${SITE_URL}/realisations/photo-02.webp`;
 
 /** Nombre d'avis Google — à mettre à jour ici pour propager partout */
-export const GOOGLE_REVIEW_COUNT = 113;
+export const GOOGLE_REVIEW_COUNT = 117;
 
 export const COMPANY = {
   name: "Clean&Fresh",
