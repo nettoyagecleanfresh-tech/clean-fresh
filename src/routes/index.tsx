@@ -1,6 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
 import {
   CalendarCheck,
   Clock,
@@ -236,15 +235,7 @@ function DesktopHeroReviews() {
 
   return (
     <div className="relative min-h-56 overflow-hidden rounded-[22px] border border-white/50 bg-white shadow-[0_18px_50px_rgba(8,30,48,0.28)]">
-      <AnimatePresence mode="wait" initial={false}>
-        <motion.figure
-          key={review.name}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.35, ease: "easeOut" }}
-          className="absolute inset-0 flex flex-col p-5"
-        >
+      <figure key={review.name} className="absolute inset-0 flex flex-col p-5">
           <div className="flex items-center justify-between gap-3">
             <div className="flex items-center gap-2.5">
               <span className="flex size-8 items-center justify-center rounded-full bg-blue-50 ring-1 ring-blue-200">
@@ -281,8 +272,7 @@ function DesktopHeroReviews() {
             </span>
             <span className="rounded-full bg-slate-100 px-2 py-1 text-[10px] font-bold text-slate-500">{reviewIndex + 1}/{HERO_DESKTOP_REVIEWS.length}</span>
           </figcaption>
-        </motion.figure>
-      </AnimatePresence>
+      </figure>
     </div>
   );
 }
