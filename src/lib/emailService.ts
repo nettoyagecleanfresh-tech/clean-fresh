@@ -53,7 +53,11 @@ export type ContactPayload = {
 
 // ─── Helper: envoi Gmail ──────────────────────────────────────────────────────
 async function sendGmail(to: string, subject: string, html: string) {
-  await sendMailRaw({ to, subject, html }).catch(console.error);
+  const result = await sendMailRaw({ to, subject, html });
+  if (!result.success) {
+    throw new Error(`Échec de l’envoi vers ${to}: ${result.error ?? "erreur SMTP inconnue"}`);
+  }
+  return result;
 }
 
 // ─── Helper: ligne de prestation HTML ────────────────────────────────────────
@@ -377,7 +381,7 @@ export async function sendBookingEmailsRaw(b: BookingPayload): Promise<string> {
     </td></tr>
     ${emailFooter()}`;
 
-  await sendGmail(b.client_email, `Commande confirmée pour ${b.client_name} — Clean&Fresh`, wrapEmail(clientContent));
+  await sendGmail(b.client_email, `Confirmation de votre rendez-vous Clean&Fresh du ${formattedDate}`, wrapEmail(clientContent));
   await sendGmail(ownerEmail, `Nouvelle commande pour ${b.client_name} — ${b.items.length} prestation(s)`, wrapEmail(adminContent));
 
   return "";
@@ -519,7 +523,7 @@ export async function sendReminderEmailRaw(params: {
     <tr><td style="padding:24px 28px;"><p style="margin:0;font-size:14px;color:#2f4d64;">Bon courage pour l'intervention de demain ! 💪</p></td></tr>
     ${emailFooter()}`;
 
-  await sendGmail(params.client_email, `⏰ Rappel : votre prestation ${params.formule_name} est demain à ${params.booking_time}`, wrapEmail(clientContent));
+  await sendGmail(params.client_email, `Rappel Clean&Fresh : rendez-vous demain à ${params.booking_time}`, wrapEmail(clientContent));
   await sendGmail(ownerEmail, `⏰ [Rappel] Intervention demain : ${params.client_name} — ${params.booking_time}`, wrapEmail(adminContent));
 }
 
