@@ -5,6 +5,33 @@ import { GOOGLE_REVIEW_COUNT } from "@/data/site";
 
 const ALL_REVIEWS = [
   {
+    name: "Elise",
+    initials: "E",
+    color: "#0d9488",
+    time: "il y a 1 jour",
+    stars: 5,
+    text: "Nous sommes très satisfaits de l’intervention de l’entreprise pour le nettoyage de notre véhicule et le nettoyage de notre canapé et tapis. L’équipe intervenue a été très professionnelle et méticuleuse dans le nettoyage. Nous avons également fait faire nettoyer notre siège-auto redevenu comme neuf. Le résultat est à la hauteur de nos attentes ! Merci à eux.",
+    categories: ["auto", "canape", "tapis"],
+  },
+  {
+    name: "Lydie Fages",
+    initials: "L",
+    color: "#2563eb",
+    time: "il y a 5 jours",
+    stars: 5,
+    text: "Super nettoyage automobile à Toulouse! On a fait nettoyer la voiture que l’on nous avait prêté pour les vacances à la plage (avec enfants) et elle est nikel! Nous allons maintenant faire le même nettoyage pour la notre tellement nous avons été bluffés par le résultat.",
+    categories: ["auto"],
+  },
+  {
+    name: "Benoit Ruffe",
+    initials: "B",
+    color: "#7c3aed",
+    time: "il y a 6 jours",
+    stars: 5,
+    text: "Clean&Fresh a été très efficace et très pro pour le nettoyage de mon canapé à Toulouse",
+    categories: ["canape"],
+  },
+  {
     name: "Mohammed Daoughi",
     initials: "M",
     color: "#0f766e",
