@@ -365,7 +365,7 @@ function Index() {
             </div>
 
             {/* Google badge — desktop uniquement, colonne droite */}
-            <div className="hidden w-[340px] shrink-0 flex-col gap-3 lg:flex">
+            <div className="hidden w-[340px] shrink-0 flex-col gap-3 lg:flex lg:-translate-y-5">
               <a
                 href="https://www.google.com/search?q=clean+fresh+toulouse+avis"
                 target="_blank"
