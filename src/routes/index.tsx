@@ -234,8 +234,8 @@ function DesktopHeroReviews() {
   const review = HERO_DESKTOP_REVIEWS[reviewIndex];
 
   return (
-    <div className="relative h-[280px] overflow-hidden rounded-[22px] border border-white/50 bg-white shadow-[0_18px_50px_rgba(8,30,48,0.28)]">
-      <figure key={review.name} className="absolute inset-0 flex flex-col p-5">
+    <div className="h-[300px] overflow-hidden rounded-[22px] border border-white/50 bg-white shadow-[0_18px_50px_rgba(8,30,48,0.28)]">
+      <figure key={review.name} className="grid h-full grid-rows-[auto_1fr_auto] p-5 pb-6">
           <div className="flex items-center justify-between gap-3">
             <div className="flex items-center gap-2.5">
               <span className="flex size-8 items-center justify-center rounded-full bg-blue-50 ring-1 ring-blue-200">
@@ -252,10 +252,10 @@ function DesktopHeroReviews() {
               ))}
             </div>
           </div>
-          <blockquote className="mt-4 flex-1 text-base font-bold leading-[1.5] tracking-[-0.01em] text-slate-900 antialiased">
+          <blockquote className="mt-4 text-[15px] font-extrabold leading-6 text-slate-950">
             “{review.text}”
           </blockquote>
-          <figcaption className="mt-3 flex items-center justify-between gap-2 border-t border-slate-100 pt-3">
+          <figcaption className="mt-4 flex min-h-12 items-center justify-between gap-2 border-t border-slate-200 pt-3">
             <span className="flex min-w-0 items-center gap-2.5">
               <span className="relative flex size-9 shrink-0 items-center justify-center overflow-hidden rounded-full bg-gradient-to-br from-blue-50 to-blue-100 text-sm font-black text-blue-700 ring-2 ring-white shadow-sm">
                 {review.name.charAt(0)}
@@ -378,7 +378,7 @@ function Index() {
             </div>
 
             {/* Google badge — desktop uniquement, colonne droite */}
-            <div className="hidden w-[340px] shrink-0 flex-col gap-3 lg:relative lg:-top-12 lg:flex">
+            <div className="hidden w-[340px] shrink-0 flex-col gap-3 lg:relative lg:-top-16 lg:flex">
               <a
                 href="https://www.google.com/search?q=clean+fresh+toulouse+avis"
                 target="_blank"
