@@ -222,28 +222,21 @@ function StepBar({ current }: { current: number }) {
   );
 }
 
-function BookingTrust({ withReview = false }: { withReview?: boolean }) {
+function BookingTrust() {
   return (
-    <div className={`rounded-2xl border border-[#e6dfc7] bg-[#fffdf7] ${withReview ? "p-4 sm:p-5" : "px-4 py-3"}`}>
-      <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-center">
-        <span className="font-bold text-[#4285f4]">Google</span>
+    <div className="rounded-xl border border-[#e6dfc7] bg-[#fffdf7] px-2 py-2 sm:rounded-2xl sm:px-4 sm:py-3">
+      <div className="flex flex-nowrap items-center justify-center gap-x-1.5 whitespace-nowrap text-center sm:gap-x-3">
+        <span className="text-xs font-bold text-[#4285f4] sm:text-base">Google</span>
         <span className="flex items-center gap-0.5" aria-label="5 étoiles sur 5">
           {Array.from({ length: 5 }).map((_, index) => (
-            <Star key={index} className="size-4 fill-[#fbbc04] text-[#fbbc04]" aria-hidden="true" />
+            <Star key={index} className="size-3 fill-[#fbbc04] text-[#fbbc04] sm:size-4" aria-hidden="true" />
           ))}
         </span>
-        <span className="text-sm font-bold text-foreground">4,9/5</span>
-        <span className="text-xs text-muted-foreground">{GOOGLE_REVIEW_COUNT} avis clients</span>
+        <span className="text-xs font-bold text-foreground sm:text-sm">4,9/5</span>
+        <span className="text-[11px] text-muted-foreground sm:text-xs">
+          {GOOGLE_REVIEW_COUNT} avis<span className="hidden sm:inline"> clients</span>
+        </span>
       </div>
-
-      {withReview && (
-        <div className="mt-3 border-t border-[#e6dfc7] pt-3 text-center">
-          <blockquote className="text-sm font-medium leading-relaxed text-foreground">
-            « Un travail d'une qualité irréprochable ! Professionnel, ponctuel, poli ! Je recommande vivement. »
-          </blockquote>
-          <p className="mt-1 text-xs text-muted-foreground">DUCHESNE Babette · Avis Google vérifié</p>
-        </div>
-      )}
     </div>
   );
 }
@@ -980,10 +973,6 @@ function ReserverPage() {
                   <p className="text-xs font-bold uppercase tracking-widest text-primary">Étape 3 — Choisir votre créneau</p>
                   <h2 className="mt-1 text-2xl font-bold">Quand souhaitez-vous votre intervention ?</h2>
                   <p className="mt-1 text-sm text-muted-foreground">Les créneaux grisés sont déjà réservés.</p>
-                </div>
-
-                <div className="mb-5">
-                  <BookingTrust withReview />
                 </div>
 
                 {/* Bandeau créneau pris */}
