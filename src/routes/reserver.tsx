@@ -1011,7 +1011,9 @@ function ReserverPage() {
                 <div className="mb-6">
                   <p className="text-xs font-bold uppercase tracking-widest text-primary">Étape 4 — Vos coordonnées</p>
                   <h2 className="mt-1 text-2xl font-bold">Finaliser la réservation</h2>
-                  <p className="mt-1 text-sm text-muted-foreground">Nous vous confirmons par SMS sous 1h.</p>
+                  <p className="mt-1 text-sm font-medium text-muted-foreground">
+                    Vous recevrez immédiatement votre confirmation par email et un rappel 24 heures avant votre rendez-vous.
+                  </p>
                 </div>
 
                 <form id="booking-form" onSubmit={handleSubmit} className="space-y-5">
