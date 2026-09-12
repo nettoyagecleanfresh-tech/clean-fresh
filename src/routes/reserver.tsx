@@ -5,12 +5,12 @@ import {
   Armchair, BedDouble, Layers, Car,
   Check, ArrowRight, ChevronLeft, ChevronRight,
   CalendarCheck, Info, Clock, Phone, Mail, User,
-  Loader2, CheckCircle2, Shield, Dog, Droplets, Wind, Sparkles, MapPin, Hash, Building2, Sun,
+  Loader2, CheckCircle2, Shield, Dog, Droplets, Wind, Sparkles, MapPin, Hash, Building2, Sun, Star,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { COMPANY } from "@/data/site";
+import { COMPANY, GOOGLE_REVIEW_COUNT } from "@/data/site";
 import { fetchBusySlots, buildSlots } from "@/lib/gcal";
 import { CalendarPicker } from "@/components/CalendarPicker";
 import { TimeSlotPicker } from "@/components/TimeSlotPicker";
@@ -218,6 +218,32 @@ function StepBar({ current }: { current: number }) {
           </div>
         );
       })}
+    </div>
+  );
+}
+
+function BookingTrust({ withReview = false }: { withReview?: boolean }) {
+  return (
+    <div className={`rounded-2xl border border-[#e6dfc7] bg-[#fffdf7] ${withReview ? "p-4 sm:p-5" : "px-4 py-3"}`}>
+      <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-center">
+        <span className="font-bold text-[#4285f4]">Google</span>
+        <span className="flex items-center gap-0.5" aria-label="5 étoiles sur 5">
+          {Array.from({ length: 5 }).map((_, index) => (
+            <Star key={index} className="size-4 fill-[#fbbc04] text-[#fbbc04]" aria-hidden="true" />
+          ))}
+        </span>
+        <span className="text-sm font-bold text-foreground">4,9/5</span>
+        <span className="text-xs text-muted-foreground">{GOOGLE_REVIEW_COUNT} avis clients</span>
+      </div>
+
+      {withReview && (
+        <div className="mt-3 border-t border-[#e6dfc7] pt-3 text-center">
+          <blockquote className="text-sm font-medium leading-relaxed text-foreground">
+            « Un travail d'une qualité irréprochable ! Professionnel, ponctuel, poli ! Je recommande vivement. »
+          </blockquote>
+          <p className="mt-1 text-xs text-muted-foreground">DUCHESNE Babette · Avis Google vérifié</p>
+        </div>
+      )}
     </div>
   );
 }
@@ -777,6 +803,9 @@ function ReserverPage() {
 
       <div className="mx-auto max-w-5xl px-4 py-10">
         <StepBar current={step} />
+        <div className="mb-6">
+          <BookingTrust />
+        </div>
 
         <div className={`grid gap-8 items-start ${!showCategories && step < 4 ? "lg:grid-cols-[1fr_300px]" : "grid-cols-1"}`}>
 
@@ -951,6 +980,10 @@ function ReserverPage() {
                   <p className="text-xs font-bold uppercase tracking-widest text-primary">Étape 3 — Choisir votre créneau</p>
                   <h2 className="mt-1 text-2xl font-bold">Quand souhaitez-vous votre intervention ?</h2>
                   <p className="mt-1 text-sm text-muted-foreground">Les créneaux grisés sont déjà réservés.</p>
+                </div>
+
+                <div className="mb-5">
+                  <BookingTrust withReview />
                 </div>
 
                 {/* Bandeau créneau pris */}
