@@ -1,4 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import {
   CalendarCheck,
   Clock,
@@ -165,6 +167,94 @@ const WHY_US = [
   },
 ];
 
+const HERO_DESKTOP_REVIEWS = [
+  {
+    name: "Steeven Machin",
+    text: "Un excellent nettoyage de la voiture. Elle était vraiment dans un sale état et je suis plus que satisfait du résultat. Travail vraiment professionnel.",
+  },
+  {
+    name: "Nsta4.20 Razlion",
+    text: "Très satisfait du nettoyage de mes tapis. Le résultat est vraiment impressionnant : propres, frais et comme neufs. Travail soigné, professionnel et efficace.",
+  },
+  {
+    name: "Adeline Brt",
+    text: "L’appartement était impeccable, jusque dans les moindres recoins. Un travail de très grande qualité, avec beaucoup de soin et d’attention aux détails.",
+  },
+  {
+    name: "Cambiocorsa",
+    text: "Personne ponctuelle et très souriante, travail ultra sérieux sur mon grand matelas qui n’a plus aucune tâche aujourd’hui. Le rendu était proche du neuf.",
+  },
+  {
+    name: "Sofiene",
+    text: "Excellente prestation de nettoyage auto à domicile sur Toulouse. Le véhicule était super propre. Les intervenants ont été très ponctuels et très sympas.",
+  },
+  {
+    name: "JM Balza",
+    text: "Nous avons fait appel à Clean&Fresh pour le nettoyage de notre canapé et le résultat est parfait ! Travail professionnel et de grande qualité.",
+  },
+  {
+    name: "David Anglézi",
+    text: "Un travail professionnel et irréprochable. Je retrouve ma voiture ! Merci encore pour le temps consacré et l’aménagement des horaires.",
+  },
+  {
+    name: "Babette Duchesne",
+    text: "Un travail d’une qualité irréprochable ! Professionnel, ponctuel, poli ! Je recommande vivement et je ne manquerai pas de refaire appel à vous.",
+  },
+  {
+    name: "Nicolas",
+    text: "Le résultat est impeccable. Travail soigné, personnel sérieux et à l’écoute. Je recommande vivement pour le nettoyage auto à domicile.",
+  },
+  {
+    name: "Mohammed Daoughi",
+    text: "Un grand merci pour le nettoyage de mon canapé et mes matelas. Jeune homme très pro et surtout efficace. Je recommande vivement Clean&Fresh.",
+  },
+];
+
+function DesktopHeroReviews() {
+  const [reviewIndex, setReviewIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setReviewIndex((current) => (current + 1) % HERO_DESKTOP_REVIEWS.length);
+    }, 5500);
+
+    return () => window.clearInterval(interval);
+  }, []);
+
+  const review = HERO_DESKTOP_REVIEWS[reviewIndex];
+
+  return (
+    <div className="relative min-h-48 overflow-hidden rounded-2xl border border-white/20 bg-white/95 p-5 shadow-xl backdrop-blur">
+      <AnimatePresence mode="wait" initial={false}>
+        <motion.figure
+          key={review.name}
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -12 }}
+          transition={{ duration: 0.35, ease: "easeOut" }}
+          className="absolute inset-0 flex flex-col p-5"
+        >
+          <div className="flex items-center justify-between gap-3">
+            <div className="flex gap-0.5 text-[#FBBC04]" aria-label="5 étoiles sur 5">
+              {Array.from({ length: 5 }).map((_, index) => (
+                <Star key={index} className="size-4 fill-current" />
+              ))}
+            </div>
+            <span className="text-[10px] font-bold uppercase tracking-widest text-gray-400">Avis Google</span>
+          </div>
+          <blockquote className="mt-4 flex-1 text-sm font-medium leading-relaxed text-gray-700">
+            “{review.text}”
+          </blockquote>
+          <figcaption className="mt-3 flex items-center justify-between gap-2 border-t border-gray-100 pt-3">
+            <span className="text-sm font-bold text-gray-900">{review.name}</span>
+            <span className="text-xs font-semibold text-gray-400">{reviewIndex + 1}/{HERO_DESKTOP_REVIEWS.length}</span>
+          </figcaption>
+        </motion.figure>
+      </AnimatePresence>
+    </div>
+  );
+}
+
 function Index() {
   return (
     <div className="pb-24 lg:pb-0">
@@ -266,7 +356,7 @@ function Index() {
             </div>
 
             {/* Google badge — desktop uniquement, colonne droite */}
-            <div className="hidden lg:flex items-center shrink-0">
+            <div className="hidden w-[340px] shrink-0 flex-col gap-3 lg:flex">
               <a
                 href="https://www.google.com/search?q=clean+fresh+toulouse+avis"
                 target="_blank"
@@ -296,6 +386,7 @@ function Index() {
                   </div>
                 </div>
               </a>
+              <DesktopHeroReviews />
             </div>
           </div>
         </div>
