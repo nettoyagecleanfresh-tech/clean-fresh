@@ -22,6 +22,7 @@ import {
   Zap,
   Building,
   Star,
+  BadgeCheck,
   KeyRound,
   PackageOpen,
 } from "lucide-react";
@@ -224,7 +225,7 @@ function DesktopHeroReviews() {
   const review = HERO_DESKTOP_REVIEWS[reviewIndex];
 
   return (
-    <div className="relative min-h-48 overflow-hidden rounded-2xl border border-white/20 bg-white/95 p-5 shadow-xl backdrop-blur">
+    <div className="relative min-h-56 overflow-hidden rounded-[22px] border border-white/50 bg-white shadow-[0_18px_50px_rgba(8,30,48,0.28)]">
       <AnimatePresence mode="wait" initial={false}>
         <motion.figure
           key={review.name}
@@ -235,19 +236,27 @@ function DesktopHeroReviews() {
           className="absolute inset-0 flex flex-col p-5"
         >
           <div className="flex items-center justify-between gap-3">
+            <div className="flex items-center gap-2.5">
+              <span className="flex size-8 items-center justify-center rounded-full bg-blue-50 ring-1 ring-blue-200">
+                <BadgeCheck className="size-5 fill-blue-600 text-white" aria-hidden="true" />
+              </span>
+              <div className="leading-tight">
+                <p className="text-xs font-extrabold text-slate-900">Avis client vérifié</p>
+                <p className="text-[10px] font-semibold text-slate-500">Publié sur Google</p>
+              </div>
+            </div>
             <div className="flex gap-0.5 text-[#FBBC04]" aria-label="5 étoiles sur 5">
               {Array.from({ length: 5 }).map((_, index) => (
-                <Star key={index} className="size-4 fill-current" />
+                <Star key={index} className="size-3.5 fill-current" />
               ))}
             </div>
-            <span className="text-[10px] font-bold uppercase tracking-widest text-gray-400">Avis Google</span>
           </div>
-          <blockquote className="mt-4 flex-1 text-sm font-medium leading-relaxed text-gray-700">
+          <blockquote className="mt-4 flex-1 text-[15px] font-semibold leading-[1.55] text-slate-800">
             “{review.text}”
           </blockquote>
-          <figcaption className="mt-3 flex items-center justify-between gap-2 border-t border-gray-100 pt-3">
-            <span className="text-sm font-bold text-gray-900">{review.name}</span>
-            <span className="text-xs font-semibold text-gray-400">{reviewIndex + 1}/{HERO_DESKTOP_REVIEWS.length}</span>
+          <figcaption className="mt-3 flex items-center justify-between gap-2 border-t border-slate-100 pt-3">
+            <span className="text-sm font-extrabold text-slate-950">{review.name}</span>
+            <span className="rounded-full bg-slate-100 px-2 py-1 text-[10px] font-bold text-slate-500">{reviewIndex + 1}/{HERO_DESKTOP_REVIEWS.length}</span>
           </figcaption>
         </motion.figure>
       </AnimatePresence>
