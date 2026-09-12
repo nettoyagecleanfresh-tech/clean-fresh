@@ -234,7 +234,7 @@ function DesktopHeroReviews() {
   const review = HERO_DESKTOP_REVIEWS[reviewIndex];
 
   return (
-    <div className="relative min-h-56 overflow-hidden rounded-[22px] border border-white/50 bg-white shadow-[0_18px_50px_rgba(8,30,48,0.28)]">
+    <div className="relative h-[280px] overflow-hidden rounded-[22px] border border-white/50 bg-white shadow-[0_18px_50px_rgba(8,30,48,0.28)]">
       <figure key={review.name} className="absolute inset-0 flex flex-col p-5">
           <div className="flex items-center justify-between gap-3">
             <div className="flex items-center gap-2.5">
@@ -378,7 +378,7 @@ function Index() {
             </div>
 
             {/* Google badge — desktop uniquement, colonne droite */}
-            <div className="hidden w-[340px] shrink-0 flex-col gap-3 lg:relative lg:-top-5 lg:flex">
+            <div className="hidden w-[340px] shrink-0 flex-col gap-3 lg:relative lg:-top-12 lg:flex">
               <a
                 href="https://www.google.com/search?q=clean+fresh+toulouse+avis"
                 target="_blank"
