@@ -66,10 +66,20 @@ const CUIR_ITEMS = [
 ];
 
 const CUIR_OPTIONS = [
-  { name: "Soin nourrissant & protecteur cuir", price: 35, desc: "Hydrate, assouplit et protège le cuir contre le craquèlement.", popular: true },
+  { name: "Soin nourrissant & protecteur cuir", price: 25, desc: "Hydrate, assouplit et protège le cuir contre le craquèlement.", popular: true },
   { name: "Détachage intensif", price: 19, desc: "Traitement ciblé pour les taches spécifiques.", popular: false },
   { name: "Traitement anti-odeur", price: 15, desc: "Neutralisation moléculaire des mauvaises odeurs incrustées.", popular: false },
 ];
+
+const CUIR_CARE_PRICES: Record<string, number> = {
+  "cuir-fauteuil": 19,
+  "cuir-canape-2": 25,
+  "cuir-canape-4": 29,
+  "cuir-canape-angle": 29,
+  "cuir-pouf": 15,
+  "cuir-chaise": 15,
+  "cuir-auto": 25,
+};
 
 const TAPIS_OPTIONS = [
   { name: "Traitement anti-acariens et bactériens", price: 19, desc: "Élimination des acariens et bactéries (traitement professionnel) dans les fibres du tapis.", popular: true },
@@ -96,7 +106,7 @@ const AUTO_PACKS = [
       { name: "Traitement anti-odeur (tabac, animaux)", price: 15, popular: true },
       { name: "Nettoyage du ciel de toit", price: 29, popular: false },
       { name: "Nettoyage des sièges auto", price: 39, popular: false },
-      { name: "Soin nourrissant & protecteur du cuir", price: 55, popular: false },
+      { name: "Soin nourrissant & protecteur du cuir", price: 25, popular: false },
     ],
   },
   {
@@ -112,7 +122,7 @@ const AUTO_PACKS = [
       { name: "Traitement anti-odeur (tabac, animaux)", price: 15, popular: true },
       { name: "Nettoyage du ciel de toit", price: 29, popular: false },
       { name: "Shampouinage des tapis de sol", price: 15, popular: false },
-      { name: "Soin nourrissant & protecteur du cuir", price: 55, popular: false },
+      { name: "Soin nourrissant & protecteur du cuir", price: 25, popular: false },
     ],
   },
   {
@@ -127,7 +137,7 @@ const AUTO_PACKS = [
       { name: "Détachage intensif — tâche résistante", price: 19, popular: false },
       { name: "Traitement anti-odeur (tabac, animaux)", price: 15, popular: true },
       { name: "Nettoyage du ciel de toit", price: 29, popular: false },
-      { name: "Soin nourrissant & protecteur du cuir", price: 55, popular: false },
+      { name: "Soin nourrissant & protecteur du cuir", price: 25, popular: false },
     ],
   },
   {
@@ -140,7 +150,7 @@ const AUTO_PACKS = [
       { name: "Élimination des poils d'animaux", price: 25, popular: false },
       { name: "Détachage intensif — siège très taché", price: 19, popular: false },
       { name: "Traitement anti-odeur (tabac, animaux)", price: 15, popular: true },
-      { name: "Soin nourrissant & protecteur du cuir", price: 55, popular: false },
+      { name: "Soin nourrissant & protecteur du cuir", price: 25, popular: false },
     ],
   },
 ];
@@ -318,6 +328,9 @@ const CUIR_IMAGES: Record<string, string> = {
 function CuirDetail() {
   const [selected, setSelected] = useState("cuir-canape-2");
   const item = CUIR_ITEMS.find((i) => i.id === selected)!;
+  const options = CUIR_OPTIONS.map((option, index) =>
+    index === 0 ? { ...option, price: CUIR_CARE_PRICES[selected] } : option
+  );
 
   return (
     <div>
@@ -383,7 +396,7 @@ function CuirDetail() {
         </div>
       </div>
 
-      <OptionsBlock options={CUIR_OPTIONS} />
+      <OptionsBlock options={options} />
     </div>
   );
 }
