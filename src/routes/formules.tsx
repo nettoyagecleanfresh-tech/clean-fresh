@@ -104,7 +104,6 @@ const AUTO_PACKS = [
     badge: "⭐ Le + vendu" as string | null, featured: true,
     included: ["Tout le Pack Bronze inclus", "Injection-extraction des sièges tissu", "Vitres sans traces (intérieur + extérieur)", "Joints et recoins traités en détail"],
     options: [
-      { name: "Traitement hydrophobe & anti-taches", price: 55, popular: true },
       { name: "Traitement enzymatique intensif", price: 19, popular: false },
       { name: "Protection UV & antistatique plastiques", price: 19, popular: false },
       { name: "Traitement anti-acariens et bactériens", price: 19, popular: false },
@@ -121,7 +120,6 @@ const AUTO_PACKS = [
     badge: "✨ Premium" as string | null, featured: false,
     included: ["Tout le Pack Argent inclus", "Nettoyage injection-extraction moquettes", "Nettoyage complet du coffre", "Nettoyage contour et bas de porte"],
     options: [
-      { name: "Traitement hydrophobe & anti-taches", price: 99, popular: true },
       { name: "Traitement enzymatique intensif", price: 19, popular: false },
       { name: "Protection UV & antistatique plastiques", price: 19, popular: false },
       { name: "Traitement anti-acariens et bactériens", price: 19, popular: false },

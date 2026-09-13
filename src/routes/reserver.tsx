@@ -60,16 +60,6 @@ const OSA:Option = { id: "sieges",    name: "Nettoyage des sièges auto",       
 // ── NOUVELLES OPTIONS PREMIUM ──
 const OE: Option = { id: "enzyme", name: "Traitement enzymatique intensif", desc: "Traitement ciblé des résidus organiques responsables des odeurs tenaces : urine, vomi, transpiration, animaux et autres contaminations organiques sur textiles compatibles.", price: 19, icon: <Droplets className="size-5" /> };
 const OUV: Option = { id: "uv", name: "Protection UV & antistatique plastiques", desc: "Aide à protéger les plastiques intérieurs contre les UV et le ternissement, avec finition satinée et effet antistatique limitant l'adhérence de la poussière.", price: 19, icon: <Sun className="size-5" /> };
-// Hydrophobe
-const OH_DESC = "Protection hydrophobe des fibres, effet déperlant et protection contre les nouvelles salissures. Facilite l'entretien futur du textile.";
-const OH_35: Option = { id: "hydro", name: "Traitement hydrophobe & anti-taches", desc: OH_DESC, price: 35, icon: <Shield className="size-5" /> };
-const OH_45: Option = { id: "hydro", name: "Traitement hydrophobe & anti-taches", desc: OH_DESC, price: 45, icon: <Shield className="size-5" /> };
-const OH_55: Option = { id: "hydro", name: "Traitement hydrophobe & anti-taches", desc: OH_DESC, price: 55, icon: <Shield className="size-5" /> };
-const OH_65: Option = { id: "hydro", name: "Traitement hydrophobe & anti-taches", desc: OH_DESC, price: 65, icon: <Shield className="size-5" /> };
-const OH_69: Option = { id: "hydro", name: "Traitement hydrophobe & anti-taches", desc: OH_DESC, price: 69, icon: <Shield className="size-5" /> };
-const OH_75: Option = { id: "hydro", name: "Traitement hydrophobe & anti-taches", desc: OH_DESC, price: 75, icon: <Shield className="size-5" /> };
-const OH_85: Option = { id: "hydro", name: "Traitement hydrophobe & anti-taches", desc: OH_DESC, price: 85, icon: <Shield className="size-5" /> };
-const OH_99: Option = { id: "hydro", name: "Traitement hydrophobe & anti-taches", desc: OH_DESC, price: 99, icon: <Shield className="size-5" /> };
 // Cuir protecteur
 const OC_DESC = "Soin professionnel appliqué après le nettoyage du cuir afin d'aider à préserver sa souplesse, son aspect naturel et sa protection contre le dessèchement et l'usure quotidienne.";
 const OC_35: Option = { id: "cuir_prot", name: "Soin nourrissant & protecteur du cuir", desc: OC_DESC, price: 35, icon: <Shield className="size-5" /> };
@@ -87,11 +77,11 @@ const SERVICES: ServiceDef[] = [
     from: 15, icon: <Armchair className="size-8" strokeWidth={1.5} />,
     features: ["Fauteuil, canapé 2/3, 4/5 places", "Canapé U/angle, pouf, chaise", "Options anti-acariens, anti-odeur"],
     formules: [
-      { id: "fauteuil",     name: "Fauteuil",                       desc: "Nettoyage complet 1 place.", price: 49,  duration: "45 min",  durationMin: 45,  options: [...CAN, OH_35] },
-      { id: "canape-2",     name: "Canapé 2/3 places",              desc: "Nettoyage complet pour 2 à 3 assises.", price: 79,  duration: "1h",      durationMin: 60,  options: [...CAN, OH_55] },
-      { id: "canape-angle", name: "Canapé d'angle",                  desc: "Méridienne incluse.", price: 99,  duration: "1h",      durationMin: 60,  options: [...CAN, OH_75] },
-      { id: "canape-45",    name: "Canapé 4/5 places",               desc: "Idéal grand format.", price: 99,  duration: "1h",      durationMin: 60,  options: [...CAN, OH_75] },
-      { id: "canape-u",     name: "Canapé en U",                     desc: "Format panoramique XXL.", price: 99,  duration: "1h",      durationMin: 60,  options: [...CAN, OH_75] },
+      { id: "fauteuil",     name: "Fauteuil",                       desc: "Nettoyage complet 1 place.", price: 49,  duration: "45 min",  durationMin: 45,  options: CAN },
+      { id: "canape-2",     name: "Canapé 2/3 places",              desc: "Nettoyage complet pour 2 à 3 assises.", price: 79,  duration: "1h",      durationMin: 60,  options: CAN },
+      { id: "canape-angle", name: "Canapé d'angle",                  desc: "Méridienne incluse.", price: 99,  duration: "1h",      durationMin: 60,  options: CAN },
+      { id: "canape-45",    name: "Canapé 4/5 places",               desc: "Idéal grand format.", price: 99,  duration: "1h",      durationMin: 60,  options: CAN },
+      { id: "canape-u",     name: "Canapé en U",                     desc: "Format panoramique XXL.", price: 99,  duration: "1h",      durationMin: 60,  options: CAN },
       { id: "pouf",         name: "Pouf",                            desc: "Nettoyage d'appoint.", price: 19,  duration: "30 min",  durationMin: 30,  options: CAN },
       { id: "chaise",       name: "Chaise rembourrée",               desc: "À l'unité.", price: 15,  duration: "20 min",  durationMin: 20,  options: CAN },
     ],
@@ -102,9 +92,9 @@ const SERVICES: ServiceDef[] = [
     from: 39, icon: <BedDouble className="size-8" strokeWidth={1.5} />,
     features: ["Matelas enfant, 1 place, 2 places", "Traitement anti-acariens en option", "Recommandé pour les allergiques"],
     formules: [
-      { id: "matelas-enfant", name: "Matelas enfant",   desc: "Jusqu'à 90x190cm.", price: 39,  duration: "30 min", durationMin: 30, options: [...MAT, OH_45] },
-      { id: "matelas-1",      name: "Matelas 1 place",  desc: "De 90x190 à 120x190cm.", price: 59,  duration: "1h",     durationMin: 60, options: [...MAT, OH_65] },
-      { id: "matelas-2",      name: "Matelas 2 places", desc: "À partir de 140x190cm.", price: 99,  duration: "1h",     durationMin: 60, options: [...MAT, OH_85] },
+      { id: "matelas-enfant", name: "Matelas enfant",   desc: "Jusqu'à 90x190cm.", price: 39,  duration: "30 min", durationMin: 30, options: MAT },
+      { id: "matelas-1",      name: "Matelas 1 place",  desc: "De 90x190 à 120x190cm.", price: 59,  duration: "1h",     durationMin: 60, options: MAT },
+      { id: "matelas-2",      name: "Matelas 2 places", desc: "À partir de 140x190cm.", price: 99,  duration: "1h",     durationMin: 60, options: MAT },
     ],
   },
   {
@@ -113,9 +103,9 @@ const SERVICES: ServiceDef[] = [
     from: 49, icon: <Layers className="size-8" strokeWidth={1.5} />,
     features: ["1 tapis, 2 tapis, 3 tapis", "Toutes tailles et matières", "Options anti-acariens, recto-verso"],
     formules: [
-      { id: "tapis-1", name: "1 Tapis", desc: "Toutes tailles confondues.", price: 49, duration: "45 min", durationMin: 45, options: [...TAP, OH_35] },
-      { id: "tapis-2", name: "2 Tapis", desc: "Toutes tailles confondues.", price: 79, duration: "1h",     durationMin: 60, options: [...TAP, OH_69] },
-      { id: "tapis-3", name: "3 Tapis", desc: "Toutes tailles confondues.", price: 99, duration: "1h15",   durationMin: 75, options: [...TAP, OH_99] },
+      { id: "tapis-1", name: "1 Tapis", desc: "Toutes tailles confondues.", price: 49, duration: "45 min", durationMin: 45, options: TAP },
+      { id: "tapis-2", name: "2 Tapis", desc: "Toutes tailles confondues.", price: 79, duration: "1h",     durationMin: 60, options: TAP },
+      { id: "tapis-3", name: "3 Tapis", desc: "Toutes tailles confondues.", price: 99, duration: "1h15",   durationMin: 75, options: TAP },
     ],
   },
   {
@@ -125,8 +115,8 @@ const SERVICES: ServiceDef[] = [
     features: ["Pack Bronze, Argent, Or", "Sièges, plastiques, vitres, coffre", "Options poils, anti-odeur, ciel de toit"],
     formules: [
       { id: "bronze", name: "Pack Bronze", desc: "Aspiration habitacle + coffre + nettoyage plastiques.",          price: 69,  duration: "1h",    durationMin: 60,  options: [OUV, OA, OPA, OV, OTS, OC, OSA, OO, OC_55] },
-      { id: "argent", name: "Pack Argent", desc: "Pack Bronze + shampouinage sièges + vitres sans traces.",        price: 99,  duration: "1h30",  durationMin: 90,  options: [OUV, OH_55, OE, OA, ODA, OPA, OTS, OC, OO, OC_55] },
-      { id: "or",     name: "Pack Or",     desc: "Pack Argent + nettoyage tapis de sol et moquettes.",          price: 129, duration: "2h",    durationMin: 120, options: [OUV, OH_99, OE, OA, ODA, OPA, OC, OO, OC_55] },
+      { id: "argent", name: "Pack Argent", desc: "Pack Bronze + shampouinage sièges + vitres sans traces.",        price: 99,  duration: "1h30",  durationMin: 90,  options: [OUV, OE, OA, ODA, OPA, OTS, OC, OO, OC_55] },
+      { id: "or",     name: "Pack Or",     desc: "Pack Argent + nettoyage tapis de sol et moquettes.",          price: 129, duration: "2h",    durationMin: 120, options: [OUV, OE, OA, ODA, OPA, OC, OO, OC_55] },
       { id: "siege",  name: "Rénovation siège auto", desc: "Nettoyage des sièges avec méthode adaptée au revêtement (tissu, alcantara ou cuir).",  price: 59,  duration: "45 min",durationMin: 45,  options: [OE, OA, ODA, OPA, OO, OC_55] },
     ],
   },

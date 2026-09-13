@@ -161,10 +161,10 @@ export const SERVICES: Service[] = [
     h1: "Nettoyage matelas à Toulouse",
     short: "Nettoyage matelas Toulouse",
     subtitle:
-      "Nettoyage en profondeur du matelas par injection-extraction. Traitements complémentaires disponibles en option : anti-acariens, anti-odeur, traitement enzymatique et protection hydrophobe & anti-taches.",
+      "Nettoyage en profondeur du matelas par injection-extraction. Traitements complémentaires disponibles en option : anti-acariens, anti-odeur et traitement enzymatique.",
     metaTitle: "Nettoyage matelas Toulouse dès 39 € | Clean&Fresh",
     metaDescription:
-      "Nettoyage de matelas à domicile à Toulouse dès 39 €. Options anti-acariens, anti-odeur et protection anti-taches. Devis gratuit sous 24h.",
+      "Nettoyage de matelas à domicile à Toulouse dès 39 €. Options anti-acariens et anti-odeur. Devis gratuit sous 24h.",
     group: "textile",
     booking: true,
     intro: [
