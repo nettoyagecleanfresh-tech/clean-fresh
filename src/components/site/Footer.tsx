@@ -157,7 +157,7 @@ export function StickyCallCta() {
   }
 
   return (
-    <div className="fixed inset-x-0 bottom-0 z-50 border-t border-border/60 bg-background/97 p-3 backdrop-blur lg:hidden">
+    <div className="fixed inset-x-0 bottom-0 z-50 border-t border-border/60 bg-background p-3 lg:hidden">
       <div className="flex gap-2">
         <a
           href={COMPANY.phoneHref}

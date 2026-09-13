@@ -263,7 +263,7 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
                         >
                           {img && (
                             <div className={`flex items-center justify-center w-full bg-slate-50 border border-slate-100 rounded-lg overflow-hidden p-1 mb-2 ${isGrid ? "h-20" : "h-20"}`}>
-                              <img src={img} alt={row.label} className="w-full h-full object-contain mix-blend-multiply group-hover:scale-110 transition-transform duration-200" loading="lazy" />
+                              <img src={img} alt={row.label} className="w-full h-full object-contain mix-blend-multiply group-hover:scale-110 transition-transform duration-200" loading="lazy" decoding="async" />
                             </div>
                           )}
                           <p className="text-xs font-semibold leading-tight line-clamp-2">{row.label}</p>
@@ -450,6 +450,7 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
                   src={src}
                   alt={`${service.h1} — Avant / Après ${idx + 1}`}
                   loading="lazy"
+                  decoding="async"
                   width={1000}
                   height={800}
                   className="h-48 w-full object-cover"

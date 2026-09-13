@@ -897,6 +897,7 @@ function ReserverPage() {
                               alt={f.name}
                               className="w-full h-full object-contain mix-blend-multiply scale-110"
                               loading="lazy"
+                              decoding="async"
                             />
                           ) : (
                             <div className="flex size-12 items-center justify-center opacity-60">{service.icon}</div>
@@ -1153,7 +1154,7 @@ function ReserverPage() {
 
       {/* ── FOOTER MOBILE — Steps 2 & 3 ── */}
       {step >= 2 && step < 4 && !showCategories && (
-        <div className="fixed inset-x-0 bottom-0 z-40 lg:hidden border-t border-white/20 bg-white/80 backdrop-blur-md shadow-[0_-4px_20px_rgba(0,0,0,0.08)] px-4 py-3 flex flex-col gap-2 transition-all duration-300">
+        <div className="fixed inset-x-0 bottom-0 z-40 lg:hidden border-t border-border/60 bg-white shadow-[0_-4px_20px_rgba(0,0,0,0.08)] px-4 py-3 flex flex-col gap-2">
 
           {/* Récap extensible */}
           {showSummaryMobile && (
@@ -1232,7 +1233,7 @@ function ReserverPage() {
 
       {/* ── FOOTER MOBILE — Step 4 ── */}
       {step === 4 && (
-        <div className="fixed inset-x-0 bottom-0 z-40 lg:hidden border-t border-white/20 bg-white/80 backdrop-blur-md shadow-[0_-4px_20px_rgba(0,0,0,0.08)] px-4 py-3 flex flex-col gap-2">
+        <div className="fixed inset-x-0 bottom-0 z-40 lg:hidden border-t border-border/60 bg-white shadow-[0_-4px_20px_rgba(0,0,0,0.08)] px-4 py-3 flex flex-col gap-2">
           <div className="flex justify-between items-center text-[10px] text-muted-foreground">
             <span>💳 Paiement sur place</span>
             <span>🔓 Annulation gratuite jusqu'à 24h avant</span>

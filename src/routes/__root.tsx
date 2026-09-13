@@ -8,7 +8,7 @@ import {
   Scripts,
   useLocation,
 } from "@tanstack/react-router";
-import { useEffect, lazy, Suspense, type ReactNode } from "react";
+import { useEffect, useState, lazy, Suspense, type ReactNode } from "react";
 import { Home, CalendarCheck, Sofa, Sparkles, Phone } from "lucide-react";
 
 import appCss from "../styles.css?url";
@@ -95,9 +95,24 @@ function NotFoundComponent() {
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
+  const [showError, setShowError] = useState(false);
+
   useEffect(() => {
     reportLovableError(error, { boundary: "tanstack_root_error_component" });
   }, [error]);
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => setShowError(true), 350);
+    return () => window.clearTimeout(timer);
+  }, [error]);
+
+  if (!showError) {
+    return (
+      <div className="min-h-screen bg-background" role="status" aria-live="polite">
+        <span className="sr-only">Chargement de la page…</span>
+      </div>
+    );
+  }
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">

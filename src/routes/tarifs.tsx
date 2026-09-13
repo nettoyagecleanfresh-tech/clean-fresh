@@ -171,6 +171,7 @@ function PriceCard({
             alt={label}
             className="w-full h-full object-contain mix-blend-multiply transition-transform duration-200 group-hover:scale-110"
             loading="lazy"
+            decoding="async"
           />
         </div>
       )}

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Menu, Phone, X, CalendarCheck, ChevronDown, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -6,27 +6,14 @@ import { COMPANY, MENU_TEXTILE, MENU_BATIMENT } from "@/data/site";
 
 export function Header() {
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   const [desktopOpen, setDesktopOpen] = useState(false);
 
   const close = () => { setOpen(false); setServicesOpen(false); setDesktopOpen(false); };
 
   return (
-    <header
-      className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-        scrolled
-          ? "border-b border-border/60 bg-background/95 shadow-[var(--shadow-soft)] backdrop-blur"
-          : "bg-background/80 backdrop-blur"
-      }`}
-    >
+    <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background shadow-[var(--shadow-soft)]">
       {/* Accent top bar */}
       <div className="h-0.5 w-full bg-primary-gradient" />
 

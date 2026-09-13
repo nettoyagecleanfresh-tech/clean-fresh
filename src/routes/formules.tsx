@@ -247,7 +247,7 @@ function CanapeDetail() {
             >
 
               <div className={`flex items-center justify-center w-full h-24 sm:h-32 mb-3 mt-1 px-0 transition-colors ${isSelected ? "text-[#1a2b4c]" : "text-primary/70"}`}>
-                <img src={CANAPE_IMAGES[c.id]} alt={c.label} className="w-full h-full object-contain mix-blend-multiply scale-125 sm:scale-[1.35]" loading="lazy" />
+                <img src={CANAPE_IMAGES[c.id]} alt={c.label} className="w-full h-full object-contain mix-blend-multiply scale-125 sm:scale-[1.35]" loading="lazy" decoding="async" />
               </div>
 
               <p className="text-[9px] font-semibold uppercase tracking-widest text-muted-foreground/80 leading-none">Dès</p>
@@ -334,7 +334,7 @@ function CuirDetail() {
             >
 
               <div className={`flex items-center justify-center w-full h-24 sm:h-32 mb-3 mt-1 px-0 transition-colors ${isSelected ? "text-[#1a2b4c]" : "text-primary/70"}`}>
-                <img src={CUIR_IMAGES[c.id]} alt={c.label} className="w-full h-full object-contain mix-blend-multiply scale-125 sm:scale-[1.35]" loading="lazy" />
+                <img src={CUIR_IMAGES[c.id]} alt={c.label} className="w-full h-full object-contain mix-blend-multiply scale-125 sm:scale-[1.35]" loading="lazy" decoding="async" />
               </div>
 
               <p className="text-[9px] font-semibold uppercase tracking-widest text-muted-foreground/80 leading-none">Dès</p>
@@ -545,7 +545,7 @@ function TapisDetail() {
             >
 
               <div className={`flex items-center justify-center w-full h-32 sm:h-48 mb-3 mt-1 px-0 transition-colors ${isSelected ? "text-[#1a2b4c]" : "text-primary/70"}`}>
-                <img src={TAPIS_IMAGES[c.id]} alt={c.label} className="w-full h-full object-contain mix-blend-multiply scale-125 sm:scale-150" loading="lazy" />
+                <img src={TAPIS_IMAGES[c.id]} alt={c.label} className="w-full h-full object-contain mix-blend-multiply scale-125 sm:scale-150" loading="lazy" decoding="async" />
               </div>
 
               <p className="text-[9px] font-semibold uppercase tracking-widest text-muted-foreground/80 leading-none">Dès</p>
@@ -638,7 +638,7 @@ function AutoDetail() {
               )}
 
               <div className={`flex items-center justify-center w-full h-24 sm:h-32 mb-3 mt-1 px-2 transition-colors ${isSelected ? "text-[#1a2b4c]" : "text-primary/70"}`}>
-                <img src={AUTO_IMAGES[c.id]} alt={c.name} className="w-full h-full object-contain mix-blend-multiply scale-110" loading="lazy" />
+                <img src={AUTO_IMAGES[c.id]} alt={c.name} className="w-full h-full object-contain mix-blend-multiply scale-110" loading="lazy" decoding="async" />
               </div>
 
               <p className="text-[9px] font-semibold uppercase tracking-widest text-muted-foreground/80 leading-none">{c.tagline}</p>
@@ -732,7 +732,7 @@ function MatelasDetail() {
               ) : null}
 
               <div className={`flex items-center justify-center w-full h-32 sm:h-48 mb-3 mt-1 px-0 transition-colors ${isSelected ? "text-[#1a2b4c]" : "text-primary/70"}`}>
-                <img src={MATELAS_IMAGES[c.id]} alt={c.label} className="w-full h-full object-contain mix-blend-multiply scale-125 sm:scale-150" loading="lazy" />
+                <img src={MATELAS_IMAGES[c.id]} alt={c.label} className="w-full h-full object-contain mix-blend-multiply scale-125 sm:scale-150" loading="lazy" decoding="async" />
               </div>
 
               <p className="text-[9px] font-semibold uppercase tracking-widest text-muted-foreground/80 leading-none">Dès</p>
