@@ -216,10 +216,28 @@ function RootShell({ children }: { children: ReactNode }) {
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const location = useLocation();
+  const [loadChatbot, setLoadChatbot] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
+
+  // Charge le chatbot lorsque le navigateur est disponible afin de garder
+  // le rendu initial rapide, en particulier sur mobile.
+  useEffect(() => {
+    const windowWithIdle = window as Window & {
+      requestIdleCallback?: (callback: () => void, options?: { timeout: number }) => number;
+      cancelIdleCallback?: (id: number) => void;
+    };
+
+    if (windowWithIdle.requestIdleCallback) {
+      const idleId = windowWithIdle.requestIdleCallback(() => setLoadChatbot(true), { timeout: 3000 });
+      return () => windowWithIdle.cancelIdleCallback?.(idleId);
+    }
+
+    const timerId = window.setTimeout(() => setLoadChatbot(true), 1800);
+    return () => window.clearTimeout(timerId);
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -235,9 +253,11 @@ function RootComponent() {
         <Footer />
       </div>
       <StickyCallCta />
-      <Suspense fallback={null}>
-        <Chatbot />
-      </Suspense>
+      {loadChatbot ? (
+        <Suspense fallback={null}>
+          <Chatbot />
+        </Suspense>
+      ) : null}
       <Toaster />
       <Analytics />
       <SpeedInsights />

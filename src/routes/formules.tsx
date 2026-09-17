@@ -225,12 +225,12 @@ function OptionsBlock({ options }: { options: { name: string; price: number; des
 // ─── CANAPÉ DETAIL ────────────────────────────────────────────────────────────
 
 const CANAPE_IMAGES: Record<string, string> = {
-  "fauteuil": "/images/canape/fauteuil.png",
-  "canape-2": "/images/canape/canape-2-3.png",
-  "canape-45": "/images/canape/canape-4-5.png",
-  "canape-u": "/images/canape/canape-u.png",
-  "pouf": "/images/canape/pouf.png",
-  "chaise": "/images/canape/chaise.png",
+  "fauteuil": "/images/canape/fauteuil.webp",
+  "canape-2": "/images/canape/canape-2-3.webp",
+  "canape-45": "/images/canape/canape-4-5.webp",
+  "canape-u": "/images/canape/canape-u.webp",
+  "pouf": "/images/canape/pouf.webp",
+  "chaise": "/images/canape/chaise.webp",
 };
 
 
@@ -316,13 +316,13 @@ function CanapeDetail() {
 // ─── CUIR DETAIL ──────────────────────────────────────────────────────────────
 
 const CUIR_IMAGES: Record<string, string> = {
-  "cuir-fauteuil": "/images/cuir/fauteuil.png",
-  "cuir-canape-2": "/images/cuir/canape-2.png",
-  "cuir-canape-4": "/images/cuir/canape-4.png",
-  "cuir-canape-angle": "/images/cuir/canape-angle.png",
-  "cuir-pouf": "/images/cuir/pouf.png",
-  "cuir-chaise": "/images/cuir/chaise.png",
-  "cuir-auto": "/images/cuir/siege-auto.png",
+  "cuir-fauteuil": "/images/cuir/fauteuil.webp",
+  "cuir-canape-2": "/images/cuir/canape-2.webp",
+  "cuir-canape-4": "/images/cuir/canape-4.webp",
+  "cuir-canape-angle": "/images/cuir/canape-angle.webp",
+  "cuir-pouf": "/images/cuir/pouf.webp",
+  "cuir-chaise": "/images/cuir/chaise.webp",
+  "cuir-auto": "/images/cuir/siege-auto.webp",
 };
 
 function CuirDetail() {
@@ -538,9 +538,9 @@ function TapisDetail() {
   const item = TAPIS_ITEMS.find((i) => i.id === selected)!;
 
   const TAPIS_IMAGES: Record<string, string> = {
-    "tapis-1": "/images/tapis/1-tapis.png",
-    "tapis-2": "/images/tapis/2-tapis.png",
-    "tapis-3": "/images/tapis/3-tapis.png",
+    "tapis-1": "/images/tapis/1-tapis.webp",
+    "tapis-2": "/images/tapis/2-tapis.webp",
+    "tapis-3": "/images/tapis/3-tapis.webp",
   };
 
   return (
@@ -617,10 +617,10 @@ function TapisDetail() {
 // ─── AUTO DETAIL ──────────────────────────────────────────────────────────────
 
 const AUTO_IMAGES: Record<string, string> = {
-  "bronze": "/images/auto/bronze.png",
-  "argent": "/images/auto/argent.png",
-  "or": "/images/auto/or.png",
-  "siege": "/images/auto/renov.png",
+  "bronze": "/images/auto/bronze.webp",
+  "argent": "/images/auto/argent.webp",
+  "or": "/images/auto/or.webp",
+  "siege": "/images/auto/renov.webp",
 };
 
 const AUTO_GRID_ITEMS = [
@@ -722,9 +722,9 @@ function MatelasDetail() {
   const item = MATELAS_ITEMS.find((i) => i.id === selected)!;
 
   const MATELAS_IMAGES: Record<string, string> = {
-    "matelas-enfant": "/images/matelas/enfant.png",
-    "matelas-1": "/images/matelas/1-place.png",
-    "matelas-2": "/images/matelas/2-places.png",
+    "matelas-enfant": "/images/matelas/enfant.webp",
+    "matelas-1": "/images/matelas/1-place.webp",
+    "matelas-2": "/images/matelas/2-places.webp",
   };
 
   return (
