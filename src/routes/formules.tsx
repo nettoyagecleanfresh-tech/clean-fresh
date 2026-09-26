@@ -712,7 +712,7 @@ function AutoDetail() {
 // ─── MATELAS DETAIL ───────────────────────────────────────────────────────────
 
 const MATELAS_ITEMS = [
-  { id: "matelas-enfant", label: "Matelas enfant",   price: "39 €", duration: "30 min", desc: "Largeur inférieure à 90 cm. Nettoyage d'une face, sous réserve de compatibilité du textile. Traitement anti-acariens en option." },
+  { id: "matelas-enfant", label: "Matelas enfant",   price: "39 €", duration: "30 min", desc: "Largeur inférieure à 90 cm. Nettoyage des deux faces toujours inclus, sous réserve de compatibilité du textile. Traitement anti-acariens en option." },
   { id: "matelas-1",      label: "Matelas 1 place",  price: "59 €", duration: "1h",     desc: "Largeur de 90 à 130 cm. Nettoyage des deux faces et traitement courant des taches et odeurs." },
   { id: "matelas-2",      label: "Matelas 2 places", price: "99 €", duration: "1h",     desc: "Largeur à partir de 140 cm. Nettoyage des deux faces et traitement courant des taches et odeurs." },
 ];
@@ -818,9 +818,9 @@ const CATEGORIES = [
     id: "matelas",
     icon: <BedDouble className="size-7" />,
     title: "Nettoyage Matelas",
-    sub: "Option anti-acariens · 1 ou 2 faces selon la formule",
+    sub: "Nettoyage des deux faces toujours inclus · Option anti-acariens",
     priceFrom: "39 €",
-    bullets: ["Matelas enfant, 1 place, 2 places", "Traitement anti-acariens en option", "Idéal pour les allergiques"],
+    bullets: ["Matelas enfant, 1 place, 2 places", "Deux faces incluses pour chaque matelas", "Traitement anti-acariens en option"],
     recommended: false,
     content: <MatelasDetail />,
   },

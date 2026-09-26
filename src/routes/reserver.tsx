@@ -91,11 +91,11 @@ const SERVICES: ServiceDef[] = [
     id: "matelas", label: "Nettoyage Matelas", shortLabel: "Matelas",
     desc: "Assainissement complet, éradication des acariens et auréoles de transpiration.",
     from: 39, icon: <BedDouble className="size-8" strokeWidth={1.5} />,
-    features: ["Matelas enfant, 1 place, 2 places", "Traitement anti-acariens en option", "Recommandé pour les allergiques"],
+    features: ["Matelas enfant, 1 place, 2 places", "Nettoyage des deux faces toujours inclus", "Traitement anti-acariens en option"],
     formules: [
-      { id: "matelas-enfant", name: "Matelas enfant",   desc: "Largeur inférieure à 90 cm.", price: 39,  duration: "30 min", durationMin: 30, options: MAT },
-      { id: "matelas-1",      name: "Matelas 1 place",  desc: "Largeur de 90 à 130 cm.", price: 59,  duration: "1h",     durationMin: 60, options: MAT },
-      { id: "matelas-2",      name: "Matelas 2 places", desc: "À partir de 140x190cm.", price: 99,  duration: "1h",     durationMin: 60, options: MAT },
+      { id: "matelas-enfant", name: "Matelas enfant",   desc: "Largeur inférieure à 90 cm · deux faces incluses.", price: 39,  duration: "30 min", durationMin: 30, options: MAT },
+      { id: "matelas-1",      name: "Matelas 1 place",  desc: "Largeur de 90 à 130 cm · deux faces incluses.", price: 59,  duration: "1h",     durationMin: 60, options: MAT },
+      { id: "matelas-2",      name: "Matelas 2 places", desc: "Largeur à partir de 140 cm · deux faces incluses.", price: 99,  duration: "1h",     durationMin: 60, options: MAT },
     ],
   },
   {

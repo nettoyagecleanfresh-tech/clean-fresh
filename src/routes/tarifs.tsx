@@ -22,7 +22,7 @@ const TARIF_CATEGORIES = [
     icon: <BedDouble className="size-7" />,
     title: "Nettoyage Matelas",
     priceFrom: "39 €",
-    bullets: ["Matelas enfant, 1 place, 2 places", "Traitement anti-acariens en option", "Idéal pour les allergiques"],
+    bullets: ["Matelas enfant, 1 place, 2 places", "Deux faces incluses pour chaque matelas", "Traitement anti-acariens en option"],
   },
   {
     id: "tapis",
