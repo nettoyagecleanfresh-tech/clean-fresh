@@ -161,7 +161,7 @@ export const SERVICES: Service[] = [
     h1: "Nettoyage matelas à Toulouse",
     short: "Nettoyage matelas Toulouse",
     subtitle:
-      "Nettoyage en profondeur du matelas par injection-extraction. Traitements complémentaires disponibles en option : anti-acariens, anti-odeur et traitement enzymatique.",
+      "Nettoyage en profondeur du matelas par injection-extraction, avec les deux faces toujours incluses. Options anti-acariens, anti-odeur et traitement enzymatique.",
     metaTitle: "Nettoyage matelas Toulouse dès 39 € | Clean&Fresh",
     metaDescription:
       "Nettoyage de matelas à domicile à Toulouse dès 39 €. Les deux faces sont incluses pour chaque format. Options anti-acariens et anti-odeur.",
@@ -188,9 +188,9 @@ export const SERVICES: Service[] = [
       "Odeurs persistantes",
     ],
     prices: [
-      { label: "Matelas enfant (< 90 cm)", price: "39 €", items: ["Nettoyage des deux faces inclus", "Séchage généralement dans la journée", "Traitement courant des taches et auréoles", "Option anti-odeur disponible"], formuleId: "matelas-enfant" },
-      { label: "Matelas 1 place", price: "59 €", items: ["Nettoyage des deux faces inclus", "Réutilisable le même jour", "Élimination des taches et auréoles", "Neutralisation des mauvaises odeurs"], formuleId: "matelas-1" },
-      { label: "Matelas 2 places", price: "99 €", items: ["Nettoyage des deux faces inclus", "Réutilisable le même jour", "Élimination des taches et auréoles", "Neutralisation des mauvaises odeurs"], formuleId: "matelas-2" },
+      { label: "Matelas enfant (< 90 cm)", price: "39 €", note: "Deux faces incluses", items: ["Nettoyage des deux faces inclus", "Séchage généralement dans la journée", "Traitement courant des taches et auréoles", "Option anti-odeur disponible"], formuleId: "matelas-enfant" },
+      { label: "Matelas 1 place", price: "59 €", note: "Deux faces incluses", items: ["Nettoyage des deux faces inclus", "Réutilisable le même jour", "Élimination des taches et auréoles", "Neutralisation des mauvaises odeurs"], formuleId: "matelas-1" },
+      { label: "Matelas 2 places", price: "99 €", note: "Deux faces incluses", items: ["Nettoyage des deux faces inclus", "Réutilisable le même jour", "Élimination des taches et auréoles", "Neutralisation des mauvaises odeurs"], formuleId: "matelas-2" },
     ],
     priceNote: "Tarifs applicables aux formats indiqués et à un état standard. Format hors catégorie ou état exceptionnel : estimation préalable sur photos.",
     soils: ["Urine", "Transpiration", "Sang", "Moisissures", "Odeurs de renfermé"],
