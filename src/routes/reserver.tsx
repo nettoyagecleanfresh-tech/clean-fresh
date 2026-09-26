@@ -70,6 +70,7 @@ const OC_29: Option = { id: "cuir_prot", name: "Soin nourrissant & protecteur du
 const CAN = [OA, OP, OD, OO, OE];
 const TAP = [OA, ORV, OD, OO, OE];
 const MAT = [OA, OD, OO, OE];
+const MOQ = [OA, OP, OD, OO, OE];
 
 const SERVICES: ServiceDef[] = [
   {
@@ -99,7 +100,7 @@ const SERVICES: ServiceDef[] = [
     ],
   },
   {
-    id: "tapis", label: "Nettoyage Tapis & Moquette", shortLabel: "Tapis",
+    id: "tapis", label: "Nettoyage Tapis", shortLabel: "Tapis",
     desc: "Restauration des fibres, traitement anti-tâches et désodorisation en profondeur.",
     from: 49, icon: <Layers className="size-8" strokeWidth={1.5} />,
     features: ["1 tapis, 2 tapis, 3 tapis", "Format standard jusqu'à 4 m² par tapis", "Options anti-acariens, recto-verso"],
@@ -107,6 +108,17 @@ const SERVICES: ServiceDef[] = [
       { id: "tapis-1", name: "1 Tapis", desc: "Format standard jusqu'à 4 m². Grand format sur devis.", price: 49, duration: "45 min", durationMin: 45, options: TAP },
       { id: "tapis-2", name: "2 Tapis", desc: "Formats standards jusqu'à 4 m² chacun.", price: 79, duration: "1h",     durationMin: 60, options: TAP },
       { id: "tapis-3", name: "3 Tapis", desc: "Formats standards jusqu'à 4 m² chacun.", price: 99, duration: "1h15",   durationMin: 75, options: TAP },
+    ],
+  },
+  {
+    id: "moquette", label: "Nettoyage Moquette", shortLabel: "Moquette",
+    desc: "Nettoyage en profondeur des moquettes compatibles par injection-extraction.",
+    from: 89, icon: <Layers className="size-8" strokeWidth={1.5} />,
+    features: ["Petite, moyenne ou grande pièce", "Injection-extraction professionnelle", "Options détachage et anti-odeur"],
+    formules: [
+      { id: "moquette-petite", name: "Petite pièce", desc: "Surface inférieure à 12 m².", price: 89, duration: "1h", durationMin: 60, options: MOQ },
+      { id: "moquette-standard", name: "Pièce standard", desc: "Surface de 12 à 20 m².", price: 119, duration: "1h30", durationMin: 90, options: MOQ },
+      { id: "moquette-grande", name: "Grande pièce", desc: "Surface supérieure à 20 m².", price: 149, duration: "2h", durationMin: 120, options: MOQ },
     ],
   },
   {
@@ -138,7 +150,7 @@ const SERVICES: ServiceDef[] = [
   },
 ];
 
-const SLUG_TO_SERVICE: Record<string, string> = { canape: "canape", tapis: "tapis", matelas: "matelas", auto: "auto", cuir: "cuir" };
+const SLUG_TO_SERVICE: Record<string, string> = { canape: "canape", tapis: "tapis", moquette: "moquette", matelas: "matelas", auto: "auto", cuir: "cuir" };
 
 // ─── IMAGES PAR FORMULE ──────────────────────────────────────────────────────
 
@@ -158,6 +170,7 @@ const FORMULE_IMAGES: Record<string, Record<string, string>> = {
     "tapis-2": "/images/tapis/2-tapis.webp",
     "tapis-3": "/images/tapis/3-tapis.webp",
   },
+  moquette: {},
   auto: {
     "bronze": "/images/auto/bronze.webp",
     "argent": "/images/auto/argent.webp",

@@ -734,18 +734,18 @@ export const SERVICES: Service[] = [
     short: "Nettoyage moquette Toulouse",
     subtitle:
       "Shampouinage et nettoyage en profondeur de moquettes et sols textiles à domicile à Toulouse et dans toute la Haute-Garonne.",
-    metaTitle: "Nettoyage moquette Toulouse | Clean&Fresh",
+    metaTitle: "Nettoyage moquette Toulouse dès 89 € | Clean&Fresh",
     metaDescription:
-      "Nettoyage de moquette à domicile à Toulouse : injection-extraction, taches, odeurs et acariens éliminés. Particuliers et professionnels. Devis gratuit sous 24h.",
+      "Nettoyage de moquette à domicile à Toulouse dès 89 €. Petite pièce, pièce standard ou grande pièce. Réservation en ligne et intervention à domicile.",
     group: "textile",
-    booking: false,
+    booking: true,
     intro: [
       "Votre moquette accumule poussières, allergènes, taches et mauvaises odeurs au fil du temps. Notre service de nettoyage moquette à Toulouse intervient directement chez vous, sans déplacer les meubles, pour un shampouinage professionnel en profondeur.",
       "La méthode injection-extraction que nous utilisons injecte une solution nettoyante dans les fibres de la moquette, puis l'aspire avec les salissures et l'eau. Résultat : une moquette assainie, sans résidu, qui sèche en 2 à 5 heures selon l'épaisseur. Cette technique est bien plus efficace qu'un simple aspirateur ou qu'un nettoyeur vapeur — elle élimine ce qui est incrusté en profondeur.",
       "Nous intervenons sur les moquettes compatibles après identification de la fibre. Les supports délicats, comme le sisal, demandent un diagnostic et peuvent nécessiter une méthode différente de l'injection-extraction.",
       "Pour les professionnels à Toulouse — bureaux, hôtels, cabinets, commerces — nous proposons des contrats d'entretien régulier à tarif dégressif, en dehors des horaires d'activité. Les produits sont sélectionnés selon la fibre et employés conformément à leurs notices.",
       "Si vous cherchez une shampouineuse moquette à louer ou un nettoyeur moquette, notre prestation par injecteur extracteur donne des résultats bien supérieurs à ceux d'une shampouineuse moquette professionnelle standard. L'injection-extraction extrait réellement les salissures incrustées dans les fibres — résultat net et fibres assainies en profondeur.",
-      "Clean&Fresh intervient sur les moquettes de toute l'agglomération toulousaine et du département 31 — Blagnac, Colomiers, Tournefeuille, Muret, Balma, Cugnaux, Labège, Castelginest et l'ensemble des communes du 31. Contactez-nous pour un devis gratuit sous 24h.",
+      "Clean&Fresh intervient sur les moquettes de toute l'agglomération toulousaine et du département 31 — Blagnac, Colomiers, Tournefeuille, Muret, Balma, Cugnaux, Labège, Castelginest et l'ensemble des communes du 31. Choisissez votre surface et votre créneau directement en ligne.",
     ],
     treated: [
       "Moquettes velours ras et bouclées",
@@ -760,11 +760,11 @@ export const SERVICES: Service[] = [
       "Grisaille et ternissement par l'usage",
     ],
     prices: [
-      { label: "Petite pièce (< 12 m²)", price: "59 €", items: ["Shampouinage injection-extraction", "Élimination des taches et auréoles", "Neutralisation des mauvaises odeurs", "Séchage en 2 à 5h"], formuleId: "tapis-1" },
-      { label: "Pièce standard (12–20 m²)", price: "89 €", items: ["Shampouinage injection-extraction", "Élimination des taches et auréoles", "Neutralisation des mauvaises odeurs", "Séchage en 2 à 5h"], formuleId: "tapis-2" },
-      { label: "Grande pièce (> 20 m²)", price: "120 €", items: ["Shampouinage injection-extraction", "Élimination des taches et auréoles", "Neutralisation des mauvaises odeurs", "Tarif dégressif grandes surfaces"], formuleId: "tapis-3" },
+      { label: "Petite pièce (< 12 m²)", price: "89 €", items: ["Nettoyage par injection-extraction", "Traitement courant des taches et auréoles", "Séchage généralement en 2 à 5h"], formuleId: "moquette-petite" },
+      { label: "Pièce standard (12–20 m²)", price: "119 €", items: ["Nettoyage par injection-extraction", "Traitement courant des taches et auréoles", "Séchage généralement en 2 à 5h"], formuleId: "moquette-standard" },
+      { label: "Grande pièce (> 20 m²)", price: "149 €", items: ["Nettoyage par injection-extraction", "Traitement courant des taches et auréoles", "Diagnostic de la surface avant intervention"], formuleId: "moquette-grande" },
     ],
-    priceNote: "Tarifs indicatifs pour moquettes standards. Surfaces atypiques ou très encrassées : devis sur photos, réponse sous 24h.",
+    priceNote: "Tarifs pour moquettes standards compatibles. Surface atypique, fibre délicate ou état exceptionnel : vérification préalable sur photos.",
     soils: ["Café et thé", "Vin et jus", "Urine", "Graisses", "Sable et boue"],
     method: [
       "Aspiration haute puissance pour retirer les salissures de surface.",
@@ -773,7 +773,7 @@ export const SERVICES: Service[] = [
       "Neutralisation des odeurs et séchage accéléré.",
     ],
     faq: [
-      { q: "Combien coûte un nettoyage de moquette à Toulouse ?", a: "Le tarif démarre à 59 € pour une petite pièce (moins de 12 m²), 89 € pour une pièce standard et 120 € pour une grande pièce. Devis gratuit sur photos, réponse sous 24h." },
+      { q: "Combien coûte un nettoyage de moquette à Toulouse ?", a: "Le tarif est de 89 € pour une petite pièce de moins de 12 m², 119 € pour une pièce standard de 12 à 20 m² et 149 € pour une grande pièce de plus de 20 m². La réservation s'effectue directement en ligne." },
       { q: "Combien de temps met une moquette à sécher après le nettoyage ?", a: "En général 2 à 5 heures selon l'épaisseur de la moquette et la ventilation de la pièce. Nous conseillons d'aérer la pièce ou d'activer le chauffage après l'intervention pour accélérer le séchage." },
       { q: "Peut-on enlever des taches anciennes de café ou de vin sur une moquette ?", a: "Oui, dans la majorité des cas. Notre technique d'injection-extraction et nos produits professionnels traitent efficacement les taches incrustées. Plus la tache est ancienne, plus le prétraitement est intensif — mais les résultats sont souvent remarquables, même sur des taches de plusieurs années." },
       { q: "Nettoyez-vous les moquettes de bureaux et de commerces à Toulouse ?", a: "Oui, nous intervenons pour les professionnels : bureaux, hôtels, cabinets médicaux, commerces. Nous proposons des contrats d'entretien régulier en dehors des heures d'activité, avec tarifs dégressifs pour les grandes surfaces." },

@@ -236,7 +236,7 @@ function ContactPage() {
             {errors["photos"] && <p className="text-xs text-destructive">{errors["photos"]}</p>}
           </div>
 
-          {["Nettoyage canapé", "Nettoyage matelas", "Nettoyage tapis", "Nettoyage cuir", "Nettoyage auto (intérieur)"].includes(selectedService) && (
+          {["Nettoyage canapé", "Nettoyage matelas", "Nettoyage tapis", "Nettoyage moquette", "Nettoyage cuir", "Nettoyage auto (intérieur)"].includes(selectedService) && (
             <div className="rounded-xl border border-primary/20 bg-primary/5 p-4 text-sm text-foreground/80">
               Pour cette prestation, vous pouvez aussi consulter les prix, ajouter plusieurs services et choisir votre créneau directement sur la page <a href="/formules" className="font-bold text-primary underline">Réserver en ligne</a>.
             </div>

@@ -801,6 +801,42 @@ function MatelasDetail() {
   );
 }
 
+const MOQUETTE_ITEMS = [
+  { id: "moquette-petite", label: "Petite pièce", surface: "Moins de 12 m²", price: "89 €", duration: "1h" },
+  { id: "moquette-standard", label: "Pièce standard", surface: "De 12 à 20 m²", price: "119 €", duration: "1h30" },
+  { id: "moquette-grande", label: "Grande pièce", surface: "Plus de 20 m²", price: "149 €", duration: "2h" },
+];
+
+function MoquetteDetail() {
+  return (
+    <div className="grid gap-4 md:grid-cols-3">
+      {MOQUETTE_ITEMS.map((item) => (
+        <div key={item.id} className="flex flex-col rounded-2xl border border-border bg-white p-6 shadow-sm">
+          <p className="text-sm font-bold text-foreground">{item.label}</p>
+          <p className="mt-1 text-sm text-muted-foreground">{item.surface}</p>
+          <p className="mt-4 text-4xl font-black text-primary">{item.price}</p>
+          <p className="mt-2 flex items-center gap-1.5 text-xs text-muted-foreground">
+            <Clock className="size-3.5" /> Environ {item.duration} d'intervention
+          </p>
+          <ul className="my-5 flex-1 space-y-2 text-sm text-foreground/80">
+            <li className="flex gap-2"><CheckCircle2 className="mt-0.5 size-4 shrink-0 text-primary" /> Injection-extraction professionnelle</li>
+            <li className="flex gap-2"><CheckCircle2 className="mt-0.5 size-4 shrink-0 text-primary" /> Traitement courant des taches</li>
+            <li className="flex gap-2"><CheckCircle2 className="mt-0.5 size-4 shrink-0 text-primary" /> Options spécialisées disponibles</li>
+          </ul>
+          <Link
+            to="/reserver"
+            search={{ service: "moquette", formule: item.id, from: "formules" }}
+            onClick={() => window.scrollTo(0, 0)}
+            className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-bold text-white shadow-md transition-all hover:-translate-y-0.5 hover:shadow-lg"
+          >
+            <CalendarCheck className="size-4" /> Je réserve
+          </Link>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 // ─── CATEGORY GRID ────────────────────────────────────────────────────────────
 
 const CATEGORIES = [
@@ -827,12 +863,22 @@ const CATEGORIES = [
   {
     id: "tapis",
     icon: <Layers className="size-7" />,
-    title: "Nettoyage Tapis & Moquette",
+    title: "Nettoyage Tapis",
     sub: "Fibres ravivées · Séchage dans la journée",
     priceFrom: "49 €",
     bullets: ["1 tapis, 2 tapis, 3 tapis", "Format standard jusqu'à 4 m² par tapis", "Options anti-acariens, recto-verso"],
     recommended: false,
     content: <TapisDetail />,
+  },
+  {
+    id: "moquette",
+    icon: <Layers className="size-7" />,
+    title: "Nettoyage Moquette",
+    sub: "Injection-extraction · Réservation en ligne",
+    priceFrom: "89 €",
+    bullets: ["Moins de 12 m² : 89 €", "De 12 à 20 m² : 119 €", "Plus de 20 m² : 149 €"],
+    recommended: false,
+    content: <MoquetteDetail />,
   },
   {
     id: "auto",

@@ -27,7 +27,7 @@ const TARIF_CATEGORIES = [
   {
     id: "tapis",
     icon: <Layers className="size-7" />,
-    title: "Nettoyage Tapis & Moquette",
+    title: "Nettoyage Tapis",
     priceFrom: "49 €",
     bullets: ["1 tapis, 2 tapis, 3 tapis", "Format standard jusqu'à 4 m² par tapis", "Options anti-acariens, recto-verso"],
   },
@@ -37,6 +37,13 @@ const TARIF_CATEGORIES = [
     title: "Nettoyage Intérieur Auto",
     priceFrom: "69 €",
     bullets: ["Pack Bronze, Argent, Or", "Sièges, plastiques, vitres, coffre", "Options poils, anti-odeur, ciel de toit"],
+  },
+  {
+    id: "moquette",
+    icon: <Layers className="size-7" />,
+    title: "Nettoyage Moquette",
+    priceFrom: "89 €",
+    bullets: ["Moins de 12 m² : 89 €", "De 12 à 20 m² : 119 €", "Plus de 20 m² : 149 €"],
   },
   {
     id: "cuir",

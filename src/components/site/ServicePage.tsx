@@ -19,6 +19,7 @@ function getBookingServiceId(slug: string): string | null {
   if (slug.includes("canape")) return "canape";
   if (slug.includes("matelas")) return "matelas";
   if (slug.includes("tapis")) return "tapis";
+  if (slug.includes("moquette")) return "moquette";
   if (slug.includes("auto")) return "auto";
   if (slug.includes("cuir")) return "cuir";
   return null;
