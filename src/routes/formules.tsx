@@ -830,7 +830,7 @@ const CATEGORIES = [
     title: "Nettoyage Tapis & Moquette",
     sub: "Fibres ravivées · Séchage dans la journée",
     priceFrom: "49 €",
-    bullets: ["1 tapis, 2 tapis, 3 tapis", "Format standard jusqu'à 2 m² par tapis", "Options anti-acariens, recto-verso"],
+    bullets: ["1 tapis, 2 tapis, 3 tapis", "Format standard jusqu'à 4 m² par tapis", "Options anti-acariens, recto-verso"],
     recommended: false,
     content: <TapisDetail />,
   },

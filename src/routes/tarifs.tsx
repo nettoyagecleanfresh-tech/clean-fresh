@@ -29,7 +29,7 @@ const TARIF_CATEGORIES = [
     icon: <Layers className="size-7" />,
     title: "Nettoyage Tapis & Moquette",
     priceFrom: "49 €",
-    bullets: ["1 tapis, 2 tapis, 3 tapis", "Format standard jusqu'à 2 m² par tapis", "Options anti-acariens, recto-verso"],
+    bullets: ["1 tapis, 2 tapis, 3 tapis", "Format standard jusqu'à 4 m² par tapis", "Options anti-acariens, recto-verso"],
   },
   {
     id: "auto",

@@ -245,7 +245,7 @@ export const SERVICES: Service[] = [
       { label: "2 tapis", price: "79 €", items: ["Nettoyage en profondeur par injection-extraction", "Fibres et couleurs ravivées", "Élimination des taches et auréoles", "Neutralisation des mauvaises odeurs"], formuleId: "tapis-2" },
       { label: "3 tapis", price: "99 €", items: ["Nettoyage en profondeur par injection-extraction", "Fibres et couleurs ravivées", "Élimination des taches et auréoles", "Neutralisation des mauvaises odeurs"], formuleId: "tapis-3" },
     ],
-    priceNote: "Chaque tarif couvre un tapis de format standard jusqu'à 2 m². Grand format, fibre délicate ou état exceptionnel : estimation préalable sur photos.",
+    priceNote: "Chaque tarif couvre un tapis de format standard jusqu'à 4 m². Grand format, fibre délicate ou état exceptionnel : estimation préalable sur photos.",
     soils: ["Pipi d'animaux", "Café et vin", "Nourriture", "Boue et terre", "Tabac"],
     method: [
       "Identification de la fibre et dépoussiérage mécanique.",

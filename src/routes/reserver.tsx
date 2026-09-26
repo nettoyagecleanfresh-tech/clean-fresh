@@ -102,11 +102,11 @@ const SERVICES: ServiceDef[] = [
     id: "tapis", label: "Nettoyage Tapis & Moquette", shortLabel: "Tapis",
     desc: "Restauration des fibres, traitement anti-tâches et désodorisation en profondeur.",
     from: 49, icon: <Layers className="size-8" strokeWidth={1.5} />,
-    features: ["1 tapis, 2 tapis, 3 tapis", "Format standard jusqu'à 2 m² par tapis", "Options anti-acariens, recto-verso"],
+    features: ["1 tapis, 2 tapis, 3 tapis", "Format standard jusqu'à 4 m² par tapis", "Options anti-acariens, recto-verso"],
     formules: [
-      { id: "tapis-1", name: "1 Tapis", desc: "Format standard jusqu'à 2 m². Grand format sur devis.", price: 49, duration: "45 min", durationMin: 45, options: TAP },
-      { id: "tapis-2", name: "2 Tapis", desc: "Formats standards jusqu'à 2 m² chacun.", price: 79, duration: "1h",     durationMin: 60, options: TAP },
-      { id: "tapis-3", name: "3 Tapis", desc: "Formats standards jusqu'à 2 m² chacun.", price: 99, duration: "1h15",   durationMin: 75, options: TAP },
+      { id: "tapis-1", name: "1 Tapis", desc: "Format standard jusqu'à 4 m². Grand format sur devis.", price: 49, duration: "45 min", durationMin: 45, options: TAP },
+      { id: "tapis-2", name: "2 Tapis", desc: "Formats standards jusqu'à 4 m² chacun.", price: 79, duration: "1h",     durationMin: 60, options: TAP },
+      { id: "tapis-3", name: "3 Tapis", desc: "Formats standards jusqu'à 4 m² chacun.", price: 99, duration: "1h15",   durationMin: 75, options: TAP },
     ],
   },
   {
