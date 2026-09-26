@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { Mail, Phone, Clock, MapPin, ArrowRight } from "lucide-react";
+import { Mail, Phone, Clock, MapPin, ArrowRight, Camera } from "lucide-react";
 import { z } from "zod";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
@@ -32,6 +32,8 @@ const SERVICES_LIST = [
   "Nettoyage canapé",
   "Nettoyage matelas",
   "Nettoyage tapis",
+  "Nettoyage moquette",
+  "Nettoyage cuir",
   "Nettoyage auto (intérieur)",
   "Nettoyage de vitres",
   "Nettoyage terrasse",
@@ -39,6 +41,8 @@ const SERVICES_LIST = [
   "Nettoyage façade",
   "Nettoyage appartement / maison",
   "Nettoyage fin de chantier",
+  "Nettoyage fin de bail",
+  "Nettoyage Diogène / logement insalubre",
   "Nettoyage extrême",
   "Autre",
 ];
@@ -48,11 +52,16 @@ const schema = z.object({
   telephone: z.string().trim().min(6, "Numéro invalide").max(20),
   email: z.string().trim().email("Adresse email invalide").max(255),
   service: z.string().min(1, "Veuillez sélectionner un service"),
+  adresse: z.string().trim().min(5, "Merci d'indiquer l'adresse d'intervention").max(200),
+  surface: z.string().trim().min(1, "Merci d'indiquer la surface ou les dimensions").max(100),
+  dateSouhaitee: z.string().trim().min(2, "Merci d'indiquer la date ou le délai souhaité").max(100),
+  acces: z.string().trim().min(2, "Merci de préciser l'accès à l'eau et à l'électricité").max(300),
   message: z.string().trim().min(10, "Merci de détailler votre demande").max(1000),
 });
 
 function ContactPage() {
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [selectedService, setSelectedService] = useState("");
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -62,14 +71,17 @@ function ContactPage() {
 
     const form = e.currentTarget;
     const data = Object.fromEntries(new FormData(form));
-    
-    // Remove photo logic
+    const photos = form.querySelector<HTMLInputElement>("#photos")?.files;
 
     const result = schema.safeParse(data);
     if (!result.success) {
       const next: Record<string, string> = {};
       for (const issue of result.error.issues) next[String(issue.path[0])] = issue.message;
       setErrors(next);
+      return;
+    }
+    if (photos?.[0] && photos[0].size > 5 * 1024 * 1024) {
+      setErrors({ photos: "La photo doit peser moins de 5 Mo" });
       return;
     }
     setErrors({});
@@ -97,7 +109,12 @@ function ContactPage() {
       formDataForWeb3.append("Téléphone", result.data.telephone);
       formDataForWeb3.append("Email", result.data.email);
       formDataForWeb3.append("Prestation", result.data.service);
+      formDataForWeb3.append("Adresse d'intervention", result.data.adresse);
+      formDataForWeb3.append("Surface ou dimensions", result.data.surface);
+      formDataForWeb3.append("Date ou délai souhaité", result.data.dateSouhaitee);
+      formDataForWeb3.append("Accès et besoins techniques", result.data.acces);
       formDataForWeb3.append("Message", result.data.message);
+      if (photos?.[0]) formDataForWeb3.append("attachment", photos[0]);
 
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
@@ -109,6 +126,7 @@ function ContactPage() {
       if (resData.success) {
         toast.success("Votre message a été envoyé avec succès. Nous vous répondons sous 24h.");
         form.reset();
+        setSelectedService("");
       } else {
         throw new Error(resData.message || "Erreur Web3Forms");
       }
@@ -128,8 +146,8 @@ function ContactPage() {
           Demander un Devis Gratuit
         </h1>
         <p className="mt-4 text-muted-foreground leading-relaxed max-w-xl mx-auto">
-          Confiez-nous l'entretien de votre intérieur. Remplissez le formulaire ci-dessous et
-          recevez une proposition sur-mesure sous 24 heures, assurée.
+          Donnez-nous les informations utiles et, si possible, quelques photos. Vous recevrez
+          une proposition adaptée sous 24 heures.
         </p>
       </div>
 
@@ -171,6 +189,7 @@ function ContactPage() {
                 id="service"
                 name="service"
                 defaultValue=""
+                onChange={(e) => setSelectedService(e.target.value)}
                 className="w-full appearance-none rounded-none border-0 border-b border-border bg-transparent px-0 py-2 text-sm text-foreground shadow-none outline-none focus:border-primary focus:ring-0 transition-colors"
               >
                 <option value="" disabled>Sélectionnez un service...</option>
@@ -185,6 +204,43 @@ function ContactPage() {
             </div>
             {errors["service"] && <p className="text-xs text-destructive">{errors["service"]}</p>}
           </div>
+
+          <div className="grid gap-6 sm:grid-cols-2">
+            <div className="grid gap-1 sm:col-span-2">
+              <Label htmlFor="adresse" className="text-sm text-muted-foreground font-normal">Adresse exacte de l'intervention</Label>
+              <Input id="adresse" name="adresse" autoComplete="street-address" maxLength={200} placeholder="Numéro, rue, code postal et ville" className="rounded-none border-0 border-b border-border bg-transparent px-0 py-2 text-sm shadow-none focus-visible:ring-0 focus-visible:border-primary transition-colors" />
+              {errors["adresse"] && <p className="text-xs text-destructive">{errors["adresse"]}</p>}
+            </div>
+            <div className="grid gap-1">
+              <Label htmlFor="surface" className="text-sm text-muted-foreground font-normal">Surface ou dimensions</Label>
+              <Input id="surface" name="surface" maxLength={100} placeholder="Ex. 60 m², 12 fenêtres…" className="rounded-none border-0 border-b border-border bg-transparent px-0 py-2 text-sm shadow-none focus-visible:ring-0 focus-visible:border-primary transition-colors" />
+              {errors["surface"] && <p className="text-xs text-destructive">{errors["surface"]}</p>}
+            </div>
+            <div className="grid gap-1">
+              <Label htmlFor="dateSouhaitee" className="text-sm text-muted-foreground font-normal">Date ou délai souhaité</Label>
+              <Input id="dateSouhaitee" name="dateSouhaitee" maxLength={100} placeholder="Ex. avant le 15 octobre" className="rounded-none border-0 border-b border-border bg-transparent px-0 py-2 text-sm shadow-none focus-visible:ring-0 focus-visible:border-primary transition-colors" />
+              {errors["dateSouhaitee"] && <p className="text-xs text-destructive">{errors["dateSouhaitee"]}</p>}
+            </div>
+          </div>
+
+          <div className="grid gap-1">
+            <Label htmlFor="acces" className="text-sm text-muted-foreground font-normal">Accès à l'eau, à l'électricité et au logement</Label>
+            <Input id="acces" name="acces" maxLength={300} placeholder="Prises disponibles, point d'eau, étage, ascenseur, stationnement…" className="rounded-none border-0 border-b border-border bg-transparent px-0 py-2 text-sm shadow-none focus-visible:ring-0 focus-visible:border-primary transition-colors" />
+            {errors["acces"] && <p className="text-xs text-destructive">{errors["acces"]}</p>}
+          </div>
+
+          <div className="grid gap-2 rounded-xl border border-dashed border-border bg-secondary/20 p-4">
+            <Label htmlFor="photos" className="flex items-center gap-2 text-sm font-semibold"><Camera className="size-4 text-primary" />Photos de l'état actuel</Label>
+            <Input id="photos" name="photos" type="file" accept="image/jpeg,image/png,image/webp" className="cursor-pointer" />
+            <p className="text-xs text-muted-foreground">Une photo facultative, 5 Mo maximum, aide à établir un devis précis.</p>
+            {errors["photos"] && <p className="text-xs text-destructive">{errors["photos"]}</p>}
+          </div>
+
+          {["Nettoyage canapé", "Nettoyage matelas", "Nettoyage tapis", "Nettoyage cuir", "Nettoyage auto (intérieur)"].includes(selectedService) && (
+            <div className="rounded-xl border border-primary/20 bg-primary/5 p-4 text-sm text-foreground/80">
+              Pour cette prestation, vous pouvez aussi consulter les prix, ajouter plusieurs services et choisir votre créneau directement sur la page <a href="/formules" className="font-bold text-primary underline">Réserver en ligne</a>.
+            </div>
+          )}
 
           {/* Message */}
           <div className="grid gap-1">

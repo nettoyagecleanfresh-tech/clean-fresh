@@ -274,9 +274,15 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
                             className="mt-2 w-full bg-accent-gradient text-accent-foreground font-semibold hover:opacity-90 h-8 text-xs"
                             size="sm"
                           >
-                            <Link to="/reserver" search={bookingServiceId ? { service: bookingServiceId, formule: row.formuleId } : undefined}>
-                              <CalendarCheck className="size-3 mr-1" /> Réserver
-                            </Link>
+                            {bookingServiceId ? (
+                              <Link to="/reserver" search={{ service: bookingServiceId, formule: row.formuleId }}>
+                                <CalendarCheck className="size-3 mr-1" /> Réserver
+                              </Link>
+                            ) : (
+                              <Link to="/contactez-nous">
+                                <ArrowRight className="size-3 mr-1" /> Demander un devis
+                              </Link>
+                            )}
                           </Button>
                         </div>
                       );
@@ -314,22 +320,30 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
                   </a>
 
                   {/* Urgence / disponibilité */}
-                  <div className="mt-3 flex items-center gap-2 rounded-xl bg-green-50 border border-green-200 px-4 py-2.5">
-                    <span className="relative flex size-2.5 shrink-0">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                      <span className="relative inline-flex rounded-full size-2.5 bg-green-500"></span>
-                    </span>
-                    <p className="text-xs font-semibold text-green-800">Créneaux disponibles cette semaine — réservez maintenant</p>
-                  </div>
+                  {bookingServiceId && (
+                    <div className="mt-3 flex items-center gap-2 rounded-xl bg-green-50 border border-green-200 px-4 py-2.5">
+                      <span className="relative flex size-2.5 shrink-0">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                        <span className="relative inline-flex rounded-full size-2.5 bg-green-500"></span>
+                      </span>
+                      <p className="text-xs font-semibold text-green-800">Consultez les créneaux disponibles en ligne</p>
+                    </div>
+                  )}
 
                   <Button
                     asChild
                     size="lg"
                     className="mt-3 w-full bg-accent-gradient text-accent-foreground font-bold hover:opacity-90"
                   >
-                    <Link to="/formules" search={bookingServiceId ? { service: bookingServiceId } : undefined}>
-                      <CalendarCheck className="size-4 mr-2" /> Réserver en ligne
-                    </Link>
+                    {bookingServiceId ? (
+                      <Link to="/formules" search={{ service: bookingServiceId }}>
+                        <CalendarCheck className="size-4 mr-2" /> Réserver en ligne
+                      </Link>
+                    ) : (
+                      <Link to="/contactez-nous">
+                        <ArrowRight className="size-4 mr-2" /> Demander un devis
+                      </Link>
+                    )}
                   </Button>
                 </>
               ) : (

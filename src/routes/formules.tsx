@@ -303,7 +303,7 @@ function CanapeDetail() {
               className="inline-flex items-center justify-center gap-2 w-full rounded-xl bg-primary px-6 py-3.5 text-sm font-bold text-white shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
               <CalendarCheck className="size-4" /> Je réserve
             </Link>
-            <p className="text-xs text-muted-foreground/80 font-medium">Déplacement gratuit · Paiement sur place</p>
+            <p className="text-xs text-muted-foreground/80 font-medium">Déplacement offert jusqu'à 20 km · Paiement sur place</p>
           </div>
         </div>
       </div>
@@ -391,7 +391,7 @@ function CuirDetail() {
               className="inline-flex items-center justify-center gap-2 w-full rounded-xl bg-primary px-6 py-3.5 text-sm font-bold text-white shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
               <CalendarCheck className="size-4" /> Je réserve
             </Link>
-            <p className="text-xs text-muted-foreground/80 font-medium">Déplacement gratuit · Paiement sur place</p>
+            <p className="text-xs text-muted-foreground/80 font-medium">Déplacement offert jusqu'à 20 km · Paiement sur place</p>
           </div>
         </div>
       </div>
@@ -604,7 +604,7 @@ function TapisDetail() {
               className="inline-flex items-center justify-center gap-2 w-full rounded-xl bg-primary px-6 py-3.5 text-sm font-bold text-white shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
               <CalendarCheck className="size-4" /> Je réserve
             </Link>
-            <p className="text-xs text-muted-foreground/80 font-medium">Déplacement gratuit · Paiement sur place</p>
+            <p className="text-xs text-muted-foreground/80 font-medium">Déplacement offert jusqu'à 20 km · Paiement sur place</p>
           </div>
         </div>
       </div>
@@ -697,7 +697,7 @@ function AutoDetail() {
               className="inline-flex items-center justify-center gap-2 w-full rounded-xl bg-primary px-6 py-3.5 text-sm font-bold text-white shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
               <CalendarCheck className="size-4" /> Je réserve
             </Link>
-            <p className="text-xs text-muted-foreground/80 font-medium">Déplacement gratuit · Paiement sur place</p>
+            <p className="text-xs text-muted-foreground/80 font-medium">Déplacement offert jusqu'à 20 km · Paiement sur place</p>
           </div>
         </div>
       </div>
@@ -712,9 +712,9 @@ function AutoDetail() {
 // ─── MATELAS DETAIL ───────────────────────────────────────────────────────────
 
 const MATELAS_ITEMS = [
-  { id: "matelas-enfant", label: "Matelas enfant",   price: "39 €", duration: "30 min", desc: "Votre enfant dort dans un lit sain. Traitement des taches et odeurs, 2 côtés. Traitement anti-acariens en option. Résultat professionnel." },
-  { id: "matelas-1",      label: "Matelas 1 place",  price: "59 €", duration: "1h",     desc: "Dormez dans un matelas comme neuf. Traitement des taches et odeurs, 2 côtés. Traitement anti-acariens en option. Résultat professionnel." },
-  { id: "matelas-2",      label: "Matelas 2 places", price: "99 €", duration: "1h",     desc: "Chambre entièrement assainie. Traitement des taches et odeurs, 2 côtés. Traitement anti-acariens en option. Résultat professionnel." },
+  { id: "matelas-enfant", label: "Matelas enfant",   price: "39 €", duration: "30 min", desc: "Largeur inférieure à 90 cm. Nettoyage d'une face, sous réserve de compatibilité du textile. Traitement anti-acariens en option." },
+  { id: "matelas-1",      label: "Matelas 1 place",  price: "59 €", duration: "1h",     desc: "Largeur de 90 à 130 cm. Nettoyage des deux faces et traitement courant des taches et odeurs." },
+  { id: "matelas-2",      label: "Matelas 2 places", price: "99 €", duration: "1h",     desc: "Largeur à partir de 140 cm. Nettoyage des deux faces et traitement courant des taches et odeurs." },
 ];
 
 function MatelasDetail() {
@@ -791,7 +791,7 @@ function MatelasDetail() {
               className="inline-flex items-center justify-center gap-2 w-full rounded-xl bg-primary px-6 py-3.5 text-sm font-bold text-white shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
               <CalendarCheck className="size-4" /> Je réserve
             </Link>
-            <p className="text-xs text-muted-foreground/80 font-medium">Déplacement gratuit · Paiement sur place</p>
+            <p className="text-xs text-muted-foreground/80 font-medium">Déplacement offert jusqu'à 20 km · Paiement sur place</p>
           </div>
         </div>
       </div>
@@ -818,7 +818,7 @@ const CATEGORIES = [
     id: "matelas",
     icon: <BedDouble className="size-7" />,
     title: "Nettoyage Matelas",
-    sub: "Option anti-acariens · 2 côtés traités · Allergiques",
+    sub: "Option anti-acariens · 1 ou 2 faces selon la formule",
     priceFrom: "39 €",
     bullets: ["Matelas enfant, 1 place, 2 places", "Traitement anti-acariens en option", "Idéal pour les allergiques"],
     recommended: false,
@@ -830,7 +830,7 @@ const CATEGORIES = [
     title: "Nettoyage Tapis & Moquette",
     sub: "Fibres ravivées · Séchage dans la journée",
     priceFrom: "49 €",
-    bullets: ["1 tapis, 2 tapis, 3 tapis", "Toutes tailles et matières", "Options anti-acariens, recto-verso"],
+    bullets: ["1 tapis, 2 tapis, 3 tapis", "Format standard jusqu'à 2 m² par tapis", "Options anti-acariens, recto-verso"],
     recommended: false,
     content: <TapisDetail />,
   },

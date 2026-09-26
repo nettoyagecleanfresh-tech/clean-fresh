@@ -9,7 +9,7 @@ type MailResult = {
 function htmlToText(html: string): string {
   return html
     .replace(/<style[\s\S]*?<\/style>/gi, "")
-    .replace(/<br\s*[\/]?>/gi, "\n")
+    .replace(/<br\s*[/]?>/gi, "\n")
     .replace(/<\/p>/gi, "\n\n")
     .replace(/<\/tr>/gi, "\n")
     .replace(/<[^>]+>/g, "")

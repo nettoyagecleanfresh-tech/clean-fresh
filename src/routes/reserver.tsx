@@ -93,8 +93,8 @@ const SERVICES: ServiceDef[] = [
     from: 39, icon: <BedDouble className="size-8" strokeWidth={1.5} />,
     features: ["Matelas enfant, 1 place, 2 places", "Traitement anti-acariens en option", "Recommandé pour les allergiques"],
     formules: [
-      { id: "matelas-enfant", name: "Matelas enfant",   desc: "Jusqu'à 90x190cm.", price: 39,  duration: "30 min", durationMin: 30, options: MAT },
-      { id: "matelas-1",      name: "Matelas 1 place",  desc: "De 90x190 à 120x190cm.", price: 59,  duration: "1h",     durationMin: 60, options: MAT },
+      { id: "matelas-enfant", name: "Matelas enfant",   desc: "Largeur inférieure à 90 cm.", price: 39,  duration: "30 min", durationMin: 30, options: MAT },
+      { id: "matelas-1",      name: "Matelas 1 place",  desc: "Largeur de 90 à 130 cm.", price: 59,  duration: "1h",     durationMin: 60, options: MAT },
       { id: "matelas-2",      name: "Matelas 2 places", desc: "À partir de 140x190cm.", price: 99,  duration: "1h",     durationMin: 60, options: MAT },
     ],
   },
@@ -102,11 +102,11 @@ const SERVICES: ServiceDef[] = [
     id: "tapis", label: "Nettoyage Tapis & Moquette", shortLabel: "Tapis",
     desc: "Restauration des fibres, traitement anti-tâches et désodorisation en profondeur.",
     from: 49, icon: <Layers className="size-8" strokeWidth={1.5} />,
-    features: ["1 tapis, 2 tapis, 3 tapis", "Toutes tailles et matières", "Options anti-acariens, recto-verso"],
+    features: ["1 tapis, 2 tapis, 3 tapis", "Format standard jusqu'à 2 m² par tapis", "Options anti-acariens, recto-verso"],
     formules: [
-      { id: "tapis-1", name: "1 Tapis", desc: "Toutes tailles confondues.", price: 49, duration: "45 min", durationMin: 45, options: TAP },
-      { id: "tapis-2", name: "2 Tapis", desc: "Toutes tailles confondues.", price: 79, duration: "1h",     durationMin: 60, options: TAP },
-      { id: "tapis-3", name: "3 Tapis", desc: "Toutes tailles confondues.", price: 99, duration: "1h15",   durationMin: 75, options: TAP },
+      { id: "tapis-1", name: "1 Tapis", desc: "Format standard jusqu'à 2 m². Grand format sur devis.", price: 49, duration: "45 min", durationMin: 45, options: TAP },
+      { id: "tapis-2", name: "2 Tapis", desc: "Formats standards jusqu'à 2 m² chacun.", price: 79, duration: "1h",     durationMin: 60, options: TAP },
+      { id: "tapis-3", name: "3 Tapis", desc: "Formats standards jusqu'à 2 m² chacun.", price: 99, duration: "1h15",   durationMin: 75, options: TAP },
     ],
   },
   {
@@ -267,7 +267,7 @@ function Sidebar({
   const continuLabel =
     step === 1 ? "Je réserve" :
     step === 2 ? "Choisir mon créneau" :
-    step === 3 ? "Finaliser ma réservation" :
+    step === 3 ? "Continuer vers mes coordonnées" :
     "";
 
   return (
@@ -663,7 +663,7 @@ function ReserverPage() {
   const continuLabel =
     step === 1 ? "Je réserve" :
     step === 2 ? "Choisir mon créneau" :
-    step === 3 ? "Finaliser ma réservation" :
+    step === 3 ? "Continuer vers mes coordonnées" :
     "";
 
   // ── CONFIRMATION ──────────────────────────────────────────────────────────

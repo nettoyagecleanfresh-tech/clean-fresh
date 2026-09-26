@@ -96,14 +96,14 @@ export const SERVICES: Service[] = [
     short: "Nettoyage canapé Toulouse",
     subtitle:
       "Nettoyage en profondeur de vos canapés et fauteuils à domicile. À Toulouse et dans toute l'agglomération.",
-    metaTitle: "Nettoyage canapé Toulouse dès 49 € | Clean&Fresh",
+    metaTitle: "Nettoyage canapé Toulouse dès 79 € | Clean&Fresh",
     metaDescription:
-      "Nettoyage de canapé à domicile à Toulouse dès 49 €. Tissu, cuir et microfibre, options anti-acariens. Devis gratuit sous 24h.",
+      "Nettoyage de canapé à domicile à Toulouse dès 79 €. Fauteuil dès 49 €. Tissu, cuir et microfibre, options spécialisées. Réservation en ligne.",
     group: "textile",
     booking: true,
     intro: [
       "Votre canapé concentre poussière, acariens, transpiration et taches du quotidien. Notre équipe de nettoyage canapé à Toulouse intervient directement chez vous, sans déplacer vos meubles, avec un matériel professionnel d'injection-extraction et des produits professionnels sélectionnés, dont certaines références certifiées Écolabel.",
-      "Chaque prestation comprend le nettoyage en profondeur de l'assise, du dossier et des coussins, l'élimination des taches et auréoles ainsi que la neutralisation des mauvaises odeurs. Tissu, microfibre, velours ou cuir : nous adaptons notre méthode à chaque matière pour un résultat impeccable dans le respect du revêtement.",
+      "Chaque prestation comprend le nettoyage courant de l'assise, du dossier et des coussins compatibles. Les taches anciennes, odeurs persistantes, poils d'animaux et contaminations organiques peuvent nécessiter une option spécialisée. Tissu, microfibre, velours ou cuir : la méthode est adaptée après diagnostic de la matière.",
       "Le nettoyage canapé cuir à Toulouse est l'une de nos spécialités. Contrairement au tissu, le cuir ne supporte pas l'injection-extraction : nous utilisons des nettoyants pH neutre spécifiques, appliqués manuellement, suivis d'un nourrissant protecteur qui restaure la souplesse et l'éclat du revêtement. Le procédé élimine les traces grasses, les auréoles et les micro-rayures sans assécher la surface. Cuir naturel, cuir synthétique ou éco-cuir — le résultat est visible dès la première intervention.",
       "Un canapé en tissu ou en velours se nettoie idéalement une à deux fois par an, ou dès l'apparition d'une tache incrustée. Pour les familles avec enfants ou animaux, un nettoyage régulier élimine les allergènes accumulés dans les fibres et prolonge la durée de vie du meuble. Notre traitement anti-acariens en option est particulièrement recommandé pour les personnes souffrant d'allergies respiratoires.",
       "Les textiles compatibles sont nettoyés principalement par injection-extraction. Le cuir véritable bénéficie d’un nettoyage manuel professionnel avec des produits et accessoires adaptés à la matière.",
@@ -132,7 +132,7 @@ export const SERVICES: Service[] = [
       { label: "Chaise rembourrée (à la pièce)", price: "15 €", items: ["Assise et dossier traités en profondeur", "Élimination des taches et auréoles", "Tarif dégressif à partir de 4 chaises"], formuleId: "chaise" },
     ],
     priceNote:
-      "Inclus dans toutes les prestations : nettoyage en profondeur, assise + dossier + coussin, élimination des taches et auréoles, neutralisation des mauvaises odeurs.",
+      "Inclus : nettoyage courant de l'assise, du dossier et des coussins compatibles. Les traitements intensifs des taches anciennes, odeurs persistantes, poils et résidus organiques sont proposés en option selon l'état du support.",
     soils: [
       "Pipi de chat et de chien",
       "Transpiration",
@@ -170,8 +170,8 @@ export const SERVICES: Service[] = [
     intro: [
       "Un matelas absorbe chaque nuit transpiration, cellules mortes et humidité : c'est le terrain idéal pour les acariens. Notre service de nettoyage matelas à Toulouse intervient directement dans votre chambre, sans le déplacer, avec une machine professionnelle et des produits professionnels sélectionnés, dont certaines références certifiées Écolabel.",
       "Le résultat : un couchage assaini, désodorisé et sain pour toute la famille. Particulièrement recommandé aux personnes allergiques, aux familles avec enfants en bas âge et en cas d'auréoles d'urine ou de transpiration incrustées.",
-      "Un nettoyage de matelas professionnel est recommandé tous les 6 à 12 mois. Pour les personnes souffrant d'allergies aux acariens, de rhinites ou d'eczéma, notre traitement anti-acariens en option élimine les allergènes responsables des crises. Les médecins allergologues recommandent un entretien bi-annuel des couchages pour les sujets sensibles.",
-      "Notre méthode d'injection-extraction traite en profondeur les deux faces du matelas : elle élimine les cellules mortes, la poussière, les moisissures et les bactéries sans laisser de résidu. Contrairement à une shampouineuse classique qui reste en surface, notre équipement professionnel injecte la solution nettoyante dans les fibres du matelas puis l'aspire avec les impuretés — un résultat bien supérieur au nettoyage matelas shampouineuse standard disponible en location. Le matelas sèche en 3 à 6 heures selon son épaisseur et peut être utilisé le soir même. Des produits professionnels sélectionnés, dont certaines références certifiées Écolabel, sont utilisés sans danger pour les enfants et les animaux.",
+      "Un entretien régulier aide à limiter l'accumulation de poussières et d'allergènes. Pour les personnes sensibles aux acariens, un traitement complémentaire peut être proposé après vérification de la matière et de l'état du matelas.",
+      "Notre méthode d'injection-extraction décolle puis aspire les salissures présentes dans les fibres compatibles. Selon la formule, une ou deux faces sont traitées. Le séchage prend généralement 3 à 6 heures selon l'épaisseur, la température et la ventilation. Les produits sont employés selon leurs notices et après vérification de la compatibilité du support.",
       "Beaucoup de clients cherchent un nettoyeur matelas ou une shampouineuse pour matelas en location. Notre équipement professionnel d'injection-extraction va bien au-delà : il réalise un nettoyage acariens en profondeur que les appareils grand public ne peuvent pas atteindre, en extrayant les allergènes, les cellules mortes et les bactéries logées au cœur des fibres.",
       "Clean&Fresh intervient sur tous types de matelas — mousse, latex, ressorts, mémoire de forme — à Toulouse, Blagnac, Colomiers, Tournefeuille, Balma, Cugnaux, Muret, Ramonville-Saint-Agne et dans tout le département 31. Réponse sous 24h, tarifs clairs et sans surprise.",
     ],
@@ -188,11 +188,11 @@ export const SERVICES: Service[] = [
       "Odeurs persistantes",
     ],
     prices: [
-      { label: "Matelas enfant", price: "39 €", items: ["Nettoyage 2 côtés en profondeur", "Réutilisable le même jour", "Élimination des taches et auréoles", "Neutralisation des mauvaises odeurs"], formuleId: "matelas-enfant" },
+      { label: "Matelas enfant (< 90 cm)", price: "39 €", items: ["Nettoyage d'une face", "Séchage généralement dans la journée", "Traitement courant des taches et auréoles", "Option anti-odeur disponible"], formuleId: "matelas-enfant" },
       { label: "Matelas 1 place", price: "59 €", items: ["Nettoyage 2 côtés en profondeur", "Réutilisable le même jour", "Élimination des taches et auréoles", "Neutralisation des mauvaises odeurs"], formuleId: "matelas-1" },
       { label: "Matelas 2 places", price: "99 €", items: ["Nettoyage 2 côtés en profondeur", "Réutilisable le même jour", "Élimination des taches et auréoles", "Neutralisation des mauvaises odeurs"], formuleId: "matelas-2" },
     ],
-    priceNote: "Tarifs sur devis selon la taille et l'état du matelas — réponse gratuite sous 24h.",
+    priceNote: "Tarifs applicables aux formats indiqués et à un état standard. Format hors catégorie ou état exceptionnel : estimation préalable sur photos.",
     soils: ["Urine", "Transpiration", "Sang", "Moisissures", "Odeurs de renfermé"],
     method: [
       "Aspiration haute puissance des poussières et allergènes de surface.",
@@ -204,8 +204,8 @@ export const SERVICES: Service[] = [
       { q: "Combien coûte un nettoyage de matelas à Toulouse ?", a: "Le tarif démarre à 39 € pour un matelas enfant, 59 € pour un matelas 1 place et 99 € pour un matelas 2 places. Devis gratuit, réponse sous 24h." },
       { q: "Peut-on enlever une ancienne tache d'urine sur un matelas ?", a: "Oui, dans la grande majorité des cas. Nous appliquons un détachage enzymatique ciblé avant l'injection-extraction. Les auréoles d'urine, même anciennes, sont éliminées ou très atténuées." },
       { q: "Combien de temps met un matelas à sécher ?", a: "Entre 3 et 6 heures selon l'épaisseur et le type de matelas. Pour accélérer, aérez la chambre ou activez le chauffage. Votre lit est utilisable le soir même." },
-      { q: "Quels produits utilisez-vous pour le nettoyage de matelas ?", a: "Des produits professionnels sélectionnés, dont certaines références certifiées Écolabel, sans danger pour les enfants, les personnes allergiques et les animaux. Aucun solvant agressif ni résidu chimique après séchage." },
-      { q: "Le nettoyage de matelas est-il recommandé pour les personnes allergiques ?", a: "Absolument. Le traitement anti-acariens disponible en option élimine les allergènes responsables des rhinites, eczémas et troubles du sommeil. Une intervention annuelle est idéale pour les personnes sensibles." },
+      { q: "Quels produits utilisez-vous pour le nettoyage de matelas ?", a: "Des produits professionnels sélectionnés, dont certaines références certifiées Écolabel. Ils sont utilisés selon leurs notices et après vérification de la compatibilité du textile." },
+      { q: "Le nettoyage de matelas est-il adapté aux personnes sensibles aux acariens ?", a: "Le nettoyage aide à extraire les poussières et allergènes accumulés. Un traitement anti-acariens complémentaire est disponible en option ; il ne remplace pas un avis ou un traitement médical." },
     ],
   },
   {
@@ -245,7 +245,7 @@ export const SERVICES: Service[] = [
       { label: "2 tapis", price: "79 €", items: ["Nettoyage en profondeur par injection-extraction", "Fibres et couleurs ravivées", "Élimination des taches et auréoles", "Neutralisation des mauvaises odeurs"], formuleId: "tapis-2" },
       { label: "3 tapis", price: "99 €", items: ["Nettoyage en profondeur par injection-extraction", "Fibres et couleurs ravivées", "Élimination des taches et auréoles", "Neutralisation des mauvaises odeurs"], formuleId: "tapis-3" },
     ],
-    priceNote: "Tarifs sur devis selon la surface et la nature de la fibre — réponse sous 24h.",
+    priceNote: "Chaque tarif couvre un tapis de format standard jusqu'à 2 m². Grand format, fibre délicate ou état exceptionnel : estimation préalable sur photos.",
     soils: ["Pipi d'animaux", "Café et vin", "Nourriture", "Boue et terre", "Tabac"],
     method: [
       "Identification de la fibre et dépoussiérage mécanique.",
@@ -299,7 +299,7 @@ export const SERVICES: Service[] = [
       { label: "🥇 Pack Or", price: "129 €", items: ["Tout le Pack Argent inclus", "Shampouinage injection-extraction moquettes", "Nettoyage complet du coffre", "Nettoyage contour et bas de porte"], formuleId: "or" },
       { label: "Rénovation siège auto", price: "59 €", items: ["Nettoyage des sièges avec méthode adaptée au revêtement (tissu, alcantara ou cuir)", "Élimination des taches tenaces", "Traitement des auréoles", "Résultat visible immédiatement"], formuleId: "siege" },
     ],
-    priceNote: "Tarifs sur devis selon la taille du véhicule et son état — réponse sous 24h.",
+    priceNote: "Tarifs applicables aux véhicules particuliers en état standard. SUV, utilitaire, volume important ou état exceptionnel : estimation préalable sur photos.",
     soils: ["Nourriture et boissons", "Tabac", "Poils d'animaux", "Transpiration", "Boue"],
     method: [
       "Aspiration complète de l'habitacle et du coffre.",
@@ -327,10 +327,10 @@ export const SERVICES: Service[] = [
       "Nettoyage de vitres et vitrines à Toulouse pour habitations, commerces et bureaux. Entretien ponctuel ou régulier, devis gratuit sous 24h.",
     group: "batiment",
     intro: [
-      "Des vitres impeccables, c'est une image soignée pour votre domicile ou votre commerce. Notre service de nettoyage de vitres à Toulouse intervient chez les particuliers comme chez les professionnels avec un matériel adapté, garantissant un résultat sans traces.",
+      "Des vitres propres donnent une image soignée à votre domicile ou à votre commerce. Notre service de nettoyage de vitres à Toulouse intervient chez les particuliers comme chez les professionnels avec un matériel adapté pour limiter les traces.",
       "Nous nettoyons vos fenêtres, baies vitrées, vitrines de commerces et cloisons de bureaux — encadrements, rails et rebords compris. Intervention ponctuelle ou contrat d'entretien régulier à tarif dégressif, aux horaires qui vous arrangent.",
       "Pour les commerces et les professionnels à Toulouse, un lavage de vitres régulier est essentiel à l'image de votre enseigne. Nous intervenons tôt le matin, en dehors des heures d'ouverture ou le week-end pour ne pas perturber votre activité. Les restaurants, agences immobilières, salons et boutiques font partie de nos clients réguliers dans l'agglomération toulousaine.",
-      "Nous utilisons la raclette professionnelle et l'eau osmosée sur les surfaces calcaires pour un résultat vitres sans traces garanti. Nettoyeur vitre, lavage de vitres ou nettoyage des vitres à domicile : nos techniciens interviennent avec le matériel adapté pour un résultat nettoyage vitres sans traces, même sur les grandes baies vitrées et les vitrines de commerces. Encadrements, rails et appuis de fenêtres sont inclus dans chaque prestation — aucun détail n'est laissé de côté.",
+      "Nous utilisons la raclette professionnelle et, lorsque la surface le permet, l'eau osmosée afin de réduire les traces. Le matériel est adapté aux grandes baies vitrées comme aux vitrines de commerces. Encadrements, rails et appuis sont traités selon la formule retenue.",
       "Clean&Fresh intervient dans toute l'agglomération toulousaine et en Haute-Garonne — Blagnac, Colomiers, Tournefeuille, Balma, Muret, Ramonville-Saint-Agne, Labège, Portet-sur-Garonne, Castelginest et l'ensemble des communes du 31. Contactez-nous pour un devis gratuit adapté à votre surface et à votre fréquence d'entretien.",
     ],
     treated: [
@@ -742,8 +742,8 @@ export const SERVICES: Service[] = [
     intro: [
       "Votre moquette accumule poussières, allergènes, taches et mauvaises odeurs au fil du temps. Notre service de nettoyage moquette à Toulouse intervient directement chez vous, sans déplacer les meubles, pour un shampouinage professionnel en profondeur.",
       "La méthode injection-extraction que nous utilisons injecte une solution nettoyante dans les fibres de la moquette, puis l'aspire avec les salissures et l'eau. Résultat : une moquette assainie, sans résidu, qui sèche en 2 à 5 heures selon l'épaisseur. Cette technique est bien plus efficace qu'un simple aspirateur ou qu'un nettoyeur vapeur — elle élimine ce qui est incrusté en profondeur.",
-      "Nous traitons tous les types de moquettes : velours ras, bouclé, sisal, en rouleau ou en dalles, pour les particuliers comme pour les professionnels. Taches anciennes de café, de vin, d'urine ou de graisse, odeurs incrustées, acariens : notre équipement professionnel prend en charge les cas que les produits du commerce ne peuvent pas traiter.",
-      "Pour les professionnels à Toulouse — bureaux, hôtels, cabinets, commerces — nous proposons des contrats d'entretien régulier à tarif dégressif, en dehors des horaires d'activité. Chaque intervention est réalisée avec des produits professionnels sélectionnés, dont certaines références certifiées Écolabel, sans danger pour vos occupants ni pour l'environnement.",
+      "Nous intervenons sur les moquettes compatibles après identification de la fibre. Les supports délicats, comme le sisal, demandent un diagnostic et peuvent nécessiter une méthode différente de l'injection-extraction.",
+      "Pour les professionnels à Toulouse — bureaux, hôtels, cabinets, commerces — nous proposons des contrats d'entretien régulier à tarif dégressif, en dehors des horaires d'activité. Les produits sont sélectionnés selon la fibre et employés conformément à leurs notices.",
       "Si vous cherchez une shampouineuse moquette à louer ou un nettoyeur moquette, notre prestation par injecteur extracteur donne des résultats bien supérieurs à ceux d'une shampouineuse moquette professionnelle standard. L'injection-extraction extrait réellement les salissures incrustées dans les fibres — résultat net et fibres assainies en profondeur.",
       "Clean&Fresh intervient sur les moquettes de toute l'agglomération toulousaine et du département 31 — Blagnac, Colomiers, Tournefeuille, Muret, Balma, Cugnaux, Labège, Castelginest et l'ensemble des communes du 31. Contactez-nous pour un devis gratuit sous 24h.",
     ],
