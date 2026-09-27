@@ -45,27 +45,28 @@ export function BookingAvailabilityBanner({ durationMin = 60 }: { durationMin?: 
   });
 
   return (
-    <div className="grid gap-2 sm:grid-cols-2" aria-live="polite">
-      <div className="flex items-center gap-3 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-emerald-950">
-        <CalendarCheck className="size-5 shrink-0 text-emerald-600" />
-        <div>
-          <p className="text-xs font-bold uppercase tracking-wide text-emerald-700">Disponibilité en temps réel</p>
-          <p className="text-sm font-bold">
+    <div
+      className="flex flex-col gap-1.5 rounded-xl border border-primary/15 bg-white px-3 py-2.5 text-xs shadow-sm sm:flex-row sm:items-center sm:justify-center sm:gap-4"
+      aria-live="polite"
+    >
+      <div className="flex items-center gap-2 text-emerald-900">
+        <CalendarCheck className="size-4 shrink-0 text-emerald-600" />
+        <p className="font-bold leading-tight">
             {loading
               ? "Recherche du prochain créneau…"
               : nextSlot
                 ? <>Prochain créneau : <span className="capitalize">{formattedDate}</span> à {nextSlot.time}</>
                 : "Contactez-nous pour le prochain créneau"}
-          </p>
-        </div>
+        </p>
       </div>
 
-      <div className="flex items-center gap-3 rounded-xl border border-sky-200 bg-sky-50 px-4 py-3 text-sky-950">
-        <CreditCard className="size-5 shrink-0 text-sky-600" />
-        <div>
-          <p className="text-xs font-bold uppercase tracking-wide text-sky-700">Aucun paiement en ligne</p>
-          <p className="text-sm font-bold">Paiement à la fin de la prestation, après votre satisfaction.</p>
-        </div>
+      <span className="hidden h-4 w-px bg-border sm:block" aria-hidden="true" />
+
+      <div className="flex items-center gap-2 text-sky-950">
+        <CreditCard className="size-4 shrink-0 text-sky-600" />
+        <p className="font-bold leading-tight">
+          Aucun paiement en ligne <span className="font-medium text-muted-foreground">· Paiement à la fin, après votre satisfaction</span>
+        </p>
       </div>
     </div>
   );
