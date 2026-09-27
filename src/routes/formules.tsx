@@ -839,7 +839,7 @@ function MoquetteDetail() {
 
 // ─── CATEGORY GRID ────────────────────────────────────────────────────────────
 
-const CATEGORIES = [
+const CATEGORY_CATALOG = [
   {
     id: "canape",
     icon: <Armchair className="size-7" />,
@@ -901,6 +901,11 @@ const CATEGORIES = [
     content: <CuirDetail />,
   },
 ];
+
+// Même ordre partout : première page « Réserver », détails et tunnel.
+const CATEGORIES = ["canape", "matelas", "tapis", "auto", "cuir", "moquette"]
+  .map((id) => CATEGORY_CATALOG.find((category) => category.id === id))
+  .filter((category): category is (typeof CATEGORY_CATALOG)[number] => Boolean(category));
 
 // ─── PAGE ─────────────────────────────────────────────────────────────────────
 

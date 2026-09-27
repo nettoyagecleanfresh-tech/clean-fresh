@@ -369,9 +369,9 @@ function Sidebar({
           onClick={onContinue}
           disabled={!canContinue}
           size="lg"
-          className="mt-3 w-full bg-accent-gradient text-accent-foreground font-bold hover:opacity-90 disabled:opacity-40 hidden lg:inline-flex"
+          className="mt-3 w-full bg-accent-gradient px-2 text-[13px] leading-tight whitespace-normal text-center text-accent-foreground font-bold hover:opacity-90 disabled:opacity-40 hidden lg:inline-flex gap-1"
         >
-          {continuLabel} <ArrowRight className="size-4" />
+          <span>{continuLabel}</span> <ArrowRight className="size-4 shrink-0" />
         </Button>
       )}
 
