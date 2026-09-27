@@ -9,6 +9,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { COMPANY, SITE_URL } from "@/data/site";
 import { FadeIn } from "@/components/ui/fade-in";
 import { BookingAvailabilityBanner } from "@/components/BookingAvailabilityBanner";
+import { BookingTrustBanner } from "@/components/BookingTrustBanner";
 
 const TITLE = "Réserver un nettoyage à Toulouse | Clean&Fresh";
 const DESC = "Réservez en ligne votre nettoyage à domicile à Toulouse : canapé dès 49 €, matelas dès 39 €, tapis dès 49 € et auto dès 69 €.";
@@ -926,6 +927,9 @@ function FormulesPage() {
       {!selectedService && (
         <FadeIn delay={0.1}>
           <div className="mx-auto max-w-5xl px-4 pt-16 mb-12">
+            <div className="mb-2">
+              <BookingTrustBanner />
+            </div>
             <div className="mb-6">
               <BookingAvailabilityBanner />
             </div>

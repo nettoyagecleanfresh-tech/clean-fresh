@@ -3,6 +3,8 @@ import { CheckCircle2, Phone, ArrowRight, MessageCircle, Armchair, Layers, Car, 
 import { Button } from "@/components/ui/button";
 import { SITE_URL, COMPANY, SERVICES } from "@/data/site";
 import { FadeIn } from "@/components/ui/fade-in";
+import { BookingAvailabilityBanner } from "@/components/BookingAvailabilityBanner";
+import { BookingTrustBanner } from "@/components/BookingTrustBanner";
 
 const TITLE = "Tarifs nettoyage Toulouse dès 39 € | Clean&Fresh";
 const DESC =
@@ -249,6 +251,12 @@ function TarifsPage() {
         <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-6 text-center">
           Prix clairs · Toute l'agglomération toulousaine · Devis gratuit sous 24h
         </p>
+        <div className="mb-2">
+          <BookingTrustBanner />
+        </div>
+        <div className="mb-6">
+          <BookingAvailabilityBanner />
+        </div>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
           {TARIF_CATEGORIES.map((cat) => (
             <a

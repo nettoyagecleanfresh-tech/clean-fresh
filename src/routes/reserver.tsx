@@ -5,18 +5,19 @@ import {
   Armchair, BedDouble, Layers, Car,
   Check, ArrowRight, ChevronLeft, ChevronRight,
   CalendarCheck, Info, Clock, Phone, Mail, User,
-  Loader2, CheckCircle2, Shield, Dog, Droplets, Wind, Sparkles, MapPin, Hash, Building2, Sun, Star,
+  Loader2, CheckCircle2, Shield, Dog, Droplets, Wind, Sparkles, MapPin, Hash, Building2, Sun,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { COMPANY, GOOGLE_REVIEW_COUNT } from "@/data/site";
+import { COMPANY } from "@/data/site";
 import { fetchBusySlots, buildSlots } from "@/lib/gcal";
 import { CalendarPicker } from "@/components/CalendarPicker";
 import { TimeSlotPicker } from "@/components/TimeSlotPicker";
 import { sendBookingEmailsFn } from "@/lib/emailServerFns";
 import { createBookingServerFn } from "@/lib/bookingServerFn";
 import { BookingAvailabilityBanner } from "@/components/BookingAvailabilityBanner";
+import { BookingTrustBanner } from "@/components/BookingTrustBanner";
 
 export const Route = createFileRoute("/reserver")({
   validateSearch: (search: Record<string, unknown>) => ({
@@ -230,25 +231,6 @@ function StepBar({ current }: { current: number }) {
           </div>
         );
       })}
-    </div>
-  );
-}
-
-function BookingTrust() {
-  return (
-    <div className="rounded-xl border border-[#e6dfc7] bg-[#fffdf7] px-2 py-2 sm:rounded-2xl sm:px-4 sm:py-3">
-      <div className="flex flex-nowrap items-center justify-center gap-x-1.5 whitespace-nowrap text-center sm:gap-x-3">
-        <span className="text-xs font-bold text-[#4285f4] sm:text-base">Google</span>
-        <span className="flex items-center gap-0.5" aria-label="5 étoiles sur 5">
-          {Array.from({ length: 5 }).map((_, index) => (
-            <Star key={index} className="size-3 fill-[#fbbc04] text-[#fbbc04] sm:size-4" aria-hidden="true" />
-          ))}
-        </span>
-        <span className="text-xs font-bold text-foreground sm:text-sm">4,9/5</span>
-        <span className="text-[11px] text-muted-foreground sm:text-xs">
-          {GOOGLE_REVIEW_COUNT} avis<span className="hidden sm:inline"> clients</span>
-        </span>
-      </div>
     </div>
   );
 }
@@ -794,7 +776,7 @@ function ReserverPage() {
       <div className="mx-auto max-w-5xl px-4 py-10">
         <StepBar current={step} />
         <div className="mb-6">
-          <BookingTrust />
+          <BookingTrustBanner />
         </div>
         {step === 1 && (
           <div className="mb-6">
