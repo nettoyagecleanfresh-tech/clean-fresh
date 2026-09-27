@@ -98,7 +98,7 @@ const AUTO_PACKS = [
   {
     id: "bronze", emoji: "🥉", name: "Pack Bronze", price: "69 €", tagline: "Entretien régulier", duration: "1h",
     badge: null as string | null, featured: false,
-    included: ["Aspiration complète de l'habitacle", "Nettoyage des plastiques et tableau de bord", "Nettoyage des vitres intérieures", "Nettoyage des tapis de sol"],
+    included: ["Aspiration complète de l'habitacle", "Aspiration complète du coffre", "Nettoyage et dégraissage de tous les plastiques du véhicule", "Nettoyage et dégraissage des plastiques du coffre"],
     options: [
       { name: "Protection UV & antistatique plastiques", price: 19, popular: true },
       { name: "Traitement anti-acariens et bactériens", price: 19, popular: false },
@@ -112,7 +112,7 @@ const AUTO_PACKS = [
   {
     id: "argent", emoji: "🥈", name: "Pack Argent", price: "99 €", tagline: "Nettoyage complet", duration: "1h30",
     badge: "⭐ Le + vendu" as string | null, featured: true,
-    included: ["Tout le Pack Bronze inclus", "Injection-extraction des sièges tissu", "Vitres sans traces (intérieur + extérieur)", "Joints et recoins traités en détail"],
+    included: ["Tout le Pack Bronze inclus", "Shampouinage de tous les sièges du véhicule", "Méthode adaptée au revêtement des sièges", "Nettoyage des vitres sans traces"],
     options: [
       { name: "Traitement enzymatique intensif", price: 19, popular: false },
       { name: "Protection UV & antistatique plastiques", price: 19, popular: false },
@@ -128,7 +128,7 @@ const AUTO_PACKS = [
   {
     id: "or", emoji: "🥇", name: "Pack Or", price: "129 €", tagline: "État showroom", duration: "2h",
     badge: "✨ Premium" as string | null, featured: false,
-    included: ["Tout le Pack Argent inclus", "Nettoyage injection-extraction moquettes", "Nettoyage complet du coffre", "Nettoyage contour et bas de porte"],
+    included: ["Tout le Pack Argent inclus", "Shampouinage de toute la moquette de l'habitacle et du coffre", "Shampouinage des tapis", "Nettoyage des contours et bas de portes", "Nettoyage du contour de coffre"],
     options: [
       { name: "Traitement enzymatique intensif", price: 19, popular: false },
       { name: "Protection UV & antistatique plastiques", price: 19, popular: false },
@@ -143,7 +143,7 @@ const AUTO_PACKS = [
   {
     id: "siege", emoji: "💺", name: "Rénovation siège", price: "59 €", tagline: "Ciblé", duration: "45 min",
     badge: null as string | null, featured: false,
-    included: ["Nettoyage des sièges avec méthode adaptée au revêtement (tissu, alcantara ou cuir)", "Élimination des taches tenaces", "Traitement des auréoles", "Résultat visible immédiatement"],
+    included: ["Shampouinage de tous les sièges du véhicule", "Méthode et produits adaptés à chaque revêtement", "Tissu, Alcantara, cuir, velours et matières compatibles", "Traitement courant des taches et auréoles"],
     options: [
       { name: "Traitement enzymatique intensif", price: 19, popular: false },
       { name: "Traitement anti-acariens et bactériens", price: 19, popular: true },
@@ -802,9 +802,9 @@ function MatelasDetail() {
 }
 
 const MOQUETTE_ITEMS = [
-  { id: "moquette-petite", label: "Petite pièce", surface: "Moins de 12 m²", price: "89 €", duration: "1h" },
-  { id: "moquette-standard", label: "Pièce standard", surface: "De 12 à 20 m²", price: "119 €", duration: "1h30" },
-  { id: "moquette-grande", label: "Grande pièce", surface: "Plus de 20 m²", price: "149 €", duration: "2h" },
+  { id: "moquette-petite", label: "Petite moquette", surface: "Moins de 12 m²", price: "99 €", duration: "1h" },
+  { id: "moquette-standard", label: "Moquette moyenne", surface: "De 12 à 20 m²", price: "149 €", duration: "1h30" },
+  { id: "moquette-grande", label: "Grande moquette", surface: "Plus de 20 m²", price: "199 €", duration: "2h" },
 ];
 
 function MoquetteDetail() {
@@ -875,18 +875,18 @@ const CATEGORIES = [
     icon: <Layers className="size-7" />,
     title: "Nettoyage Moquette",
     sub: "Injection-extraction · Réservation en ligne",
-    priceFrom: "89 €",
-    bullets: ["Moins de 12 m² : 89 €", "De 12 à 20 m² : 119 €", "Plus de 20 m² : 149 €"],
+    priceFrom: "99 €",
+    bullets: ["Moins de 12 m² : 99 €", "De 12 à 20 m² : 149 €", "Plus de 20 m² : 199 €"],
     recommended: false,
     content: <MoquetteDetail />,
   },
   {
     id: "auto",
     icon: <Car className="size-7" />,
-    title: "Nettoyage Intérieur Auto",
+    title: "Nettoyage Auto",
     sub: "À domicile ou sur parking · Tous véhicules",
     priceFrom: "69 €",
-    bullets: ["Pack Bronze, Argent, Or", "Sièges, plastiques, vitres, coffre", "Options poils, anti-odeur, ciel de toit"],
+    bullets: ["Bronze : aspiration et plastiques", "Argent : Bronze + sièges et vitres", "Or : Argent + moquettes, tapis et contours"],
     recommended: false,
     content: <AutoDetail />,
   },

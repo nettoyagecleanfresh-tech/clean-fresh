@@ -74,9 +74,9 @@ const MOQ = [OA, OP, OD, OO, OE];
 
 const SERVICES: ServiceDef[] = [
   {
-    id: "canape", label: "Textiles d'ameublement", shortLabel: "Textiles",
+    id: "canape", label: "Nettoyage Canapé & Fauteuil", shortLabel: "Canapé & fauteuil",
     desc: "Nettoyage en profondeur par injection-extraction, élimination des tâches et ravivement des couleurs.",
-    from: 15, icon: <Armchair className="size-8" strokeWidth={1.5} />,
+    from: 49, icon: <Armchair className="size-8" strokeWidth={1.5} />,
     features: ["Fauteuil, canapé 2/3, 4/5 places", "Canapé U/angle, pouf, chaise", "Options anti-acariens, anti-odeur"],
     formules: [
       { id: "fauteuil",     name: "Fauteuil",                       desc: "Nettoyage complet 1 place.", price: 49,  duration: "45 min",  durationMin: 45,  options: CAN },
@@ -94,9 +94,9 @@ const SERVICES: ServiceDef[] = [
     from: 39, icon: <BedDouble className="size-8" strokeWidth={1.5} />,
     features: ["Matelas enfant, 1 place, 2 places", "Nettoyage des deux faces toujours inclus", "Traitement anti-acariens en option"],
     formules: [
-      { id: "matelas-enfant", name: "Matelas enfant",   desc: "Largeur inférieure à 90 cm · deux faces incluses.", price: 39,  duration: "30 min", durationMin: 30, options: MAT },
-      { id: "matelas-1",      name: "Matelas 1 place",  desc: "Largeur de 90 à 130 cm · deux faces incluses.", price: 59,  duration: "1h",     durationMin: 60, options: MAT },
-      { id: "matelas-2",      name: "Matelas 2 places", desc: "Largeur à partir de 140 cm · deux faces incluses.", price: 99,  duration: "1h",     durationMin: 60, options: MAT },
+      { id: "matelas-enfant", name: "Matelas enfant",   desc: "Largeur inférieure à 90 cm.", price: 39, duration: "30 min", durationMin: 30, options: MAT },
+      { id: "matelas-1",      name: "Matelas 1 place",  desc: "Largeur de 90 à 130 cm.", price: 59, duration: "1h", durationMin: 60, options: MAT },
+      { id: "matelas-2",      name: "Matelas 2 places", desc: "Largeur à partir de 140 cm.", price: 99, duration: "1h", durationMin: 60, options: MAT },
     ],
   },
   {
@@ -105,7 +105,7 @@ const SERVICES: ServiceDef[] = [
     from: 49, icon: <Layers className="size-8" strokeWidth={1.5} />,
     features: ["1 tapis, 2 tapis, 3 tapis", "Format standard jusqu'à 4 m² par tapis", "Options anti-acariens, recto-verso"],
     formules: [
-      { id: "tapis-1", name: "1 Tapis", desc: "Format standard jusqu'à 4 m². Grand format sur devis.", price: 49, duration: "45 min", durationMin: 45, options: TAP },
+      { id: "tapis-1", name: "1 Tapis", desc: "Format standard jusqu'à 4 m².", price: 49, duration: "45 min", durationMin: 45, options: TAP },
       { id: "tapis-2", name: "2 Tapis", desc: "Formats standards jusqu'à 4 m² chacun.", price: 79, duration: "1h",     durationMin: 60, options: TAP },
       { id: "tapis-3", name: "3 Tapis", desc: "Formats standards jusqu'à 4 m² chacun.", price: 99, duration: "1h15",   durationMin: 75, options: TAP },
     ],
@@ -113,24 +113,24 @@ const SERVICES: ServiceDef[] = [
   {
     id: "moquette", label: "Nettoyage Moquette", shortLabel: "Moquette",
     desc: "Nettoyage en profondeur des moquettes compatibles par injection-extraction.",
-    from: 89, icon: <Layers className="size-8" strokeWidth={1.5} />,
+    from: 99, icon: <Layers className="size-8" strokeWidth={1.5} />,
     features: ["Petite, moyenne ou grande pièce", "Injection-extraction professionnelle", "Options détachage et anti-odeur"],
     formules: [
-      { id: "moquette-petite", name: "Petite pièce", desc: "Surface inférieure à 12 m².", price: 89, duration: "1h", durationMin: 60, options: MOQ },
-      { id: "moquette-standard", name: "Pièce standard", desc: "Surface de 12 à 20 m².", price: 119, duration: "1h30", durationMin: 90, options: MOQ },
-      { id: "moquette-grande", name: "Grande pièce", desc: "Surface supérieure à 20 m².", price: 149, duration: "2h", durationMin: 120, options: MOQ },
+      { id: "moquette-petite", name: "Petite moquette", desc: "Surface inférieure à 12 m².", price: 99, duration: "1h", durationMin: 60, options: MOQ },
+      { id: "moquette-standard", name: "Moquette moyenne", desc: "Surface de 12 à 20 m².", price: 149, duration: "1h30", durationMin: 90, options: MOQ },
+      { id: "moquette-grande", name: "Grande moquette", desc: "Surface supérieure à 20 m².", price: 199, duration: "2h", durationMin: 120, options: MOQ },
     ],
   },
   {
-    id: "auto", label: "Nettoyage Intérieur Auto", shortLabel: "Intérieur auto",
-    desc: "Shampouinage des sièges, moquettes et plastiques pour un habitacle comme neuf.",
+    id: "auto", label: "Nettoyage Auto", shortLabel: "Nettoyage auto",
+    desc: "Aspiration, plastiques, sièges, vitres et moquettes selon la formule choisie.",
     from: 69, icon: <Car className="size-8" strokeWidth={1.5} />,
     features: ["Pack Bronze, Argent, Or", "Sièges, plastiques, vitres, coffre", "Options poils, anti-odeur, ciel de toit"],
     formules: [
-      { id: "bronze", name: "Pack Bronze", desc: "Aspiration habitacle + coffre + nettoyage plastiques.",          price: 69,  duration: "1h",    durationMin: 60,  options: [OUV, OA, OPA, OV, OTS, OC, OSA, OO, OC_25] },
-      { id: "argent", name: "Pack Argent", desc: "Pack Bronze + shampouinage sièges + vitres sans traces.",        price: 99,  duration: "1h30",  durationMin: 90,  options: [OUV, OE, OA, ODA, OPA, OTS, OC, OO, OC_25] },
-      { id: "or",     name: "Pack Or",     desc: "Pack Argent + nettoyage tapis de sol et moquettes.",          price: 129, duration: "2h",    durationMin: 120, options: [OUV, OE, OA, ODA, OPA, OC, OO, OC_25] },
-      { id: "siege",  name: "Rénovation siège auto", desc: "Nettoyage des sièges avec méthode adaptée au revêtement (tissu, alcantara ou cuir).",  price: 59,  duration: "45 min",durationMin: 45,  options: [OE, OA, ODA, OPA, OO, OC_25] },
+      { id: "bronze", name: "Pack Bronze", desc: "Aspiration complète de l'habitacle et du coffre, puis nettoyage et dégraissage de tous les plastiques du véhicule, coffre compris.", price: 69, duration: "1h", durationMin: 60, options: [OUV, OA, OPA, OV, OTS, OC, OSA, OO, OC_25] },
+      { id: "argent", name: "Pack Argent", desc: "Tout le Pack Bronze, plus le shampouinage de tous les sièges du véhicule et le nettoyage des vitres sans traces.", price: 99, duration: "1h30", durationMin: 90, options: [OUV, OE, OA, ODA, OPA, OTS, OC, OO, OC_25] },
+      { id: "or", name: "Pack Or", desc: "Tout le Pack Argent, plus le shampouinage de toute la moquette de l'habitacle et du coffre, des tapis, des contours et bas de portes et du contour de coffre.", price: 129, duration: "2h", durationMin: 120, options: [OUV, OE, OA, ODA, OPA, OC, OO, OC_25] },
+      { id: "siege", name: "Rénovation sièges auto", desc: "Shampouinage de tous les sièges avec une méthode et des produits adaptés : tissu, Alcantara, cuir, velours et autres revêtements compatibles.", price: 59, duration: "45 min", durationMin: 45, options: [OE, OA, ODA, OPA, OO, OC_25] },
     ],
   },
   {
@@ -151,6 +151,9 @@ const SERVICES: ServiceDef[] = [
 ];
 
 const SLUG_TO_SERVICE: Record<string, string> = { canape: "canape", tapis: "tapis", moquette: "moquette", matelas: "matelas", auto: "auto", cuir: "cuir" };
+const DISPLAY_SERVICES = ["canape", "matelas", "tapis", "auto", "cuir", "moquette"]
+  .map((id) => SERVICES.find((service) => service.id === id))
+  .filter((service): service is ServiceDef => Boolean(service));
 
 // ─── IMAGES PAR FORMULE ──────────────────────────────────────────────────────
 
@@ -170,7 +173,11 @@ const FORMULE_IMAGES: Record<string, Record<string, string>> = {
     "tapis-2": "/images/tapis/2-tapis.webp",
     "tapis-3": "/images/tapis/3-tapis.webp",
   },
-  moquette: {},
+  moquette: {
+    "moquette-petite": "/images/moquette/petite-piece.webp",
+    "moquette-standard": "/images/moquette/piece-standard.webp",
+    "moquette-grande": "/images/moquette/grande-piece.webp",
+  },
   auto: {
     "bronze": "/images/auto/bronze.webp",
     "argent": "/images/auto/argent.webp",
@@ -823,7 +830,7 @@ function ReserverPage() {
               <>
                 <h1 className="text-3xl font-bold text-center">CHOISISSEZ UNE PRESTATION POUR VOIR TOUTES LES FORMULES</h1>
                 <div className="mt-4 grid grid-cols-4 gap-1.5 md:mt-8 md:gap-4 md:grid-cols-4">
-                  {SERVICES.map(s => (
+                  {DISPLAY_SERVICES.map(s => (
                     <button key={s.id} onClick={() => { setService(s); setShowCategories(false); }}
                       className="group relative flex flex-col items-center rounded-xl md:rounded-2xl border border-border bg-white p-2 md:p-6 text-center shadow-sm transition-all hover:border-primary/50 hover:shadow-md">
                       {s.badge && (

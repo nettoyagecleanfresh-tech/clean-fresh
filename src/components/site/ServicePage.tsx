@@ -69,6 +69,9 @@ const FORMULE_IMAGES: Record<string, string> = {
   "tapis-1": "/images/tapis/1-tapis.webp",
   "tapis-2": "/images/tapis/2-tapis.webp",
   "tapis-3": "/images/tapis/3-tapis.webp",
+  "moquette-petite": "/images/moquette/petite-piece.webp",
+  "moquette-standard": "/images/moquette/piece-standard.webp",
+  "moquette-grande": "/images/moquette/grande-piece.webp",
   // Auto
   "bronze": "/images/auto/bronze.webp",
   "argent": "/images/auto/argent.webp",
@@ -270,6 +273,16 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
                           <p className="text-xs font-semibold leading-tight line-clamp-2">{row.label}</p>
                           {row.note && <p className="text-[10px] text-primary font-medium mt-0.5">{row.note}</p>}
                           <span className={`font-bold text-primary mt-1 ${isGrid ? "text-xl" : "text-2xl"}`}>{row.price}</span>
+                          {bookingServiceId === "auto" && row.items && (
+                            <ul className="mt-2 flex-1 space-y-1.5 text-[11px] leading-snug text-muted-foreground">
+                              {row.items.map((item) => (
+                                <li key={item} className="flex items-start gap-1.5">
+                                  <Check className="mt-0.5 size-3 shrink-0 text-primary" />
+                                  <span>{item}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          )}
                           <Button
                             asChild
                             className="mt-2 w-full bg-accent-gradient text-accent-foreground font-semibold hover:opacity-90 h-8 text-xs"

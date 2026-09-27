@@ -277,7 +277,7 @@ export const SERVICES: Service[] = [
       "Nous venons nettoyer l'intérieur de votre véhicule là où il est garé : domicile, parking d'entreprise ou copropriété. Aucun déplacement, aucune perte de temps. Notre service de nettoyage auto à domicile à Toulouse s'adapte à vos contraintes horaires.",
       "Sièges, moquettes, coffre, plastiques et plafonnier : l'habitacle retrouve un état proche du neuf, sans odeur. Nous traitons les véhicules particuliers, les utilitaires et les flottes d'entreprise avec des produits professionnels sélectionnés.",
       "Le nettoyage intérieur de voiture à Toulouse est particulièrement recommandé avant une revente, après un déménagement avec des enfants ou des animaux, ou pour éliminer une odeur de tabac incrustée dans les textiles de l'habitacle. Notre traitement anti-odeur par neutralisation moléculaire élimine les mauvaises odeurs à la source — pas simplement masquées avec un désodorisant.",
-      "Nous proposons trois formules adaptées à tous les besoins : le Pack Bronze pour un entretien rapide (aspiration + plastiques), le Pack Argent pour un habitacle transformé incluant l'injection-extraction des sièges tissu, et le Pack Or pour un résultat showroom avec traitement complet des moquettes. Pour les SUV, utilitaires ou flottes d'entreprise, un devis personnalisé est établi sous 24h.",
+      "Le Pack Bronze comprend l'aspiration complète de l'habitacle et du coffre, puis le nettoyage et le dégraissage de tous les plastiques du véhicule, coffre compris. Le Pack Argent ajoute le shampouinage de tous les sièges et le nettoyage des vitres sans traces. Le Pack Or ajoute le shampouinage de toute la moquette de l'habitacle et du coffre, des tapis, des contours et bas de portes ainsi que du contour de coffre.",
       "Intervention possible partout dans l'agglomération toulousaine et le département 31 — Blagnac, Colomiers, Tournefeuille, Muret, Balma, Cugnaux, Labège, Portet-sur-Garonne et alentours. Devis gratuit sous 24h selon la taille du véhicule et la formule choisie — Bronze, Argent ou Or.",
     ],
     treated: [
@@ -294,10 +294,10 @@ export const SERVICES: Service[] = [
       "Poussière et sable dans les moquettes",
     ],
     prices: [
-      { label: "🥉 Pack Bronze", price: "69 €", items: ["Aspiration complète de l'habitacle", "Nettoyage des plastiques et tableau de bord", "Nettoyage des vitres intérieures", "Nettoyage des tapis de sol"], formuleId: "bronze" },
-      { label: "🥈 Pack Argent", price: "99 €", items: ["Tout le Pack Bronze inclus", "Injection-extraction des sièges tissu", "Vitres sans traces (intérieur + extérieur)", "Joints et recoins traités en détail"], formuleId: "argent" },
-      { label: "🥇 Pack Or", price: "129 €", items: ["Tout le Pack Argent inclus", "Shampouinage injection-extraction moquettes", "Nettoyage complet du coffre", "Nettoyage contour et bas de porte"], formuleId: "or" },
-      { label: "Rénovation siège auto", price: "59 €", items: ["Nettoyage des sièges avec méthode adaptée au revêtement (tissu, alcantara ou cuir)", "Élimination des taches tenaces", "Traitement des auréoles", "Résultat visible immédiatement"], formuleId: "siege" },
+      { label: "🥉 Pack Bronze", price: "69 €", items: ["Aspiration complète de l'habitacle", "Aspiration complète du coffre", "Nettoyage et dégraissage de tous les plastiques", "Plastiques du coffre compris"], formuleId: "bronze" },
+      { label: "🥈 Pack Argent", price: "99 €", items: ["Tout le Pack Bronze inclus", "Shampouinage de tous les sièges du véhicule", "Méthode adaptée au revêtement", "Nettoyage des vitres sans traces"], formuleId: "argent" },
+      { label: "🥇 Pack Or", price: "129 €", items: ["Tout le Pack Argent inclus", "Shampouinage de toute la moquette de l'habitacle et du coffre", "Shampouinage des tapis", "Contours et bas de portes et contour de coffre"], formuleId: "or" },
+      { label: "Rénovation sièges auto", price: "59 €", items: ["Shampouinage de tous les sièges", "Méthode et produits adaptés au revêtement", "Tissu, Alcantara, cuir, velours et matières compatibles", "Traitement courant des taches et auréoles"], formuleId: "siege" },
     ],
     priceNote: "Tarifs applicables aux véhicules particuliers en état standard. SUV, utilitaire, volume important ou état exceptionnel : estimation préalable sur photos.",
     soils: ["Nourriture et boissons", "Tabac", "Poils d'animaux", "Transpiration", "Boue"],
@@ -308,7 +308,10 @@ export const SERVICES: Service[] = [
       "Nettoyage des plastiques, vitres intérieures et désodorisation.",
     ],
     faq: [
-      { q: "Combien coûte un nettoyage intérieur de voiture à domicile à Toulouse ?", a: "À partir de 69 € (Pack Bronze), 99 € (Pack Argent) ou 129 € (Pack Or) pour les véhicules standards. Pour les SUV, utilitaires ou gros volumes, contactez-nous pour un tarif personnalisé." },
+      { q: "Que comprend le Pack Bronze ?", a: "Le Pack Bronze à 69 € comprend l'aspiration complète de l'habitacle et du coffre, puis le nettoyage et le dégraissage de tous les plastiques du véhicule, plastiques du coffre compris." },
+      { q: "Que comprend le Pack Argent ?", a: "Le Pack Argent à 99 € comprend tout le Pack Bronze, le shampouinage de tous les sièges du véhicule avec une méthode adaptée au revêtement, ainsi que le nettoyage des vitres sans traces." },
+      { q: "Que comprend le Pack Or ?", a: "Le Pack Or à 129 € comprend tout le Pack Argent, le shampouinage de toute la moquette de l'habitacle et du coffre, le shampouinage des tapis, ainsi que le nettoyage des contours et bas de portes et du contour de coffre." },
+      { q: "Quels revêtements traitez-vous pour la rénovation des sièges auto ?", a: "Nous traitons les sièges en tissu, Alcantara, cuir, velours et autres matières compatibles avec une méthode et des produits adaptés à chaque revêtement." },
       { q: "Faut-il amener la voiture quelque part pour le nettoyage ?", a: "Non, nous venons directement à votre adresse — domicile, parking de bureau ou copropriété. Il suffit d'une prise électrique à proximité du véhicule." },
       { q: "Pouvez-vous éliminer l'odeur de tabac ou de chien dans une voiture ?", a: "Oui, nous proposons un traitement anti-odeur par neutralisation moléculaire qui élimine les odeurs de tabac, d'animaux et de transpiration incrustées dans les textiles de l'habitacle." },
       { q: "Combien de temps dure un nettoyage intérieur de voiture ?", a: "Entre 1h (Pack Bronze) et 2h (Pack Or) selon la formule et l'état du véhicule. Vous pouvez reprendre votre voiture dès la fin de l'intervention." },
@@ -734,9 +737,9 @@ export const SERVICES: Service[] = [
     short: "Nettoyage moquette Toulouse",
     subtitle:
       "Shampouinage et nettoyage en profondeur de moquettes et sols textiles à domicile à Toulouse et dans toute la Haute-Garonne.",
-    metaTitle: "Nettoyage moquette Toulouse dès 89 € | Clean&Fresh",
+    metaTitle: "Nettoyage moquette Toulouse dès 99 € | Clean&Fresh",
     metaDescription:
-      "Nettoyage de moquette à domicile à Toulouse dès 89 €. Petite pièce, pièce standard ou grande pièce. Réservation en ligne et intervention à domicile.",
+      "Nettoyage de moquette à domicile à Toulouse dès 99 €. Petite surface, surface standard ou grande surface. Réservation en ligne et intervention à domicile.",
     group: "textile",
     booking: true,
     intro: [
@@ -760,9 +763,9 @@ export const SERVICES: Service[] = [
       "Grisaille et ternissement par l'usage",
     ],
     prices: [
-      { label: "Petite pièce (< 12 m²)", price: "89 €", items: ["Nettoyage par injection-extraction", "Traitement courant des taches et auréoles", "Séchage généralement en 2 à 5h"], formuleId: "moquette-petite" },
-      { label: "Pièce standard (12–20 m²)", price: "119 €", items: ["Nettoyage par injection-extraction", "Traitement courant des taches et auréoles", "Séchage généralement en 2 à 5h"], formuleId: "moquette-standard" },
-      { label: "Grande pièce (> 20 m²)", price: "149 €", items: ["Nettoyage par injection-extraction", "Traitement courant des taches et auréoles", "Diagnostic de la surface avant intervention"], formuleId: "moquette-grande" },
+      { label: "Petite surface (< 12 m²)", price: "99 €", items: ["Nettoyage par injection-extraction", "Traitement courant des taches et auréoles", "Séchage généralement en 2 à 5h"], formuleId: "moquette-petite" },
+      { label: "Surface standard (12–20 m²)", price: "149 €", items: ["Nettoyage par injection-extraction", "Traitement courant des taches et auréoles", "Séchage généralement en 2 à 5h"], formuleId: "moquette-standard" },
+      { label: "Grande surface (> 20 m²)", price: "199 €", items: ["Nettoyage par injection-extraction", "Traitement courant des taches et auréoles", "Diagnostic de la surface avant intervention"], formuleId: "moquette-grande" },
     ],
     priceNote: "Tarifs pour moquettes standards compatibles. Surface atypique, fibre délicate ou état exceptionnel : vérification préalable sur photos.",
     soils: ["Café et thé", "Vin et jus", "Urine", "Graisses", "Sable et boue"],
@@ -773,7 +776,7 @@ export const SERVICES: Service[] = [
       "Neutralisation des odeurs et séchage accéléré.",
     ],
     faq: [
-      { q: "Combien coûte un nettoyage de moquette à Toulouse ?", a: "Le tarif est de 89 € pour une petite pièce de moins de 12 m², 119 € pour une pièce standard de 12 à 20 m² et 149 € pour une grande pièce de plus de 20 m². La réservation s'effectue directement en ligne." },
+      { q: "Combien coûte un nettoyage de moquette à Toulouse ?", a: "Le tarif est de 99 € pour une petite surface de moins de 12 m², 149 € pour une surface standard de 12 à 20 m² et 199 € pour une grande surface de plus de 20 m². La réservation s'effectue directement en ligne." },
       { q: "Combien de temps met une moquette à sécher après le nettoyage ?", a: "En général 2 à 5 heures selon l'épaisseur de la moquette et la ventilation de la pièce. Nous conseillons d'aérer la pièce ou d'activer le chauffage après l'intervention pour accélérer le séchage." },
       { q: "Peut-on enlever des taches anciennes de café ou de vin sur une moquette ?", a: "Oui, dans la majorité des cas. Notre technique d'injection-extraction et nos produits professionnels traitent efficacement les taches incrustées. Plus la tache est ancienne, plus le prétraitement est intensif — mais les résultats sont souvent remarquables, même sur des taches de plusieurs années." },
       { q: "Nettoyez-vous les moquettes de bureaux et de commerces à Toulouse ?", a: "Oui, nous intervenons pour les professionnels : bureaux, hôtels, cabinets médicaux, commerces. Nous proposons des contrats d'entretien régulier en dehors des heures d'activité, avec tarifs dégressifs pour les grandes surfaces." },

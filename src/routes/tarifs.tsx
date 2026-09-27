@@ -34,16 +34,16 @@ const TARIF_CATEGORIES = [
   {
     id: "auto",
     icon: <Car className="size-7" />,
-    title: "Nettoyage Intérieur Auto",
+    title: "Nettoyage Auto",
     priceFrom: "69 €",
-    bullets: ["Pack Bronze, Argent, Or", "Sièges, plastiques, vitres, coffre", "Options poils, anti-odeur, ciel de toit"],
+    bullets: ["Bronze : aspiration et plastiques", "Argent : Bronze + sièges et vitres", "Or : Argent + moquettes, tapis et contours"],
   },
   {
     id: "moquette",
     icon: <Layers className="size-7" />,
     title: "Nettoyage Moquette",
-    priceFrom: "89 €",
-    bullets: ["Moins de 12 m² : 89 €", "De 12 à 20 m² : 119 €", "Plus de 20 m² : 149 €"],
+    priceFrom: "99 €",
+    bullets: ["Moins de 12 m² : 99 €", "De 12 à 20 m² : 149 €", "Plus de 20 m² : 199 €"],
   },
   {
     id: "cuir",

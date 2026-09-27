@@ -58,7 +58,7 @@ export const faqData: FAQNode[] = [
       {
         id: "packs-auto",
         question: "Tarifs et Packs complets (Bronze, Argent, Or)",
-        answer: "Nous proposons 3 packs pour le nettoyage intérieur :\n- Pack Bronze (59 €) : Entretien classique.\n- Pack Argent (99 €) : Nettoyage approfondi.\n- Pack Or (129 €) : Pour les véhicules très sales ou nécessitant une remise en état complète.\nLes détails de chaque pack sont sur la page de réservation. Nous recommandons le Pack Or pour les voitures très sales."
+        answer: "Pack Bronze (69 €) : aspiration complète de l'habitacle et du coffre, nettoyage et dégraissage de tous les plastiques. Pack Argent (99 €) : Pack Bronze, shampouinage de tous les sièges et vitres sans traces. Pack Or (129 €) : Pack Argent, shampouinage des moquettes de l'habitacle et du coffre, des tapis, des contours et bas de portes et du contour de coffre."
       },
       {
         id: "sieges-auto",
