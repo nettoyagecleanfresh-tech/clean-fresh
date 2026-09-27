@@ -16,6 +16,7 @@ import { CalendarPicker } from "@/components/CalendarPicker";
 import { TimeSlotPicker } from "@/components/TimeSlotPicker";
 import { sendBookingEmailsFn } from "@/lib/emailServerFns";
 import { createBookingServerFn } from "@/lib/bookingServerFn";
+import { BookingAvailabilityBanner } from "@/components/BookingAvailabilityBanner";
 
 export const Route = createFileRoute("/reserver")({
   validateSearch: (search: Record<string, unknown>) => ({
@@ -795,6 +796,11 @@ function ReserverPage() {
         <div className="mb-6">
           <BookingTrust />
         </div>
+        {step === 1 && (
+          <div className="mb-6">
+            <BookingAvailabilityBanner durationMin={formule?.durationMin ?? 60} />
+          </div>
+        )}
 
         <div className={`grid gap-8 items-start ${!showCategories && step < 4 ? "lg:grid-cols-[1fr_300px]" : "grid-cols-1"}`}>
 
