@@ -1,5 +1,5 @@
 import { useLayoutEffect, useState } from "react";
-import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   Armchair, BedDouble, Layers, Car,
@@ -72,7 +72,7 @@ const TAP = [OA, ORV, OD, OO, OE];
 const MAT = [OA, OD, OO, OE];
 const MOQ = [OA, OP, OD, OO, OE];
 
-const SERVICES: ServiceDef[] = [
+const SERVICE_CATALOG: ServiceDef[] = [
   {
     id: "canape", label: "Nettoyage Canapé & Fauteuil", shortLabel: "Canapé & fauteuil",
     desc: "Nettoyage en profondeur par injection-extraction, élimination des tâches et ravivement des couleurs.",
@@ -151,8 +151,8 @@ const SERVICES: ServiceDef[] = [
 ];
 
 const SLUG_TO_SERVICE: Record<string, string> = { canape: "canape", tapis: "tapis", moquette: "moquette", matelas: "matelas", auto: "auto", cuir: "cuir" };
-const DISPLAY_SERVICES = ["canape", "matelas", "tapis", "auto", "cuir", "moquette"]
-  .map((id) => SERVICES.find((service) => service.id === id))
+const SERVICES = ["canape", "matelas", "tapis", "auto", "cuir", "moquette"]
+  .map((id) => SERVICE_CATALOG.find((service) => service.id === id))
   .filter((service): service is ServiceDef => Boolean(service));
 
 // ─── IMAGES PAR FORMULE ──────────────────────────────────────────────────────
@@ -385,8 +385,7 @@ function Sidebar({
 // ─── PAGE PRINCIPALE ─────────────────────────────────────────────────────────
 
 function ReserverPage() {
-  const navigate = useNavigate();
-  const { service: serviceParam, formule: formuleParam, from } = Route.useSearch();
+  const { service: serviceParam, formule: formuleParam } = Route.useSearch();
   const preselected = SERVICES.find(s => s.id === SLUG_TO_SERVICE[serviceParam]) ?? null;
   const preselectedFormule = preselected?.formules.find(f => f.id === formuleParam) ?? null;
 
@@ -472,40 +471,26 @@ function ReserverPage() {
     if (step > 2) {
       setStep(s => (s - 1) as 1|2|3|4);
     } else if (step === 2) {
-      if (preselected && serviceParam) {
-        if (from === "formules") {
-          navigate({ to: "/formules" });
-        } else {
-          const SERVICE_URLS: Record<string, string> = {
-            canape: "/nettoyage-canape-toulouse",
-            tapis: "/nettoyage-tapis-toulouse",
-            matelas: "/nettoyage-matelas-toulouse",
-            auto: "/nettoyage-auto-a-domicile-toulouse",
-            cuir: "/nettoyage-cuir-toulouse",
-          };
-          const targetUrl = SERVICE_URLS[serviceParam] || "/formules";
-          navigate({ to: targetUrl });
-        }
-      } else {
-        setStep(1);
-      }
+      // Revenir au choix de la formule sans toucher aux prestations déjà ajoutées.
+      setStep(1);
+      setShowCategories(false);
     } else if (step === 1) {
-      if (preselected && serviceParam) {
-        if (from === "formules") {
-          navigate({ to: "/formules" });
-        } else {
-          const SERVICE_URLS: Record<string, string> = {
-            canape: "/nettoyage-canape-toulouse",
-            tapis: "/nettoyage-tapis-toulouse",
-            matelas: "/nettoyage-matelas-toulouse",
-            auto: "/nettoyage-auto-a-domicile-toulouse",
-            cuir: "/nettoyage-cuir-toulouse",
-          };
-          const targetUrl = SERVICE_URLS[serviceParam] || "/formules";
-          navigate({ to: targetUrl });
-        }
-      } else if (!preselected && !showCategories && cart.length === 0) {
-        setShowCategories(true); setService(null); setFormule(null);
+      if (!showCategories) {
+        // Revenir aux catégories : seul le choix en cours est annulé, jamais le panier.
+        setShowCategories(true);
+        setService(null);
+        setFormule(null);
+        setSelectedOptions([]);
+      } else if (cart.length > 0) {
+        // Depuis les catégories, revenir à la dernière prestation ajoutée afin de
+        // pouvoir la consulter ou la modifier, tout en conservant les précédentes.
+        const lastItem = cart[cart.length - 1];
+        setCart(previous => previous.slice(0, -1));
+        setService(lastItem.service);
+        setFormule(lastItem.formule);
+        setSelectedOptions(lastItem.options);
+        setShowCategories(false);
+        setStep(2);
       } else {
         window.history.back();
       }
@@ -830,7 +815,7 @@ function ReserverPage() {
               <>
                 <h1 className="text-3xl font-bold text-center">CHOISISSEZ UNE PRESTATION POUR VOIR TOUTES LES FORMULES</h1>
                 <div className="mt-4 grid grid-cols-4 gap-1.5 md:mt-8 md:gap-4 md:grid-cols-4">
-                  {DISPLAY_SERVICES.map(s => (
+                  {SERVICES.map(s => (
                     <button key={s.id} onClick={() => { setService(s); setShowCategories(false); }}
                       className="group relative flex flex-col items-center rounded-xl md:rounded-2xl border border-border bg-white p-2 md:p-6 text-center shadow-sm transition-all hover:border-primary/50 hover:shadow-md">
                       {s.badge && (
