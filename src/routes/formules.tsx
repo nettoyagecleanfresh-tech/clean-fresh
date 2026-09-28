@@ -804,9 +804,9 @@ function MatelasDetail() {
 }
 
 const MOQUETTE_ITEMS = [
-  { id: "moquette-petite", label: "Petite moquette", surface: "Moins de 12 m²", price: "99 €", duration: "1h" },
-  { id: "moquette-standard", label: "Moquette moyenne", surface: "De 12 à 20 m²", price: "149 €", duration: "1h30" },
-  { id: "moquette-grande", label: "Grande moquette", surface: "Plus de 20 m²", price: "199 €", duration: "2h" },
+  { id: "moquette-petite", label: "Petite moquette", surface: "Moins de 12 m²", price: "99 €", duration: "1h", image: "/images/moquette/petite-piece.webp" },
+  { id: "moquette-standard", label: "Moquette moyenne", surface: "De 12 à 20 m²", price: "149 €", duration: "1h30", image: "/images/moquette/piece-standard.webp" },
+  { id: "moquette-grande", label: "Grande moquette", surface: "Plus de 20 m²", price: "199 €", duration: "2h", image: "/images/moquette/grande-piece.webp" },
 ];
 
 function MoquetteDetail() {
@@ -814,6 +814,15 @@ function MoquetteDetail() {
     <div className="grid gap-4 md:grid-cols-3">
       {MOQUETTE_ITEMS.map((item) => (
         <div key={item.id} className="flex flex-col rounded-2xl border border-border bg-white p-6 shadow-sm">
+          <div className="mb-4 flex h-36 w-full items-center justify-center overflow-hidden rounded-xl border border-slate-100 bg-slate-50 p-2">
+            <img
+              src={item.image}
+              alt={`${item.label} — nettoyage de moquette à Toulouse`}
+              className="h-full w-full object-contain mix-blend-multiply"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
           <p className="text-sm font-bold text-foreground">{item.label}</p>
           <p className="mt-1 text-sm text-muted-foreground">{item.surface}</p>
           <p className="mt-4 text-4xl font-black text-primary">{item.price}</p>
@@ -926,11 +935,11 @@ function FormulesPage() {
       {/* ── CATEGORY GRID ── */}
       {!selectedService && (
         <FadeIn delay={0.1}>
-          <div className="mx-auto max-w-5xl px-4 pt-16 mb-12">
+          <div className="mx-auto mb-12 max-w-5xl px-4 pt-5 sm:pt-8">
             <div className="mb-2">
               <BookingTrustBanner />
             </div>
-            <div className="mb-6">
+            <div className="mb-5">
               <BookingAvailabilityBanner />
             </div>
             <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-6 text-center">

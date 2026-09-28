@@ -246,7 +246,7 @@ function TarifsPage() {
   return (
     <div className="pb-24 lg:pb-0">
       {/* ── CATÉGORIES OVERVIEW ── */}
-      <section className="mx-auto max-w-5xl px-4 pt-10 pb-4">
+      <section className="mx-auto max-w-5xl px-4 pb-4 pt-6 sm:pt-8">
         <h1 className="text-2xl md:text-3xl font-bold text-center mb-1">Tarifs nettoyage à domicile — Toulouse & Haute-Garonne (31)</h1>
         <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-6 text-center">
           Prix clairs · Toute l'agglomération toulousaine · Devis gratuit sous 24h

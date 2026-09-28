@@ -397,7 +397,7 @@ function ReserverPage() {
     root.scrollTop = 0;
     document.body.scrollTop = 0;
     root.style.scrollBehavior = previousScrollBehavior;
-  }, [done, step, showCategories, service?.id, formule?.id]);
+  }, [done, step, showCategories]);
 
   const toggleOption = (id: string) =>
     setSelectedOptions(prev => prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]);
@@ -764,7 +764,7 @@ function ReserverPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#f9f9f7] pb-24 lg:pb-0">
+    <div className="min-h-screen touch-pan-y bg-[#f9f9f7] pb-24 lg:pb-0">
 
       {/* Top bar */}
       <div className="border-b border-border bg-background px-4 py-3 flex items-center justify-between">
@@ -773,16 +773,16 @@ function ReserverPage() {
         </button>
       </div>
 
-      <div className="mx-auto max-w-5xl px-4 py-10">
-        <StepBar current={step} />
-        <div className="mb-6">
+      <div className="mx-auto max-w-5xl px-4 pb-10 pt-5 sm:pt-8">
+        <div className="mb-2">
           <BookingTrustBanner />
         </div>
         {step === 1 && (
-          <div className="mb-6">
+          <div className="mb-5">
             <BookingAvailabilityBanner durationMin={formule?.durationMin ?? 60} />
           </div>
         )}
+        <StepBar current={step} />
 
         <div className={`grid gap-8 items-start ${!showCategories && step < 4 ? "lg:grid-cols-[1fr_300px]" : "grid-cols-1"}`}>
 
@@ -867,7 +867,7 @@ function ReserverPage() {
                       <button
                         key={f.id}
                         onClick={() => handleSelectFormule(f)}
-                        className={`relative flex flex-col items-center rounded-[20px] border-2 px-3 py-4 text-center transition-all duration-200 hover:-translate-y-1 ${
+                      className={`relative flex flex-col items-center rounded-[20px] border-2 px-3 py-4 text-center transition-[border-color,background-color,box-shadow] duration-200 md:hover:-translate-y-1 ${
                           active
                             ? "border-[#7cdcdc] bg-[#d0ebeb]/70 shadow-[0_0_20px_-5px_rgba(124,220,220,0.5)]"
                             : "border-transparent bg-[#e5e9f0]/60 hover:shadow-lg hover:border-primary/20"
