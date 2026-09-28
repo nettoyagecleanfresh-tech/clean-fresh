@@ -32,7 +32,7 @@ export const Route = createFileRoute("/reserver")({
       { name: "robots", content: "noindex, nofollow" },
     ],
     links: [
-      { rel: "canonical", href: "https://www.cleanetfresh.fr/reserver" },
+      { rel: "canonical", href: "https://cleanetfresh.fr/reserver" },
     ],
   }),
   component: ReserverPage,
@@ -528,7 +528,7 @@ function ReserverPage() {
     };
     const cancelToken = btoa(unescape(encodeURIComponent(JSON.stringify(shortTokenData))));
 
-    const siteUrl = "https://www.cleanetfresh.fr";
+    const siteUrl = "https://cleanetfresh.fr";
 
     let gcalId: string | null = null;
     try {
@@ -656,7 +656,7 @@ function ReserverPage() {
 
   // ── CONFIRMATION ──────────────────────────────────────────────────────────
   if (done) {
-    const siteUrl = "https://www.cleanetfresh.fr";
+    const siteUrl = "https://cleanetfresh.fr";
     const cancelUrl = cancelToken ? `${siteUrl}/annuler?token=${cancelToken}` : null;
     const fullAddress = `${form.street}, ${form.zip} ${form.city}`;
 
@@ -779,12 +779,12 @@ function ReserverPage() {
         </div>
         {step === 1 && (
           <div className="mb-5">
-            <BookingAvailabilityBanner durationMin={formule?.durationMin ?? 60} />
+            <BookingAvailabilityBanner durationMin={formule?.durationMin ?? 60} bookingHref="#booking-start" />
           </div>
         )}
         <StepBar current={step} />
 
-        <div className={`grid gap-8 items-start ${!showCategories && step < 4 ? "lg:grid-cols-[1fr_300px]" : "grid-cols-1"}`}>
+        <div id="booking-start" className={`scroll-mt-44 grid gap-8 items-start ${!showCategories && step < 4 ? "lg:grid-cols-[1fr_300px]" : "grid-cols-1"}`}>
 
           {/* ── CONTENU PRINCIPAL ── */}
           <div className="relative overflow-hidden w-full">

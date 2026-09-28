@@ -6,4 +6,4 @@ Disallow: /envoyer-avis
 Disallow: /upsell
 
 # Sitemap
-Sitemap: https://www.cleanetfresh.fr/sitemap.xml
+Sitemap: https://cleanetfresh.fr/sitemap.xml
