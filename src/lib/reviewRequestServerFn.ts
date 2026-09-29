@@ -17,7 +17,7 @@ const GOOGLE_REVIEW_URL =
 export const sendReviewRequestServerFn = createServerFn({ method: "POST" })
   .validator((data: ReviewRequestInput) => ReviewRequestSchema.parse(data))
   .handler(async ({ data }) => {
-    const siteUrl = process.env["VITE_SITE_URL"] ?? "https://www.cleanetfresh.fr";
+    const siteUrl = process.env["VITE_SITE_URL"] ?? "https://cleanetfresh.fr";
 
     const formattedDate = (() => {
       try {

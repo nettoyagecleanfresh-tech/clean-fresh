@@ -122,7 +122,7 @@ function emailHeader(badgeText: string, color = "#00b8ff") {
               <table border="0" cellpadding="0" cellspacing="0">
                 <tr>
                   <td bgcolor="#ffffff" style="border-radius:8px;padding:5px 10px;">
-                    <img src="https://www.cleanetfresh.fr/logo-email.png" width="110" alt="Clean&amp;Fresh" style="display:block;width:110px;height:auto;border:0;">
+                    <img src="https://cleanetfresh.fr/logo-email.png" width="110" alt="Clean&amp;Fresh" style="display:block;width:110px;height:auto;border:0;">
                   </td>
                 </tr>
               </table>
@@ -148,7 +148,7 @@ function emailFooter() {
         À très bientôt,<br>
         <strong style="color:#0093cc;">L'équipe Clean&amp;Fresh</strong><br>
         <span style="font-size:12px;color:#527a92;">Toulouse et Haute-Garonne</span><br>
-        <span style="font-size:12px;"><a href="https://www.cleanetfresh.fr" style="color:#0093cc;text-decoration:none;">cleanetfresh.fr</a></span><br>
+        <span style="font-size:12px;"><a href="https://cleanetfresh.fr" style="color:#0093cc;text-decoration:none;">cleanetfresh.fr</a></span><br>
         <span style="font-size:12px;color:#527a92;"><a href="tel:0767127500" style="color:#527a92;text-decoration:none;">📞 07 67 12 75 00</a></span>
       </td>
     </tr>`;
@@ -367,7 +367,7 @@ export async function sendBookingEmailsRaw(b: BookingPayload): Promise<string> {
       <table border="0" cellpadding="0" cellspacing="0" width="100%">
         <tr>
           <td bgcolor="#fbbc04" style="border-radius:8px;padding:14px 20px;text-align:center;box-shadow:0 3px 10px rgba(251,188,4,0.3);margin-bottom:12px;display:block;">
-            <a href="${process.env["VITE_SITE_URL"] ?? "https://www.cleanetfresh.fr"}/envoyer-avis?n=${encodeURIComponent(b.client_name)}&e=${encodeURIComponent(b.client_email)}&f=${encodeURIComponent(formuleName)}&d=${encodeURIComponent(b.booking_date)}" style="color:#1a1a1a;font-weight:bold;text-decoration:none;font-size:15px;display:block;">
+            <a href="${process.env["VITE_SITE_URL"] ?? "https://cleanetfresh.fr"}/envoyer-avis?n=${encodeURIComponent(b.client_name)}&e=${encodeURIComponent(b.client_email)}&f=${encodeURIComponent(formuleName)}&d=${encodeURIComponent(b.booking_date)}" style="color:#1a1a1a;font-weight:bold;text-decoration:none;font-size:15px;display:block;">
               ⭐ Envoyer une demande d'avis à ce client
             </a>
           </td>
@@ -540,7 +540,7 @@ export async function sendCancellationEmailRaw(info: {
   time: string;
 }) {
   const ownerEmail = process.env["VITE_OWNER_EMAIL"] ?? "nettoyagecleanfresh@gmail.com";
-  const siteUrl = process.env["VITE_SITE_URL"] ?? "https://www.cleanetfresh.fr";
+  const siteUrl = process.env["VITE_SITE_URL"] ?? "https://cleanetfresh.fr";
   const formattedDate = (() => {
     try {
       const d = new Date(info.date);

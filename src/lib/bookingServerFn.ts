@@ -91,7 +91,7 @@ export const createBookingServerFn = createServerFn({ method: "POST" })
       }
 
       const siteUrl =
-        process.env["VITE_SITE_URL"] ?? "https://www.cleanetfresh.fr";
+        process.env["VITE_SITE_URL"] ?? "https://cleanetfresh.fr";
       const ownerPhone =
         process.env["VITE_OWNER_PHONE"] ?? "07 67 12 75 00";
       const cancelUrl = `${siteUrl}/annuler?token=${data.cancel_token}`;
