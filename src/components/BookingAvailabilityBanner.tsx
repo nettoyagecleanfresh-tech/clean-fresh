@@ -7,9 +7,11 @@ type NextSlot = { date: Date; time: string };
 export function BookingAvailabilityBanner({
   durationMin = 60,
   bookingHref = "/reserver",
+  onReserveSlot,
 }: {
   durationMin?: number;
   bookingHref?: string;
+  onReserveSlot?: (slot: NextSlot) => void;
 }) {
   const [nextSlot, setNextSlot] = useState<NextSlot | null>(null);
   const [loading, setLoading] = useState(true);
@@ -50,12 +52,18 @@ export function BookingAvailabilityBanner({
     month: "long",
   });
 
+  const handleReserveSlot = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    if (!nextSlot || !onReserveSlot) return;
+    event.preventDefault();
+    onReserveSlot({ date: new Date(nextSlot.date), time: nextSlot.time });
+  };
+
   return (
     <div
       className="flex flex-col gap-2 rounded-xl border border-primary/15 bg-white px-3 py-2.5 text-xs shadow-sm sm:flex-row sm:items-center sm:justify-center sm:gap-4"
       aria-live="polite"
     >
-      <a href={bookingHref} className="flex items-center gap-2 rounded-md text-emerald-900 hover:text-emerald-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
+      <a href={bookingHref} onClick={handleReserveSlot} className="flex items-center gap-2 rounded-md text-emerald-900 hover:text-emerald-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
         <CalendarCheck className="size-4 shrink-0 text-emerald-600" />
         <p className="font-bold leading-tight">
             {loading
@@ -77,6 +85,8 @@ export function BookingAvailabilityBanner({
 
       <a
         href={bookingHref}
+        onClick={handleReserveSlot}
+        aria-disabled={!nextSlot}
         className="inline-flex items-center justify-center rounded-lg bg-primary px-3 py-2 text-xs font-bold text-white shadow-sm transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 sm:ml-1"
       >
         Réserver ce créneau

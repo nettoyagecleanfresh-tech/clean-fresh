@@ -29,6 +29,12 @@ export function CalendarPicker({
   const [loadingMonth, setLoadingMonth] = useState(false);
 
   useEffect(() => {
+    if (!selectedDate) return;
+    setViewYear(selectedDate.getFullYear());
+    setViewMonth(selectedDate.getMonth());
+  }, [selectedDate]);
+
+  useEffect(() => {
     let cancelled = false;
     async function load() {
       setLoadingMonth(true);

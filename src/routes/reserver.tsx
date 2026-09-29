@@ -1,4 +1,4 @@
-import { useLayoutEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "framer-motion";
 import {
@@ -381,6 +381,7 @@ function ReserverPage() {
   const [showCategories, setShowCategories] = useState(!preselected);
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
+  const [preferredSlot, setPreferredSlot] = useState<{ date: Date; time: string } | null>(null);
   const [form, setForm] = useState({ name: "", phone: "", email: "", street: "", zip: "", city: "" });
   const [submitting, setSubmitting] = useState(false);
   const [slotTaken, setSlotTaken] = useState(false);
@@ -416,7 +417,20 @@ function ReserverPage() {
     setSelectedOptions([]);
     setStep(2);
   };
-  const handleSelectDate = (d: Date) => { setSelectedDate(d); setSelectedTime(null); setSlotTaken(false); };
+  const handleSelectDate = (d: Date) => {
+    setPreferredSlot(null);
+    setSelectedDate(d);
+    setSelectedTime(null);
+    setSlotTaken(false);
+  };
+
+  const handleReserveDisplayedSlot = (slot: { date: Date; time: string }) => {
+    setPreferredSlot({ date: new Date(slot.date), time: slot.time });
+    setSelectedDate(undefined);
+    setSelectedTime(null);
+    setSlotTaken(false);
+    document.getElementById("booking-start")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
 
   const handleContinue = () => {
     if (step === 2) {
@@ -642,6 +656,36 @@ function ReserverPage() {
   const total = currentTotal + cartTotal;
   const totalDuration = currentDuration + cartDuration;
 
+  useEffect(() => {
+    if (step !== 3 || !preferredSlot || totalDuration <= 0) return;
+    let cancelled = false;
+
+    const selectCompatibleSlot = async () => {
+      const start = new Date(preferredSlot.date);
+      start.setHours(0, 0, 0, 0);
+
+      for (let offset = 0; offset < 45 && !cancelled; offset += 1) {
+        const date = new Date(start);
+        date.setDate(start.getDate() + offset);
+        const busy = await fetchBusySlots(date);
+        const availableSlots = buildSlots(date, totalDuration, busy).filter(slot => slot.available);
+        const chosen = offset === 0
+          ? availableSlots.find(slot => slot.time === preferredSlot.time) ?? availableSlots[0]
+          : availableSlots[0];
+
+        if (chosen) {
+          setSelectedDate(date);
+          setSelectedTime(chosen.time);
+          setSlotTaken(false);
+          return;
+        }
+      }
+    };
+
+    void selectCompatibleSlot();
+    return () => { cancelled = true; };
+  }, [step, preferredSlot, totalDuration]);
+
   const canContinue =
     step === 1 ? !!formule :
     step === 2 ? !!formule :
@@ -779,7 +823,11 @@ function ReserverPage() {
         </div>
         {step === 1 && (
           <div className="mb-5">
-            <BookingAvailabilityBanner durationMin={formule?.durationMin ?? 60} bookingHref="#booking-start" />
+            <BookingAvailabilityBanner
+              durationMin={formule?.durationMin ?? 60}
+              bookingHref="#booking-start"
+              onReserveSlot={handleReserveDisplayedSlot}
+            />
           </div>
         )}
         <StepBar current={step} />
