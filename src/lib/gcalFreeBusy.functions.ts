@@ -12,17 +12,21 @@ import { resolve } from "path";
 export type BusySlot = { start: string; end: string };
 
 export const fetchBusySlotsServerFn = createServerFn({ method: "POST" })
-  .validator((data: { timeMin: string; timeMax: string }) => data)
+  .validator((data: { timeMin: string; timeMax: string; strict?: boolean }) => data)
   .handler(async ({ data }): Promise<BusySlot[]> => {
     const cwd = typeof process !== "undefined" ? process.cwd() : "";
     dotenvConfig({ path: resolve(cwd, ".env") });
 
     const calId = process.env["GCAL_CALENDAR_ID"];
-    if (!calId) return [];
+    if (!calId) {
+      if (data.strict) throw new Error("Calendrier indisponible");
+      return [];
+    }
 
     try {
       const token = await getGCalAccessToken();
       if (!token) {
+        if (data.strict) throw new Error("Calendrier indisponible");
         console.warn("[GCal freeBusy] Service account non configuré — créneaux tous libres.");
         return [];
       }
@@ -41,6 +45,7 @@ export const fetchBusySlotsServerFn = createServerFn({ method: "POST" })
       });
 
       if (!res.ok) {
+        if (data.strict) throw new Error("Calendrier indisponible");
         console.error("[GCal freeBusy]", res.status, await res.text());
         return [];
       }
@@ -49,8 +54,10 @@ export const fetchBusySlotsServerFn = createServerFn({ method: "POST" })
         calendars?: Record<string, { busy?: BusySlot[] }>;
       };
       const cals = json.calendars || {};
+      if (data.strict && !Array.isArray(cals[calId]?.busy)) throw new Error("Calendrier indisponible");
       return cals[calId]?.busy || Object.values(cals)[0]?.busy || [];
     } catch (err) {
+      if (data.strict) throw err;
       console.error("[GCal freeBusy]", err);
       return [];
     }

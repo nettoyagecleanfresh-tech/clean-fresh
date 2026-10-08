@@ -17,6 +17,7 @@ import { TimeSlotPicker } from "@/components/TimeSlotPicker";
 import { sendBookingEmailsFn } from "@/lib/emailServerFns";
 import { createBookingServerFn } from "@/lib/bookingServerFn";
 import { BookingAvailabilityBanner } from "@/components/BookingAvailabilityBanner";
+import { readPreferredSlot, savePreferredSlot } from "@/lib/preferredSlot";
 import { BookingTrustBanner } from "@/components/BookingTrustBanner";
 
 export const Route = createFileRoute("/reserver")({
@@ -382,6 +383,18 @@ function ReserverPage() {
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
   const [preferredSlot, setPreferredSlot] = useState<{ date: Date; time: string } | null>(null);
+  const [checkingPreferredSlot, setCheckingPreferredSlot] = useState(false);
+  const [preferredSlotMessage, setPreferredSlotMessage] = useState("");
+
+  useEffect(() => {
+    const saved = readPreferredSlot();
+    if (saved) {
+      setPreferredSlot(saved);
+      setSelectedDate(saved.date);
+      setSelectedTime(saved.time);
+    }
+  }, []);
+
   const [form, setForm] = useState({ name: "", phone: "", email: "", street: "", zip: "", city: "" });
   const [submitting, setSubmitting] = useState(false);
   const [slotTaken, setSlotTaken] = useState(false);
@@ -418,7 +431,10 @@ function ReserverPage() {
     setStep(2);
   };
   const handleSelectDate = (d: Date) => {
+    setCheckingPreferredSlot(false);
     setPreferredSlot(null);
+    savePreferredSlot(null);
+    setPreferredSlotMessage("");
     setSelectedDate(d);
     setSelectedTime(null);
     setSlotTaken(false);
@@ -426,13 +442,16 @@ function ReserverPage() {
 
   const handleReserveDisplayedSlot = (slot: { date: Date; time: string }) => {
     setPreferredSlot({ date: new Date(slot.date), time: slot.time });
-    setSelectedDate(undefined);
-    setSelectedTime(null);
+    savePreferredSlot(slot);
+    setSelectedDate(new Date(slot.date));
+    setSelectedTime(slot.time);
+    setPreferredSlotMessage("");
     setSlotTaken(false);
     document.getElementById("booking-start")?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   const handleContinue = () => {
+    if (step === 3 && checkingPreferredSlot) return;
     if (step === 2) {
       if (typeof window !== "undefined") {
         (window as any).dataLayer = (window as any).dataLayer || [];
@@ -616,6 +635,7 @@ function ReserverPage() {
     }
 
     setCancelToken(finalCancelToken);
+    savePreferredSlot(null);
     setDone(true);
     setSubmitting(false);
 
@@ -658,38 +678,59 @@ function ReserverPage() {
 
   useEffect(() => {
     if (step !== 3 || !preferredSlot || totalDuration <= 0) return;
+    const requestedSlot = readPreferredSlot() ?? preferredSlot;
     let cancelled = false;
+    setCheckingPreferredSlot(true);
+    setSelectedTime(null);
 
     const selectCompatibleSlot = async () => {
-      const start = new Date(preferredSlot.date);
-      start.setHours(0, 0, 0, 0);
+      try {
+        const start = new Date(requestedSlot.date);
+        start.setHours(0, 0, 0, 0);
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        if (start < today) start.setTime(today.getTime());
 
-      for (let offset = 0; offset < 45 && !cancelled; offset += 1) {
-        const date = new Date(start);
-        date.setDate(start.getDate() + offset);
-        const busy = await fetchBusySlots(date);
-        const availableSlots = buildSlots(date, totalDuration, busy).filter(slot => slot.available);
-        const chosen = offset === 0
-          ? availableSlots.find(slot => slot.time === preferredSlot.time) ?? availableSlots[0]
-          : availableSlots[0];
+        for (let offset = 0; offset < 45 && !cancelled; offset += 1) {
+          const date = new Date(start);
+          date.setDate(start.getDate() + offset);
+          const busy = await fetchBusySlots(date, true);
+          if (cancelled) return;
+          const availableSlots = buildSlots(date, totalDuration, busy).filter(slot => slot.available);
+          const sameDay = date.toDateString() === requestedSlot.date.toDateString();
+          const chosen = sameDay
+            ? availableSlots.find(slot => slot.time === requestedSlot.time) ?? availableSlots[0]
+            : availableSlots[0];
 
-        if (chosen) {
-          setSelectedDate(date);
-          setSelectedTime(chosen.time);
-          setSlotTaken(false);
-          return;
+          if (chosen) {
+            const unchanged = sameDay && chosen.time === requestedSlot.time;
+            setSelectedDate(date);
+            setSelectedTime(chosen.time);
+            savePreferredSlot({ date, time: chosen.time });
+            setPreferredSlotMessage(unchanged
+              ? "Votre créneau est présélectionné. Vous pouvez le modifier ci-dessous."
+              : "Le créneau demandé n’est plus disponible ou n’est pas compatible avec la durée de votre prestation. Le prochain créneau compatible est présélectionné ci-dessous ; vous pouvez le modifier.");
+            setSlotTaken(false);
+            return;
+          }
         }
+        if (!cancelled) setPreferredSlotMessage("Aucun créneau compatible trouvé dans les 45 prochains jours. Contactez-nous pour organiser votre rendez-vous.");
+      } catch {
+        if (!cancelled) setPreferredSlotMessage("Impossible de vérifier votre créneau pour le moment. Revenez à l’étape précédente puis réessayez.");
+      } finally {
+        if (!cancelled) setCheckingPreferredSlot(false);
       }
     };
 
     void selectCompatibleSlot();
     return () => { cancelled = true; };
-  }, [step, preferredSlot, totalDuration]);
+  }, [step, preferredSlot, totalDuration, selectedOptions, cart]);
+
 
   const canContinue =
     step === 1 ? !!formule :
     step === 2 ? !!formule :
-    step === 3 ? !!(selectedDate && selectedTime) :
+    step === 3 ? !checkingPreferredSlot && !!(selectedDate && selectedTime) :
     false;
 
   const continuLabel =
@@ -1019,6 +1060,12 @@ function ReserverPage() {
                   </div>
                 )}
 
+                {(checkingPreferredSlot || preferredSlotMessage) && (
+                  <p role="status" className="mb-4 text-sm text-muted-foreground">
+                    {checkingPreferredSlot ? "Vérification de votre créneau…" : preferredSlotMessage}
+                  </p>
+                )}
+
                 <CalendarPicker
                   totalDuration={totalDuration}
                   selectedDate={selectedDate}
@@ -1031,7 +1078,7 @@ function ReserverPage() {
                       date={selectedDate}
                       totalDuration={totalDuration}
                       selected={selectedTime}
-                      onSelect={(t) => { setSelectedTime(t); setSlotTaken(false); }}
+                      onSelect={(t) => { setPreferredSlot(null); savePreferredSlot(null); setPreferredSlotMessage(""); setCheckingPreferredSlot(false); setSelectedTime(t); setSlotTaken(false); }}
                     />
                   </div>
                 )}

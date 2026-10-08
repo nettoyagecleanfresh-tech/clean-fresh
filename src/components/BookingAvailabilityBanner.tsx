@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { CalendarCheck, CreditCard } from "lucide-react";
+import { savePreferredSlot } from "@/lib/preferredSlot";
 import { buildSlots, fetchBusySlots } from "@/lib/gcal";
 
 type NextSlot = { date: Date; time: string };
@@ -30,7 +31,7 @@ export function BookingAvailabilityBanner({
       for (let offset = 0; offset < 45 && !cancelled; offset += 1) {
         const date = new Date(start);
         date.setDate(start.getDate() + offset);
-        const busy = await fetchBusySlots(date);
+        const busy = await fetchBusySlots(date, true);
         const available = buildSlots(date, durationMin, busy).find((slot) => slot.available);
 
         if (available) {
@@ -42,7 +43,9 @@ export function BookingAvailabilityBanner({
       if (!cancelled) setLoading(false);
     };
 
-    void findNextSlot();
+    void findNextSlot().catch(() => {
+      if (!cancelled) { setNextSlot(null); setLoading(false); }
+    });
     return () => { cancelled = true; };
   }, [durationMin]);
 
@@ -53,9 +56,12 @@ export function BookingAvailabilityBanner({
   });
 
   const handleReserveSlot = (event: React.MouseEvent<HTMLAnchorElement>) => {
-    if (!nextSlot || !onReserveSlot) return;
-    event.preventDefault();
-    onReserveSlot({ date: new Date(nextSlot.date), time: nextSlot.time });
+    if (!nextSlot) { event.preventDefault(); return; }
+    savePreferredSlot(nextSlot);
+    if (onReserveSlot) {
+      event.preventDefault();
+      onReserveSlot({ date: new Date(nextSlot.date), time: nextSlot.time });
+    }
   };
 
   return (

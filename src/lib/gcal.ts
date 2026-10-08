@@ -15,7 +15,7 @@ export type BusySlot = { start: string; end: string };
  * Récupère les créneaux occupés pour une journée donnée via l'API freebusy.
  * Retourne [] si la configuration n'est pas définie (→ tous les créneaux affichés comme dispo).
  */
-export async function fetchBusySlots(date: Date): Promise<BusySlot[]> {
+export async function fetchBusySlots(date: Date, strict = false): Promise<BusySlot[]> {
   const timeMin = new Date(date);
   timeMin.setHours(0, 0, 0, 0);
   const timeMax = new Date(date);
@@ -24,11 +24,13 @@ export async function fetchBusySlots(date: Date): Promise<BusySlot[]> {
   try {
     return await fetchBusySlotsServerFn({
       data: {
+        strict,
         timeMin: timeMin.toISOString(),
         timeMax: timeMax.toISOString(),
       },
     });
-  } catch {
+  } catch (error) {
+    if (strict) throw error;
     return []; // en cas d'erreur réseau → tout libre (fail open)
   }
 }
