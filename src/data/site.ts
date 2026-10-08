@@ -3,7 +3,8 @@ export const OG_IMAGE = `${SITE_URL}/realisations/photo-02.webp`;
 export const GOOGLE_REVIEWS_URL = "https://www.google.com/search?q=clean+fresh+toulouse+avis";
 
 /** Nombre d'avis Google — à mettre à jour ici pour propager partout */
-export const GOOGLE_REVIEW_COUNT = 121;
+export const GOOGLE_REVIEW_COUNT = 125;
+export const GOOGLE_REVIEW_RATING = 4.9;
 
 export const COMPANY = {
   name: "Clean&Fresh",

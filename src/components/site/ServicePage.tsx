@@ -2,7 +2,7 @@ import { useState, type ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { CalendarCheck, Check, MapPin, Phone, Sparkles, ArrowRight, Clock, Shield, PawPrint, Eraser, Wind, RotateCcw, Sofa, Car as CarIcon, Star, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { COMMUNES, COMPANY, SERVICES, type Service, GOOGLE_REVIEW_COUNT } from "@/data/site";
+import { COMMUNES, COMPANY, SERVICES, type Service, GOOGLE_REVIEW_COUNT, GOOGLE_REVIEW_RATING } from "@/data/site";
 import { ReviewsCarousel } from "@/components/site/ReviewsCarousel";
 import { FadeIn } from "@/components/ui/fade-in";
 import { SchemaService, SchemaFAQ, SchemaBreadcrumb } from "@/components/site/SchemaOrg";
@@ -326,7 +326,7 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
                         {[...Array(5)].map((_, i) => (
                           <Star key={i} className="size-3.5 fill-yellow-400 text-yellow-400" />
                         ))}
-                        <span className="ml-1 text-sm font-bold">4.9</span>
+                        <span className="ml-1 text-sm font-bold">{GOOGLE_REVIEW_RATING}</span>
                       </div>
                       <p className="text-xs text-muted-foreground mt-0.5">{GOOGLE_REVIEW_COUNT} avis vérifiés sur Google</p>
                     </div>

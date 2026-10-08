@@ -1,7 +1,7 @@
 import { Star, ExternalLink, ChevronRight, ChevronLeft } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 import { useCallback, useEffect, useState } from "react";
-import { GOOGLE_REVIEW_COUNT } from "@/data/site";
+import { GOOGLE_REVIEW_COUNT, GOOGLE_REVIEW_RATING } from "@/data/site";
 
 const ALL_REVIEWS = [
   {
@@ -320,7 +320,7 @@ export function ReviewsCarousel({ category }: { category?: string }) {
                 <span className="text-lg font-bold text-foreground">Avis Google</span>
               </div>
               <div className="mt-1 flex items-center gap-1.5">
-                <span className="text-3xl font-bold leading-none text-foreground">4.9</span>
+                <span className="text-3xl font-bold leading-none text-foreground">{GOOGLE_REVIEW_RATING}</span>
                 <div className="flex gap-0.5">
                   {[1,2,3,4].map(i => <Star key={i} className="size-4 fill-amber-400 text-amber-400" />)}
                   <span className="relative inline-block size-4">

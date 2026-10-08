@@ -27,7 +27,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { COMMUNES, COMPANY, SERVICES, SITE_URL, GOOGLE_REVIEW_COUNT } from "@/data/site";
+import { COMMUNES, COMPANY, SERVICES, SITE_URL, GOOGLE_REVIEW_COUNT, GOOGLE_REVIEW_RATING } from "@/data/site";
 import { ReviewsCarousel } from "@/components/site/ReviewsCarousel";
 import { FadeIn } from "@/components/ui/fade-in";
 import heroImg from "@/assets/hero-nettoyage.webp";
@@ -362,7 +362,7 @@ function Index() {
                       <span className="font-bold text-gray-900 text-[13px]">Avis Google</span>
                     </div>
                     <div className="flex items-center gap-1.5 mt-1.5 leading-none">
-                      <span className="font-black text-gray-900 text-base tracking-tight">4.9</span>
+                      <span className="font-black text-gray-900 text-base tracking-tight">{GOOGLE_REVIEW_RATING}</span>
                       <div className="flex text-[#FBBC04] gap-0.5">
                         <Star className="size-3.5 fill-current" />
                         <Star className="size-3.5 fill-current" />
@@ -396,7 +396,7 @@ function Index() {
                     <span className="font-bold text-gray-900 text-[13px]">Avis Google</span>
                   </div>
                   <div className="flex items-center gap-1.5 mt-1.5 leading-none">
-                    <span className="font-black text-gray-900 text-base tracking-tight">4.9</span>
+                    <span className="font-black text-gray-900 text-base tracking-tight">{GOOGLE_REVIEW_RATING}</span>
                     <div className="flex text-[#FBBC04] gap-0.5">
                       <Star className="size-3.5 fill-current" />
                       <Star className="size-3.5 fill-current" />

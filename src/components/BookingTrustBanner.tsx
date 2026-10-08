@@ -1,5 +1,5 @@
 import { Star } from "lucide-react";
-import { GOOGLE_REVIEW_COUNT, GOOGLE_REVIEWS_URL } from "@/data/site";
+import { GOOGLE_REVIEW_COUNT, GOOGLE_REVIEW_RATING, GOOGLE_REVIEWS_URL } from "@/data/site";
 
 export function BookingTrustBanner() {
   return (
@@ -17,7 +17,7 @@ export function BookingTrustBanner() {
             <Star key={index} className="size-3 fill-[#fbbc04] text-[#fbbc04] sm:size-3.5" aria-hidden="true" />
           ))}
         </span>
-        <span className="text-xs font-bold text-foreground sm:text-sm">4,9/5</span>
+        <span className="text-xs font-bold text-foreground sm:text-sm">{String(GOOGLE_REVIEW_RATING).replace(".", ",")}/5</span>
         <span className="text-[11px] text-muted-foreground sm:text-xs">
           {GOOGLE_REVIEW_COUNT} avis<span className="hidden sm:inline"> clients</span>
         </span>
