@@ -396,6 +396,8 @@ function ReserverPage() {
   }, []);
 
   const [form, setForm] = useState({ name: "", phone: "", email: "", street: "", zip: "", city: "" });
+  const [autoAccess, setAutoAccess] = useState({ electricity: "", water: "" });
+  const hasAuto = service?.id === "auto" || formule?.id === "cuir-auto" || cart.some(item => item.service.id === "auto" || item.formule.id === "cuir-auto");
   const [submitting, setSubmitting] = useState(false);
   const [slotTaken, setSlotTaken] = useState(false);
   const [cancelToken, setCancelToken] = useState<string>("");
@@ -517,6 +519,7 @@ function ReserverPage() {
     e.preventDefault();
     if (submitting) return;
     if (!formule || !selectedDate || !selectedTime || !service) return;
+    if (hasAuto && (!autoAccess.electricity || !autoAccess.water)) return;
     setSubmitting(true);
 
     const allItems = [...cart, { service, formule, options: selectedOptions }];
@@ -578,6 +581,7 @@ function ReserverPage() {
           client_street: form.street,
           client_zip:   form.zip,
           client_city:  form.city,
+          auto_access: hasAuto ? { electricity: autoAccess.electricity === "yes", water: autoAccess.water === "yes" } : undefined,
           cancel_token: cancelToken,
           gcal_event_id: preGeneratedGcalId,
         },
@@ -1155,6 +1159,31 @@ function ReserverPage() {
                       </div>
                     </div>
                   </div>
+
+                  {hasAuto && (
+                    <fieldset className="rounded-2xl border border-border p-5 space-y-4">
+                      <legend className="px-2 text-sm font-semibold">Accès pour le nettoyage auto</legend>
+                      {([
+                        ["electricity", "Une prise électrique est-elle disponible à moins de 60 m du véhicule ?"],
+                        ["water", "Un accès à l’eau est-il disponible à proximité du véhicule ?"],
+                      ] as const).map(([key, question]) => (
+                        <fieldset key={key}>
+                          <legend className="text-sm font-semibold">{question} *</legend>
+                          <div className="mt-2 flex gap-6">
+                            {([['yes', 'Oui'], ['no', 'Non']] as const).map(([value, label]) => (
+                              <label key={value} className="flex items-center gap-2 py-2 text-sm">
+                                <input type="radio" name={`auto-${key}`} value={value} required
+                                  checked={autoAccess[key] === value}
+                                  onChange={() => setAutoAccess(previous => ({ ...previous, [key]: value }))}
+                                  className="size-4 accent-primary" />
+                                {label}
+                              </label>
+                            ))}
+                          </div>
+                        </fieldset>
+                      ))}
+                    </fieldset>
+                  )}
 
                   {/* Récap final */}
                   <div className="rounded-2xl border border-border bg-secondary/40 p-5 space-y-2">

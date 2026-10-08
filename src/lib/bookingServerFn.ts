@@ -31,6 +31,7 @@ export const BookingInputSchema = z.object({
   client_street: z.string(),
   client_zip: z.string(),
   client_city: z.string(),
+  auto_access: z.object({ electricity: z.boolean(), water: z.boolean() }).optional(),
   cancel_token: z.string(), // token base64 déjà généré côté client
   gcal_event_id: z.string().optional(),
 });
@@ -104,6 +105,7 @@ export const createBookingServerFn = createServerFn({ method: "POST" })
         client_street: data.client_street,
         client_zip: data.client_zip,
         client_city: data.client_city,
+        auto_access: data.auto_access,
         items: data.items,
         total_price: data.total_price,
         cancel_url: cancelUrl,

@@ -31,6 +31,8 @@ export function BookingAvailabilityBanner({
       for (let offset = 0; offset < 45 && !cancelled; offset += 1) {
         const date = new Date(start);
         date.setDate(start.getDate() + offset);
+        // Évite un appel Agenda pour les jours exclus par le délai minimum.
+        if (!buildSlots(date, durationMin, []).some(slot => slot.available)) continue;
         const busy = await fetchBusySlots(date, true);
         const available = buildSlots(date, durationMin, busy).find((slot) => slot.available);
 

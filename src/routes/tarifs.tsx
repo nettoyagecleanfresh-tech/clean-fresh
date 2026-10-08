@@ -58,6 +58,9 @@ const TARIF_CATEGORIES = [
 
 // Map formuleId → image (même mapping que ServicePage.tsx)
 const FORMULE_IMAGES: Record<string, string> = {
+  "moquette-petite": "/images/moquette/petite-piece.webp",
+  "moquette-standard": "/images/moquette/piece-standard.webp",
+  "moquette-grande": "/images/moquette/grande-piece.webp",
   "fauteuil": "/images/canape/fauteuil.webp",
   "canape-2": "/images/canape/canape-2-3.webp",
   "canape-3": "/images/canape/canape-2-3.webp",
@@ -236,6 +239,7 @@ function PriceCard({
 const getServiceId = (slug: string) => {
   if (slug.includes("canape")) return "canape";
   if (slug.includes("tapis")) return "tapis";
+  if (slug.includes("moquette")) return "moquette";
   if (slug.includes("matelas")) return "matelas";
   if (slug.includes("auto")) return "auto";
   if (slug.includes("cuir")) return "cuir";

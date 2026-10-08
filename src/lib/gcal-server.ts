@@ -371,6 +371,7 @@ export function buildEventDescription(params: {
   client_street: string;
   client_zip: string;
   client_city: string;
+  auto_access?: { electricity: boolean; water: boolean };
   items: {
     service_name: string;
     formule_name: string;
@@ -400,7 +401,11 @@ export function buildEventDescription(params: {
 
 🛠 PRESTATIONS :
 ${itemsDetails}
-
+${params.auto_access ? `
+🚗 ACCÈS AUTO :
+Prise électrique à moins de 60 m du véhicule : ${params.auto_access.electricity ? "Oui" : "Non"}
+Accès à l’eau à proximité : ${params.auto_access.water ? "Oui" : "Non"}
+` : ""}
 💶 TOTAL : ${params.total_price} €
 
 ❌ <a href="${params.cancel_url}">Cliquez ici pour annuler le rendez-vous</a>
