@@ -253,7 +253,7 @@ function RootComponent() {
         <Footer />
       </div>
       <StickyCallCta />
-      {loadChatbot ? (
+      {loadChatbot && !/^\/(reserver|annuler|upsell)(\/|$)/.test(location.pathname) ? (
         <Suspense fallback={null}>
           <Chatbot />
         </Suspense>
