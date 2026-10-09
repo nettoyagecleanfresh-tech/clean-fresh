@@ -1,3 +1,5 @@
+import { lazy, Suspense } from 'react';
+const ChatBooking = lazy(() => import('./ChatBooking').then(m => ({ default: m.ChatBooking })));
 import { useState, useRef, useEffect } from 'react';
 import { MessageCircle, X, Send, RotateCcw } from 'lucide-react';
 import { Link } from '@tanstack/react-router';
@@ -6,6 +8,10 @@ import { answerCustomer, welcome, type ChatReply } from '@/lib/chatAssistant';
 type Message = ChatReply & { sender: 'bot' | 'user'; id: number };
 export function Chatbot() {
   const [open, setOpen] = useState(false);
+  const [booking, setBooking] = useState(false);
+  const [bookingStarted, setBookingStarted] = useState(false);
+  const [bookingBusy, setBookingBusy] = useState(false);
+  const [bookingKey, setBookingKey] = useState(0);
   const [dismissed, setDismissed] = useState(false);
   const [input, setInput] = useState('');
   const [service, setService] = useState<string>();
@@ -23,6 +29,7 @@ export function Chatbot() {
   const send = (raw: string) => {
     const text = raw.trim().slice(0, 1500);
     if (!text) return;
+    if (!/annul|report|modifi|decal|décal/i.test(text) && /r[eé]serv|rendez.vous|cr[eé]neau|disponibil/i.test(text)) { setBookingStarted(true); setBooking(true); setInput(''); return; }
     const response = answerCustomer(text, service);
     setService(response.service);
     const id = nextId.current; nextId.current += 2;
@@ -38,14 +45,19 @@ export function Chatbot() {
       </button>
       <button onClick={() => setDismissed(true)} aria-label="Masquer l’assistant pour cette page" className="flex size-8 items-center justify-center rounded-full border bg-background text-muted-foreground"><X className="size-4" /></button>
     </div>}
-    {open && <section id="cleanfresh-chat" role="dialog" aria-label="Assistant Clean&Fresh" onKeyDown={e => { if (e.key === 'Escape') close(); }}
-      className="fixed right-3 bottom-24 lg:bottom-5 z-50 flex h-[min(520px,65dvh)] w-[360px] max-w-[calc(100vw-1.5rem)] flex-col overflow-hidden rounded-2xl border border-border bg-background shadow-xl">
+    {(open || bookingStarted) && <section hidden={!open} id="cleanfresh-chat" role="dialog" aria-label="Assistant Clean&Fresh" onKeyDown={e => { if (e.key === 'Escape') close(); }}
+      className={`${!open ? '!hidden ' : ''}fixed right-3 bottom-24 lg:bottom-5 z-50 flex h-[min(660px,78dvh)] w-[360px] max-w-[calc(100vw-1.5rem)] flex-col overflow-hidden rounded-2xl border border-border bg-background shadow-xl`}>
       <header className="flex items-center justify-between gap-2 bg-primary p-3 text-primary-foreground">
         <div><h2 className="text-sm font-semibold">Assistant Clean&Fresh</h2><p className="text-xs opacity-90">Aide aux prestations et à la réservation</p></div>
-        <button aria-label="Recommencer la conversation" onClick={() => { setMessages([{ ...welcome, sender: 'bot', id: nextId.current++ }]); setService(undefined); }} className="p-2"><RotateCcw className="size-4" /></button>
+        <button aria-label="Recommencer la conversation" disabled={bookingBusy} onClick={() => { setBooking(false); setBookingStarted(false); setBookingKey(v => v + 1); setMessages([{ ...welcome, sender: 'bot', id: nextId.current++ }]); setService(undefined); }} className="p-2"><RotateCcw className="size-4" /></button>
         <button onClick={close} aria-label="Fermer le chat" className="p-2"><X className="size-5" /></button>
       </header>
-      <div ref={scrollRef} role="log" aria-live="polite" aria-relevant="additions" className="min-h-0 flex-1 overflow-y-auto overscroll-contain bg-muted/30 p-3">
+      <div className="flex gap-2 border-b p-2">
+        <button disabled={bookingBusy} aria-pressed={!booking} onClick={() => setBooking(false)} className="flex-1 rounded-lg border px-2 py-2 text-xs font-semibold">Poser une question</button>
+        <button aria-pressed={booking} onClick={() => { setBookingStarted(true); setBooking(true); }} className="flex-1 rounded-lg bg-primary px-2 py-2 text-xs font-semibold text-primary-foreground">Réserver avec l’assistant</button>
+      </div>
+      <div hidden={!booking} className="min-h-0 flex-1 overflow-y-auto overscroll-contain"><Suspense fallback={<p className="p-4 text-sm">Chargement du parcours…</p>}>{bookingStarted && <ChatBooking key={bookingKey} onBusy={setBookingBusy} />}</Suspense></div>
+      <div hidden={booking} ref={scrollRef} role="log" aria-live="polite" aria-relevant="additions" className="min-h-0 flex-1 overflow-y-auto overscroll-contain bg-muted/30 p-3">
         {messages.map((message, index) => <div key={message.id} className={`mb-3 ${message.sender === 'user' ? 'ml-6' : 'mr-2'}`}>
           <p className={`whitespace-pre-wrap rounded-xl p-3 text-sm leading-relaxed ${message.sender === 'user' ? 'bg-primary text-primary-foreground' : 'border border-border bg-background'}`}>{message.text}</p>
           {message.sender === 'bot' && index === messages.length - 1 && <div className="mt-2 flex flex-wrap gap-2">
@@ -54,7 +66,7 @@ export function Chatbot() {
           </div>}
         </div>)}
       </div>
-      <form onSubmit={e => { e.preventDefault(); send(input); }} className="flex items-center gap-2 border-t p-3">
+      <form style={{ display: booking ? 'none' : undefined }} hidden={booking} onSubmit={e => { e.preventDefault(); send(input); }} className="flex items-center gap-2 border-t p-3">
         <input ref={inputRef} aria-label="Votre question" maxLength={1500} value={input} onChange={e => setInput(e.target.value)} placeholder="Votre question…" autoComplete="off" className="min-w-0 flex-1 rounded-full border bg-background px-3 py-2 text-sm" />
         <button type="submit" disabled={!input.trim()} aria-label="Envoyer la question" className="rounded-full bg-primary p-2 text-primary-foreground disabled:opacity-40"><Send className="size-5" /></button>
       </form>

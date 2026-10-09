@@ -2,8 +2,8 @@ export function optionDescription(name: string, fallback: string, auto = false):
   const key = name.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
   if (key.includes('acarien') || key.includes('bacter')) {
     return auto
-      ? "Application d’un traitement assainissant sur les plastiques compatibles et l’ensemble du coffre, dans tous les packs. Les sièges, moquettes et le ciel de toit sont traités lorsqu’ils sont inclus dans le pack ou les options choisis. Le traitement vise les acariens et bactéries ciblés par le produit utilisé, selon son mode d’emploi et les supports compatibles."
-      : "Application d’un produit adapté sur le textile nettoyé pour l’assainir et traiter les acariens et bactéries ciblés par le produit. Le support, le dosage et le temps de contact sont pris en compte. Cette option ne constitue pas une désinsectisation ni une garantie d’élimination de tous les germes.";
+      ? "Vapeur professionnelle puissante pour assainir les surfaces compatibles par la chaleur : plastiques et coffre entier pour tous les packs ; sièges, moquettes et ciel de toit selon le pack et les options. Le passage est adapté à chaque revêtement pour réduire les acariens et bactéries."
+      : "Vapeur professionnelle puissante, adaptée au textile, pour l’assainir par la chaleur et réduire les acariens et bactéries. Le passage est ajusté à la matière et à sa résistance à la chaleur.";
   }
   if (key.includes('enzym')) return "Traitement ciblé des résidus organiques à l’origine d’odeurs persistantes : urine, vomi, transpiration ou traces d’animaux. Application sur les textiles compatibles, en complément du nettoyage, selon l’état du support.";
   if (key.includes('poils')) return auto

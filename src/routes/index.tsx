@@ -1,4 +1,3 @@
-import heroImg from "@/assets/hero-nettoyage.webp";
 import { RealWorkGallery } from "@/components/site/RealWorkGallery";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
@@ -279,8 +278,8 @@ function Index() {
 
       {/* ── HERO FULL-WIDTH ── */}
       <section
-        className="relative isolate flex flex-col overflow-hidden bg-[#082f49] bg-cover bg-center lg:min-h-[60vh]"
-        style={{ backgroundImage: `url(${heroImg})` }}
+        className="relative isolate flex flex-col overflow-hidden bg-[#082f49] lg:min-h-[60vh]"
+        style={{ backgroundImage: "radial-gradient(ellipse at top right, #087fa2 0%, transparent 60%), linear-gradient(135deg, #071e32, #083b54)" }}
       >
         <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(10,15,30,0.60) 0%, rgba(10,15,30,0.65) 60%, rgba(10,15,30,0.85) 100%)" }} />
 

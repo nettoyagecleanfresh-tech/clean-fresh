@@ -16,7 +16,7 @@ const contact = { label: 'Demander un devis / nous écrire', href: '/contactez-n
 const phone = { label: `Appeler le ${COMPANY.phone}`, href: COMPANY.phoneHref };
 export const welcome: ChatReply = {
   text: 'Bonjour 👋 Je peux vous aider à choisir une prestation, comparer les formules et préparer votre intervention. Que souhaitez-vous faire nettoyer ?',
-  suggestions: ['Canapé', 'Auto', 'Matelas', 'Tapis', 'Moquette', 'Demander un devis'],
+  suggestions: ['Réserver avec l’assistant', 'Canapé', 'Auto', 'Matelas', 'Tapis', 'Moquette', 'Demander un devis'],
 };
 
 export function answerCustomer(query: string, previousService?: string): ChatReply {
@@ -35,6 +35,7 @@ export function answerCustomer(query: string, previousService?: string): ChatRep
   if (/pai|acompte|reglement/.test(q)) return reply('Pour les prestations réservables en ligne, aucun paiement n’est demandé sur le site : le règlement se fait à la fin de la prestation. Pour un chantier sur devis, les modalités sont précisées dans le devis.', { actions: [booking, contact] });
   if (/deplac|zone|distance|intervenez|commune/.test(q) || COMMUNES.some(c => q.includes(normalize(c)))) return reply(`Nous intervenons à Toulouse et dans son agglomération. Déplacement offert jusqu’à ${DISPLACEMENT_RULES.freeKm} km, puis 10 € de 21 à 34 km et 20 € de 35 à 49 km. Pour une adresse éloignée ou un doute sur la distance, faites confirmer les frais avant de réserver.`, { actions: [booking, contact] });
   if (/avis|note google/.test(q)) return reply(`Le site affiche ${GOOGLE_REVIEW_COUNT} avis Google et une note de ${String(GOOGLE_REVIEW_RATING).replace('.', ',')}/5.`, { actions: [booking] });
+  if (/vapeur|acari|bacter|desinfect|assain/.test(q)) return reply('Le traitement anti-acariens et bactérien utilise une vapeur professionnelle puissante pour assainir par la chaleur les textiles et surfaces compatibles. Pour l’auto : plastiques et coffre entier, puis sièges, moquettes et ciel de toit selon le pack et les options. Le passage est adapté au revêtement. Les options ne prolongent pas la durée.', { actions: [booking], suggestions: ['Réserver avec l’assistant', 'Quelles options ?'] });
   if (/tache|odeur|urine|vomi|sang|poils|chien|chat|acari/.test(q)) return reply('Précisez le support, la matière et l’origine des taches ou odeurs. Des options ciblées sont proposées selon la prestation. Le résultat dépend de l’état du support : aucune disparition totale ne peut être garantie à distance. Pour un support délicat ou très dégradé, envoyez des photos via la page de contact.', { actions: [booking, contact], suggestions: ['Canapé', 'Matelas', 'Auto', 'Tapis'] });
   if (/option/.test(q)) return reply('Les options adaptées s’affichent après le choix de votre formule, avec leur prix avant confirmation. Vous choisissez uniquement celles qui vous conviennent. Les options ne prolongent pas la durée prévue de la prestation.', { actions: [booking] });
   if (hits.length > 1 && !q.includes('siege') && !q.includes('cuir')) return reply('Vous pouvez combiner plusieurs prestations dans la même réservation grâce au bouton « Ajouter une autre prestation ». Le récapitulatif additionne les formules et les options choisies. Consultez les prix puis ajoutez chaque prestation au panier.', { actions: [booking] });
