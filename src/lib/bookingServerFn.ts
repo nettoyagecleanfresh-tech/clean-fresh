@@ -11,7 +11,8 @@ import { z } from "zod";
 import { SERVICES } from "@/data/bookingCatalogue";
 import { signManagementToken, createCalendarEvent, buildEventDescription, checkSlotAvailable } from "@/lib/gcal-server";
 
-import { ensureEventActions, notifyOwner, sendEventEmail } from "./calendarLifecycle";
+import { sendBookingEmailsRaw } from "./emailService";
+import { ensureEventActions, patchEvent } from "./calendarLifecycle";
 
 // ─── Schéma de validation ────────────────────────────────────────────────────
 
@@ -211,9 +212,28 @@ export const createBookingServerFn = createServerFn({ method: "POST" })
       let emailSent = false;
       try {
         await ensureEventActions(gcalEvent);
-        await sendEventEmail(gcalEvent, 'confirmation');
+        // Utiliser le modèle détaillé bleu/blanc avec deux contenus séparés :
+        // le client ne reçoit jamais les actions privées du propriétaire.
+        await sendBookingEmailsRaw({
+          items: data.items,
+          total_price: data.total_price,
+          booking_date: data.booking_date,
+          booking_time: data.booking_time,
+          client_name: data.client_name,
+          client_phone: data.client_phone,
+          client_email: data.client_email,
+          client_street: data.client_street,
+          client_zip: data.client_zip,
+          client_city: data.client_city,
+          cancel_url: cancelUrl,
+          estimated_duration: `${data.duration_min} min environ`,
+        });
+        await patchEvent(gcalEvent, {
+          cfConfirmationStart: startLocalStr,
+          cfConfirmationPending: "false",
+          cfOwnerSent: "true",
+        });
         emailSent = true;
-        await notifyOwner(gcalEvent);
       } catch (error) {
         console.error('[booking] Email pending; scheduled retry', error instanceof Error ? error.message : 'unknown');
       }
