@@ -403,10 +403,6 @@ function Index() {
                   </div>
                 </div>
               </a>
-              <figure className="overflow-hidden rounded-3xl border border-white/30 bg-white/10 p-2 shadow-2xl">
-                <img src="/images/hero-services/quinze-prestations-v2-480.webp" srcSet="/images/hero-services/quinze-prestations-v2-480.webp 480w, /images/hero-services/quinze-prestations-v2-960.webp 960w" sizes="(max-width: 380px) calc(100vw - 48px), 320px" width={1086} height={1448} alt="Illustration de nos 15 prestations : canapé, matelas, auto, tapis, moquette, cuir, vitres, maison et appartement, fin de bail, fin de chantier, Diogène, logement insalubre ; terrasse, toiture et façade en dernière rangée" fetchPriority="high" decoding="async" className="h-auto w-full rounded-2xl" />
-                <figcaption className="px-3 py-3 text-center text-xs font-medium text-white">15 prestations, du textile à la remise en état de votre logement.<span className="mt-1 block text-[10px] text-white/70">Visuel d’illustration de nos prestations</span></figcaption>
-              </figure>
             </div>
           </div>
         </div>
