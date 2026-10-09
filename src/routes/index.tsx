@@ -1,4 +1,5 @@
-import { RealWorkGallery, realSofaSrcSet } from "@/components/site/RealWorkGallery";
+import heroImg from "@/assets/hero-nettoyage.webp";
+import { RealWorkGallery } from "@/components/site/RealWorkGallery";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import {
@@ -278,8 +279,8 @@ function Index() {
 
       {/* ── HERO FULL-WIDTH ── */}
       <section
-        className="relative isolate flex flex-col overflow-hidden bg-[#082f49] lg:min-h-[60vh]"
-        style={{ backgroundImage: "radial-gradient(ellipse at top right, #087fa2 0%, transparent 60%), linear-gradient(135deg, #071e32, #083b54)" }}
+        className="relative isolate flex flex-col overflow-hidden bg-[#082f49] bg-cover bg-center lg:min-h-[60vh]"
+        style={{ backgroundImage: `url(${heroImg})` }}
       >
         <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(10,15,30,0.60) 0%, rgba(10,15,30,0.65) 60%, rgba(10,15,30,0.85) 100%)" }} />
 
@@ -373,7 +374,7 @@ function Index() {
             </div>
 
             {/* Google badge — desktop uniquement, colonne droite */}
-            <div className="hidden w-[340px] shrink-0 flex-col gap-4 lg:flex">
+            <div className="flex w-full max-w-[340px] shrink-0 flex-col items-center gap-4 lg:items-stretch">
               <a
                 href="https://www.google.com/search?q=clean+fresh+toulouse+avis"
                 target="_blank"
@@ -404,11 +405,8 @@ function Index() {
                 </div>
               </a>
               <figure className="overflow-hidden rounded-3xl border border-white/30 bg-white/10 p-2 shadow-2xl">
-                <picture>
-                  <source media="(min-width: 1024px)" srcSet={realSofaSrcSet} sizes="340px" />
-                  <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" width={960} height={1280} alt="Notre intervention sur un canapé : avant et après nettoyage" fetchPriority="high" decoding="async" className="h-auto w-full rounded-2xl" />
-                </picture>
-                <figcaption className="px-3 py-3 text-center text-xs font-medium text-white">Vos intérieurs. Nos interventions. Le résultat en images.</figcaption>
+                <img src="/images/hero-services/sept-prestations-480.webp" srcSet="/images/hero-services/sept-prestations-480.webp 480w, /images/hero-services/sept-prestations-960.webp 960w" sizes="(max-width: 380px) calc(100vw - 48px), 320px" width={1122} height={1402} alt="Illustration des prestations : Diogène, logement insalubre, canapé, matelas, tapis, moquette et intérieur auto" fetchPriority="high" decoding="async" className="h-auto w-full rounded-2xl" />
+                <figcaption className="px-3 py-3 text-center text-xs font-medium text-white">Du textile au logement, un nettoyage adapté à chaque besoin.<span className="mt-1 block text-[10px] text-white/70">Visuel d’illustration de nos prestations</span></figcaption>
               </figure>
             </div>
           </div>
