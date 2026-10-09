@@ -102,7 +102,7 @@ export const COMMUNES_DATA: CommuneData[] = [
     para1:
       "À 9 km au nord-ouest de Toulouse, Blagnac est l'une de nos zones d'intervention prioritaires. Nos techniciens y interviennent plusieurs fois par semaine : canapés en tissu et cuir dans les appartements du centre, matelas dans les pavillons du Ritouret, tapis dans les villas du secteur Andromède.",
     para2:
-      "Les résidents blagnacais — souvent des professionnels de l'aéronautique avec des intérieurs soignés — apprécient notre rigueur et la qualité des produits Écolabel. Nos machines d'injection-extraction haute puissance garantissent un résultat visible immédiatement et un séchage en 2 à 4h. Zéro frais de déplacement.",
+      "Les résidents blagnacais — souvent des professionnels de l'aéronautique avec des intérieurs soignés — apprécient notre rigueur et la qualité des produits Écolabel. Nos machines d'injection-extraction haute puissance permettent un nettoyage en profondeur ; le séchage dépend du support et de l’aération. Zéro frais de déplacement.",
     faq: [
       {
         q: "Clean&Fresh intervient-il à Blagnac pour les entreprises ?",
@@ -348,7 +348,7 @@ export const COMMUNES_DATA: CommuneData[] = [
       },
       {
         q: "Nettoyez-vous les moquettes à Fonsorbes ?",
-        a: "Oui, shampouinage par injection-extraction pour moquettes de toutes surfaces. À partir de 59 € pour une petite pièce.",
+        a: "Oui, shampouinage par injection-extraction pour moquettes de toutes surfaces. À partir de 99 € pour une petite pièce.",
       },
     ],
     nearby: ["Toulouse", "Colomiers", "Saint-Lys", "Léguevin"],
@@ -414,7 +414,7 @@ export const COMMUNES_DATA: CommuneData[] = [
     para1:
       "Aucamville est dans notre circuit nord de Toulouse. Nos techniciens interviennent dans les lotissements résidentiels pour le nettoyage de canapés, matelas, tapis et habitacles de véhicules à domicile.",
     para2:
-      "La commune attire de jeunes familles installées dans des maisons individuelles récentes, qui cherchent une entreprise locale fiable pour l'entretien de leurs textiles. Nos produits Écolabel et notre méthode d'injection-extraction garantissent un résultat sans résidu et un séchage en 2 à 4h.",
+      "La commune attire de jeunes familles installées dans des maisons individuelles récentes, qui cherchent une entreprise locale fiable pour l'entretien de leurs textiles. Nos produits Écolabel et notre méthode d'injection-extraction permettent un nettoyage adapté ; le séchage dépend du support et de l’aération.",
     faq: [
       {
         q: "Y a-t-il des frais de déplacement pour Aucamville ?",
@@ -596,7 +596,7 @@ export const COMMUNES_DATA: CommuneData[] = [
     para1:
       "Beauzelle est dans notre circuit nord-ouest. Nous intervenons à domicile pour le nettoyage de canapés, matelas et tapis dans les maisons et appartements au bord de la Garonne.",
     para2:
-      "Commune à fort développement résidentiel, Beauzelle voit arriver de nombreuses familles qui font confiance à nos services pour l'entretien de leurs textiles. Produits Écolabel, résultat garanti.",
+      "Commune à fort développement résidentiel, Beauzelle voit arriver de nombreuses familles qui font confiance à nos services pour l'entretien de leurs textiles. Produits Écolabel, résultat selon l’état et la matière du support.",
     faq: [
       {
         q: "Y a-t-il des frais de déplacement pour Beauzelle ?",
@@ -804,7 +804,7 @@ export const COMMUNES_DATA: CommuneData[] = [
     para1:
       "Quint-Fonsegrives est dans notre circuit est. Nous intervenons dans les maisons et lotissements pour le nettoyage de canapés, matelas, tapis et habitacles de voitures.",
     para2:
-      "Commune prisée des familles pour sa qualité de vie, Quint-Fonsegrives compte des propriétaires qui font appel à nos services pour l'entretien saisonnier de leurs textiles. Produits Écolabel, résultat garanti.",
+      "Commune prisée des familles pour sa qualité de vie, Quint-Fonsegrives compte des propriétaires qui font appel à nos services pour l'entretien saisonnier de leurs textiles. Produits Écolabel, résultat selon l’état et la matière du support.",
     faq: [
       {
         q: "Y a-t-il des frais de déplacement pour Quint-Fonsegrives ?",

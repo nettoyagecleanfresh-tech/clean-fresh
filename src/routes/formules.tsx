@@ -331,7 +331,7 @@ function CuirDetail() {
   const [selected, setSelected] = useState("cuir-canape-2");
   const item = CUIR_ITEMS.find((i) => i.id === selected)!;
   const options = CUIR_OPTIONS.map((option, index) =>
-    index === 0 ? { ...option, price: CUIR_CARE_PRICES[selected] } : option
+    index === 0 ? { ...option, price: CUIR_CARE_PRICES[selected] ?? option.price } : option
   );
 
   return (

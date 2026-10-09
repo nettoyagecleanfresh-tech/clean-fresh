@@ -32,7 +32,7 @@ function AnnulerPage() {
 
   let info: { name: string; email: string; phone: string; formule: string; date: string; time: string; gcal_event_id?: string; dur: number } | null = null;
   try {
-    const raw = JSON.parse(decodeURIComponent(escape(atob(token))));
+    const raw = JSON.parse(decodeURIComponent(escape(atob(token.split(".")[0] ?? ""))));
     if (raw.n || raw.name) {
       info = {
         name: raw.n || raw.name,
@@ -55,6 +55,7 @@ function AnnulerPage() {
     try {
       await cancelBookingServerFn({
         data: {
+          management_token: token,
           gcal_event_id: info.gcal_event_id ?? null,
           client_name:   info.name,
           client_phone:  info.phone,
@@ -80,6 +81,7 @@ function AnnulerPage() {
     try {
       const result = await rescheduleBookingServerFn({
         data: {
+          management_token: token,
           gcal_event_id: info.gcal_event_id,
           new_date: newDateStr,
           new_time: selectedTime,

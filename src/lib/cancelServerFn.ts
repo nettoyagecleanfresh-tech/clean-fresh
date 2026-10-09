@@ -7,9 +7,10 @@
 
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
-import { deleteCalendarEvent } from "@/lib/gcal-server";
+import { authorizeCalendarManagement, deleteCalendarEvent } from "@/lib/gcal-server";
 
 const CancelInputSchema = z.object({
+  management_token: z.string().min(1).max(4096),
   gcal_event_id: z.string().optional().nullable(),
   client_name: z.string(),
   client_phone: z.string().optional(),
@@ -29,12 +30,15 @@ export type CancelResult = {
 export const cancelBookingServerFn = createServerFn({ method: "POST" })
   .validator((data: CancelInput) => CancelInputSchema.parse(data))
   .handler(async ({ data }): Promise<CancelResult> => {
+    await authorizeCalendarManagement(data.gcal_event_id ?? "", data.management_token);
     let gcal_deleted = false;
 
     // Supprimer l'événement Google Calendar si on a l'ID
     if (data.gcal_event_id) {
       gcal_deleted = await deleteCalendarEvent(data.gcal_event_id);
     }
+
+    if (!gcal_deleted) throw new Error("CANCELLATION_FAILED");
 
     // Envoyer l'email d'annulation (au client ET à l'admin)
     try {

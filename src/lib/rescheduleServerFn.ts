@@ -7,9 +7,10 @@
 
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
-import { checkSlotAvailable, updateCalendarEvent } from "@/lib/gcal-server";
+import { authorizeCalendarManagement, checkSlotAvailable, updateCalendarEvent } from "@/lib/gcal-server";
 
 const RescheduleInputSchema = z.object({
+  management_token: z.string().min(1).max(4096),
   gcal_event_id: z.string(),
   new_date: z.string(), // "2026-09-15"
   new_time: z.string(), // "10:00"
@@ -27,6 +28,7 @@ export type RescheduleResult = {
 export const rescheduleBookingServerFn = createServerFn({ method: "POST" })
   .validator((data: RescheduleInput) => RescheduleInputSchema.parse(data))
   .handler(async ({ data }): Promise<RescheduleResult> => {
+    data.duration_min = await authorizeCalendarManagement(data.gcal_event_id ?? "", data.management_token);
     // 1. Vérifier que le nouveau créneau est libre
     const slotFree = await checkSlotAvailable(data.new_date, data.new_time, data.duration_min);
     if (!slotFree) {
@@ -56,5 +58,6 @@ export const rescheduleBookingServerFn = createServerFn({ method: "POST" })
       end: { dateTime: endLocalStr, timeZone: "Europe/Paris" },
     });
 
+    if (!gcal_updated) throw new Error("RESCHEDULE_FAILED");
     return { success: true, gcal_updated };
   });

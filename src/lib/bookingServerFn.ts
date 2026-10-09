@@ -8,7 +8,8 @@
 
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
-import { createCalendarEvent, buildEventDescription, checkSlotAvailable } from "@/lib/gcal-server";
+import { SERVICES } from "@/data/bookingCatalogue";
+import { signManagementToken, createCalendarEvent, buildEventDescription, checkSlotAvailable } from "@/lib/gcal-server";
 
 // ─── Schéma de validation ────────────────────────────────────────────────────
 
@@ -32,8 +33,8 @@ export const BookingInputSchema = z.object({
   client_zip: z.string(),
   client_city: z.string(),
   auto_access: z.object({ electricity: z.boolean(), water: z.boolean() }).optional(),
-  cancel_token: z.string(), // token base64 déjà généré côté client
-  gcal_event_id: z.string().optional(),
+  cancel_token: z.string().min(1).max(3000), // token base64 déjà généré côté client
+  gcal_event_id: z.string().regex(/^[a-v0-9]{5,1024}$/),
 });
 
 export type BookingInput = z.infer<typeof BookingInputSchema>;
@@ -66,6 +67,27 @@ export const createBookingServerFn = createServerFn({ method: "POST" })
   .validator((data: BookingInput) => BookingInputSchema.parse(data))
   .handler(async ({ data }): Promise<BookingResult> => {
     try {
+      // Les montants et durées sont reconstruits depuis le catalogue partagé.
+      if (!data.items.length || data.items.length > 20) throw new Error("INVALID_ITEMS");
+      let duration = 0;
+      let total = 0;
+      data.items = data.items.map(item => {
+        const service = SERVICES.find(s => s.id === item.service_id);
+        const formule = service?.formules.find(f => f.id === item.formule_id);
+        if (!service || !formule) throw new Error("INVALID_FORMULA");
+        const selected = new Set<string>();
+        const options = item.options.map(option => {
+          const canonical = formule.options.find(o => o.name === option.name);
+          if (!canonical || selected.has(canonical.id)) throw new Error("INVALID_OPTION");
+          selected.add(canonical.id);
+          return { name: canonical.name, price: canonical.price };
+        });
+        duration += formule.durationMin;
+        total += formule.price + options.reduce((sum, o) => sum + o.price, 0);
+        return { ...item, service_name: service.label, formule_name: formule.name, formule_price: formule.price, options };
+      });
+      data.duration_min = duration;
+      data.total_price = total;
       // ── 0. Rate limiting anti-spam ──
       if (isRateLimited(data.client_email.toLowerCase())) {
         return {
@@ -95,7 +117,14 @@ export const createBookingServerFn = createServerFn({ method: "POST" })
         process.env["VITE_SITE_URL"] ?? "https://cleanetfresh.fr";
       const ownerPhone =
         process.env["VITE_OWNER_PHONE"] ?? "07 67 12 75 00";
-      const cancelUrl = `${siteUrl}/annuler?token=${data.cancel_token}`;
+      // Le lien reflète exclusivement les informations validées côté serveur.
+      const payload = btoa(unescape(encodeURIComponent(JSON.stringify({
+        i: data.gcal_event_id, n: data.client_name.substring(0, 30), e: data.client_email,
+        d: data.booking_date, t: data.booking_time,
+        f: data.items.map(item => item.formule_name).join(" + ").substring(0, 30), dur: duration,
+      }))));
+      data.cancel_token = await signManagementToken(payload);
+      const cancelUrl = `${siteUrl}/annuler?token=${encodeURIComponent(data.cancel_token)}`;
 
       // ── 1. Construire l'événement Google Calendar ──
       const description = buildEventDescription({
@@ -174,6 +203,7 @@ export const createBookingServerFn = createServerFn({ method: "POST" })
       // ── 3. Créer l'événement ──
       const gcal_event_id = await createCalendarEvent(gcalEvent);
 
+      if (!gcal_event_id) throw new Error("CALENDAR_UNAVAILABLE");
       return {
         success: true,
         gcal_event_id,
@@ -185,7 +215,7 @@ export const createBookingServerFn = createServerFn({ method: "POST" })
         success: false,
         gcal_event_id: null,
         cancel_token: data.cancel_token,
-        error: String(err),
+        error: "BOOKING_FAILED",
       };
     }
   });

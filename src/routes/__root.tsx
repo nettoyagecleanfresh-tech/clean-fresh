@@ -92,7 +92,7 @@ function NotFoundComponent() {
   );
 }
 
-function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
+function ErrorComponent({ error, reset }: { error: unknown; reset: () => void }) {
   console.error(error);
   const router = useRouter();
   const [showError, setShowError] = useState(false);
@@ -243,7 +243,7 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <div className="flex min-h-screen flex-col overflow-x-clip w-full">
         <div className="sticky top-0 z-50">
-          <TopBanner />
+          {!location.pathname.startsWith("/reserver") && <TopBanner />}
           <Header />
         </div>
         {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}

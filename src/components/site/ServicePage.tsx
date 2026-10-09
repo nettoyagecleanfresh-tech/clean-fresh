@@ -289,7 +289,7 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
                             size="sm"
                           >
                             {bookingServiceId ? (
-                              <Link to="/reserver" search={{ service: bookingServiceId, formule: row.formuleId }}>
+                              <Link to="/reserver" search={{ service: bookingServiceId, formule: row.formuleId ?? "", from: "" }}>
                                 <CalendarCheck className="size-3 mr-1" /> Réserver
                               </Link>
                             ) : (
@@ -430,7 +430,7 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
                 const slug = c.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/['\s]/g, "-");
                 return (
                   <li key={c} className="rounded-full border border-border bg-card text-sm text-muted-foreground overflow-hidden">
-                    <Link to={`/nettoyage-${slug}`} className="block px-3 py-1 hover:text-primary transition-colors">
+                    <Link to={`/nettoyage-${slug}` as "/nettoyage-toulouse"} className="block px-3 py-1 hover:text-primary transition-colors">
                       {c}
                     </Link>
                   </li>

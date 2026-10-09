@@ -231,7 +231,7 @@ function DesktopHeroReviews() {
     return () => window.clearInterval(interval);
   }, []);
 
-  const review = HERO_DESKTOP_REVIEWS[reviewIndex];
+  const review = HERO_DESKTOP_REVIEWS[reviewIndex] ?? HERO_DESKTOP_REVIEWS[0]!;
 
   return (
     <div className="h-[300px] overflow-hidden rounded-[22px] border border-white/50 bg-white shadow-[0_18px_50px_rgba(8,30,48,0.28)]">
@@ -447,6 +447,59 @@ function Index() {
         </div>
       </section>
 
+      {/* ── GALERIE AVANT / APRÈS ── */}
+      <section className="bg-secondary/40 py-12 md:py-20">
+        <div className="mx-auto max-w-6xl px-4">
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-widest text-primary">Nos dernières interventions à Toulouse</p>
+              <h2 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight">La différence Clean&Fresh</h2>
+              <p className="mt-2 text-muted-foreground">Photos réelles de nos interventions chez nos clients.</p>
+            </div>
+            <Link
+              to="/formules"
+              className="inline-flex items-center gap-2 rounded-full bg-accent-gradient px-5 py-2.5 text-sm font-bold text-accent-foreground hover:opacity-90 transition-opacity"
+            >
+              <CalendarCheck className="size-4" /> Je réserve maintenant
+            </Link>
+          </div>
+          <div className="mt-8 grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
+            {[
+              { src: avantCanape, label: "Avant", sublabel: "Canapé encrassé", prestation: "Nettoyage Canapé", commune: "Toulouse" },
+              { src: apresCanape, label: "Après", sublabel: "Fibres ravivées", prestation: "Nettoyage Canapé", commune: "Toulouse" },
+              { src: avantAuto, label: "Avant", sublabel: "Habitacle très sale", prestation: "Nettoyage Auto", commune: "Blagnac" },
+              { src: apresAuto, label: "Après", sublabel: "Sièges assainis", prestation: "Nettoyage Auto", commune: "Blagnac" },
+            ].map((img, idx) => {
+              const isAfter = img.label === "Après";
+              return (
+                <figure key={idx} className="group overflow-hidden rounded-2xl shadow-[var(--shadow-card)] bg-card border border-border">
+                  <div className="relative">
+                    <img
+                      src={img.src}
+                      alt={`${img.label} — ${img.sublabel}`}
+                      loading="lazy"
+                      className="h-40 sm:h-60 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <span className={`absolute left-3 top-3 rounded-full px-3 py-1 text-xs font-bold uppercase tracking-wider ${
+                      isAfter
+                        ? "bg-primary text-primary-foreground"
+                        : "bg-black/50 text-white backdrop-blur"
+                    }`}>
+                      {img.label}
+                    </span>
+                  </div>
+                  <figcaption className="p-3 md:p-4">
+                    <p className="font-bold text-foreground text-sm">{img.prestation}</p>
+                    <p className="text-xs text-muted-foreground mt-1"><MapPin className="inline size-3 mr-1" /> {img.commune}</p>
+                    <p className="text-sm font-medium text-muted-foreground mt-3">{img.sublabel}</p>
+                  </figcaption>
+                </figure>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       {/* ── STATS STRIP ── */}
       <FadeIn delay={0.1}>
         <section className="border-b border-border bg-card">
@@ -583,59 +636,6 @@ function Index() {
       {/* ── CARROUSEL AVIS GOOGLE ── */}
       <ReviewsCarousel />
 
-      {/* ── GALERIE AVANT / APRÈS ── */}
-      <section className="bg-secondary/60 py-20">
-        <div className="mx-auto max-w-6xl px-4">
-          <div className="flex flex-wrap items-end justify-between gap-4">
-            <div>
-              <p className="text-xs font-bold uppercase tracking-widest text-primary">Nos dernières interventions à Toulouse</p>
-              <h2 className="mt-2 text-4xl font-bold tracking-tight">La différence Clean&Fresh</h2>
-              <p className="mt-2 text-muted-foreground">Photos réelles de nos interventions chez nos clients.</p>
-            </div>
-            <Link
-              to="/formules"
-              className="inline-flex items-center gap-2 rounded-full bg-accent-gradient px-5 py-2.5 text-sm font-bold text-accent-foreground hover:opacity-90 transition-opacity"
-            >
-              <CalendarCheck className="size-4" /> Je réserve maintenant
-            </Link>
-          </div>
-          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {[
-              { src: avantCanape, label: "Avant", sublabel: "Canapé encrassé", prestation: "Nettoyage Canapé", commune: "Toulouse" },
-              { src: apresCanape, label: "Après", sublabel: "Fibres ravivées", prestation: "Nettoyage Canapé", commune: "Toulouse" },
-              { src: avantAuto, label: "Avant", sublabel: "Habitacle très sale", prestation: "Nettoyage Auto", commune: "Blagnac" },
-              { src: apresAuto, label: "Après", sublabel: "Sièges assainis", prestation: "Nettoyage Auto", commune: "Blagnac" },
-            ].map((img, idx) => {
-              const isAfter = img.label === "Après";
-              return (
-                <figure key={idx} className="group overflow-hidden rounded-2xl shadow-[var(--shadow-card)] bg-card border border-border">
-                  <div className="relative">
-                    <img
-                      src={img.src}
-                      alt={`${img.label} — ${img.sublabel}`}
-                      loading="lazy"
-                      className="h-52 w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                    <span className={`absolute left-3 top-3 rounded-full px-3 py-1 text-xs font-bold uppercase tracking-wider ${
-                      isAfter
-                        ? "bg-primary text-primary-foreground"
-                        : "bg-black/50 text-white backdrop-blur"
-                    }`}>
-                      {img.label}
-                    </span>
-                  </div>
-                  <figcaption className="p-4">
-                    <p className="font-bold text-foreground text-sm">{img.prestation}</p>
-                    <p className="text-xs text-muted-foreground mt-1"><MapPin className="inline size-3 mr-1" /> {img.commune}</p>
-                    <p className="text-sm font-medium text-muted-foreground mt-3">{img.sublabel}</p>
-                  </figcaption>
-                </figure>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
       {/* ── ZONE + CTA ── */}
       <section className="mx-auto max-w-6xl px-4 py-20">
         <div className="grid gap-10 md:grid-cols-2 items-start">
@@ -652,7 +652,7 @@ function Index() {
                 const slug = c.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/['\s]/g, "-");
                 return (
                   <li key={c} className="rounded-full border border-border bg-card text-sm font-medium text-muted-foreground overflow-hidden">
-                    <Link to={`/nettoyage-${slug}`} className="block px-3 py-1 hover:text-primary transition-colors">
+                    <Link to={`/nettoyage-${slug}` as "/nettoyage-toulouse"} className="block px-3 py-1 hover:text-primary transition-colors">
                       {c}
                     </Link>
                   </li>

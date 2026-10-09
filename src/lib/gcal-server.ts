@@ -133,13 +133,6 @@ function getConfig() {
   const key   = process.env["GCAL_SERVICE_ACCOUNT_KEY"];
   const calId = process.env["GCAL_CALENDAR_ID"];
 
-  console.log("[GCal] getConfig →", {
-    cwd,
-    email: email ? `${email.slice(0, 20)}...` : "⚠️ MANQUANT",
-    key:   key   ? `${key.slice(0, 30)}...`   : "⚠️ MANQUANT",
-    calId: calId ? calId                       : "⚠️ MANQUANT",
-  });
-
   // Supporte les clés stockées avec des \n littéraux
   return { email, key: key?.replace(/\\n/g, "\n"), calId };
 }
@@ -231,7 +224,7 @@ function parisLocalToUtc(
  * Vérifie que le créneau (booking_date + booking_time + duration_min)
  * est encore disponible dans Google Calendar, via le service account.
  * Retourne true si libre, false si occupé.
- * Fail-open : retourne true si Google Calendar n'est pas configuré ou en cas d'erreur.
+ * Une erreur de calendrier empêche toute confirmation.
  */
 export async function checkSlotAvailable(
   booking_date: string,   // "2026-09-15"
@@ -239,7 +232,7 @@ export async function checkSlotAvailable(
   duration_min: number,
 ): Promise<boolean> {
   const { email, key, calId } = getConfig();
-  if (!email || !key || !calId) return true; // non configuré → on laisse passer
+  if (!email || !key || !calId) throw new Error("CALENDAR_UNAVAILABLE");
 
   try {
     const token = await getAccessToken(email, key);
@@ -262,13 +255,14 @@ export async function checkSlotAvailable(
       body: JSON.stringify({ timeMin, timeMax, items: [{ id: calId }] }),
     });
 
-    if (!res.ok) return true; // Fail open
+    if (!res.ok) throw new Error("CALENDAR_UNAVAILABLE");
 
     const json = (await res.json()) as {
       calendars?: Record<string, { busy?: { start: string; end: string }[] }>;
     };
     const cals = json.calendars || {};
-    const busy = cals[calId]?.busy || Object.values(cals)[0]?.busy || [];
+    const busy = cals[calId]?.busy;
+    if (!Array.isArray(busy)) throw new Error("CALENDAR_UNAVAILABLE");
 
     const BUFFER_MS = 20 * 60_000; // 20 min marge trajet
     const slotStartMs = slotStart.getTime();
@@ -286,7 +280,7 @@ export async function checkSlotAvailable(
 
     return !conflict;
   } catch {
-    return true; // Fail open
+    throw new Error("CALENDAR_UNAVAILABLE");
   }
 }
 
@@ -410,4 +404,32 @@ Accès à l’eau à proximité : ${params.auto_access.water ? "Oui" : "Non"}
 
 ❌ <a href="${params.cancel_url}">Cliquez ici pour annuler le rendez-vous</a>
 `.trim();
+}
+
+/** Vérifie le lien de gestion enregistré dans l'événement, y compris les liens existants. */
+export async function authorizeCalendarManagement(eventId: string, managementToken: string): Promise<number> {
+  if (!/^[a-v0-9]{5,1024}$/.test(eventId) || !managementToken || managementToken.length > 4096) throw new Error("INVALID_MANAGEMENT_LINK");
+  if (managementToken.includes(".")) {
+    const payload = managementToken.split(".")[0]!;
+    if (await signManagementToken(payload) !== managementToken) throw new Error("INVALID_MANAGEMENT_LINK");
+  }
+  const { email, key, calId } = getConfig();
+  if (!email || !key || !calId) throw new Error("CALENDAR_UNAVAILABLE");
+  const token = await getAccessToken(email, key);
+  const response = await fetch(`https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(calId)}/events/${encodeURIComponent(eventId)}`, { headers: { Authorization: `Bearer ${token}` } });
+  if (!response.ok) throw new Error("INVALID_MANAGEMENT_LINK");
+  const event = await response.json() as { description?: string; start?: { dateTime?: string }; end?: { dateTime?: string } };
+  const links = (event.description ?? '').matchAll(/\/annuler\?token=([^"\s<>]+)/g);
+  if (![...links].some(match => decodeURIComponent(match[1] ?? "") === managementToken)) throw new Error("INVALID_MANAGEMENT_LINK");
+  const duration = (Date.parse(event.end?.dateTime ?? "") - Date.parse(event.start?.dateTime ?? "")) / 60000;
+  if (!Number.isFinite(duration) || duration <= 0) throw new Error("INVALID_MANAGEMENT_LINK");
+  return duration;
+}
+
+export async function signManagementToken(payload: string): Promise<string> {
+  const { key } = getConfig();
+  if (!key) throw new Error("CALENDAR_UNAVAILABLE");
+  const signingKey = await crypto.subtle.importKey('raw', new TextEncoder().encode(key), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);
+  const signature = await crypto.subtle.sign('HMAC', signingKey, new TextEncoder().encode(payload));
+  return `${payload}.${base64url(signature)}`;
 }
