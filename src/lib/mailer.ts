@@ -1,5 +1,5 @@
 import nodemailer from "nodemailer";
-import { EMAIL_LOGO_BASE64 } from "./emailLogo";
+import { EMAIL_LOGO_BASE64 } from "./emailLogo.js";
 
 type MailResult = {
   success: boolean;

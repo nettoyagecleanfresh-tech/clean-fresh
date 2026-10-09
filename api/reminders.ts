@@ -1,4 +1,4 @@
-import { calendarRequest, ensureEventActions, eventClient, LIFECYCLE_START, notifyOwner, reminderDue, sendEventEmail, type ServiceEvent } from '../src/lib/calendarLifecycle';
+import { calendarRequest, ensureEventActions, eventClient, LIFECYCLE_START, notifyOwner, reminderDue, sendEventEmail, type ServiceEvent } from '../src/lib/calendarLifecycle.js';
 
 export default async function handler(request: any, response: any) {
   if (request.method !== 'GET') return response.status(405).json({error:'Method not allowed'});

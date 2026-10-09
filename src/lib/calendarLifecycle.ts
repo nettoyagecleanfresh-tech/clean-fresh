@@ -1,5 +1,5 @@
-import { getGCalAccessToken, signManagementToken } from './gcal-server';
-import { sendMailRaw } from './mailer';
+import { getGCalAccessToken, signManagementToken } from './gcal-server.js';
+import { sendMailRaw } from './mailer.js';
 
 export type ServiceEvent = {
   id?: string; status?: string; summary?: string; description?: string; location?: string; created?: string;

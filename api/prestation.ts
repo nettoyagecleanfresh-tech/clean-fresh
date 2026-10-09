@@ -1,4 +1,4 @@
-import { brandedEmail, escapeHtml, eventClient, getActionEvent, sendEventEmail } from '../src/lib/calendarLifecycle';
+import { brandedEmail, escapeHtml, eventClient, getActionEvent, sendEventEmail } from '../src/lib/calendarLifecycle.js';
 
 export default async function handler(request: any, response: any) {
   response.setHeader('Cache-Control','no-store');
