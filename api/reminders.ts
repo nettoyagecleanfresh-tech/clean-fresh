@@ -20,7 +20,8 @@ export default async function handler(request: any, response: any) {
           await ensureEventActions(event);
           // Existing appointments receive links/reminders without resending old confirmations.
           const future = Date.parse(event.start.dateTime) > now;
-          if (future && (Date.parse(event.created ?? '') >= Date.parse(LIFECYCLE_START) || event.extendedProperties?.private?.cfConfirmationPending === 'true')) {
+          const props = event.extendedProperties?.private ?? {};
+          if (future && ((Date.parse(event.created ?? '') >= Date.parse(LIFECYCLE_START) && !props.cfConfirmationStart) || props.cfConfirmationPending === 'true')) {
             await sendEventEmail(event,'confirmation');
             await notifyOwner(event);
           }
