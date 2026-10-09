@@ -1,3 +1,4 @@
+import { optionDescription } from "@/data/optionDescriptions";
 import { useState, type ReactNode } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
@@ -197,7 +198,7 @@ function MiniPriceCard({ title, price, items, badge, featured, icon }: {
   );
 }
 
-function OptionsBlock({ options }: { options: { name: string; price: number; desc: string; popular?: boolean }[] }) {
+function OptionsBlock({ options, auto = false }: { auto?: boolean; options: { name: string; price: number; desc: string; popular?: boolean }[] }) {
   return (
     <div className="mt-5 rounded-2xl border border-dashed border-border bg-secondary/30 p-5">
       <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-3">
@@ -214,7 +215,7 @@ function OptionsBlock({ options }: { options: { name: string; price: number; des
                   <span className="rounded-full bg-primary/10 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide text-primary">Populaire</span>
                 )}
               </div>
-              <p className="mt-0.5 text-xs text-muted-foreground leading-snug">{opt.desc}</p>
+              <p className="mt-0.5 text-xs text-muted-foreground leading-snug">{optionDescription(opt.name, opt.desc, auto)}</p>
             </div>
             <span className="shrink-0 font-bold text-xs text-primary whitespace-nowrap">+{opt.price} €</span>
           </div>
@@ -729,7 +730,7 @@ function AutoDetail() {
       </div>
 
       {item.options && item.options.length > 0 && (
-        <OptionsBlock options={item.options.map(o => ({...o, desc: "S'ajoute au tarif de base lors de la réservation."}))} />
+        <OptionsBlock auto options={item.options.map(o => ({...o, desc: "S'ajoute au tarif de base lors de la réservation."}))} />
       )}
     </div>
   );

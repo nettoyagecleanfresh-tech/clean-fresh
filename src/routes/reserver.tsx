@@ -1,3 +1,4 @@
+import { optionDescription } from "@/data/optionDescriptions";
 import { useEffect, useLayoutEffect, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "framer-motion";
@@ -741,7 +742,7 @@ function ReserverPage() {
   }
 
   return (
-    <div className="min-h-screen touch-pan-y bg-[#f9f9f7] pb-24 lg:pb-0">
+    <div className="min-h-screen touch-pan-y bg-[#f9f9f7] pb-40 lg:pb-0">
 
       {/* Top bar */}
       <div className="border-b border-border bg-background px-4 py-3 flex items-center justify-between">
@@ -918,7 +919,7 @@ function ReserverPage() {
                               <span className="rounded-full bg-accent/15 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-accent">Populaire</span>
                             )}
                           </div>
-                          <p className="mt-0.5 text-xs text-muted-foreground leading-relaxed">{opt.desc}</p>
+                          <p className="mt-0.5 text-xs text-muted-foreground leading-relaxed">{optionDescription(opt.name, opt.desc, service?.id === "auto" || formule?.id === "cuir-auto")}</p>
                         </div>
                         <span className="shrink-0 font-bold text-sm text-primary mt-1">+{opt.price} €</span>
                       </label>
@@ -996,7 +997,7 @@ function ReserverPage() {
                       <User className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
                       <Input id="name" required autoComplete="name" placeholder="Jean Dupont" value={form.name}
                         onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
-                        className="pl-9" />
+                        className="pl-9 text-base sm:text-sm" />
                     </div>
                   </div>
                   <div>
@@ -1005,7 +1006,7 @@ function ReserverPage() {
                       <Phone className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
                       <Input id="phone" required type="tel" autoComplete="tel" placeholder="06 12 34 56 78" value={form.phone}
                         onChange={e => setForm(f => ({ ...f, phone: e.target.value }))}
-                        className="pl-9" />
+                        className="pl-9 text-base sm:text-sm" />
                     </div>
                   </div>
                   <div>
@@ -1014,7 +1015,7 @@ function ReserverPage() {
                       <Mail className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
                       <Input id="email" required type="email" autoComplete="email" placeholder="jean@exemple.fr" value={form.email}
                         onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
-                        className="pl-9" />
+                        className="pl-9 text-base sm:text-sm" />
                     </div>
                   </div>
 
@@ -1025,7 +1026,7 @@ function ReserverPage() {
                       <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
                       <Input id="street" required autoComplete="street-address" placeholder="12 rue de la Paix" value={form.street}
                         onChange={e => setForm(f => ({ ...f, street: e.target.value }))}
-                        className="pl-9" />
+                        className="pl-9 text-base sm:text-sm" />
                     </div>
                   </div>
                   <div className="grid grid-cols-2 gap-3">
@@ -1035,7 +1036,7 @@ function ReserverPage() {
                         <Hash className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
                         <Input id="zip" required autoComplete="postal-code" placeholder="31000" value={form.zip}
                           onChange={e => setForm(f => ({ ...f, zip: e.target.value }))}
-                          className="pl-9" inputMode="numeric" maxLength={5} />
+                          className="pl-9 text-base sm:text-sm" inputMode="numeric" maxLength={5} />
                       </div>
                     </div>
                     <div>
@@ -1044,7 +1045,7 @@ function ReserverPage() {
                         <Building2 className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
                         <Input id="city" required autoComplete="address-level2" placeholder="Toulouse" value={form.city}
                           onChange={e => setForm(f => ({ ...f, city: e.target.value }))}
-                          className="pl-9" />
+                          className="pl-9 text-base sm:text-sm" />
                       </div>
                     </div>
                   </div>
@@ -1151,7 +1152,7 @@ function ReserverPage() {
 
       {/* ── FOOTER MOBILE — Steps 2 & 3 ── */}
       {step >= 2 && step < 4 && !showCategories && (
-        <div className="fixed inset-x-0 bottom-0 z-40 lg:hidden border-t border-border/60 bg-white shadow-[0_-4px_20px_rgba(0,0,0,0.08)] px-4 py-3 flex flex-col gap-2">
+        <div className="fixed inset-x-0 bottom-0 z-40 lg:hidden border-t border-border/60 bg-white shadow-[0_-4px_20px_rgba(0,0,0,0.08)] px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] flex flex-col gap-2">
 
           {/* Récap extensible */}
           {showSummaryMobile && (
@@ -1230,7 +1231,7 @@ function ReserverPage() {
 
       {/* ── FOOTER MOBILE — Step 4 ── */}
       {step === 4 && (
-        <div className="fixed inset-x-0 bottom-0 z-40 lg:hidden border-t border-border/60 bg-white shadow-[0_-4px_20px_rgba(0,0,0,0.08)] px-4 py-3 flex flex-col gap-2">
+        <div className="fixed inset-x-0 bottom-0 z-40 lg:hidden border-t border-border/60 bg-white shadow-[0_-4px_20px_rgba(0,0,0,0.08)] px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] flex flex-col gap-2">
           <div className="flex justify-between items-center text-[10px] text-muted-foreground">
             <span>💳 Paiement sur place</span>
             <span>🔓 Annulation gratuite jusqu'à 24h avant</span>

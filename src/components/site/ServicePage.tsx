@@ -1,3 +1,4 @@
+import { optionDescription } from "@/data/optionDescriptions";
 import { useState, type ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { CalendarCheck, Check, MapPin, Phone, Sparkles, ArrowRight, Clock, Shield, PawPrint, Eraser, Wind, RotateCcw, Sofa, Car as CarIcon, Star, ChevronDown } from "lucide-react";
@@ -402,7 +403,7 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
                     )}
                   </div>
                   <p className="font-bold text-sm leading-snug">{opt.name}</p>
-                  <p className="mt-1 text-xs text-muted-foreground leading-relaxed flex-1">{opt.desc}</p>
+                  <p className="mt-1 text-xs text-muted-foreground leading-relaxed flex-1">{optionDescription(opt.name, opt.desc, bookingServiceId === "auto")}</p>
                   <div className="mt-4 flex items-center justify-between border-t border-border pt-3">
                     <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Supplément</span>
                     <span className="font-bold text-primary">+{opt.price} €</span>

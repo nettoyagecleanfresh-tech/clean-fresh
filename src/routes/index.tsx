@@ -1,3 +1,4 @@
+import { RealWorkGallery, realSofaSrcSet } from "@/components/site/RealWorkGallery";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import {
@@ -30,11 +31,6 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { COMMUNES, COMPANY, SERVICES, SITE_URL, GOOGLE_REVIEW_COUNT, GOOGLE_REVIEW_RATING } from "@/data/site";
 import { ReviewsCarousel } from "@/components/site/ReviewsCarousel";
 import { FadeIn } from "@/components/ui/fade-in";
-import heroImg from "@/assets/hero-nettoyage.webp";
-import avantCanape from "@/assets/avant-canape.webp";
-import apresCanape from "@/assets/apres-canape.webp";
-import avantAuto from "@/assets/avant-auto.webp";
-import apresAuto from "@/assets/apres-auto.webp";
 
 const TITLE = "Entreprise de nettoyage à Toulouse | Clean&Fresh";
 const DESC =
@@ -53,7 +49,6 @@ export const Route = createFileRoute("/")({
     ],
     links: [
       { rel: "canonical", href: `${SITE_URL}/` },
-      { rel: "preload", as: "image", href: heroImg, type: "image/webp", fetchPriority: "high" },
     ],
     scripts: [
       {
@@ -283,8 +278,8 @@ function Index() {
 
       {/* ── HERO FULL-WIDTH ── */}
       <section
-        className="relative flex flex-col lg:min-h-[60vh] bg-cover bg-center"
-        style={{ backgroundImage: `url(${heroImg})` }}
+        className="relative isolate flex flex-col overflow-hidden bg-[#082f49] lg:min-h-[60vh]"
+        style={{ backgroundImage: "radial-gradient(ellipse at top right, #087fa2 0%, transparent 60%), linear-gradient(135deg, #071e32, #083b54)" }}
       >
         <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(10,15,30,0.60) 0%, rgba(10,15,30,0.65) 60%, rgba(10,15,30,0.85) 100%)" }} />
 
@@ -378,7 +373,7 @@ function Index() {
             </div>
 
             {/* Google badge — desktop uniquement, colonne droite */}
-            <div className="hidden w-[340px] shrink-0 flex-col gap-3 lg:relative lg:-top-16 lg:flex">
+            <div className="hidden w-[340px] shrink-0 flex-col gap-4 lg:flex">
               <a
                 href="https://www.google.com/search?q=clean+fresh+toulouse+avis"
                 target="_blank"
@@ -408,7 +403,13 @@ function Index() {
                   </div>
                 </div>
               </a>
-              <DesktopHeroReviews />
+              <figure className="overflow-hidden rounded-3xl border border-white/30 bg-white/10 p-2 shadow-2xl">
+                <picture>
+                  <source media="(min-width: 1024px)" srcSet={realSofaSrcSet} sizes="340px" />
+                  <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" width={960} height={1280} alt="Notre intervention sur un canapé : avant et après nettoyage" fetchPriority="high" decoding="async" className="h-auto w-full rounded-2xl" />
+                </picture>
+                <figcaption className="px-3 py-3 text-center text-xs font-medium text-white">Vos intérieurs. Nos interventions. Le résultat en images.</figcaption>
+              </figure>
             </div>
           </div>
         </div>
@@ -463,40 +464,7 @@ function Index() {
               <CalendarCheck className="size-4" /> Je réserve maintenant
             </Link>
           </div>
-          <div className="mt-8 grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
-            {[
-              { src: avantCanape, label: "Avant", sublabel: "Canapé encrassé", prestation: "Nettoyage Canapé", commune: "Toulouse" },
-              { src: apresCanape, label: "Après", sublabel: "Fibres ravivées", prestation: "Nettoyage Canapé", commune: "Toulouse" },
-              { src: avantAuto, label: "Avant", sublabel: "Habitacle très sale", prestation: "Nettoyage Auto", commune: "Blagnac" },
-              { src: apresAuto, label: "Après", sublabel: "Sièges assainis", prestation: "Nettoyage Auto", commune: "Blagnac" },
-            ].map((img, idx) => {
-              const isAfter = img.label === "Après";
-              return (
-                <figure key={idx} className="group overflow-hidden rounded-2xl shadow-[var(--shadow-card)] bg-card border border-border">
-                  <div className="relative">
-                    <img
-                      src={img.src}
-                      alt={`${img.label} — ${img.sublabel}`}
-                      loading="lazy"
-                      className="h-40 sm:h-60 w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                    <span className={`absolute left-3 top-3 rounded-full px-3 py-1 text-xs font-bold uppercase tracking-wider ${
-                      isAfter
-                        ? "bg-primary text-primary-foreground"
-                        : "bg-black/50 text-white backdrop-blur"
-                    }`}>
-                      {img.label}
-                    </span>
-                  </div>
-                  <figcaption className="p-3 md:p-4">
-                    <p className="font-bold text-foreground text-sm">{img.prestation}</p>
-                    <p className="text-xs text-muted-foreground mt-1"><MapPin className="inline size-3 mr-1" /> {img.commune}</p>
-                    <p className="text-sm font-medium text-muted-foreground mt-3">{img.sublabel}</p>
-                  </figcaption>
-                </figure>
-              );
-            })}
-          </div>
+          <RealWorkGallery />
         </div>
       </section>
 
