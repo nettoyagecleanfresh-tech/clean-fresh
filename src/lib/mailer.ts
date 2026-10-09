@@ -1,4 +1,5 @@
 import nodemailer from "nodemailer";
+import { EMAIL_LOGO_BASE64 } from "./emailLogo";
 
 type MailResult = {
   success: boolean;
@@ -9,6 +10,7 @@ type MailResult = {
 function htmlToText(html: string): string {
   return html
     .replace(/<style[\s\S]*?<\/style>/gi, "")
+    .replace(/<a\b[^>]*href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/gi, "$2 ($1)")
     .replace(/<br\s*[/]?>/gi, "\n")
     .replace(/<\/p>/gi, "\n\n")
     .replace(/<\/tr>/gi, "\n")
@@ -22,9 +24,11 @@ function htmlToText(html: string): string {
     .trim();
 }
 
-export async function sendMailRaw({ to, subject, html }: { to: string; subject: string; html: string }): Promise<MailResult> {
+export async function sendMailRaw({ to, subject, html, idempotencyKey }: { to: string; subject: string; html: string; idempotencyKey?: string }): Promise<MailResult> {
   const recipient = to.trim().toLowerCase();
   const text = htmlToText(html);
+  const hasLogo = /https:\/\/(?:www\.)?cleanetfresh\.fr\/logo-email\.png/.test(html);
+  if (hasLogo) html = html.replace(/https:\/\/(?:www\.)?cleanetfresh\.fr\/logo-email\.png/g, "cid:cleanfresh-logo");
   const resendApiKey = process.env.RESEND_API_KEY;
   const resendDomain = process.env.RESEND_EMAIL_DOMAIN ?? "cleanetfresh.fr";
   const gmailUser = process.env.GMAIL_USER ?? process.env.VITE_GMAIL_USER;
@@ -39,6 +43,7 @@ export async function sendMailRaw({ to, subject, html }: { to: string; subject: 
         headers: {
           Authorization: `Bearer ${resendApiKey}`,
           "Content-Type": "application/json",
+          ...(idempotencyKey ? { "Idempotency-Key": idempotencyKey } : {}),
         },
         body: JSON.stringify({
           from: `Clean&Fresh Toulouse <reservations@${resendDomain}>`,
@@ -47,6 +52,7 @@ export async function sendMailRaw({ to, subject, html }: { to: string; subject: 
           subject,
           html,
           text,
+          ...(hasLogo ? { attachments: [{ filename: "logo-cleanfresh.png", content: EMAIL_LOGO_BASE64, content_id: "cleanfresh-logo", content_type: "image/png" }] } : {}),
           headers: { "X-Auto-Response-Suppress": "OOF, AutoReply" },
         }),
       });
@@ -57,9 +63,11 @@ export async function sendMailRaw({ to, subject, html }: { to: string; subject: 
         return { success: true, messageId: result.id };
       }
 
+      if (idempotencyKey) return { success: false, error: result.message ?? `Erreur Resend ${response.status}` };
       resendError = result.message ?? `Erreur Resend ${response.status}`;
       console.error("[Resend] Échec, bascule vers Gmail :", resendError);
     } catch (err) {
+      if (idempotencyKey) return { success: false, error: "Envoi incertain — nouvelle tentative avec la même clé" };
       resendError = err instanceof Error ? err.message : String(err);
       console.error("[Resend] Erreur, bascule vers Gmail :", resendError);
     }
@@ -86,6 +94,7 @@ export async function sendMailRaw({ to, subject, html }: { to: string; subject: 
       subject,
       html,
       text,
+      attachments: hasLogo ? [{ filename: "logo-cleanfresh.png", content: Buffer.from(EMAIL_LOGO_BASE64, "base64"), cid: "cleanfresh-logo", contentDisposition: "inline" }] : [],
       headers: { "X-Auto-Response-Suppress": "OOF, AutoReply" },
       disableFileAccess: true,
       disableUrlAccess: true,
@@ -96,6 +105,7 @@ export async function sendMailRaw({ to, subject, html }: { to: string; subject: 
       accepted: info.accepted,
       rejected: info.rejected,
     });
+    if (!info.accepted?.length || info.rejected?.length) return { success: false, error: "Recipient rejected" };
     return { success: true, messageId: info.messageId };
   } catch (err) {
     const message = err instanceof Error ? err.message : String(err);

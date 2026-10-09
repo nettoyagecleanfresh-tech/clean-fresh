@@ -190,19 +190,20 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 });
 
 function RootShell({ children }: { children: ReactNode }) {
+  const privatePage = useLocation().pathname === "/envoyer-avis";
   return (
     <html lang="fr" className="overflow-x-clip w-full">
       <head>
         <HeadContent />
         {/* Google Tag — Analytics + Ads */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=GT-NBQQP8JN" />
-        <script dangerouslySetInnerHTML={{__html: `
+        {!privatePage && <script async src="https://www.googletagmanager.com/gtag/js?id=GT-NBQQP8JN" />}
+        {!privatePage && <script dangerouslySetInnerHTML={{__html: `
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
           gtag('config', 'GT-NBQQP8JN');
           gtag('config', 'AW-17507775021');
-        `}} />
+        `}} />}
       </head>
       <body className="overflow-x-clip w-full">
         {children}
@@ -259,8 +260,8 @@ function RootComponent() {
         </Suspense>
       ) : null}
       <Toaster />
-      <Analytics />
-      <SpeedInsights />
+      {location.pathname !== "/envoyer-avis" && <Analytics />}
+      {location.pathname !== "/envoyer-avis" && <SpeedInsights />}
     </QueryClientProvider>
   );
 }

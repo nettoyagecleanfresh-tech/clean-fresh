@@ -1,0 +1,65 @@
+import assert from 'node:assert/strict';
+import { generateKeyPairSync } from 'node:crypto';
+import { actionToken, brandedEmail, ensureEventActions, eventClient, getActionEvent, reminderDue, sendEventEmail, type ServiceEvent } from '../src/lib/calendarLifecycle';
+const { privateKey } = generateKeyPairSync('rsa', {modulusLength:2048});
+process.env.GCAL_SERVICE_ACCOUNT_EMAIL='test@example.com';
+process.env.GCAL_SERVICE_ACCOUNT_KEY=privateKey.export({type:'pkcs8',format:'pem'}).toString();
+process.env.GCAL_CALENDAR_ID='test';
+process.env.RESEND_API_KEY='test';
+const now = Date.now();
+const event:ServiceEvent={id:'abcde',summary:'Canapé <script>',description:'👤 Client : Zoé\n✉️ Email : zoe@example.com\n📞 Téléphone : 0600000000\n📍 Lieu : Toulouse\n🛠 PRESTATIONS :\nNettoyage canapé\n💶 TOTAL : 99 €',start:{dateTime:new Date(now+23*3600000).toISOString()},end:{dateTime:new Date(now+24*3600000).toISOString()}};
+assert.equal(eventClient(event).name,'Zoé');
+assert.equal(eventClient({...event,description:'<p>Nom : Zoé</p><p>E-mail : zoe@example.com</p>'}).email,'zoe@example.com');
+assert.equal(reminderDue(event,now),true);
+assert.equal(reminderDue({...event,start:{dateTime:new Date(now+25*3600000).toISOString()}},now),false);
+assert.equal(reminderDue({...event,start:{dateTime:new Date(now-3600000).toISOString()}},now),false);
+assert.equal(reminderDue({...event,extendedProperties:{private:{cfReminderStart:event.start!.dateTime!}}},now),false);
+assert.equal(reminderDue({...event,extendedProperties:{private:{cfReminderStart:'old slot'}}},now),true);
+let mails:any[]=[]; let fail=false;
+globalThis.fetch = async (url:any,init?:RequestInit) => {
+  if (String(url).includes('oauth2.googleapis.com')) return Response.json({access_token:'test'});
+  if (String(url).includes('api.resend.com')) {
+    const body=JSON.parse(String(init?.body));
+    mails.push(body);
+    return fail ? Response.json({message:'failure'},{status:500}) : Response.json({id:'sent'});
+  }
+  if (String(url).includes('googleapis.com/calendar')) {
+    if (init?.method==='PATCH') Object.assign(event,JSON.parse(String(init.body)));
+    return Response.json(event);
+  }
+  throw new Error('Unexpected request');
+};
+await ensureEventActions(event);
+assert.match(event.description!,/Envoyer une demande/);
+assert.doesNotMatch(event.description!,/Confirmer un acompte/);
+const description=event.description;
+await ensureEventActions(event);
+assert.equal(event.description,description);
+const token=await actionToken(event.id!);
+assert.equal((await getActionEvent(token)).id,event.id);
+await assert.rejects(getActionEvent(token+'x'),/INVALID_LINK/);
+await assert.rejects(getActionEvent(token,'deposit'),/INVALID_LINK/);
+assert.equal((await getActionEvent(await actionToken(event.id!,'deposit'),'deposit')).id,event.id);
+await sendEventEmail(event,'confirmation');
+assert.equal(mails.length,1);
+assert.match(mails[0].html,/cid:cleanfresh-logo/);
+assert.equal(mails[0].attachments[0].content_id,'cleanfresh-logo');
+assert.doesNotMatch(mails[0].html,/<script>/);
+assert.doesNotMatch(mails[0].html,/prestation-review/);
+await sendEventEmail(event,'confirmation');
+assert.equal(mails.length,1);
+fail=true;
+await assert.rejects(sendEventEmail(event,'reminder'),/EMAIL_SEND_FAILED/);
+assert.equal(event.extendedProperties?.private?.cfReminderStart,undefined);
+fail=false;
+await sendEventEmail(event,'reminder');
+assert.equal(event.extendedProperties?.private?.cfReminderStart,event.start!.dateTime);
+await assert.rejects(sendEventEmail(event,'review'),/PRESTATION_NOT_FINISHED/);
+event.start!.dateTime=new Date(now-7200000).toISOString();event.end!.dateTime=new Date(now-3600000).toISOString();
+await sendEventEmail(event,'review');
+const count=mails.length;
+await sendEventEmail(event,'review');
+assert.equal(mails.length,count);
+assert.match(mails.at(-1).html,/g.page/);
+assert.match(brandedEmail('Test','OK'),/logo-email.png/);
+console.log('Calendar lifecycle checks passed: client extraction, J-1 timing, rescheduling, signed actions, private deposit link, logo CID, escaping, failures and duplicate suppression.');

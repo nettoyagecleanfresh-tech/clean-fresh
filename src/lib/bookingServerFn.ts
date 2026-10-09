@@ -11,6 +11,8 @@ import { z } from "zod";
 import { SERVICES } from "@/data/bookingCatalogue";
 import { signManagementToken, createCalendarEvent, buildEventDescription, checkSlotAvailable } from "@/lib/gcal-server";
 
+import { ensureEventActions, notifyOwner, sendEventEmail } from "./calendarLifecycle";
+
 // ─── Schéma de validation ────────────────────────────────────────────────────
 
 export const BookingInputSchema = z.object({
@@ -44,6 +46,7 @@ export type BookingResult = {
   gcal_event_id: string | null;
   cancel_token: string;
   error?: string;
+  emailSent?: boolean;
 };
 
 // ─── Server Function ─────────────────────────────────────────────────────────
@@ -179,6 +182,7 @@ export const createBookingServerFn = createServerFn({ method: "POST" })
       const summaryTitle = data.items.length > 1 ? `${firstItem?.formule_name} + ${data.items.length - 1} autre(s)` : firstItem?.formule_name;
       
       const gcalEvent = {
+        extendedProperties: { private: { cfConfirmationPending: "true" } },
         id: data.gcal_event_id,
         summary: `${emoji} ${summaryTitle} — ${data.client_name}`,
         description,
@@ -204,8 +208,18 @@ export const createBookingServerFn = createServerFn({ method: "POST" })
       const gcal_event_id = await createCalendarEvent(gcalEvent);
 
       if (!gcal_event_id) throw new Error("CALENDAR_UNAVAILABLE");
+      let emailSent = false;
+      try {
+        await ensureEventActions(gcalEvent);
+        await sendEventEmail(gcalEvent, 'confirmation');
+        emailSent = true;
+        await notifyOwner(gcalEvent);
+      } catch (error) {
+        console.error('[booking] Email pending; scheduled retry', error instanceof Error ? error.message : 'unknown');
+      }
       return {
         success: true,
+        emailSent,
         gcal_event_id,
         cancel_token: data.cancel_token,
       };

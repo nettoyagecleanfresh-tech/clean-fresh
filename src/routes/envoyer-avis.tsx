@@ -6,6 +6,7 @@ import { sendReviewRequestServerFn } from "@/lib/reviewRequestServerFn";
 
 export const Route = createFileRoute("/envoyer-avis")({
   validateSearch: (search: Record<string, unknown>) => ({
+    token: (search["token"] as string) ?? "",
     n: (search["n"] as string) ?? "",   // client_name
     e: (search["e"] as string) ?? "",   // client_email
     f: (search["f"] as string) ?? "",   // formule
@@ -15,13 +16,14 @@ export const Route = createFileRoute("/envoyer-avis")({
     meta: [
       { title: "Envoyer une demande d'avis — Admin Clean&Fresh" },
       { name: "robots", content: "noindex, nofollow" },
+      { name: "referrer", content: "no-referrer" },
     ],
   }),
   component: EnvoyerAvisPage,
 });
 
 function EnvoyerAvisPage() {
-  const { n, e, f, d } = Route.useSearch();
+  const { n, e, f, d, token } = Route.useSearch();
 
   const [status, setStatus] = useState<"idle" | "sending" | "done" | "error">("idle");
   const [confirmed, setConfirmed] = useState(false);
@@ -41,14 +43,14 @@ function EnvoyerAvisPage() {
   })();
 
   // Validation : si le lien est mal formé, afficher une erreur
-  const isValid = n && e && e.includes("@") && f;
+  const isValid = token && n && e && e.includes("@") && f;
 
   const handleSend = async () => {
-    if (!isValid || status !== "idle") return;
+    if (!isValid || !confirmed || status === "sending" || status === "done") return;
     setStatus("sending");
     try {
       await sendReviewRequestServerFn({
-        data: { client_name: n, client_email: e, formule: f, booking_date: d },
+        data: { client_name: n, client_email: e, formule: f, booking_date: d, token },
       });
       setStatus("done");
     } catch {
@@ -117,7 +119,7 @@ function EnvoyerAvisPage() {
               Email envoyé ! ✅
             </h1>
             <p style={{ fontSize: "15px", color: "#5b7b8e", lineHeight: "24px", margin: "0 0 8px" }}>
-              <strong style={{ color: "#0f2c3f" }}>{n}</strong> vient de recevoir votre demande d'avis à :<br/>
+              <strong style={{ color: "#0f2c3f" }}>{n}</strong> a une demande d'avis transmise à :<br/>
               <strong style={{ color: "#0093cc" }}>{e}</strong>
             </p>
             <p style={{ fontSize: "13px", color: "#92b4c5", marginTop: "16px" }}>
@@ -217,7 +219,7 @@ function EnvoyerAvisPage() {
                   gap: "10px",
                 }}>
                   <AlertCircle size={16} />
-                  Erreur lors de l'envoi. Vérifiez la connexion ou réessayez.
+                  Envoi non confirmé. La prestation doit être terminée. Sinon, réessayez depuis le lien de votre agenda.
                 </div>
               )}
 

@@ -3,7 +3,6 @@ import { SERVICES, type CartItem, type ServiceDef, type Formule } from '@/data/b
 import { optionDescription } from '@/data/optionDescriptions';
 import { fetchBusySlots, buildSlots } from '@/lib/gcal';
 import { createBookingServerFn } from '@/lib/bookingServerFn';
-import { sendBookingEmailsFn } from '@/lib/emailServerFns';
 import { bookingTotals, bookingItems, confirmAssistantBooking } from '@/lib/assistantBooking';
 import { answerCustomer } from '@/lib/chatAssistant';
 
@@ -97,7 +96,7 @@ export function ChatBooking({ onBusy }: { onBusy: (busy: boolean) => void }) {
         client_email: details.email.trim(), client_street: details.street.trim(), client_zip: details.zip.trim(), client_city: details.city.trim(),
         auto_access: hasAuto ? { electricity: access.electricity === 'yes', water: access.water === 'yes' } : undefined,
         gcal_event_id: eventId.current, cancel_token: 'pending',
-      }, { create: createBookingServerFn, email: sendBookingEmailsFn });
+      }, { create: createBookingServerFn });
       if (result.error === 'SLOT_TAKEN') {
         setTime(''); setStage('date'); setRefresh(v => v + 1);
         setError('Ce créneau vient de devenir indisponible. Choisissez un autre horaire ou recherchez le prochain créneau compatible.');

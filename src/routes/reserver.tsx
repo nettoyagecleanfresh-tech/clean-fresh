@@ -15,7 +15,6 @@ import { COMPANY } from "@/data/site";
 import { fetchBusySlots, buildSlots } from "@/lib/gcal";
 import { CalendarPicker } from "@/components/CalendarPicker";
 import { TimeSlotPicker } from "@/components/TimeSlotPicker";
-import { sendBookingEmailsFn } from "@/lib/emailServerFns";
 import { createBookingServerFn } from "@/lib/bookingServerFn";
 import { BookingAvailabilityBanner } from "@/components/BookingAvailabilityBanner";
 import { readPreferredSlot, savePreferredSlot } from "@/lib/preferredSlot";
@@ -493,6 +492,7 @@ function ReserverPage() {
       }
       gcalId = serverResult.gcal_event_id;
       serverCancelToken = serverResult.cancel_token;
+      setEmailSent(serverResult.emailSent === true);
       if (gcalId) setGcalEventId(gcalId);
     } catch (gcalErr) {
       console.error("[GCal] Erreur création calendrier :", gcalErr);
@@ -503,29 +503,6 @@ function ReserverPage() {
 
     const finalGcalId = gcalId;
     const finalCancelToken = serverCancelToken;
-
-    const cancelUrl = `${siteUrl}/annuler?token=${encodeURIComponent(finalCancelToken)}`;
-
-    try {
-      await sendBookingEmailsFn({
-        data: {
-          items: mappedItems,
-        total_price:  total,
-        booking_date: bookingDate,
-        booking_time: selectedTime,
-        client_name:  form.name,
-        client_phone: form.phone,
-        client_email: form.email,
-        client_street: form.street,
-        client_zip:   form.zip,
-        client_city:  form.city,
-        cancel_url:   cancelUrl,
-        }
-      });
-      setEmailSent(true);
-    } catch (emailErr) {
-      console.error("[Email] Erreur envoi email :", emailErr);
-    }
 
     setCancelToken(finalCancelToken);
     savePreferredSlot(null);
