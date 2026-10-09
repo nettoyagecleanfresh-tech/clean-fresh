@@ -671,6 +671,30 @@ function AutoDetail() {
         })}
       </div>
 
+      <details className="mb-6 rounded-2xl border border-primary/15 bg-white p-4 sm:p-5">
+        <summary className="cursor-pointer text-sm font-semibold text-primary">Comparer les packs Bronze, Argent et Or</summary>
+        <table className="mt-4 w-full text-left text-xs sm:text-sm">
+          <caption className="sr-only">Prestations incluses dans chaque pack de nettoyage auto</caption>
+          <thead><tr className="border-b border-border">
+            <th scope="col" className="py-3 pr-2 font-medium">Inclus</th>
+            {AUTO_PACKS.filter(pack => pack.id !== "siege").map(pack => <th key={pack.id} scope="col" className="px-1 py-3 text-center text-primary">{pack.name.replace("Pack ", "")}<span className="mt-1 block font-normal">{pack.price}</span></th>)}
+          </tr></thead>
+          <tbody>
+            {[
+              ["Aspiration et plastiques", "Oui", "Oui", "Oui"],
+              ["Nettoyage des sièges", "Option", "Oui", "Oui"],
+              ["Vitres intérieures", "Option", "Oui", "Oui"],
+              ["Shampouinage moquettes et tapis", "Non", "Non", "Oui"],
+              ["Contours de portes et coffre", "Non", "Non", "Oui"],
+            ].map(([label, ...values]) => <tr key={label} className="border-b border-border/50 last:border-0">
+              <th scope="row" className="py-3 pr-2 font-normal text-muted-foreground">{label}</th>
+              {values.map((value, index) => <td key={index} className="px-1 py-3 text-center font-medium">{value}</td>)}
+            </tr>)}
+          </tbody>
+        </table>
+        <p className="mt-3 text-xs text-muted-foreground">Les options sont facturées en supplément et ne prolongent pas la durée de la prestation.</p>
+      </details>
+
       {/* Detail panel */}
       <div className="rounded-[24px] border border-primary/10 bg-white p-7 shadow-lg">
         <div className="flex flex-col sm:flex-row sm:items-start gap-8">

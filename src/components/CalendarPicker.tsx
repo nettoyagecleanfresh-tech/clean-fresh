@@ -145,6 +145,8 @@ export function CalendarPicker({
           return (
             <button
               key={day}
+              aria-pressed={sel}
+              aria-label={new Date(viewYear, viewMonth, day).toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long", year: "numeric" })}
               disabled={disabled}
               onClick={() => onSelect(new Date(viewYear, viewMonth, day))}
               className={`

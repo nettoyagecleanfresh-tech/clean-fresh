@@ -42,6 +42,7 @@ export function TimeSlotPicker({
           {slots.map(slot => (
             <button
               key={slot.time}
+              aria-pressed={selected === slot.time}
               disabled={!slot.available}
               onClick={() => onSelect(slot.time)}
               className={`
