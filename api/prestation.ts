@@ -18,7 +18,7 @@ export default async function handler(request: any, response: any) {
     }
     return response.status(200).send(brandedEmail('Confirmer un acompte reçu',`<p>${escapeHtml(c.name)} — ${escapeHtml(event.summary ?? '')}</p><p>À utiliser uniquement pour une prestation sur devis, après vérification du paiement sur votre compte.</p><form method="post"><label>Montant reçu (€)<br><input name="amount" type="number" min="0.01" max="100000" step="0.01" required></label><p><label><input type="checkbox" name="confirmed" value="yes" required> Je confirme avoir réellement reçu cet acompte.</label></p><button type="submit" style="padding:16px;background:#00b8ff;border:0;border-radius:8px">Envoyer la confirmation au client</button></form>`));
   } catch (error) {
-    const message = error instanceof Error && error.message.startsWith('Montant') ? error.message : 'Le lien est invalide, le rendez-vous est annulé ou l’envoi a échoué. Aucun envoi n’est confirmé. Réessayez depuis Google Agenda.';
+    const message = error instanceof Error && error.message === 'INVALID_DEPOSIT_AMOUNT' ? 'Le montant reçu doit être positif et ne peut pas dépasser le total indiqué.' : error instanceof Error && error.message === 'DEPOSIT_ALREADY_RECORDED' ? 'Un acompte différent est déjà enregistré. Vérifiez le règlement existant avant de le modifier ; aucun nouvel envoi n’est confirmé.' : error instanceof Error && error.message.startsWith('Montant') ? error.message : 'Le lien est invalide, le rendez-vous est annulé ou l’envoi a échoué. Aucun envoi n’est confirmé. Réessayez depuis Google Agenda.';
     return response.status(400).send(brandedEmail('Action non confirmée',`<p>${escapeHtml(message)}</p>`));
   }
 }

@@ -1,3 +1,4 @@
+import { useBookingMetrics, bookingMetric } from "@/lib/bookingMetrics";
 import { optionDescription } from "@/data/optionDescriptions";
 import { useEffect, useLayoutEffect, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
@@ -290,6 +291,7 @@ function ReserverPage() {
   const [cancelToken, setCancelToken] = useState<string>("");
   const [gcalEventId, setGcalEventId] = useState<string | null>(null);
   const [showSummaryMobile, setShowSummaryMobile] = useState(false);
+  useBookingMetrics("form", done ? "done" : step === 1 ? (showCategories ? "service" : "formula") : step === 2 ? "options" : step === 3 ? "date" : "details");
 
   useLayoutEffect(() => {
     const root = document.documentElement;
@@ -478,6 +480,7 @@ function ReserverPage() {
 
       // Créneau déjà pris → retour étape 3 avec message d'erreur
       if (serverResult?.error === "SLOT_TAKEN") {
+        bookingMetric("booking_error", "form", "date");
         setSlotTaken(true);
         setSelectedTime(null);
         setStep(3);
@@ -486,6 +489,7 @@ function ReserverPage() {
       }
 
       if (!serverResult.success || !serverResult.gcal_event_id) {
+        bookingMetric("booking_error", "form", "details");
         setBookingError("Votre réservation n’a pas été confirmée. Veuillez réessayer ou nous appeler au 07 67 12 75 00.");
         setSubmitting(false);
         return;
@@ -496,6 +500,7 @@ function ReserverPage() {
       if (gcalId) setGcalEventId(gcalId);
     } catch (gcalErr) {
       console.error("[GCal] Erreur création calendrier :", gcalErr);
+      bookingMetric("booking_error", "form", "details");
       setBookingError("Impossible de confirmer votre réservation pour le moment. Réessayez ou contactez-nous.");
       setSubmitting(false);
       return;

@@ -1,3 +1,4 @@
+import { useBookingMetrics, bookingMetric } from "@/lib/bookingMetrics";
 import { useEffect, useRef, useState } from 'react';
 import { SERVICES, type CartItem, type ServiceDef, type Formule } from '@/data/bookingCatalogue';
 import { optionDescription } from '@/data/optionDescriptions';
@@ -22,6 +23,7 @@ const primary = 'w-full rounded-xl bg-primary px-3 py-3 text-sm font-semibold te
 
 export function ChatBooking({ onBusy }: { onBusy: (busy: boolean) => void }) {
   const [stage, setStage] = useState<Stage>('service');
+  useBookingMetrics('assistant', stage);
   const [service, setService] = useState<ServiceDef>();
   const [formula, setFormula] = useState<Formule>();
   const [options, setOptions] = useState<string[]>([]);
@@ -98,6 +100,7 @@ export function ChatBooking({ onBusy }: { onBusy: (busy: boolean) => void }) {
         gcal_event_id: eventId.current, cancel_token: 'pending',
       }, { create: createBookingServerFn });
       if (result.error === 'SLOT_TAKEN') {
+        bookingMetric('booking_error', 'assistant', 'date');
         setTime(''); setStage('date'); setRefresh(v => v + 1);
         setError('Ce créneau vient de devenir indisponible. Choisissez un autre horaire ou recherchez le prochain créneau compatible.');
       } else if (!result.success || !result.gcal_event_id) {

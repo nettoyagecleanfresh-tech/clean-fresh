@@ -3,7 +3,7 @@ const ChatBooking = lazy(() => import('./ChatBooking').then(m => ({ default: m.C
 import { useState, useRef, useEffect } from 'react';
 import { MessageCircle, X, Send, RotateCcw } from 'lucide-react';
 import { Link } from '@tanstack/react-router';
-import { answerCustomer, welcome, type ChatReply } from '@/lib/chatAssistant';
+import { answerCustomer, shouldStartBooking, welcome, type ChatReply } from '@/lib/chatAssistant';
 
 type Message = ChatReply & { sender: 'bot' | 'user'; id: number };
 export function Chatbot() {
@@ -29,7 +29,7 @@ export function Chatbot() {
   const send = (raw: string) => {
     const text = raw.trim().slice(0, 1500);
     if (!text) return;
-    if (!/annul|report|modifi|decal|décal/i.test(text) && /r[eé]serv|rendez.vous|cr[eé]neau|disponibil/i.test(text)) { setBookingStarted(true); setBooking(true); setInput(''); return; }
+    if (shouldStartBooking(text, service)) { setBookingStarted(true); setBooking(true); setInput(''); return; }
     const response = answerCustomer(text, service);
     setService(response.service);
     const id = nextId.current; nextId.current += 2;

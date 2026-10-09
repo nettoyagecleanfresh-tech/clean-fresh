@@ -182,7 +182,7 @@ export const createBookingServerFn = createServerFn({ method: "POST" })
       const summaryTitle = data.items.length > 1 ? `${firstItem?.formule_name} + ${data.items.length - 1} autre(s)` : firstItem?.formule_name;
       
       const gcalEvent = {
-        extendedProperties: { private: { cfConfirmationPending: "true" } },
+        extendedProperties: { private: { cfConfirmationPending: "true", cfTotalPrice: String(data.total_price), cfPaymentAtEnd: "true" } },
         id: data.gcal_event_id,
         summary: `${emoji} ${summaryTitle} — ${data.client_name}`,
         description,

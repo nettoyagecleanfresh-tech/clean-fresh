@@ -1,5 +1,6 @@
 import { getGCalAccessToken, signManagementToken } from './gcal-server.js';
 import { sendMailRaw } from './mailer.js';
+import { euroCents, reservationAmounts, formatEuros } from './reservationSummary.js';
 
 export type ServiceEvent = {
   id?: string; status?: string; summary?: string; description?: string; location?: string; created?: string;
@@ -59,12 +60,20 @@ export async function ensureEventActions(event: ServiceEvent) {
   const links = await eventLinks(event);
   await patchEvent(event, {}, `${event.description ?? ''}\n\n<div data-cleanfresh-actions="v1"><b>GESTION CLEAN&amp;FRESH — liens privés</b><br><a href="${escapeHtml(links.review)}">⭐ Envoyer une demande d’avis</a></div>`);
 }
-function details(event: ServiceEvent) {
+function details(event: ServiceEvent, received?: string) {
   const c = eventClient(event);
   const date = new Date(event.start?.dateTime ?? '');
   const when = date.toLocaleString('fr-FR', {timeZone:'Europe/Paris',dateStyle:'full',timeStyle:'short'});
-  const services = c.plain.split(/GESTION CLEAN/)[0]?.split(/❌/)[0]?.trim() ?? '';
-  return `<p>Bonjour ${escapeHtml(c.name)},</p><p><strong>${escapeHtml(event.summary ?? 'Votre prestation')}</strong><br>${escapeHtml(when)}<br>${escapeHtml(c.address)}</p><p style="white-space:pre-line">${escapeHtml(services)}</p>`;
+  const amounts = reservationAmounts(c.plain, event.extendedProperties?.private, received);
+  // Keep only the labelled service/access block, never internal notes or owner actions.
+  const serviceBlock = c.plain.match(/PRESTATIONS\s*:\s*([\s\S]*?)(?=💶|(?:^|\n)[^\p{L}\n]*TOTAL\s*:|❌|GESTION CLEAN|$)/iu)?.[1]?.trim();
+  const rows = [
+    ['Date et heure', when], ['Lieu d’intervention', c.address],
+    ...(amounts.total === null ? [] : [['Montant total', formatEuros(amounts.total)]]),
+    ...(amounts.deposit === null ? [] : [['Acompte reçu', formatEuros(amounts.deposit)]]),
+    ...(amounts.balance === null ? [] : [['Reste à régler', formatEuros(amounts.balance)]]),
+  ].map(([label, value]) => `<tr><td style="padding:10px;border-bottom:1px solid #dbe7ef">${escapeHtml(label!)}</td><td style="padding:10px;border-bottom:1px solid #dbe7ef;font-weight:bold">${escapeHtml(value!)}</td></tr>`).join('');
+  return `<p>Bonjour ${escapeHtml(c.name)},</p><h2 style="font-size:18px">${escapeHtml(event.summary ?? 'Votre prestation')}</h2><table role="presentation" style="width:100%;border-collapse:collapse;background:#f3f8fb">${rows}</table>${serviceBlock ? `<h2 style="font-size:17px">Prestations et options</h2><p style="white-space:pre-line">${escapeHtml(serviceBlock)}</p>` : ''}<p>${amounts.total === null ? 'Le montant et les modalités de règlement sont ceux de votre devis accepté.' : amounts.balance === null ? 'Les paiements déjà reçus et le solde seront confirmés selon votre devis.' : 'Règlement du solde à la fin de la prestation.'}</p>`;
 }
 export async function sendEventEmail(event: ServiceEvent, kind: 'confirmation'|'reminder'|'deposit'|'review', amount?: string) {
   const c = eventClient(event);
@@ -72,11 +81,17 @@ export async function sendEventEmail(event: ServiceEvent, kind: 'confirmation'|'
   const start = event.start.dateTime;
   const props = event.extendedProperties?.private ?? {};
   const marker = {confirmation:'cfConfirmationStart',reminder:'cfReminderStart',deposit:'cfDepositReceipt',review:'cfReviewSent'}[kind];
+  if (kind === 'deposit') {
+    const cents = euroCents(amount);
+    const total = reservationAmounts(c.plain, props).total;
+    if (cents === null || cents <= 0 || (total !== null && cents > total)) throw new Error('INVALID_DEPOSIT_AMOUNT');
+    if (props.cfDepositReceipt && props.cfDepositReceipt !== amount) throw new Error('DEPOSIT_ALREADY_RECORDED');
+  }
   const value = kind === 'deposit' ? (amount ?? '') : kind === 'review' ? 'sent' : start;
   if (props[marker] === value) return {success:true,alreadySent:true};
   if (kind === 'review' && Date.parse(event.end?.dateTime ?? start) > Date.now()) throw new Error('PRESTATION_NOT_FINISHED');
   const title = {confirmation:'Votre rendez-vous est confirmé',reminder:'Rappel de votre rendez-vous',deposit:'Votre acompte a bien été reçu',review:'Votre avis nous est précieux'}[kind];
-  let content = details(event);
+  let content = details(event, kind === 'deposit' ? amount : undefined);
   const managementUrl = (event.description ?? '').match(/https:\/\/(?:www\.)?cleanetfresh\.fr\/annuler\?token=[^"'<>\s]+/)?.[0];
   if (managementUrl && kind !== 'review') content += `<p><a href="${escapeHtml(managementUrl.replace(/&amp;/g,'&'))}">Gérer mon rendez-vous</a></p>`;
   if (kind === 'confirmation') content += '<p>Votre prestation est bien enregistrée dans notre agenda. Un rappel vous sera envoyé avant notre passage.</p>';

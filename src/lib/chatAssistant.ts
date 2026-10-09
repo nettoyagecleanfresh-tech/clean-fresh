@@ -6,7 +6,7 @@ const aliases = [
   ['canape', 'canap|fauteuil|sofa|divan|pouf'], ['matelas', 'matela|literie'],
   ['moquette', 'moquette'], ['tapis', 'tapis'], ['cuir', 'cuir'],
   ['auto', 'voiture|vehicule|auto|siege|bronze|argent|pack or'],
-  ['vitres', 'vitre|vitrage|fenetre|baie'], ['fin-de-bail', 'fin de bail|etat des lieux|demenag'],
+  ['vitres', 'vitre|vitrage|fenetre|baie|veranda'], ['fin-de-bail', 'fin de bail|etat des lieux|demenag'],
   ['fin-de-chantier', 'chantier|travaux'], ['diogene', 'diogene'], ['extreme', 'insalubre|extreme'],
   ['terrasse', 'terrasse'], ['toiture', 'toiture|toit'], ['facade', 'facade'],
   ['dappartement-ou-maison', 'appartement|maison|menage'],
@@ -19,20 +19,30 @@ export const welcome: ChatReply = {
   suggestions: ['Réserver avec l’assistant', 'Canapé', 'Auto', 'Matelas', 'Tapis', 'Moquette', 'Demander un devis'],
 };
 
+export function shouldStartBooking(query: string, previousService?: string) {
+  const q = normalize(query);
+  if (/annul|report|modifi|decal|devis/.test(q)) return false;
+  const quoteService = aliases.some(([key, pattern]) => !['canape','matelas','tapis','moquette','cuir','auto'].includes(key) && new RegExp(pattern).test(q));
+  const explicitBookingService = aliases.some(([key, pattern]) => ['canape','matelas','tapis','moquette','cuir','auto'].includes(key) && new RegExp(pattern).test(q));
+  if (quoteService || (!explicitBookingService && SERVICES.some(s => s.slug === previousService && !s.booking))) return false;
+  return /reserv|rendez.vous|creneau|disponibil/.test(q);
+}
+
 export function answerCustomer(query: string, previousService?: string): ChatReply {
   const q = normalize(query).slice(0, 1500);
   const hits = aliases.filter(([, pattern]) => new RegExp(pattern).test(q));
-  const key = hits[0]?.[0];
-  const current = key ? SERVICES.find(s => key === 'auto' ? s.slug.includes('nettoyage-auto-') : s.slug.includes(`nettoyage-${key}`)) : SERVICES.find(s => s.slug === previousService);
+  const key = hits.find(([key]) => key === 'cuir')?.[0] ?? hits[0]?.[0];
+  const current = key ? SERVICES.find(s => key === 'auto' ? s.slug.includes('nettoyage-auto-') : key === 'vitres' ? s.slug.includes('nettoyage-de-vitres') : key === 'fin-de-chantier' ? s.slug.includes('nettoyage-de-fin-de-chantier') : s.slug.includes(`nettoyage-${key}`)) : SERVICES.find(s => s.slug === previousService);
   const service = current?.slug;
   const reply = (text: string, extra: Omit<ChatReply, 'text' | 'service'> = {}): ChatReply => ({ text, service, ...extra });
   const actions = current?.booking ? [booking] : [contact];
   if (/annul|reporter|decaler|modifier.*(rdv|rendez|reservation)/.test(q)) return reply('Pour annuler, utilisez le lien de votre email de confirmation. Pour déplacer un rendez-vous ou si vous ne retrouvez pas cet email, contactez-nous. Je ne peux pas modifier votre réservation depuis ce chat.', { actions: [phone, contact] });
   if (/humain|conseiller|rappel|appeler|telephone|contact|reclamation/.test(q)) return reply(`Vous pouvez joindre Clean&Fresh au ${COMPANY.phone} ou envoyer votre demande via le formulaire de contact. Aucun message n’a encore été envoyé depuis ce chat.`, { actions: [phone, contact] });
-  if (/disponib|creneau|demain|aujourd|rendez.vous|reserver/.test(q)) return reply('Les disponibilités réelles sont affichées dans le calendrier de réservation. Le bouton « Réserver ce créneau » mémorise le prochain créneau proposé ; la réservation est créée uniquement après votre confirmation finale. Je ne bloque aucun créneau depuis le chat.', { actions: [booking] });
+  if ((current && !current.booking) || /devis/.test(q)) return reply(`Pour ${current ? current.short.toLowerCase() : 'votre prestation sur devis'}, préparez :\n• Photos des zones à nettoyer et surface en m².\n• État actuel et détails souhaités : sols, vitres, cuisine, sanitaires, etc.\n• Adresse d’intervention et date souhaitée.\n• Accès à l’eau et à l’électricité.\n• Nom, téléphone et email.\n\nTransmettez ces informations via le formulaire. Pour les prestations sur devis, un acompte de 50 % est demandé ; le créneau est confirmé après réception, sauf accord particulier. Aucun devis ni rendez-vous n’est créé par cette réponse.`, { actions: [contact, phone] });
+  if (/disponib|creneau|demain|aujourd|rendez.vous|reserver/.test(q)) return reply('Les disponibilités réelles sont affichées dans le calendrier de réservation. Le bouton « Réserver ce créneau » mémorise le prochain créneau proposé ; la réservation est créée uniquement après votre confirmation finale. Vous pouvez aussi utiliser « Réserver avec l’assistant » : le créneau est créé après votre confirmation finale.', { actions: [booking] });
   if (/prise|electric|\beau\b/.test(q)) return reply('Pour le nettoyage auto, indiquez à la finalisation si une prise électrique est disponible à moins de 60 m du véhicule et si vous avez accès à l’eau à proximité. Si un accès manque, contactez-nous pour vérifier les possibilités avant l’intervention.', { actions: [booking, phone] });
   if (/sech|humide|utiliser.*apres/.test(q)) return reply('Les textiles peuvent rester humides après le nettoyage. Le séchage dépend de la matière, de la ventilation et de la température ; prévoyez plusieurs heures. Pour la moquette, le site indique généralement 2 à 5 heures. Attendez le séchage complet avant réutilisation.', { actions });
-  if (/pai|acompte|reglement/.test(q)) return reply('Pour les prestations réservables en ligne, aucun paiement n’est demandé sur le site : le règlement se fait à la fin de la prestation. Pour un chantier sur devis, les modalités sont précisées dans le devis.', { actions: [booking, contact] });
+  if (/pai|acompte|reglement/.test(q)) return reply('Pour les prestations réservables en ligne, aucun paiement n’est demandé sur le site : le règlement se fait à la fin de la prestation. Pour les prestations sur devis, un acompte de 50 % est demandé et le créneau est confirmé après réception, sauf accord particulier. Le solde et les modalités figurent dans le devis.', { actions: [booking, contact] });
   if (/deplac|zone|distance|intervenez|commune/.test(q) || COMMUNES.some(c => q.includes(normalize(c)))) return reply(`Nous intervenons à Toulouse et dans son agglomération. Déplacement offert jusqu’à ${DISPLACEMENT_RULES.freeKm} km, puis 10 € de 21 à 34 km et 20 € de 35 à 49 km. Pour une adresse éloignée ou un doute sur la distance, faites confirmer les frais avant de réserver.`, { actions: [booking, contact] });
   if (/avis|note google/.test(q)) return reply(`Le site affiche ${GOOGLE_REVIEW_COUNT} avis Google et une note de ${String(GOOGLE_REVIEW_RATING).replace('.', ',')}/5.`, { actions: [booking] });
   if (/vapeur|acari|bacter|desinfect|assain/.test(q)) return reply('Le traitement anti-acariens et bactérien utilise une vapeur professionnelle puissante pour assainir par la chaleur les textiles et surfaces compatibles. Pour l’auto : plastiques et coffre entier, puis sièges, moquettes et ciel de toit selon le pack et les options. Le passage est adapté au revêtement. Les options ne prolongent pas la durée.', { actions: [booking], suggestions: ['Réserver avec l’assistant', 'Quelles options ?'] });
