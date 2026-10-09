@@ -14,10 +14,10 @@ import { sendMailRaw } from "@/lib/mailer";
 
 // ─── Tips par service ─────────────────────────────────────────────────────────
 const SERVICE_TIP: Record<string, string> = {
-  auto:    "🚗 Pensez à vider un maximum de vos effets personnels du véhicule avant notre passage. Cela permet de traiter chaque recoin efficacement.",
-  canape:  "🛋️ Si votre canapé présente des tâches importantes (vin, sang, encre…), notre technicien pourra proposer un traitement détachage intensif sur place (+19 € selon l'intensité).",
-  matelas: "🛏️ Si votre matelas présente des auréoles ou tâches prononcées, notre technicien pourra proposer un traitement intensif sur place (+19 € selon l'intensité).",
-  tapis:   "🧶 Veillez à dégager l'espace autour du tapis pour faciliter l'intervention de notre technicien.",
+  auto:    "🚗 Pensez à vider vos effets personnels du véhicule avant notre passage afin que nous puissions nettoyer chaque recoin efficacement.",
+  canape:  "🛋️ Merci de dégager la zone autour du canapé et de prévoir suffisamment de place pour permettre l'installation du matériel et faciliter l'intervention.",
+  matelas: "🛏️ Merci de dégager la zone autour du matelas et de prévoir suffisamment de place pour permettre l'installation du matériel et faciliter l'intervention.",
+  tapis:   "🧶 Merci de dégager la zone autour du tapis et de prévoir suffisamment de place pour permettre l'installation du matériel et faciliter l'intervention.",
   "fin-de-bail": "🏠 Assurez-vous que tous vos meubles et affaires sont retirés des pièces avant notre passage pour un nettoyage complet.",
 };
 
@@ -187,11 +187,16 @@ export async function sendBookingEmailsRaw(b: BookingPayload): Promise<string> {
     ? `${firstService?.formule_name} + ${b.items.length - 1} autre(s)`
     : firstService?.formule_name ?? "";
   const duration = b.estimated_duration ?? `${Math.ceil(b.total_price / 40) * 30} min environ`;
+  // La date et l'heure sont déjà des valeurs locales Europe/Paris choisies par
+  // le client. Ne jamais les reconvertir via le fuseau UTC du serveur.
   const formattedDate = (() => {
-    try {
-      const d = new Date(b.booking_date);
-      return d.toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
-    } catch { return b.booking_date; }
+    const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(b.booking_date);
+    if (!match) return b.booking_date;
+    const [, year, month, day] = match;
+    const d = new Date(Date.UTC(Number(year), Number(month) - 1, Number(day)));
+    return d.toLocaleDateString("fr-FR", {
+      weekday: "long", day: "numeric", month: "long", year: "numeric", timeZone: "UTC",
+    });
   })();
 
   // ── EMAIL CLIENT ────────────────────────────────────────────────────────────
