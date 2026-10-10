@@ -46,7 +46,7 @@ export function LocalCityPage({ commune }: Props) {
           <div className="hidden md:flex mt-6 flex-wrap justify-center gap-4 text-xs text-ink-foreground/60">
             <span className="inline-flex items-center gap-1"><Clock className="size-3" /> Devis sous 24h</span>
             <span className="inline-flex items-center gap-1"><CheckCircle2 className="size-3" /> Séchage rapide (2–4h)</span>
-            <span className="inline-flex items-center gap-1"><Shield className="size-3" /> Produits Écolabel</span>
+            <span className="inline-flex items-center gap-1"><Shield className="size-3" /> Produits adaptés</span>
           </div>
         </div>
       </section>
@@ -61,10 +61,10 @@ export function LocalCityPage({ commune }: Props) {
 
             <ul>
               <li>
-                <strong>Nettoyage de canapés et fauteuils :</strong> Tissu, microfibre, velours ou cuir — injection-extraction et traitement des taches. Séchage en 2 à 4h. Dès 49 €.
+                <strong>Nettoyage de canapés et fauteuils :</strong> Textiles compatibles par injection-extraction ; cuir nettoyé manuellement. Fauteuil dès 49 €, canapé 2/3 places dès 79 €. Séchage selon la matière et l’aération.
               </li>
               <li>
-                <strong>Nettoyage de matelas :</strong> Désinfection en profondeur, traitement anti-acariens, élimination des auréoles d'urine ou de transpiration. Dès 39 €.
+                <strong>Nettoyage de matelas :</strong> Nettoyage des deux faces et traitement courant des taches. Matelas enfant dès 39 €. Vapeur et traitements intensifs en option.
               </li>
               <li>
                 <strong>Shampouinage de tapis et moquettes :</strong> Toutes fibres, toutes tailles. Couleurs ravivées, odeurs neutralisées. Dès 49 €.
@@ -79,7 +79,7 @@ export function LocalCityPage({ commune }: Props) {
 
             <h2>Comment se déroule une intervention à {name} ?</h2>
             <p>
-              Vous contactez Clean&Fresh par téléphone, via le formulaire en ligne ou en réservant directement sur notre plateforme. Nous confirmons un créneau sous 24h. À la date convenue, notre technicien se présente à votre adresse à {name} avec son matériel d'injection-extraction professionnel. Nous protégeons les zones environnantes, effectuons un diagnostic du support, puis procédons au traitement : aspiration, détachage ciblé, injection-extraction et neutralisation des odeurs. L'intervention dure en moyenne 45 minutes à 2h. Vous pouvez réutiliser votre canapé ou votre matelas le jour même, après 2 à 4h de séchage.
+              Vous contactez Clean&Fresh par téléphone, via le formulaire en ligne ou en réservant directement sur notre plateforme. Pour les prestations réservables, les disponibilités sont proposées en ligne. Pour les autres besoins, nous répondons à votre demande de devis sous 24h. À la date convenue, notre technicien se présente à votre adresse à {name} avec son matériel d'injection-extraction professionnel. Nous protégeons les zones environnantes, effectuons un diagnostic du support, puis procédons au traitement : aspiration, détachage ciblé, injection-extraction et neutralisation des odeurs. L'intervention dure en moyenne 45 minutes à 2h. Attendez le séchage complet avant réutilisation ; sa durée dépend du textile, de la température et de l’aération.
             </p>
 
             <h2>Nos tarifs à {name}</h2>

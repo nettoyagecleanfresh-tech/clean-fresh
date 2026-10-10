@@ -482,7 +482,7 @@ function Index() {
           Notre approche du nettoyage à Toulouse
         </h2>
         <p className="mx-auto mt-5 max-w-3xl text-base leading-relaxed text-muted-foreground">
-          Notre entreprise de nettoyage met à disposition des services complets aussi bien pour les particuliers que pour les professionnels à Toulouse et dans les communes voisines. Nos agents de nettoyage interviennent avec sérieux et fiabilité afin de garantir le meilleur résultat possible, sous réserve de l'état et de la matière du support.
+          Choisissez votre prestation et consultez son prix avant de réserver. Nous venons chez vous avec le matériel adapté, vérifions la matière et expliquons les éventuelles limites du nettoyage. Les options sont choisies avec votre accord et le résultat est vérifié ensemble en fin d’intervention. Pour les logements et remises en état, demandez un devis sur photos.
         </p>
         </section>
       </FadeIn>

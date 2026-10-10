@@ -156,7 +156,7 @@ function Sidebar({
 
   const continuLabel =
     step === 1 ? "Je réserve" :
-    step === 2 ? "Choisir mon créneau" :
+    step === 2 ? (selectedOptions.length ? "Choisir mon créneau" : "Continuer sans option") :
     step === 3 ? "Continuer vers mes coordonnées" :
     "";
 
@@ -610,7 +610,7 @@ function ReserverPage() {
 
   const continuLabel =
     step === 1 ? "Je réserve" :
-    step === 2 ? "Choisir mon créneau" :
+    step === 2 ? (selectedOptions.length ? "Choisir mon créneau" : "Continuer sans option") :
     step === 3 ? "Continuer vers mes coordonnées" :
     "";
 
@@ -910,7 +910,7 @@ function ReserverPage() {
                 </div>
                 <div className="mt-4 flex items-start gap-2 rounded-xl border border-border bg-card px-4 py-3">
                   <Info className="size-4 shrink-0 text-muted-foreground mt-0.5" />
-                  <p className="text-xs text-muted-foreground">Les options peuvent aussi être ajustées le jour de l'intervention.</p>
+                  <p className="text-xs text-muted-foreground">Les options sont facultatives et peuvent être ajustées avec votre accord le jour de l’intervention. Anti-odeur : odeurs incrustées. Enzymatique : résidus organiques (urine, vomi). En cas de doute, nous vous conseillons avant tout supplément.</p>
                 </div>
               </>
             )}

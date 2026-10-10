@@ -11,12 +11,12 @@ export const Route = createFileRoute("/nos-realisations")({
   head: () => ({
     meta: [
       { title: `Réalisations Avant/Après — Nettoyage Canapé Matelas Toulouse | Clean&Fresh` },
-      { name: "description", content: `Photos avant/après de nos interventions à Toulouse et agglomération : canapés, matelas, tapis, voitures. Résultats garantis. 4.9★ sur Google.` },
+      { name: "description", content: `Photos avant/après de nos interventions à Toulouse et agglomération : canapés, matelas, tapis, voitures. Découvrez nos interventions et les prestations correspondantes.` },
       { property: "og:title", content: `Réalisations Avant/Après — Nettoyage Canapé Matelas Toulouse | Clean&Fresh` },
-      { property: "og:description", content: `Photos avant/après de nos interventions à Toulouse et agglomération : canapés, matelas, tapis, voitures. Résultats garantis. 4.9★ sur Google.` },
+      { property: "og:description", content: `Photos avant/après de nos interventions à Toulouse et agglomération : canapés, matelas, tapis, voitures. Découvrez nos interventions et les prestations correspondantes.` },
       { property: "og:url", content: `https://cleanetfresh.fr/nos-realisations` },
       { name: "twitter:title", content: `Réalisations Avant/Après — Nettoyage Canapé Matelas Toulouse | Clean&Fresh` },
-      { name: "twitter:description", content: `Photos avant/après de nos interventions à Toulouse et agglomération : canapés, matelas, tapis, voitures. Résultats garantis. 4.9★ sur Google.` },
+      { name: "twitter:description", content: `Photos avant/après de nos interventions à Toulouse et agglomération : canapés, matelas, tapis, voitures. Découvrez nos interventions et les prestations correspondantes.` },
     ],
     links: [{ rel: "canonical", href: `https://cleanetfresh.fr/nos-realisations` }],
   }),
@@ -25,6 +25,14 @@ export const Route = createFileRoute("/nos-realisations")({
 
 // Photos copiées dans public/realisations/ via copier-photos.ps1
 // photo-01 retirée (index commence à 2)
+function realisationLink(title: string): string {
+  if (/canapé|fauteuil|chaises/.test(title)) return "/tarifs#section-canape";
+  if (/matelas/.test(title)) return "/tarifs#section-matelas";
+  if (/auto/.test(title)) return "/tarifs#section-auto";
+  if (/tapis/.test(title)) return "/tarifs#section-tapis";
+  if (/moquette/.test(title)) return "/tarifs#section-moquette";
+  return "/contactez-nous";
+}
 const PHOTOS = [
   { src: "/realisations/photo-02.webp", date: "28 juillet 2026", city: "Toulouse", title: "Nettoyage canapé" },
   { src: "/realisations/photo-03.webp", date: "10 juillet 2026", city: "Colomiers", title: "Nettoyage matelas" },
@@ -112,7 +120,7 @@ function GaleriePage() {
               <div className="bg-card px-4 py-3 flex flex-col items-center justify-center text-center">
                 <span className="text-sm font-bold text-foreground">{p.title}</span>
                 <span className="text-xs text-muted-foreground mt-0.5">{p.city}</span>
-                <span className="text-[10px] text-muted-foreground uppercase tracking-widest mt-1">{p.date}</span>
+                <a href={realisationLink(p.title)} onClick={(event) => event.stopPropagation()} className="mt-2 text-xs font-semibold text-primary underline underline-offset-4">{realisationLink(p.title) === "/contactez-nous" ? "Demander un devis similaire" : "Voir les tarifs et réserver"}</a>
               </div>
             </div>
           ))}
@@ -158,7 +166,7 @@ function GaleriePage() {
           {/* Image */}
           <img
             src={PHOTOS[lightbox]?.src}
-            alt={`Réalisation Clean&Fresh — ${PHOTOS[lightbox]?.date ?? ""}`}
+            alt={`Réalisation Clean&Fresh — ${PHOTOS[lightbox]?.title ?? ""}`}
             loading="lazy"
             className="max-h-[90vh] max-w-[90vw] rounded-xl object-contain shadow-2xl"
             onClick={(e) => e.stopPropagation()}

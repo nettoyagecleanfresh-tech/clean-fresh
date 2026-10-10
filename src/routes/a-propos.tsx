@@ -5,7 +5,7 @@ import { SITE_URL } from "@/data/site";
 import { FadeIn } from "@/components/ui/fade-in";
 
 const TITLE = "À propos de Clean&Fresh Toulouse";
-const DESC = "Clean&Fresh, entreprise de nettoyage à domicile à Toulouse depuis 2020. 4.9★ Google, 500+ clients satisfaits, produits professionnels et service 7j/7.";
+const DESC = "Découvrez Clean&Fresh Toulouse : entreprise artisanale de nettoyage à domicile, tarifs transparents, diagnostic des supports et réservation en ligne.";
 
 export const Route = createFileRoute("/a-propos")({
   head: () => ({
@@ -31,7 +31,7 @@ function AboutPage() {
           Notre philosophie : clarté, efficacité, transparence
         </h1>
         <p className="mt-4 text-muted-foreground leading-relaxed max-w-xl mx-auto">
-          Clean&Fresh n'est pas un groupe national ou une franchise. Nous sommes une entreprise locale et artisanale, créée avec une idée simple : rendre la réservation de nettoyage aussi transparente que possible.
+          Clean&Fresh est une entreprise locale et artisanale dirigée par Sébastian Isidro Heredia. À Toulouse et dans son agglomération, nous intervenons à domicile pour prendre soin de vos textiles, de votre véhicule et de vos locaux.
         </p>
       </div>
 
@@ -42,13 +42,13 @@ function AboutPage() {
             
             <div className="space-y-6 text-muted-foreground leading-relaxed">
               <p>
-                Avant de fonder Clean&Fresh, nous faisions souvent face à la même frustration : trouver un prestataire pour nettoyer un canapé ou une voiture impliquait souvent des tarifs opaques, des devis qui mettaient des jours à arriver, ou des suppléments cachés facturés une fois sur place.
+                Avant chaque nettoyage, nous examinons la matière et l'état du support. Nous vous expliquons la méthode adaptée, les résultats possibles et les éventuelles limites : une tache ancienne ou une décoloration peut subsister.
               </p>
               <p>
-                Nous avons donc décidé de créer l'entreprise de nettoyage que nous aurions aimé engager. Une entreprise 100 % toulousaine, artisanale, sans fausses promesses ni marketing agressif, où les tarifs sont affichés publiquement et où vous pouvez réserver en ligne en quelques clics.
+                Pour les prestations courantes, vous choisissez une formule, les options utiles et un créneau en ligne. Pour une remise en état ou une prestation bâtiment, nous préparons un devis selon les photos, la surface et les accès. Tout supplément est expliqué et accepté avant sa réalisation.
               </p>
               <p>
-                Nos valeurs reposent sur un travail sérieux, un équipement professionnel certifié, des produits respectueux de l'environnement, et une obligation de moyens : nous mettons toujours tout en œuvre pour obtenir le meilleur résultat possible sur vos surfaces.
+                En fin d'intervention, nous vérifions le résultat avec vous et vous donnons les conseils de séchage et d'entretien. Notre assurance responsabilité civile professionnelle et son périmètre sont détaillés dans les mentions légales.
               </p>
             </div>
           </div>
@@ -79,8 +79,8 @@ function AboutPage() {
                 <div className="flex size-12 items-center justify-center rounded-xl bg-primary/10 text-primary mb-4">
                   <Sparkles className="size-6" />
                 </div>
-                <h3 className="font-bold mb-2">Matériel certifié</h3>
-                <p className="text-sm text-muted-foreground">Utilisation de produits de qualité et de gammes certifiées Écolabel.</p>
+                <h3 className="font-bold mb-2">Matériel professionnel</h3>
+                <p className="text-sm text-muted-foreground">Méthodes et produits choisis selon la matière, avec test de compatibilité si nécessaire.</p>
               </div>
 
               <div className="rounded-2xl border border-border bg-card p-6 shadow-[var(--shadow-soft)] text-center flex flex-col items-center">

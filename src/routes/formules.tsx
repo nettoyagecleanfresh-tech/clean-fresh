@@ -693,7 +693,7 @@ function AutoDetail() {
             </tr>)}
           </tbody>
         </table>
-        <p className="mt-3 text-xs text-muted-foreground">Les options sont facturées en supplément et ne prolongent pas la durée de la prestation.</p>
+        <p className="mt-3 text-xs text-muted-foreground">Les options sont facturées en supplément. Les durées affichées sont indicatives et dépendent de l'état du véhicule.</p>
       </details>
 
       {/* Detail panel */}
@@ -1076,7 +1076,7 @@ function FormulesPage() {
             Nos techniciens se déplacent chez vous avec tout le matériel — aucun déplacement de votre part.
           </p>
           <p className="mt-3 text-sm text-muted-foreground">
-            📞 Devis gratuit sous 24h · 7j/7 · Intervention rapide · Produits certifiés Écolabel européen
+            📞 Devis gratuit sous 24h · 7j/7 · Intervention rapide · Produits professionnels adaptés aux supports
           </p>
           </div>
         </section>
@@ -1096,7 +1096,7 @@ function FormulesPage() {
           </Button>
         </div>
         <p className="mt-3 text-xs text-muted-foreground flex items-center justify-center gap-1">
-          <CheckCircle2 className="size-3 text-primary" /> Sans engagement, annulation gratuite.
+          <CheckCircle2 className="size-3 text-primary" /> Annulation gratuite au moins 24 h avant le rendez-vous.
         </p>
       </div>
       </FadeIn>

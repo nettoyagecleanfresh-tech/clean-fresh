@@ -52,7 +52,7 @@ const TARIF_CATEGORIES = [
     icon: <Armchair className="size-7" />,
     title: "Nettoyage Cuir",
     priceFrom: "49 €",
-    bullets: ["Fauteuil, canapé 2/3, 4/5 places", "Sièges auto cuir", "Soin nourrissant protecteur"],
+    bullets: ["Fauteuil, canapé 2/3, 4/5 places", "Sièges auto cuir", "Soin nourrissant en option"],
   },
 ];
 
@@ -402,7 +402,7 @@ function TarifsPage() {
               </div>
             </div>
             <p className="mt-3 text-xs text-muted-foreground">
-              Toutes les communes de l'agglomération toulousaine sont dans la zone gratuite (Blagnac, Colomiers, Tournefeuille, Balma, Cugnaux, Muret, Ramonville…).
+              Les frais dépendent de l'adresse exacte, et non du seul nom de la commune. Le montant est précisé avant confirmation ; au-delà de 49 km, contactez-nous pour une estimation.
             </p>
           </div>
         </section>
@@ -416,11 +416,11 @@ function TarifsPage() {
             {[
               {
                 q: "Le paiement se fait avant ou après l'intervention ?",
-                a: "Après. Vous réglez une fois satisfait du résultat, à la fin de l'intervention. Nous acceptons les espèces, le virement bancaire et le paiement par carte.",
+                a: "Pour les prestations courantes réservées en ligne, aucun acompte : règlement en fin d'intervention, après vérification du résultat ensemble. Pour les prestations bâtiment sur devis, un acompte de 50 % est demandé pour confirmer le créneau. Le solde est réglé en fin de prestation. Carte, espèces et virement acceptés.",
               },
               {
                 q: "Les prix incluent-ils les produits et le matériel ?",
-                a: "Oui, tout est inclus : produits certifiés Écolabel, matériel d'injection-extraction professionnel et main d'œuvre. Aucun supplément caché.",
+                a: "Le tarif comprend le matériel, les produits adaptés et la main-d'œuvre décrits dans la formule. Les options sont affichées séparément. Certaines références utilisées sont certifiées Écolabel. Les éventuels frais de déplacement sont indiqués avant confirmation.",
               },
               {
                 q: "Y a-t-il un tarif dégressif si je commande plusieurs prestations ?",

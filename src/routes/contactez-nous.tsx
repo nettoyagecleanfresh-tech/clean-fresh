@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { prepareQuotePhotos, validateQuotePhotos } from "@/lib/quotePhotos";
 import { createFileRoute } from "@tanstack/react-router";
 import { Mail, Phone, Clock, MapPin, ArrowRight, Camera } from "lucide-react";
 import { z } from "zod";
@@ -62,6 +63,7 @@ const schema = z.object({
 function ContactPage() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [selectedService, setSelectedService] = useState("");
+  const [photoCount, setPhotoCount] = useState(0);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -71,7 +73,7 @@ function ContactPage() {
 
     const form = e.currentTarget;
     const data = Object.fromEntries(new FormData(form));
-    const photos = form.querySelector<HTMLInputElement>("#photos")?.files;
+    const photos = Array.from(form.querySelector<HTMLInputElement>("#photos")?.files ?? []);
 
     const result = schema.safeParse(data);
     if (!result.success) {
@@ -80,8 +82,9 @@ function ContactPage() {
       setErrors(next);
       return;
     }
-    if (photos?.[0] && photos[0].size > 5 * 1024 * 1024) {
-      setErrors({ photos: "La photo doit peser moins de 5 Mo" });
+    const photoError = validateQuotePhotos(photos);
+    if (photoError) {
+      setErrors({ photos: photoError });
       return;
     }
     setErrors({});
@@ -114,7 +117,16 @@ function ContactPage() {
       formDataForWeb3.append("Date ou délai souhaité", result.data.dateSouhaitee);
       formDataForWeb3.append("Accès et besoins techniques", result.data.acces);
       formDataForWeb3.append("Message", result.data.message);
-      if (photos?.[0]) formDataForWeb3.append("attachment", photos[0]);
+      let attachment: File | null;
+      try { attachment = await prepareQuotePhotos(photos); }
+      catch (error) {
+        setErrors({ photos: error instanceof Error ? error.message : "Impossible de préparer les photos. Réessayez avec d’autres images." });
+        return;
+      }
+      if (attachment) {
+        formDataForWeb3.append("attachment", attachment);
+        formDataForWeb3.append("Nombre de photos", String(photos.length));
+      }
 
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
@@ -127,12 +139,13 @@ function ContactPage() {
         toast.success("Votre message a été envoyé avec succès. Nous vous répondons sous 24h.");
         form.reset();
         setSelectedService("");
+        setPhotoCount(0);
       } else {
         throw new Error(resData.message || "Erreur Web3Forms");
       }
     } catch (err) {
       console.error(err);
-      toast.error("Une erreur s'est produite lors de l'envoi de votre message.");
+      toast.error("L’envoi a échoué. Vos informations sont conservées : réessayez ou contactez-nous par téléphone.");
     } finally {
       setIsSubmitting(false);
     }
@@ -143,7 +156,7 @@ function ContactPage() {
       {/* ── TITLE ── */}
       <div className="mx-auto max-w-3xl px-4 pt-16 pb-10 text-center">
         <h1 className="text-4xl font-bold leading-tight tracking-tight md:text-5xl">
-          Demander un Devis Gratuit
+          Obtenez votre devis de nettoyage gratuit sous 24 h
         </h1>
         <p className="mt-4 text-muted-foreground leading-relaxed max-w-xl mx-auto">
           Donnez-nous les informations utiles et, si possible, quelques photos. Vous recevrez
@@ -231,8 +244,14 @@ function ContactPage() {
 
           <div className="grid gap-2 rounded-xl border border-dashed border-border bg-secondary/20 p-4">
             <Label htmlFor="photos" className="flex items-center gap-2 text-sm font-semibold"><Camera className="size-4 text-primary" />Photos de l'état actuel</Label>
-            <Input id="photos" name="photos" type="file" accept="image/jpeg,image/png,image/webp" className="cursor-pointer" />
-            <p className="text-xs text-muted-foreground">Une photo facultative, 5 Mo maximum, aide à établir un devis précis.</p>
+            <Input id="photos" name="photos" type="file" accept="image/jpeg,image/png,image/webp" multiple disabled={isSubmitting} aria-describedby="photos-help" onChange={(event) => {
+              const files = Array.from(event.target.files ?? []);
+              setPhotoCount(files.length);
+              const error = validateQuotePhotos(files);
+              setErrors(previous => ({ ...previous, photos: error ?? "" }));
+            }} className="cursor-pointer" />
+            <p id="photos-help" className="text-xs text-muted-foreground">Jusqu’à 10 photos facultatives (JPG, PNG ou WebP, 20 Mo par photo). Elles sont compressées et regroupées dans un PDF pour l’envoi.</p>
+            <p className="text-xs text-muted-foreground" aria-live="polite">{photoCount > 0 ? `${photoCount} photo${photoCount > 1 ? "s" : ""} sélectionnée${photoCount > 1 ? "s" : ""} / 10` : ""}</p>
             {errors["photos"] && <p className="text-xs text-destructive">{errors["photos"]}</p>}
           </div>
 
