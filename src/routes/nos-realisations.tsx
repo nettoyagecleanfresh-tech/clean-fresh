@@ -22,18 +22,9 @@ function Photo({ photo }: { photo: Realisation }) {
     {photo.beforeSrc ? <div className="grid grid-cols-2 items-center bg-slate-100"><img src={photo.beforeSrc} alt="Tapis rouges avant nettoyage au Théâtre du Capitole" loading="lazy" className="h-auto w-full" /><img src={photo.src} alt="Tapis propre après nettoyage au Théâtre du Capitole" loading="lazy" className="h-auto w-full" /></div> : <img src={photo.src} alt={`${photo.title}${single ? '' : ' — avant et après nettoyage'} — Clean&Fresh`}
       loading="lazy" decoding="async"
       className={photo.phone ? 'absolute left-0 top-[-33.48%] h-auto w-full max-w-none' : 'block h-auto w-full'} />}
-    {!branded && <>
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 border-[4px] border-[#082764]" />
-      <span className={`pointer-events-none absolute top-0 flex h-[12%] min-h-9 items-center justify-center border-b-2 border-cyan-400 bg-[#082764] text-[clamp(16px,2.2vw,25px)] font-black italic tracking-wide text-white ${photo.layout === 'horizontal' ? 'left-0 w-1/2' : 'left-0 w-full'}`} style={{ clipPath: 'polygon(0 0,100% 0,94% 100%,6% 100%)' }}>{single ? 'APRÈS' : 'AVANT'}</span>
-      {!single && <>
-        <span className={`pointer-events-none absolute flex h-[12%] min-h-9 items-center justify-center border-b-2 border-cyan-400 bg-[#082764] text-[clamp(16px,2.2vw,25px)] font-black italic tracking-wide text-white ${photo.layout === 'horizontal' ? 'right-0 top-0 w-1/2' : 'left-0 top-1/2 w-full'}`} style={{ clipPath: 'polygon(0 0,100% 0,94% 100%,6% 100%)' }}>APRÈS</span>
-        <div aria-hidden="true" className={`pointer-events-none absolute bg-[#082764] ${photo.layout === 'horizontal' ? 'inset-y-0 left-1/2 w-1 -translate-x-1/2' : 'inset-x-0 top-1/2 h-1 -translate-y-1/2'}`} />
-      </>}
-      <div aria-hidden="true" className="pointer-events-none absolute left-1/2 top-1/2 flex w-[34%] max-w-40 -translate-x-1/2 -translate-y-1/2 flex-col items-center px-3 py-5" style={{ background: 'radial-gradient(ellipse,rgba(4,37,101,.92) 0%,rgba(4,37,101,.68) 45%,rgba(4,37,101,0) 72%)' }}>
-        <img src="/logo.webp" alt="" className="h-auto w-full opacity-95 brightness-0 invert" />
-        <span className="mt-1 text-[clamp(8px,1vw,12px)] font-extrabold tracking-[0.3em] text-cyan-300">TOULOUSE</span>
-      </div>
-    </>}
+    {!branded && <div aria-hidden="true" className="pointer-events-none absolute left-1/2 top-1/2 w-[26%] max-w-32 -translate-x-1/2 -translate-y-1/2 opacity-70">
+      <img src="/logo.webp" alt="" className="h-auto w-full" />
+    </div>}
   </div>;
 }
 
