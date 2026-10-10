@@ -1,197 +1,96 @@
-import { RealWorkGallery } from "@/components/site/RealWorkGallery";
-import { SITE_URL } from "@/data/site";
-import { useState } from "react";
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { X, ChevronLeft, ChevronRight, CalendarCheck } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { useRef, useState } from 'react';
+import { createFileRoute, Link } from '@tanstack/react-router';
+import { ChevronLeft, ChevronRight, ArrowUpRight, ZoomIn } from 'lucide-react';
+import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/components/ui/dialog';
+import { realisations, type Realisation } from '@/data/realisations';
+import { SITE_URL } from '@/data/site';
 
-const TITLE = "Réalisations avant/après Toulouse | Clean&Fresh";
-const DESC = "Découvrez les photos avant/après de nos nettoyages de canapés, matelas, tapis et voitures à Toulouse et dans son agglomération.";
-
-export const Route = createFileRoute("/nos-realisations")({
-  head: () => ({
-    meta: [
-      { title: `Réalisations Avant/Après — Nettoyage Canapé Matelas Toulouse | Clean&Fresh` },
-      { name: "description", content: `Photos avant/après de nos interventions à Toulouse et agglomération : canapés, matelas, tapis, voitures. Découvrez nos interventions et les prestations correspondantes.` },
-      { property: "og:title", content: `Réalisations Avant/Après — Nettoyage Canapé Matelas Toulouse | Clean&Fresh` },
-      { property: "og:description", content: `Photos avant/après de nos interventions à Toulouse et agglomération : canapés, matelas, tapis, voitures. Découvrez nos interventions et les prestations correspondantes.` },
-      { property: "og:url", content: `https://cleanetfresh.fr/nos-realisations` },
-      { name: "twitter:title", content: `Réalisations Avant/Après — Nettoyage Canapé Matelas Toulouse | Clean&Fresh` },
-      { name: "twitter:description", content: `Photos avant/après de nos interventions à Toulouse et agglomération : canapés, matelas, tapis, voitures. Découvrez nos interventions et les prestations correspondantes.` },
-    ],
-    links: [{ rel: "canonical", href: `https://cleanetfresh.fr/nos-realisations` }],
-  }),
+const title = 'Nettoyage avant/après à Toulouse : nos réalisations | Clean&Fresh';
+const description = 'Découvrez nos nettoyages avant/après : canapés tachés, matelas auréolés, tapis et intérieurs de voiture. Photos et détails des interventions Clean&Fresh.';
+export const Route = createFileRoute('/nos-realisations')({
+  head: () => ({ meta: [{ title }, { name: 'description', content: description },
+    { property: 'og:title', content: title }, { property: 'og:description', content: description },
+    { property: 'og:url', content: `${SITE_URL}/nos-realisations` }],
+    links: [{ rel: 'canonical', href: `${SITE_URL}/nos-realisations` }] }),
   component: GaleriePage,
 });
 
-// Photos copiées dans public/realisations/ via copier-photos.ps1
-// photo-01 retirée (index commence à 2)
-function realisationLink(title: string): string {
-  if (/canapé|fauteuil|chaises/.test(title)) return "/tarifs#section-canape";
-  if (/matelas/.test(title)) return "/tarifs#section-matelas";
-  if (/auto/.test(title)) return "/tarifs#section-auto";
-  if (/tapis/.test(title)) return "/tarifs#section-tapis";
-  if (/moquette/.test(title)) return "/tarifs#section-moquette";
-  return "/contactez-nous";
+function Photo({ photo }: { photo: Realisation }) {
+  const branded = photo.layout === 'branded';
+  const single = photo.layout === 'single';
+  return <div className={`relative isolate overflow-hidden bg-slate-100 ${photo.phone ? 'aspect-[3/4]' : ''}`}>
+    {photo.beforeSrc ? <div className="grid grid-cols-2 items-center bg-slate-100"><img src={photo.beforeSrc} alt="Tapis rouges avant nettoyage au Théâtre du Capitole" loading="lazy" className="h-auto w-full" /><img src={photo.src} alt="Tapis propre après nettoyage au Théâtre du Capitole" loading="lazy" className="h-auto w-full" /></div> : <img src={photo.src} alt={`${photo.title}${single ? '' : ' — avant et après nettoyage'} — Clean&Fresh`}
+      loading="lazy" decoding="async"
+      className={photo.phone ? 'absolute left-0 top-[-33.48%] h-auto w-full max-w-none' : 'block h-auto w-full'} />}
+    {!branded && <>
+      <span className="pointer-events-none absolute left-3 top-3 rounded-md border border-white/30 bg-slate-900/90 px-3 py-1.5 text-[11px] font-extrabold tracking-widest text-white shadow-sm">{single ? 'INTERVENTION' : 'AVANT'}</span>
+      {!single && <span className={`pointer-events-none absolute rounded-md border border-white/40 bg-cyan-800/95 px-3 py-1.5 text-[11px] font-extrabold tracking-widest text-white shadow-sm ${photo.layout === 'horizontal' ? 'right-3 top-3' : 'left-3 top-[calc(50%+12px)]'}`}>APRÈS</span>}
+      <div aria-hidden="true" className="pointer-events-none absolute left-1/2 top-1/2 flex w-[21%] max-w-24 -translate-x-1/2 -translate-y-1/2 flex-col items-center rounded-full border border-white/50 bg-slate-900/45 p-2 shadow-sm">
+        <img src="/logo.webp" alt="" className="h-auto w-full opacity-90 brightness-0 invert" />
+        <span className="text-[7px] font-bold tracking-[0.15em] text-white">TOULOUSE</span>
+      </div>
+    </>}
+  </div>;
 }
-const PHOTOS = [
-  { src: "/realisations/photo-02.webp", date: "28 juillet 2026", city: "Toulouse", title: "Nettoyage canapé" },
-  { src: "/realisations/photo-03.webp", date: "10 juillet 2026", city: "Colomiers", title: "Nettoyage matelas" },
-  { src: "/realisations/photo-04.webp", date: "22 juin 2026", city: "Tournefeuille", title: "Nettoyage matelas" },
-  { src: "/realisations/photo-05.webp", date: "4 juin 2026", city: "Blagnac", title: "Nettoyage fin de bail" },
-  { src: "/realisations/photo-06.webp", date: "17 mai 2026", city: "Balma", title: "Nettoyage hotte" },
-  { src: "/realisations/photo-07.webp", date: "29 avril 2026", city: "L'Union", title: "Nettoyage canapé" },
-  { src: "/realisations/photo-08.webp", date: "11 avril 2026", city: "Ramonville-Saint-Agne", title: "Nettoyage auto" },
-  { src: "/realisations/photo-09.webp", date: "24 mars 2026", city: "Cugnaux", title: "Nettoyage canapé" },
-  { src: "/realisations/photo-10.webp", date: "6 mars 2026", city: "Portet-sur-Garonne", title: "Nettoyage canapé" },
-  { src: "/realisations/photo-11.webp", date: "16 février 2026", city: "Saint-Orens-de-Gameville", title: "Nettoyage fin de bail" },
-  { src: "/realisations/photo-12.webp", date: "29 janvier 2026", city: "Castanet-Tolosan", title: "Nettoyage fin de bail" },
-  { src: "/realisations/photo-13.webp", date: "11 janvier 2026", city: "Saint-Jean", title: "Nettoyage fauteuil" },
-  { src: "/realisations/photo-14.webp", date: "24 décembre 2025", city: "Aucamville", title: "Nettoyage chaises" },
-  { src: "/realisations/photo-15.webp", date: "6 décembre 2025", city: "Fenouillet", title: "Nettoyage matelas" },
-  { src: "/realisations/photo-16.webp", date: "18 novembre 2025", city: "Quint-Fonsegrives", title: "Nettoyage auto" },
-  { src: "/realisations/photo-17.webp", date: "31 octobre 2025", city: "Launaguet", title: "Nettoyage canapé" },
-  { src: "/realisations/photo-18.webp", date: "13 octobre 2025", city: "Pechbusque", title: "Nettoyage auto" },
-  { src: "/realisations/photo-19.webp", date: "25 septembre 2025", city: "Vieille-Toulouse", title: "Nettoyage auto" },
-  { src: "/realisations/photo-20.webp", date: "7 septembre 2025", city: "Labège", title: "Nettoyage fin de bail" },
-  { src: "/realisations/photo-21.webp", date: "20 août 2025", city: "Escalquens", title: "Nettoyage Diogène" },
-  { src: "/realisations/photo-22.webp", date: "2 août 2025", city: "Plaisance-du-Touch", title: "Nettoyage Diogène" },
-  { src: "/realisations/photo-23.webp", date: "15 juillet 2025", city: "Villeneuve-Tolosane", title: "Nettoyage Diogène" },
-  { src: "/realisations/photo-24.webp", date: "27 juin 2025", city: "Frouzins", title: "Nettoyage canapé" },
-  { src: "/realisations/photo-25.webp", date: "9 juin 2025", city: "Roques", title: "Nettoyage auto" },
-  { src: "/realisations/photo-26.webp", date: "22 mai 2025", city: "Pinsaguel", title: "Nettoyage insalubre" },
-  { src: "/realisations/photo-27.webp", date: "4 mai 2025", city: "Lacroix-Falgarde", title: "Nettoyage intérieur auto" },
-  { src: "/realisations/photo-28.webp", date: "16 avril 2025", city: "Auzeville-Tolosane", title: "Nettoyage moquette" },
-  { src: "/realisations/photo-29.webp", date: "29 mars 2025", city: "Auzielle", title: "Nettoyage canapé" },
-  { src: "/realisations/photo-30.webp", date: "11 mars 2025", city: "Lauzerville", title: "Nettoyage intérieur auto" },
-  { src: "/realisations/photo-31.webp", date: "21 février 2025", city: "Flourens", title: "Nettoyage matelas" },
-  { src: "/realisations/photo-32.webp", date: "3 février 2025", city: "Mons", title: "Nettoyage fin de bail" },
-  { src: "/realisations/photo-33.webp", date: "16 janvier 2025", city: "Pin-Balma", title: "Nettoyage fin de bail" },
-  { src: "/realisations/photo-34.webp", date: "29 décembre 2024", city: "Montrabé", title: "Nettoyage fin de bail" },
-  { src: "/realisations/photo-35.webp", date: "11 décembre 2024", city: "Rouffiac-Tolosan", title: "Nettoyage fin de bail" },
-  { src: "/realisations/photo-36.webp", date: "23 novembre 2024", city: "Castelmaurou", title: "Nettoyage tapis" },
-  { src: "/realisations/photo-37.webp", date: "5 novembre 2024", city: "Saint-Alban", title: "Nettoyage fin de bail" },
-  { src: "/realisations/photo-38.webp", date: "18 octobre 2024", city: "Castelginest", title: "Nettoyage canapé" },
-  { src: "/realisations/photo-39.webp", date: "30 septembre 2024", city: "Fonbeauzard", title: "Nettoyage insalubre" },
-  { src: "/realisations/photo-40.webp", date: "12 septembre 2024", city: "Cornebarrieu", title: "Nettoyage Diogène" },
-  { src: "/realisations/photo-41.webp", date: "25 août 2024", city: "Beauzelle", title: "Nettoyage Diogène" },
-];
-const TOTAL = PHOTOS.length;
+
+function serviceLink(photo: Realisation) {
+  const section: Record<string, string> = { Canapés: 'canape', Matelas: 'matelas', Auto: 'auto', Tapis: /moquette/i.test(photo.title) ? 'moquette' : 'tapis' };
+  return section[photo.category] ? `/tarifs#section-${section[photo.category]}` : '/contactez-nous';
+}
 
 function GaleriePage() {
-  const [lightbox, setLightbox] = useState<number | null>(null);
-
-  const prev = () =>
-    setLightbox((i) => (i !== null ? (i - 1 + TOTAL) % TOTAL : null));
-  const next = () =>
-    setLightbox((i) => (i !== null ? (i + 1) % TOTAL : null));
-
-  return (
-    <div className="bg-[#f9f9f7] pb-24 lg:pb-0">
-      {/* ── HERO TITRE ── */}
-      <div className="mx-auto max-w-5xl px-4 pt-16 pb-12 text-center">
-        <span className="inline-block rounded-full border border-border bg-background px-4 py-1.5 text-[11px] font-bold uppercase tracking-widest text-muted-foreground shadow-sm">
-          Photos réelles
-        </span>
-        <h1 className="mt-5 font-display text-5xl font-bold tracking-tight md:text-6xl">
-          Nos réalisations
-        </h1>
-        <p className="mx-auto mt-4 max-w-xl text-base text-muted-foreground leading-relaxed">
-          Avant / Après — photos prises chez nos clients à Toulouse.
-          Canapés, sièges auto, matelas, tapis : le résultat parle de lui-même.
-        </p>
+  const [category, setCategory] = useState('Tout voir');
+  const [selected, setSelected] = useState<Realisation | null>(null);
+  const opener = useRef<HTMLButtonElement | null>(null);
+  const photos = category === 'Tout voir' ? realisations : realisations.filter(photo => photo.category === category);
+  const position = selected ? photos.indexOf(selected) : -1;
+  const move = (step: number) => setSelected(photos[(position + step + photos.length) % photos.length] ?? null);
+  return <div className="bg-[#f5f9f8] pb-24 lg:pb-12">
+    <header className="mx-auto max-w-4xl px-5 pb-10 pt-14 text-center sm:pt-20">
+      <p className="text-xs font-bold uppercase tracking-[0.2em] text-teal-800">Clean&Fresh · Toulouse et son agglomération</p>
+      <h1 className="mt-5 font-display text-4xl font-bold tracking-tight text-slate-900 sm:text-6xl">Nos réalisations.<br /><span className="text-teal-700">Le résultat en images.</span></h1>
+      <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-slate-600">Canapés tachés, matelas auréolés, tapis et intérieurs de voiture : découvrez nos interventions avant et après nettoyage. Chaque photo vous permet de voir le travail réalisé sur le support.</p>
+      <div className="mt-7 flex flex-wrap justify-center gap-3">
+        <Link to="/tarifs" resetScroll className="rounded-full bg-teal-700 px-6 py-3 font-bold text-white hover:bg-teal-800">Voir les tarifs et réserver</Link>
+        <Link to="/contactez-nous" resetScroll className="rounded-full border border-teal-800/25 bg-white px-6 py-3 font-semibold text-teal-900 hover:bg-teal-50">Demander un devis</Link>
       </div>
-
-      <section aria-label="Derniers avant et après" className="mx-auto max-w-6xl px-4 pb-16">
-        <h2 className="text-2xl font-bold">Nos derniers avant / après</h2>
-        <RealWorkGallery initiallyExpanded />
-      </section>
-
-      {/* ── GRILLE ── */}
-      <section className="mx-auto max-w-6xl px-4 pb-16">
-        <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
-          {PHOTOS.map((p, i) => (
-            <div
-              key={i}
-              className="break-inside-avoid cursor-zoom-in overflow-hidden rounded-2xl shadow-[var(--shadow-soft)] transition-transform hover:-translate-y-0.5 hover:shadow-[var(--shadow-card)]"
-              onClick={() => setLightbox(i)}
-            >
-              <img
-                src={p.src}
-                loading="lazy"
-                decoding="async"
-                alt={`${p.title} à ${p.city} — avant/après Clean&Fresh`}
-                className="w-full object-cover"
-              />
-              <div className="bg-card px-4 py-3 flex flex-col items-center justify-center text-center">
-                <span className="text-sm font-bold text-foreground">{p.title}</span>
-                <span className="text-xs text-muted-foreground mt-0.5">{p.city}</span>
-                <a href={realisationLink(p.title)} onClick={(event) => event.stopPropagation()} className="mt-2 text-xs font-semibold text-primary underline underline-offset-4">{realisationLink(p.title) === "/contactez-nous" ? "Demander un devis similaire" : "Voir les tarifs et réserver"}</a>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* CTA */}
-        <div className="mt-16 flex flex-col items-center gap-4 text-center">
-          <p className="text-lg font-bold">Envie du même résultat ?</p>
-          <Button
-            asChild
-            size="xl"
-            className="bg-accent-gradient text-accent-foreground font-bold hover:opacity-90"
-          >
-            <Link to="/formules">
-              <CalendarCheck className="size-5" /> Réserver en ligne
-            </Link>
-          </Button>
-        </div>
-      </section>
-
-      {/* ── LIGHTBOX ── */}
-      {lightbox !== null && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm"
-          onClick={() => setLightbox(null)}
-        >
-          {/* Fermer */}
-          <button
-            className="absolute top-4 right-4 flex size-10 items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors"
-            onClick={() => setLightbox(null)}
-          >
-            <X className="size-5" />
+    </header>
+    <section className="mx-auto max-w-6xl px-4" aria-label="Galerie de nos réalisations">
+      <div aria-label="Filtrer les réalisations" className="mb-5 flex flex-wrap justify-center gap-2">
+        {['Tout voir', 'Canapés', 'Matelas', 'Tapis', 'Auto', 'Logements'].map(item => <button key={item} type="button" aria-pressed={category === item} onClick={() => setCategory(item)} className={`min-h-11 rounded-full border px-4 py-2 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal-700 ${category === item ? 'border-teal-800 bg-teal-800 text-white' : 'border-slate-200 bg-white text-slate-700 hover:border-teal-600'}`}>{item}</button>)}
+      </div>
+      <p aria-live="polite" className="mb-6 text-center text-sm text-slate-600">{photos.length} réalisations · Appuyez sur une photo pour l’agrandir</p>
+      <div className="columns-1 gap-6 sm:columns-2 lg:columns-3">
+        {photos.map(photo => <figure key={photo.src} className="mb-6 break-inside-avoid overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-sm">
+          <button type="button" onClick={event => { opener.current = event.currentTarget; setSelected(photo); }} aria-label={`Agrandir : ${photo.title}`} className="group relative block w-full cursor-zoom-in text-left focus-visible:outline-4 focus-visible:-outline-offset-4 focus-visible:outline-teal-700">
+            <Photo photo={photo} />
+            <span aria-hidden="true" className="absolute bottom-3 right-3 rounded-full bg-white/95 p-2 text-slate-800 shadow-sm transition-transform group-hover:scale-110"><ZoomIn className="size-4" /></span>
           </button>
-
-          {/* Prev */}
-          <button
-            className="absolute left-4 flex size-12 items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors"
-            onClick={(e) => { e.stopPropagation(); prev(); }}
-          >
-            <ChevronLeft className="size-6" />
-          </button>
-
-          {/* Image */}
-          <img
-            src={PHOTOS[lightbox]?.src}
-            alt={`Réalisation Clean&Fresh — ${PHOTOS[lightbox]?.title ?? ""}`}
-            loading="lazy"
-            className="max-h-[90vh] max-w-[90vw] rounded-xl object-contain shadow-2xl"
-            onClick={(e) => e.stopPropagation()}
-          />
-
-          {/* Next */}
-          <button
-            className="absolute right-4 flex size-12 items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors"
-            onClick={(e) => { e.stopPropagation(); next(); }}
-          >
-            <ChevronRight className="size-6" />
-          </button>
-
-          {/* Compteur */}
-          <p className="absolute bottom-4 text-sm text-white/60">
-            {lightbox + 1} / {TOTAL}
-          </p>
-        </div>
-      )}
-    </div>
-  );
+          <figcaption className="p-5">
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-teal-800">{photo.category} · {photo.layout === 'single' ? 'Sur le terrain' : 'Avant / Après'}</p>
+            <h2 className="mt-2 text-lg font-bold leading-snug text-slate-900">{photo.title}</h2>
+            <p className="mt-2 text-sm leading-relaxed text-slate-600">{photo.description}</p>
+            <a href={serviceLink(photo)} className="mt-4 inline-flex min-h-11 items-center gap-1 text-sm font-bold text-teal-800 underline-offset-4 hover:underline">{photo.category === 'Logements' ? 'Demander un devis' : 'Voir la prestation'}<ArrowUpRight className="size-4" /></a>
+          </figcaption>
+        </figure>)}
+      </div>
+    </section>
+    <section className="mx-auto mt-12 max-w-3xl px-5">
+      <h2 className="text-2xl font-bold text-slate-900">Un problème de taches, de poils ou d’odeurs ?</h2>
+      <div className="mt-5 space-y-3">
+        <details className="rounded-2xl border bg-white p-5"><summary className="cursor-pointer font-semibold">Nettoyage des taches d’urine de chat sur un canapé ou un matelas</summary><p className="mt-3 text-sm leading-relaxed text-slate-600">Précisez l’origine de la tache, son ancienneté et les produits déjà utilisés dans votre demande. Une photo aide à évaluer le tissu et les auréoles, mais ne permet pas de mesurer les odeurs. Le traitement et le résultat possible dépendent du support et de la profondeur de l’imprégnation.</p></details>
+        <details className="rounded-2xl border bg-white p-5"><summary className="cursor-pointer font-semibold">Retrait des poils de chien et de chat dans une voiture</summary><p className="mt-3 text-sm leading-relaxed text-slate-600">Les poils peuvent s’accrocher aux sièges, aux tapis et à la moquette du coffre. Envoyez une vue d’ensemble et une photo rapprochée des zones concernées pour préciser votre demande de nettoyage intérieur.</p></details>
+        <details className="rounded-2xl border bg-white p-5"><summary className="cursor-pointer font-semibold">Traitement des odeurs et des taches d’origine organique</summary><p className="mt-3 text-sm leading-relaxed text-slate-600">Indiquez la source de l’odeur si vous la connaissez, le textile concerné et la date de l’incident. Une tache visible et une odeur persistante nécessitent une évaluation différente : nous vous orientons selon votre situation, sans promettre un résultat identique sur tous les supports.</p></details>
+      </div>
+      <div className="mt-8 rounded-3xl bg-slate-900 p-7 text-center text-white sm:p-10"><h2 className="text-2xl font-bold">Et si le prochain avant/après était le vôtre ?</h2><p className="mt-3 leading-relaxed text-slate-300">Décrivez votre besoin et ajoutez jusqu’à 10 photos pour nous montrer les zones à nettoyer.</p><Link to="/contactez-nous" resetScroll className="mt-6 inline-flex min-h-12 items-center rounded-full bg-teal-600 px-6 py-3 font-bold text-white hover:bg-teal-700">Demander mon devis gratuit</Link></div>
+    </section>
+    <Dialog open={selected !== null} onOpenChange={open => { if (!open) setSelected(null); }}>
+      {selected && <DialogContent className="max-h-[94dvh] max-w-3xl overflow-y-auto rounded-2xl p-4 pt-10 sm:p-6 sm:pt-10" onCloseAutoFocus={event => { event.preventDefault(); opener.current?.focus({ preventScroll: true }); }} onKeyDown={event => { if (event.key === 'ArrowLeft') { event.preventDefault(); move(-1); } if (event.key === 'ArrowRight') { event.preventDefault(); move(1); } }}>
+        <DialogTitle>{selected.title}</DialogTitle>
+        <DialogDescription>{selected.description}</DialogDescription>
+        <div className="mx-auto w-full max-w-md overflow-hidden rounded-xl"><Photo photo={selected} /></div>
+        <div className="flex items-center justify-between gap-3"><button type="button" onClick={() => move(-1)} aria-label="Photo précédente" className="flex min-h-11 items-center rounded-full border px-4"><ChevronLeft className="size-5" />Précédente</button><span className="text-sm text-slate-500">{position + 1} / {photos.length}</span><button type="button" onClick={() => move(1)} aria-label="Photo suivante" className="flex min-h-11 items-center rounded-full border px-4">Suivante<ChevronRight className="size-5" /></button></div>
+      </DialogContent>}
+    </Dialog>
+  </div>;
 }
