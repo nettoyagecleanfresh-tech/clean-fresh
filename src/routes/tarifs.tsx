@@ -291,6 +291,16 @@ function TarifsPage() {
         </div>
       </section>
 
+      <section className="mx-auto max-w-6xl px-4 pb-8" aria-label="Comprendre votre tarif">
+        <details className="rounded-2xl border border-primary/15 bg-primary/5 p-4 text-sm">
+          <summary className="cursor-pointer font-semibold text-primary">Qu’est-ce qui est inclus ? Quand choisir une option ?</summary>
+          <div className="mt-3 space-y-2 leading-relaxed text-muted-foreground">
+            <p><strong>Inclus :</strong> le nettoyage décrit dans la formule, le matériel, la main-d’œuvre et les produits adaptés au support.</p>
+            <p><strong>En option :</strong> les traitements intensifs des taches anciennes, odeurs persistantes ou poils d’animaux, selon la prestation. Leur prix apparaît avant la confirmation.</p>
+            <p><strong>À prévoir :</strong> les éventuels frais de déplacement affichés dans le récapitulatif. Le résultat et le séchage dépendent de la matière, de l’état initial et de l’aération.</p>
+          </div>
+        </details>
+      </section>
       {/* ── TEXTILE SERVICES ── */}
       {TEXTILE_SERVICES.map((service) => (
         <FadeIn key={service.slug} delay={0.05}>

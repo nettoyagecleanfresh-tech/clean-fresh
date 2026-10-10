@@ -6,7 +6,7 @@ import { Link } from '@tanstack/react-router';
 import { answerCustomer, shouldStartBooking, welcome, type ChatReply } from '@/lib/chatAssistant';
 
 type Message = ChatReply & { sender: 'bot' | 'user'; id: number };
-export function Chatbot() {
+export function Chatbot({ openRequest = 0 }: { openRequest?: number }) {
   const [open, setOpen] = useState(false);
   const [booking, setBooking] = useState(false);
   const [bookingStarted, setBookingStarted] = useState(false);
@@ -23,6 +23,9 @@ export function Chatbot() {
   const launcherRef = useRef<HTMLButtonElement>(null);
   const nextId = useRef(1);
   useEffect(() => {
+    if (openRequest > 0) { setDismissed(false); setOpen(true); }
+  }, [openRequest]);
+  useEffect(() => {
     if (!open) return;
     // Focus the dialog, never the input: opening help must not open the mobile keyboard.
     panelRef.current?.focus({ preventScroll: true });
@@ -36,7 +39,10 @@ export function Chatbot() {
   }, [messages, open, booking]);
   const close = (restoreFocus = true) => {
     setOpen(false);
-    if (restoreFocus) requestAnimationFrame(() => launcherRef.current?.focus({ preventScroll: true }));
+    if (restoreFocus) requestAnimationFrame(() => {
+      const trigger = window.matchMedia('(min-width: 1024px)').matches ? launcherRef.current : document.getElementById('mobile-help-trigger');
+      trigger?.focus({ preventScroll: true });
+    });
   };
   const send = (raw: string) => {
     const text = raw.trim().slice(0, 1500);
@@ -51,7 +57,7 @@ export function Chatbot() {
   };
   if (dismissed) return null;
   return <>
-    {!open && <div className="fixed right-3 bottom-24 lg:bottom-5 z-40 flex items-center gap-1">
+    {!open && <div className="fixed right-3 bottom-24 lg:bottom-5 z-40 hidden items-center gap-1 lg:flex">
       <button ref={launcherRef} onClick={() => setOpen(true)} aria-label="Ouvrir l’assistant Clean&Fresh" aria-expanded={open} aria-controls="cleanfresh-chat"
         className="flex h-11 items-center gap-2 rounded-full bg-primary px-3 text-xs font-semibold text-primary-foreground shadow-md hover:bg-primary/90">
         <MessageCircle className="size-5" /><span>Aide</span>

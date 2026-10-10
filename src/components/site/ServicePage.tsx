@@ -184,7 +184,7 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
           <div className="hidden md:flex mt-6 flex-wrap justify-center gap-4 text-xs text-ink-foreground/60">
             <span className="inline-flex items-center gap-1"><Clock className="size-3" /> Devis sous 24h</span>
             <span className="inline-flex items-center gap-1"><Check className="size-3" /> Séchage rapide</span>
-            <span className="inline-flex items-center gap-1"><Check className="size-3" /> Produits Écolabel</span>
+            <span className="inline-flex items-center gap-1"><Check className="size-3" /> Produits adaptés au support</span>
           </div>
         </div>
       </section>

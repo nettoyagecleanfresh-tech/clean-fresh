@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { CalendarCheck, Mail, Phone, Instagram, Facebook, ChevronDown } from "lucide-react";
+import { CalendarCheck, Mail, Phone, MessageCircle, Instagram, Facebook, ChevronDown } from "lucide-react";
 import { COMPANY, MENU_BATIMENT, MENU_TEXTILE } from "@/data/site";
 
 export function Footer() {
@@ -86,7 +86,7 @@ export function Footer() {
                 href={COMPANY.phoneHref}
                 className="inline-flex items-center gap-2 hover:text-ink-foreground transition-colors font-semibold"
               >
-                <Phone className="size-4" /> {COMPANY.phone}
+                <Phone className="size-4" /><span className="sm:hidden">Appeler</span><span className="hidden sm:inline">{COMPANY.phone}</span>
               </a>
             </li>
             <li>
@@ -157,20 +157,23 @@ export function StickyCallCta() {
   }
 
   return (
-    <div className="fixed inset-x-0 bottom-0 z-50 border-t border-border/60 bg-background p-3 lg:hidden">
+    <div className="fixed inset-x-0 bottom-0 z-50 border-t border-border/60 bg-background px-3 pt-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] lg:hidden">
       <div className="flex gap-2">
         <a
           href={COMPANY.phoneHref}
           className="inline-flex h-12 flex-1 items-center justify-center gap-2 rounded-xl bg-primary-gradient text-sm font-bold text-primary-foreground shadow-[var(--shadow-soft)]"
         >
-          <Phone className="size-4" /> {COMPANY.phone}
+          <Phone className="size-4" /><span className="sm:hidden">Appeler</span><span className="hidden sm:inline">{COMPANY.phone}</span>
         </a>
         <Link
           to="/formules"
-          className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-accent-gradient px-4 text-sm font-bold text-accent-foreground shadow-[var(--shadow-soft)]"
+          className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-accent-gradient px-3 text-sm font-bold text-accent-foreground shadow-[var(--shadow-soft)]"
         >
           <CalendarCheck className="size-4" /> Je réserve
         </Link>
+        {!/^\/(annuler|upsell)(\/|$)/.test(location.pathname) && <button id="mobile-help-trigger" type="button" onClick={() => window.dispatchEvent(new Event('cleanfresh:open-help'))} aria-label="Ouvrir l’assistant Clean&Fresh" aria-haspopup="dialog" className="inline-flex h-12 flex-col items-center justify-center rounded-xl border border-primary/20 px-3 text-xs font-semibold text-primary">
+          <MessageCircle className="size-4" /> Aide
+        </button>}
       </div>
     </div>
   );

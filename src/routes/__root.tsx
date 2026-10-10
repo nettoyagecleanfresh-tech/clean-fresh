@@ -218,6 +218,12 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const location = useLocation();
   const [loadChatbot, setLoadChatbot] = useState(false);
+  const [helpRequest, setHelpRequest] = useState(0);
+  useEffect(() => {
+    const openHelp = () => { setLoadChatbot(true); setHelpRequest(value => value + 1); };
+    window.addEventListener('cleanfresh:open-help', openHelp);
+    return () => window.removeEventListener('cleanfresh:open-help', openHelp);
+  }, []);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -256,7 +262,7 @@ function RootComponent() {
       <StickyCallCta />
       {loadChatbot && !/^\/(reserver|annuler|upsell)(\/|$)/.test(location.pathname) ? (
         <Suspense fallback={null}>
-          <Chatbot />
+          <Chatbot openRequest={helpRequest} />
         </Suspense>
       ) : null}
       <Toaster />

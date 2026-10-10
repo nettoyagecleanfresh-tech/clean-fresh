@@ -70,6 +70,24 @@ function GaleriePage() {
         </figure>)}
       </div>
     </section>
+    <section className="mx-auto mt-12 max-w-6xl px-5" aria-labelledby="cas-clients">
+      <h2 id="cas-clients" className="text-2xl font-bold text-slate-900">Trois interventions en détail</h2>
+      <div className="mt-5 grid gap-4 md:grid-cols-3">
+        {[
+          { title: 'Théâtre du Capitole · Toulouse', need: 'Nettoyer les six tapis du théâtre.', work: 'Nettoyage des six tapis lors de notre intervention au Théâtre du Capitole.', result: 'La galerie présente les tapis avant intervention et un tapis après nettoyage.', href: '/nettoyage-tapis-toulouse' },
+          { title: 'Intérieur de voiture · Poils d’animaux', need: 'Des poils présents sur la banquette et le plancher.', work: 'Retrait des poils et nettoyage des zones concernées.', result: 'Les photos permettent de comparer la banquette et le plancher avant et après.', href: '/nettoyage-auto-a-domicile-toulouse' },
+          { title: 'Canapé · Méridienne grise', need: 'Des traces et des taches sur l’assise en tissu.', work: 'Nettoyage et détachage de la méridienne.', result: 'La même assise est présentée avant et après intervention dans la galerie.', href: '/nettoyage-canape-toulouse' },
+        ].map(item => <article key={item.title} className="rounded-2xl border border-slate-200 bg-white p-5">
+          <h3 className="font-bold text-slate-900">{item.title}</h3>
+          <dl className="mt-4 space-y-3 text-sm leading-relaxed text-slate-600">
+            <div><dt className="font-semibold text-slate-900">Le besoin</dt><dd>{item.need}</dd></div>
+            <div><dt className="font-semibold text-slate-900">L’intervention</dt><dd>{item.work}</dd></div>
+            <div><dt className="font-semibold text-slate-900">Le résultat en images</dt><dd>{item.result}</dd></div>
+          </dl>
+          <a href={item.href} className="mt-4 inline-flex min-h-11 items-center font-semibold text-teal-800 underline underline-offset-4">Découvrir la prestation</a>
+        </article>)}
+      </div>
+    </section>
     <section className="mx-auto mt-12 max-w-3xl px-5">
       <h2 className="text-2xl font-bold text-slate-900">Un problème de taches, de poils ou d’odeurs ?</h2>
       <div className="mt-5 space-y-3">
