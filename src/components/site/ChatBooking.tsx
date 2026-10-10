@@ -53,7 +53,10 @@ export function ChatBooking({ onBusy }: { onBusy: (busy: boolean) => void }) {
   const tomorrow = dateKey(new Date(Date.now() + 24 * 60 * 60 * 1000));
 
   useEffect(() => {
-    root.current?.scrollIntoView({ block: 'nearest' });
+    // Only scroll the assistant's own viewport; never move the page behind it.
+    root.current?.focus({ preventScroll: true });
+    const viewport = root.current?.closest<HTMLElement>('[data-chat-scroll]');
+    if (viewport) viewport.scrollTop = 0;
   }, [stage, field]);
   useEffect(() => {
     if (stage !== 'date' || !date) return;
@@ -117,7 +120,13 @@ export function ChatBooking({ onBusy }: { onBusy: (busy: boolean) => void }) {
     else setField(v => v + 1);
   };
 
-  return <div ref={root} className="space-y-3 p-3">
+  return <div ref={root} tabIndex={-1} className="space-y-3 p-3 outline-none" onClickCapture={event => {
+    if (!(event.target instanceof Element) || !event.target.closest('button')) return;
+    requestAnimationFrame(() => {
+      const viewport = root.current?.closest<HTMLElement>('[data-chat-scroll]');
+      if (viewport) viewport.scrollTop = 0;
+    });
+  }}>
     <p className="rounded-xl bg-primary/5 p-3 text-xs text-muted-foreground">Réservation guidée · Aucun paiement en ligne · Rien n’est réservé avant votre confirmation finale.</p>
     {items.length > 0 && stage !== 'done' && <p className="text-sm font-semibold">{items.length} prestation(s) · {totals.price} € · {totals.duration} min</p>}
     {error && <p role="alert" className="rounded-xl border border-red-200 bg-red-50 p-3 text-sm text-red-800">{error}</p>}
@@ -157,7 +166,7 @@ export function ChatBooking({ onBusy }: { onBusy: (busy: boolean) => void }) {
       {error && <button className={button} onClick={() => setRefresh(v => v + 1)}>Réessayer le calendrier</button>}
     </>}
     {stage === 'details' && <form onSubmit={nextDetail} className="space-y-3">
-      {activeField ? <label className="block font-semibold">{activeField[1]}<input key={activeField[0]} autoFocus required type={activeField[2]} autoComplete={activeField[3]} value={details[activeField[0]]} maxLength={activeField[0] === 'zip' ? 5 : 180} pattern={activeField[0] === 'zip' ? '[0-9]{5}' : activeField[0] === 'phone' ? '[+0-9 () .-]{8,20}' : undefined} onChange={e => setDetails(old => ({ ...old, [activeField[0]]: e.target.value }))} className="mt-2 w-full rounded-xl border bg-background p-3 text-base font-normal" /></label> : <fieldset><legend className="font-semibold">{field === 6 ? 'Une prise électrique est-elle disponible à moins de 60 m du véhicule ?' : 'Un accès à l’eau est-il disponible à proximité du véhicule ?'}</legend>{['yes', 'no'].map(value => <label key={value} className={button + ' mt-2 block'}><input type="radio" required name="access" checked={access[field === 6 ? 'electricity' : 'water'] === value} onChange={() => setAccess(old => ({ ...old, [field === 6 ? 'electricity' : 'water']: value }))} /> {value === 'yes' ? 'Oui' : 'Non'}</label>)}</fieldset>}
+      {activeField ? <label className="block font-semibold">{activeField[1]}<input key={activeField[0]} required type={activeField[2]} autoComplete={activeField[3]} value={details[activeField[0]]} maxLength={activeField[0] === 'zip' ? 5 : 180} pattern={activeField[0] === 'zip' ? '[0-9]{5}' : activeField[0] === 'phone' ? '[+0-9 () .-]{8,20}' : undefined} onChange={e => setDetails(old => ({ ...old, [activeField[0]]: e.target.value }))} className="mt-2 w-full rounded-xl border bg-background p-3 text-base font-normal" /></label> : <fieldset><legend className="font-semibold">{field === 6 ? 'Une prise électrique est-elle disponible à moins de 60 m du véhicule ?' : 'Un accès à l’eau est-il disponible à proximité du véhicule ?'}</legend>{['yes', 'no'].map(value => <label key={value} className={button + ' mt-2 block'}><input type="radio" required name="access" checked={access[field === 6 ? 'electricity' : 'water'] === value} onChange={() => setAccess(old => ({ ...old, [field === 6 ? 'electricity' : 'water']: value }))} /> {value === 'yes' ? 'Oui' : 'Non'}</label>)}</fieldset>}
       <button type="submit" className={primary}>{field === (hasAuto ? 7 : 5) ? 'Voir mon récapitulatif' : 'Continuer'}</button>
       <button type="button" className={button} onClick={() => field > 0 ? setField(v => v - 1) : changeStage('date')}>← Question précédente</button>
       <p className="text-xs text-muted-foreground">Vos coordonnées servent à organiser le rendez-vous. <a href="/politique-confidentialite" className="underline">Confidentialité</a></p>

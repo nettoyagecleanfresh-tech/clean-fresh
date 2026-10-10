@@ -9,8 +9,8 @@ const extraPhotos = [
   'Banquette arrière de véhicule', 'Volant et habitacle de véhicule',
 ];
 
-export function RealWorkGallery() {
-  const [expanded, setExpanded] = useState(false);
+export function RealWorkGallery({ initiallyExpanded = false }: { initiallyExpanded?: boolean }) {
+  const [expanded, setExpanded] = useState(initiallyExpanded);
   return <>
     <div className="mt-8 grid gap-6 md:grid-cols-2">
       {[

@@ -1,3 +1,4 @@
+import { RealWorkGallery } from "@/components/site/RealWorkGallery";
 import { SITE_URL } from "@/data/site";
 import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
@@ -100,6 +101,11 @@ function GaleriePage() {
           Canapés, sièges auto, matelas, tapis : le résultat parle de lui-même.
         </p>
       </div>
+
+      <section aria-label="Derniers avant et après" className="mx-auto max-w-6xl px-4 pb-16">
+        <h2 className="text-2xl font-bold">Nos derniers avant / après</h2>
+        <RealWorkGallery initiallyExpanded />
+      </section>
 
       {/* ── GRILLE ── */}
       <section className="mx-auto max-w-6xl px-4 pb-16">

@@ -1,7 +1,7 @@
-import { RealWorkGallery } from "@/components/site/RealWorkGallery";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import {
+  Images,
   CalendarCheck,
   Clock,
   Leaf,
@@ -336,6 +336,9 @@ function Index() {
                 >
                   <a href={COMPANY.phoneHref}><Phone className="size-3.5 md:size-4 mr-1.5 md:mr-2" /> Appeler</a>
                 </Button>
+                <Button asChild size="xl" className="bg-violet-700 text-white font-bold text-xs md:text-sm lg:text-base hover:bg-violet-800 border border-violet-300/40 px-4 md:px-6 h-10 md:h-12">
+                  <Link to="/nos-realisations" resetScroll><Images className="size-4 mr-1.5" /> Avant / Après — Voir les résultats</Link>
+                </Button>
               </div>
 
               {/* Grand badge Google Avis sous les boutons */}
@@ -438,26 +441,6 @@ function Index() {
               Voir toutes nos prestations
             </Link>
           </div>
-        </div>
-      </section>
-
-      {/* ── GALERIE AVANT / APRÈS ── */}
-      <section className="bg-secondary/40 py-12 md:py-20">
-        <div className="mx-auto max-w-6xl px-4">
-          <div className="flex flex-wrap items-end justify-between gap-4">
-            <div>
-              <p className="text-xs font-bold uppercase tracking-widest text-primary">Nos dernières interventions à Toulouse</p>
-              <h2 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight">La différence Clean&Fresh</h2>
-              <p className="mt-2 text-muted-foreground">Photos réelles de nos interventions chez nos clients.</p>
-            </div>
-            <Link
-              to="/formules"
-              className="inline-flex items-center gap-2 rounded-full bg-accent-gradient px-5 py-2.5 text-sm font-bold text-accent-foreground hover:opacity-90 transition-opacity"
-            >
-              <CalendarCheck className="size-4" /> Je réserve maintenant
-            </Link>
-          </div>
-          <RealWorkGallery />
         </div>
       </section>
 
@@ -566,6 +549,9 @@ function Index() {
                 <CalendarCheck /> Réserver un créneau
               </Link>
             </Button>
+            <Button asChild size="xl" className="bg-violet-700 text-white font-bold hover:bg-violet-800">
+              <Link to="/nos-realisations" resetScroll><Images className="size-4" /> Avant / Après</Link>
+            </Button>
             <Button asChild variant="outline" size="xl">
               <Link to="/tarifs">Voir les tarifs</Link>
             </Button>
@@ -635,6 +621,9 @@ function Index() {
                 <Link to="/formules">
                   <CalendarCheck /> Réserver en ligne
                 </Link>
+              </Button>
+              <Button asChild size="xl" className="w-full bg-violet-700 text-white font-bold hover:bg-violet-800 border border-violet-300/40">
+                <Link to="/nos-realisations" resetScroll><Images className="size-4" /> Avant / Après — Voir les résultats</Link>
               </Button>
               <Button asChild variant="onDark" size="xl" className="w-full">
                 <Link to="/contactez-nous">Demander un devis gratuit</Link>
