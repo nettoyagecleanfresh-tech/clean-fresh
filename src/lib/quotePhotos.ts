@@ -51,7 +51,7 @@ export async function prepareQuotePhotos(files: File[]): Promise<File | null> {
     try { bitmap = await createImageBitmap(file); }
     catch { throw new Error('Une photo est illisible. Choisissez une autre photo ou envoyez votre demande sans photo.'); }
     try {
-      const ratio = Math.min(1, 1600 / Math.max(bitmap.width, bitmap.height));
+      const ratio = Math.min(1, 1400 / Math.max(bitmap.width, bitmap.height));
       const canvas = document.createElement('canvas');
       canvas.width = Math.max(1, Math.round(bitmap.width * ratio));
       canvas.height = Math.max(1, Math.round(bitmap.height * ratio));
@@ -62,9 +62,9 @@ export async function prepareQuotePhotos(files: File[]): Promise<File | null> {
       let jpeg: Blob | null = null;
       for (const quality of [0.8, 0.65, 0.5, 0.35]) {
         jpeg = await new Promise<Blob | null>(resolve => canvas.toBlob(resolve, 'image/jpeg', quality));
-        if (jpeg && jpeg.size <= 400_000) break;
+        if (jpeg && jpeg.size <= 200_000) break;
       }
-      if (!jpeg || jpeg.size > 400_000) throw new Error('Une photo reste trop volumineuse. Choisissez une version plus légère.');
+      if (!jpeg || jpeg.size > 200_000) throw new Error('Une photo reste trop volumineuse. Choisissez une version plus légère.');
       pages.push({ bytes: new Uint8Array(await jpeg.arrayBuffer()), width: canvas.width, height: canvas.height });
       canvas.width = canvas.height = 1;
     } finally { bitmap.close(); }

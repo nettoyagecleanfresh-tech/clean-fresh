@@ -2,7 +2,7 @@ import { useState } from "react";
 import { prepareQuotePhotos, validateQuotePhotos } from "@/lib/quotePhotos";
 import { createFileRoute } from "@tanstack/react-router";
 import { Mail, Phone, Clock, MapPin, ArrowRight, Camera } from "lucide-react";
-import { z } from "zod";
+import { quoteSchema as schema } from "@/lib/quoteSchema";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -48,17 +48,7 @@ const SERVICES_LIST = [
   "Autre",
 ];
 
-const schema = z.object({
-  nom: z.string().trim().min(2, "Merci d'indiquer votre nom").max(100),
-  telephone: z.string().trim().min(6, "Numéro invalide").max(20),
-  email: z.string().trim().email("Adresse email invalide").max(255),
-  service: z.string().min(1, "Veuillez sélectionner un service"),
-  adresse: z.string().trim().min(5, "Merci d'indiquer l'adresse d'intervention").max(200),
-  surface: z.string().trim().min(1, "Merci d'indiquer la surface ou les dimensions").max(100),
-  dateSouhaitee: z.string().trim().min(2, "Merci d'indiquer la date ou le délai souhaité").max(100),
-  acces: z.string().trim().min(2, "Merci de préciser l'accès à l'eau et à l'électricité").max(300),
-  message: z.string().trim().min(10, "Merci de détailler votre demande").max(1000),
-});
+
 
 function ContactPage() {
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -91,60 +81,36 @@ function ContactPage() {
     setIsSubmitting(true);
 
     try {
-      // Intégration de Web3Forms pour contourner EmailJS
-      const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
-      
-      if (!accessKey) {
-        toast.error("Clé Web3Forms manquante (VITE_WEB3FORMS_ACCESS_KEY).");
-        setIsSubmitting(false);
-        return;
-      }
-
-      const formDataForWeb3 = new FormData();
-      formDataForWeb3.append("access_key", accessKey);
-      formDataForWeb3.append("subject", `Nouveau message de ${result.data.nom}`);
-      formDataForWeb3.append("from_name", "Clean&Fresh Contact");
-      // Mettre l'email du client en "Reply-To" pour pouvoir lui répondre directement
-      formDataForWeb3.append("replyto", result.data.email);
-      
-      // Contenu du message
-      formDataForWeb3.append("Nom", result.data.nom);
-      formDataForWeb3.append("Téléphone", result.data.telephone);
-      formDataForWeb3.append("Email", result.data.email);
-      formDataForWeb3.append("Prestation", result.data.service);
-      formDataForWeb3.append("Adresse d'intervention", result.data.adresse);
-      formDataForWeb3.append("Surface ou dimensions", result.data.surface);
-      formDataForWeb3.append("Date ou délai souhaité", result.data.dateSouhaitee);
-      formDataForWeb3.append("Accès et besoins techniques", result.data.acces);
-      formDataForWeb3.append("Message", result.data.message);
       let attachment: File | null;
       try { attachment = await prepareQuotePhotos(photos); }
       catch (error) {
         setErrors({ photos: error instanceof Error ? error.message : "Impossible de préparer les photos. Réessayez avec d’autres images." });
         return;
       }
-      if (attachment) {
-        formDataForWeb3.append("attachment", attachment);
-        formDataForWeb3.append("Nombre de photos", String(photos.length));
-      }
-
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        body: formDataForWeb3,
+      const pdf = attachment ? await new Promise<string>((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(String(reader.result).split(',')[1] ?? '');
+        reader.onerror = () => reject(new Error('Lecture des photos impossible.'));
+        reader.readAsDataURL(attachment);
+      }) : null;
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...result.data, photoCount: photos.length, pdf }),
       });
 
       const resData = await response.json();
 
-      if (resData.success) {
+      if (response.ok && resData.success) {
         toast.success("Votre message a été envoyé avec succès. Nous vous répondons sous 24h.");
         form.reset();
         setSelectedService("");
         setPhotoCount(0);
       } else {
-        throw new Error(resData.message || "Erreur Web3Forms");
+        throw new Error(resData.message || "Envoi non confirmé");
       }
     } catch (err) {
-      console.error(err);
+      console.error("[Contact] Envoi non confirmé");
       toast.error("L’envoi a échoué. Vos informations sont conservées : réessayez ou contactez-nous par téléphone.");
     } finally {
       setIsSubmitting(false);
