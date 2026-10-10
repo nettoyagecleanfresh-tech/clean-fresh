@@ -23,11 +23,15 @@ function Photo({ photo }: { photo: Realisation }) {
       loading="lazy" decoding="async"
       className={photo.phone ? 'absolute left-0 top-[-33.48%] h-auto w-full max-w-none' : 'block h-auto w-full'} />}
     {!branded && <>
-      <span className="pointer-events-none absolute left-3 top-3 rounded-md border border-white/30 bg-slate-900/90 px-3 py-1.5 text-[11px] font-extrabold tracking-widest text-white shadow-sm">{single ? 'INTERVENTION' : 'AVANT'}</span>
-      {!single && <span className={`pointer-events-none absolute rounded-md border border-white/40 bg-cyan-800/95 px-3 py-1.5 text-[11px] font-extrabold tracking-widest text-white shadow-sm ${photo.layout === 'horizontal' ? 'right-3 top-3' : 'left-3 top-[calc(50%+12px)]'}`}>APRÈS</span>}
-      <div aria-hidden="true" className="pointer-events-none absolute left-1/2 top-1/2 flex w-[21%] max-w-24 -translate-x-1/2 -translate-y-1/2 flex-col items-center rounded-full border border-white/50 bg-slate-900/45 p-2 shadow-sm">
-        <img src="/logo.webp" alt="" className="h-auto w-full opacity-90 brightness-0 invert" />
-        <span className="text-[7px] font-bold tracking-[0.15em] text-white">TOULOUSE</span>
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 border-[4px] border-[#082764]" />
+      <span className={`pointer-events-none absolute top-0 flex h-[12%] min-h-9 items-center justify-center border-b-2 border-cyan-400 bg-[#082764] text-[clamp(16px,2.2vw,25px)] font-black italic tracking-wide text-white ${photo.layout === 'horizontal' ? 'left-0 w-1/2' : 'left-0 w-full'}`} style={{ clipPath: 'polygon(0 0,100% 0,94% 100%,6% 100%)' }}>{single ? 'APRÈS' : 'AVANT'}</span>
+      {!single && <>
+        <span className={`pointer-events-none absolute flex h-[12%] min-h-9 items-center justify-center border-b-2 border-cyan-400 bg-[#082764] text-[clamp(16px,2.2vw,25px)] font-black italic tracking-wide text-white ${photo.layout === 'horizontal' ? 'right-0 top-0 w-1/2' : 'left-0 top-1/2 w-full'}`} style={{ clipPath: 'polygon(0 0,100% 0,94% 100%,6% 100%)' }}>APRÈS</span>
+        <div aria-hidden="true" className={`pointer-events-none absolute bg-[#082764] ${photo.layout === 'horizontal' ? 'inset-y-0 left-1/2 w-1 -translate-x-1/2' : 'inset-x-0 top-1/2 h-1 -translate-y-1/2'}`} />
+      </>}
+      <div aria-hidden="true" className="pointer-events-none absolute left-1/2 top-1/2 flex w-[34%] max-w-40 -translate-x-1/2 -translate-y-1/2 flex-col items-center px-3 py-5" style={{ background: 'radial-gradient(ellipse,rgba(4,37,101,.92) 0%,rgba(4,37,101,.68) 45%,rgba(4,37,101,0) 72%)' }}>
+        <img src="/logo.webp" alt="" className="h-auto w-full opacity-95 brightness-0 invert" />
+        <span className="mt-1 text-[clamp(8px,1vw,12px)] font-extrabold tracking-[0.3em] text-cyan-300">TOULOUSE</span>
       </div>
     </>}
   </div>;
@@ -78,6 +82,7 @@ function GaleriePage() {
     <section className="mx-auto mt-12 max-w-3xl px-5">
       <h2 className="text-2xl font-bold text-slate-900">Un problème de taches, de poils ou d’odeurs ?</h2>
       <div className="mt-5 space-y-3">
+        <details className="rounded-2xl border bg-white p-5"><summary className="cursor-pointer font-semibold">Nettoyage insalubre et après syndrome de Diogène à Toulouse</summary><p className="mt-3 text-sm leading-relaxed text-slate-600">Pour un logement très encombré ou insalubre, décrivez les pièces, les surfaces et les déchets à prendre en charge. Les photos permettent de préparer un devis adapté. Une situation liée au syndrome de Diogène doit être précisée dans votre demande : elle ne se déduit pas du seul aspect d’une pièce.</p></details>
         <details className="rounded-2xl border bg-white p-5"><summary className="cursor-pointer font-semibold">Nettoyage des taches d’urine de chat sur un canapé ou un matelas</summary><p className="mt-3 text-sm leading-relaxed text-slate-600">Précisez l’origine de la tache, son ancienneté et les produits déjà utilisés dans votre demande. Une photo aide à évaluer le tissu et les auréoles, mais ne permet pas de mesurer les odeurs. Le traitement et le résultat possible dépendent du support et de la profondeur de l’imprégnation.</p></details>
         <details className="rounded-2xl border bg-white p-5"><summary className="cursor-pointer font-semibold">Retrait des poils de chien et de chat dans une voiture</summary><p className="mt-3 text-sm leading-relaxed text-slate-600">Les poils peuvent s’accrocher aux sièges, aux tapis et à la moquette du coffre. Envoyez une vue d’ensemble et une photo rapprochée des zones concernées pour préciser votre demande de nettoyage intérieur.</p></details>
         <details className="rounded-2xl border bg-white p-5"><summary className="cursor-pointer font-semibold">Traitement des odeurs et des taches d’origine organique</summary><p className="mt-3 text-sm leading-relaxed text-slate-600">Indiquez la source de l’odeur si vous la connaissez, le textile concerné et la date de l’incident. Une tache visible et une odeur persistante nécessitent une évaluation différente : nous vous orientons selon votre situation, sans promettre un résultat identique sur tous les supports.</p></details>
