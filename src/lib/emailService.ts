@@ -78,7 +78,7 @@ function buildItemsHtml(items: BookingPayload["items"]): string {
       html += `
       <tr>
         <td width="70%" style="padding:2px 8px 2px 30px;font-family:Helvetica,Arial,sans-serif;font-size:13px;color:#5b7b8e;vertical-align:top;">
-          &plus;&nbsp;${opt.name}
+          +&nbsp;${opt.name}
         </td>
         <td width="30%" align="right" style="padding:2px 20px 2px 8px;font-family:Helvetica,Arial,sans-serif;font-size:13px;color:#5b7b8e;vertical-align:top;">
           +${opt.price}&nbsp;&euro;
@@ -113,25 +113,25 @@ const CSS = `
   </style>`;
 
 // ─── Header HTML réutilisable ─────────────────────────────────────────────────
-function emailHeader(badgeText: string, color = "#00b8ff") {
+function emailHeader(badgeText: string, color = "#00b8ff", booking = false) {
   return `
     <tr>
       <td style="background-color:${color};padding:22px 28px;border-bottom:3px solid ${color === "#00b8ff" ? "#0093cc" : color};">
         <table border="0" cellpadding="0" cellspacing="0" width="100%">
           <tr>
-            <td width="60%" align="left" style="vertical-align:middle;">
+            <td width="${booking ? "120" : "60%"}" align="left" style="vertical-align:middle;${booking ? "width:120px;min-width:120px;" : ""}">
               <table border="0" cellpadding="0" cellspacing="0">
                 <tr>
-                  <td bgcolor="#ffffff" style="border-radius:8px;padding:5px 10px;">
-                    <img src="https://cleanetfresh.fr/logo-email.png" width="110" alt="Clean&amp;Fresh" style="display:block;width:110px;height:auto;border:0;">
+                  <td bgcolor="#ffffff" style="border-radius:8px;padding:${booking ? "6px" : "5px 10px"};">
+                    <img src="https://cleanetfresh.fr/logo-email.png" width="${booking ? "108" : "110"}" alt="Clean&amp;Fresh" style="display:block;width:${booking ? "108" : "110"}px;${booking ? "min-width:108px;" : ""}height:auto;border:0;">
                   </td>
                 </tr>
               </table>
             </td>
-            <td width="40%" align="right" style="vertical-align:middle;">
+            <td ${booking ? "" : 'width="40%"'} align="right" style="vertical-align:middle;${booking ? "padding-left:12px;" : ""}">
               <table border="0" cellpadding="0" cellspacing="0" align="right">
                 <tr>
-                  <td bgcolor="#ffffff" style="border-radius:30px;padding:7px 15px;font-family:Helvetica,Arial,sans-serif;font-size:11px;font-weight:bold;letter-spacing:0.6px;color:${color === "#00b8ff" ? "#0093cc" : color};white-space:nowrap;">${badgeText}</td>
+                  <td bgcolor="#ffffff" style="border-radius:30px;padding:7px 15px;font-family:Helvetica,Arial,sans-serif;font-size:11px;font-weight:bold;letter-spacing:0.6px;color:${color === "#00b8ff" ? "#0093cc" : color};white-space:${booking ? "normal" : "nowrap"};${booking ? "line-height:16px;text-align:center;" : ""}">${badgeText}</td>
                 </tr>
               </table>
             </td>
@@ -202,12 +202,12 @@ export async function sendBookingEmailsRaw(b: BookingPayload): Promise<string> {
 
   // ── EMAIL CLIENT ────────────────────────────────────────────────────────────
   const clientContent = `
-    ${emailHeader("COMMANDE CONFIRMÉE", "#00b8ff")}
+    ${emailHeader("RÉSERVATION CONFIRMÉE", "#00b8ff", true)}
     <tr><td class="px" style="padding:32px 28px 8px 28px;">
       <h1 style="margin:0 0 10px 0;font-size:24px;font-weight:900;color:#0f2c3f;letter-spacing:-0.5px;">Félicitations pour votre réservation ! 🎉</h1>
       <p style="margin:0;font-size:15px;line-height:24px;color:#2f4d64;">
         Bonjour <strong>${b.client_name}</strong>,<br>
-        Votre commande pour la prestation <strong style="color:#0f2c3f;">${formuleName}</strong> est confirmée avec succès.<br>
+        Votre réservation pour la prestation <strong style="color:#0f2c3f;">${formuleName}</strong> est confirmée avec succès.<br>
         Préparez-vous à redécouvrir votre intérieur sous son meilleur jour ! ✨ Nos experts ont hâte de prendre soin de votre bien avec nos méthodes professionnelles.
       </p>
     </td></tr>
@@ -299,7 +299,7 @@ export async function sendBookingEmailsRaw(b: BookingPayload): Promise<string> {
 
   // ── EMAIL ADMIN ─────────────────────────────────────────────────────────────
   const adminContent = `
-    ${emailHeader("🆕 NOUVELLE RÉSERVATION", "#0093cc")}
+    ${emailHeader("RÉSERVATION CONFIRMÉE", "#0093cc", true)}
     <tr><td class="px" style="padding:28px 28px 8px 28px;">
       <h1 style="margin:0 0 6px 0;font-size:20px;font-weight:bold;color:#0f2c3f;">Nouvelle réservation reçue</h1>
       <p style="margin:0;font-size:14px;color:#5b7b8e;">Commande n°${orderNumber} — ${b.items.length} prestation(s)</p>
