@@ -40,6 +40,7 @@ export type BookingPayload = {
   client_zip: string;
   client_city: string;
   cancel_url: string;
+  review_url: string;
   estimated_duration?: string;
 };
 
@@ -372,7 +373,7 @@ export async function sendBookingEmailsRaw(b: BookingPayload): Promise<string> {
       <table border="0" cellpadding="0" cellspacing="0" width="100%">
         <tr>
           <td bgcolor="#fbbc04" style="border-radius:8px;padding:14px 20px;text-align:center;box-shadow:0 3px 10px rgba(251,188,4,0.3);margin-bottom:12px;display:block;">
-            <a href="${process.env["VITE_SITE_URL"] ?? "https://cleanetfresh.fr"}/envoyer-avis?n=${encodeURIComponent(b.client_name)}&e=${encodeURIComponent(b.client_email)}&f=${encodeURIComponent(formuleName)}&d=${encodeURIComponent(b.booking_date)}" style="color:#1a1a1a;font-weight:bold;text-decoration:none;font-size:15px;display:block;">
+            <a href="${b.review_url.replace(/&/g, "&amp;").replace(/"/g, "&quot;")}" style="color:#1a1a1a;font-weight:bold;text-decoration:none;font-size:15px;display:block;">
               ⭐ Envoyer une demande d'avis à ce client
             </a>
           </td>

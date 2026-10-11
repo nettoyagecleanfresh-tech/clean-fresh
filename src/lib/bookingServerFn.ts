@@ -12,7 +12,7 @@ import { SERVICES } from "@/data/bookingCatalogue";
 import { signManagementToken, createCalendarEvent, buildEventDescription, checkSlotAvailable } from "@/lib/gcal-server";
 
 import { sendBookingEmailsRaw } from "./emailService";
-import { ensureEventActions, patchEvent } from "./calendarLifecycle";
+import { ensureEventActions, eventLinks, patchEvent } from "./calendarLifecycle";
 
 // ─── Schéma de validation ────────────────────────────────────────────────────
 
@@ -226,6 +226,7 @@ export const createBookingServerFn = createServerFn({ method: "POST" })
           client_zip: data.client_zip,
           client_city: data.client_city,
           cancel_url: cancelUrl,
+          review_url: (await eventLinks(gcalEvent)).review,
           estimated_duration: `${data.duration_min} min environ`,
         });
         await patchEvent(gcalEvent, {

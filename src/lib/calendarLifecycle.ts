@@ -75,7 +75,7 @@ function details(event: ServiceEvent, received?: string) {
   ].map(([label, value]) => `<tr><td style="padding:10px;border-bottom:1px solid #dbe7ef">${escapeHtml(label!)}</td><td style="padding:10px;border-bottom:1px solid #dbe7ef;font-weight:bold">${escapeHtml(value!)}</td></tr>`).join('');
   return `<p>Bonjour ${escapeHtml(c.name)},</p><h2 style="font-size:18px">${escapeHtml(event.summary ?? 'Votre prestation')}</h2><table role="presentation" style="width:100%;border-collapse:collapse;background:#f3f8fb">${rows}</table>${serviceBlock ? `<h2 style="font-size:17px">Prestations et options</h2><p style="white-space:pre-line">${escapeHtml(serviceBlock)}</p>` : ''}<p>${amounts.total === null ? 'Le montant et les modalités de règlement sont ceux de votre devis accepté.' : amounts.balance === null ? 'Les paiements déjà reçus et le solde seront confirmés selon votre devis.' : 'Règlement du solde à la fin de la prestation.'}</p>`;
 }
-export async function sendEventEmail(event: ServiceEvent, kind: 'confirmation'|'reminder'|'deposit'|'review', amount?: string) {
+export async function sendEventEmail(event: ServiceEvent, kind: 'confirmation'|'reminder'|'deposit'|'review', amount?: string, reviewRequestId?: string) {
   const c = eventClient(event);
   if (!c.name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(c.email) || !event.start?.dateTime) throw new Error('CLIENT_DETAILS_MISSING');
   const start = event.start.dateTime;
@@ -87,9 +87,8 @@ export async function sendEventEmail(event: ServiceEvent, kind: 'confirmation'|'
     if (cents === null || cents <= 0 || (total !== null && cents > total)) throw new Error('INVALID_DEPOSIT_AMOUNT');
     if (props.cfDepositReceipt && props.cfDepositReceipt !== amount) throw new Error('DEPOSIT_ALREADY_RECORDED');
   }
-  const value = kind === 'deposit' ? (amount ?? '') : kind === 'review' ? 'sent' : start;
+  const value = kind === 'deposit' ? (amount ?? '') : kind === 'review' ? (reviewRequestId ?? 'sent') : start;
   if (props[marker] === value) return {success:true,alreadySent:true};
-  if (kind === 'review' && Date.parse(event.end?.dateTime ?? start) > Date.now()) throw new Error('PRESTATION_NOT_FINISHED');
   const title = {confirmation:'Votre rendez-vous est confirmé',reminder:'Rappel de votre rendez-vous',deposit:'Votre acompte a bien été reçu',review:'Votre avis nous est précieux'}[kind];
   let content = details(event, kind === 'deposit' ? amount : undefined);
   const managementUrl = (event.description ?? '').match(/https:\/\/(?:www\.)?cleanetfresh\.fr\/annuler\?token=[^"'<>\s]+/)?.[0];

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "framer-motion";
 import { Star, Send, CheckCircle2, Loader2, AlertCircle, Mail, User, Calendar, Sparkles } from "lucide-react";
@@ -26,6 +26,7 @@ function EnvoyerAvisPage() {
   const { n, e, f, d, token } = Route.useSearch();
 
   const [status, setStatus] = useState<"idle" | "sending" | "done" | "error">("idle");
+  const requestId = useRef<string | null>(null);
   const [confirmed, setConfirmed] = useState(false);
 
   const formattedDate = (() => {
@@ -47,10 +48,11 @@ function EnvoyerAvisPage() {
 
   const handleSend = async () => {
     if (!isValid || !confirmed || status === "sending" || status === "done") return;
+    requestId.current ??= crypto.randomUUID();
     setStatus("sending");
     try {
       await sendReviewRequestServerFn({
-        data: { client_name: n, client_email: e, formule: f, booking_date: d, token },
+        data: { client_name: n, client_email: e, formule: f, booking_date: d, token, confirmed: true, request_id: requestId.current },
       });
       setStatus("done");
     } catch {
@@ -123,8 +125,9 @@ function EnvoyerAvisPage() {
               <strong style={{ color: "#0093cc" }}>{e}</strong>
             </p>
             <p style={{ fontSize: "13px", color: "#92b4c5", marginTop: "16px" }}>
-              Le client recevra le lien vers votre page Google dans quelques secondes.
+              L’email contenant le lien Google a été accepté par le service d’envoi.
             </p>
+            <button onClick={() => { requestId.current = null; setConfirmed(false); setStatus("idle"); }} style={{ padding: "14px", cursor: "pointer" }}>Préparer un nouvel envoi</button>
           </motion.div>
         ) : (
           <motion.div
@@ -151,7 +154,7 @@ function EnvoyerAvisPage() {
                 Demande d'avis Google
               </h1>
               <p style={{ color: "rgba(255,255,255,0.85)", fontSize: "14px", margin: "8px 0 0" }}>
-                Envoyez un email d'avis à ce client
+                Envoi possible à tout moment, après votre confirmation
               </p>
             </div>
 
@@ -219,7 +222,7 @@ function EnvoyerAvisPage() {
                   gap: "10px",
                 }}>
                   <AlertCircle size={16} />
-                  Envoi non confirmé. La prestation doit être terminée. Sinon, réessayez depuis le lien de votre agenda.
+                  L’envoi n’a pas pu être confirmé. Réessayez ou ouvrez le lien depuis votre Google Agenda. Aucun délai lié au rendez-vous n’est imposé.
                 </div>
               )}
 
