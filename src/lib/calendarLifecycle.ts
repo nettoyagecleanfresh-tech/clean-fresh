@@ -23,6 +23,27 @@ export function reminderDue(event: ServiceEvent, now: number) {
 export function brandedEmail(title: string, content: string) {
   return `<!doctype html><html lang="fr"><body style="margin:0;background:#eef4f9;font-family:Arial,sans-serif;color:#12364d"><table role="presentation" style="width:100%;max-width:600px;margin:24px auto;background:white;border-radius:16px"><tr><td style="padding:24px;background:#083b54"><img src="${SITE}/logo-email.png" width="140" alt="Clean&amp;Fresh Toulouse" style="display:block;background:white;padding:8px;border-radius:8px"></td></tr><tr><td style="padding:28px"><h1 style="font-size:23px">${escapeHtml(title)}</h1>${content}<p>Clean&amp;Fresh Toulouse<br><a href="tel:0767127500">07 67 12 75 00</a> · <a href="${SITE}">cleanetfresh.fr</a></p></td></tr></table></body></html>`;
 }
+// Dedicated review layout: do not alter reservation, reminder or deposit templates.
+export function reviewEmail(name: string) {
+  return `<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"></head>
+<body style="margin:0;padding:0;background-color:#eef4f9;font-family:Helvetica,Arial,sans-serif;color:#12364d;">
+<table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="width:100%;background-color:#eef4f9;"><tr><td align="center" style="padding:16px 10px;">
+<table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="width:100%;max-width:600px;background-color:#ffffff;border:1px solid #d7e3ee;border-radius:14px;overflow:hidden;">
+<tr><td style="padding:16px 20px;background-color:#0093cc;border-bottom:3px solid #0093cc;">
+<table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0"><tr>
+<td width="120" style="width:120px;vertical-align:middle;"><table role="presentation" cellspacing="0" cellpadding="0" border="0"><tr><td style="padding:6px;background-color:#ffffff;border-radius:8px;"><img src="${SITE}/logo-email.png" width="108" alt="Clean&amp;Fresh" style="display:block;width:108px;max-width:108px;height:auto;border:0;"></td></tr></table></td>
+<td align="right" style="padding-left:12px;vertical-align:middle;"><span style="display:inline-block;padding:7px 12px;background-color:#ffffff;border-radius:30px;font-size:11px;line-height:16px;font-weight:bold;color:#0093cc;">VOTRE AVIS</span></td>
+</tr></table></td></tr>
+<tr><td style="padding:20px;font-size:15px;line-height:22px;">
+<h1 style="margin:0 0 14px;font-size:20px;line-height:26px;color:#0f2c3f;font-weight:bold;">Merci pour votre confiance</h1>
+<p style="margin:0 0 10px;">Bonjour ${escapeHtml(name)},</p>
+<p style="margin:0 0 18px;">Comment s’est passée votre prestation ? Vous pouvez partager votre expérience sur Google en quelques mots.</p>
+<table role="presentation" cellspacing="0" cellpadding="0" border="0"><tr><td bgcolor="#0093cc" style="border-radius:8px;text-align:center;"><a href="https://g.page/r/CaKxSyOiBkq8EBE/review" style="display:inline-block;padding:13px 18px;font-size:15px;line-height:20px;font-weight:bold;color:#ffffff;text-decoration:none;">Partager mon avis sur Google</a></td></tr></table>
+<p style="margin:16px 0 0;font-size:13px;line-height:19px;color:#527a92;">Une question sur la prestation ? Répondez simplement à cet e-mail.</p>
+</td></tr>
+<tr><td style="padding:14px 20px;background-color:#f6faff;border-top:1px solid #dce7f2;font-size:13px;line-height:19px;color:#12364d;">L’équipe <strong style="color:#0093cc;">Clean&amp;Fresh Toulouse</strong><br>07 67 12 75 00</td></tr>
+</table></td></tr></table></body></html>`;
+}
 export async function calendarRequest(path = '', init: RequestInit = {}) {
   const token = await getGCalAccessToken();
   const calendar = process.env.GCAL_CALENDAR_ID;
@@ -89,15 +110,15 @@ export async function sendEventEmail(event: ServiceEvent, kind: 'confirmation'|'
   }
   const value = kind === 'deposit' ? (amount ?? '') : kind === 'review' ? (reviewRequestId ?? 'sent') : start;
   if (props[marker] === value) return {success:true,alreadySent:true};
-  const title = {confirmation:'Votre rendez-vous est confirmé',reminder:'Rappel de votre rendez-vous',deposit:'Votre acompte a bien été reçu',review:'Votre avis nous est précieux'}[kind];
+  const title = {confirmation:'Votre rendez-vous est confirmé',reminder:'Rappel de votre rendez-vous',deposit:'Votre acompte a bien été reçu',review:'Votre retour sur notre prestation'}[kind];
   let content = details(event, kind === 'deposit' ? amount : undefined);
   const managementUrl = (event.description ?? '').match(/https:\/\/(?:www\.)?cleanetfresh\.fr\/annuler\?token=[^"'<>\s]+/)?.[0];
   if (managementUrl && kind !== 'review') content += `<p><a href="${escapeHtml(managementUrl.replace(/&amp;/g,'&'))}">Gérer mon rendez-vous</a></p>`;
   if (kind === 'confirmation') content += '<p>Votre prestation est bien enregistrée dans notre agenda. Un rappel vous sera envoyé avant notre passage.</p>';
   if (kind === 'reminder') content += '<p>Nous vous rappelons votre prochain rendez-vous. Merci de prévoir les accès nécessaires à l’intervention.</p>';
   if (kind === 'deposit') content += `<p>Nous confirmons la réception de votre acompte de <strong>${escapeHtml(amount!)} €</strong> et votre rendez-vous. Le solde prévu au devis sera à régler à la fin de la prestation.</p>`;
-  if (kind === 'review') content = `<p>Bonjour ${escapeHtml(c.name)},</p><p>Merci de nous avoir confié votre prestation ${escapeHtml(event.summary ?? '')}. Partagez votre expérience sur Google : votre retour nous aide à améliorer nos services.</p><p><a href="https://g.page/r/CaKxSyOiBkq8EBE/review" style="display:inline-block;padding:16px 24px;background:#00b8ff;border-radius:8px;color:#082f49;font-weight:bold;text-decoration:none">Laisser un avis sur Google</a></p>`;
-  const result = await sendMailRaw({to:c.email,subject:`Clean&Fresh Toulouse — ${title}`,html:brandedEmail(title,content),idempotencyKey:`cf-${event.id}-${kind}-${value}`});
+  const html = kind === 'review' ? reviewEmail(c.name) : brandedEmail(title,content);
+  const result = await sendMailRaw({to:c.email,subject:`Clean&Fresh Toulouse — ${title}`,html,idempotencyKey:`cf-${event.id}-${kind}-${value}`});
   if (!result.success) throw new Error('EMAIL_SEND_FAILED');
   await patchEvent(event, {[marker]:value, ...(kind === 'confirmation' ? {cfConfirmationPending:'false'} : {})});
   return {success:true,alreadySent:false};
