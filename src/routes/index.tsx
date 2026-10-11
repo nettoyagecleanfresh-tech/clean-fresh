@@ -584,22 +584,22 @@ function Index() {
       <ReviewsCarousel />
 
       {/* ── ZONE + CTA ── */}
-      <section className="mx-auto max-w-6xl px-4 py-20">
-        <div className="grid gap-10 md:grid-cols-2 items-start">
-          <div>
+      <section className="mx-auto w-full min-w-0 max-w-6xl px-4 py-12 sm:py-20">
+        <div className="grid min-w-0 grid-cols-1 items-start gap-8 md:grid-cols-2 md:gap-10">
+          <div className="min-w-0">
             <p className="text-xs font-bold uppercase tracking-widest text-primary">Zone d'intervention</p>
-            <h2 className="mt-2 text-3xl font-bold tracking-tight">
+            <h2 className="mt-2 break-words text-2xl font-bold leading-tight tracking-tight sm:text-3xl">
               Nous intervenons partout dans l'agglomération
             </h2>
             <p className="mt-4 text-muted-foreground leading-relaxed">
               Clean&Fresh se déplace chez vous dans toute la métropole toulousaine, avec des créneaux flexibles adaptés à votre emploi du temps.
             </p>
-            <ul className="mt-6 flex flex-wrap gap-2">
+            <ul className="mt-6 flex min-w-0 flex-wrap gap-2">
               {COMMUNES.map((c) => {
                 const slug = c.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/['\s]/g, "-");
                 return (
-                  <li key={c} className="rounded-full border border-border bg-card text-sm font-medium text-muted-foreground overflow-hidden">
-                    <Link to={`/nettoyage-${slug}` as "/nettoyage-toulouse"} className="block px-3 py-1 hover:text-primary transition-colors">
+                  <li key={c} className="min-w-0 max-w-full rounded-2xl border border-border bg-card text-sm font-medium text-muted-foreground">
+                    <Link to={`/nettoyage-${slug}` as "/nettoyage-toulouse"} className="block max-w-full break-words px-3 py-2 leading-snug hover:text-primary transition-colors">
                       {c}
                     </Link>
                   </li>
@@ -608,30 +608,30 @@ function Index() {
             </ul>
           </div>
 
-          <div className="rounded-3xl bg-hero-gradient px-8 py-10 text-ink-foreground shadow-[var(--shadow-card)]">
+          <div className="min-w-0 w-full rounded-3xl bg-hero-gradient px-5 py-7 sm:px-8 sm:py-10 text-ink-foreground shadow-[var(--shadow-card)]">
             <Sparkles className="size-8 text-primary-glow" />
-            <h2 className="mt-4 text-2xl font-bold leading-snug">
+            <h2 className="mt-4 break-words text-2xl font-bold leading-snug">
               Prêt à retrouver un intérieur assaini ?
             </h2>
             <p className="mt-3 text-sm text-ink-foreground/75 leading-relaxed">
               Choisissez votre créneau en ligne en moins de 2 minutes, ou demandez un devis gratuit. Nous répondons sous 24h.
             </p>
-            <div className="mt-6 grid gap-3">
-              <Button asChild size="xl" className="w-full bg-accent-gradient text-accent-foreground font-bold hover:opacity-90">
+            <div className="mt-6 grid min-w-0 grid-cols-1 gap-3">
+              <Button asChild size="xl" className="h-auto min-h-12 min-w-0 w-full whitespace-normal break-words px-3 py-3 text-center text-sm leading-snug sm:text-base bg-accent-gradient text-accent-foreground font-bold hover:opacity-90">
                 <Link to="/formules">
                   <CalendarCheck /> Réserver en ligne
                 </Link>
               </Button>
-              <Button asChild size="xl" className="w-full bg-teal-700 text-white font-bold hover:bg-teal-800 border border-teal-300/40">
-                <Link to="/nos-realisations" resetScroll><Images className="size-4" /> Avant / Après — Voir les résultats</Link>
+              <Button asChild size="xl" className="h-auto min-h-12 min-w-0 w-full whitespace-normal break-words px-3 py-3 text-center text-sm leading-snug sm:text-base bg-teal-700 text-white font-bold hover:bg-teal-800 border border-teal-300/40">
+                <Link to="/nos-realisations" resetScroll><Images className="size-4" /> Voir les résultats avant / après</Link>
               </Button>
-              <Button asChild variant="onDark" size="xl" className="w-full">
+              <Button asChild variant="onDark" size="xl" className="h-auto min-h-12 min-w-0 w-full whitespace-normal break-words px-3 py-3 text-center text-sm leading-snug sm:text-base">
                 <Link to="/contactez-nous">Demander un devis gratuit</Link>
               </Button>
             </div>
-            <p className="mt-4 text-center text-xs text-ink-foreground/50">
+            <p className="mt-4 break-words text-center text-xs text-ink-foreground/50">
               Ou appelez directement :{" "}
-              <a href={COMPANY.phoneHref} className="font-semibold text-ink-foreground/80 hover:text-ink-foreground">
+              <a href={COMPANY.phoneHref} className="mt-1 block font-semibold text-ink-foreground/80 hover:text-ink-foreground">
                 {COMPANY.phone}
               </a>
             </p>
