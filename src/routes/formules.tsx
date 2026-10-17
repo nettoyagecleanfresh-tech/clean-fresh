@@ -332,9 +332,9 @@ const CUIR_IMAGES: Record<string, string> = {
   "cuir-canape-4": "/images/cuir/canape-4.webp",
   "cuir-canape-angle": "/images/cuir/canape-angle.webp",
   "cuir-pouf": "/images/cuir/pouf.webp",
-  "cuir-chaise": "/images/cuir/chaises-4-bleues.webp",
-  "cuir-chaises-5": "/images/cuir/chaises-5-bleues.webp",
-  "cuir-chaises-6": "/images/cuir/chaises-6-bleues.webp",
+  "cuir-chaise": "/images/cuir/chaises-4-marron.webp",
+  "cuir-chaises-5": "/images/cuir/chaises-5-marron.webp",
+  "cuir-chaises-6": "/images/cuir/chaises-6-marron.webp",
   "cuir-auto": "/images/cuir/siege-auto.webp",
 };
 
