@@ -51,9 +51,9 @@ const FORMULE_IMAGES: Record<string, Record<string, string>> = {
     "fauteuil":     "/images/canape/fauteuil.webp",
     "canape-2":     "/images/canape/canape-2-3.webp",
     "canape-3":     "/images/canape/canape-2-3.webp",
-    "canape-angle": "/images/canape/canape-u.webp",
+    "canape-angle": "/images/canape/canape-u-angle.webp",
     "canape-45":    "/images/canape/canape-4-5.webp",
-    "canape-u":     "/images/canape/canape-u.webp",
+    "canape-u":     "/images/canape/canape-u-angle.webp",
     "pouf":         "/images/canape/pouf.webp",
     "chaise":       "/images/canape/chaises-4.webp",
   "chaises-5": "/images/canape/chaises-5.webp",
@@ -86,7 +86,9 @@ const FORMULE_IMAGES: Record<string, Record<string, string>> = {
     "cuir-canape-4":     "/images/cuir/canape-4.webp",
     "cuir-canape-angle": "/images/cuir/canape-angle.webp",
     "cuir-pouf":         "/images/cuir/pouf.webp",
-    "cuir-chaise":       "/images/cuir/chaise.webp",
+  "cuir-chaise": "/images/cuir/chaises-4-bleues.webp",
+  "cuir-chaises-5": "/images/cuir/chaises-5-bleues.webp",
+  "cuir-chaises-6": "/images/cuir/chaises-6-bleues.webp",
     "cuir-auto":         "/images/cuir/siege-auto.webp",
   },
 };
@@ -860,7 +862,7 @@ function ReserverPage() {
                           <p className="text-[10px] md:text-xs font-semibold uppercase tracking-widest text-muted-foreground/80 leading-none mt-1">Dès</p>
                         )}
                         <p className={`text-lg md:text-2xl font-bold leading-tight mt-1.5 ${active ? "text-[#1a2b4c]" : "text-foreground"}`}>
-                          {f.price} € {f.id === 'cuir-chaise' && <span className="text-sm font-normal">/ unité</span>}
+                          {f.price} €
                         </p>
                         <p className="text-sm md:text-base font-bold text-foreground/90 leading-snug mt-2 px-1 w-full text-center">{f.name}</p>
                         {f.desc && (
@@ -883,7 +885,7 @@ function ReserverPage() {
                     <h2 className="text-2xl font-bold">Options pour <span className="text-accent">{formule.name}</span></h2>
                   </div>
                 </div>
-                {formule.id === "chaises-6" && (
+                {["chaises-6", "cuir-chaises-6"].includes(formule.id) && (
                   <div className="mb-4 rounded-2xl border border-border bg-card p-5">
                     <label htmlFor="additional-chairs" className="block font-semibold text-sm">Chaises supplémentaires — +15 € / chaise</label>
                     <p className="mt-1 text-xs text-muted-foreground">En complément du lot de 6. Le montant et la durée se mettent à jour automatiquement.</p>
@@ -892,7 +894,7 @@ function ReserverPage() {
                       onChange={(event) => {
                         const count = Number(event.target.value);
                         if (!Number.isSafeInteger(count) || count < 0 || count > 100) return;
-                        const base = service.formules.find(f => f.id === "chaises-6")!;
+                        const base = service.formules.find(f => f.id === formule.id)!;
                         setFormule(withAdditionalChairs(base, count));
                         setSelectedTime(null);
                       }} />

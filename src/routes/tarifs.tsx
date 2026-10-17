@@ -15,7 +15,7 @@ const TARIF_CATEGORIES = [
   {
     id: "canape",
     icon: <Armchair className="size-7" />,
-    title: "Nettoyage Canapé & Fauteuil",
+    title: "Nettoyage Canapés, Fauteuils & Chaises",
     priceFrom: "49 €",
     bullets: ["Fauteuil, canapé 2/3, 4/5 places", "Canapé U/angle, pouf, chaise", "Options anti-acariens, anti-odeur"],
   },
@@ -50,9 +50,9 @@ const TARIF_CATEGORIES = [
   {
     id: "cuir",
     icon: <Armchair className="size-7" />,
-    title: "Nettoyage Cuir",
+    title: "Nettoyage Cuir — Canapés, Fauteuils & Chaises",
     priceFrom: "49 €",
-    bullets: ["Fauteuil, canapé 2/3, 4/5 places", "Sièges auto cuir", "Soin nourrissant en option"],
+    bullets: ["Fauteuil, canapé 2/3, 4/5 places", "Chaises et sièges auto cuir", "Soin nourrissant en option"],
   },
 ];
 
@@ -64,9 +64,9 @@ const FORMULE_IMAGES: Record<string, string> = {
   "fauteuil": "/images/canape/fauteuil.webp",
   "canape-2": "/images/canape/canape-2-3.webp",
   "canape-3": "/images/canape/canape-2-3.webp",
-  "canape-angle": "/images/canape/canape-u.webp",
+  "canape-angle": "/images/canape/canape-u-angle.webp",
   "canape-45": "/images/canape/canape-4-5.webp",
-  "canape-u": "/images/canape/canape-u.webp",
+  "canape-u": "/images/canape/canape-u-angle.webp",
   "pouf": "/images/canape/pouf.webp",
   "chaise": "/images/canape/chaises-4.webp",
   "chaises-5": "/images/canape/chaises-5.webp",
@@ -86,7 +86,9 @@ const FORMULE_IMAGES: Record<string, string> = {
   "cuir-canape-4": "/images/cuir/canape-4.webp",
   "cuir-canape-angle": "/images/cuir/canape-angle.webp",
   "cuir-pouf": "/images/cuir/pouf.webp",
-  "cuir-chaise": "/images/cuir/chaise.webp",
+  "cuir-chaise": "/images/cuir/chaises-4-bleues.webp",
+  "cuir-chaises-5": "/images/cuir/chaises-5-bleues.webp",
+  "cuir-chaises-6": "/images/cuir/chaises-6-bleues.webp",
   "cuir-auto": "/images/cuir/siege-auto.webp",
 };
 

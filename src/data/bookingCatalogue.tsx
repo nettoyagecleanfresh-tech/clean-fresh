@@ -36,7 +36,7 @@ const MOQ = [OA, OP, OD, OO, OE];
 
 const SERVICE_CATALOG: ServiceDef[] = [
   {
-    id: "canape", label: "Nettoyage Canapé & Fauteuil", shortLabel: "Canapé & fauteuil",
+    id: "canape", label: "Nettoyage Canapés, Fauteuils & Chaises", shortLabel: "Canapés, fauteuils & chaises",
     desc: "Nettoyage en profondeur par injection-extraction, élimination des tâches et ravivement des couleurs.",
     from: 49, icon: <Armchair className="size-8" strokeWidth={1.5} />,
     features: ["Fauteuil, canapé 2/3, 4/5 places", "Canapé U/angle, pouf, chaise", "Options anti-acariens, anti-odeur"],
@@ -98,17 +98,19 @@ const SERVICE_CATALOG: ServiceDef[] = [
     ],
   },
   {
-    id: "cuir", label: "Nettoyage Cuir", shortLabel: "Cuir",
+    id: "cuir", label: "Nettoyage Cuir — Canapés, Fauteuils & Chaises", shortLabel: "Cuir",
     desc: "Nettoyage manuel doux et respectueux, suivi d'un soin nourrissant protecteur pour vos cuirs.",
     from: 49, icon: <Armchair className="size-8" strokeWidth={1.5} />,
-    features: ["Fauteuil, canapé 2/3, 4/5 places", "Sièges auto cuir", "Traitement nourrissant en option"],
+    features: ["Fauteuil, canapé 2/3, 4/5 places", "Chaises et sièges auto cuir", "Traitement nourrissant en option"],
     formules: [
       { id: "cuir-fauteuil",     name: "Fauteuil cuir",             desc: "Nettoyage manuel 1 place.", price: 49,  duration: "45 min",  durationMin: 45,  options: [OC_19, OD, OO] },
       { id: "cuir-canape-2",     name: "Canapé cuir 2/3 places",    desc: "Nettoyage manuel pour 2 à 3 assises.", price: 79,  duration: "1h",      durationMin: 60,  options: [OC_25, OD, OO] },
       { id: "cuir-canape-4",     name: "Canapé cuir 4/5 places",    desc: "Nettoyage manuel pour 4 à 5 assises.", price: 99,  duration: "1h",      durationMin: 60,  options: [OC_29, OD, OO] },
       { id: "cuir-canape-angle", name: "Canapé cuir en U ou en angle",  desc: "Nettoyage manuel grand format.", price: 99,  duration: "1h",      durationMin: 60,  options: [OC_29, OD, OO] },
       { id: "cuir-pouf",         name: "Pouf cuir",                 desc: "Nettoyage manuel.",         price: 19,  duration: "30 min",  durationMin: 30,  options: [OC_15, OD, OO] },
-      { id: "cuir-chaise",       name: "Chaise cuir",               desc: "Nettoyage manuel à l'unité.",price: 15,  duration: "20 min",  durationMin: 20,  options: [OC_15, OD, OO] },
+      { id: "cuir-chaise", name: "Lot de 4 chaises en cuir", desc: "Nettoyage manuel des assises et dossiers. Intervention de 1 h.", price: 69, duration: "1h", durationMin: 60, options: [OC_15, OD, OO] },
+      { id: "cuir-chaises-5", name: "Lot de 5 chaises en cuir", desc: "Nettoyage manuel des assises et dossiers. Intervention de 1 h.", price: 79, duration: "1h", durationMin: 60, options: [OC_15, OD, OO] },
+      { id: "cuir-chaises-6", name: "Lot de 6 chaises en cuir", desc: "Nettoyage manuel des assises et dossiers. Chaise supplémentaire : +15 €.", price: 89, duration: "1h", durationMin: 60, options: [OC_15, OD, OO] },
       { id: "cuir-auto",         name: "Sièges auto cuir",          desc: "Nettoyage complet sièges habitacle.", price: 59,  duration: "1h",      durationMin: 60,  options: [OC_25, OD, OO] },
     ],
   },
@@ -122,7 +124,7 @@ export const SERVICES = ["canape", "matelas", "tapis", "auto", "cuir", "moquette
 
 // Le supplément est reconstruit côté serveur, comme le prix du lot.
 export function withAdditionalChairs(base: Formule, count: number): Formule {
-  if (!Number.isSafeInteger(count) || count < 0 || count > 100 || (count > 0 && base.id !== "chaises-6")) {
+  if (!Number.isSafeInteger(count) || count < 0 || count > 100 || (count > 0 && !["chaises-6", "cuir-chaises-6"].includes(base.id))) {
     throw new Error("INVALID_CHAIR_QUANTITY");
   }
   if (!count) return { ...base, additionalChairs: 0 };

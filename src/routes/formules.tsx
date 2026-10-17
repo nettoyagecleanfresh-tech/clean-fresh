@@ -66,7 +66,9 @@ const CUIR_ITEMS = [
   { id: "cuir-canape-4",  label: "Canapé 4/5 places",  price: "99 €",       duration: "1h",     desc: "Soin complet et nettoyage à la main pour grand canapé." },
   { id: "cuir-canape-angle", label: "Canapé en U ou en angle", price: "99 €", duration: "1h", desc: "Nettoyage intégral grand format." },
   { id: "cuir-pouf",      label: "Pouf",               price: "19 €",       duration: "30 min", desc: "Nettoyage manuel doux." },
-  { id: "cuir-chaise",    label: "Chaise",             price: "15 € / pièce", duration: "20 min", desc: "Nettoyage manuel doux et respectueux." },
+  { id: "cuir-chaise", label: "Lot de 4 chaises en cuir", price: "69 €", duration: "1h", desc: "Nettoyage manuel doux des assises et dossiers de 4 chaises en cuir." },
+  { id: "cuir-chaises-5", label: "Lot de 5 chaises en cuir", price: "79 €", duration: "1h", desc: "Nettoyage manuel doux des assises et dossiers de 5 chaises en cuir." },
+  { id: "cuir-chaises-6", label: "Lot de 6 chaises en cuir", price: "89 €", duration: "1h", desc: "Nettoyage manuel doux des assises et dossiers de 6 chaises en cuir. Chaise supplémentaire : +15 €." },
   { id: "cuir-auto",      label: "Rénovation siège auto", price: "59 €",    duration: "1h",     desc: "Tous les sièges du véhicule en cuir sont nettoyés pour 59 €." },
 ];
 
@@ -83,6 +85,8 @@ const CUIR_CARE_PRICES: Record<string, number> = {
   "cuir-canape-angle": 29,
   "cuir-pouf": 15,
   "cuir-chaise": 15,
+  "cuir-chaises-5": 15,
+  "cuir-chaises-6": 15,
   "cuir-auto": 25,
 };
 
@@ -233,7 +237,7 @@ const CANAPE_IMAGES: Record<string, string> = {
   "fauteuil": "/images/canape/fauteuil.webp",
   "canape-2": "/images/canape/canape-2-3.webp",
   "canape-45": "/images/canape/canape-4-5.webp",
-  "canape-u": "/images/canape/canape-u.webp",
+  "canape-u": "/images/canape/canape-u-angle.webp",
   "pouf": "/images/canape/pouf.webp",
   "chaise": "/images/canape/chaises-4.webp",
   "chaises-5": "/images/canape/chaises-5.webp",
@@ -328,7 +332,9 @@ const CUIR_IMAGES: Record<string, string> = {
   "cuir-canape-4": "/images/cuir/canape-4.webp",
   "cuir-canape-angle": "/images/cuir/canape-angle.webp",
   "cuir-pouf": "/images/cuir/pouf.webp",
-  "cuir-chaise": "/images/cuir/chaise.webp",
+  "cuir-chaise": "/images/cuir/chaises-4-bleues.webp",
+  "cuir-chaises-5": "/images/cuir/chaises-5-bleues.webp",
+  "cuir-chaises-6": "/images/cuir/chaises-6-bleues.webp",
   "cuir-auto": "/images/cuir/siege-auto.webp",
 };
 
@@ -883,7 +889,7 @@ const CATEGORY_CATALOG = [
   {
     id: "canape",
     icon: <Armchair className="size-7" />,
-    title: "Nettoyage Canapé & Fauteuil",
+    title: "Nettoyage Canapés, Fauteuils & Chaises",
     sub: "Injection-extraction · Séchage rapide",
     priceFrom: "49 €",
     bullets: ["Fauteuil, canapé 2/3, 4/5 places", "Canapé U/angle, pouf, chaise", "Options anti-acariens, anti-odeur"],
@@ -933,10 +939,10 @@ const CATEGORY_CATALOG = [
   {
     id: "cuir",
     icon: <Armchair className="size-7" />,
-    title: "Nettoyage Cuir",
+    title: "Nettoyage Cuir — Canapés, Fauteuils & Chaises",
     sub: "Nettoyage manuel doux · Soin nourrissant",
     priceFrom: "49 €",
-    bullets: ["Fauteuil, canapé 2/3, 4/5 places", "Sièges auto cuir", "Traitement nourrissant en option"],
+    bullets: ["Fauteuil, canapé 2/3, 4/5 places", "Chaises et sièges auto cuir", "Traitement nourrissant en option"],
     recommended: false,
     content: <CuirDetail />,
   },

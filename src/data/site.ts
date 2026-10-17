@@ -95,9 +95,9 @@ export const SERVICES: Service[] = [
     slug: "/nettoyage-canape-toulouse",
     navLabel: "Nettoyage canapé Toulouse",
     h1: "Nettoyage canapé à Toulouse",
-    short: "Nettoyage canapé Toulouse",
+    short: "Nettoyage canapés, fauteuils et chaises Toulouse",
     subtitle:
-      "Nettoyage en profondeur de vos canapés et fauteuils à domicile. À Toulouse et dans toute l'agglomération.",
+      "Nettoyage en profondeur de vos canapés, fauteuils et chaises à domicile. À Toulouse et dans toute l'agglomération.",
     metaTitle: "Nettoyage canapé Toulouse dès 79 € | Clean&Fresh",
     metaDescription:
       "Nettoyage de canapé à domicile à Toulouse dès 79 €. Fauteuil dès 49 €. Tissu, cuir et microfibre, options spécialisées. Réservation en ligne.",
@@ -800,7 +800,7 @@ export const SERVICES: Service[] = [
     group: "textile",
     booking: true,
     intro: [
-      "Clean&Fresh réalise le nettoyage professionnel du cuir à Toulouse et en Haute-Garonne : canapés, fauteuils et sièges automobiles.",
+      "Clean&Fresh réalise le nettoyage professionnel du cuir à Toulouse et en Haute-Garonne : canapés, fauteuils, chaises et sièges automobiles.",
       "Le cuir bénéficie d’un protocole spécifique avec nettoyage manuel doux, brosse adaptée et produit professionnel, sans injection-extraction sur le cuir véritable.",
       "Soin nourrissant & protecteur du cuir disponible en option après nettoyage.",
       "Nous adaptons nos techniques et produits professionnels (pH neutre) pour éliminer les salissures de surface et les traces de gras sans abîmer ou assécher la matière.",
@@ -824,7 +824,9 @@ export const SERVICES: Service[] = [
       { label: "Canapé cuir 4–5 places", price: "99 €", items: ["Nettoyage manuel doux", "Brosse adaptée", "Réutilisation après séchage du cuir"], formuleId: "cuir-canape-4" },
       { label: "Canapé cuir en U ou en angle", price: "99 €", items: ["Nettoyage manuel doux", "Brosse adaptée", "Réutilisation après séchage du cuir"], formuleId: "cuir-canape-angle" },
       { label: "Pouf cuir", price: "19 €", items: ["Nettoyage manuel doux", "Brosse adaptée", "Réutilisation après séchage du cuir"], formuleId: "cuir-pouf" },
-      { label: "Chaise cuir", price: "15 €", items: ["Nettoyage manuel doux", "Brosse adaptée", "Réutilisation après séchage du cuir"], formuleId: "cuir-chaise" },
+      { label: "Lot de 4 chaises en cuir", price: "69 €", items: ["Nettoyage manuel doux des assises et dossiers", "Produits adaptés au cuir", "1 h d’intervention"], formuleId: "cuir-chaise" },
+      { label: "Lot de 5 chaises en cuir", price: "79 €", items: ["Nettoyage manuel doux des assises et dossiers", "Produits adaptés au cuir", "1 h d’intervention"], formuleId: "cuir-chaises-5" },
+      { label: "Lot de 6 chaises en cuir", price: "89 €", items: ["Nettoyage manuel doux des assises et dossiers", "Produits adaptés au cuir", "1 h d’intervention", "Chaise supplémentaire : +15 €"], formuleId: "cuir-chaises-6" },
       { label: "Rénovation siège auto", price: "59 €", items: ["Nettoyage manuel doux", "Brosse adaptée", "Réutilisation après séchage du cuir", "Tous les sièges du véhicule en cuir sont nettoyés"], formuleId: "cuir-auto" },
     ],
     priceNote:
