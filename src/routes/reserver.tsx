@@ -42,7 +42,7 @@ export const Route = createFileRoute("/reserver")({
 
 // ─── TYPES ───────────────────────────────────────────────────────────────────
 
-import { SERVICES, SLUG_TO_SERVICE, type Option, type Formule, type ServiceDef, type CartItem } from "@/data/bookingCatalogue";
+import { SERVICES, withAdditionalChairs, SLUG_TO_SERVICE, type Option, type Formule, type ServiceDef, type CartItem } from "@/data/bookingCatalogue";
 
 // ─── IMAGES PAR FORMULE ──────────────────────────────────────────────────────
 
@@ -56,6 +56,8 @@ const FORMULE_IMAGES: Record<string, Record<string, string>> = {
     "canape-u":     "/images/canape/canape-u.webp",
     "pouf":         "/images/canape/pouf.webp",
     "chaise":       "/images/canape/chaise.webp",
+  "chaises-5": "/images/canape/chaise.webp",
+  "chaises-6": "/images/canape/chaise.webp",
   },
   tapis: {
     "tapis-1": "/images/tapis/1-tapis.webp",
@@ -422,6 +424,7 @@ function ReserverPage() {
       formule_id: item.formule.id,
       formule_name: item.formule.name,
       formule_price: item.formule.price,
+      additional_chairs: item.formule.additionalChairs ?? 0,
       options: item.formule.options
         .filter(o => item.options.includes(o.id))
         .map(o => ({ name: o.name, price: o.price })),
@@ -857,7 +860,7 @@ function ReserverPage() {
                           <p className="text-[10px] md:text-xs font-semibold uppercase tracking-widest text-muted-foreground/80 leading-none mt-1">Dès</p>
                         )}
                         <p className={`text-lg md:text-2xl font-bold leading-tight mt-1.5 ${active ? "text-[#1a2b4c]" : "text-foreground"}`}>
-                          {f.price} € {f.id.includes('chaise') && <span className="text-sm font-normal">/ unité</span>}
+                          {f.price} € {f.id === 'cuir-chaise' && <span className="text-sm font-normal">/ unité</span>}
                         </p>
                         <p className="text-sm md:text-base font-bold text-foreground/90 leading-snug mt-2 px-1 w-full text-center">{f.name}</p>
                         {f.desc && (
@@ -880,6 +883,21 @@ function ReserverPage() {
                     <h2 className="text-2xl font-bold">Options pour <span className="text-accent">{formule.name}</span></h2>
                   </div>
                 </div>
+                {formule.id === "chaises-6" && (
+                  <div className="mb-4 rounded-2xl border border-border bg-card p-5">
+                    <label htmlFor="additional-chairs" className="block font-semibold text-sm">Chaises supplémentaires — +15 € / chaise</label>
+                    <p className="mt-1 text-xs text-muted-foreground">En complément du lot de 6. Le montant et la durée se mettent à jour automatiquement.</p>
+                    <Input id="additional-chairs" type="number" min={0} max={100} step={1}
+                      className="mt-3 w-24" value={formule.additionalChairs ?? 0}
+                      onChange={(event) => {
+                        const count = Number(event.target.value);
+                        if (!Number.isSafeInteger(count) || count < 0 || count > 100) return;
+                        const base = service.formules.find(f => f.id === "chaises-6")!;
+                        setFormule(withAdditionalChairs(base, count));
+                        setSelectedTime(null);
+                      }} />
+                  </div>
+                )}
                 <div className="divide-y divide-border rounded-2xl border border-border bg-card overflow-hidden">
                   {formule.options.map(opt => {
                     const checked = selectedOptions.includes(opt.id);

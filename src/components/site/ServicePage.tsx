@@ -66,6 +66,8 @@ const FORMULE_IMAGES: Record<string, string> = {
   "canape-u": "/images/canape/canape-u.webp",
   "pouf": "/images/canape/pouf.webp",
   "chaise": "/images/canape/chaise.webp",
+  "chaises-5": "/images/canape/chaise.webp",
+  "chaises-6": "/images/canape/chaise.webp",
   // Tapis
   "tapis-1": "/images/tapis/1-tapis.webp",
   "tapis-2": "/images/tapis/2-tapis.webp",

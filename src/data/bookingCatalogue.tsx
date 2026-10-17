@@ -1,7 +1,7 @@
 import type React from "react";
 import { Armchair, BedDouble, Layers, Car, Shield, Dog, Droplets, Wind, Sparkles, Sun } from "lucide-react";
 export type Option = { id: string; name: string; desc: string; price: number; popular?: boolean; icon?: React.ReactNode };
-export type Formule = { id: string; name: string; desc?: string; price: number; duration: string; durationMin: number; options: Option[] };
+export type Formule = { id: string; name: string; desc?: string; price: number; duration: string; durationMin: number; options: Option[]; additionalChairs?: number };
 export type ServiceDef = { id: string; label: string; shortLabel: string; desc: string; from: number; icon: React.ReactNode; formules: Formule[]; features: string[]; badge?: string };
 export type CartItem = { service: ServiceDef; formule: Formule; options: string[] };
 
@@ -47,7 +47,9 @@ const SERVICE_CATALOG: ServiceDef[] = [
       { id: "canape-45",    name: "Canapé 4/5 places",               desc: "Idéal grand format.", price: 99,  duration: "1h",      durationMin: 60,  options: CAN },
       { id: "canape-u",     name: "Canapé en U",                     desc: "Format panoramique XXL.", price: 99,  duration: "1h",      durationMin: 60,  options: CAN },
       { id: "pouf",         name: "Pouf",                            desc: "Nettoyage d'appoint.", price: 19,  duration: "30 min",  durationMin: 30,  options: CAN },
-      { id: "chaise",       name: "Chaise rembourrée",               desc: "À l'unité.", price: 15,  duration: "20 min",  durationMin: 20,  options: CAN },
+      { id: "chaise", name: "Lot de 4 chaises rembourrées", desc: "Assises et dossiers nettoyés en profondeur. Intervention de 1 h.", price: 69, duration: "1h", durationMin: 60, options: CAN },
+      { id: "chaises-5", name: "Lot de 5 chaises rembourrées", desc: "Assises et dossiers nettoyés en profondeur. Intervention de 1 h.", price: 79, duration: "1h", durationMin: 60, options: CAN },
+      { id: "chaises-6", name: "Lot de 6 chaises rembourrées", desc: "Assises et dossiers nettoyés en profondeur. Chaise supplémentaire : +15 €.", price: 89, duration: "1h", durationMin: 60, options: CAN },
     ],
   },
   {
@@ -117,3 +119,22 @@ export const SERVICES = ["canape", "matelas", "tapis", "auto", "cuir", "moquette
   .map((id) => SERVICE_CATALOG.find((service) => service.id === id))
   .filter((service): service is ServiceDef => Boolean(service));
 
+
+// Le supplément est reconstruit côté serveur, comme le prix du lot.
+export function withAdditionalChairs(base: Formule, count: number): Formule {
+  if (!Number.isSafeInteger(count) || count < 0 || count > 100 || (count > 0 && base.id !== "chaises-6")) {
+    throw new Error("INVALID_CHAIR_QUANTITY");
+  }
+  if (!count) return { ...base, additionalChairs: 0 };
+  const durationMin = base.durationMin + count * 20;
+  const hours = Math.floor(durationMin / 60);
+  const minutes = durationMin % 60;
+  return {
+    ...base,
+    additionalChairs: count,
+    name: `${base.name} + ${count} chaise${count > 1 ? "s" : ""} supplémentaire${count > 1 ? "s" : ""}`,
+    price: base.price + count * 15,
+    durationMin,
+    duration: `${hours}h${minutes ? String(minutes).padStart(2, "0") : ""}`,
+  };
+}

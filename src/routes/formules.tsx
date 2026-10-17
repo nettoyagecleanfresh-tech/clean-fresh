@@ -48,7 +48,9 @@ const CANAPE_ITEMS = [
   { id: "canape-45", label: "Canapé 4 / 5 places", price: "99 €",       duration: "1h",     desc: "Grande surface traitée intégralement. Idéal même pour les canapés très encrassés." },
   { id: "canape-u",  label: "Canapé U / Angle",    price: "99 €",       duration: "1h",     desc: "Tous les modules y compris la partie angle. Aucun recoin oublié." },
   { id: "pouf",      label: "Pouf",                price: "19 €",       duration: "30 min", desc: "Tissu, velours, toutes matières. Idéal à combiner avec le nettoyage canapé." },
-  { id: "chaise",    label: "Chaise rembourrée",   price: "15 € / pièce", duration: "20 min", desc: "Propre et désinfectée en quelques minutes. Tarif dégressif à partir de 4 chaises." },
+  { id: "chaise", label: "Lot de 4 chaises rembourrées", price: "69 €", duration: "1h", desc: "Nettoyage en profondeur des assises et dossiers de 4 chaises rembourrées." },
+  { id: "chaises-5", label: "Lot de 5 chaises rembourrées", price: "79 €", duration: "1h", desc: "Nettoyage en profondeur des assises et dossiers de 5 chaises rembourrées." },
+  { id: "chaises-6", label: "Lot de 6 chaises rembourrées", price: "89 €", duration: "1h", desc: "Nettoyage en profondeur des assises et dossiers de 6 chaises rembourrées. Chaise supplémentaire : +15 €." },
 ];
 
 const CANAPE_OPTIONS = [
@@ -234,6 +236,8 @@ const CANAPE_IMAGES: Record<string, string> = {
   "canape-u": "/images/canape/canape-u.webp",
   "pouf": "/images/canape/pouf.webp",
   "chaise": "/images/canape/chaise.webp",
+  "chaises-5": "/images/canape/chaise.webp",
+  "chaises-6": "/images/canape/chaise.webp",
 };
 
 

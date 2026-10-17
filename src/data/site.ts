@@ -3,7 +3,7 @@ export const OG_IMAGE = `${SITE_URL}/realisations/photo-02.webp`;
 export const GOOGLE_REVIEWS_URL = "https://www.google.com/search?q=clean+fresh+toulouse+avis";
 
 /** Nombre d'avis Google — à mettre à jour ici pour propager partout */
-export const GOOGLE_REVIEW_COUNT = 129;
+export const GOOGLE_REVIEW_COUNT = 131;
 export const GOOGLE_REVIEW_RATING = 4.9;
 
 export const COMPANY = {
@@ -131,7 +131,9 @@ export const SERVICES: Service[] = [
       { label: "Canapé 4/5 places", price: "99 €", items: ["Nettoyage assise, dossier et coussins", "Traitement courant des taches et auréoles", "Nettoyage courant des odeurs ; traitement intensif en option", "Séchage variable selon la matière et l’aération"], formuleId: "canape-45" },
       { label: "Canapé en U / Angle", price: "99 €", items: ["Grande surface traitée en profondeur", "Traitement courant des taches et auréoles", "Nettoyage courant des odeurs ; traitement intensif en option", "Séchage variable selon la matière et l’aération"], formuleId: "canape-angle" },
       { label: "Pouf", price: "19 €", items: ["Tissu et velours compatibles après diagnostic", "Traitement courant des taches et auréoles", "Nettoyage courant des odeurs ; traitement intensif en option"], formuleId: "pouf" },
-      { label: "Chaise rembourrée (à la pièce)", price: "15 €", items: ["Assise et dossier traités en profondeur", "Traitement courant des taches et auréoles", "Tarif dégressif à partir de 4 chaises"], formuleId: "chaise" },
+      { label: "Lot de 4 chaises rembourrées", price: "69 €", items: ["Assises et dossiers traités en profondeur", "Traitement courant des taches et auréoles", "1 h d’intervention"], formuleId: "chaise" },
+      { label: "Lot de 5 chaises rembourrées", price: "79 €", items: ["Assises et dossiers traités en profondeur", "Traitement courant des taches et auréoles", "1 h d’intervention"], formuleId: "chaises-5" },
+      { label: "Lot de 6 chaises rembourrées", price: "89 €", items: ["Assises et dossiers traités en profondeur", "Traitement courant des taches et auréoles", "1 h d’intervention", "Chaise supplémentaire : +15 €"], formuleId: "chaises-6" },
     ],
     priceNote:
       "Inclus : nettoyage courant de l'assise, du dossier et des coussins compatibles. Les traitements intensifs des taches anciennes, odeurs persistantes, poils et résidus organiques sont proposés en option selon l'état du support.",

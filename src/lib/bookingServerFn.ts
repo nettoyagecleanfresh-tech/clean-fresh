@@ -8,7 +8,7 @@
 
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
-import { SERVICES } from "@/data/bookingCatalogue";
+import { SERVICES, withAdditionalChairs } from "@/data/bookingCatalogue";
 import { signManagementToken, createCalendarEvent, buildEventDescription, checkSlotAvailable } from "@/lib/gcal-server";
 
 import { sendBookingEmailsRaw } from "./emailService";
@@ -23,6 +23,7 @@ export const BookingInputSchema = z.object({
     formule_id: z.string(),
     formule_name: z.string(),
     formule_price: z.number(),
+    additional_chairs: z.number().int().min(0).max(100).optional(),
     options: z.array(z.object({ name: z.string(), price: z.number() })),
   })),
   total_price: z.number(),
@@ -77,8 +78,9 @@ export const createBookingServerFn = createServerFn({ method: "POST" })
       let total = 0;
       data.items = data.items.map(item => {
         const service = SERVICES.find(s => s.id === item.service_id);
-        const formule = service?.formules.find(f => f.id === item.formule_id);
-        if (!service || !formule) throw new Error("INVALID_FORMULA");
+        const baseFormule = service?.formules.find(f => f.id === item.formule_id);
+        if (!service || !baseFormule) throw new Error("INVALID_FORMULA");
+        const formule = withAdditionalChairs(baseFormule, item.additional_chairs ?? 0);
         const selected = new Set<string>();
         const options = item.options.map(option => {
           const canonical = formule.options.find(o => o.name === option.name);
