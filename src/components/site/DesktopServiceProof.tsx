@@ -1,5 +1,5 @@
 import { Link } from '@tanstack/react-router';
-import { ArrowRight, Camera, MapPin, Maximize2, Star } from 'lucide-react';
+import { ArrowRight, Camera, Images, MapPin, Maximize2, Star } from 'lucide-react';
 import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { realisations, type Realisation } from '@/data/realisations';
 import { ALL_REVIEWS } from '@/data/reviews';
@@ -33,13 +33,22 @@ export function DesktopServiceProof({ slug, bookingServiceId }: { slug: string; 
   const reviewCategory = bookingServiceId ?? (/appartement|fin-de-bail/.test(slug) ? 'appartement' : '');
   const review = reviewCategory ? ALL_REVIEWS.find(item => item.stars === 5 && item.categories.includes(reviewCategory)) : undefined;
   const quoteService = /diogene/.test(slug) ? 'diogene' : /extreme/.test(slug) ? 'extreme' : /fin-de-chantier/.test(slug) ? 'chantier' : /fin-de-bail/.test(slug) ? 'bail' : /appartement/.test(slug) ? 'logement' : /vitres/.test(slug) ? 'vitres' : /terrasse/.test(slug) ? 'terrasse' : /toiture/.test(slug) ? 'toiture' : /facade/.test(slug) ? 'facade' : '';
-  return <section id="resultats" aria-labelledby="service-proof-title" className="hidden bg-gradient-to-b from-slate-50 via-white to-sky-50 py-16 lg:block">
-    <div className="mx-auto max-w-6xl px-4">
-      {photos.length > 0 && <>
-        <div className="mb-8 flex items-end justify-between gap-8">
-          <div><p className="text-xs font-bold uppercase tracking-[.22em] text-blue-800">Le résultat se voit</p><h2 id="service-proof-title" className="mt-3 text-4xl font-bold tracking-tight text-blue-950">Des interventions réelles.<br />Des résultats en images.</h2><p className="mt-4 max-w-2xl text-sm leading-6 text-slate-600">Découvrez les avant / après de notre galerie à Toulouse. Cliquez sur une réalisation pour voir les détails.</p></div>
-          <Link to="/nos-realisations" className="shrink-0 rounded-full border border-blue-200 bg-white px-5 py-3 text-sm font-bold text-blue-900 hover:bg-blue-50">Toute la galerie ↗</Link>
-        </div>
+  if (!photos.length) return null;
+  return <section id="resultats" aria-label="Avant / Après de nos interventions" className="hidden border-b border-blue-100 bg-slate-50 py-4 lg:block">
+      <div className="mx-auto max-w-6xl px-4">
+        <Dialog>
+          <DialogTrigger asChild>
+            <button type="button" className="group flex w-full items-center gap-5 rounded-2xl border border-blue-100 bg-white px-5 py-3 text-left transition hover:border-blue-300 hover:shadow-sm focus-visible:outline-2 focus-visible:outline-blue-700">
+              <span aria-hidden="true" className="flex shrink-0 -space-x-3">
+                {photos.slice(0, 3).map(photo => <span key={photo.src} className="block h-16 w-14 overflow-hidden rounded-lg border-2 border-white bg-slate-100 shadow-sm"><ProofPhoto photo={photo} /></span>)}
+              </span>
+              <span className="min-w-0 flex-1"><span className="block text-base font-bold text-blue-950">Nos résultats avant / après</span><span className="mt-1 block text-sm text-slate-600">Photos réelles de nos interventions · cliquez pour découvrir les résultats.</span></span>
+              <span className="inline-flex shrink-0 items-center gap-2 rounded-xl bg-blue-950 px-4 py-3 text-sm font-bold text-white group-hover:bg-blue-900"><Images className="size-4" /> Voir les {photos.length} avant / après <ArrowRight className="size-4" /></span>
+            </button>
+          </DialogTrigger>
+          <DialogContent className="max-h-[90vh] max-w-6xl overflow-y-auto rounded-2xl border-blue-100 bg-white p-6">
+            <DialogTitle className="pr-8 text-2xl font-bold text-blue-950">Nos résultats avant / après</DialogTitle>
+            <DialogDescription>Découvrez les photos de nos interventions à Toulouse. Cliquez sur une réalisation pour l’agrandir.</DialogDescription>
         <div className={`gap-5 ${photos.length === 1 ? 'max-w-xl' : photos.length === 4 ? 'columns-2' : 'columns-3'}`}>
           {photos.map((photo, index) => <figure key={photo.src} className="mb-5 break-inside-avoid overflow-hidden rounded-2xl border border-blue-100 bg-white shadow-[0_10px_35px_-18px_rgba(23,37,84,.3)]">
             <Dialog>
@@ -57,7 +66,7 @@ export function DesktopServiceProof({ slug, bookingServiceId }: { slug: string; 
           </figure>)}
         </div>
         <p className="mt-3 text-xs text-slate-500">Le résultat dépend de la matière, de l’état initial et de l’ancienneté des taches. Ces photos présentent des résultats déjà obtenus.</p>
-      </>}
+
       <div className={`${photos.length ? 'mt-8' : ''} grid overflow-hidden rounded-3xl border border-blue-100 bg-blue-950 text-white ${review ? 'grid-cols-[1fr_1fr]' : 'grid-cols-1'}`}>
         {review && <figure className="border-r border-white/10 p-8"><div className="mb-4 flex gap-1 text-amber-400" aria-label="5 étoiles sur 5">{Array.from({ length: 5 }, (_, index) => <Star key={index} className="size-4 fill-current" />)}</div><blockquote className="text-sm leading-7 text-blue-50">« {review.text} »</blockquote><figcaption className="mt-4 text-xs font-semibold text-blue-200">{review.name} · Avis Google</figcaption></figure>}
         <div className="flex flex-col justify-center p-8">
@@ -66,6 +75,8 @@ export function DesktopServiceProof({ slug, bookingServiceId }: { slug: string; 
           {bookingServiceId ? <Link to="/formules" search={{ service: bookingServiceId }} data-conversion-location="service_proof" className="mt-6 inline-flex w-fit items-center gap-3 rounded-xl bg-white px-5 py-3 text-sm font-bold text-blue-950 hover:bg-blue-100">Voir les tarifs et réserver <ArrowRight className="size-4" /></Link> : <Link to="/contactez-nous" search={{ service: quoteService }} data-conversion-location="service_proof" className="mt-6 inline-flex w-fit items-center gap-3 rounded-xl bg-white px-5 py-3 text-sm font-bold text-blue-950 hover:bg-blue-100"><Camera className="size-4" /> Demander mon devis sur photos</Link>}
         </div>
       </div>
-    </div>
-  </section>;
+          </DialogContent>
+        </Dialog>
+      </div>
+    </section>;
 }

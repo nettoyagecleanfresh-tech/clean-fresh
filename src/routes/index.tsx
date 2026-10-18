@@ -485,7 +485,7 @@ function Index() {
                 >
                   <a href={COMPANY.phoneHref}><Phone className="size-3.5 md:size-4 mr-1.5 md:mr-2" /> Appeler</a>
                 </Button>
-                <Button asChild size="xl" className="lg:hidden bg-teal-700 text-white font-bold text-xs md:text-sm lg:text-base hover:bg-teal-800 border border-teal-300/40 px-4 md:px-6 h-10 md:h-12">
+                <Button asChild size="xl" className="lg:hidden bg-blue-950 text-white font-bold text-xs md:text-sm lg:text-base hover:bg-blue-900 border border-blue-300/40 px-4 md:px-6 h-10 md:h-12">
                   <Link to="/nos-realisations" resetScroll><Images className="size-4 mr-1.5" /> Avant / Après — Voir les résultats</Link>
                 </Button>
                 <div className="hidden w-full items-center gap-2.5 lg:flex">
@@ -707,7 +707,7 @@ function Index() {
                 <CalendarCheck /> Réserver un créneau
               </Link>
             </Button>
-            <Button asChild size="xl" className="bg-teal-700 text-white font-bold hover:bg-teal-800 lg:bg-blue-950 lg:hover:bg-blue-900">
+            <Button asChild size="xl" className="bg-blue-950 text-white font-bold hover:bg-blue-900 lg:bg-blue-950 lg:hover:bg-blue-900">
               <Link to="/nos-realisations" resetScroll><Images className="size-4" /> Avant / Après</Link>
             </Button>
             <Button asChild variant="outline" size="xl">
@@ -780,7 +780,7 @@ function Index() {
                   <CalendarCheck /> Réserver en ligne
                 </Link>
               </Button>
-              <Button asChild size="xl" className="h-auto min-h-12 min-w-0 w-full whitespace-normal break-words px-3 py-3 text-center text-sm leading-snug sm:text-base bg-teal-700 text-white font-bold hover:bg-teal-800 lg:bg-blue-950 lg:hover:bg-blue-900 border border-teal-300/40">
+              <Button asChild size="xl" className="h-auto min-h-12 min-w-0 w-full whitespace-normal break-words px-3 py-3 text-center text-sm leading-snug sm:text-base bg-blue-950 text-white font-bold hover:bg-blue-900 lg:bg-blue-950 lg:hover:bg-blue-900 border border-blue-300/40">
                 <Link to="/nos-realisations" resetScroll><Images className="size-4" /> Voir les résultats avant / après</Link>
               </Button>
               <Button asChild variant="onDark" size="xl" className="h-auto min-h-12 min-w-0 w-full whitespace-normal break-words px-3 py-3 text-center text-sm leading-snug sm:text-base">
