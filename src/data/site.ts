@@ -793,10 +793,10 @@ export const SERVICES: Service[] = [
     h1: "Nettoyage cuir professionnel à Toulouse – Canapé, fauteuil et sièges auto",
     short: "Nettoyage cuir Toulouse",
     subtitle:
-      "Soin complet pour vos canapés, fauteuils et sièges auto en cuir. Nettoyage doux et traitement protecteur.",
+      "Nettoyage manuel doux de vos canapés, fauteuils et sièges auto en cuir. Soin nourrissant et protecteur en option.",
     metaTitle: "Nettoyage cuir Toulouse | Canapé, fauteuil & sièges auto",
     metaDescription:
-      "Nettoyage professionnel du cuir à Toulouse : canapé, fauteuil et sièges auto. Nettoyage doux, soin et protection du cuir à domicile.",
+      "Nettoyage professionnel du cuir à Toulouse : canapé, fauteuil et sièges auto. Nettoyage doux à domicile, soin nourrissant et protecteur en option.",
     group: "textile",
     booking: true,
     intro: [
@@ -844,7 +844,7 @@ export const SERVICES: Service[] = [
     ],
     faq: [
       { q: "Pourquoi ne pas utiliser l'injection-extraction sur le cuir ?", a: "L'injection-extraction gorge la matière d'eau, ce qui détruit le cuir naturel en l'asséchant au séchage. Le cuir nécessite un nettoyage de surface manuel avec une hydratation adaptée." },
-      { q: "Proposez-vous une prestation pour reteindre le cuir ?", a: "Non, notre prestation est un nettoyage professionnel et un soin hydratant/protecteur. Nous ne réalisons pas de rénovation pigmentaire ou de recoloration de cuir abîmé." },
+      { q: "Proposez-vous une prestation pour reteindre le cuir ?", a: "Non, notre prestation comprend un nettoyage professionnel ; le soin nourrissant et protecteur est proposé en option. Nous ne réalisons pas de rénovation pigmentaire ou de recoloration de cuir abîmé." },
     ],
   },
 ];
