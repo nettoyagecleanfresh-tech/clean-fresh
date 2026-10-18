@@ -40,32 +40,32 @@ function GaleriePage() {
   const photos = category === 'Tout voir' ? realisations : realisations.filter(photo => photo.category === category);
   const position = selected ? photos.indexOf(selected) : -1;
   const move = (step: number) => setSelected(photos[(position + step + photos.length) % photos.length] ?? null);
-  return <div className="bg-[#f5f9f8] lg:bg-slate-50 pb-24 lg:pb-12">
+  return <div className="bg-slate-50 pb-24 lg:pb-12">
     <header className="mx-auto max-w-4xl px-5 pb-10 pt-14 text-center sm:pt-20">
-      <p className="text-xs font-bold uppercase tracking-[0.2em] text-teal-800 lg:text-blue-900">Clean&Fresh · Toulouse et son agglomération</p>
-      <h1 className="mt-5 font-display text-4xl font-bold tracking-tight text-slate-900 sm:text-6xl">Nos réalisations.<br /><span className="text-teal-700 lg:text-blue-900">Le résultat en images.</span></h1>
+      <p className="text-xs font-bold uppercase tracking-[0.2em] text-blue-900">Clean&Fresh · Toulouse et son agglomération</p>
+      <h1 className="mt-5 font-display text-4xl font-bold tracking-tight text-slate-900 sm:text-6xl">Nos réalisations.<br /><span className="text-blue-900">Le résultat en images.</span></h1>
       <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-slate-600">Canapés tachés, matelas auréolés, tapis et intérieurs de voiture : découvrez nos interventions avant et après nettoyage. Chaque photo vous permet de voir le travail réalisé sur le support.</p>
       <div className="mt-7 flex flex-wrap justify-center gap-3">
-        <Link to="/tarifs" resetScroll className="rounded-full bg-teal-700 lg:bg-blue-950 px-6 py-3 font-bold text-white hover:bg-teal-800 lg:hover:bg-blue-950">Voir les tarifs et réserver</Link>
-        <Link to="/contactez-nous" resetScroll className="rounded-full border border-teal-800/25 lg:border-blue-900/25 bg-white px-6 py-3 font-semibold text-teal-900 lg:text-blue-900 hover:bg-teal-50 lg:hover:bg-blue-50">Demander un devis</Link>
+        <Link to="/tarifs" resetScroll className="rounded-full bg-blue-950 px-6 py-3 font-bold text-white hover:bg-blue-950">Voir les tarifs et réserver</Link>
+        <Link to="/contactez-nous" resetScroll className="rounded-full border border-blue-900/25 bg-white px-6 py-3 font-semibold text-blue-900 hover:bg-blue-50">Demander un devis</Link>
       </div>
     </header>
     <section className="mx-auto max-w-6xl px-4" aria-label="Galerie de nos réalisations">
       <div aria-label="Filtrer les réalisations" className="mb-5 flex flex-wrap justify-center gap-2">
-        {['Tout voir', 'Canapés', 'Matelas', 'Tapis', 'Auto', 'Logements'].map(item => <button key={item} type="button" aria-pressed={category === item} onClick={() => setCategory(item)} className={`min-h-11 rounded-full border px-4 py-2 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal-700 lg:focus-visible:outline-blue-900 ${category === item ? 'border-teal-800 lg:border-blue-900 bg-teal-800 lg:bg-blue-950 text-white' : 'border-slate-200 bg-white text-slate-700 hover:border-teal-600 lg:hover:border-blue-900'}`}>{item}</button>)}
+        {['Tout voir', 'Canapés', 'Matelas', 'Tapis', 'Auto', 'Logements'].map(item => <button key={item} type="button" aria-pressed={category === item} onClick={() => setCategory(item)} className={`min-h-11 rounded-full border px-4 py-2 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-900 ${category === item ? 'border-blue-900 bg-blue-950 text-white' : 'border-slate-200 bg-white text-slate-700 hover:border-blue-900'}`}>{item}</button>)}
       </div>
       <p aria-live="polite" className="mb-6 text-center text-sm text-slate-600">{photos.length} réalisations · Appuyez sur une photo pour l’agrandir</p>
       <div className="columns-1 gap-6 sm:columns-2 lg:columns-3">
         {photos.map(photo => <figure key={photo.src} className="mb-6 break-inside-avoid overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-sm">
-          <button type="button" onClick={event => { opener.current = event.currentTarget; setSelected(photo); }} aria-label={`Agrandir : ${photo.title}`} className="group relative block w-full cursor-zoom-in text-left focus-visible:outline-4 focus-visible:-outline-offset-4 focus-visible:outline-teal-700 lg:focus-visible:outline-blue-900">
+          <button type="button" onClick={event => { opener.current = event.currentTarget; setSelected(photo); }} aria-label={`Agrandir : ${photo.title}`} className="group relative block w-full cursor-zoom-in text-left focus-visible:outline-4 focus-visible:-outline-offset-4 focus-visible:outline-blue-900">
             <Photo photo={photo} />
             <span aria-hidden="true" className="absolute bottom-3 right-3 rounded-full bg-white/95 p-2 text-slate-800 shadow-sm transition-transform group-hover:scale-110"><ZoomIn className="size-4" /></span>
           </button>
           <figcaption className="p-5">
-            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-teal-800 lg:text-blue-900">{photo.category} · {photo.layout === 'single' ? 'Sur le terrain' : 'Avant / Après'}</p>
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-blue-900">{photo.category} · {photo.layout === 'single' ? 'Sur le terrain' : 'Avant / Après'}</p>
             <h2 className="mt-2 text-lg font-bold leading-snug text-slate-900">{photo.title}</h2>
             <p className="mt-2 text-sm leading-relaxed text-slate-600">{photo.description}</p>
-            <a href={serviceLink(photo)} className="mt-4 inline-flex min-h-11 items-center gap-1 text-sm font-bold text-teal-800 lg:text-blue-900 underline-offset-4 hover:underline">{photo.category === 'Logements' ? 'Demander un devis' : 'Voir la prestation'}<ArrowUpRight className="size-4" /></a>
+            <a href={serviceLink(photo)} className="mt-4 inline-flex min-h-11 items-center gap-1 text-sm font-bold text-blue-900 underline-offset-4 hover:underline">{photo.category === 'Logements' ? 'Demander un devis' : 'Voir la prestation'}<ArrowUpRight className="size-4" /></a>
           </figcaption>
         </figure>)}
       </div>
@@ -84,7 +84,7 @@ function GaleriePage() {
             <div><dt className="font-semibold text-slate-900">L’intervention</dt><dd>{item.work}</dd></div>
             <div><dt className="font-semibold text-slate-900">Le résultat en images</dt><dd>{item.result}</dd></div>
           </dl>
-          <a href={item.href} className="mt-4 inline-flex min-h-11 items-center font-semibold text-teal-800 lg:text-blue-900 underline underline-offset-4">Découvrir la prestation</a>
+          <a href={item.href} className="mt-4 inline-flex min-h-11 items-center font-semibold text-blue-900 underline underline-offset-4">Découvrir la prestation</a>
         </article>)}
       </div>
     </section>
@@ -96,7 +96,7 @@ function GaleriePage() {
         <details className="rounded-2xl border bg-white p-5"><summary className="cursor-pointer font-semibold">Retrait des poils de chien et de chat dans une voiture</summary><p className="mt-3 text-sm leading-relaxed text-slate-600">Les poils peuvent s’accrocher aux sièges, aux tapis et à la moquette du coffre. Envoyez une vue d’ensemble et une photo rapprochée des zones concernées pour préciser votre demande de nettoyage intérieur.</p></details>
         <details className="rounded-2xl border bg-white p-5"><summary className="cursor-pointer font-semibold">Traitement des odeurs et des taches d’origine organique</summary><p className="mt-3 text-sm leading-relaxed text-slate-600">Indiquez la source de l’odeur si vous la connaissez, le textile concerné et la date de l’incident. Une tache visible et une odeur persistante nécessitent une évaluation différente : nous vous orientons selon votre situation, sans promettre un résultat identique sur tous les supports.</p></details>
       </div>
-      <div className="mt-8 rounded-3xl bg-slate-900 p-7 text-center text-white sm:p-10"><h2 className="text-2xl font-bold">Et si le prochain avant/après était le vôtre ?</h2><p className="mt-3 leading-relaxed text-slate-300">Décrivez votre besoin et ajoutez jusqu’à 10 photos pour nous montrer les zones à nettoyer.</p><Link to="/contactez-nous" resetScroll className="mt-6 inline-flex min-h-12 items-center rounded-full bg-teal-600 lg:bg-blue-950 px-6 py-3 font-bold text-white hover:bg-teal-700 lg:hover:bg-blue-950">Demander mon devis gratuit</Link></div>
+      <div className="mt-8 rounded-3xl bg-slate-900 p-7 text-center text-white sm:p-10"><h2 className="text-2xl font-bold">Et si le prochain avant/après était le vôtre ?</h2><p className="mt-3 leading-relaxed text-slate-300">Décrivez votre besoin et ajoutez jusqu’à 10 photos pour nous montrer les zones à nettoyer.</p><Link to="/contactez-nous" resetScroll className="mt-6 inline-flex min-h-12 items-center rounded-full bg-blue-950 px-6 py-3 font-bold text-white hover:bg-blue-950">Demander mon devis gratuit</Link></div>
     </section>
     <Dialog open={selected !== null} onOpenChange={open => { if (!open) setSelected(null); }}>
       {selected && <DialogContent className="max-h-[94dvh] max-w-3xl overflow-y-auto rounded-2xl p-4 pt-10 sm:p-6 sm:pt-10" onCloseAutoFocus={event => { event.preventDefault(); opener.current?.focus({ preventScroll: true }); }} onKeyDown={event => { if (event.key === 'ArrowLeft') { event.preventDefault(); move(-1); } if (event.key === 'ArrowRight') { event.preventDefault(); move(1); } }}>
