@@ -8,7 +8,7 @@ const PICKS = [
   { service: 'auto', formulas: ['bronze', 'argent', 'or'], label: 'Voiture', detail: 'Packs Bronze, Argent ou Or', action: 'Voir les packs' },
   { service: 'matelas', formulas: ['matelas-enfant', 'matelas-1', 'matelas-2'], label: 'Matelas', detail: 'Enfant, 1 place ou 2 places', action: 'Choisir le format' },
   { service: 'tapis', formulas: ['tapis-1', 'tapis-2', 'tapis-3'], label: 'Tapis', detail: '1, 2 ou 3 tapis · jusqu’à 4 m² chacun', action: 'Choisir la quantité' },
-  { service: 'cuir', formulas: ['cuir-fauteuil', 'cuir-canape-2', 'cuir-canape-4', 'cuir-canape-angle', 'cuir-pouf', 'cuir-chaise', 'cuir-chaises-5', 'cuir-chaises-6', 'cuir-auto'], label: 'Cuir', detail: 'Canapés, fauteuils, chaises et sièges', action: 'Choisir ma prestation' },
+  { service: 'cuir', formulas: ['cuir-fauteuil', 'cuir-canape-2', 'cuir-canape-4', 'cuir-canape-angle', 'cuir-chaise', 'cuir-chaises-5', 'cuir-chaises-6', 'cuir-auto'], label: 'Cuir', detail: 'Canapés, fauteuils, chaises et sièges', action: 'Choisir ma prestation' },
   { service: 'moquette', formulas: ['moquette-petite', 'moquette-standard', 'moquette-grande'], label: 'Moquette', detail: 'Petite, moyenne ou grande pièce', action: 'Choisir la surface' },
 ];
 
