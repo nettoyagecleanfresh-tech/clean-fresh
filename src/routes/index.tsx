@@ -1,7 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
   Images,
+  ChevronLeft,
+  ChevronRight,
+  Quote,
   CalendarCheck,
   Clock,
   Leaf,
@@ -164,111 +167,65 @@ const WHY_US = [
 
 const HERO_DESKTOP_REVIEWS = [
   {
-    name: "Steeven Machin",
-    avatarUrl: "https://lh3.googleusercontent.com/a/ACg8ocJc55PDjxZtWR6xh5g7oh5PLQuG3-Vu3tUd9sXMRbF18BJiNw=s96-c-rp-mo-br100",
-    text: "Un excellent nettoyage de la voiture. Elle était vraiment dans un sale état et je suis plus que satisfait du résultat. Travail vraiment professionnel.",
+    "name": "Steeven Machin",
+    "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocJc55PDjxZtWR6xh5g7oh5PLQuG3-Vu3tUd9sXMRbF18BJiNw=s96-c-rp-mo-br100",
+    "text": "Un excellent nettoyage de la voiture. Elle était vraiment dans un sale état et je suis plus que satisfait du résultat. Travail vraiment professionnel, le site pour réserver et choisir la prestation est très pratique et clair."
   },
   {
-    name: "Nsta4.20 Razlion",
-    avatarUrl: "https://lh3.googleusercontent.com/a/ACg8ocI53RraVDl2eFkTJpwM4BAWK1-TM9WQfckvmaWydzf6cg7BfQ=s96-c-rp-mo-br100",
-    text: "Très satisfait du nettoyage de mes tapis. Le résultat est vraiment impressionnant : propres, frais et comme neufs. Travail soigné, professionnel et efficace.",
+    "name": "Mohammed Daoughi",
+    "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocKtgN7UCmUwOt8ZTEJkUeeMcs4rhqEM2fiAvoePrQfwlb2LhA=s96-c-rp-mo-br100",
+    "text": "Un grand merci pour le nettoyage de mon canapé et mes matelas jeune homme très pro et surtout efficace à bientot pour la voiture ! Je recommande vivement Clean&Fresh"
   },
   {
-    name: "Adeline Brt",
-    avatarUrl: "https://lh3.googleusercontent.com/a/ACg8ocItwWpTclJGJQNK1D1F-009i2wRukdQWd5ktFW4W0xlwaZcxg=s96-c-rp-mo-br100",
-    text: "L’appartement était impeccable, jusque dans les moindres recoins. Un travail de très grande qualité, avec beaucoup de soin et d’attention aux détails.",
-  },
-  {
-    name: "Cambiocorsa",
-    avatarUrl: "https://lh3.googleusercontent.com/a-/ALV-UjUMdw5VXKKckgqYdl6enh11qL0rA0xWl1lGBl3AvEF0tv1ef94=s96-c-rp-mo-br100",
-    text: "Personne ponctuelle et très souriante, travail ultra sérieux sur mon grand matelas qui n’a plus aucune tâche aujourd’hui. Le rendu était proche du neuf.",
-  },
-  {
-    name: "Sofiene",
-    avatarUrl: "https://lh3.googleusercontent.com/a/ACg8ocLZ7z-vk06KWiT7KfRv1TafcwFtHHIpJyasv8W0tuWrvwqk-w=s96-c-rp-mo-br100",
-    text: "Excellente prestation de nettoyage auto à domicile sur Toulouse. Le véhicule était super propre. Les intervenants ont été très ponctuels et très sympas.",
-  },
-  {
-    name: "JM Balza",
-    avatarUrl: "https://lh3.googleusercontent.com/a-/ALV-UjXiFfW3zzqEbfqHJRVZsjJBV7TOIWsrZ_ZMmUKxeoTaKEkZc04=s96-c-rp-mo-br100",
-    text: "Nous avons fait appel à Clean&Fresh pour le nettoyage de notre canapé et le résultat est parfait ! Travail professionnel et de grande qualité.",
-  },
-  {
-    name: "David Anglézi",
-    avatarUrl: "https://lh3.googleusercontent.com/a-/ALV-UjVwxgdN4UuH7jtKPqBRqhNmv3UOskfvRvGv5A1gSwVldjnExfddQg=s96-c-rp-mo-ba12-br100",
-    text: "Un travail professionnel et irréprochable. Je retrouve ma voiture ! Merci encore pour le temps consacré et l’aménagement des horaires.",
-  },
-  {
-    name: "Babette Duchesne",
-    avatarUrl: "https://lh3.googleusercontent.com/a/ACg8ocJtorN3If9THIqBYgd6wU38GjOGTkvXTsPNLGvHJsyj8ov2-A=s96-c-rp-mo-br100",
-    text: "Un travail d’une qualité irréprochable ! Professionnel, ponctuel, poli ! Je recommande vivement et je ne manquerai pas de refaire appel à vous.",
-  },
-  {
-    name: "Nicolas",
-    avatarUrl: "https://lh3.googleusercontent.com/a/ACg8ocJcuqKD2OaeQKAeAEeWFIcWaoPhuYvI6mMhAlR22IhFnmUdRA=s96-c-rp-mo-br100",
-    text: "Le résultat est impeccable. Travail soigné, personnel sérieux et à l’écoute. Je recommande vivement pour le nettoyage auto à domicile.",
-  },
-  {
-    name: "Mohammed Daoughi",
-    avatarUrl: "https://lh3.googleusercontent.com/a/ACg8ocKtgN7UCmUwOt8ZTEJkUeeMcs4rhqEM2fiAvoePrQfwlb2LhA=s96-c-rp-mo-br100",
-    text: "Un grand merci pour le nettoyage de mon canapé et mes matelas. Jeune homme très pro et surtout efficace. Je recommande vivement Clean&Fresh.",
-  },
+    "name": "DUCHESNE babette",
+    "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocJtorN3If9THIqBYgd6wU38GjOGTkvXTsPNLGvHJsyj8ov2-A=s96-c-rp-mo-br100",
+    "text": "Un travail d'une qualité irréprochable ! Professionnel, ponctuel, poli ! Je recommande vivement, et je ne manquerai pas de refaire appel à vous ! Encore merci !"
+  }
 ];
 
 function DesktopHeroReviews() {
   const [reviewIndex, setReviewIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = window.setInterval(() => {
-      setReviewIndex((current) => (current + 1) % HERO_DESKTOP_REVIEWS.length);
-    }, 5500);
-
-    return () => window.clearInterval(interval);
-  }, []);
-
   const review = HERO_DESKTOP_REVIEWS[reviewIndex] ?? HERO_DESKTOP_REVIEWS[0]!;
+  const changeReview = (direction: number) => setReviewIndex((current) =>
+    (current + direction + HERO_DESKTOP_REVIEWS.length) % HERO_DESKTOP_REVIEWS.length);
 
   return (
-    <div className="h-[300px] overflow-hidden rounded-[22px] border border-white/50 bg-white shadow-[0_18px_50px_rgba(8,30,48,0.28)]">
-      <figure key={review.name} className="grid h-full grid-rows-[auto_1fr_auto] p-5 pb-6">
-          <div className="flex items-center justify-between gap-3">
-            <div className="flex items-center gap-2.5">
-              <span className="flex size-8 items-center justify-center rounded-full bg-blue-50 ring-1 ring-blue-200">
-                <BadgeCheck className="size-5 fill-blue-600 text-white" aria-hidden="true" />
-              </span>
-              <div className="leading-tight">
-                <p className="text-xs font-extrabold text-slate-900">Avis client vérifié</p>
-                <p className="text-[10px] font-semibold text-slate-500">Publié sur Google</p>
-              </div>
+    <section aria-label="Avis de nos clients" className="relative w-full">
+      <div aria-hidden="true" className="pointer-events-none absolute -inset-5 rounded-full bg-cyan-400/15 blur-3xl" />
+      <div className="relative overflow-hidden rounded-[28px] border border-white/30 bg-white shadow-[0_24px_70px_rgba(0,0,0,0.3)]">
+        <div className="flex items-center justify-between border-b border-sky-100 bg-gradient-to-r from-sky-50 to-white px-6 py-4">
+          <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-sky-800">Ils nous font confiance</span>
+          <BadgeCheck className="size-6 fill-blue-600 text-white" aria-hidden="true" />
+        </div>
+        <figure className="px-6 pt-5 pb-6" aria-live="polite" aria-atomic="true">
+          <div className="flex items-center justify-between">
+            <div className="flex gap-1 text-amber-400" aria-label="5 étoiles sur 5">
+              {Array.from({ length: 5 }).map((_, index) => <Star key={index} className="size-4 fill-current" aria-hidden="true" />)}
             </div>
-            <div className="flex gap-0.5 text-[#FBBC04]" aria-label="5 étoiles sur 5">
-              {Array.from({ length: 5 }).map((_, index) => (
-                <Star key={index} className="size-3.5 fill-current" />
-              ))}
-            </div>
+            <Quote className="size-8 fill-sky-100 text-sky-100" aria-hidden="true" />
           </div>
-          <blockquote className="mt-4 text-[15px] font-extrabold leading-6 text-slate-950">
-            “{review.text}”
-          </blockquote>
-          <figcaption className="mt-4 flex min-h-12 items-center justify-between gap-2 border-t border-slate-200 pt-3">
-            <span className="flex min-w-0 items-center gap-2.5">
-              <span className="relative flex size-9 shrink-0 items-center justify-center overflow-hidden rounded-full bg-gradient-to-br from-blue-50 to-blue-100 text-sm font-black text-blue-700 ring-2 ring-white shadow-sm">
-                {review.name.charAt(0)}
-                <img
-                  src={review.avatarUrl}
-                  alt={`Photo de profil Google de ${review.name}`}
-                  loading="lazy"
-                  referrerPolicy="no-referrer"
-                  className="absolute inset-0 size-full object-cover"
-                  onError={(event) => { event.currentTarget.style.display = "none"; }}
-                />
-              </span>
-              <span className="truncate text-sm font-black text-slate-950">{review.name}</span>
+          <blockquote className="mt-4 min-h-[210px] text-sm font-medium leading-6 text-slate-800">« {review.text} »</blockquote>
+          <figcaption className="mt-5 flex items-center gap-3 border-t border-slate-100 pt-5">
+            <span className="relative flex size-11 shrink-0 items-center justify-center overflow-hidden rounded-full bg-sky-100 font-bold text-sky-800">
+              {review.name.charAt(0)}
+              <img key={review.avatarUrl} src={review.avatarUrl} alt="" loading="lazy" referrerPolicy="no-referrer" className="absolute inset-0 size-full object-cover" onError={(event) => { event.currentTarget.style.display = "none"; }} />
             </span>
-            <span className="rounded-full bg-slate-100 px-2 py-1 text-[10px] font-bold text-slate-500">{reviewIndex + 1}/{HERO_DESKTOP_REVIEWS.length}</span>
+            <div className="min-w-0">
+              <p className="flex items-center gap-1.5 text-sm font-bold text-slate-900"><span className="truncate">{review.name}</span><BadgeCheck className="size-4 shrink-0 fill-blue-600 text-white" aria-hidden="true" /></p>
+              <p className="mt-0.5 text-xs text-slate-500">Extrait d’avis · Google</p>
+            </div>
           </figcaption>
-      </figure>
-    </div>
+        </figure>
+        <div className="flex items-center justify-between border-t border-slate-100 bg-slate-50 px-5 py-3">
+          <a href="https://www.google.com/search?q=clean+fresh+toulouse+avis" target="_blank" rel="noopener noreferrer" className="rounded text-xs font-bold text-sky-800 underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-sky-600">Voir les avis Google ↗</a>
+          <div className="flex items-center gap-2">
+            <button type="button" onClick={() => changeReview(-1)} aria-label="Avis précédent" className="flex size-8 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 hover:bg-sky-100 focus-visible:outline-2 focus-visible:outline-sky-600"><ChevronLeft className="size-4" /></button>
+            <span className="min-w-8 text-center text-[11px] tabular-nums text-slate-500">{reviewIndex + 1}/{HERO_DESKTOP_REVIEWS.length}</span>
+            <button type="button" onClick={() => changeReview(1)} aria-label="Avis suivant" className="flex size-8 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 hover:bg-sky-100 focus-visible:outline-2 focus-visible:outline-sky-600"><ChevronRight className="size-4" /></button>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -306,9 +263,10 @@ function Index() {
                 <span className="inline-flex items-center gap-1.5"><CalendarCheck className="size-4 text-accent" /> Réservation en ligne</span>
               </div>
 
-              <div className="hidden md:inline-flex mt-6 items-center gap-2 rounded-full bg-accent/20 border border-accent/40 px-4 py-1.5 text-sm font-bold text-accent">
+              <div className="relative hidden md:inline-flex mt-6 items-center gap-2 rounded-full bg-accent/20 border border-accent/40 px-4 py-1.5 text-sm font-bold text-accent">
                 <CalendarCheck className="size-4" />
                 Consultez les prochains créneaux disponibles
+                <Link to="/formules" aria-label="Consulter les créneaux disponibles" className="absolute inset-0 hidden rounded-full focus-visible:outline-2 focus-visible:outline-white lg:block" />
               </div>
 
               <div className="mt-8 flex flex-wrap justify-center md:justify-start gap-2.5 md:mt-6">
@@ -406,6 +364,7 @@ function Index() {
                   </div>
                 </div>
               </a>
+              <div className="hidden w-full lg:block"><DesktopHeroReviews /></div>
             </div>
           </div>
         </div>
