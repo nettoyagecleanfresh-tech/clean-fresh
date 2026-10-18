@@ -23,12 +23,12 @@ export function DesktopBookingChoices() {
           </div>
           <Link to="/formules" className="inline-flex min-h-11 items-center text-xs font-semibold text-blue-900 underline underline-offset-4 sm:text-sm">Tarifs et réservation</Link>
         </div>
-        <div className="grid grid-cols-2 gap-2.5 lg:grid-cols-5 lg:gap-4">
+        <div className="grid grid-cols-2 gap-2.5 lg:grid-cols-4 lg:gap-4">
           {PICKS.map(pick => {
             const service = SERVICES.find(item => item.id === pick.service)!;
             const startingPrice = Math.min(...service.formules.filter(item => pick.formulas.includes(item.id)).map(item => item.price));
             return (
-              <Link key={pick.service} to="/reserver" search={{ service: service.id, formule: '', from: 'home_choices' }} data-conversion-location="home_choices" className={`${pick.service === 'cuir' ? 'lg:col-start-3 lg:row-start-2' : pick.service === 'moquette' ? 'lg:col-start-4 lg:row-start-2' : ''} group flex min-w-0 flex-col rounded-2xl border border-blue-100 bg-white p-3 shadow-sm transition-colors hover:border-blue-400 hover:bg-blue-50/50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700 lg:p-5`}>
+              <Link key={pick.service} to="/reserver" search={{ service: service.id, formule: '', from: 'home_choices' }} data-conversion-location="home_choices" className={`group flex min-w-0 flex-col rounded-2xl border border-blue-100 bg-white p-3 shadow-sm transition-colors hover:border-blue-400 hover:bg-blue-50/50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700 lg:p-5`}>
                 <div className="flex items-center gap-2">
                   <span aria-hidden="true" className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-blue-900 [&>svg]:size-5">{service.icon}</span>
                   <h3 className="text-sm font-bold text-slate-950 lg:text-base">{pick.label}</h3>
@@ -39,10 +39,10 @@ export function DesktopBookingChoices() {
               </Link>
             );
           })}
-          <Link to="/contactez-nous" search={{ service: 'logement' }} data-conversion-location="home_choices" className="col-span-2 grid min-w-0 grid-cols-2 items-center gap-x-3 rounded-2xl border border-blue-900 lg:col-span-1 lg:col-start-5 lg:row-start-1 lg:flex lg:flex-col lg:items-stretch bg-blue-950 p-3 text-white shadow-sm transition-colors hover:bg-blue-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 lg:p-5">
+          <Link to="/contactez-nous" search={{ service: 'logement' }} data-conversion-location="home_choices" className="col-span-2 grid min-w-0 grid-cols-2 items-center gap-x-3 rounded-2xl border border-blue-900 lg:col-span-2 lg:content-center lg:gap-x-6 bg-blue-950 p-3 text-white shadow-sm transition-colors hover:bg-blue-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 lg:p-5">
             <div className="flex items-center gap-2"><span aria-hidden="true" className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-white/10"><Home className="size-5" /></span><h3 className="text-sm font-bold lg:text-base">Logement</h3></div>
-            <p className="row-start-2 mt-2 text-[11px] leading-4 lg:flex-1 lg:text-xs lg:leading-5 text-blue-100">Appartement ou maison</p>
-            <p className="col-start-2 row-start-1 text-right text-xl font-bold tracking-tight lg:mt-2 lg:text-left lg:text-2xl">Sur devis</p>
+            <p className="row-start-2 mt-2 text-[11px] leading-4 lg:text-xs lg:leading-5 text-blue-100">Appartement ou maison</p>
+            <p className="col-start-2 row-start-1 text-right text-xl font-bold tracking-tight lg:text-3xl">Sur devis</p>
             <span className="mt-2 flex min-h-8 items-center justify-between gap-1 border-t border-white/20 pt-2 text-[11px] font-bold lg:text-sm">Demander un devis<ArrowUpRight aria-hidden="true" className="size-4 shrink-0" /></span>
           </Link>
         </div>
