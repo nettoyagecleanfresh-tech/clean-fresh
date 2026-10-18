@@ -46,7 +46,7 @@ function CGVPage() {
             <h2>3. Tarifs, Frais de déplacement et Paiement</h2>
             <p>
               Les tarifs indiqués sur notre site internet ou sur devis sont exprimés en euros, toutes taxes comprises (TTC).
-              <strong>Frais de déplacement :</strong> Le déplacement est offert jusqu'à 20 km autour de Toulouse. Un supplément s'applique au-delà : 10€ de 21 à 34 km, 20€ de 35 à 49 km, etc. (tranches de 15km).<br />
+              <strong>Frais de déplacement :</strong> Le déplacement est offert jusqu'à 20 km autour de Toulouse ; +10 € de 21 à 34 km et +20 € de 35 à 49 km. Au-delà de 49 km, contactez-nous pour une estimation. Le montant est précisé avant confirmation selon l'adresse exacte.<br />
               <strong>Paiement :</strong> Le paiement s'effectue sur place à la fin de la prestation. Sont acceptés : Carte Bancaire (CB, SumUp), Espèces, Virement instantané, et Wero. <strong>Les chèques sont refusés.</strong><br />
               <strong>Acomptes :</strong> Aucun acompte n'est exigé pour les prestations courantes. Cependant, pour les interventions lourdes (nettoyage Diogène, insalubre, fin de chantier, etc.), un acompte sera demandé à l'acceptation du devis.
             </p>

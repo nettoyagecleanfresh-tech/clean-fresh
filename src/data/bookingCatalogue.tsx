@@ -99,7 +99,7 @@ const SERVICE_CATALOG: ServiceDef[] = [
   },
   {
     id: "cuir", label: "Nettoyage Cuir — Canapés, Fauteuils & Chaises", shortLabel: "Cuir",
-    desc: "Nettoyage manuel doux et respectueux, suivi d'un soin nourrissant protecteur pour vos cuirs.",
+    desc: "Nettoyage manuel doux des cuirs compatibles. Soin nourrissant et protecteur proposé en option.",
     from: 49, icon: <Armchair className="size-8" strokeWidth={1.5} />,
     features: ["Fauteuil, canapé 2/3, 4/5 places", "Chaises et sièges auto cuir", "Traitement nourrissant en option"],
     formules: [

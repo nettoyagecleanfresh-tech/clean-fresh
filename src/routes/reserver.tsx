@@ -690,7 +690,7 @@ function ReserverPage() {
               <span className="font-bold text-lg text-primary">{total} €</span>
             </div>
             <p className="text-[10px] text-muted-foreground mt-1">
-              * Frais de déplacement offerts jusqu'à 20 km. Au-delà : +10 € par tranche de 15 km (réglable sur place).
+              * Frais de déplacement offerts jusqu'à 20 km ; +10 € de 21 à 34 km ; +20 € de 35 à 49 km. Au-delà de 49 km, contactez-nous pour une estimation. Montant précisé avant confirmation selon l'adresse exacte.
             </p>
           </div>
 
@@ -1113,7 +1113,7 @@ function ReserverPage() {
                       <span className="font-bold text-lg">{total} €</span>
                     </div>
                     <p className="text-[10px] text-muted-foreground mt-0">
-                      * Frais de déplacement offerts jusqu'à 20 km. Au-delà : +10 € par tranche de 15 km.
+                      * Frais de déplacement offerts jusqu'à 20 km ; +10 € de 21 à 34 km ; +20 € de 35 à 49 km. Au-delà de 49 km, contactez-nous pour une estimation. Montant précisé avant confirmation selon l'adresse exacte.
                     </p>
                     <p className="text-xs text-muted-foreground">
                       📅 {selectedDate.toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long" })} à {selectedTime}

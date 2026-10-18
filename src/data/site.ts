@@ -207,7 +207,7 @@ export const SERVICES: Service[] = [
     faq: [
       { q: "Combien coûte un nettoyage de matelas à Toulouse ?", a: "Le tarif démarre à 39 € pour un matelas enfant, 59 € pour un matelas 1 place et 99 € pour un matelas 2 places. Devis gratuit, réponse sous 24h." },
       { q: "Peut-on enlever une ancienne tache d'urine sur un matelas ?", a: "Oui, dans la grande majorité des cas. Nous appliquons un détachage enzymatique ciblé avant l'injection-extraction. Les auréoles d'urine, même anciennes, sont éliminées ou très atténuées." },
-      { q: "Combien de temps met un matelas à sécher ?", a: "Entre 3 et 6 heures selon l'épaisseur et le type de matelas. Pour accélérer, aérez la chambre ou activez le chauffage. Votre lit est utilisable le soir même." },
+      { q: "Combien de temps met un matelas à sécher ?", a: "Le séchage prend généralement 3 à 6 heures, parfois davantage selon l’épaisseur, la température et l’aération. Aérez la chambre et attendez le séchage complet avant de réutiliser votre matelas." },
       { q: "Quels produits utilisez-vous pour le nettoyage de matelas ?", a: "Des produits professionnels sélectionnés, dont certaines références certifiées Écolabel. Ils sont utilisés selon leurs notices et après vérification de la compatibilité du textile." },
       { q: "Le nettoyage de matelas est-il adapté aux personnes sensibles aux acariens ?", a: "Le nettoyage aide à extraire les poussières et allergènes accumulés. Un traitement anti-acariens complémentaire est disponible en option ; il ne remplace pas un avis ou un traitement médical." },
     ],
@@ -221,15 +221,15 @@ export const SERVICES: Service[] = [
       "Nettoyage professionnel de tapis et moquettes à domicile, à Toulouse et dans toute la Haute-Garonne.",
     metaTitle: "Nettoyage tapis Toulouse dès 49 € | Clean&Fresh",
     metaDescription:
-      "Shampouinage et nettoyage professionnel de tapis à Toulouse. Toutes fibres, toutes tailles. Taches, odeurs, poils d'animaux éliminés. Devis gratuit sous 24h.",
+      "Shampouinage et nettoyage professionnel de tapis à Toulouse. Tapis compatibles jusqu’à 4 m² dès 49 €. Fibres délicates et grands formats sur estimation. Devis gratuit sous 24h.",
     group: "textile",
     booking: true,
     intro: [
       "Tapis de salon, descentes de lit, moquettes de bureaux : les fibres retiennent la poussière, les acariens et les taches. Notre service de nettoyage tapis à Toulouse intervient sur place avec du matériel professionnel adapté à chaque type de fibre.",
-      "Les couleurs sont ravivées, les odeurs neutralisées et le tapis reste utilisable dans la journée. Que votre tapis soit en laine, synthétique, shaggy ou berbère, nous appliquons la technique d'injection-extraction avec des produits professionnels sélectionnés, dont certaines références certifiées Écolabel.",
-      "Le shampouinage de tapis à Toulouse est souvent confondu avec un simple lavage. Chez Clean&Fresh, nous utilisons l'injection-extraction : le produit nettoyant est injecté sous pression dans les fibres puis aspiré avec les salissures. Cette méthode est plus efficace que le shampouinage classique — pas de résidu de mousse, pas de sur-mouillage, séchage en 2 à 4 heures. Elle convient aussi bien aux tapis en laine délicate qu'aux tapis shaggy, berbère, viscose ou synthétique.",
+      "Nous adaptons la méthode à la fibre, aux couleurs et à l’état du tapis après diagnostic. L’injection-extraction est réservée aux supports compatibles. Les fibres délicates et les grands formats nécessitent une estimation préalable sur photos. Attendez le séchage complet avant réutilisation.",
+      "Le shampouinage de tapis à Toulouse est souvent confondu avec un simple lavage. Chez Clean&Fresh, nous utilisons l'injection-extraction : le produit nettoyant est injecté sous pression dans les fibres puis aspiré avec les salissures. La compatibilité de cette méthode est vérifiée avant intervention, notamment pour les fibres délicates comme la laine ou la viscose. Le séchage dépend de la matière, de l’épaisseur, de la température et de l’aération.",
       "Pour le nettoyage de moquette à Toulouse, la même technique s'applique aux moquettes collées d'appartements et aux moquettes de bureaux ou d'espaces professionnels. Nous intervenons pour les particuliers comme pour les entreprises, les hôtels, les agences immobilières et les cabinets médicaux. Un tapis ou une moquette se nettoie en profondeur 1 à 2 fois par an selon le trafic et la présence d'animaux.",
-      "Certains clients recherchent un pressing de tapis à Toulouse, un lavage de tapis à domicile ou une shampouineuse tapis en location. Ces termes désignent tous la même prestation que nous proposons sous forme de nettoyage professionnel par injecteur extracteur. Nettoyeur tapis, pressing tapis, lavage tapis ou shampouinage tapis : quelle que soit la formulation, le résultat est identique — fibres nettoyées en profondeur, couleurs ravivées et tapis utilisable le jour même.",
+      "Notre prestation consiste à nettoyer votre tapis à domicile après vérification de sa compatibilité. La méthode et les traitements sont choisis selon la fibre et les salissures. Les tarifs standards concernent les tapis jusqu’à 4 m² ; les grands formats et les fibres délicates font l’objet d’une estimation préalable.",
       "Nous nous déplaçons à domicile dans toute l'agglomération toulousaine — Toulouse, Blagnac, Colomiers, Tournefeuille, Cugnaux, Balma, Muret, Ramonville-Saint-Agne, Castanet-Tolosan et plus de 30 autres communes du 31. Devis gratuit, intervention rapide sous 24h.",
     ],
     treated: [
@@ -262,7 +262,7 @@ export const SERVICES: Service[] = [
       { q: "Nettoyez-vous tous les types de tapis ?", a: "Oui : laine, synthétique, shaggy, berbère, viscose, soie artificielle. Nous testons la compatibilité du produit sur une zone cachée avant chaque intervention pour préserver votre tapis." },
       { q: "Pouvez-vous nettoyer les deux faces du tapis ?", a: "Oui, le nettoyage recto-verso est disponible en option à +25 €. Recommandé pour les tapis très épais ou très encrassés." },
       { q: "Comment éliminer l'odeur d'urine de chat ou de chien sur un tapis ?", a: "Nous appliquons un détachage enzymatique ciblé, suivi d'un traitement anti-odeur par neutralisation moléculaire. Les odeurs d'urine animale sont éliminées en profondeur, pas simplement masquées." },
-      { q: "Combien de temps faut-il pour nettoyer un tapis ?", a: "Entre 30 et 60 minutes par tapis selon sa taille et son état. Le tapis est utilisable après 2 à 4 heures de séchage." },
+      { q: "Combien de temps faut-il pour nettoyer un tapis ?", a: "Entre 30 et 60 minutes par tapis selon sa taille et son état. Le séchage prend généralement plusieurs heures selon la fibre, l’épaisseur et l’aération. Attendez le séchage complet avant réutilisation." },
     ],
   },
   {

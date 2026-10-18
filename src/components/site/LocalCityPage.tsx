@@ -67,7 +67,7 @@ export function LocalCityPage({ commune }: Props) {
                 <strong>Nettoyage de matelas :</strong> Nettoyage des deux faces et traitement courant des taches. Matelas enfant dès 39 €. Vapeur et traitements intensifs en option.
               </li>
               <li>
-                <strong>Shampouinage de tapis et moquettes :</strong> Toutes fibres, toutes tailles. Couleurs ravivées, odeurs neutralisées. Dès 49 €.
+                <strong>Shampouinage de tapis et moquettes :</strong> Tapis compatibles jusqu’à 4 m² dès 49 €. Grand format, fibre délicate, moquette ou état exceptionnel : estimation préalable sur photos. Traitements intensifs en option.
               </li>
               <li>
                 <strong>Nettoyage intérieur automobile :</strong> Pack Bronze (69 €), Argent (99 €) ou Or (129 €). Le technicien vient directement chez vous à {name}.

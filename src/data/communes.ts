@@ -62,7 +62,7 @@ export const COMMUNES_DATA: CommuneData[] = [
       },
       {
         q: "Nettoyez-vous les canapés en cuir à Colomiers ?",
-        a: "Oui, nous utilisons des nettoyants pH neutre spécifiques au cuir et un nourrissant protecteur. Le résultat est immédiat : le cuir retrouve son éclat sans se dessécher.",
+        a: "Oui, nous utilisons des nettoyants adaptés au cuir après diagnostic. Le soin nourrissant et protecteur est proposé en option, avec votre accord.",
       },
     ],
     nearby: ["Toulouse", "Plaisance-du-Touch", "Léguevin", "Cornebarrieu"],
@@ -180,7 +180,7 @@ export const COMMUNES_DATA: CommuneData[] = [
     para1:
       "Balma est dans notre circuit est. Nous intervenons dans les résidences du Rivel, de Jonquières et du secteur la Jonquère pour des nettoyages de canapés, matelas, tapis et habitacles de véhicules.",
     para2:
-      "La proximité de Balma avec Toulouse (moins de 5 km du centre) en fait une zone à forte densité de copropriétés modernes. Nos interventions concernent aussi bien des appartements que des maisons individuelles. Réponse sous 24h, séchage rapide — le canapé ou le matelas est utilisable le jour même.",
+      "La proximité de Balma avec Toulouse (moins de 5 km du centre) en fait une zone à forte densité de copropriétés modernes. Nos interventions concernent aussi bien des appartements que des maisons individuelles. Réponse sous 24h. Le séchage dépend de la matière, de la température et de l’aération ; attendez le séchage complet avant de réutiliser votre canapé ou votre matelas.",
     faq: [
       {
         q: "Y a-t-il des frais de déplacement pour Balma ?",
@@ -192,7 +192,7 @@ export const COMMUNES_DATA: CommuneData[] = [
       },
       {
         q: "Nettoyez-vous les tapis orientaux à Balma ?",
-        a: "Oui, les tapis en laine, soie artificielle et fibres naturelles. Nous testons la compatibilité du produit sur une zone cachée avant chaque intervention.",
+        a: "La prise en charge dépend de la fibre et de l’état du tapis. Pour la laine, la viscose ou toute fibre délicate, une estimation sur photos et un diagnostic de compatibilité sont nécessaires avant de confirmer la méthode.",
       },
     ],
     nearby: ["Toulouse", "Quint-Fonsegrives", "Escalquens", "Castanet-Tolosan"],
@@ -604,7 +604,7 @@ export const COMMUNES_DATA: CommuneData[] = [
       },
       {
         q: "Nettoyez-vous les canapés en cuir à Beauzelle ?",
-        a: "Oui, avec des produits pH neutre spécifiques et un nourrissant protecteur.",
+        a: "Oui, avec des produits adaptés au cuir après diagnostic. Le soin nourrissant et protecteur est proposé en option, avec votre accord.",
       },
       {
         q: "Proposez-vous le nettoyage auto à Beauzelle ?",
@@ -708,7 +708,7 @@ export const COMMUNES_DATA: CommuneData[] = [
       },
       {
         q: "Nettoyez-vous les tapis à Escalquens ?",
-        a: "Oui, à partir de 49 € pour 1 tapis. Toutes fibres.",
+        a: "À partir de 49 € pour un tapis compatible jusqu’à 4 m². Grand format, fibre délicate ou état exceptionnel : estimation préalable sur photos.",
       },
       {
         q: "Proposez-vous le nettoyage fin de bail à Escalquens ?",
@@ -812,7 +812,7 @@ export const COMMUNES_DATA: CommuneData[] = [
       },
       {
         q: "Nettoyez-vous les tapis orientaux à Quint-Fonsegrives ?",
-        a: "Oui, laine, soie artificielle, fibres naturelles. Test de compatibilité systématique.",
+        a: "La prise en charge dépend de la fibre et de l’état du tapis. Les fibres délicates nécessitent une estimation sur photos et un diagnostic de compatibilité avant confirmation.",
       },
       {
         q: "Quel est le délai pour une intervention à Quint-Fonsegrives ?",
