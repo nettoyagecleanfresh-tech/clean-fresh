@@ -1,10 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Images,
   ChevronLeft,
   ChevronRight,
   Quote,
+  Pause,
+  Play,
   CalendarCheck,
   Clock,
   Leaf,
@@ -167,48 +169,235 @@ const WHY_US = [
 
 const HERO_DESKTOP_REVIEWS = [
   {
-    "name": "Steeven Machin",
-    "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocJc55PDjxZtWR6xh5g7oh5PLQuG3-Vu3tUd9sXMRbF18BJiNw=s96-c-rp-mo-br100",
-    "text": "Un excellent nettoyage de la voiture. Elle était vraiment dans un sale état et je suis plus que satisfait du résultat. Travail vraiment professionnel, le site pour réserver et choisir la prestation est très pratique et clair."
+    "name": "Fabien Solar",
+    "stars": 5,
+    "text": "Contacté pour le nettoyage d'un appartement avant aménagement, la prestation a été très profesionnelle et de grande qualité, que se soit pour le ménage ou le nettoyage et la desinfection du canapé. Je recommande fortement",
+    "theme": "Appartement",
+    "avatarUrl": ""
+  },
+  {
+    "name": "Ludivine Lecerf",
+    "stars": 5,
+    "text": "l'appartement etait dans un état déplorable et le résultat final tout est parfait tout a était dégraisser nettoyer et désinfecter",
+    "theme": "Logement insalubre",
+    "avatarUrl": ""
   },
   {
     "name": "Mohammed Daoughi",
-    "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocKtgN7UCmUwOt8ZTEJkUeeMcs4rhqEM2fiAvoePrQfwlb2LhA=s96-c-rp-mo-br100",
-    "text": "Un grand merci pour le nettoyage de mon canapé et mes matelas jeune homme très pro et surtout efficace à bientot pour la voiture ! Je recommande vivement Clean&Fresh"
+    "stars": 5,
+    "text": "Un grand merci pour le nettoyage de mon canapé et mes matelas jeune homme très pro et surtout efficace à bientot pour la voiture ! Je recommande vivement Clean&Fresh",
+    "theme": "Matelas",
+    "avatarUrl": ""
+  },
+  {
+    "name": "Elise",
+    "stars": 5,
+    "text": "Nous sommes très satisfaits de l’intervention de l’entreprise pour le nettoyage de notre véhicule et le nettoyage de notre canapé et tapis. L’équipe intervenue a été très professionnelle et méticuleuse dans le nettoyage. Nous avons également fait faire nettoyer notre siège-auto redevenu comme neuf.…",
+    "theme": "Tapis",
+    "avatarUrl": ""
+  },
+  {
+    "name": "Benoit Ruffe",
+    "stars": 5,
+    "text": "Clean&Fresh a été très efficace et très pro pour le nettoyage de mon canapé à Toulouse",
+    "theme": "Canapé",
+    "avatarUrl": ""
+  },
+  {
+    "name": "Lydie Fages",
+    "stars": 5,
+    "text": "Super nettoyage automobile à Toulouse! On a fait nettoyer la voiture que l’on nous avait prêté pour les vacances à la plage (avec enfants) et elle est nikel! Nous allons maintenant faire le même nettoyage pour la notre tellement nous avons été bluffés par le résultat.",
+    "theme": "Auto",
+    "avatarUrl": ""
+  },
+  {
+    "name": "Wari Épicerie",
+    "stars": 5,
+    "text": "J’ai contacté cette entreprise pour un entretien de mon local et je pense bien que je vais faire appel à eux tous les mois efficace rapide et sympathique. Que demander de plus, je recommande sans hésiter. À bientôt !",
+    "theme": "Local professionnel",
+    "avatarUrl": ""
+  },
+  {
+    "name": "Adeline Brt",
+    "stars": 5,
+    "text": "Il a réalisé un travail de très grande qualité, avec beaucoup de soin et d’attention aux détails.",
+    "theme": "Appartement · Emménagement",
+    "avatarUrl": ""
   },
   {
     "name": "DUCHESNE babette",
-    "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocJtorN3If9THIqBYgd6wU38GjOGTkvXTsPNLGvHJsyj8ov2-A=s96-c-rp-mo-br100",
-    "text": "Un travail d'une qualité irréprochable ! Professionnel, ponctuel, poli ! Je recommande vivement, et je ne manquerai pas de refaire appel à vous ! Encore merci !"
+    "stars": 5,
+    "text": "Un travail d'une qualité irréprochable ! Professionnel, ponctuel, poli ! Je recommande vivement, et je ne manquerai pas de refaire appel à vous ! Encore merci !",
+    "theme": "Service & réactivité",
+    "avatarUrl": ""
+  },
+  {
+    "name": "Abhigyan Prakash",
+    "stars": 5,
+    "text": "Très bon service, efficaces et professionnels. Ils ont fait un très bon travail de nettoyage, parfaitement adapté pour un état des lieux. Je recommande.",
+    "theme": "Appartement",
+    "avatarUrl": ""
+  },
+  {
+    "name": "Cambiocorsa",
+    "stars": 5,
+    "text": "Personne ponctuelle et très souriante. Travail ultra sérieux sur mon grand matelas 180 × 200 qui n’a plus aucune tâche aujourd’hui. Concernant ma voiture de société, le rendu était proche du neuf, les plastiques étaient brillants et l’intérieur sentait bon.",
+    "theme": "Matelas",
+    "avatarUrl": ""
+  },
+  {
+    "name": "Nsta4.20 razlion",
+    "stars": 5,
+    "text": "Très satisfait du nettoyage de mes tapis. Ils étaient tachés et avaient perdu leur éclat, le résultat est vraiment impressionnant : propres, frais et comme neufs. Travail soigné, professionnel et efficace. Je recommande Clean & Fresh pour le nettoyage de tapis à Toulouse.",
+    "theme": "Tapis",
+    "avatarUrl": ""
+  },
+  {
+    "name": "Nicolas Cherki",
+    "stars": 5,
+    "text": "Prestation au top, il a fait mon canapé et mon tapis du salon, plus aucune tache, ça sent très bon je recommande",
+    "theme": "Canapé",
+    "avatarUrl": ""
+  },
+  {
+    "name": "Steeven Machin",
+    "stars": 5,
+    "text": "Un excellent nettoyage de la voiture. Elle était vraiment dans un sale état et je suis plus que satisfait du résultat. Travail vraiment professionnel, le site pour réserver et choisir la prestation est très pratique et clair. Je recommande les yeux fermés pour un nettoyage de voiture.",
+    "theme": "Auto",
+    "avatarUrl": ""
+  },
+  {
+    "name": "Dom",
+    "stars": 5,
+    "text": "Service au top ! J’ai pris rendez-vous à la dernière minute et ils ont été super réactifs en venant directement à domicile. Le travail est impeccable, tout est parfaitement propre. Je recommande sans hésitation !",
+    "theme": "Service & réactivité",
+    "avatarUrl": ""
+  },
+  {
+    "name": "Valentine Pradal",
+    "stars": 5,
+    "text": "Très bonne expérience - notre tapis & notre canapé sont impeccables. Je recommande vivement!",
+    "theme": "Tapis",
+    "avatarUrl": ""
+  },
+  {
+    "name": "mahe geslain",
+    "stars": 5,
+    "text": "Un grand merci pour le nettoyage de mon canapé. Je recommande pour toutes vos demandes de nettoyage sur Toulouse. Un gros + pour le service réactif, rdv pris la veille pour le lendemain. Très professionnel. Encore merci !",
+    "theme": "Canapé",
+    "avatarUrl": ""
+  },
+  {
+    "name": "maxime gayraud",
+    "stars": 5,
+    "text": "Initialement, mon véhicule était vraiment très sale et avait grand besoin d’un nettoyage en profondeur. Le résultat est tout simplement impressionnant.",
+    "theme": "Auto",
+    "avatarUrl": ""
+  },
+  {
+    "name": "François DAUPHIN",
+    "stars": 5,
+    "text": "Parfait ! Je conseille fortement. Personnes agréables, bien équipées et autonomes. Résultat impeccable.",
+    "theme": "Service & réactivité",
+    "avatarUrl": ""
+  },
+  {
+    "name": "Ghi Morgane",
+    "stars": 5,
+    "text": "Au top! Ponctuel , très gentil et surtout très efficace ! Il m’a récupéré un fauteuil parfaitement que je pensais irrécupérable , ainsi que mon canapé et mon tapis ! Je recommande++",
+    "theme": "Tapis",
+    "avatarUrl": ""
+  },
+  {
+    "name": "Jules Julien",
+    "stars": 5,
+    "text": "J’avais quelques taches tenaces sur mon canapé ! Le problème est réglé et mon canapé est reparti pour 10ans ! La prestation est au Top ! Le jeune homme est ponctuel, consciencieux et sympathique .",
+    "theme": "Canapé",
+    "avatarUrl": ""
+  },
+  {
+    "name": "christelle lapierre",
+    "stars": 5,
+    "text": "Exceptionnel ! Notre voiture était dans un état lamentable et elle est désormais comme neuve !",
+    "theme": "Auto",
+    "avatarUrl": ""
+  },
+  {
+    "name": "djo kitoko-zola",
+    "stars": 5,
+    "text": "J’ai récemment fais appel aux services de nettoyage de cette entreprise, pour nettoyer un canapé taché lors d’une soirée. Très content du résultat il est redevenu comme neuf, plus aucune traces. Service très efficace et professionnel.",
+    "theme": "Canapé",
+    "avatarUrl": ""
+  },
+  {
+    "name": "Beatriz Catarino",
+    "stars": 5,
+    "text": "Ma voiture était très sale après 1 an de travaux et beaucoup d'allers/retours a la déchetterie. Le résultat est au top, merci encore pour le super travail!",
+    "theme": "Auto",
+    "avatarUrl": ""
+  },
+  {
+    "name": "Sylvain Gil",
+    "stars": 5,
+    "text": "Venue aujourd'hui a toulouse me nettoyer mon véhicule très belle prestation je recommande Clean&fresh le rendue final es irréprochable 👍",
+    "theme": "Auto",
+    "avatarUrl": ""
+  },
+  {
+    "name": "Emilie Rodrigues",
+    "stars": 5,
+    "text": "J’ai fais appel Clean&French pour un pack bronze. La voiture est niquel et le service était rapide. Merci beaucoup À bientôt pour le pack or",
+    "theme": "Auto",
+    "avatarUrl": ""
   }
-];
+].filter((review) => review.stars === 5);
 
 function DesktopHeroReviews() {
   const [reviewIndex, setReviewIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const [interacting, setInteracting] = useState(false);
+  useEffect(() => {
+    const desktop = window.matchMedia('(min-width: 1024px)');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let timer: ReturnType<typeof window.setInterval> | undefined;
+    const update = () => {
+      window.clearInterval(timer);
+      if (desktop.matches && !reducedMotion.matches && !paused && !interacting) {
+        timer = window.setInterval(() => setReviewIndex((current) => (current + 1) % HERO_DESKTOP_REVIEWS.length), 9000);
+      }
+    };
+    update();
+    desktop.addEventListener('change', update);
+    reducedMotion.addEventListener('change', update);
+    return () => { window.clearInterval(timer); desktop.removeEventListener('change', update); reducedMotion.removeEventListener('change', update); };
+  }, [paused, interacting]);
   const review = HERO_DESKTOP_REVIEWS[reviewIndex] ?? HERO_DESKTOP_REVIEWS[0]!;
-  const changeReview = (direction: number) => setReviewIndex((current) =>
-    (current + direction + HERO_DESKTOP_REVIEWS.length) % HERO_DESKTOP_REVIEWS.length);
+  const changeReview = (direction: number) => {
+    setPaused(true);
+    setReviewIndex((current) => (current + direction + HERO_DESKTOP_REVIEWS.length) % HERO_DESKTOP_REVIEWS.length);
+  };
 
   return (
-    <section aria-label="Avis de nos clients" className="relative w-full">
+    <section aria-label="Avis de nos clients" className="relative w-full" onMouseEnter={() => setInteracting(true)} onMouseLeave={() => setInteracting(false)} onFocusCapture={() => setInteracting(true)} onBlurCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setInteracting(false); }}>
       <div aria-hidden="true" className="pointer-events-none absolute -inset-5 rounded-full bg-cyan-400/15 blur-3xl" />
       <div className="relative overflow-hidden rounded-[28px] border border-white/30 bg-white shadow-[0_24px_70px_rgba(0,0,0,0.3)]">
         <div className="flex items-center justify-between border-b border-sky-100 bg-gradient-to-r from-sky-50 to-white px-6 py-4">
           <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-sky-800">Ils nous font confiance</span>
           <BadgeCheck className="size-6 fill-blue-600 text-white" aria-hidden="true" />
         </div>
-        <figure className="px-6 pt-5 pb-6" aria-live="polite" aria-atomic="true">
+        <figure className="px-6 pt-5 pb-6" aria-live={paused || interacting ? "polite" : "off"} aria-atomic="true">
           <div className="flex items-center justify-between">
             <div className="flex gap-1 text-amber-400" aria-label="5 étoiles sur 5">
               {Array.from({ length: 5 }).map((_, index) => <Star key={index} className="size-4 fill-current" aria-hidden="true" />)}
             </div>
             <Quote className="size-8 fill-sky-100 text-sky-100" aria-hidden="true" />
           </div>
-          <blockquote className="mt-4 min-h-[210px] text-sm font-medium leading-6 text-slate-800">« {review.text} »</blockquote>
+          <p className="mt-3 text-xs font-bold text-sky-800">{review.theme}</p>
+          <blockquote className="mt-3 h-[216px] overflow-y-auto text-sm font-medium leading-6 text-slate-800">« {review.text} »</blockquote>
           <figcaption className="mt-5 flex items-center gap-3 border-t border-slate-100 pt-5">
             <span className="relative flex size-11 shrink-0 items-center justify-center overflow-hidden rounded-full bg-sky-100 font-bold text-sky-800">
               {review.name.charAt(0)}
-              <img key={review.avatarUrl} src={review.avatarUrl} alt="" loading="lazy" referrerPolicy="no-referrer" className="absolute inset-0 size-full object-cover" onError={(event) => { event.currentTarget.style.display = "none"; }} />
+              {review.avatarUrl && <img key={review.avatarUrl} src={review.avatarUrl} alt="" loading="lazy" referrerPolicy="no-referrer" className="absolute inset-0 size-full object-cover" onError={(event) => { event.currentTarget.style.display = "none"; }} />}
             </span>
             <div className="min-w-0">
               <p className="flex items-center gap-1.5 text-sm font-bold text-slate-900"><span className="truncate">{review.name}</span><BadgeCheck className="size-4 shrink-0 fill-blue-600 text-white" aria-hidden="true" /></p>
@@ -217,8 +406,9 @@ function DesktopHeroReviews() {
           </figcaption>
         </figure>
         <div className="flex items-center justify-between border-t border-slate-100 bg-slate-50 px-5 py-3">
-          <a href="https://www.google.com/search?q=clean+fresh+toulouse+avis" target="_blank" rel="noopener noreferrer" className="rounded text-xs font-bold text-sky-800 underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-sky-600">Voir les avis Google ↗</a>
-          <div className="flex items-center gap-2">
+          <a href="https://www.google.com/search?q=clean+fresh+toulouse+avis" target="_blank" rel="noopener noreferrer" className="shrink-0 whitespace-nowrap rounded text-[11px] font-bold text-sky-800 underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-sky-600">Voir les avis Google ↗</a>
+          <div className="flex items-center gap-1">
+            <button type="button" onClick={() => setPaused((value) => !value)} aria-label={paused ? "Activer le défilement automatique" : "Mettre les avis en pause"} className="flex size-8 items-center justify-center rounded-full text-slate-700 hover:bg-sky-100 focus-visible:outline-2 focus-visible:outline-sky-600">{paused ? <Play className="size-3.5" /> : <Pause className="size-3.5" />}</button>
             <button type="button" onClick={() => changeReview(-1)} aria-label="Avis précédent" className="flex size-8 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 hover:bg-sky-100 focus-visible:outline-2 focus-visible:outline-sky-600"><ChevronLeft className="size-4" /></button>
             <span className="min-w-8 text-center text-[11px] tabular-nums text-slate-500">{reviewIndex + 1}/{HERO_DESKTOP_REVIEWS.length}</span>
             <button type="button" onClick={() => changeReview(1)} aria-label="Avis suivant" className="flex size-8 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 hover:bg-sky-100 focus-visible:outline-2 focus-visible:outline-sky-600"><ChevronRight className="size-4" /></button>
@@ -294,9 +484,43 @@ function Index() {
                 >
                   <a href={COMPANY.phoneHref}><Phone className="size-3.5 md:size-4 mr-1.5 md:mr-2" /> Appeler</a>
                 </Button>
-                <Button asChild size="xl" className="bg-teal-700 text-white font-bold text-xs md:text-sm lg:text-base hover:bg-teal-800 border border-teal-300/40 px-4 md:px-6 h-10 md:h-12">
+                <Button asChild size="xl" className="lg:hidden bg-teal-700 text-white font-bold text-xs md:text-sm lg:text-base hover:bg-teal-800 border border-teal-300/40 px-4 md:px-6 h-10 md:h-12">
                   <Link to="/nos-realisations" resetScroll><Images className="size-4 mr-1.5" /> Avant / Après — Voir les résultats</Link>
                 </Button>
+                <div className="hidden w-full items-center gap-2.5 lg:flex">
+                <Button asChild size="xl" className="bg-teal-700 text-white font-bold text-xs xl:text-sm hover:bg-teal-800 border border-teal-300/40 px-3 xl:px-4 h-10 md:h-12">
+                  <Link to="/nos-realisations" resetScroll><Images className="size-4 mr-1.5" /> Avant / Après — Voir les résultats</Link>
+                </Button>
+              <a
+                href="https://www.google.com/search?q=clean+fresh+toulouse+avis"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-12 shrink-0 items-center gap-2 bg-white w-max px-3 py-2 rounded-2xl shadow-xl hover:scale-105 transition-transform duration-300"
+              >
+                <svg className="w-6 h-6 shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                  <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                  <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                  <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                </svg>
+                <div className="flex flex-col text-left">
+                  <div className="flex items-center gap-1.5 leading-none">
+                    <span className="font-bold text-gray-900 text-[13px]">Avis Google</span>
+                  </div>
+                  <div className="flex items-center gap-1.5 mt-1.5 leading-none">
+                    <span className="font-black text-gray-900 text-base tracking-tight">{GOOGLE_REVIEW_RATING}</span>
+                    <div className="flex text-[#FBBC04] gap-0.5">
+                      <Star className="size-3.5 fill-current" />
+                      <Star className="size-3.5 fill-current" />
+                      <Star className="size-3.5 fill-current" />
+                      <Star className="size-3.5 fill-current" />
+                      <Star className="size-3.5 fill-current" />
+                    </div>
+                    <span className="text-xs text-gray-500 font-medium ml-0.5">({GOOGLE_REVIEW_COUNT} avis)</span>
+                  </div>
+                </div>
+              </a>
+                </div>
               </div>
 
               {/* Grand badge Google Avis sous les boutons */}
@@ -333,37 +557,9 @@ function Index() {
               </div>
             </div>
 
-            {/* Google badge — desktop uniquement, colonne droite */}
+            {/* Avis clients — desktop uniquement, colonne droite */}
             <div className="flex w-full max-w-[340px] shrink-0 flex-col items-center gap-4 lg:items-stretch">
-              <a
-                href="https://www.google.com/search?q=clean+fresh+toulouse+avis"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hidden lg:flex items-center gap-3 bg-white w-max px-4 py-2.5 rounded-2xl shadow-xl hover:scale-105 transition-transform duration-300"
-              >
-                <svg className="w-7 h-7 shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-                  <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-                  <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
-                  <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
-                </svg>
-                <div className="flex flex-col text-left">
-                  <div className="flex items-center gap-1.5 leading-none">
-                    <span className="font-bold text-gray-900 text-[13px]">Avis Google</span>
-                  </div>
-                  <div className="flex items-center gap-1.5 mt-1.5 leading-none">
-                    <span className="font-black text-gray-900 text-base tracking-tight">{GOOGLE_REVIEW_RATING}</span>
-                    <div className="flex text-[#FBBC04] gap-0.5">
-                      <Star className="size-3.5 fill-current" />
-                      <Star className="size-3.5 fill-current" />
-                      <Star className="size-3.5 fill-current" />
-                      <Star className="size-3.5 fill-current" />
-                      <Star className="size-3.5 fill-current" />
-                    </div>
-                    <span className="text-xs text-gray-500 font-medium ml-0.5">({GOOGLE_REVIEW_COUNT} avis)</span>
-                  </div>
-                </div>
-              </a>
+
               <div className="hidden w-full lg:block"><DesktopHeroReviews /></div>
             </div>
           </div>
