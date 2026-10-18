@@ -1,6 +1,6 @@
 import { DesktopBookingChoices } from "@/components/site/DesktopBookingChoices";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   Images,
   ChevronLeft,
@@ -354,6 +354,7 @@ const HERO_DESKTOP_REVIEWS = [
 ].filter((review) => review.stars === 5);
 
 function DesktopHeroReviews() {
+  const reviewRef = useRef<HTMLElement>(null);
   const [reviewIndex, setReviewIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const [interacting, setInteracting] = useState(false);
@@ -361,16 +362,20 @@ function DesktopHeroReviews() {
     const desktop = window.matchMedia('(min-width: 1024px)');
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     let timer: number | undefined;
+    let visible = false;
     const update = () => {
       window.clearInterval(timer);
-      if (desktop.matches && !reducedMotion.matches && !paused && !interacting) {
+      if (visible && document.visibilityState === 'visible' && desktop.matches && !reducedMotion.matches && !paused && !interacting) {
         timer = window.setInterval(() => setReviewIndex((current) => (current + 1) % HERO_DESKTOP_REVIEWS.length), 9000);
       }
     };
+    const observer = new IntersectionObserver(([entry]) => { visible = entry?.isIntersecting ?? false; update(); });
+    if (reviewRef.current) observer.observe(reviewRef.current);
+    document.addEventListener('visibilitychange', update);
     update();
     desktop.addEventListener('change', update);
     reducedMotion.addEventListener('change', update);
-    return () => { window.clearInterval(timer); desktop.removeEventListener('change', update); reducedMotion.removeEventListener('change', update); };
+    return () => { observer.disconnect(); document.removeEventListener('visibilitychange', update); window.clearInterval(timer); desktop.removeEventListener('change', update); reducedMotion.removeEventListener('change', update); };
   }, [paused, interacting]);
   const review = HERO_DESKTOP_REVIEWS[reviewIndex] ?? HERO_DESKTOP_REVIEWS[0]!;
   const changeReview = (direction: number) => {
@@ -379,7 +384,7 @@ function DesktopHeroReviews() {
   };
 
   return (
-    <section aria-label="Avis de nos clients" className="relative w-full" onMouseEnter={() => setInteracting(true)} onMouseLeave={() => setInteracting(false)} onFocusCapture={() => setInteracting(true)} onBlurCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setInteracting(false); }}>
+    <section ref={reviewRef} aria-label="Avis de nos clients" className="relative w-full" onMouseEnter={() => setInteracting(true)} onMouseLeave={() => setInteracting(false)} onFocusCapture={() => setInteracting(true)} onBlurCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setInteracting(false); }}>
       <div aria-hidden="true" className="pointer-events-none absolute -inset-5 rounded-full bg-cyan-400/15 blur-3xl" />
       <div className="relative overflow-hidden rounded-[28px] border border-white/30 bg-white shadow-[0_24px_70px_rgba(0,0,0,0.3)]">
         <div className="flex items-center justify-between border-b border-sky-100 bg-gradient-to-r from-sky-50 to-white px-6 py-4">

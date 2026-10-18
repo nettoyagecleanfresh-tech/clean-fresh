@@ -10,7 +10,7 @@ import {
   useLocation,
 } from "@tanstack/react-router";
 import { useEffect, useState, lazy, Suspense, type ReactNode } from "react";
-import { Home, CalendarCheck, Sofa, Sparkles, Phone } from "lucide-react";
+import { Home, CalendarCheck, Sofa, Sparkles, Phone, MessageCircle } from "lucide-react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -226,26 +226,8 @@ function RootComponent() {
     return () => window.removeEventListener('cleanfresh:open-help', openHelp);
   }, []);
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location.pathname]);
+  // The router owns scroll restoration, including Back and hash navigation.
 
-  // Charge le chatbot lorsque le navigateur est disponible afin de garder
-  // le rendu initial rapide, en particulier sur mobile.
-  useEffect(() => {
-    const windowWithIdle = window as Window & {
-      requestIdleCallback?: (callback: () => void, options?: { timeout: number }) => number;
-      cancelIdleCallback?: (id: number) => void;
-    };
-
-    if (windowWithIdle.requestIdleCallback) {
-      const idleId = windowWithIdle.requestIdleCallback(() => setLoadChatbot(true), { timeout: 3000 });
-      return () => windowWithIdle.cancelIdleCallback?.(idleId);
-    }
-
-    const timerId = window.setTimeout(() => setLoadChatbot(true), 1800);
-    return () => window.clearTimeout(timerId);
-  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -266,6 +248,7 @@ function RootComponent() {
           <Chatbot openRequest={helpRequest} />
         </Suspense>
       ) : null}
+      {!loadChatbot && !/^\/(reserver|annuler|upsell)(\/|$)/.test(location.pathname) && <button type="button" aria-label="Ouvrir l’assistant Clean&Fresh" aria-haspopup="dialog" onClick={() => { setLoadChatbot(true); setHelpRequest(value => value + 1); }} className="fixed bottom-5 right-5 z-50 hidden items-center gap-2 rounded-full bg-primary px-5 py-4 font-bold text-white shadow-lg lg:inline-flex"><MessageCircle className="size-5" /> Aide</button>}
       <Toaster />
       <ConversionTracking />
       {location.pathname !== "/envoyer-avis" && <Analytics />}

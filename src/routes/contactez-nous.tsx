@@ -140,10 +140,10 @@ function ContactPage() {
         </p>
       </div>
 
-      <section aria-label="Un devis adapté à votre situation" className="mx-auto mb-10 hidden max-w-5xl px-4 lg:block">
-        <div className="grid grid-cols-[1fr_auto] items-center gap-8 rounded-3xl border border-blue-100 bg-blue-950 p-7 text-white">
-          <div><p className="text-xs font-bold uppercase tracking-widest text-blue-200">Simple, gratuit et sans engagement</p><h2 className="mt-2 text-2xl font-bold">Montrez-nous votre besoin. Nous chiffrons la solution.</h2><p className="mt-3 text-sm leading-6 text-blue-100">1. Décrivez les surfaces · 2. Ajoutez quelques photos · 3. Recevez votre devis sous 24 h.</p></div>
-          <a href="#photos" className="inline-flex items-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-bold text-blue-950 hover:bg-blue-100"><Camera className="size-4" /> Ajouter mes photos</a>
+      <section aria-label="Un devis adapté à votre situation" className="mx-auto mb-6 max-w-5xl px-4 lg:mb-10">
+        <div className="grid items-center gap-4 lg:grid-cols-[1fr_auto] lg:gap-8 rounded-3xl border border-blue-100 bg-blue-950 p-4 text-white lg:p-7">
+          <div><p className="text-xs font-bold uppercase tracking-widest text-blue-200">Simple, gratuit et sans engagement</p><h2 className="mt-2 text-lg font-bold lg:text-2xl">Montrez-nous votre besoin. Nous chiffrons la solution.</h2><p className="mt-3 text-sm leading-6 text-blue-100">1. Décrivez les surfaces · 2. Ajoutez quelques photos · 3. Recevez votre devis sous 24 h.</p></div>
+          <a href="#photos" className="inline-flex w-fit items-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-bold text-blue-950 hover:bg-blue-100"><Camera className="size-4" /> Ajouter mes photos</a>
         </div>
       </section>
 
@@ -233,7 +233,7 @@ function ContactPage() {
               setPhotoCount(files.length);
               const error = validateQuotePhotos(files);
               setErrors(previous => ({ ...previous, photos: error ?? "" }));
-            }} className="cursor-pointer lg:scroll-mt-52" />
+            }} className="cursor-pointer scroll-mt-40 lg:scroll-mt-52" />
             <p id="photos-help" className="text-xs text-muted-foreground">Jusqu’à 10 photos facultatives (JPG, PNG ou WebP, 20 Mo par photo). Elles sont compressées et regroupées dans un PDF pour l’envoi.</p>
             <p className="text-xs text-muted-foreground" aria-live="polite">{photoCount > 0 ? `${photoCount} photo${photoCount > 1 ? "s" : ""} sélectionnée${photoCount > 1 ? "s" : ""} / 10` : ""}</p>
             {errors["photos"] && <p className="text-xs text-destructive">{errors["photos"]}</p>}
