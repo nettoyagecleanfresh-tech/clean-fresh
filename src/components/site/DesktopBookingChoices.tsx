@@ -1,43 +1,51 @@
 import { Link } from '@tanstack/react-router';
-import { ArrowUpRight, Camera, Check, Home } from 'lucide-react';
+import { ArrowUpRight, Home, ShieldCheck } from 'lucide-react';
 import { SERVICES } from '@/data/bookingCatalogue';
 
+// Prices come from the catalogue; links open the category without choosing a formula.
 const PICKS = [
-  { service: 'canape', formula: 'canape-2', label: 'Votre canapé', detail: '2 à 3 places · nettoyage complet' },
-  { service: 'auto', formula: 'bronze', label: 'Votre voiture', detail: 'Pack Bronze · aspiration & plastiques' },
-  { service: 'tapis', formula: 'tapis-1', label: 'Votre tapis', detail: '1 tapis · jusqu’à 4 m²' },
+  { service: 'canape', formulas: ['canape-2', 'canape-45', 'canape-angle', 'canape-u'], label: 'Canapé', detail: '2/3 places, 4/5 places, angle ou U', action: 'Choisir le format' },
+  { service: 'auto', formulas: ['bronze', 'argent', 'or'], label: 'Voiture', detail: 'Packs Bronze, Argent ou Or', action: 'Voir les packs' },
+  { service: 'tapis', formulas: ['tapis-1', 'tapis-2', 'tapis-3'], label: 'Tapis', detail: '1, 2 ou 3 tapis · jusqu’à 4 m² chacun', action: 'Choisir la quantité' },
 ];
 
 export function DesktopBookingChoices() {
   return (
-    <section aria-labelledby="desktop-choices" className="hidden border-b border-slate-200 bg-gradient-to-b from-sky-50 to-white py-12 lg:block">
+    <section aria-labelledby="booking-choices" className="border-b border-slate-200 bg-gradient-to-b from-sky-50 to-white py-6 lg:py-8">
       <div className="mx-auto max-w-6xl px-4">
-        <div className="mb-6 flex items-end justify-between gap-8">
-          <div><p className="text-xs font-bold uppercase tracking-[.2em] text-blue-800">Un besoin, une solution</p><h2 id="desktop-choices" className="mt-2 text-3xl font-bold tracking-tight text-slate-950">Le bon nettoyage. Le prix sous les yeux.</h2></div>
-          <Link to="/formules" className="shrink-0 text-sm font-semibold text-blue-900 underline underline-offset-4">Toutes les formules</Link>
+        <div className="mb-4 flex flex-wrap items-end justify-between gap-2">
+          <div>
+            <p className="text-[10px] font-bold uppercase tracking-[.18em] text-blue-800 sm:text-xs">Votre nettoyage à domicile</p>
+            <h2 id="booking-choices" className="mt-1 text-xl font-bold tracking-tight text-slate-950 lg:text-2xl">Vous choisissez. Nous nettoyons.</h2>
+          </div>
+          <Link to="/formules" className="inline-flex min-h-11 items-center text-xs font-semibold text-blue-900 underline underline-offset-4 sm:text-sm">Toutes les formules</Link>
         </div>
-        <div className="grid grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 gap-2.5 lg:grid-cols-4 lg:gap-4">
           {PICKS.map(pick => {
             const service = SERVICES.find(item => item.id === pick.service)!;
-            const formula = service.formules.find(item => item.id === pick.formula)!;
-            return <Link key={pick.service} to="/reserver" search={{ service: service.id, formule: formula.id, from: 'home_choices' }} data-conversion-location="home_choices" className="group flex flex-col rounded-2xl border border-blue-100 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:border-blue-300 hover:shadow-xl focus-visible:outline-2 focus-visible:outline-blue-700 motion-reduce:transform-none">
-              <span className="mb-5 flex size-12 items-center justify-center rounded-xl bg-blue-50 text-blue-900">{service.icon}</span>
-              <h3 className="text-lg font-bold text-slate-900">{pick.label}</h3>
-              <p className="mt-2 min-h-10 text-xs leading-5 text-slate-600">{pick.detail}</p>
-              <p className="mt-4 text-3xl font-bold tracking-tight text-blue-950">{formula.price} € <span className="text-xs font-normal tracking-normal text-slate-500">la formule</span></p>
-              <span className="mt-6 flex items-center justify-between border-t border-blue-50 pt-4 text-sm font-bold text-blue-900">Choisir mon créneau <ArrowUpRight className="size-4" /></span>
-            </Link>;
+            const startingPrice = Math.min(...service.formules.filter(item => pick.formulas.includes(item.id)).map(item => item.price));
+            return (
+              <Link key={pick.service} to="/reserver" search={{ service: service.id, formule: '', from: 'home_choices' }} data-conversion-location="home_choices" className="group flex min-w-0 flex-col rounded-2xl border border-blue-100 bg-white p-3 shadow-sm transition-colors hover:border-blue-400 hover:bg-blue-50/50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700 lg:p-5">
+                <div className="flex items-center gap-2">
+                  <span aria-hidden="true" className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-blue-900 [&>svg]:size-5">{service.icon}</span>
+                  <h3 className="text-sm font-bold text-slate-950 lg:text-base">{pick.label}</h3>
+                </div>
+                <p className="mt-2 flex-1 text-[11px] leading-4 lg:text-xs lg:leading-5 text-slate-600">{pick.detail}</p>
+                <p className="mt-2 text-xs text-slate-600">À partir de <strong className="whitespace-nowrap text-xl font-bold tracking-tight text-blue-950 lg:text-2xl">{startingPrice} €</strong></p>
+                <span className="mt-2 flex min-h-8 items-center justify-between gap-1 border-t border-blue-100 pt-2 text-[11px] font-bold text-blue-900 lg:text-sm">{pick.action}<ArrowUpRight aria-hidden="true" className="size-4 shrink-0" /></span>
+              </Link>
+            );
           })}
-          <Link to="/contactez-nous" search={{ service: 'logement' }} data-conversion-location="home_choices" className="group flex flex-col rounded-2xl border border-blue-900 bg-blue-950 p-5 text-white shadow-sm transition hover:-translate-y-1 hover:bg-blue-900 focus-visible:outline-2 focus-visible:outline-blue-600 motion-reduce:transform-none">
-            <span className="mb-5 flex size-12 items-center justify-center rounded-xl bg-white/10"><Home className="size-7" /></span>
-            <h3 className="text-lg font-bold">Votre logement</h3><p className="mt-2 min-h-10 text-xs leading-5 text-blue-100">Appartement, maison ou remise en état</p>
-            <p className="mt-4 text-3xl font-bold tracking-tight">Sur devis</p>
-            <span className="mt-6 flex items-center justify-between border-t border-white/15 pt-4 text-sm font-bold">Envoyer mes photos <Camera className="size-4" /></span>
+          <Link to="/contactez-nous" search={{ service: 'logement' }} data-conversion-location="home_choices" className="flex min-w-0 flex-col rounded-2xl border border-blue-900 bg-blue-950 p-3 text-white shadow-sm transition-colors hover:bg-blue-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 lg:p-5">
+            <div className="flex items-center gap-2"><span aria-hidden="true" className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-white/10"><Home className="size-5" /></span><h3 className="text-sm font-bold lg:text-base">Logement</h3></div>
+            <p className="mt-2 flex-1 text-[11px] leading-4 lg:text-xs lg:leading-5 text-blue-100">Appartement ou maison</p>
+            <p className="mt-2 text-xl font-bold tracking-tight lg:text-2xl">Sur devis</p>
+            <span className="mt-2 flex min-h-8 items-center justify-between gap-1 border-t border-white/20 pt-2 text-[11px] font-bold lg:text-sm">Demander un devis<ArrowUpRight aria-hidden="true" className="size-4 shrink-0" /></span>
           </Link>
         </div>
-        <div className="mt-5 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-600">
-          <span className="flex items-center gap-2"><Check className="size-4 text-blue-800" /> Aucun paiement en ligne · règlement sur place</span>
-          <span>Options facultatives et éventuels frais de déplacement précisés avant confirmation.</span>
+        <div className="mt-2 flex flex-wrap items-center justify-between gap-2 text-[11px] leading-4 text-slate-600 lg:text-xs">
+          <span className="flex items-center gap-1.5"><ShieldCheck aria-hidden="true" className="size-4 shrink-0 text-blue-800" /> Choix de la formule avant le créneau · paiement sur place</span>
+          <span>Options et éventuels frais de déplacement précisés avant confirmation.</span>
         </div>
       </div>
     </section>
