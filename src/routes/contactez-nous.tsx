@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { conversionMetric } from "@/lib/conversionMetrics";
+import { useEffect, useRef, useState } from "react";
 import { prepareQuotePhotos, validateQuotePhotos } from "@/lib/quotePhotos";
 import { createFileRoute } from "@tanstack/react-router";
 import { Mail, Phone, Clock, MapPin, ArrowRight, Camera } from "lucide-react";
@@ -13,7 +14,10 @@ import { COMMUNES, COMPANY, SITE_URL } from "@/data/site";
 const TITLE = "Contactez Clean&Fresh — Devis gratuit nettoyage Toulouse";
 const DESC = "Contactez Clean&Fresh pour un devis gratuit sous 24h : nettoyage canapé, matelas, tapis, auto à domicile à Toulouse. Réponse rapide, tarifs clairs.";
 
+const QUOTE_SERVICES: Record<string, string> = { logement: "Nettoyage appartement / maison", diogene: "Nettoyage Diogène / logement insalubre", extreme: "Nettoyage extrême", chantier: "Nettoyage fin de chantier", bail: "Nettoyage fin de bail", vitres: "Nettoyage de vitres", terrasse: "Nettoyage terrasse", toiture: "Nettoyage toiture", facade: "Nettoyage façade" };
+
 export const Route = createFileRoute("/contactez-nous")({
+  validateSearch: (search: Record<string, unknown>): { service?: string } => ({ service: typeof search.service === "string" && Object.hasOwn(QUOTE_SERVICES, search.service) ? search.service : undefined }),
   head: () => ({
     meta: [
       { title: `Contactez Clean&Fresh — Devis gratuit nettoyage Toulouse` },
@@ -52,7 +56,10 @@ const SERVICES_LIST = [
 
 function ContactPage() {
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const [selectedService, setSelectedService] = useState("");
+  const { service: requestedService } = Route.useSearch();
+  const [selectedService, setSelectedService] = useState(QUOTE_SERVICES[requestedService ?? ""] ?? "");
+  const quoteStarted = useRef(false);
+  useEffect(() => { setSelectedService(QUOTE_SERVICES[requestedService ?? ""] ?? ""); }, [requestedService]);
   const [photoCount, setPhotoCount] = useState(0);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -103,6 +110,8 @@ function ContactPage() {
 
       if (response.ok && resData.success) {
         toast.success("Votre message a été envoyé avec succès. Nous vous répondons sous 24h.");
+        conversionMetric("quote_submitted", { has_photos: photos.length > 0 });
+        quoteStarted.current = false;
         form.reset();
         setSelectedService("");
         setPhotoCount(0);
@@ -110,6 +119,7 @@ function ContactPage() {
         throw new Error(resData.message || "Envoi non confirmé");
       }
     } catch (err) {
+      conversionMetric("quote_error");
       console.error("[Contact] Envoi non confirmé");
       toast.error("L’envoi a échoué. Vos informations sont conservées : réessayez ou contactez-nous par téléphone.");
     } finally {
@@ -130,12 +140,20 @@ function ContactPage() {
         </p>
       </div>
 
+      <section aria-label="Un devis adapté à votre situation" className="mx-auto mb-10 hidden max-w-5xl px-4 lg:block">
+        <div className="grid grid-cols-[1fr_auto] items-center gap-8 rounded-3xl border border-blue-100 bg-blue-950 p-7 text-white">
+          <div><p className="text-xs font-bold uppercase tracking-widest text-blue-200">Simple, gratuit et sans engagement</p><h2 className="mt-2 text-2xl font-bold">Montrez-nous votre besoin. Nous chiffrons la solution.</h2><p className="mt-3 text-sm leading-6 text-blue-100">1. Décrivez les surfaces · 2. Ajoutez quelques photos · 3. Recevez votre devis sous 24 h.</p></div>
+          <a href="#photos" className="inline-flex items-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-bold text-blue-950 hover:bg-blue-100"><Camera className="size-4" /> Ajouter mes photos</a>
+        </div>
+      </section>
+
       {/* ── FORM + SIDEBAR ── */}
       <section className="mx-auto grid max-w-5xl gap-6 px-4 pb-16 md:grid-cols-[1.4fr_1fr] items-start">
 
         {/* Form card */}
         <form
           onSubmit={onSubmit}
+          onFocusCapture={() => { if (!quoteStarted.current) { quoteStarted.current = true; conversionMetric("quote_started"); } }}
           noValidate
           className="space-y-6"
         >
@@ -143,12 +161,12 @@ function ContactPage() {
           <div className="grid gap-6 sm:grid-cols-2">
             <div className="grid gap-1">
               <Label htmlFor="nom" className="text-sm text-muted-foreground font-normal">Nom complet</Label>
-              <Input id="nom" name="nom" autoComplete="off" maxLength={100} placeholder="" className="rounded-none border-0 border-b border-border bg-transparent px-0 py-2 text-sm shadow-none focus-visible:ring-0 focus-visible:border-primary transition-colors" />
+              <Input id="nom" name="nom" autoComplete="name" maxLength={100} placeholder="" className="rounded-none border-0 border-b border-border bg-transparent px-0 py-2 text-sm shadow-none focus-visible:ring-0 focus-visible:border-primary transition-colors" />
               {errors["nom"] && <p className="text-xs text-destructive">{errors["nom"]}</p>}
             </div>
             <div className="grid gap-1">
               <Label htmlFor="telephone" className="text-sm text-muted-foreground font-normal">Téléphone</Label>
-              <Input id="telephone" name="telephone" autoComplete="off" maxLength={20} placeholder="" className="rounded-none border-0 border-b border-border bg-transparent px-0 py-2 text-sm shadow-none focus-visible:ring-0 focus-visible:border-primary transition-colors" />
+              <Input id="telephone" name="telephone" type="tel" autoComplete="tel" maxLength={20} placeholder="" className="rounded-none border-0 border-b border-border bg-transparent px-0 py-2 text-sm shadow-none focus-visible:ring-0 focus-visible:border-primary transition-colors" />
               {errors["telephone"] && <p className="text-xs text-destructive">{errors["telephone"]}</p>}
             </div>
           </div>
@@ -156,7 +174,7 @@ function ContactPage() {
           {/* Email */}
           <div className="grid gap-1">
             <Label htmlFor="email" className="text-sm text-muted-foreground font-normal">Email</Label>
-            <Input id="email" name="email" type="email" autoComplete="off" maxLength={255} placeholder="" className="rounded-none border-0 border-b border-border bg-transparent px-0 py-2 text-sm shadow-none focus-visible:ring-0 focus-visible:border-primary transition-colors" />
+            <Input id="email" name="email" type="email" autoComplete="email" maxLength={255} placeholder="" className="rounded-none border-0 border-b border-border bg-transparent px-0 py-2 text-sm shadow-none focus-visible:ring-0 focus-visible:border-primary transition-colors" />
             {errors["email"] && <p className="text-xs text-destructive">{errors["email"]}</p>}
           </div>
 
@@ -167,7 +185,7 @@ function ContactPage() {
               <select
                 id="service"
                 name="service"
-                defaultValue=""
+                value={selectedService}
                 onChange={(e) => setSelectedService(e.target.value)}
                 className="w-full appearance-none rounded-none border-0 border-b border-border bg-transparent px-0 py-2 text-sm text-foreground shadow-none outline-none focus:border-primary focus:ring-0 transition-colors"
               >
@@ -215,7 +233,7 @@ function ContactPage() {
               setPhotoCount(files.length);
               const error = validateQuotePhotos(files);
               setErrors(previous => ({ ...previous, photos: error ?? "" }));
-            }} className="cursor-pointer" />
+            }} className="cursor-pointer lg:scroll-mt-52" />
             <p id="photos-help" className="text-xs text-muted-foreground">Jusqu’à 10 photos facultatives (JPG, PNG ou WebP, 20 Mo par photo). Elles sont compressées et regroupées dans un PDF pour l’envoi.</p>
             <p className="text-xs text-muted-foreground" aria-live="polite">{photoCount > 0 ? `${photoCount} photo${photoCount > 1 ? "s" : ""} sélectionnée${photoCount > 1 ? "s" : ""} / 10` : ""}</p>
             {errors["photos"] && <p className="text-xs text-destructive">{errors["photos"]}</p>}

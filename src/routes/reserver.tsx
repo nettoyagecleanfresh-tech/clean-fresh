@@ -1,3 +1,4 @@
+import { DesktopPriceSummary } from "@/components/site/DesktopPriceSummary";
 import { useBookingMetrics, bookingMetric } from "@/lib/bookingMetrics";
 import { optionDescription } from "@/data/optionDescriptions";
 import { useEffect, useLayoutEffect, useState } from "react";
@@ -885,6 +886,7 @@ function ReserverPage() {
                     <h2 className="text-2xl font-bold">Options pour <span className="text-accent">{formule.name}</span></h2>
                   </div>
                 </div>
+                <DesktopPriceSummary service={service} formule={formule} optionsTotal={currentOptTotal} />
                 {["chaises-6", "cuir-chaises-6"].includes(formule.id) && (
                   <div className="mb-4 rounded-2xl border border-border bg-card p-5">
                     <label htmlFor="additional-chairs" className="block font-semibold text-sm">Chaises supplémentaires — +15 € / chaise</label>

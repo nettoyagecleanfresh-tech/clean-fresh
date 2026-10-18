@@ -6,9 +6,10 @@ type Step = 'service' | 'formula' | 'options' | 'basket' | 'date' | 'details' | 
 /** Fixed labels only: never send customer details, addresses or free text. */
 export function bookingMetric(event: 'booking_step_view' | 'booking_exit' | 'booking_complete' | 'booking_error', channel: Channel, step: Step) {
   if (typeof window === 'undefined') return;
-  try { track(event, { booking_channel: channel, booking_step: step }); } catch { /* Analytics must never block a booking. */ }
+  const device = window.matchMedia('(min-width: 1024px)').matches ? 'desktop' : 'mobile';
+  try { track(event, { booking_channel: channel, booking_step: step, device }); } catch { /* Analytics must never block a booking. */ }
   const gtag = (window as Window & { gtag?: (...args: unknown[]) => void }).gtag;
-  try { if (typeof gtag === 'function') gtag('event', event, {booking_channel:channel, booking_step:step, transport_type:'beacon'}); } catch { /* Keep the booking usable if analytics fails. */ }
+  try { if (typeof gtag === 'function') gtag('event', event, {booking_channel:channel, booking_step:step, device, transport_type:'beacon'}); } catch { /* Keep the booking usable if analytics fails. */ }
 }
 export function useBookingMetrics(channel: Channel, step: Step) {
   const latest = useRef(step);

@@ -1,3 +1,4 @@
+import { DesktopBookingChoices } from "@/components/site/DesktopBookingChoices";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import {
@@ -359,7 +360,7 @@ function DesktopHeroReviews() {
   useEffect(() => {
     const desktop = window.matchMedia('(min-width: 1024px)');
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-    let timer: ReturnType<typeof window.setInterval> | undefined;
+    let timer: number | undefined;
     const update = () => {
       window.clearInterval(timer);
       if (desktop.matches && !reducedMotion.matches && !paused && !interacting) {
@@ -488,7 +489,7 @@ function Index() {
                   <Link to="/nos-realisations" resetScroll><Images className="size-4 mr-1.5" /> Avant / Après — Voir les résultats</Link>
                 </Button>
                 <div className="hidden w-full items-center gap-2.5 lg:flex">
-                <Button asChild size="xl" className="bg-teal-700 text-white font-bold text-xs xl:text-sm hover:bg-teal-800 border border-teal-300/40 px-3 xl:px-4 h-10 md:h-12">
+                <Button asChild size="xl" className="bg-blue-950 text-white font-bold text-xs xl:text-sm hover:bg-blue-900 border border-blue-300/40 px-3 xl:px-4 h-10 md:h-12">
                   <Link to="/nos-realisations" resetScroll><Images className="size-4 mr-1.5" /> Avant / Après — Voir les résultats</Link>
                 </Button>
               <a
@@ -599,6 +600,8 @@ function Index() {
         </div>
       </section>
 
+      <DesktopBookingChoices />
+
       {/* ── STATS STRIP ── */}
       <FadeIn delay={0.1}>
         <section className="border-b border-border bg-card">
@@ -704,7 +707,7 @@ function Index() {
                 <CalendarCheck /> Réserver un créneau
               </Link>
             </Button>
-            <Button asChild size="xl" className="bg-teal-700 text-white font-bold hover:bg-teal-800">
+            <Button asChild size="xl" className="bg-teal-700 text-white font-bold hover:bg-teal-800 lg:bg-blue-950 lg:hover:bg-blue-900">
               <Link to="/nos-realisations" resetScroll><Images className="size-4" /> Avant / Après</Link>
             </Button>
             <Button asChild variant="outline" size="xl">
@@ -777,7 +780,7 @@ function Index() {
                   <CalendarCheck /> Réserver en ligne
                 </Link>
               </Button>
-              <Button asChild size="xl" className="h-auto min-h-12 min-w-0 w-full whitespace-normal break-words px-3 py-3 text-center text-sm leading-snug sm:text-base bg-teal-700 text-white font-bold hover:bg-teal-800 border border-teal-300/40">
+              <Button asChild size="xl" className="h-auto min-h-12 min-w-0 w-full whitespace-normal break-words px-3 py-3 text-center text-sm leading-snug sm:text-base bg-teal-700 text-white font-bold hover:bg-teal-800 lg:bg-blue-950 lg:hover:bg-blue-900 border border-teal-300/40">
                 <Link to="/nos-realisations" resetScroll><Images className="size-4" /> Voir les résultats avant / après</Link>
               </Button>
               <Button asChild variant="onDark" size="xl" className="h-auto min-h-12 min-w-0 w-full whitespace-normal break-words px-3 py-3 text-center text-sm leading-snug sm:text-base">

@@ -1,3 +1,4 @@
+import { ConversionTracking } from "@/components/site/ConversionTracking";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
@@ -266,6 +267,7 @@ function RootComponent() {
         </Suspense>
       ) : null}
       <Toaster />
+      <ConversionTracking />
       {location.pathname !== "/envoyer-avis" && <Analytics />}
       {location.pathname !== "/envoyer-avis" && <SpeedInsights />}
     </QueryClientProvider>

@@ -1,3 +1,4 @@
+import { DesktopServiceProof } from "@/components/site/DesktopServiceProof";
 import { optionDescription } from "@/data/optionDescriptions";
 import { useState, type ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
@@ -193,6 +194,8 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
         </div>
       </section>
 
+      <DesktopServiceProof slug={service.slug} bookingServiceId={bookingServiceId} />
+
       {/* ── DETAIL + TARIFS côte à côte ── */}
       <FadeIn delay={0.1}>
         <section className="mx-auto max-w-6xl px-4 py-16">
@@ -381,7 +384,7 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
 
       {/* ── OPTIONS ── */}
       {serviceOptions.length > 0 && (
-        <section className="bg-secondary/60 py-16">
+        <section className="bg-secondary/60 py-16 lg:hidden">
           <div className="mx-auto max-w-6xl px-4">
             <h3 className="text-xl font-bold mb-1">
               Personnalisez votre soin{" "}
