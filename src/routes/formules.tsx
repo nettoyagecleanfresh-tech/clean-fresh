@@ -13,7 +13,7 @@ import { BookingAvailabilityBanner } from "@/components/BookingAvailabilityBanne
 import { BookingTrustBanner } from "@/components/BookingTrustBanner";
 
 const TITLE = "Réserver un nettoyage à Toulouse | Clean&Fresh";
-const DESC = "Réservez en ligne votre nettoyage à domicile à Toulouse : canapé dès 49 €, matelas dès 39 €, tapis dès 49 € et auto dès 69 €.";
+const DESC = "Réservez en ligne votre nettoyage à domicile à Toulouse : canapé dès 49 €, matelas dès 49 €, tapis dès 49 € et auto dès 69 €.";
 
 type FormulesSearch = {
   service?: string;
@@ -28,12 +28,12 @@ export const Route = createFileRoute("/formules")({
   head: () => ({
     meta: [
       { title: `Réserver un Nettoyage à Toulouse — Canapé, Matelas, Auto | Clean&Fresh` },
-      { name: "description", content: `Réservez votre nettoyage en ligne : canapé dès 79 €, matelas dès 59 €, auto dès 69 €. Intervention à domicile à Toulouse et agglomération. Simple et rapide.` },
+      { name: "description", content: `Réservez votre nettoyage en ligne : canapé dès 79 €, matelas dès 49 €, auto dès 69 €. Intervention à domicile à Toulouse et agglomération. Simple et rapide.` },
       { property: "og:title", content: `Réserver un Nettoyage à Toulouse — Canapé, Matelas, Auto | Clean&Fresh` },
-      { property: "og:description", content: `Réservez votre nettoyage en ligne : canapé dès 79 €, matelas dès 59 €, auto dès 69 €. Intervention à domicile à Toulouse et agglomération. Simple et rapide.` },
+      { property: "og:description", content: `Réservez votre nettoyage en ligne : canapé dès 79 €, matelas dès 49 €, auto dès 69 €. Intervention à domicile à Toulouse et agglomération. Simple et rapide.` },
       { property: "og:url", content: `https://cleanetfresh.fr/formules` },
       { name: "twitter:title", content: `Réserver un Nettoyage à Toulouse — Canapé, Matelas, Auto | Clean&Fresh` },
-      { name: "twitter:description", content: `Réservez votre nettoyage en ligne : canapé dès 79 €, matelas dès 59 €, auto dès 69 €. Intervention à domicile à Toulouse et agglomération. Simple et rapide.` },
+      { name: "twitter:description", content: `Réservez votre nettoyage en ligne : canapé dès 79 €, matelas dès 49 €, auto dès 69 €. Intervention à domicile à Toulouse et agglomération. Simple et rapide.` },
     ],
     links: [{ rel: "canonical", href: `https://cleanetfresh.fr/formules` }],
   }),
@@ -749,8 +749,8 @@ function AutoDetail() {
 // ─── MATELAS DETAIL ───────────────────────────────────────────────────────────
 
 const MATELAS_ITEMS = [
-  { id: "matelas-enfant", label: "Matelas enfant",   price: "39 €", duration: "30 min", desc: "Largeur inférieure à 90 cm. Nettoyage des deux faces toujours inclus, sous réserve de compatibilité du textile. Traitement anti-acariens en option." },
-  { id: "matelas-1",      label: "Matelas 1 place",  price: "59 €", duration: "1h",     desc: "Largeur de 90 à 130 cm. Nettoyage des deux faces et traitement courant des taches et odeurs." },
+  { id: "matelas-enfant", label: "Matelas enfant",   price: "49 €", duration: "30 min", desc: "Largeur inférieure à 90 cm. Nettoyage des deux faces toujours inclus, sous réserve de compatibilité du textile. Traitement anti-acariens en option." },
+  { id: "matelas-1",      label: "Matelas 1 place",  price: "69 €", duration: "1h",     desc: "Largeur de 90 à 130 cm. Nettoyage des deux faces et traitement courant des taches et odeurs." },
   { id: "matelas-2",      label: "Matelas 2 places", price: "99 €", duration: "1h",     desc: "Largeur à partir de 140 cm. Nettoyage des deux faces et traitement courant des taches et odeurs." },
 ];
 
@@ -901,7 +901,7 @@ const CATEGORY_CATALOG = [
     icon: <BedDouble className="size-7" />,
     title: "Nettoyage Matelas",
     sub: "Nettoyage des deux faces toujours inclus · Option anti-acariens",
-    priceFrom: "39 €",
+    priceFrom: "49 €",
     bullets: ["Matelas enfant, 1 place, 2 places", "Deux faces incluses pour chaque matelas", "Traitement anti-acariens en option"],
     recommended: false,
     content: <MatelasDetail />,

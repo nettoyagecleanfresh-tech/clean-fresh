@@ -6,9 +6,9 @@ import { FadeIn } from "@/components/ui/fade-in";
 import { BookingAvailabilityBanner } from "@/components/BookingAvailabilityBanner";
 import { BookingTrustBanner } from "@/components/BookingTrustBanner";
 
-const TITLE = "Tarifs nettoyage Toulouse dès 39 € | Clean&Fresh";
+const TITLE = "Tarifs nettoyage Toulouse dès 49 € | Clean&Fresh";
 const DESC =
-  "Tous les tarifs Clean&Fresh : nettoyage canapé dès 49 €, matelas dès 39 €, auto dès 69 €, tapis dès 49 €. Devis gratuit sous 24h. Intervention à domicile Toulouse et 31.";
+  "Tous les tarifs Clean&Fresh : nettoyage canapé dès 49 €, matelas dès 49 €, auto dès 69 €, tapis dès 49 €. Devis gratuit sous 24h. Intervention à domicile Toulouse et 31.";
 
 // ─── CATÉGORIES ───────────────────────────────────────────────────────────────
 const TARIF_CATEGORIES = [
@@ -23,7 +23,7 @@ const TARIF_CATEGORIES = [
     id: "matelas",
     icon: <BedDouble className="size-7" />,
     title: "Nettoyage Matelas",
-    priceFrom: "39 €",
+    priceFrom: "49 €",
     bullets: ["Matelas enfant, 1 place, 2 places", "Deux faces incluses pour chaque matelas", "Traitement anti-acariens en option"],
   },
   {

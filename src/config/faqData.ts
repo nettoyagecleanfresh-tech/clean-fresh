@@ -90,7 +90,7 @@ export const faqData: FAQNode[] = [
       {
         id: "matelas-tapis",
         question: "Nettoyage de Matelas & Tapis",
-        answer: "Matelas enfant : 39 € | 1 place : 59 € | 2 places : 99 €. Options de désinfection disponibles. Pour les tapis, tarif standard de 49 € pour un tapis (recto-verso en option à 25 €). Nous traitons les taches d'urine, sang et nourriture avec des produits professionnels."
+        answer: "Matelas enfant : 49 € | 1 place : 69 € | 2 places : 99 €. Options de désinfection disponibles. Pour les tapis, tarif standard de 49 € pour un tapis (recto-verso en option à 25 €). Nous traitons les taches d'urine, sang et nourriture avec des produits professionnels."
       },
       {
         id: "sechage-mobilier",

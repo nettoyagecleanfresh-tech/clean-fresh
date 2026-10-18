@@ -296,7 +296,7 @@ export const COMMUNES_DATA: CommuneData[] = [
       },
       {
         q: "Proposez-vous le nettoyage de matelas à Saint-Orens-de-Gameville ?",
-        a: "Oui, dès 39 € pour un matelas enfant, 59 € pour 1 place, 99 € pour 2 places. Traitement anti-acariens disponible en option.",
+        a: "Oui, dès 49 € pour un matelas enfant, 69 € pour 1 place, 99 € pour 2 places. Traitement anti-acariens disponible en option.",
       },
     ],
     nearby: ["Toulouse", "Ramonville-Saint-Agne", "Castanet-Tolosan", "Escalquens"],
@@ -374,7 +374,7 @@ export const COMMUNES_DATA: CommuneData[] = [
       },
       {
         q: "Quel est le tarif pour un matelas 2 places à Villeneuve-Tolosane ?",
-        a: "99 € pour un matelas 2 places, 59 € pour 1 place, 39 € pour un matelas enfant. Traitement anti-acariens en option.",
+        a: "99 € pour un matelas 2 places, 69 € pour 1 place, 49 € pour un matelas enfant. Traitement anti-acariens en option.",
       },
     ],
     nearby: ["Toulouse", "Cugnaux", "Frouzins", "Muret"],
@@ -448,7 +448,7 @@ export const COMMUNES_DATA: CommuneData[] = [
       },
       {
         q: "Nettoyez-vous les matelas à Castelginest ?",
-        a: "Oui, dès 39 € (matelas enfant), 59 € (1 place), 99 € (2 places). Anti-acariens en option.",
+        a: "Oui, dès 49 € (matelas enfant), 69 € (1 place), 99 € (2 places). Anti-acariens en option.",
       },
       {
         q: "Pouvez-vous intervenir rapidement à Castelginest ?",
@@ -526,7 +526,7 @@ export const COMMUNES_DATA: CommuneData[] = [
       },
       {
         q: "Nettoyez-vous les matelas à Frouzins ?",
-        a: "Oui, dès 39 € pour un matelas enfant. Anti-acariens disponible en option.",
+        a: "Oui, dès 49 € pour un matelas enfant. Anti-acariens disponible en option.",
       },
       {
         q: "Intervenez-vous le week-end à Frouzins ?",
@@ -656,7 +656,7 @@ export const COMMUNES_DATA: CommuneData[] = [
       },
       {
         q: "Nettoyez-vous les matelas à Pibrac ?",
-        a: "Oui, dès 39 € (enfant), 59 € (1 place), 99 € (2 places). Résultat rapide.",
+        a: "Oui, dès 49 € (enfant), 69 € (1 place), 99 € (2 places). Résultat rapide.",
       },
       {
         q: "Intervenez-vous le week-end à Pibrac ?",
@@ -786,7 +786,7 @@ export const COMMUNES_DATA: CommuneData[] = [
       },
       {
         q: "Nettoyez-vous les matelas à Fenouillet ?",
-        a: "Oui, à partir de 39 € pour un matelas enfant.",
+        a: "Oui, à partir de 49 € pour un matelas enfant.",
       },
       {
         q: "Proposez-vous le nettoyage auto à Fenouillet ?",
@@ -864,7 +864,7 @@ export const COMMUNES_DATA: CommuneData[] = [
       },
       {
         q: "Nettoyez-vous les matelas à Eaunes ?",
-        a: "Oui, dès 39 € (enfant), 59 € (1 place), 99 € (2 places).",
+        a: "Oui, dès 49 € (enfant), 69 € (1 place), 99 € (2 places).",
       },
       {
         q: "Proposez-vous le nettoyage de terrasse à Eaunes ?",
@@ -968,7 +968,7 @@ export const COMMUNES_DATA: CommuneData[] = [
       },
       {
         q: "Nettoyez-vous les matelas à Castelmaurou ?",
-        a: "Oui, à partir de 39 € pour un matelas enfant.",
+        a: "Oui, à partir de 49 € pour un matelas enfant.",
       },
       {
         q: "Intervenez-vous le week-end à Castelmaurou ?",
@@ -1020,7 +1020,7 @@ export const COMMUNES_DATA: CommuneData[] = [
       },
       {
         q: "Nettoyez-vous les matelas à Pins-Justaret ?",
-        a: "Oui, dès 39 € pour un matelas enfant.",
+        a: "Oui, dès 49 € pour un matelas enfant.",
       },
       {
         q: "Intervenez-vous le week-end à Pins-Justaret ?",

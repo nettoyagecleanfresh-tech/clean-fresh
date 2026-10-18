@@ -64,7 +64,7 @@ export function LocalCityPage({ commune }: Props) {
                 <strong>Nettoyage de canapés et fauteuils :</strong> Textiles compatibles par injection-extraction ; cuir nettoyé manuellement. Fauteuil dès 49 €, canapé 2/3 places dès 79 €. Séchage selon la matière et l’aération.
               </li>
               <li>
-                <strong>Nettoyage de matelas :</strong> Nettoyage des deux faces et traitement courant des taches. Matelas enfant dès 39 €. Vapeur et traitements intensifs en option.
+                <strong>Nettoyage de matelas :</strong> Nettoyage des deux faces et traitement courant des taches. Matelas enfant dès 49 €. Vapeur et traitements intensifs en option.
               </li>
               <li>
                 <strong>Shampouinage de tapis et moquettes :</strong> Tapis compatibles jusqu’à 4 m² dès 49 €. Grand format, fibre délicate, moquette ou état exceptionnel : estimation préalable sur photos. Traitements intensifs en option.

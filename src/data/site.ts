@@ -166,9 +166,9 @@ export const SERVICES: Service[] = [
     short: "Nettoyage matelas Toulouse",
     subtitle:
       "Nettoyage en profondeur du matelas par injection-extraction, avec les deux faces toujours incluses. Options anti-acariens, anti-odeur et traitement enzymatique.",
-    metaTitle: "Nettoyage matelas Toulouse dès 39 € | Clean&Fresh",
+    metaTitle: "Nettoyage matelas Toulouse dès 49 € | Clean&Fresh",
     metaDescription:
-      "Nettoyage de matelas à domicile à Toulouse dès 39 €. Les deux faces sont incluses pour chaque format. Options anti-acariens et anti-odeur.",
+      "Nettoyage de matelas à domicile à Toulouse dès 49 €. Les deux faces sont incluses pour chaque format. Options anti-acariens et anti-odeur.",
     group: "textile",
     booking: true,
     intro: [
@@ -192,8 +192,8 @@ export const SERVICES: Service[] = [
       "Odeurs persistantes",
     ],
     prices: [
-      { label: "Matelas enfant (< 90 cm)", price: "39 €", note: "Deux faces incluses", items: ["Nettoyage des deux faces inclus", "Séchage généralement dans la journée", "Traitement courant des taches et auréoles", "Option anti-odeur disponible"], formuleId: "matelas-enfant" },
-      { label: "Matelas 1 place", price: "59 €", note: "Deux faces incluses", items: ["Nettoyage des deux faces inclus", "Réutilisation après séchage complet", "Traitement courant des taches et auréoles", "Nettoyage courant des odeurs ; traitement intensif en option"], formuleId: "matelas-1" },
+      { label: "Matelas enfant (< 90 cm)", price: "49 €", note: "Deux faces incluses", items: ["Nettoyage des deux faces inclus", "Séchage généralement dans la journée", "Traitement courant des taches et auréoles", "Option anti-odeur disponible"], formuleId: "matelas-enfant" },
+      { label: "Matelas 1 place", price: "69 €", note: "Deux faces incluses", items: ["Nettoyage des deux faces inclus", "Réutilisation après séchage complet", "Traitement courant des taches et auréoles", "Nettoyage courant des odeurs ; traitement intensif en option"], formuleId: "matelas-1" },
       { label: "Matelas 2 places", price: "99 €", note: "Deux faces incluses", items: ["Nettoyage des deux faces inclus", "Réutilisation après séchage complet", "Traitement courant des taches et auréoles", "Nettoyage courant des odeurs ; traitement intensif en option"], formuleId: "matelas-2" },
     ],
     priceNote: "Tarifs applicables aux formats indiqués et à un état standard. Format hors catégorie ou état exceptionnel : estimation préalable sur photos.",
@@ -205,7 +205,7 @@ export const SERVICES: Service[] = [
       "Désinfection, neutralisation des odeurs et séchage accéléré.",
     ],
     faq: [
-      { q: "Combien coûte un nettoyage de matelas à Toulouse ?", a: "Le tarif démarre à 39 € pour un matelas enfant, 59 € pour un matelas 1 place et 99 € pour un matelas 2 places. Devis gratuit, réponse sous 24h." },
+      { q: "Combien coûte un nettoyage de matelas à Toulouse ?", a: "Le tarif démarre à 49 € pour un matelas enfant, 69 € pour un matelas 1 place et 99 € pour un matelas 2 places. Devis gratuit, réponse sous 24h." },
       { q: "Peut-on enlever une ancienne tache d'urine sur un matelas ?", a: "Oui, dans la grande majorité des cas. Nous appliquons un détachage enzymatique ciblé avant l'injection-extraction. Les auréoles d'urine, même anciennes, sont éliminées ou très atténuées." },
       { q: "Combien de temps met un matelas à sécher ?", a: "Le séchage prend généralement 3 à 6 heures, parfois davantage selon l’épaisseur, la température et l’aération. Aérez la chambre et attendez le séchage complet avant de réutiliser votre matelas." },
       { q: "Quels produits utilisez-vous pour le nettoyage de matelas ?", a: "Des produits professionnels sélectionnés, dont certaines références certifiées Écolabel. Ils sont utilisés selon leurs notices et après vérification de la compatibilité du textile." },
