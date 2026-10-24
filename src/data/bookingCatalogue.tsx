@@ -93,7 +93,7 @@ const SERVICE_CATALOG: ServiceDef[] = [
       { id: "bronze", name: "Pack Bronze", desc: "Aspiration complète de l'habitacle et du coffre, puis nettoyage et dégraissage de tous les plastiques du véhicule, coffre compris.", price: 69, duration: "1h", durationMin: 60, options: [OUV, OA, OPA, OV, OTS, OC, OSA, OO, OC_25] },
       { id: "argent", name: "Pack Argent", desc: "Tout le Pack Bronze, plus le shampouinage de tous les sièges du véhicule et le nettoyage des vitres sans traces.", price: 99, duration: "1h30", durationMin: 90, options: [OUV, OE, OA, ODA, OPA, OTS, OC, OO, OC_25] },
       { id: "or", name: "Pack Or", desc: "Tout le Pack Argent, plus le shampouinage de toute la moquette de l'habitacle et du coffre, des tapis, des contours et bas de portes et du contour de coffre.", price: 129, duration: "2h", durationMin: 120, options: [OUV, OE, OA, ODA, OPA, OC, OO, OC_25] },
-      { id: "siege", name: "Rénovation sièges auto", desc: "Shampouinage de tous les sièges avec une méthode et des produits adaptés : tissu, Alcantara, cuir, velours et autres revêtements compatibles.", price: 59, duration: "45 min", durationMin: 45, options: [OE, OA, ODA, OPA, OO, OC_25] },
+      { id: "siege", name: "Rénovation sièges auto", desc: "Nettoyage de tous les sièges : injection-extraction sur textiles compatibles, nettoyage manuel adapté sur cuir. Méthode choisie après diagnostic.", price: 59, duration: "45 min", durationMin: 45, options: [OE, OA, ODA, OPA, OO, OC_25] },
     ],
   },
   {

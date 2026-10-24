@@ -8,7 +8,7 @@ import { realisationDimensions } from '@/data/realisationDimensions';
 
 const CATEGORIES: Record<string, string> = { canape: 'Canapés', auto: 'Auto', matelas: 'Matelas', tapis: 'Tapis', moquette: 'Tapis' };
 
-function selectedPhotos(slug: string, booking: string | null) {
+export function selectedPhotos(slug: string, booking: string | null) {
   if (booking && CATEGORIES[booking]) {
     return realisations.filter(photo => photo.category === CATEGORIES[booking] &&
       (booking === 'moquette' ? /moquette/i.test(photo.title) : booking === 'tapis' ? !/moquette/i.test(photo.title) : true)).slice(0, booking === 'canape' || booking === 'auto' ? 6 : 4);

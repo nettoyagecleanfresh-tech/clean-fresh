@@ -11,6 +11,14 @@ test('Google measurement is opt-in, deduplicated, query-free and revocable', () 
   assert.equal(audienceChoice(), null);
   setAudienceEnabled(false, '/reserver'); googleMetric('booking_complete', {});
   assert.equal(scripts.length, 0); assert.equal(window.gtag, undefined);
+  for (const origin of ['https://preview.vercel.app', 'http://localhost:3000', 'https://cleanetfresh.fr.evil.test']) {
+    location.origin = origin;
+    setAudienceEnabled(true, '/reserver');
+    googleMetric('booking_complete', {});
+    assert.equal(scripts.length, 0);
+    assert.equal(window.gtag, undefined);
+  }
+  location.origin = 'https://cleanetfresh.fr';
   rememberAudience(true); assert.equal(audienceChoice(), true);
   setAudienceEnabled(true, '/reserver'); setAudienceEnabled(true, '/reserver');
   assert.equal(scripts.length, 1);
@@ -27,4 +35,6 @@ test('Google measurement is opt-in, deduplicated, query-free and revocable', () 
   assert.equal(events().filter(e => e[1] === 'quote_submitted').length, 0);
   rememberAudience(false); assert.equal(audienceChoice(), false);
   store.set(CONSENT_KEY, JSON.stringify({allowed:true, at:0})); assert.equal(audienceChoice(), null);
+  store.set(CONSENT_KEY, JSON.stringify({allowed:true, at:Date.now()+60000})); assert.equal(audienceChoice(), null);
+  store.set(CONSENT_KEY, JSON.stringify({allowed:true, at:String(Date.now())})); assert.equal(audienceChoice(), null);
 });

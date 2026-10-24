@@ -293,7 +293,7 @@ function CanapeDetail() {
             
             <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
             <div className="mt-5 space-y-2.5">
-              {["Injection-extraction professionnelle", "Traitement des taches, auréoles et odeurs", "Résultat visible immédiatement", "Résultat professionnel"].map((pt) => (
+              {["Injection-extraction professionnelle", "Traitement des taches, auréoles et odeurs", "Résultat selon l’état du support", "Résultat professionnel"].map((pt) => (
                 <div key={pt} className="flex items-center gap-3 text-sm text-foreground/80 font-medium">
                   <CheckCircle2 className="size-4.5 shrink-0 text-primary" /> {pt}
                 </div>
@@ -596,7 +596,7 @@ function TapisDetail() {
             
             <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
             <div className="mt-5 space-y-2.5">
-              {["Injection-extraction professionnelle", "Traitement des taches, auréoles et odeurs", "Résultat visible immédiatement", "Résultat professionnel"].map((pt) => (
+              {["Injection-extraction professionnelle", "Traitement des taches, auréoles et odeurs", "Résultat selon l’état du support", "Résultat professionnel"].map((pt) => (
                 <div key={pt} className="flex items-center gap-3 text-sm text-foreground/80 font-medium">
                   <CheckCircle2 className="size-4.5 shrink-0 text-primary" /> {pt}
                 </div>
@@ -810,7 +810,7 @@ function MatelasDetail() {
             
             <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
             <div className="mt-5 space-y-2.5">
-              {["Injection-extraction professionnelle", "Traitement des taches, auréoles et odeurs", "Résultat visible immédiatement", "Résultat professionnel"].map((pt) => (
+              {["Injection-extraction professionnelle", "Traitement des taches, auréoles et odeurs", "Résultat selon l’état du support", "Résultat professionnel"].map((pt) => (
                 <div key={pt} className="flex items-center gap-3 text-sm text-foreground/80 font-medium">
                   <CheckCircle2 className="size-4.5 shrink-0 text-primary" /> {pt}
                 </div>
@@ -893,7 +893,7 @@ const CATEGORY_CATALOG = [
     id: "canape",
     icon: <Armchair className="size-7" />,
     title: "Nettoyage Canapés, Fauteuils & Chaises",
-    sub: "Injection-extraction · Séchage rapide",
+    sub: "Injection-extraction sur textiles compatibles",
     priceFrom: "49 €",
     bullets: ["Fauteuil, canapé 2/3, 4/5 places", "Canapé U/angle, pouf, chaise", "Options anti-acariens, anti-odeur"],
     recommended: false,

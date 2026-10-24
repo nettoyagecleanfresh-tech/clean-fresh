@@ -24,7 +24,7 @@ export const COMMUNES_DATA: CommuneData[] = [
     para1:
       "Clean&Fresh est basé à Toulouse et y réalise plusieurs interventions par semaine dans tous les quartiers : Compans-Caffarelli, Saint-Cyprien, Minimes, Rangueil, Lardenne, Purpan, Mirail, Côte Pavée. Du studio étudiant au duplex des bords de Garonne, nous traitons canapés, matelas, tapis et véhicules avec le même niveau d'exigence.",
     para2:
-      "La métropole toulousaine abrite une clientèle variée — étudiants, familles, cadres de l'aéronautique et propriétaires bailleurs — qui font confiance à nos produits certifiés Écolabel et à notre matériel d'injection-extraction pour un résultat immédiat. Intervention le jour même ou le lendemain selon les créneaux. Devis gratuit sous 24h.",
+      "La métropole toulousaine abrite une clientèle variée — étudiants, familles, cadres de l'aéronautique et propriétaires bailleurs — qui font confiance à nos produits professionnels sélectionnés, dont certaines références certifiées Écolabel, et à notre matériel adapté au support. Intervention le jour même ou le lendemain selon les créneaux. Devis gratuit sous 24h.",
     faq: [
       {
         q: "Intervenez-vous dans tous les quartiers de Toulouse ?",
