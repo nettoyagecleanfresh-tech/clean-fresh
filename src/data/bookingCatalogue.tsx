@@ -37,7 +37,7 @@ const MOQ = [OA, OP, OD, OO, OE];
 const SERVICE_CATALOG: ServiceDef[] = [
   {
     id: "canape", label: "Nettoyage Canapés, Fauteuils & Chaises", shortLabel: "Canapés, fauteuils & chaises",
-    desc: "Nettoyage en profondeur par injection-extraction, élimination des tâches et ravivement des couleurs.",
+    desc: "Nettoyage des textiles compatibles par injection-extraction. Traitement intensif des taches et odeurs en option.",
     from: 49, icon: <Armchair className="size-8" strokeWidth={1.5} />,
     features: ["Fauteuil, canapé 2/3, 4/5 places", "Canapé U/angle, pouf, chaise", "Options anti-acariens, anti-odeur"],
     formules: [
@@ -54,7 +54,7 @@ const SERVICE_CATALOG: ServiceDef[] = [
   },
   {
     id: "matelas", label: "Nettoyage Matelas", shortLabel: "Matelas",
-    desc: "Assainissement complet, éradication des acariens et auréoles de transpiration.",
+    desc: "Nettoyage en profondeur des deux faces inclus. Traitements anti-acariens, anti-odeur et détachage intensif en option.",
     from: 49, icon: <BedDouble className="size-8" strokeWidth={1.5} />,
     features: ["Matelas enfant, 1 place, 2 places", "Nettoyage des deux faces toujours inclus", "Traitement anti-acariens en option"],
     formules: [
@@ -65,7 +65,7 @@ const SERVICE_CATALOG: ServiceDef[] = [
   },
   {
     id: "tapis", label: "Nettoyage Tapis", shortLabel: "Tapis",
-    desc: "Restauration des fibres, traitement anti-tâches et désodorisation en profondeur.",
+    desc: "Nettoyage des tapis compatibles jusqu'à 4 m² chacun. Recto-verso et traitements intensifs en option.",
     from: 49, icon: <Layers className="size-8" strokeWidth={1.5} />,
     features: ["1 tapis, 2 tapis, 3 tapis", "Format standard jusqu'à 4 m² par tapis", "Options anti-acariens, recto-verso"],
     formules: [

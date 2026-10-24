@@ -85,12 +85,12 @@ const FORMULE_IMAGES: Record<string, Record<string, string>> = {
     "cuir-fauteuil":     "/images/cuir/fauteuil.webp",
     "cuir-canape-2":     "/images/cuir/canape-2.webp",
     "cuir-canape-4":     "/images/cuir/canape-4.webp",
-    "cuir-canape-angle": "/images/cuir/canape-angle.webp",
+    "cuir-canape-angle": "/images/cuir/canapes-u-et-angle.webp",
     "cuir-pouf":         "/images/cuir/pouf.webp",
   "cuir-chaise": "/images/cuir/chaises-4-marron.webp",
   "cuir-chaises-5": "/images/cuir/chaises-5-marron.webp",
   "cuir-chaises-6": "/images/cuir/chaises-6-marron.webp",
-    "cuir-auto":         "/images/cuir/siege-auto.webp",
+    "cuir-auto":         "/images/cuir/sieges-auto-5-places.webp",
   },
 };
 
@@ -830,6 +830,9 @@ function ReserverPage() {
                             : "border-transparent bg-[#e5e9f0]/60 hover:shadow-lg hover:border-primary/20"
                         }`}
                       >
+                        {service.id === "matelas" && (
+                          <span className="mb-2 text-xs font-bold text-blue-700">Deux faces incluses</span>
+                        )}
                         {/* Image ou icône */}
                         <div className={`flex items-center justify-center w-full h-20 mb-2 mt-1 ${active ? "text-[#1a2b4c]" : "text-primary/70"}`}>
                           {imgSrc ? (

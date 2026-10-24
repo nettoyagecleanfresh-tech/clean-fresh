@@ -1,4 +1,6 @@
 import { DesktopServiceProof } from "@/components/site/DesktopServiceProof";
+import { serviceIntent } from "@/lib/serviceIntent";
+import { relatedServices } from "@/lib/relatedServices";
 import { optionDescription } from "@/data/optionDescriptions";
 import { useState, type ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
@@ -89,17 +91,17 @@ const FORMULE_IMAGES: Record<string, string> = {
   "cuir-fauteuil": "/images/cuir/fauteuil.webp",
   "cuir-canape-2": "/images/cuir/canape-2.webp",
   "cuir-canape-4": "/images/cuir/canape-4.webp",
-  "cuir-canape-angle": "/images/cuir/canape-angle.webp",
+  "cuir-canape-angle": "/images/cuir/canapes-u-et-angle.webp",
   "cuir-pouf": "/images/cuir/pouf.webp",
   "cuir-chaise": "/images/cuir/chaises-4-marron.webp",
   "cuir-chaises-5": "/images/cuir/chaises-5-marron.webp",
   "cuir-chaises-6": "/images/cuir/chaises-6-marron.webp",
-  "cuir-auto": "/images/cuir/siege-auto.webp",
+  "cuir-auto": "/images/cuir/sieges-auto-5-places.webp",
 };
 
 export function ServicePage({ service }: { service: Service }) {
   const [introExpanded, setIntroExpanded] = useState(false);
-  const others = SERVICES.filter((s) => s.slug !== service.slug).slice(0, 6);
+  const others = relatedServices(SERVICES, service);
   const bookingServiceId = getBookingServiceId(service.slug);
   return (
     <>
@@ -125,6 +127,8 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
   bookingServiceId: string | null;
 }) {
   const serviceOptions = bookingServiceId ? (OPTIONS_BY_SERVICE[bookingServiceId] ?? []) : [];
+  const intent = serviceIntent(service.slug);
+  const quoteSearch = intent.kind === "quote" ? { service: intent.service } : {};
   const quickPrices = bookingServiceId === 'canape'
     ? 'Fauteuil 49 € · Canapé 2/3 places 79 € · Angle / U 99 €'
     : bookingServiceId === 'auto'
@@ -187,7 +191,7 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
               </Button>
             ) : (
               <Button asChild variant="cta" size="xl" className="px-4 md:px-6 h-10 md:h-12 text-xs md:text-sm">
-                <Link to="/contactez-nous">Devis gratuit sous 24h</Link>
+                <Link to="/contactez-nous" search={quoteSearch}>Devis gratuit sous 24h</Link>
               </Button>
             )}
             <Button asChild variant="onDark" size="xl" className="px-4 md:px-6 h-10 md:h-12 text-xs md:text-sm">
@@ -283,6 +287,9 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
                           key={row.label}
                           className="group flex flex-col rounded-xl border border-border bg-card p-3 shadow-[var(--shadow-soft)] transition-all hover:-translate-y-0.5 hover:shadow-[var(--shadow-card)]"
                         >
+                          {row.formuleId?.startsWith("matelas-") && (
+                            <span className="mb-2 text-center text-xs font-bold text-blue-700">Deux faces incluses</span>
+                          )}
                           {img && (
                             <div className={`flex items-center justify-center w-full bg-slate-50 border border-slate-100 rounded-lg overflow-hidden p-1 mb-2 ${isGrid ? "h-20" : "h-20"}`}>
                               <img src={img} alt={row.label} className="w-full h-full object-contain mix-blend-multiply group-hover:scale-110 transition-transform duration-200" loading="lazy" decoding="async" />
@@ -311,7 +318,7 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
                                 <CalendarCheck className="size-3 mr-1" /> Réserver
                               </Link>
                             ) : (
-                              <Link to="/contactez-nous">
+                              <Link to="/contactez-nous" search={quoteSearch}>
                                 <ArrowRight className="size-3 mr-1" /> Demander un devis
                               </Link>
                             )}
@@ -372,7 +379,7 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
                         <CalendarCheck className="size-4 mr-2" /> Réserver en ligne
                       </Link>
                     ) : (
-                      <Link to="/contactez-nous">
+                      <Link to="/contactez-nous" search={quoteSearch}>
                         <ArrowRight className="size-4 mr-2" /> Demander un devis
                       </Link>
                     )}
@@ -383,7 +390,7 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
                   <p className="text-xl font-bold">Prestation sur devis personnalisé</p>
                   <p className="mt-2 text-muted-foreground">{service.priceNote}</p>
                   <Button asChild size="lg" className="mt-5 w-full bg-primary-gradient text-primary-foreground font-semibold hover:opacity-90">
-                    <Link to="/contactez-nous">Demander mon devis gratuit</Link>
+                    <Link to="/contactez-nous" search={quoteSearch}>Demander mon devis gratuit</Link>
                   </Button>
                 </div>
               )}
@@ -571,10 +578,11 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
           <div className="relative overflow-hidden rounded-3xl bg-hero-gradient px-6 py-14 text-center text-ink-foreground shadow-[var(--shadow-card)]">
           <div className="pointer-events-none absolute -right-16 -top-16 size-72 rounded-full bg-primary/20 blur-3xl" />
           <div className="relative">
-            <h2 className="text-3xl font-bold md:text-4xl">Prêt à réserver ?</h2>
+            <h2 className="text-3xl font-bold md:text-4xl">{bookingServiceId ? "Prêt à réserver ?" : "Un nettoyage à faire chiffrer ?"}</h2>
             <p className="mx-auto mt-3 max-w-xl text-ink-foreground/75">
-              Choisissez votre créneau en ligne en moins de deux minutes, ou appelez-nous pour un
-              devis gratuit sous 24h.
+              {bookingServiceId
+                ? "Choisissez votre formule et consultez les créneaux disponibles, ou appelez-nous pour être conseillé."
+                : "Décrivez votre besoin et ajoutez des photos pour recevoir un devis gratuit sous 24h. Le créneau est confirmé après accord et réception de l’acompte."}
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <Button
@@ -587,13 +595,13 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
                     <CalendarCheck /> Réserver en ligne
                   </Link>
                 ) : (
-                  <Link to="/formules">
-                    <CalendarCheck /> Réserver en ligne
+                  <Link to="/contactez-nous" search={quoteSearch}>
+                    <CalendarCheck /> Demander mon devis
                   </Link>
                 )}
               </Button>
               <Button asChild variant="onDark" size="xl">
-                <Link to="/contactez-nous">Devis gratuit</Link>
+                <Link to="/contactez-nous" search={quoteSearch}>Devis gratuit</Link>
               </Button>
               <Button asChild variant="onDark" size="xl">
                 <a href={COMPANY.phoneHref}>
