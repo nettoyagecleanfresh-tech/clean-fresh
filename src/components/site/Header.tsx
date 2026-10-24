@@ -100,6 +100,8 @@ export function Header() {
         <button
           className="flex size-11 items-center justify-center rounded-lg border border-border bg-card text-foreground/70 shadow-sm hover:bg-secondary lg:hidden"
           aria-label="Ouvrir le menu"
+          aria-expanded={open}
+          aria-controls="mobile-navigation"
           onClick={() => setOpen((v) => !v)}
         >
           {open ? <X className="size-5" /> : <Menu className="size-5" />}
@@ -108,7 +110,7 @@ export function Header() {
 
       {/* ── MENU MOBILE ── */}
       {open && (
-        <div className="border-t border-border bg-background lg:hidden overflow-y-auto max-h-[80vh]">
+        <div id="mobile-navigation" className="border-t border-border bg-background lg:hidden overflow-y-auto overscroll-contain max-h-[calc(100dvh-10rem)]">
           <div className="px-4 py-4 space-y-1">
 
             <Link to="/" onClick={close} className="block rounded-xl px-3 py-2.5 font-semibold text-foreground hover:bg-secondary hover:text-primary transition-colors">

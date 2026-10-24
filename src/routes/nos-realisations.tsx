@@ -1,3 +1,4 @@
+import { responsiveRealisation } from '@/lib/responsiveRealisation';
 import { useRef, useState } from 'react';
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { ChevronLeft, ChevronRight, ArrowUpRight, ZoomIn } from 'lucide-react';
@@ -22,7 +23,7 @@ function Photo({ photo }: { photo: Realisation }) {
   const branded = photo.layout === 'branded';
   const single = photo.layout === 'single';
   return <div className={`relative isolate overflow-hidden bg-slate-100 ${photo.phone ? 'aspect-[3/4]' : ''}`}>
-    {photo.beforeSrc ? <div className="grid grid-cols-2 items-center bg-slate-100"><img src={photo.beforeSrc} width={beforeWidth} height={beforeHeight} decoding="async" alt="Tapis rouges avant nettoyage au Théâtre du Capitole" loading="lazy" className="h-auto w-full" /><img src={photo.src} width={width} height={height} alt="Tapis propre après nettoyage au Théâtre du Capitole" loading="lazy" className="h-auto w-full" /></div> : <img src={photo.src} width={width} height={height} alt={`${photo.title}${single ? '' : ' — avant et après nettoyage'} — Clean&Fresh`}
+    {photo.beforeSrc ? <div className="grid grid-cols-2 items-center bg-slate-100"><img {...responsiveRealisation(photo.beforeSrc)} width={beforeWidth} height={beforeHeight} decoding="async" alt="Tapis rouges avant nettoyage au Théâtre du Capitole" loading="lazy" className="h-auto w-full" /><img {...responsiveRealisation(photo.src)} width={width} height={height} alt="Tapis propre après nettoyage au Théâtre du Capitole" loading="lazy" className="h-auto w-full" /></div> : <img {...responsiveRealisation(photo.src)} width={width} height={height} alt={`${photo.title}${single ? '' : ' — avant et après nettoyage'} — Clean&Fresh`}
       loading="lazy" decoding="async"
       className={photo.phone ? 'absolute left-0 top-[-33.48%] h-auto w-full max-w-none' : 'block h-auto w-full'} />}
     {!branded && <div aria-hidden="true" className="pointer-events-none absolute left-1/2 top-1/2 w-[26%] max-w-32 -translate-x-1/2 -translate-y-1/2 opacity-70">
