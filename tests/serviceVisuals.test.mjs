@@ -9,6 +9,9 @@ test('textile angle and U share one offer with an explicit per-sofa price and le
   assert.ok(catalogue.includes('99 € par canapé, d’angle ou en U.'));
   const booking = readFileSync('src/routes/reserver.tsx', 'utf8');
   assert.ok(booking.includes('formuleParam === "canape-u" ? "canape-angle"'));
+  const server = readFileSync('src/lib/bookingServerFn.ts', 'utf8');
+  assert.ok(server.includes('item.formule_id === "canape-u" ? "canape-angle"'));
+  assert.ok(server.includes('formule_id: formule.id'));
   for (const path of ['src/components/site/ServicePage.tsx', 'src/routes/formules.tsx', 'src/routes/reserver.tsx', 'src/routes/tarifs.tsx']) {
     assert.ok(readFileSync(path, 'utf8').includes('"canape-angle": "/images/canape/canape-u-angle.webp"'), path);
   }
