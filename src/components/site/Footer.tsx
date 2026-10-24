@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { CalendarCheck, Mail, Phone, MessageCircle, Instagram, Facebook, ChevronDown } from "lucide-react";
 import { COMPANY, MENU_BATIMENT, MENU_TEXTILE } from "@/data/site";
+import { serviceIntent } from "@/lib/serviceIntent";
 
 export function Footer() {
   const [textileOpen, setTextileOpen] = useState(false);
@@ -151,6 +152,7 @@ import { useLocation } from "@tanstack/react-router";
 
 export function StickyCallCta() {
   const location = useLocation();
+  const intent = serviceIntent(location.pathname);
   
   if (location.pathname === "/reserver") {
     return null;
@@ -165,12 +167,21 @@ export function StickyCallCta() {
         >
           <Phone className="size-4" /><span className="sm:hidden">Appeler</span><span className="hidden sm:inline">{COMPANY.phone}</span>
         </a>
-        <Link
+        {intent.kind === 'quote' ? <Link
+          to="/contactez-nous"
+          search={{ service: intent.service }}
+          data-conversion-location="mobile_sticky"
+          className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-accent-gradient px-3 text-sm font-bold text-accent-foreground shadow-[var(--shadow-soft)]"
+        >
+          <Mail className="size-4" /> Mon devis
+        </Link> : <Link
           to="/formules"
+          search={{ service: intent.service }}
+          data-conversion-location="mobile_sticky"
           className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-accent-gradient px-3 text-sm font-bold text-accent-foreground shadow-[var(--shadow-soft)]"
         >
           <CalendarCheck className="size-4" /> Je réserve
-        </Link>
+        </Link>}
         {!/^\/(annuler|upsell)(\/|$)/.test(location.pathname) && <button id="mobile-help-trigger" type="button" onClick={() => window.dispatchEvent(new Event('cleanfresh:open-help'))} aria-label="Ouvrir l’assistant Clean&Fresh" aria-haspopup="dialog" className="inline-flex h-12 flex-col items-center justify-center rounded-xl border border-primary/20 px-3 text-xs font-semibold text-primary">
           <MessageCircle className="size-4" /> Aide
         </button>}

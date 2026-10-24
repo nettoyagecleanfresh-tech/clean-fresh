@@ -272,14 +272,14 @@ export const SERVICES: Service[] = [
     short: "Nettoyage auto Toulouse",
     subtitle:
       "Nettoyage complet de l'habitacle de votre véhicule, chez vous ou sur votre lieu de travail, à Toulouse et son agglomération.",
-    metaTitle: "Nettoyage auto à domicile Toulouse | Clean&Fresh",
+    metaTitle: "Nettoyage voiture Toulouse dès 69 € | Clean&Fresh",
     metaDescription:
-      "Nettoyage intérieur de voiture à domicile à Toulouse dès 69 €. Sièges, moquette, tableau de bord et vitres. Devis gratuit sous 24h.",
+      "Nettoyage intérieur de voiture à domicile à Toulouse : Bronze 69 €, Argent 99 €, Or 129 €. Comparez les prestations et réservez. Paiement après intervention.",
     group: "textile",
     booking: true,
     intro: [
       "Nous venons nettoyer l'intérieur de votre véhicule là où il est garé : domicile, parking d'entreprise ou copropriété. Aucun déplacement, aucune perte de temps. Notre service de nettoyage auto à domicile à Toulouse s'adapte à vos contraintes horaires.",
-      "Sièges, moquettes, coffre, plastiques et plafonnier : l'habitacle retrouve un état proche du neuf, sans odeur. Nous traitons les véhicules particuliers, les utilitaires et les flottes d'entreprise avec des produits professionnels sélectionnés.",
+      "Choisissez le niveau de nettoyage adapté à votre véhicule : aspiration et plastiques avec le Pack Bronze, sièges et vitres en plus avec le Pack Argent, moquettes et tapis en plus avec le Pack Or. Les poils d'animaux, odeurs persistantes et le ciel de toit relèvent d'options spécifiques. Le résultat dépend de l'état initial et des matériaux.",
       "Le nettoyage intérieur de voiture à Toulouse est particulièrement recommandé avant une revente, après un déménagement avec des enfants ou des animaux, ou pour éliminer une odeur de tabac incrustée dans les textiles de l'habitacle. Notre traitement anti-odeur par neutralisation moléculaire élimine les mauvaises odeurs à la source — pas simplement masquées avec un désodorisant.",
       "Le Pack Bronze comprend l'aspiration complète de l'habitacle et du coffre, puis le nettoyage et le dégraissage de tous les plastiques du véhicule, coffre compris. Le Pack Argent ajoute le shampouinage de tous les sièges et le nettoyage des vitres sans traces. Le Pack Or ajoute le shampouinage de toute la moquette de l'habitacle et du coffre, des tapis, des contours et bas de portes ainsi que du contour de coffre.",
       "Intervention possible partout dans l'agglomération toulousaine et le département 31 — Blagnac, Colomiers, Tournefeuille, Muret, Balma, Cugnaux, Labège, Portet-sur-Garonne et alentours. Devis gratuit sous 24h selon la taille du véhicule et la formule choisie — Bronze, Argent ou Or.",

@@ -11,10 +11,10 @@ export function ConversionTracking() {
       const link = event.target.closest<HTMLAnchorElement>('a[href]');
       if (!link) return;
       const url = new URL(link.href, window.location.origin);
-      const action = url.protocol === 'tel:' ? 'phone' : url.origin !== window.location.origin ? null : /^\/(formules|reserver)\/?$/.test(url.pathname) ? 'booking' : /^\/contactez-nous\/?$/.test(url.pathname) ? 'quote' : null;
+      const action = url.protocol === 'tel:' ? 'phone' : url.protocol === 'https:' && ['wa.me', 'api.whatsapp.com'].includes(url.hostname) ? 'whatsapp' : url.origin !== window.location.origin ? null : /^\/(formules|reserver)\/?$/.test(url.pathname) ? 'booking' : /^\/contactez-nous\/?$/.test(url.pathname) ? 'quote' : null;
       if (!action) return;
       const value = link.dataset.conversionLocation;
-      const placement = value === 'home_choices' || value === 'service_proof' ? value : 'site';
+      const placement = value === 'home_choices' || value === 'service_proof' || value === 'mobile_sticky' || value === 'service_hero' ? value : 'site';
       const page = pathname === '/' ? 'home' : pathname.startsWith('/nettoyage-') ? 'service' : /^\/(formules|reserver)$/.test(pathname) ? 'booking' : pathname === '/contactez-nous' ? 'quote' : 'other';
       conversionMetric('conversion_cta', { action, placement, page });
     };

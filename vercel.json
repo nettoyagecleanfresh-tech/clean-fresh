@@ -1,4 +1,16 @@
 {
+  "redirects": [
+    {
+      "source": "/nettoyage-de-fin-de-chantier",
+      "destination": "/nettoyage-de-fin-de-chantier-toulouse",
+      "permanent": true
+    },
+    {
+      "source": "/nettoyage-de-fin-de-chantier/",
+      "destination": "/nettoyage-de-fin-de-chantier-toulouse",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",

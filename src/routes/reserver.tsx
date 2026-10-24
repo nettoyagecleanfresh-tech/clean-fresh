@@ -520,22 +520,9 @@ function ReserverPage() {
     setDone(true);
     setSubmitting(false);
 
-    if (typeof window !== "undefined") {
-      (window as any).dataLayer = (window as any).dataLayer || [];
-      (window as any).dataLayer.push({
-        event: "purchase",
-        ecommerce: {
-          transaction_id: finalGcalId,
-          value: total,
-          currency: "EUR",
-          items: mappedItems.map(item => ({
-            item_name: item.formule_name,
-            price: item.formule_price
-          }))
-        }
-      });
-      (window as any).dataLayer.push({ event: "booking_success" });
-    }
+    // useBookingMetrics emits booking_complete once on the confirmed done state.
+    // A reservation is NOT a purchase: payment is collected after the service.
+    // Do not emit ecommerce revenue or the customer's calendar event identifier.
   };
 
   const currentOptTotal = formule ? formule.options.filter(o => selectedOptions.includes(o.id)).reduce((s, o) => s + o.price, 0) : 0;

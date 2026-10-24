@@ -1,7 +1,7 @@
 import { track } from '@vercel/analytics';
 
 type ConversionEvent = 'conversion_cta' | 'quote_started' | 'quote_submitted' | 'quote_error';
-type ConversionDetails = { action?: 'booking' | 'quote' | 'phone'; placement?: 'home_choices' | 'service_proof' | 'site'; page?: 'home' | 'service' | 'booking' | 'quote' | 'other'; has_photos?: boolean };
+type ConversionDetails = { action?: 'booking' | 'quote' | 'phone' | 'whatsapp'; placement?: 'home_choices' | 'service_proof' | 'mobile_sticky' | 'service_hero' | 'site'; page?: 'home' | 'service' | 'booking' | 'quote' | 'other'; has_photos?: boolean };
 
 /** Fixed labels only. No names, addresses, phone numbers, filenames or free text. */
 export function conversionMetric(event: ConversionEvent, details: ConversionDetails = {}) {

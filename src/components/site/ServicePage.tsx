@@ -125,6 +125,11 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
   bookingServiceId: string | null;
 }) {
   const serviceOptions = bookingServiceId ? (OPTIONS_BY_SERVICE[bookingServiceId] ?? []) : [];
+  const quickPrices = bookingServiceId === 'canape'
+    ? 'Fauteuil 49 € · Canapé 2/3 places 79 € · Angle / U 99 €'
+    : bookingServiceId === 'auto'
+      ? 'Bronze 69 € · Argent 99 € · Or 129 €'
+      : null;
   
   const categoryImages =
     (bookingServiceId
@@ -158,16 +163,21 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
           <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-ink-foreground/75 md:mt-5 md:text-base">
             {service.subtitle}
           </p>
+          {quickPrices && <div className="mx-auto mt-5 max-w-xl rounded-2xl border border-white/20 bg-white/10 px-4 py-4 text-left shadow-sm">
+            <p className="text-sm font-bold leading-6 text-white">{quickPrices}</p>
+            <p className="mt-1 text-xs leading-5 text-white/80">Selon la formule et les options choisies. Aucun paiement en ligne : règlement en fin de prestation.</p>
+            <p className="mt-3 flex items-center gap-2 text-xs font-semibold text-white"><Star className="size-4 fill-amber-300 text-amber-300" aria-hidden="true" />{GOOGLE_REVIEW_RATING}/5 · {GOOGLE_REVIEW_COUNT} avis Google</p>
+          </div>}
           <div className="mt-4 flex flex-wrap justify-center gap-2.5 md:mt-8">
             {service.booking ? (
               <Button
                 asChild
                 size="xl"
-                className="bg-accent-gradient text-accent-foreground font-bold shadow-[var(--shadow-card)] hover:opacity-90 px-4 md:px-6 h-10 md:h-12 text-xs md:text-sm"
+                className="bg-accent-gradient text-accent-foreground font-bold shadow-[var(--shadow-card)] hover:opacity-90 px-4 md:px-6 h-12 text-sm"
               >
                 {bookingServiceId ? (
-                  <Link to="/formules" search={{ service: bookingServiceId }}>
-                    <CalendarCheck className="size-4 mr-1.5" /> Réserver en ligne
+                  <Link to="/formules" search={{ service: bookingServiceId }} data-conversion-location="service_hero">
+                    <CalendarCheck className="size-4 mr-1.5" /> Voir les formules et réserver
                   </Link>
                 ) : (
                   <Link to="/formules">

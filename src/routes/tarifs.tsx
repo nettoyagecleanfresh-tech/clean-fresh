@@ -8,7 +8,7 @@ import { BookingTrustBanner } from "@/components/BookingTrustBanner";
 
 const TITLE = "Tarifs nettoyage Toulouse dès 49 € | Clean&Fresh";
 const DESC =
-  "Tous les tarifs Clean&Fresh : nettoyage canapé dès 49 €, matelas dès 49 €, auto dès 69 €, tapis dès 49 €. Devis gratuit sous 24h. Intervention à domicile Toulouse et 31.";
+  "Tarifs nettoyage à Toulouse : canapé dès 79 €, fauteuil et matelas enfant dès 49 €, auto dès 69 €. Choisissez votre formule et réservez en ligne.";
 
 // ─── CATÉGORIES ───────────────────────────────────────────────────────────────
 const TARIF_CATEGORIES = [
