@@ -262,7 +262,9 @@ function Sidebar({
 function ReserverPage() {
   const { service: serviceParam, formule: formuleParam } = Route.useSearch();
   const preselected = SERVICES.find(s => s.id === SLUG_TO_SERVICE[serviceParam]) ?? null;
-  const preselectedFormule = preselected?.formules.find(f => f.id === formuleParam) ?? null;
+  // Preserve old links while presenting only one angle/U textile offer.
+  const canonicalFormule = formuleParam === "canape-u" ? "canape-angle" : formuleParam;
+  const preselectedFormule = preselected?.formules.find(f => f.id === canonicalFormule) ?? null;
 
   const [cart, setCart] = useState<CartItem[]>([]);
   const [step, setStep] = useState<1 | 2 | 3 | 4>(preselectedFormule ? 2 : 1);

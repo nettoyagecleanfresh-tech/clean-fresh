@@ -43,9 +43,8 @@ const SERVICE_CATALOG: ServiceDef[] = [
     formules: [
       { id: "fauteuil",     name: "Fauteuil",                       desc: "Nettoyage complet 1 place.", price: 49,  duration: "45 min",  durationMin: 45,  options: CAN },
       { id: "canape-2",     name: "Canapé 2/3 places",              desc: "Nettoyage complet pour 2 à 3 assises.", price: 79,  duration: "1h",      durationMin: 60,  options: CAN },
-      { id: "canape-angle", name: "Canapé d'angle",                  desc: "Méridienne incluse.", price: 99,  duration: "1h",      durationMin: 60,  options: CAN },
+      { id: "canape-angle", name: "Canapé textile d’angle ou en U", desc: "99 € par canapé, d’angle ou en U. Méridienne incluse. Options en supplément.", price: 99, duration: "1h", durationMin: 60, options: CAN },
       { id: "canape-45",    name: "Canapé 4/5 places",               desc: "Idéal grand format.", price: 99,  duration: "1h",      durationMin: 60,  options: CAN },
-      { id: "canape-u",     name: "Canapé en U",                     desc: "Format panoramique XXL.", price: 99,  duration: "1h",      durationMin: 60,  options: CAN },
       { id: "pouf",         name: "Pouf",                            desc: "Nettoyage d'appoint.", price: 19,  duration: "30 min",  durationMin: 30,  options: CAN },
       { id: "chaise", name: "Lot de 4 chaises rembourrées", desc: "Assises et dossiers nettoyés en profondeur. Intervention de 1 h.", price: 69, duration: "1h", durationMin: 60, options: CAN },
       { id: "chaises-5", name: "Lot de 5 chaises rembourrées", desc: "Assises et dossiers nettoyés en profondeur. Intervention de 1 h.", price: 79, duration: "1h", durationMin: 60, options: CAN },
