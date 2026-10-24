@@ -428,7 +428,7 @@ export const SERVICES: Service[] = [
       "La mousse retient l'humidité, fragilise les tuiles et bouche les gouttières. Un démoussage régulier prolonge la durée de vie de votre toiture et évite des réparations coûteuses. Notre service de nettoyage toiture à Toulouse intervient en toute sécurité avec du matériel professionnel.",
       "La méthode de nettoyage est choisie après examen de la couverture ; la haute pression n’est pas systématique. Tout traitement anti-mousse et ses conditions d’application sont précisés dans le devis. Sa durée d’action dépend du support et de son exposition.",
       "Un démoussage de toiture tous les 3 à 5 ans est généralement recommandé à Toulouse et en Haute-Garonne, où le climat humide favorise le développement des mousses et lichens. Une toiture encrassée retient l'humidité qui s'infiltre sous les tuiles, accélère leur vieillissement et peut provoquer des infiltrations coûteuses. Intervenir en prévention coûte bien moins cher qu'une réparation de charpente.",
-      "Notre équipe intervient en sécurité totale avec les équipements de protection individuelle et les harnais adaptés. Nous contrôlons l'état de la couverture avant l'intervention et signalons toute tuile cassée ou gouttière obstruée. Le démoussage est suivi d'un rinçage complet et de l'évacuation des déchets verts.",
+      "Les conditions d’accès et de sécurité sont évaluées avant intervention, avec les équipements de protection adaptés. Nous contrôlons l'état de la couverture avant l'intervention et signalons toute tuile cassée ou gouttière obstruée. Le démoussage est suivi d'un rinçage complet et de l'évacuation des déchets verts.",
       "Clean&Fresh se déplace à Toulouse et dans tout le département 31 pour le nettoyage et le démoussage de toitures. Devis gratuit après envoi de photos ou visite sur place, réponse sous 24h.",
     ],
     treated: [
@@ -454,7 +454,7 @@ export const SERVICES: Service[] = [
       { q: "Quel est le prix d'un nettoyage de toiture à Toulouse ?", a: "Le tarif est calculé sur devis après envoi de photos ou visite, selon la surface, la pente et l'état de la toiture. Devis gratuit, réponse sous 24h." },
       { q: "À quelle fréquence faut-il nettoyer sa toiture ?", a: "Un démoussage tous les 3 à 5 ans est généralement recommandé, plus souvent si votre toiture est exposée à l'humidité ou entourée d'arbres. Le traitement anti-mousse appliqué après le nettoyage prolonge la durée de protection." },
       { q: "Le nettoyage haute pression endommage-t-il les tuiles ?", a: "Une pression excessive peut endommager une couverture. Nous examinons son état et choisissons une méthode compatible ; la haute pression n’est pas systématique et une intervention inadaptée doit être écartée." },
-      { q: "Le traitement anti-mousse est-il dangereux pour le jardin ?", a: "Nous utilisons des produits respectueux de l'environnement et protégeons vos plantations avant l'intervention. Les produits sont appliqués selon les règles de l'art." },
+      { q: "Le traitement anti-mousse est-il dangereux pour le jardin ?", a: "Un traitement anti-mousse peut présenter des risques pour les végétaux. Les précautions dépendent du produit : protection des plantations, maîtrise des écoulements et respect des consignes du fabricant." },
       { q: "Intervenez-vous sur les toitures en Haute-Garonne ?", a: "Oui, nous couvrons Toulouse et tout le département 31 : Blagnac, Colomiers, Tournefeuille, Balma, Muret, Cugnaux, Ramonville, Castanet-Tolosan et toutes les communes alentours." },
     ],
   },
