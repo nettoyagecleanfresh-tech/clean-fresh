@@ -7,10 +7,16 @@ let initialized = false;
 let previousPath = '';
 let initialReferrer = '';
 
+/** Do not mix preview, localhost or third-party hosts with customer visits. */
+export function productionAnalyticsOrigin(origin: string): boolean {
+  return origin === 'https://cleanetfresh.fr' || origin === 'https://www.cleanetfresh.fr';
+}
+
 export function audienceChoice(): boolean | null {
   try {
     const value = JSON.parse(localStorage.getItem(CONSENT_KEY) || 'null');
-    return value && typeof value.allowed === 'boolean' && Date.now() - value.at < MAX_AGE ? value.allowed : null;
+    const age = Date.now() - value?.at;
+    return value && typeof value.allowed === 'boolean' && typeof value.at === 'number' && Number.isFinite(value.at) && age >= 0 && age < MAX_AGE ? value.allowed : null;
   } catch { return null; }
 }
 export function rememberAudience(allowed: boolean) {
@@ -20,7 +26,7 @@ export function publicAnalyticsPath(path: string) {
   return !/^\/(envoyer-avis|annuler|reprogrammer|upsell|api|admin)(\/|$)/.test(path);
 }
 export function setAudienceEnabled(enabled: boolean, path: string) {
-  active = enabled && publicAnalyticsPath(path);
+  active = enabled && productionAnalyticsOrigin(location.origin) && publicAnalyticsPath(path);
   (window as unknown as Record<string, unknown>)[`ga-disable-${GA_ID}`] = !active;
   if (!active) { previousPath = ''; return; }
   const w = window as AnalyticsWindow;
@@ -47,7 +53,7 @@ export function setAudienceEnabled(enabled: boolean, path: string) {
 }
 /** Only fixed-label events; never forward query strings, forms or customer details. */
 export function googleMetric(event: string, properties: Record<string, string | boolean>) {
-  if (typeof window === 'undefined' || !active || !publicAnalyticsPath(location.pathname)) return;
+  if (typeof window === 'undefined' || !active || !productionAnalyticsOrigin(location.origin) || !publicAnalyticsPath(location.pathname)) return;
   (window as AnalyticsWindow).gtag?.('event', event, { ...properties, send_to: GA_ID, page_location: location.origin + location.pathname, page_referrer: '' });
 }
 export function removeAudienceCookies() {

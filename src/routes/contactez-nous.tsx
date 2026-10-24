@@ -63,6 +63,13 @@ function ContactPage() {
   const [photoCount, setPhotoCount] = useState(0);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
+  useEffect(() => {
+    const firstError = Object.keys(errors).find(key => errors[key]);
+    if (!firstError) return;
+    const field = formRef.current?.elements.namedItem(firstError);
+    if (field instanceof HTMLElement) field.focus();
+  }, [errors]);
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -70,6 +77,8 @@ function ContactPage() {
 
     const form = e.currentTarget;
     const data = Object.fromEntries(new FormData(form));
+    // A disabled placeholder is omitted from FormData; keep validation in French.
+    data.service = selectedService;
     const photos = Array.from(form.querySelector<HTMLInputElement>("#photos")?.files ?? []);
 
     const result = schema.safeParse(data);
@@ -152,30 +161,36 @@ function ContactPage() {
 
         {/* Form card */}
         <form
+          ref={formRef}
           onSubmit={onSubmit}
           onFocusCapture={() => { if (!quoteStarted.current) { quoteStarted.current = true; conversionMetric("quote_started"); } }}
           noValidate
           className="space-y-6"
         >
+          {Object.values(errors).some(Boolean) && (
+            <div role="alert" className="rounded-xl border border-destructive/30 bg-destructive/5 p-3 text-sm text-destructive">
+              Merci de corriger les champs signalés ci-dessous. Vos informations sont conservées.
+            </div>
+          )}
           {/* Nom + Téléphone side by side */}
           <div className="grid gap-6 sm:grid-cols-2">
             <div className="grid gap-1">
               <Label htmlFor="nom" className="text-sm text-muted-foreground font-normal">Nom complet</Label>
-              <Input id="nom" name="nom" autoComplete="name" maxLength={100} placeholder="" className="rounded-none border-0 border-b border-border bg-transparent px-0 py-2 text-sm shadow-none focus-visible:ring-0 focus-visible:border-primary transition-colors" />
-              {errors["nom"] && <p className="text-xs text-destructive">{errors["nom"]}</p>}
+              <Input id="nom" name="nom" aria-invalid={!!errors["nom"]} aria-describedby={errors["nom"] ? "nom-error" : undefined} autoComplete="name" maxLength={100} placeholder="" className="rounded-none border-0 border-b border-border bg-transparent px-0 py-2 text-sm shadow-none focus-visible:ring-0 focus-visible:border-primary transition-colors" />
+              {errors["nom"] && <p id="nom-error" className="text-xs text-destructive">{errors["nom"]}</p>}
             </div>
             <div className="grid gap-1">
               <Label htmlFor="telephone" className="text-sm text-muted-foreground font-normal">Téléphone</Label>
-              <Input id="telephone" name="telephone" type="tel" autoComplete="tel" maxLength={20} placeholder="" className="rounded-none border-0 border-b border-border bg-transparent px-0 py-2 text-sm shadow-none focus-visible:ring-0 focus-visible:border-primary transition-colors" />
-              {errors["telephone"] && <p className="text-xs text-destructive">{errors["telephone"]}</p>}
+              <Input id="telephone" name="telephone" aria-invalid={!!errors["telephone"]} aria-describedby={errors["telephone"] ? "telephone-error" : undefined} type="tel" autoComplete="tel" maxLength={20} placeholder="" className="rounded-none border-0 border-b border-border bg-transparent px-0 py-2 text-sm shadow-none focus-visible:ring-0 focus-visible:border-primary transition-colors" />
+              {errors["telephone"] && <p id="telephone-error" className="text-xs text-destructive">{errors["telephone"]}</p>}
             </div>
           </div>
 
           {/* Email */}
           <div className="grid gap-1">
             <Label htmlFor="email" className="text-sm text-muted-foreground font-normal">Email</Label>
-            <Input id="email" name="email" type="email" autoComplete="email" maxLength={255} placeholder="" className="rounded-none border-0 border-b border-border bg-transparent px-0 py-2 text-sm shadow-none focus-visible:ring-0 focus-visible:border-primary transition-colors" />
-            {errors["email"] && <p className="text-xs text-destructive">{errors["email"]}</p>}
+            <Input id="email" name="email" aria-invalid={!!errors["email"]} aria-describedby={errors["email"] ? "email-error" : undefined} type="email" autoComplete="email" maxLength={255} placeholder="" className="rounded-none border-0 border-b border-border bg-transparent px-0 py-2 text-sm shadow-none focus-visible:ring-0 focus-visible:border-primary transition-colors" />
+            {errors["email"] && <p id="email-error" className="text-xs text-destructive">{errors["email"]}</p>}
           </div>
 
           {/* Service select */}
@@ -184,7 +199,7 @@ function ContactPage() {
             <div className="relative">
               <select
                 id="service"
-                name="service"
+                name="service" aria-invalid={!!errors["service"]} aria-describedby={errors["service"] ? "service-error" : undefined}
                 value={selectedService}
                 onChange={(e) => setSelectedService(e.target.value)}
                 className="w-full appearance-none rounded-none border-0 border-b border-border bg-transparent px-0 py-2 text-sm text-foreground shadow-none outline-none focus:border-primary focus:ring-0 transition-colors"
@@ -199,36 +214,36 @@ function ContactPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
               </svg>
             </div>
-            {errors["service"] && <p className="text-xs text-destructive">{errors["service"]}</p>}
+            {errors["service"] && <p id="service-error" className="text-xs text-destructive">{errors["service"]}</p>}
           </div>
 
           <div className="grid gap-6 sm:grid-cols-2">
             <div className="grid gap-1 sm:col-span-2">
               <Label htmlFor="adresse" className="text-sm text-muted-foreground font-normal">Adresse exacte de l'intervention</Label>
-              <Input id="adresse" name="adresse" autoComplete="street-address" maxLength={200} placeholder="Numéro, rue, code postal et ville" className="rounded-none border-0 border-b border-border bg-transparent px-0 py-2 text-sm shadow-none focus-visible:ring-0 focus-visible:border-primary transition-colors" />
-              {errors["adresse"] && <p className="text-xs text-destructive">{errors["adresse"]}</p>}
+              <Input id="adresse" name="adresse" aria-invalid={!!errors["adresse"]} aria-describedby={errors["adresse"] ? "adresse-error" : undefined} autoComplete="street-address" maxLength={200} placeholder="Numéro, rue, code postal et ville" className="rounded-none border-0 border-b border-border bg-transparent px-0 py-2 text-sm shadow-none focus-visible:ring-0 focus-visible:border-primary transition-colors" />
+              {errors["adresse"] && <p id="adresse-error" className="text-xs text-destructive">{errors["adresse"]}</p>}
             </div>
             <div className="grid gap-1">
               <Label htmlFor="surface" className="text-sm text-muted-foreground font-normal">Surface ou dimensions</Label>
-              <Input id="surface" name="surface" maxLength={100} placeholder="Ex. 60 m², 12 fenêtres…" className="rounded-none border-0 border-b border-border bg-transparent px-0 py-2 text-sm shadow-none focus-visible:ring-0 focus-visible:border-primary transition-colors" />
-              {errors["surface"] && <p className="text-xs text-destructive">{errors["surface"]}</p>}
+              <Input id="surface" name="surface" aria-invalid={!!errors["surface"]} aria-describedby={errors["surface"] ? "surface-error" : undefined} maxLength={100} placeholder="Ex. 60 m², 12 fenêtres…" className="rounded-none border-0 border-b border-border bg-transparent px-0 py-2 text-sm shadow-none focus-visible:ring-0 focus-visible:border-primary transition-colors" />
+              {errors["surface"] && <p id="surface-error" className="text-xs text-destructive">{errors["surface"]}</p>}
             </div>
             <div className="grid gap-1">
               <Label htmlFor="dateSouhaitee" className="text-sm text-muted-foreground font-normal">Date ou délai souhaité</Label>
-              <Input id="dateSouhaitee" name="dateSouhaitee" maxLength={100} placeholder="Ex. avant le 15 octobre" className="rounded-none border-0 border-b border-border bg-transparent px-0 py-2 text-sm shadow-none focus-visible:ring-0 focus-visible:border-primary transition-colors" />
-              {errors["dateSouhaitee"] && <p className="text-xs text-destructive">{errors["dateSouhaitee"]}</p>}
+              <Input id="dateSouhaitee" name="dateSouhaitee" aria-invalid={!!errors["dateSouhaitee"]} aria-describedby={errors["dateSouhaitee"] ? "dateSouhaitee-error" : undefined} maxLength={100} placeholder="Ex. vendredi prochain ou avant votre état des lieux" className="rounded-none border-0 border-b border-border bg-transparent px-0 py-2 text-sm shadow-none focus-visible:ring-0 focus-visible:border-primary transition-colors" />
+              {errors["dateSouhaitee"] && <p id="dateSouhaitee-error" className="text-xs text-destructive">{errors["dateSouhaitee"]}</p>}
             </div>
           </div>
 
           <div className="grid gap-1">
             <Label htmlFor="acces" className="text-sm text-muted-foreground font-normal">Accès à l'eau, à l'électricité et au logement</Label>
-            <Input id="acces" name="acces" maxLength={300} placeholder="Prises disponibles, point d'eau, étage, ascenseur, stationnement…" className="rounded-none border-0 border-b border-border bg-transparent px-0 py-2 text-sm shadow-none focus-visible:ring-0 focus-visible:border-primary transition-colors" />
-            {errors["acces"] && <p className="text-xs text-destructive">{errors["acces"]}</p>}
+            <Input id="acces" name="acces" aria-invalid={!!errors["acces"]} aria-describedby={errors["acces"] ? "acces-error" : undefined} maxLength={300} placeholder="Prises disponibles, point d'eau, étage, ascenseur, stationnement…" className="rounded-none border-0 border-b border-border bg-transparent px-0 py-2 text-sm shadow-none focus-visible:ring-0 focus-visible:border-primary transition-colors" />
+            {errors["acces"] && <p id="acces-error" className="text-xs text-destructive">{errors["acces"]}</p>}
           </div>
 
           <div className="grid gap-2 rounded-xl border border-dashed border-border bg-secondary/20 p-4">
             <Label htmlFor="photos" className="flex items-center gap-2 text-sm font-semibold"><Camera className="size-4 text-primary" />Photos de l'état actuel</Label>
-            <Input id="photos" name="photos" type="file" accept="image/jpeg,image/png,image/webp" multiple disabled={isSubmitting} aria-describedby="photos-help" onChange={(event) => {
+            <Input id="photos" name="photos" type="file" accept="image/jpeg,image/png,image/webp" multiple disabled={isSubmitting} aria-invalid={!!errors["photos"]} aria-describedby={errors["photos"] ? "photos-help photos-error" : "photos-help"} onChange={(event) => {
               const files = Array.from(event.target.files ?? []);
               setPhotoCount(files.length);
               const error = validateQuotePhotos(files);
@@ -236,7 +251,7 @@ function ContactPage() {
             }} className="cursor-pointer scroll-mt-40 lg:scroll-mt-52" />
             <p id="photos-help" className="text-xs text-muted-foreground">Jusqu’à 10 photos facultatives (JPG, PNG ou WebP, 20 Mo par photo). Elles sont compressées et regroupées dans un PDF pour l’envoi.</p>
             <p className="text-xs text-muted-foreground" aria-live="polite">{photoCount > 0 ? `${photoCount} photo${photoCount > 1 ? "s" : ""} sélectionnée${photoCount > 1 ? "s" : ""} / 10` : ""}</p>
-            {errors["photos"] && <p className="text-xs text-destructive">{errors["photos"]}</p>}
+            {errors["photos"] && <p id="photos-error" className="text-xs text-destructive">{errors["photos"]}</p>}
           </div>
 
           {["Nettoyage canapé", "Nettoyage matelas", "Nettoyage tapis", "Nettoyage moquette", "Nettoyage cuir", "Nettoyage auto (intérieur)"].includes(selectedService) && (
@@ -250,13 +265,13 @@ function ContactPage() {
             <Label htmlFor="message" className="text-sm text-muted-foreground font-normal">Détails de votre demande</Label>
             <Textarea
               id="message"
-              name="message"
+              name="message" aria-invalid={!!errors["message"]} aria-describedby={errors["message"] ? "message-error" : undefined}
               rows={4}
               maxLength={1000}
               placeholder=""
               className="rounded-none border-0 border-b border-border bg-transparent px-0 py-2 text-sm shadow-none focus-visible:ring-0 focus-visible:border-primary resize-none transition-colors"
             />
-            {errors["message"] && <p className="text-xs text-destructive">{errors["message"]}</p>}
+            {errors["message"] && <p id="message-error" className="text-xs text-destructive">{errors["message"]}</p>}
           </div>
 
           {/* Submit */}

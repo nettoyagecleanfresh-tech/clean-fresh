@@ -382,7 +382,7 @@ export const SERVICES: Service[] = [
       "Mousses, lichens et noircissement rendent votre terrasse glissante et terne. Notre service de nettoyage de terrasse à Toulouse intervient au nettoyeur haute pression, avec un réglage adapté à chaque support pour ne pas l'endommager.",
       "Une intervention idéale avant l'été ou après l'hiver, pour retrouver un extérieur net, sécurisé et esthétique. Nous appliquons si nécessaire un traitement anti-mousse préventif pour prolonger l'effet dans le temps.",
       "Le nettoyage de terrasse à Toulouse se fait idéalement au printemps avant la saison estivale, ou à l'automne après les pluies et les chutes de feuilles. Un entretien régulier évite l'encrassement profond des joints et réduit les risques de glissade sur les dalles humides. Nous adaptons la pression du nettoyeur selon la nature du revêtement : forte pression pour le béton et la pierre, pression modérée pour le bois et le carrelage extérieur.",
-      "Après le nettoyage haute pression, nous appliquons un traitement anti-mousse préventif qui protège votre terrasse contre le retour des mousses et lichens pendant plusieurs saisons. Pour les dalles en pierre naturelle ou les terrasses bois, un traitement hydrofuge peut être envisagé pour une protection optimale contre les intempéries.",
+      "Après diagnostic, les traitements complémentaires anti-mousse ou hydrofuges sont précisés dans le devis selon le support. Leur efficacité et leur durée dépendent de l’exposition, de l’humidité et de l’entretien.",
       "Nous intervenons à Toulouse et dans toute la Haute-Garonne — dalles, pavés, béton désactivé, carrelage extérieur, bois et composite. Devis gratuit selon la surface et l'état du support, réponse sous 24h.",
     ],
     treated: [
@@ -408,7 +408,7 @@ export const SERVICES: Service[] = [
     faq: [
       { q: "Quel est le prix d'un nettoyage de terrasse à Toulouse ?", a: "Le tarif est calculé sur devis selon la surface, le type de revêtement et l'état de la terrasse. Contactez-nous pour une estimation gratuite, réponse sous 24h." },
       { q: "Nettoyez-vous tous les types de terrasse ?", a: "Oui : dalles en pierre, béton, béton désactivé, carrelage extérieur et terrasses en bois naturel ou composite. Nous ajustons la pression en fonction du support pour ne pas l'endommager." },
-      { q: "Le traitement anti-mousse est-il inclus dans le nettoyage de terrasse ?", a: "Nous l'appliquons si nécessaire après le nettoyage haute pression. Il protège votre terrasse contre le retour des mousses et lichens pendant plusieurs saisons." },
+      { q: "Le traitement anti-mousse est-il inclus dans le nettoyage de terrasse ?", a: "L’inclusion d’un traitement anti-mousse est précisée dans le devis après diagnostic du support. Sa durée d’action varie selon les conditions d’exposition et l’entretien." },
       { q: "Quand faut-il nettoyer sa terrasse à Toulouse ?", a: "Idéalement au printemps avant la saison estivale et à l'automne après les pluies. Un nettoyage régulier évite l'encrassement profond et réduit le risque de glissade." },
       { q: "Intervenez-vous dans toute l'agglomération toulousaine pour le nettoyage de terrasse ?", a: "Oui, nous couvrons Toulouse et toutes les communes du 31 : Muret, Cugnaux, Colomiers, Tournefeuille, Plaisance-du-Touch, Villeneuve-Tolosane, Portet-sur-Garonne et bien d'autres." },
     ],
@@ -426,9 +426,9 @@ export const SERVICES: Service[] = [
     group: "batiment",
     intro: [
       "La mousse retient l'humidité, fragilise les tuiles et bouche les gouttières. Un démoussage régulier prolonge la durée de vie de votre toiture et évite des réparations coûteuses. Notre service de nettoyage toiture à Toulouse intervient en toute sécurité avec du matériel professionnel.",
-      "Après le nettoyage haute pression, nous appliquons un traitement anti-mousse préventif pour protéger votre couverture plusieurs années. Tuiles terre cuite, béton ou ardoises : nous adaptons notre intervention à chaque support.",
+      "La méthode de nettoyage est choisie après examen de la couverture ; la haute pression n’est pas systématique. Tout traitement anti-mousse et ses conditions d’application sont précisés dans le devis. Sa durée d’action dépend du support et de son exposition.",
       "Un démoussage de toiture tous les 3 à 5 ans est généralement recommandé à Toulouse et en Haute-Garonne, où le climat humide favorise le développement des mousses et lichens. Une toiture encrassée retient l'humidité qui s'infiltre sous les tuiles, accélère leur vieillissement et peut provoquer des infiltrations coûteuses. Intervenir en prévention coûte bien moins cher qu'une réparation de charpente.",
-      "Notre équipe intervient en sécurité totale avec les équipements de protection individuelle et les harnais adaptés. Nous contrôlons l'état de la couverture avant l'intervention et signalons toute tuile cassée ou gouttière obstruée. Le démoussage est suivi d'un rinçage complet et de l'évacuation des déchets verts.",
+      "Les conditions d’accès et de sécurité sont évaluées avant intervention, avec les équipements de protection adaptés. Nous contrôlons l'état de la couverture avant l'intervention et signalons toute tuile cassée ou gouttière obstruée. Le démoussage est suivi d'un rinçage complet et de l'évacuation des déchets verts.",
       "Clean&Fresh se déplace à Toulouse et dans tout le département 31 pour le nettoyage et le démoussage de toitures. Devis gratuit après envoi de photos ou visite sur place, réponse sous 24h.",
     ],
     treated: [
@@ -453,8 +453,8 @@ export const SERVICES: Service[] = [
     faq: [
       { q: "Quel est le prix d'un nettoyage de toiture à Toulouse ?", a: "Le tarif est calculé sur devis après envoi de photos ou visite, selon la surface, la pente et l'état de la toiture. Devis gratuit, réponse sous 24h." },
       { q: "À quelle fréquence faut-il nettoyer sa toiture ?", a: "Un démoussage tous les 3 à 5 ans est généralement recommandé, plus souvent si votre toiture est exposée à l'humidité ou entourée d'arbres. Le traitement anti-mousse appliqué après le nettoyage prolonge la durée de protection." },
-      { q: "Le nettoyage haute pression endommage-t-il les tuiles ?", a: "Non, nous utilisons une pression adaptée à chaque type de couverture. Les tuiles, ardoises et gouttières sont préservées. Un contrôle visuel est effectué avant et après l'intervention." },
-      { q: "Le traitement anti-mousse est-il dangereux pour le jardin ?", a: "Nous utilisons des produits respectueux de l'environnement et protégeons vos plantations avant l'intervention. Les produits sont appliqués selon les règles de l'art." },
+      { q: "Le nettoyage haute pression endommage-t-il les tuiles ?", a: "Une pression excessive peut endommager une couverture. Nous examinons son état et choisissons une méthode compatible ; la haute pression n’est pas systématique et une intervention inadaptée doit être écartée." },
+      { q: "Le traitement anti-mousse est-il dangereux pour le jardin ?", a: "Un traitement anti-mousse peut présenter des risques pour les végétaux. Les précautions dépendent du produit : protection des plantations, maîtrise des écoulements et respect des consignes du fabricant." },
       { q: "Intervenez-vous sur les toitures en Haute-Garonne ?", a: "Oui, nous couvrons Toulouse et tout le département 31 : Blagnac, Colomiers, Tournefeuille, Balma, Muret, Cugnaux, Ramonville, Castanet-Tolosan et toutes les communes alentours." },
     ],
   },

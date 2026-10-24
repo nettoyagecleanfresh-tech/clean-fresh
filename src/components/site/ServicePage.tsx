@@ -1,4 +1,4 @@
-import { DesktopServiceProof } from "@/components/site/DesktopServiceProof";
+import { DesktopServiceProof, selectedPhotos } from "@/components/site/DesktopServiceProof";
 import { serviceIntent } from "@/lib/serviceIntent";
 import { relatedServices } from "@/lib/relatedServices";
 import { optionDescription } from "@/data/optionDescriptions";
@@ -10,14 +10,6 @@ import { COMMUNES, COMPANY, SERVICES, type Service, GOOGLE_REVIEW_COUNT, GOOGLE_
 import { ReviewsCarousel } from "@/components/site/ReviewsCarousel";
 import { FadeIn } from "@/components/ui/fade-in";
 import { SchemaService, SchemaFAQ, SchemaBreadcrumb } from "@/components/site/SchemaOrg";
-
-const PHOTOS_BY_CATEGORY: Record<string, string[]> = {
-  canape: ["/realisations/photo-04.webp", "/realisations/photo-05.webp", "/realisations/photo-08.webp", "/realisations/photo-13.webp"],
-  auto: ["/realisations/photo-02.webp", "/realisations/photo-03.webp", "/realisations/photo-10.webp", "/realisations/photo-16.webp"],
-  tapis: ["/realisations/photo-07.webp", "/realisations/photo-28.webp", "/realisations/photo-36.webp", "/realisations/photo-21.webp"],
-  matelas: ["/realisations/photo-09.webp", "/realisations/photo-15.webp", "/realisations/photo-31.webp", "/realisations/photo-22.webp"],
-  batiment: ["/realisations/photo-06.webp", "/realisations/photo-32.webp", "/realisations/photo-11.webp", "/realisations/photo-12.webp"]
-};
 
 function getBookingServiceId(slug: string): string | null {
   if (slug.includes("canape")) return "canape";
@@ -135,10 +127,7 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
       ? 'Bronze 69 € · Argent 99 € · Or 129 €'
       : null;
   
-  const categoryImages =
-    (bookingServiceId
-      ? PHOTOS_BY_CATEGORY[bookingServiceId]
-      : PHOTOS_BY_CATEGORY["batiment"]) ?? [];
+  const categoryImages = selectedPhotos(service.slug, bookingServiceId).slice(0, 4);
 
   return (
     <div className="pb-24 lg:pb-0">
@@ -296,7 +285,7 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
                             </div>
                           )}
                           <p className="text-xs font-semibold leading-tight line-clamp-2">{row.label}</p>
-                          {row.note && <p className="text-[10px] text-primary font-medium mt-0.5">{row.note}</p>}
+                          {row.note && row.formuleId !== "canape-angle" && <p className="text-[10px] text-primary font-medium mt-0.5">{row.note}</p>}
                           <span className={`font-bold text-primary mt-1 ${isGrid ? "text-xl" : "text-2xl"}`}>{row.price}</span>
                           {bookingServiceId === "auto" && row.items && (
                             <ul className="mt-2 flex-1 space-y-1.5 text-[11px] leading-snug text-muted-foreground">
@@ -485,38 +474,39 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
       </FadeIn>
 
       {/* ── AVANT / APRÈS ── */}
-      <FadeIn delay={0.2}>
+      {categoryImages.length > 0 && <FadeIn delay={0.2}>
         <section className="bg-secondary/60 py-16">
           <div className="mx-auto max-w-6xl px-4">
           <p className="text-xs font-bold uppercase tracking-widest text-primary">Nos réalisations</p>
-          <h2 className="mt-2 text-3xl font-bold tracking-tight">Avant / après nos interventions</h2>
+          <h2 className="mt-2 text-3xl font-bold tracking-tight">Nos interventions en images</h2>
           <p className="mt-3 text-muted-foreground">
             Photos réelles prises sur nos chantiers à Toulouse et dans l'agglomération.
           </p>
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {categoryImages.map((src, idx) => (
+            {categoryImages.map((photo) => (
               <figure
-                key={idx}
+                key={photo.src}
                 className="overflow-hidden rounded-2xl border border-border bg-card shadow-[var(--shadow-soft)] transition-transform hover:-translate-y-0.5"
               >
                 <img
-                  src={src}
-                  alt={`${service.h1} — Avant / Après ${idx + 1}`}
+                  src={photo.src}
+                  alt={photo.title}
                   loading="lazy"
                   decoding="async"
                   width={1000}
                   height={800}
                   className="h-48 w-full object-cover"
                 />
-                <figcaption className="p-3 text-[10px] font-bold uppercase tracking-widest text-primary text-center">
-                  Avant / Après
+                <figcaption className="p-3 text-sm text-center">
+                  <p className="font-semibold text-foreground">{photo.title}</p>
+                  <p className="mt-1 text-xs text-muted-foreground">{photo.description}</p>
                 </figcaption>
               </figure>
             ))}
           </div>
             </div>
         </section>
-      </FadeIn>
+      </FadeIn>}
 
       {/* ── AVIS CLIENTS ── */}
       {bookingServiceId ? (
