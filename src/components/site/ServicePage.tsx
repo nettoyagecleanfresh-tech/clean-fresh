@@ -1,4 +1,5 @@
 import { DesktopServiceProof, selectedPhotos } from "@/components/site/DesktopServiceProof";
+import { responsiveRealisation } from "@/lib/responsiveRealisation";
 import { serviceIntent } from "@/lib/serviceIntent";
 import { relatedServices } from "@/lib/relatedServices";
 import { optionDescription } from "@/data/optionDescriptions";
@@ -489,7 +490,7 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
                 className="overflow-hidden rounded-2xl border border-border bg-card shadow-[var(--shadow-soft)] transition-transform hover:-translate-y-0.5"
               >
                 <img
-                  src={photo.src}
+                  {...responsiveRealisation(photo.src)}
                   alt={photo.title}
                   loading="lazy"
                   decoding="async"

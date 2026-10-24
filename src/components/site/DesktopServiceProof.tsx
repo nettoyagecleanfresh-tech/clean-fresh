@@ -1,3 +1,4 @@
+import { responsiveRealisation } from '@/lib/responsiveRealisation';
 import { Link } from '@tanstack/react-router';
 import { ArrowRight, Camera, Images, MapPin, Maximize2, Star } from 'lucide-react';
 import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
@@ -23,7 +24,7 @@ function ProofPhoto({ photo, enlarged = false }: { photo: Realisation; enlarged?
   return <div className={`relative overflow-hidden bg-slate-100 ${photo.phone ? 'aspect-[3/4]' : ''} ${photo.beforeSrc ? 'grid grid-cols-2 gap-1' : ''}`}>
     {sources.map((src, index) => <picture key={src}>
       
-      <img src={src} width={realisationDimensions[src]?.[0]} height={realisationDimensions[src]?.[1]} alt={photo.beforeSrc ? `${index === 0 ? 'Avant' : 'Après'} — ${photo.title}` : `${photo.title} — comparaison avant / après`} loading="lazy" decoding="async" className={photo.phone ? 'absolute left-0 top-[-33.48%] h-auto w-full max-w-none' : 'block h-auto w-full'} />
+      <img {...responsiveRealisation(src, enlarged ? '(max-width: 1023px) 90vw, 900px' : '64px')} width={realisationDimensions[src]?.[0]} height={realisationDimensions[src]?.[1]} alt={photo.beforeSrc ? `${index === 0 ? 'Avant' : 'Après'} — ${photo.title}` : `${photo.title} — comparaison avant / après`} loading="lazy" decoding="async" className={photo.phone ? 'absolute left-0 top-[-33.48%] h-auto w-full max-w-none' : 'block h-auto w-full'} />
     </picture>)}
   </div>;
 }

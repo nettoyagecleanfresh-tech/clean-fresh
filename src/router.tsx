@@ -9,6 +9,10 @@ export const getRouter = () => {
     routeTree,
     context: { queryClient },
     scrollRestoration: true,
+    // Prepare only the destination the visitor is pointing at / touching.
+    defaultPreload: "intent",
+    defaultPreloadDelay: 50,
+    defaultPendingMinMs: 0,
     defaultPreloadStaleTime: 0,
   });
 
