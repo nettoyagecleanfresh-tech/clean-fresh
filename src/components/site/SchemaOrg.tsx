@@ -1,4 +1,5 @@
-import { SITE_URL, COMPANY, type Service } from "@/data/site";
+import { SITE_URL, COMPANY, SERVICES, type Service } from "@/data/site";
+import { buildServiceSchema } from "@/lib/serviceSchema";
 
 // ──────────────────────────────────────────────────────────────────────────────
 // SchemaOrg — JSON-LD injection component
@@ -59,13 +60,10 @@ export function SchemaLocalBusiness() {
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Services de nettoyage",
-      itemListElement: [
-        { "@type": "Offer", "itemOffered": { "@type": "Service", name: "Nettoyage canapé Toulouse" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", name: "Nettoyage matelas Toulouse" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", name: "Nettoyage fin de bail Toulouse" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", name: "Nettoyage auto Toulouse" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", name: "Nettoyage Diogène Toulouse" } },
-      ],
+      itemListElement: SERVICES.map(service => ({
+        "@type": "Offer",
+        "itemOffered": { "@type": "Service", "@id": `${SITE_URL}${service.slug}#service`, name: service.h1, url: `${SITE_URL}${service.slug}` },
+      })),
     },
   };
 
@@ -79,30 +77,7 @@ export function SchemaLocalBusiness() {
 
 /** Service + Offers — one per service page */
 export function SchemaService({ service }: { service: Service }) {
-  const pageUrl = `${SITE_URL}${service.slug}`;
-
-  const schema: Record<string, unknown> = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "@id": `${pageUrl}#service`,
-    name: service.h1,
-    description: service.metaDescription,
-    provider: { "@id": `${SITE_URL}/#business` },
-    areaServed: "Toulouse, Haute-Garonne",
-    serviceType: service.group === "textile" ? "Nettoyage textile" : "Nettoyage bâtiment",
-    url: pageUrl,
-  };
-
-  // Add offers if prices are defined
-  if (service.prices && service.prices.length > 0) {
-    schema.offers = service.prices.map((p) => ({
-      "@type": "Offer",
-      name: p.label,
-      price: p.price.replace(/[^0-9]/g, ""),
-      priceCurrency: "EUR",
-      availability: "https://schema.org/InStock",
-    }));
-  }
+  const schema = buildServiceSchema(service, SITE_URL, COMPANY.name);
 
   return (
     <script
