@@ -69,7 +69,7 @@ const CUIR_ITEMS = [
   { id: "cuir-chaise", label: "Lot de 4 chaises en cuir", price: "69 €", duration: "1h", desc: "Nettoyage manuel doux des assises et dossiers de 4 chaises en cuir." },
   { id: "cuir-chaises-5", label: "Lot de 5 chaises en cuir", price: "79 €", duration: "1h", desc: "Nettoyage manuel doux des assises et dossiers de 5 chaises en cuir." },
   { id: "cuir-chaises-6", label: "Lot de 6 chaises en cuir", price: "89 €", duration: "1h", desc: "Nettoyage manuel doux des assises et dossiers de 6 chaises en cuir. Chaise supplémentaire : +15 €." },
-  { id: "cuir-auto",      label: "Rénovation siège auto", price: "59 €",    duration: "1h",     desc: "Tous les sièges du véhicule en cuir sont nettoyés pour 59 €." },
+  { id: "cuir-auto",      label: "Sièges auto cuir", price: "59 €",    duration: "1h",     desc: "Tous les sièges du véhicule en cuir sont nettoyés pour 59 €." },
 ];
 
 const CUIR_OPTIONS = [
@@ -330,12 +330,12 @@ const CUIR_IMAGES: Record<string, string> = {
   "cuir-fauteuil": "/images/cuir/fauteuil.webp",
   "cuir-canape-2": "/images/cuir/canape-2.webp",
   "cuir-canape-4": "/images/cuir/canape-4.webp",
-  "cuir-canape-angle": "/images/cuir/canape-angle.webp",
+  "cuir-canape-angle": "/images/cuir/canapes-u-et-angle.webp",
   "cuir-pouf": "/images/cuir/pouf.webp",
   "cuir-chaise": "/images/cuir/chaises-4-marron.webp",
   "cuir-chaises-5": "/images/cuir/chaises-5-marron.webp",
   "cuir-chaises-6": "/images/cuir/chaises-6-marron.webp",
-  "cuir-auto": "/images/cuir/siege-auto.webp",
+  "cuir-auto": "/images/cuir/sieges-auto-5-places.webp",
 };
 
 function CuirDetail() {
@@ -780,7 +780,10 @@ function MatelasDetail() {
               ) : null}
 
               <div className={`flex items-center justify-center w-full h-32 sm:h-48 mb-3 mt-1 px-0 transition-colors ${isSelected ? "text-[#1a2b4c]" : "text-primary/70"}`}>
-                <img src={MATELAS_IMAGES[c.id]} alt={c.label} className="w-full h-full object-contain mix-blend-multiply scale-125 sm:scale-150" loading="lazy" decoding="async" />
+                <div className="flex h-full w-full flex-col items-center">
+                  <span className="relative z-10 mb-1 text-center text-[11px] font-bold text-blue-700 sm:text-xs">Deux faces incluses</span>
+                  <img src={MATELAS_IMAGES[c.id]} alt={c.label} className="min-h-0 w-full flex-1 object-contain mix-blend-multiply" loading="lazy" decoding="async" />
+                </div>
               </div>
 
               <p className="text-[9px] font-semibold uppercase tracking-widest text-muted-foreground/80 leading-none">Dès</p>

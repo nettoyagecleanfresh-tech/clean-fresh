@@ -91,12 +91,12 @@ const FORMULE_IMAGES: Record<string, string> = {
   "cuir-fauteuil": "/images/cuir/fauteuil.webp",
   "cuir-canape-2": "/images/cuir/canape-2.webp",
   "cuir-canape-4": "/images/cuir/canape-4.webp",
-  "cuir-canape-angle": "/images/cuir/canape-angle.webp",
+  "cuir-canape-angle": "/images/cuir/canapes-u-et-angle.webp",
   "cuir-pouf": "/images/cuir/pouf.webp",
   "cuir-chaise": "/images/cuir/chaises-4-marron.webp",
   "cuir-chaises-5": "/images/cuir/chaises-5-marron.webp",
   "cuir-chaises-6": "/images/cuir/chaises-6-marron.webp",
-  "cuir-auto": "/images/cuir/siege-auto.webp",
+  "cuir-auto": "/images/cuir/sieges-auto-5-places.webp",
 };
 
 export function ServicePage({ service }: { service: Service }) {
@@ -287,6 +287,9 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
                           key={row.label}
                           className="group flex flex-col rounded-xl border border-border bg-card p-3 shadow-[var(--shadow-soft)] transition-all hover:-translate-y-0.5 hover:shadow-[var(--shadow-card)]"
                         >
+                          {row.formuleId?.startsWith("matelas-") && (
+                            <span className="mb-2 text-center text-xs font-bold text-blue-700">Deux faces incluses</span>
+                          )}
                           {img && (
                             <div className={`flex items-center justify-center w-full bg-slate-50 border border-slate-100 rounded-lg overflow-hidden p-1 mb-2 ${isGrid ? "h-20" : "h-20"}`}>
                               <img src={img} alt={row.label} className="w-full h-full object-contain mix-blend-multiply group-hover:scale-110 transition-transform duration-200" loading="lazy" decoding="async" />

@@ -827,7 +827,7 @@ export const SERVICES: Service[] = [
       { label: "Lot de 4 chaises en cuir", price: "69 €", items: ["Nettoyage manuel doux des assises et dossiers", "Produits adaptés au cuir", "1 h d’intervention"], formuleId: "cuir-chaise" },
       { label: "Lot de 5 chaises en cuir", price: "79 €", items: ["Nettoyage manuel doux des assises et dossiers", "Produits adaptés au cuir", "1 h d’intervention"], formuleId: "cuir-chaises-5" },
       { label: "Lot de 6 chaises en cuir", price: "89 €", items: ["Nettoyage manuel doux des assises et dossiers", "Produits adaptés au cuir", "1 h d’intervention", "Chaise supplémentaire : +15 €"], formuleId: "cuir-chaises-6" },
-      { label: "Rénovation siège auto", price: "59 €", items: ["Nettoyage manuel doux", "Brosse adaptée", "Réutilisation après séchage du cuir", "Tous les sièges du véhicule en cuir sont nettoyés"], formuleId: "cuir-auto" },
+      { label: "Sièges auto cuir", price: "59 €", items: ["Nettoyage manuel doux", "Brosse adaptée", "Réutilisation après séchage du cuir", "Tous les sièges du véhicule en cuir sont nettoyés"], formuleId: "cuir-auto" },
     ],
     priceNote:
       "Inclus : nettoyage manuel sans injection-extraction. Un traitement nourrissant et protecteur est fortement recommandé en option.",
