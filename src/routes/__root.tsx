@@ -1,4 +1,5 @@
 import { ConversionTracking } from "@/components/site/ConversionTracking";
+import { AudienceConsent } from "@/components/site/AudienceConsent";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
@@ -191,20 +192,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 });
 
 function RootShell({ children }: { children: ReactNode }) {
-  const privatePage = useLocation().pathname === "/envoyer-avis";
   return (
     <html lang="fr" className="overflow-x-clip w-full">
       <head>
         <HeadContent />
-        {/* Google Tag — Analytics + Ads */}
-        {!privatePage && <script async src="https://www.googletagmanager.com/gtag/js?id=GT-NBQQP8JN" />}
-        {!privatePage && <script dangerouslySetInnerHTML={{__html: `
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'GT-NBQQP8JN');
-          gtag('config', 'AW-17507775021');
-        `}} />}
+        {/* Google audience measurement is loaded by AudienceConsent only after opt-in. */}
       </head>
       <body className="overflow-x-clip w-full">
         {children}
@@ -251,6 +243,7 @@ function RootComponent() {
       {!loadChatbot && !/^\/(reserver|annuler|upsell)(\/|$)/.test(location.pathname) && <button type="button" aria-label="Ouvrir l’assistant Clean&Fresh" aria-haspopup="dialog" onClick={() => { setLoadChatbot(true); setHelpRequest(value => value + 1); }} className="fixed bottom-5 right-5 z-50 hidden items-center gap-2 rounded-full bg-primary px-5 py-4 font-bold text-white shadow-lg lg:inline-flex"><MessageCircle className="size-5" /> Aide</button>}
       <Toaster />
       <ConversionTracking />
+      <AudienceConsent />
       {location.pathname !== "/envoyer-avis" && <Analytics />}
       {location.pathname !== "/envoyer-avis" && <SpeedInsights />}
     </QueryClientProvider>

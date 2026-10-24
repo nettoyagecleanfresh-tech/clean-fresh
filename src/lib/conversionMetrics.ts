@@ -1,4 +1,5 @@
 import { track } from '@vercel/analytics';
+import { googleMetric } from './googleAnalytics';
 
 type ConversionEvent = 'conversion_cta' | 'quote_started' | 'quote_submitted' | 'quote_error';
 type ConversionDetails = { action?: 'booking' | 'quote' | 'phone' | 'whatsapp'; placement?: 'home_choices' | 'service_proof' | 'mobile_sticky' | 'service_hero' | 'site'; page?: 'home' | 'service' | 'booking' | 'quote' | 'other'; has_photos?: boolean };
@@ -8,6 +9,5 @@ export function conversionMetric(event: ConversionEvent, details: ConversionDeta
   if (typeof window === 'undefined') return;
   const properties = { ...details, device: window.matchMedia('(min-width: 1024px)').matches ? 'desktop' : 'mobile' };
   try { track(event, properties); } catch { /* Tracking must never block the customer. */ }
-  const gtag = (window as Window & { gtag?: (...args: unknown[]) => void }).gtag;
-  try { gtag?.('event', event, { ...properties, transport_type: 'beacon' }); } catch { /* Keep the journey usable. */ }
+  try { googleMetric(event, properties); } catch { /* Keep the journey usable. */ }
 }

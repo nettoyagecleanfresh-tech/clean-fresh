@@ -78,8 +78,10 @@ function PrivacyPage() {
 
             <h2>6. Cookies</h2>
             <p>
-              Notre site utilise des cookies techniques strictement nécessaires à son bon fonctionnement. Aucun cookie de pistage publicitaire invasif n'est déployé sans votre consentement.
+              Les fonctions de réservation restent accessibles lorsque vous refusez la mesure d’audience. Avec votre accord uniquement, Google Analytics 4 mesure les pages consultées et les actions liées aux demandes de devis et aux réservations. Les noms, adresses, e-mails, téléphones et contenus saisis dans les formulaires ne sont pas envoyés à ce suivi. Les paramètres des URL sont retirés des pages transmises.
             </p>
+            <p>Vous pouvez accepter, refuser ou retirer votre accord avec « Gérer mes cookies de mesure d’audience » en bas de page. Votre choix est conservé pendant 180 jours. Les cookies Google Analytics ont une durée configurée de 180 jours. Les fonctions de personnalisation publicitaire Google ne sont pas activées par ce choix.</p>
+            <p>Google fournit le service de mesure d’audience. Consultez <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer">les informations de Google sur l’utilisation des données provenant des sites partenaires</a>. Le site utilise également les outils techniques Vercel Analytics et Speed Insights pour mesurer son utilisation et ses performances.</p>
           </div>
         </FadeIn>
       </div>
