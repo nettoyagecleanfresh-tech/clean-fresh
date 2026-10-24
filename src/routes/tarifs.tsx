@@ -178,7 +178,7 @@ function PriceCard({
       {formuleId?.startsWith("matelas-") && (
         <span className="text-center text-xs font-bold text-blue-700">Deux faces incluses</span>
       )}
-      {note && !formuleId?.startsWith("matelas-") && (
+      {note && !formuleId?.startsWith("matelas-") && formuleId !== "canape-angle" && (
         <span className="absolute -top-3 left-4 rounded-full bg-primary px-3 py-0.5 text-[10px] font-bold uppercase tracking-wider text-primary-foreground">
           {note}
         </span>
@@ -198,6 +198,9 @@ function PriceCard({
         <p className="font-semibold text-foreground leading-tight group-hover:text-primary transition-colors">{label}</p>
         <p className="text-xl font-black text-primary shrink-0">{price}</p>
       </div>
+      {note && formuleId === "canape-angle" && (
+        <p className="text-xs font-medium leading-relaxed text-primary">{note}</p>
+      )}
       {items && (
         <ul className="space-y-1.5 mt-1">
           {items.map((item) => (

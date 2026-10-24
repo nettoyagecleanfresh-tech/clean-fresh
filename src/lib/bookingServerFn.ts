@@ -78,7 +78,9 @@ export const createBookingServerFn = createServerFn({ method: "POST" })
       let total = 0;
       data.items = data.items.map(item => {
         const service = SERVICES.find(s => s.id === item.service_id);
-        const baseFormule = service?.formules.find(f => f.id === item.formule_id);
+        // Accept an already-open booking from before the angle/U card merge.
+        const canonicalId = item.formule_id === "canape-u" ? "canape-angle" : item.formule_id;
+        const baseFormule = service?.formules.find(f => f.id === canonicalId);
         if (!service || !baseFormule) throw new Error("INVALID_FORMULA");
         const formule = withAdditionalChairs(baseFormule, item.additional_chairs ?? 0);
         const selected = new Set<string>();
@@ -90,7 +92,7 @@ export const createBookingServerFn = createServerFn({ method: "POST" })
         });
         duration += formule.durationMin;
         total += formule.price + options.reduce((sum, o) => sum + o.price, 0);
-        return { ...item, service_name: service.label, formule_name: formule.name, formule_price: formule.price, options };
+        return { ...item, formule_id: formule.id, service_name: service.label, formule_name: formule.name, formule_price: formule.price, options };
       });
       data.duration_min = duration;
       data.total_price = total;
