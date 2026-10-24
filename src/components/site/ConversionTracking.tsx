@@ -18,8 +18,9 @@ export function ConversionTracking() {
       const page = pathname === '/' ? 'home' : pathname.startsWith('/nettoyage-') ? 'service' : /^\/(formules|reserver)$/.test(pathname) ? 'booking' : pathname === '/contactez-nous' ? 'quote' : 'other';
       conversionMetric('conversion_cta', { action, placement, page });
     };
-    document.addEventListener('click', clicked);
-    return () => document.removeEventListener('click', clicked);
+    // Capture before the router handles the link and cleans up this page's listener.
+    document.addEventListener('click', clicked, true);
+    return () => document.removeEventListener('click', clicked, true);
   }, [pathname]);
   return null;
 }
