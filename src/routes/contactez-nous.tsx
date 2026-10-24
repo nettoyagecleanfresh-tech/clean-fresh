@@ -77,6 +77,8 @@ function ContactPage() {
 
     const form = e.currentTarget;
     const data = Object.fromEntries(new FormData(form));
+    // A disabled placeholder is omitted from FormData; keep validation in French.
+    data.service = selectedService;
     const photos = Array.from(form.querySelector<HTMLInputElement>("#photos")?.files ?? []);
 
     const result = schema.safeParse(data);
