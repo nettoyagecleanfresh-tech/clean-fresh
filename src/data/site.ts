@@ -200,13 +200,13 @@ export const SERVICES: Service[] = [
     soils: ["Urine", "Transpiration", "Sang", "Moisissures", "Odeurs de renfermé"],
     method: [
       "Aspiration haute puissance des poussières et allergènes de surface.",
-      "Détachage des auréoles et traitement anti-acariens.",
+      "Traitement courant des taches et auréoles ; détachage intensif et traitement anti-acariens en option.",
       "Injection-extraction en profondeur des fibres.",
-      "Désinfection, neutralisation des odeurs et séchage accéléré.",
+      "Extraction de l’humidité et conseils de séchage. Les traitements anti-odeur et enzymatiques sont proposés en option selon le besoin.",
     ],
     faq: [
       { q: "Combien coûte un nettoyage de matelas à Toulouse ?", a: "Le tarif démarre à 49 € pour un matelas enfant, 69 € pour un matelas 1 place et 99 € pour un matelas 2 places. Devis gratuit, réponse sous 24h." },
-      { q: "Peut-on enlever une ancienne tache d'urine sur un matelas ?", a: "Oui, dans la grande majorité des cas. Nous appliquons un détachage enzymatique ciblé avant l'injection-extraction. Les auréoles d'urine, même anciennes, sont éliminées ou très atténuées." },
+      { q: "Peut-on enlever une ancienne tache d'urine sur un matelas ?", a: "Un traitement enzymatique peut être proposé en option après diagnostic. Le résultat dépend de l’ancienneté de la tache, de la matière et des produits déjà appliqués : une auréole ancienne peut persister. Envoyez des photos pour préciser le traitement adapté." },
       { q: "Combien de temps met un matelas à sécher ?", a: "Le séchage prend généralement 3 à 6 heures, parfois davantage selon l’épaisseur, la température et l’aération. Aérez la chambre et attendez le séchage complet avant de réutiliser votre matelas." },
       { q: "Quels produits utilisez-vous pour le nettoyage de matelas ?", a: "Des produits professionnels sélectionnés, dont certaines références certifiées Écolabel. Ils sont utilisés selon leurs notices et après vérification de la compatibilité du textile." },
       { q: "Le nettoyage de matelas est-il adapté aux personnes sensibles aux acariens ?", a: "Le nettoyage aide à extraire les poussières et allergènes accumulés. Un traitement anti-acariens complémentaire est disponible en option ; il ne remplace pas un avis ou un traitement médical." },
@@ -259,9 +259,9 @@ export const SERVICES: Service[] = [
     ],
     faq: [
       { q: "Combien coûte un nettoyage de tapis à Toulouse ?", a: "À partir de 49 € pour 1 tapis, 79 € pour 2 tapis et 99 € pour 3 tapis. Tarif sur devis selon la surface et la nature de la fibre. Réponse gratuite sous 24h." },
-      { q: "Nettoyez-vous tous les types de tapis ?", a: "Oui : laine, synthétique, shaggy, berbère, viscose, soie artificielle. Nous testons la compatibilité du produit sur une zone cachée avant chaque intervention pour préserver votre tapis." },
+      { q: "Nettoyez-vous tous les types de tapis ?", a: "Nous vérifions la fibre, les couleurs et l’étiquette d’entretien avant d’intervenir. Les formules standards concernent les tapis compatibles jusqu’à 4 m² chacun. Les fibres délicates, notamment la viscose et la soie, nécessitent une estimation préalable sur photos et peuvent ne pas convenir au nettoyage à domicile." },
       { q: "Pouvez-vous nettoyer les deux faces du tapis ?", a: "Oui, le nettoyage recto-verso est disponible en option à +25 €. Recommandé pour les tapis très épais ou très encrassés." },
-      { q: "Comment éliminer l'odeur d'urine de chat ou de chien sur un tapis ?", a: "Nous appliquons un détachage enzymatique ciblé, suivi d'un traitement anti-odeur par neutralisation moléculaire. Les odeurs d'urine animale sont éliminées en profondeur, pas simplement masquées." },
+      { q: "Comment traiter l'odeur d'urine de chat ou de chien sur un tapis ?", a: "Un traitement enzymatique ou anti-odeur peut être proposé en option selon la fibre et la profondeur de la contamination. Le nettoyage ne garantit pas la disparition totale d’une odeur incrustée dans le dossier du tapis ou le sol. Le traitement et son prix sont précisés avant intervention." },
       { q: "Combien de temps faut-il pour nettoyer un tapis ?", a: "Entre 30 et 60 minutes par tapis selon sa taille et son état. Le séchage prend généralement plusieurs heures selon la fibre, l’épaisseur et l’aération. Attendez le séchage complet avant réutilisation." },
     ],
   },

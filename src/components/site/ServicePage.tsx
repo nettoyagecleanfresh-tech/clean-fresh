@@ -1,4 +1,6 @@
 import { DesktopServiceProof } from "@/components/site/DesktopServiceProof";
+import { serviceIntent } from "@/lib/serviceIntent";
+import { relatedServices } from "@/lib/relatedServices";
 import { optionDescription } from "@/data/optionDescriptions";
 import { useState, type ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
@@ -99,7 +101,7 @@ const FORMULE_IMAGES: Record<string, string> = {
 
 export function ServicePage({ service }: { service: Service }) {
   const [introExpanded, setIntroExpanded] = useState(false);
-  const others = SERVICES.filter((s) => s.slug !== service.slug).slice(0, 6);
+  const others = relatedServices(SERVICES, service);
   const bookingServiceId = getBookingServiceId(service.slug);
   return (
     <>
@@ -125,6 +127,8 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
   bookingServiceId: string | null;
 }) {
   const serviceOptions = bookingServiceId ? (OPTIONS_BY_SERVICE[bookingServiceId] ?? []) : [];
+  const intent = serviceIntent(service.slug);
+  const quoteSearch = intent.kind === "quote" ? { service: intent.service } : {};
   const quickPrices = bookingServiceId === 'canape'
     ? 'Fauteuil 49 € · Canapé 2/3 places 79 € · Angle / U 99 €'
     : bookingServiceId === 'auto'
@@ -187,7 +191,7 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
               </Button>
             ) : (
               <Button asChild variant="cta" size="xl" className="px-4 md:px-6 h-10 md:h-12 text-xs md:text-sm">
-                <Link to="/contactez-nous">Devis gratuit sous 24h</Link>
+                <Link to="/contactez-nous" search={quoteSearch}>Devis gratuit sous 24h</Link>
               </Button>
             )}
             <Button asChild variant="onDark" size="xl" className="px-4 md:px-6 h-10 md:h-12 text-xs md:text-sm">
@@ -311,7 +315,7 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
                                 <CalendarCheck className="size-3 mr-1" /> Réserver
                               </Link>
                             ) : (
-                              <Link to="/contactez-nous">
+                              <Link to="/contactez-nous" search={quoteSearch}>
                                 <ArrowRight className="size-3 mr-1" /> Demander un devis
                               </Link>
                             )}
@@ -372,7 +376,7 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
                         <CalendarCheck className="size-4 mr-2" /> Réserver en ligne
                       </Link>
                     ) : (
-                      <Link to="/contactez-nous">
+                      <Link to="/contactez-nous" search={quoteSearch}>
                         <ArrowRight className="size-4 mr-2" /> Demander un devis
                       </Link>
                     )}
@@ -383,7 +387,7 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
                   <p className="text-xl font-bold">Prestation sur devis personnalisé</p>
                   <p className="mt-2 text-muted-foreground">{service.priceNote}</p>
                   <Button asChild size="lg" className="mt-5 w-full bg-primary-gradient text-primary-foreground font-semibold hover:opacity-90">
-                    <Link to="/contactez-nous">Demander mon devis gratuit</Link>
+                    <Link to="/contactez-nous" search={quoteSearch}>Demander mon devis gratuit</Link>
                   </Button>
                 </div>
               )}
@@ -593,7 +597,7 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
                 )}
               </Button>
               <Button asChild variant="onDark" size="xl">
-                <Link to="/contactez-nous">Devis gratuit</Link>
+                <Link to="/contactez-nous" search={quoteSearch}>Devis gratuit</Link>
               </Button>
               <Button asChild variant="onDark" size="xl">
                 <a href={COMPANY.phoneHref}>
