@@ -575,10 +575,11 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
           <div className="relative overflow-hidden rounded-3xl bg-hero-gradient px-6 py-14 text-center text-ink-foreground shadow-[var(--shadow-card)]">
           <div className="pointer-events-none absolute -right-16 -top-16 size-72 rounded-full bg-primary/20 blur-3xl" />
           <div className="relative">
-            <h2 className="text-3xl font-bold md:text-4xl">Prêt à réserver ?</h2>
+            <h2 className="text-3xl font-bold md:text-4xl">{bookingServiceId ? "Prêt à réserver ?" : "Un nettoyage à faire chiffrer ?"}</h2>
             <p className="mx-auto mt-3 max-w-xl text-ink-foreground/75">
-              Choisissez votre créneau en ligne en moins de deux minutes, ou appelez-nous pour un
-              devis gratuit sous 24h.
+              {bookingServiceId
+                ? "Choisissez votre formule et consultez les créneaux disponibles, ou appelez-nous pour être conseillé."
+                : "Décrivez votre besoin et ajoutez des photos pour recevoir un devis gratuit sous 24h. Le créneau est confirmé après accord et réception de l’acompte."}
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <Button
@@ -591,8 +592,8 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
                     <CalendarCheck /> Réserver en ligne
                   </Link>
                 ) : (
-                  <Link to="/formules">
-                    <CalendarCheck /> Réserver en ligne
+                  <Link to="/contactez-nous" search={quoteSearch}>
+                    <CalendarCheck /> Demander mon devis
                   </Link>
                 )}
               </Button>
