@@ -22,7 +22,7 @@ export function AudienceConsent() {
     <div className="bg-background px-4 py-3 text-center text-xs">
       <button type="button" onClick={() => setOpen(true)} className="min-h-11 underline underline-offset-4">Gérer mes cookies de mesure d’audience</button>
     </div>
-    {open && <section role="region" aria-label="Choix des cookies de mesure d’audience" className="fixed inset-x-3 bottom-[calc(5.5rem+env(safe-area-inset-bottom))] z-[60] mx-auto max-w-[320px] rounded-xl border border-slate-200 bg-white p-2.5 text-slate-800 shadow-[0_8px_32px_rgba(15,23,42,0.12)] lg:inset-x-auto lg:bottom-5 lg:left-5 lg:mx-0 lg:w-[300px]">
+    {open && <section role="region" aria-label="Choix des cookies de mesure d’audience" className="fixed inset-x-3 bottom-[calc(3.75rem+max(0.5rem,env(safe-area-inset-bottom)))] z-[60] mx-auto max-w-[320px] rounded-xl border border-slate-200 bg-white p-2.5 text-slate-800 shadow-[0_8px_32px_rgba(15,23,42,0.12)] lg:inset-x-auto lg:bottom-5 lg:left-5 lg:mx-0 lg:w-[300px]">
       <p className="text-xs leading-4 text-slate-600">Cookies Google Analytics : mesurer les visites avec votre accord.{' '}
         <a href="/politique-confidentialite" className="rounded-sm underline underline-offset-2 hover:text-slate-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600">En savoir plus</a>
       </p>
