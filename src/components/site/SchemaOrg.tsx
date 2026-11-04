@@ -41,6 +41,8 @@ export function SchemaFAQ({ service }: { service: Service }) {
   const schema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
+    "@id": `${SITE_URL}${service.slug}#faq`,
+    inLanguage: "fr-FR",
     mainEntity: service.faq.map((item) => ({
       "@type": "Question",
       name: item.q,
@@ -64,6 +66,7 @@ export function SchemaBreadcrumb({ service }: { service: Service }) {
   const schema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
+    "@id": `${SITE_URL}${service.slug}#breadcrumb`,
     itemListElement: [
       {
         "@type": "ListItem",

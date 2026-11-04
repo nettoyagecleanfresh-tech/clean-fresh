@@ -216,7 +216,7 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
             {/* Colonne gauche : intro + ce qu'on traite + problèmes */}
             <div>
               <p className="text-xs font-bold uppercase tracking-widest text-primary">Le service en détail</p>
-              <h2 className="mt-2 text-3xl font-bold tracking-tight">Comment ça se passe ?</h2>
+              <h2 className="mt-2 text-3xl font-bold tracking-tight">{service.detailTitle}</h2>
               {/* Affiche 2 paragraphes, le reste masqué */}
               {service.intro.slice(0, 2).map((p) => (
                 <p key={p} className="mt-4 text-muted-foreground leading-relaxed">{p}</p>
@@ -526,7 +526,7 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
       <FadeIn delay={0.1}>
         <section className="mx-auto max-w-6xl px-4 py-16">
           <p className="text-xs font-bold uppercase tracking-widest text-primary">Notre savoir-faire</p>
-        <h2 className="mt-2 text-3xl font-bold tracking-tight">Notre méthode de travail</h2>
+        <h2 className="mt-2 text-3xl font-bold tracking-tight">{service.methodTitle}</h2>
         <ol className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
           {service.method.map((step, i) => (
             <li

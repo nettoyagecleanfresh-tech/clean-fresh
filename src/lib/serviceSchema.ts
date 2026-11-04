@@ -13,14 +13,24 @@ export function buildServiceSchema(service: Service, siteUrl: string, companyNam
     const price = fixedEuroPrice(row.price);
     return price === undefined ? [] : [{
       '@type': 'Offer', name: row.label, price, priceCurrency: 'EUR', url: pageUrl,
-      ...(row.note ? { description: row.note } : {}),
+      ...((row.note || row.items?.length) ? {
+        description: [row.note, ...(row.items ?? [])].filter(Boolean).join(' '),
+      } : {}),
     }];
   });
   return {
     '@context': 'https://schema.org', '@type': 'Service', '@id': `${pageUrl}#service`,
     name: service.h1, description: service.metaDescription,
+    mainEntityOfPage: {
+      '@type': 'WebPage', '@id': `${pageUrl}#webpage`, url: pageUrl,
+      name: service.metaTitle, inLanguage: 'fr-FR',
+      breadcrumb: { '@id': `${pageUrl}#breadcrumb` },
+    },
     provider: { '@type': 'LocalBusiness', '@id': `${siteUrl}/#business`, name: companyName, url: siteUrl },
-    areaServed: 'Toulouse, Haute-Garonne', serviceType: service.navLabel, url: pageUrl,
+    areaServed: [
+      { '@type': 'City', name: 'Toulouse' },
+      { '@type': 'AdministrativeArea', name: 'Haute-Garonne' },
+    ], serviceType: service.navLabel, url: pageUrl,
     ...(offers.length ? { offers } : {}),
   };
 }
