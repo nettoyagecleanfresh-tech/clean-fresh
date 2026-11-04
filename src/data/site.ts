@@ -13,6 +13,9 @@ export const COMPANY = {
   phoneHref: "tel:+33767127500",
   email: "nettoyagecleanfresh@gmail.com",
   city: "Toulouse",
+  streetAddress: "173 avenue Jean Chaubet",
+  postalCode: "31500",
+  region: "Haute-Garonne",
   booking: "https://app.dispoo.fr/website/385-clean-fresh",
 };
 
@@ -104,13 +107,11 @@ export const SERVICES: Service[] = [
     group: "textile",
     booking: true,
     intro: [
-      "Votre canapé concentre poussière, acariens, transpiration et taches du quotidien. Notre équipe de nettoyage canapé à Toulouse intervient directement chez vous, sans déplacer vos meubles, avec un matériel professionnel d'injection-extraction et des produits professionnels sélectionnés, dont certaines références certifiées Écolabel.",
-      "Chaque prestation comprend le nettoyage courant de l'assise, du dossier et des coussins compatibles. Les taches anciennes, odeurs persistantes, poils d'animaux et contaminations organiques peuvent nécessiter une option spécialisée. Tissu, microfibre, velours ou cuir : la méthode est adaptée après diagnostic de la matière.",
-      "Le nettoyage canapé cuir à Toulouse est l'une de nos spécialités. Contrairement au tissu, le cuir ne supporte pas l'injection-extraction : nous utilisons des nettoyants pH neutre spécifiques, appliqués manuellement, avec un soin nourrissant protecteur proposé en option qui restaure la souplesse et l'éclat du revêtement. Le nettoyage traite les salissures ; les rayures et les zones usées ne sont pas réparées par cette prestation. Cuir naturel, cuir synthétique ou éco-cuir — le résultat est visible dès la première intervention.",
-      "Un canapé en tissu ou en velours se nettoie idéalement une à deux fois par an, ou dès l'apparition d'une tache incrustée. Pour les familles avec enfants ou animaux, un nettoyage régulier élimine les allergènes accumulés dans les fibres et prolonge la durée de vie du meuble. Notre traitement anti-acariens en option est particulièrement recommandé pour les personnes souffrant d'allergies respiratoires.",
-      "Les textiles compatibles sont nettoyés principalement par injection-extraction. Le cuir véritable bénéficie d’un nettoyage manuel professionnel avec des produits et accessoires adaptés à la matière.",
-      "Beaucoup de clients recherchent une shampouineuse canapé à louer ou un nettoyage canapé à la vapeur. L’injection-extraction associe une solution nettoyante et une aspiration des salissures. La vapeur est un traitement complémentaire, réservé aux matières compatibles. Le shampouinage canapé par injecteur extracteur donne un résultat visible dès la première intervention, sur tissu comme sur microfibre.",
-      "Nous intervenons à Toulouse et dans toute la Haute-Garonne — Blagnac, Colomiers, Tournefeuille, Balma, Cugnaux, Muret, Ramonville-Saint-Agne, Castanet-Tolosan, Plaisance-du-Touch et dans l'ensemble des communes du 31. Devis gratuit sous 24h, intervention possible dès le lendemain.",
+      "Retrouvez un canapé propre sans le transporter : Clean&Fresh nettoie à domicile les canapés, fauteuils et chaises rembourrées à Toulouse et dans son agglomération. L'assise, le dossier et les coussins compatibles sont traités avec une méthode adaptée à leur revêtement.",
+      "Choisissez le format de votre canapé, puis les options utiles : poils d'animaux, détachage intensif, traitement anti-odeur ou anti-acariens. Le prix de la formule et des suppléments est visible avant de réserver ; le règlement s'effectue en fin de prestation.",
+      "Sur les tissus compatibles, l'injection-extraction associe une solution nettoyante et l'aspiration des salissures. La fibre, les couleurs et l'étiquette d'entretien sont vérifiées au préalable. La vapeur est un complément réservé aux matières qui la supportent. Un canapé en cuir reçoit un nettoyage manuel spécifique.",
+      "Les photos avant/après présentent des assises, dossiers et méridiennes nettoyés lors de nos interventions. Une tache ancienne, une décoloration ou une usure peuvent rester visibles : nous expliquons les possibilités de traitement après diagnostic, sans promettre un résultat identique sur tous les meubles.",
+      "Préparez l'accès au canapé, retirez les objets et prévoyez de l'eau et une prise électrique. Le séchage demande généralement 2 à 4 heures, parfois davantage selon le tissu et l'aération. Les créneaux disponibles à Toulouse, Blagnac, Colomiers, Balma et alentours se consultent directement en ligne."
     ],
     treated: [
       "Canapés 2, 3, 4 et 5 places",
@@ -151,12 +152,30 @@ export const SERVICES: Service[] = [
       "Extraction de l’humidité et conseils de séchage. Les odeurs incrustées peuvent nécessiter un traitement complémentaire.",
     ],
     faq: [
-      { q: "Combien coûte un nettoyage de canapé à Toulouse ?", a: "Le tarif part de 49 € pour un fauteuil, 79 € pour un canapé 2/3 places et 99 € pour un canapé 4/5 places ou d'angle. Devis gratuit, réponse sous 24h." },
-      { q: "Combien de temps faut-il pour nettoyer un canapé ?", a: "Une intervention dure entre 45 minutes et 1h30 selon la taille et l'état. Le technicien apporte tout le matériel — vous pouvez rester chez vous pendant l'intervention." },
-      { q: "Combien de temps met un canapé à sécher ?", a: "Le séchage prend généralement 2 à 4 heures. Attendez le séchage complet avant utilisation ; le délai dépend de la matière, de la température et de l’aération. En cas d'humidité élevée, aérez la pièce ou activez le chauffage pour accélérer." },
-      { q: "Peut-on enlever une ancienne tache de café, vin ou urine sur un canapé ?", a: "Oui, dans la plupart des cas. Nos produits professionnels traitent les taches incrustées de café, vin, urine, sang et graisses. Plus la tache est ancienne, plus le traitement est intensif — les résultats sont souvent remarquables." },
-      { q: "Nettoyez-vous les canapés en cuir à Toulouse ?", a: "Oui. Le nettoyage canapé cuir demande des produits et une technique spécifiques pour ne pas assécher ni craqueler le revêtement. Nous utilisons des nettoyants pH neutre adaptés au cuir naturel, synthétique et éco-cuir, avec un soin nourrissant protecteur proposé en option. Le résultat est immédiat : le cuir retrouve son éclat et sa souplesse." },
-      { q: "Intervenez-vous le week-end à Toulouse et dans l'agglomération ?", a: "Oui, nous intervenons en semaine et le week-end à Toulouse, Blagnac, Colomiers, Tournefeuille, Balma, Cugnaux et dans tout le 31. Contactez-nous pour vérifier les disponibilités." },
+      {
+        "q": "Combien coûte un nettoyage de canapé à Toulouse ?",
+        "a": "Le fauteuil est à 49 €, le canapé 2/3 places à 79 €, le canapé 4/5 places ou d'angle/en U à 99 €. Les options et les éventuels frais de déplacement s'ajoutent au prix affiché avant confirmation."
+      },
+      {
+        "q": "Que comprend le nettoyage du canapé ?",
+        "a": "La formule comprend le nettoyage courant de l'assise, du dossier et des coussins compatibles. Les poils d'animaux, les taches anciennes et les odeurs persistantes peuvent demander une option spécifique, choisie avant la confirmation."
+      },
+      {
+        "q": "Combien de temps dure l'intervention et le séchage ?",
+        "a": "Prévoyez environ 45 minutes à 1 h 30 selon le format et l'état. Le séchage prend généralement 2 à 4 heures, parfois davantage. Aérez la pièce et attendez que le textile soit complètement sec avant de vous asseoir."
+      },
+      {
+        "q": "Une ancienne tache de café, de vin ou d'urine peut-elle disparaître ?",
+        "a": "Un détachage ciblé peut atténuer ou retirer la tache selon sa nature, son ancienneté et les produits déjà utilisés. Certaines marques restent fixées dans la fibre. Des photos permettent d'évaluer le besoin d'un détachage intensif ou d'un traitement enzymatique."
+      },
+      {
+        "q": "Nettoyez-vous les canapés en cuir ?",
+        "a": "Oui, avec un nettoyage manuel adapté au cuir, sans injection-extraction. Le soin nourrissant et protecteur est proposé en option. Cette prestation traite les salissures, mais ne recolore pas les zones usées et ne répare pas les craquelures."
+      },
+      {
+        "q": "Puis-je ajouter un matelas ou un tapis à ma réservation ?",
+        "a": "Oui, vous pouvez ajouter plusieurs prestations à votre réservation. Vérifiez le récapitulatif, les options et la durée totale avant de choisir votre créneau."
+      }
     ],
   },
   {
@@ -172,24 +191,23 @@ export const SERVICES: Service[] = [
     group: "textile",
     booking: true,
     intro: [
-      "Un matelas absorbe chaque nuit transpiration, cellules mortes et humidité : c'est le terrain idéal pour les acariens. Notre service de nettoyage matelas à Toulouse intervient directement dans votre chambre, sans le déplacer, avec une machine professionnelle et des produits professionnels sélectionnés, dont certaines références certifiées Écolabel.",
-      "Le résultat : un couchage assaini, désodorisé et sain pour toute la famille. Particulièrement recommandé aux personnes allergiques, aux familles avec enfants en bas âge et en cas d'auréoles d'urine ou de transpiration incrustées.",
-      "Un entretien régulier aide à limiter l'accumulation de poussières et d'allergènes. Pour les personnes sensibles aux acariens, un traitement complémentaire peut être proposé après vérification de la matière et de l'état du matelas.",
-      "Notre méthode d'injection-extraction décolle puis aspire les salissures présentes dans les fibres compatibles. Les deux faces du matelas sont toujours nettoyées, quel que soit le format choisi. Le séchage prend généralement 3 à 6 heures selon l'épaisseur, la température et la ventilation. Les produits sont employés selon leurs notices et après vérification de la compatibilité du support.",
-      "Beaucoup de clients cherchent un nettoyeur matelas ou une shampouineuse pour matelas en location. Notre équipement professionnel d'injection-extraction va bien au-delà : il réalise un nettoyage acariens en profondeur que les appareils grand public ne peuvent pas atteindre, en extrayant les allergènes, les cellules mortes et les bactéries logées au cœur des fibres.",
-      "Clean&Fresh intervient sur tous types de matelas — mousse, latex, ressorts, mémoire de forme — à Toulouse, Blagnac, Colomiers, Tournefeuille, Balma, Cugnaux, Muret, Ramonville-Saint-Agne et dans tout le département 31. Réponse sous 24h, tarifs clairs et sans surprise.",
+      "Clean&Fresh nettoie votre matelas à domicile à Toulouse, avec les deux faces incluses pour chaque format : enfant, une place ou deux places. Nous traitons les poussières et les salissures du couchage après vérification du revêtement et des recommandations d'entretien.",
+      "La formule comprend l'injection-extraction des textiles compatibles et le traitement courant des taches et auréoles. Vous pouvez ajouter un détachage intensif, un traitement anti-odeur, anti-acariens ou enzymatique selon le besoin. Les options sélectionnées figurent dans le récapitulatif de réservation.",
+      "Pour les traces d'urine ou de transpiration, précisez l'ancienneté de la tache et les produits déjà appliqués. Le traitement dépend de la fibre et de la profondeur des salissures. Les photos avant/après de matelas présentées sur cette page illustrent des résultats obtenus, sans garantir la disparition de toutes les auréoles.",
+      "Un nettoyage aide à retirer les poussières et allergènes accumulés. Il ne répare pas une mousse affaissée et ne suffit pas à rendre utilisable un matelas dont l'intérieur est dégradé ou contaminé. En cas de moisissures importantes, envoyez des photos avant de réserver pour vérifier si la prestation convient.",
+      "Dégagez les côtés du lit pour permettre le retournement du matelas et prévoyez de l'eau et une prise électrique. Le séchage prend généralement 3 à 6 heures, parfois davantage selon l'épaisseur et l'aération. Réservez de préférence assez tôt pour laisser le couchage sécher complètement avant la nuit."
     ],
     treated: [
-      "Matelas 1 place, 2 places, king size",
-      "Matelas enfant et lits superposés",
-      "Sommiers tapissiers et têtes de lit",
-      "Mousse, ressorts, latex et mémoire de forme",
+      "Matelas enfant, une place et deux places",
+      "Grands formats après vérification des dimensions",
+      "Matelas mousse, ressorts ou latex compatibles après diagnostic",
+      "Sommiers tapissiers et têtes de lit sur demande distincte"
     ],
     problems: [
-      "Acariens et allergènes",
+      "Poussières et allergènes accumulés",
       "Auréoles de transpiration et d'urine",
-      "Moisissures liées à l'humidité",
-      "Odeurs persistantes",
+      "Taches du quotidien",
+      "Odeurs selon leur origine et la profondeur des salissures"
     ],
     prices: [
       { label: "Matelas enfant (< 90 cm)", price: "49 €", note: "Deux faces incluses", items: ["Nettoyage des deux faces inclus", "Séchage généralement dans la journée", "Traitement courant des taches et auréoles", "Option anti-odeur disponible"], formuleId: "matelas-enfant" },
@@ -197,46 +215,68 @@ export const SERVICES: Service[] = [
       { label: "Matelas 2 places", price: "99 €", note: "Deux faces incluses", items: ["Nettoyage des deux faces inclus", "Réutilisation après séchage complet", "Traitement courant des taches et auréoles", "Nettoyage courant des odeurs ; traitement intensif en option"], formuleId: "matelas-2" },
     ],
     priceNote: "Tarifs applicables aux formats indiqués et à un état standard. Format hors catégorie ou état exceptionnel : estimation préalable sur photos.",
-    soils: ["Urine", "Transpiration", "Sang", "Moisissures", "Odeurs de renfermé"],
+    soils: [
+      "Urine",
+      "Transpiration",
+      "Sang",
+      "Taches de boissons",
+      "Odeurs de renfermé"
+    ],
     method: [
-      "Aspiration haute puissance des poussières et allergènes de surface.",
-      "Traitement courant des taches et auréoles ; détachage intensif et traitement anti-acariens en option.",
-      "Injection-extraction en profondeur des fibres.",
-      "Extraction de l’humidité et conseils de séchage. Les traitements anti-odeur et enzymatiques sont proposés en option selon le besoin.",
+      "Vérification de la matière et de l'état du matelas, puis aspiration des salissures de surface.",
+      "Traitement courant des taches ; application des options choisies sur les textiles compatibles.",
+      "Injection-extraction des deux faces avec maîtrise de l'humidité.",
+      "Extraction finale, contrôle du résultat et conseils de séchage avant réutilisation."
     ],
     faq: [
-      { q: "Combien coûte un nettoyage de matelas à Toulouse ?", a: "Le tarif démarre à 49 € pour un matelas enfant, 69 € pour un matelas 1 place et 99 € pour un matelas 2 places. Devis gratuit, réponse sous 24h." },
-      { q: "Peut-on enlever une ancienne tache d'urine sur un matelas ?", a: "Un traitement enzymatique peut être proposé en option après diagnostic. Le résultat dépend de l’ancienneté de la tache, de la matière et des produits déjà appliqués : une auréole ancienne peut persister. Envoyez des photos pour préciser le traitement adapté." },
-      { q: "Combien de temps met un matelas à sécher ?", a: "Le séchage prend généralement 3 à 6 heures, parfois davantage selon l’épaisseur, la température et l’aération. Aérez la chambre et attendez le séchage complet avant de réutiliser votre matelas." },
-      { q: "Quels produits utilisez-vous pour le nettoyage de matelas ?", a: "Des produits professionnels sélectionnés, dont certaines références certifiées Écolabel. Ils sont utilisés selon leurs notices et après vérification de la compatibilité du textile." },
-      { q: "Le nettoyage de matelas est-il adapté aux personnes sensibles aux acariens ?", a: "Le nettoyage aide à extraire les poussières et allergènes accumulés. Un traitement anti-acariens complémentaire est disponible en option ; il ne remplace pas un avis ou un traitement médical." },
+      {
+        "q": "Quel est le prix d'un nettoyage de matelas à Toulouse ?",
+        "a": "Le matelas enfant de moins de 90 cm est à 49 €, le matelas 1 place à 69 € et le matelas 2 places à 99 €. Les deux faces sont incluses. Les options et éventuels frais de déplacement sont précisés avant confirmation."
+      },
+      {
+        "q": "Les deux faces du matelas sont-elles comprises ?",
+        "a": "Oui, le nettoyage des deux faces est inclus pour chaque format. Dégagez l'accès autour du lit ; signalez un matelas très lourd ou difficile à retourner afin de préparer l'intervention."
+      },
+      {
+        "q": "Quel traitement choisir pour une tache d'urine ?",
+        "a": "Un traitement enzymatique peut être ajouté après vérification de la matière. Il complète le nettoyage pour les résidus organiques ; un détachage intensif peut aussi être utile. Une auréole ancienne peut subsister malgré le traitement."
+      },
+      {
+        "q": "Quand puis-je dormir à nouveau sur mon matelas ?",
+        "a": "Attendez le séchage complet, généralement 3 à 6 heures et parfois davantage selon la matière, l'épaisseur et la ventilation. Privilégiez un créneau en matinée si vous souhaitez réutiliser le lit le soir."
+      },
+      {
+        "q": "Le traitement anti-acariens est-il compris ?",
+        "a": "Le nettoyage courant est inclus ; le traitement complémentaire anti-acariens est une option. Il est appliqué uniquement sur les matières compatibles. Le nettoyage du matelas ne remplace pas les conseils de votre professionnel de santé."
+      },
+      {
+        "q": "Faut-il enlever les draps et protéger le sommier ?",
+        "a": "Retirez les draps, alèses, oreillers et objets autour du lit avant l'arrivée. Le technicien vérifie l'installation pour travailler sur les deux faces. Le nettoyage du sommier ou de la tête de lit doit être demandé séparément."
+      }
     ],
   },
   {
     slug: "/nettoyage-tapis-toulouse",
     navLabel: "Nettoyage tapis Toulouse",
-    h1: "Nettoyage tapis et moquette à Toulouse",
+    h1: "Nettoyage de tapis à domicile à Toulouse",
     short: "Nettoyage tapis Toulouse",
-    subtitle:
-      "Nettoyage professionnel de tapis et moquettes à domicile, à Toulouse et dans toute la Haute-Garonne.",
+    subtitle: "Nettoyage de tapis à domicile à Toulouse : 1, 2 ou 3 tapis jusqu'à 4 m² chacun. Méthode adaptée à la fibre après diagnostic.",
     metaTitle: "Nettoyage tapis Toulouse dès 49 € | Clean&Fresh",
-    metaDescription:
-      "Shampouinage et nettoyage professionnel de tapis à Toulouse. Tapis compatibles jusqu’à 4 m² dès 49 €. Fibres délicates et grands formats sur estimation. Devis gratuit sous 24h.",
+    metaDescription: "Nettoyage de tapis à Toulouse dès 49 € : formules 1, 2 ou 3 tapis jusqu'à 4 m² chacun. Diagnostic de la fibre et réservation à domicile.",
     group: "textile",
     booking: true,
     intro: [
-      "Tapis de salon, descentes de lit, moquettes de bureaux : les fibres retiennent la poussière, les acariens et les taches. Notre service de nettoyage tapis à Toulouse intervient sur place avec du matériel professionnel adapté à chaque type de fibre.",
-      "Nous adaptons la méthode à la fibre, aux couleurs et à l’état du tapis après diagnostic. L’injection-extraction est réservée aux supports compatibles. Les fibres délicates et les grands formats nécessitent une estimation préalable sur photos. Attendez le séchage complet avant réutilisation.",
-      "Le shampouinage de tapis à Toulouse est souvent confondu avec un simple lavage. Chez Clean&Fresh, nous utilisons l'injection-extraction : le produit nettoyant est injecté sous pression dans les fibres puis aspiré avec les salissures. La compatibilité de cette méthode est vérifiée avant intervention, notamment pour les fibres délicates comme la laine ou la viscose. Le séchage dépend de la matière, de l’épaisseur, de la température et de l’aération.",
-      "Pour le nettoyage de moquette à Toulouse, la même technique s'applique aux moquettes collées d'appartements et aux moquettes de bureaux ou d'espaces professionnels. Nous intervenons pour les particuliers comme pour les entreprises, les hôtels, les agences immobilières et les cabinets médicaux. Un tapis ou une moquette se nettoie en profondeur 1 à 2 fois par an selon le trafic et la présence d'animaux.",
-      "Notre prestation consiste à nettoyer votre tapis à domicile après vérification de sa compatibilité. La méthode et les traitements sont choisis selon la fibre et les salissures. Les tarifs standards concernent les tapis jusqu’à 4 m² ; les grands formats et les fibres délicates font l’objet d’une estimation préalable.",
-      "Nous nous déplaçons à domicile dans toute l'agglomération toulousaine — Toulouse, Blagnac, Colomiers, Tournefeuille, Cugnaux, Balma, Muret, Ramonville-Saint-Agne, Castanet-Tolosan et plus de 30 autres communes du 31. Devis gratuit, intervention rapide sous 24h.",
+      "Clean&Fresh nettoie vos tapis de salon, descentes de lit et tapis d'entrée directement à domicile à Toulouse. Les formules couvrent 1, 2 ou 3 tapis jusqu'à 4 m² chacun, avec un diagnostic préalable de la fibre, des couleurs et de l'envers.",
+      "Le nettoyage courant traite les poussières et les salissures du tapis. Le détachage intensif, le traitement anti-odeur ou anti-acariens et le nettoyage recto-verso sont proposés en option selon la compatibilité. Les grands formats et les fibres délicates demandent une estimation sur photos.",
+      "L'injection-extraction est utilisée sur les tapis qui la supportent : une solution nettoyante est appliquée puis aspirée avec les salissures. La laine, la viscose, la soie ou un tapis artisanal exigent une attention particulière. Nous ne confirmons pas une méthode uniquement à partir de l'apparence du tapis.",
+      "Pour les traces de café, de nourriture ou d'urine d'animaux, indiquez leur origine et les produits déjà utilisés. Une odeur présente dans l'envers ou le sol peut nécessiter un traitement complémentaire ; une décoloration ou une fibre usée ne disparaît pas avec le nettoyage.",
+      "Dégagez le tapis avant notre arrivée et prévoyez un espace ventilé pour le séchage, dont la durée dépend de l'épaisseur et de la matière. Vous pouvez ajouter un canapé ou un matelas à votre réservation. Pour une moquette fixée au sol, choisissez la prestation dédiée au nettoyage de moquette."
     ],
     treated: [
-      "Tapis en laine, synthétique, shaggy, berbère",
-      "Grands tapis de salon et descentes de lit",
-      "Moquettes d'appartements et de bureaux",
-      "Paillassons et tapis d'entrée professionnels",
+      "Tapis synthétiques et fibres compatibles après diagnostic",
+      "Tapis de salon, descentes de lit et tapis d'entrée",
+      "Formats standards jusqu'à 4 m² par tapis",
+      "Grands formats, laine et fibres délicates sur estimation"
     ],
     problems: [
       "Taches alimentaires et boissons",
@@ -252,17 +292,36 @@ export const SERVICES: Service[] = [
     priceNote: "Les formules couvrent respectivement 1, 2 ou 3 tapis, jusqu'à 4 m² chacun. Grand format, fibre délicate ou état exceptionnel : estimation préalable sur photos.",
     soils: ["Pipi d'animaux", "Café et vin", "Nourriture", "Boue et terre", "Tabac"],
     method: [
-      "Identification de la fibre et dépoussiérage mécanique.",
-      "Prétraitement des taches localisées.",
-      "Injection-extraction avec produits professionnels.",
-      "Brossage de finition et séchage accéléré.",
+      "Identification de la fibre, vérification des couleurs et de l'envers, puis dépoussiérage.",
+      "Traitement des taches et application des options retenues selon la matière.",
+      "Injection-extraction ou méthode adaptée sur les supports compatibles.",
+      "Extraction de l'humidité, finition et conseils pour un séchage complet."
     ],
     faq: [
-      { q: "Combien coûte un nettoyage de tapis à Toulouse ?", a: "À partir de 49 € pour 1 tapis, 79 € pour 2 tapis et 99 € pour 3 tapis. Tarif sur devis selon la surface et la nature de la fibre. Réponse gratuite sous 24h." },
-      { q: "Nettoyez-vous tous les types de tapis ?", a: "Nous vérifions la fibre, les couleurs et l’étiquette d’entretien avant d’intervenir. Les formules standards concernent les tapis compatibles jusqu’à 4 m² chacun. Les fibres délicates, notamment la viscose et la soie, nécessitent une estimation préalable sur photos et peuvent ne pas convenir au nettoyage à domicile." },
-      { q: "Pouvez-vous nettoyer les deux faces du tapis ?", a: "Oui, le nettoyage recto-verso est disponible en option à +25 €. Recommandé pour les tapis très épais ou très encrassés." },
-      { q: "Comment traiter l'odeur d'urine de chat ou de chien sur un tapis ?", a: "Un traitement enzymatique ou anti-odeur peut être proposé en option selon la fibre et la profondeur de la contamination. Le nettoyage ne garantit pas la disparition totale d’une odeur incrustée dans le dossier du tapis ou le sol. Le traitement et son prix sont précisés avant intervention." },
-      { q: "Combien de temps faut-il pour nettoyer un tapis ?", a: "Entre 30 et 60 minutes par tapis selon sa taille et son état. Le séchage prend généralement plusieurs heures selon la fibre, l’épaisseur et l’aération. Attendez le séchage complet avant réutilisation." },
+      {
+        "q": "Combien coûte un nettoyage de tapis à Toulouse ?",
+        "a": "La formule 1 tapis est à 49 €, 2 tapis à 79 € et 3 tapis à 99 €, jusqu'à 4 m² chacun. Les grands formats, les fibres délicates et les états exceptionnels nécessitent une estimation préalable. Les options sont en supplément."
+      },
+      {
+        "q": "Pouvez-vous nettoyer un tapis en laine, en viscose ou en soie ?",
+        "a": "Envoyez une photo du tapis et, si possible, de son étiquette. Nous vérifions la matière, les couleurs et l'envers. Certaines fibres ou finitions ne conviennent pas à l'injection-extraction ni au nettoyage à domicile."
+      },
+      {
+        "q": "Le nettoyage des deux faces est-il inclus ?",
+        "a": "Le nettoyage recto-verso est une option à 25 €, lorsque la matière et l'envers du tapis le permettent. Il est distinct de la formule courante et doit être sélectionné ou confirmé avant l'intervention."
+      },
+      {
+        "q": "Comment traiter une odeur d'urine sur un tapis ?",
+        "a": "Précisez la zone concernée et les produits déjà utilisés. Un traitement anti-odeur ou enzymatique peut compléter le nettoyage selon le diagnostic. Une contamination de l'envers ou du sol peut empêcher la disparition complète de l'odeur."
+      },
+      {
+        "q": "Combien de temps dure le nettoyage et le séchage ?",
+        "a": "Le temps d'intervention dépend du nombre, du format et de l'état des tapis. Le séchage demande généralement plusieurs heures et varie selon la fibre, l'épaisseur et l'aération. Attendez qu'il soit complet avant de replacer du mobilier."
+      },
+      {
+        "q": "Faut-il vous déposer le tapis ?",
+        "a": "Non, la prestation est réalisée à votre adresse à Toulouse ou dans l'agglomération. Dégagez le tapis, prévoyez un accès à l'eau et à l'électricité et signalez un sol fragile pour préparer l'installation."
+      }
     ],
   },
   {
@@ -278,18 +337,18 @@ export const SERVICES: Service[] = [
     group: "textile",
     booking: true,
     intro: [
-      "Nous venons nettoyer l'intérieur de votre véhicule là où il est garé : domicile, parking d'entreprise ou copropriété. Aucun déplacement, aucune perte de temps. Notre service de nettoyage auto à domicile à Toulouse s'adapte à vos contraintes horaires.",
-      "Choisissez le niveau de nettoyage adapté à votre véhicule : aspiration et plastiques avec le Pack Bronze, sièges et vitres en plus avec le Pack Argent, moquettes et tapis en plus avec le Pack Or. Les poils d'animaux, odeurs persistantes et le ciel de toit relèvent d'options spécifiques. Le résultat dépend de l'état initial et des matériaux.",
-      "Le nettoyage intérieur de voiture à Toulouse est particulièrement recommandé avant une revente, après un déménagement avec des enfants ou des animaux, ou pour éliminer une odeur de tabac incrustée dans les textiles de l'habitacle. Notre traitement anti-odeur par neutralisation moléculaire élimine les mauvaises odeurs à la source — pas simplement masquées avec un désodorisant.",
-      "Le Pack Bronze comprend l'aspiration complète de l'habitacle et du coffre, puis le nettoyage et le dégraissage de tous les plastiques du véhicule, coffre compris. Le Pack Argent ajoute le shampouinage de tous les sièges et le nettoyage des vitres sans traces. Le Pack Or ajoute le shampouinage de toute la moquette de l'habitacle et du coffre, des tapis, des contours et bas de portes ainsi que du contour de coffre.",
-      "Intervention possible partout dans l'agglomération toulousaine et le département 31 — Blagnac, Colomiers, Tournefeuille, Muret, Balma, Cugnaux, Labège, Portet-sur-Garonne et alentours. Devis gratuit sous 24h selon la taille du véhicule et la formule choisie — Bronze, Argent ou Or.",
+      "Clean&Fresh réalise le nettoyage intérieur de votre voiture à domicile ou sur votre lieu de travail à Toulouse. Le véhicule reste sur place, dans un espace où l'intervention est autorisée et où les portes peuvent être ouvertes facilement.",
+      "Comparez les trois packs : Bronze pour l'aspiration et les plastiques, Argent pour ajouter les sièges et les vitres, Or pour ajouter les moquettes, les tapis et les contours de portes et de coffre. Les options permettent de traiter les poils d'animaux, les taches tenaces, les odeurs ou le ciel de toit.",
+      "Les sièges en tissu compatibles sont traités par injection-extraction. Le cuir bénéficie d'un nettoyage manuel adapté, avec un soin nourrissant proposé en option. La formule de nettoyage des sièges ne comprend pas de réparation des coutures, de recoloration ni de restauration des revêtements usés.",
+      "Avant une vente, après des trajets avec des animaux ou pour entretenir l'habitacle, choisissez le pack selon les zones à nettoyer. Une odeur de tabac ou d'urine peut avoir plusieurs sources : le traitement complète le nettoyage des surfaces accessibles et son efficacité dépend de l'état des matériaux.",
+      "Videz les objets personnels et prévoyez un accès à l'eau ainsi qu'une prise électrique à moins de 60 mètres. Signalez un SUV, un utilitaire ou un état particulièrement encrassé pour une estimation adaptée. Après un shampouinage, laissez les textiles sécher complètement avant utilisation."
     ],
     treated: [
-      "Sièges tissu et moquettes de sol",
-      "Coffre et passages de roue intérieurs",
+      "Habitacle et coffre : aspiration selon le pack",
+      "Sièges textiles ou cuir avec méthode adaptée",
       "Plastiques, tableau de bord et contre-portes",
-      "Nettoyage des bas de porte et contour de porte",
-      "Véhicules particuliers, utilitaires et flottes d'entreprise",
+      "Vitres, moquettes, tapis et contours selon la formule",
+      "Véhicules particuliers ; SUV, utilitaires et flottes sur estimation"
     ],
     problems: [
       "Taches de nourriture et boissons",
@@ -306,20 +365,40 @@ export const SERVICES: Service[] = [
     priceNote: "Tarifs applicables aux véhicules particuliers en état standard. SUV, utilitaire, volume important ou état exceptionnel : estimation préalable sur photos.",
     soils: ["Nourriture et boissons", "Tabac", "Poils d'animaux", "Transpiration", "Boue"],
     method: [
-      "Aspiration complète de l'habitacle et du coffre.",
-      "Détachage des sièges et moquettes.",
-      "Injection-extraction des textiles.",
-      "Nettoyage des plastiques, vitres intérieures et désodorisation.",
+      "Vérification du véhicule, du revêtement et des zones comprises dans le pack choisi.",
+      "Aspiration de l'habitacle et du coffre, puis nettoyage des plastiques selon la formule.",
+      "Nettoyage des sièges, vitres, moquettes et tapis prévus au récapitulatif ; options selon le besoin.",
+      "Contrôle avec vous et conseils de séchage pour les textiles nettoyés."
     ],
     faq: [
-      { q: "Que comprend le Pack Bronze ?", a: "Le Pack Bronze à 69 € comprend l'aspiration complète de l'habitacle et du coffre, puis le nettoyage et le dégraissage de tous les plastiques du véhicule, plastiques du coffre compris." },
-      { q: "Que comprend le Pack Argent ?", a: "Le Pack Argent à 99 € comprend tout le Pack Bronze, le shampouinage de tous les sièges du véhicule avec une méthode adaptée au revêtement, ainsi que le nettoyage des vitres sans traces." },
-      { q: "Que comprend le Pack Or ?", a: "Le Pack Or à 129 € comprend tout le Pack Argent, le shampouinage de toute la moquette de l'habitacle et du coffre, le shampouinage des tapis, ainsi que le nettoyage des contours et bas de portes et du contour de coffre." },
-      { q: "Quels revêtements traitez-vous pour la rénovation des sièges auto ?", a: "Nous traitons les sièges en tissu, Alcantara, cuir, velours et autres matières compatibles avec une méthode et des produits adaptés à chaque revêtement." },
-      { q: "Faut-il amener la voiture quelque part pour le nettoyage ?", a: "Non, nous venons directement à votre adresse — domicile, parking de bureau ou copropriété. Il suffit d'une prise électrique à proximité du véhicule." },
-      { q: "Pouvez-vous éliminer l'odeur de tabac ou de chien dans une voiture ?", a: "Oui, nous proposons un traitement anti-odeur par neutralisation moléculaire qui élimine les odeurs de tabac, d'animaux et de transpiration incrustées dans les textiles de l'habitacle." },
-      { q: "Combien de temps dure un nettoyage intérieur de voiture ?", a: "Entre 1h (Pack Bronze) et 2h (Pack Or) selon la formule et l'état du véhicule. Vous pouvez reprendre votre voiture dès la fin de l'intervention." },
-      { q: "Nettoyez-vous aussi les véhicules utilitaires et les flottes d'entreprise ?", a: "Oui, nous intervenons sur tous types de véhicules : particuliers, SUV, utilitaires, camionnettes et flottes d'entreprise. Tarifs dégressifs pour les flottes, contactez-nous pour un devis." },
+      {
+        "q": "Que comprend le Pack Bronze à 69 € ?",
+        "a": "Il comprend l'aspiration complète de l'habitacle et du coffre ainsi que le nettoyage et le dégraissage des plastiques, coffre compris. Le nettoyage des sièges et des vitres ne fait pas partie de ce pack de base."
+      },
+      {
+        "q": "Quelle différence entre les Packs Argent et Or ?",
+        "a": "Le Pack Argent à 99 € ajoute au Bronze le nettoyage de tous les sièges avec une méthode adaptée et les vitres. Le Pack Or à 129 € ajoute les moquettes de l'habitacle et du coffre, les tapis, les contours et bas de portes et le contour de coffre."
+      },
+      {
+        "q": "Nettoyez-vous les sièges en cuir ou en Alcantara ?",
+        "a": "La méthode dépend du revêtement et de son état. Le cuir est nettoyé manuellement ; les textiles et l'Alcantara sont traités après vérification de leur compatibilité. Le soin nourrissant du cuir est une option distincte."
+      },
+      {
+        "q": "Que faut-il prévoir pour un nettoyage auto à domicile ?",
+        "a": "Un stationnement autorisé avec assez de place autour du véhicule, un accès à l'eau et une prise électrique à moins de 60 mètres. Retirez les objets personnels et signalez toute difficulté d'accès avant l'intervention."
+      },
+      {
+        "q": "Le traitement anti-odeur enlève-t-il toujours le tabac ou les odeurs d'animaux ?",
+        "a": "Il aide à réduire les odeurs présentes sur les surfaces traitées. Le résultat dépend de leur origine et de leur profondeur : une source non accessible ou un matériau fortement imprégné peut conserver une odeur. Le traitement adapté est confirmé selon le diagnostic."
+      },
+      {
+        "q": "Combien de temps dure le nettoyage de la voiture ?",
+        "a": "Les durées indicatives sont de 1 h pour Bronze, 1 h 30 pour Argent et 2 h pour Or, hors besoins particuliers. Si des textiles sont shampouinés, prévoyez ensuite leur séchage complet ; le délai varie avec la matière et la ventilation."
+      },
+      {
+        "q": "Les utilitaires et les flottes peuvent-ils être nettoyés ?",
+        "a": "Oui, sur estimation selon le volume, l'état et le nombre de véhicules. Envoyez des photos et les informations utiles pour recevoir un devis et organiser les passages."
+      }
     ],
   },
   {
@@ -327,18 +406,17 @@ export const SERVICES: Service[] = [
     navLabel: "Nettoyage de vitres Toulouse",
     h1: "Nettoyage de vitres à Toulouse",
     short: "Nettoyage vitres Toulouse",
-    subtitle:
-      "Vitres d'habitations, vitrines de commerces et baies de bureaux nettoyées sans traces, à Toulouse et alentours.",
+    subtitle: "Nettoyage de fenêtres, baies vitrées et vitrines à Toulouse. Faces accessibles, encadrements et rails selon le devis.",
     metaTitle: "Nettoyage de vitres Toulouse | Clean&Fresh",
     metaDescription:
       "Nettoyage de vitres et vitrines à Toulouse pour habitations, commerces et bureaux. Entretien ponctuel ou régulier, devis gratuit sous 24h.",
     group: "batiment",
     intro: [
-      "Des vitres propres donnent une image soignée à votre domicile ou à votre commerce. Notre service de nettoyage de vitres à Toulouse intervient chez les particuliers comme chez les professionnels avec un matériel adapté pour limiter les traces.",
-      "Nous nettoyons vos fenêtres, baies vitrées, vitrines de commerces et cloisons de bureaux — encadrements, rails et rebords compris. Intervention ponctuelle ou contrat d'entretien régulier à tarif dégressif, aux horaires qui vous arrangent.",
-      "Pour les commerces et les professionnels à Toulouse, un lavage de vitres régulier est essentiel à l'image de votre enseigne. Nous intervenons tôt le matin, en dehors des heures d'ouverture ou le week-end pour ne pas perturber votre activité. Les restaurants, agences immobilières, salons et boutiques font partie de nos clients réguliers dans l'agglomération toulousaine.",
-      "Nous utilisons la raclette professionnelle et, lorsque la surface le permet, l'eau osmosée afin de réduire les traces. Le matériel est adapté aux grandes baies vitrées comme aux vitrines de commerces. Encadrements, rails et appuis sont traités selon la formule retenue.",
-      "Clean&Fresh intervient dans toute l'agglomération toulousaine et en Haute-Garonne — Blagnac, Colomiers, Tournefeuille, Balma, Muret, Ramonville-Saint-Agne, Labège, Portet-sur-Garonne, Castelginest et l'ensemble des communes du 31. Contactez-nous pour un devis gratuit adapté à votre surface et à votre fréquence d'entretien.",
+      "Clean&Fresh réalise le nettoyage de vitres à Toulouse pour les appartements, maisons, commerces et bureaux. Fenêtres, baies vitrées et vitrines sont nettoyées avec du matériel professionnel adapté à leur état et à leur accessibilité.",
+      "Le devis précise les faces à traiter ainsi que les encadrements, rails et rebords inclus. Pour une petite demande, quelques photos d'ensemble et l'adresse suffisent pour commencer l'estimation ; nous vous indiquons si une précision supplémentaire est nécessaire.",
+      "Traces de doigts, poussières et dépôts courants sont traités par lavage et essuyage adaptés au vitrage. Les traces de calcaire anciennes, résidus d'adhésif ou salissures de fin de travaux demandent un diagnostic, car un verre rayé ou altéré ne se répare pas par un nettoyage.",
+      "Une intervention ponctuelle peut préparer un état des lieux ou remettre une vitrine au propre. Pour un entretien régulier, la fréquence et les horaires sont définis selon votre activité. Les accès et la hauteur sont vérifiés avant confirmation ; les travaux à plus de 3 mètres ne sont pas proposés.",
+      "Nous intervenons à Toulouse et dans les communes voisines, notamment Blagnac, Colomiers, Balma et Ramonville. Dégagez l'accès aux fenêtres et signalez les vitrages difficiles à atteindre lors de votre demande de devis."
     ],
     treated: [
       "Fenêtres, baies vitrées et vérandas",
@@ -352,19 +430,34 @@ export const SERVICES: Service[] = [
       "Traces de doigts sur les vitrines",
       "Résidus de travaux",
     ],
-    priceNote: "Sur devis — tarif dégressif pour les contrats d'entretien réguliers.",
+    priceNote: "Sur devis selon les vitrages, les faces à nettoyer, l'accès et la fréquence. Périmètre confirmé avant intervention.",
     method: [
-      "Repérage des vitrages et des accès.",
-      "Lavage à la raclette professionnelle et eau osmosée si nécessaire.",
-      "Nettoyage des encadrements, rails et rebords.",
-      "Contrôle final anti-traces.",
+      "Repérage des vitrages, de la hauteur et des faces accessibles.",
+      "Lavage avec du matériel adapté à la nature et à l'état du verre.",
+      "Traitement des encadrements, rails et rebords prévus au devis.",
+      "Essuyage des finitions et contrôle des traces résiduelles."
     ],
     faq: [
-      { q: "Faites-vous le nettoyage de vitres pour les particuliers et les professionnels ?", a: "Oui, nous intervenons chez les particuliers (maisons, appartements) comme chez les professionnels (vitrines de commerces, bureaux, restaurants). Intervention ponctuelle ou contrat d'entretien régulier." },
-      { q: "Quel est le tarif pour le nettoyage de vitres à Toulouse ?", a: "Le tarif est calculé sur devis selon la surface vitrée et la fréquence. Un tarif dégressif est appliqué pour les contrats d'entretien régulier. Contactez-nous pour une estimation gratuite sous 24h." },
-      { q: "Nettoyez-vous les encadrements, rails et rebords de fenêtres ?", a: "Oui, notre prestation comprend systématiquement le nettoyage des encadrements, rails et rebords. Le résultat est impeccable sur toute la menuiserie." },
-      { q: "Pouvez-vous intervenir en dehors des heures d'ouverture pour les commerces ?", a: "Oui, nous nous adaptons à vos horaires, y compris tôt le matin, le soir ou le week-end pour éviter les perturbations de votre activité." },
-      { q: "Dans quelles villes autour de Toulouse intervenez-vous pour le nettoyage de vitres ?", a: "Nous couvrons toute l'agglomération toulousaine et la Haute-Garonne : Colomiers, Tournefeuille, Blagnac, Cugnaux, Balma, Ramonville, Muret, Castanet-Tolosan, L'Union et plus de 30 autres communes du 31." },
+      {
+        "q": "Quel est le tarif d'un nettoyage de vitres à Toulouse ?",
+        "a": "Le devis dépend des vitrages, du nombre de faces à nettoyer, de l'accès et de l'état initial. Envoyez quelques photos et l'adresse pour une première estimation gratuite sous 24 h."
+      },
+      {
+        "q": "Les rails et encadrements sont-ils compris ?",
+        "a": "Ils peuvent être inclus avec les rebords et menuiseries. Le devis détaille le périmètre pour distinguer un lavage des vitres seules d'un nettoyage complet des fenêtres."
+      },
+      {
+        "q": "Nettoyez-vous les faces intérieures et extérieures ?",
+        "a": "Oui lorsque les deux faces sont accessibles dans de bonnes conditions. Précisez les accès particuliers et la hauteur ; les travaux à plus de 3 mètres ne sont pas proposés."
+      },
+      {
+        "q": "Peut-on enlever des traces de calcaire ou de peinture ?",
+        "a": "Un traitement adapté peut être étudié après examen. Certaines marques sont liées à une altération ou à des rayures du verre ; elles ne disparaissent pas avec un lavage. Les résidus de chantier sont à signaler avant l'estimation."
+      },
+      {
+        "q": "Peut-on prévoir un passage régulier pour une vitrine ?",
+        "a": "Oui, nous pouvons établir un devis pour un passage ponctuel ou régulier à Toulouse et dans l'agglomération, avec des horaires convenus selon l'ouverture du commerce."
+      }
     ],
   },
   {
@@ -372,18 +465,17 @@ export const SERVICES: Service[] = [
     navLabel: "Nettoyage terrasse Toulouse",
     h1: "Nettoyage de terrasse à Toulouse",
     short: "Nettoyage terrasse Toulouse",
-    subtitle:
-      "Dalles, béton, carrelage extérieur et bois : nettoyage haute pression de votre terrasse à Toulouse.",
+    subtitle: "Nettoyage de terrasses, dalles et sols extérieurs à Toulouse. Pression et méthode choisies selon le revêtement.",
     metaTitle: "Nettoyage terrasse Toulouse | Clean&Fresh",
     metaDescription:
       "Nettoyage de terrasse à Toulouse : dalles, béton, carrelage et bois. Traitement des mousses et salissures. Devis gratuit sous 24h.",
     group: "batiment",
     intro: [
-      "Mousses, lichens et noircissement rendent votre terrasse glissante et terne. Notre service de nettoyage de terrasse à Toulouse intervient au nettoyeur haute pression, avec un réglage adapté à chaque support pour ne pas l'endommager.",
-      "Une intervention idéale avant l'été ou après l'hiver, pour retrouver un extérieur net, sécurisé et esthétique. Nous appliquons si nécessaire un traitement anti-mousse préventif pour prolonger l'effet dans le temps.",
-      "Le nettoyage de terrasse à Toulouse se fait idéalement au printemps avant la saison estivale, ou à l'automne après les pluies et les chutes de feuilles. Un entretien régulier évite l'encrassement profond des joints et réduit les risques de glissade sur les dalles humides. Nous adaptons la pression du nettoyeur selon la nature du revêtement : forte pression pour le béton et la pierre, pression modérée pour le bois et le carrelage extérieur.",
-      "Après diagnostic, les traitements complémentaires anti-mousse ou hydrofuges sont précisés dans le devis selon le support. Leur efficacité et leur durée dépendent de l’exposition, de l’humidité et de l’entretien.",
-      "Nous intervenons à Toulouse et dans toute la Haute-Garonne — dalles, pavés, béton désactivé, carrelage extérieur, bois et composite. Devis gratuit selon la surface et l'état du support, réponse sous 24h.",
+      "Redonnez un aspect propre à votre terrasse, votre cour ou vos allées avec un nettoyage adapté au revêtement. Clean&Fresh intervient à Toulouse pour retirer les salissures, traces de végétaux et dépôts présents sur les sols extérieurs compatibles.",
+      "Le devis tient compte de la surface, de l'état des joints, de l'accès à l'eau et de l'évacuation des eaux de lavage. Dalles, béton, carrelage, bois ou composite ne se nettoient pas tous avec la même pression ni les mêmes produits.",
+      "Avant l'intervention, nous vérifions le support et choisissons une méthode appropriée. Une pression excessive peut marquer le bois, fragiliser les joints ou altérer une surface : le nettoyage haute pression n'est donc pas systématique.",
+      "Un traitement complémentaire anti-mousse ou hydrofuge peut être étudié selon le matériau et sera précisé dans le devis. Sa durée d'action dépend de l'exposition, de l'humidité et de l'entretien ; le nettoyage ne répare pas les dalles fissurées ni les joints abîmés.",
+      "Envoyez des photos d'ensemble et des zones les plus marquées pour une estimation à Toulouse, Muret, Cugnaux, Tournefeuille ou alentours. Dégagez le mobilier et signalez les plantations, prises ou équipements à protéger."
     ],
     treated: [
       "Dalles et pavés",
@@ -400,17 +492,32 @@ export const SERVICES: Service[] = [
     ],
     priceNote: "Sur devis selon la surface et l'état du support — réponse gratuite sous 24h.",
     method: [
-      "Protection des abords et des plantations.",
-      "Application d'un traitement anti-mousse si nécessaire.",
-      "Nettoyage haute pression à réglage adapté au support.",
-      "Rinçage complet et évacuation des résidus.",
+      "Diagnostic du revêtement, des joints, des accès et de l'évacuation des eaux.",
+      "Protection des abords et préparation des zones à nettoyer.",
+      "Nettoyage avec une méthode et une pression adaptées au support.",
+      "Rinçage ou finition selon la méthode, puis contrôle du résultat."
     ],
     faq: [
-      { q: "Quel est le prix d'un nettoyage de terrasse à Toulouse ?", a: "Le tarif est calculé sur devis selon la surface, le type de revêtement et l'état de la terrasse. Contactez-nous pour une estimation gratuite, réponse sous 24h." },
-      { q: "Nettoyez-vous tous les types de terrasse ?", a: "Oui : dalles en pierre, béton, béton désactivé, carrelage extérieur et terrasses en bois naturel ou composite. Nous ajustons la pression en fonction du support pour ne pas l'endommager." },
-      { q: "Le traitement anti-mousse est-il inclus dans le nettoyage de terrasse ?", a: "L’inclusion d’un traitement anti-mousse est précisée dans le devis après diagnostic du support. Sa durée d’action varie selon les conditions d’exposition et l’entretien." },
-      { q: "Quand faut-il nettoyer sa terrasse à Toulouse ?", a: "Idéalement au printemps avant la saison estivale et à l'automne après les pluies. Un nettoyage régulier évite l'encrassement profond et réduit le risque de glissade." },
-      { q: "Intervenez-vous dans toute l'agglomération toulousaine pour le nettoyage de terrasse ?", a: "Oui, nous couvrons Toulouse et toutes les communes du 31 : Muret, Cugnaux, Colomiers, Tournefeuille, Plaisance-du-Touch, Villeneuve-Tolosane, Portet-sur-Garonne et bien d'autres." },
+      {
+        "q": "Combien coûte le nettoyage d'une terrasse à Toulouse ?",
+        "a": "Le tarif est établi sur devis selon la surface, le matériau, l'état, l'accès et les traitements éventuels. Des photos d'ensemble permettent de préparer une estimation gratuite sous 24 h."
+      },
+      {
+        "q": "Utilisez-vous toujours un nettoyeur haute pression ?",
+        "a": "Non. La pression et la méthode sont choisies après diagnostic. Le bois, les joints fragiles, certains carrelages et les surfaces dégradées nécessitent des précautions particulières ou une autre méthode."
+      },
+      {
+        "q": "Le traitement anti-mousse est-il compris ?",
+        "a": "Il est inclus uniquement lorsqu'il figure au devis. Son choix dépend du revêtement et des dépôts observés ; les conditions d'application et d'entretien sont précisées avant intervention."
+      },
+      {
+        "q": "Le nettoyage répare-t-il les joints ou le bois grisé ?",
+        "a": "Le nettoyage retire les salissures compatibles avec la méthode retenue. Il ne refait pas les joints, ne répare pas les fissures et ne constitue pas une rénovation du bois. Les éventuelles limites sont expliquées après examen."
+      },
+      {
+        "q": "Comment préparer la terrasse avant votre venue ?",
+        "a": "Retirez le mobilier et les objets, rendez l'accès à l'eau disponible et indiquez les surfaces ou équipements fragiles. La possibilité d'évacuer les eaux de lavage est vérifiée avant confirmation."
+      }
     ],
   },
   {
@@ -418,44 +525,57 @@ export const SERVICES: Service[] = [
     navLabel: "Nettoyage toiture Toulouse",
     h1: "Nettoyage de toiture à Toulouse",
     short: "Nettoyage toiture Toulouse",
-    subtitle:
-      "Démoussage et nettoyage haute pression de votre toiture à Toulouse et en Haute-Garonne.",
+    subtitle: "Nettoyage et démoussage de couvertures accessibles jusqu'à 3 mètres à Toulouse, après vérification du support et des accès.",
     metaTitle: "Nettoyage toiture Toulouse | Clean&Fresh",
-    metaDescription:
-      "Démoussage et nettoyage de toiture à Toulouse. Tuiles, ardoises, gouttières. Traitement anti-mousse durable inclus. Devis gratuit sur photos sous 24h.",
+    metaDescription: "Nettoyage et démoussage de toiture accessible jusqu'à 3 m à Toulouse. Méthode adaptée après diagnostic, devis gratuit sur photos sous 24 h.",
     group: "batiment",
     intro: [
-      "La mousse retient l'humidité, fragilise les tuiles et bouche les gouttières. Un démoussage régulier prolonge la durée de vie de votre toiture et évite des réparations coûteuses. Notre service de nettoyage toiture à Toulouse intervient en toute sécurité avec du matériel professionnel.",
-      "La méthode de nettoyage est choisie après examen de la couverture ; la haute pression n’est pas systématique. Tout traitement anti-mousse et ses conditions d’application sont précisés dans le devis. Sa durée d’action dépend du support et de son exposition.",
-      "Un démoussage de toiture tous les 3 à 5 ans est généralement recommandé à Toulouse et en Haute-Garonne, où le climat humide favorise le développement des mousses et lichens. Une toiture encrassée retient l'humidité qui s'infiltre sous les tuiles, accélère leur vieillissement et peut provoquer des infiltrations coûteuses. Intervenir en prévention coûte bien moins cher qu'une réparation de charpente.",
-      "Les conditions d’accès et de sécurité sont évaluées avant intervention, avec les équipements de protection adaptés. Nous contrôlons l'état de la couverture avant l'intervention et signalons toute tuile cassée ou gouttière obstruée. Le démoussage est suivi d'un rinçage complet et de l'évacuation des déchets verts.",
-      "Clean&Fresh se déplace à Toulouse et dans tout le département 31 pour le nettoyage et le démoussage de toitures. Devis gratuit après envoi de photos ou visite sur place, réponse sous 24h.",
+      "Clean&Fresh propose le nettoyage de petites couvertures et toitures accessibles à Toulouse, dans la limite de 3 mètres de hauteur. Garages et dépendances peuvent être étudiés sur photos, selon la pente, l'accès et l'état du matériau.",
+      "Le diagnostic détermine si le nettoyage peut être réalisé et avec quelle méthode. La haute pression n'est pas systématique. Les surfaces fragiles ou dégradées et les interventions au-delà de 3 mètres ne sont pas prises en charge.",
+      "Le devis précise les zones à traiter, le retrait des dépôts et tout éventuel traitement anti-mousse. La présence de végétation, les gouttières et les écoulements sont examinés pour préparer l'intervention et protéger les abords.",
+      "Le nettoyage porte sur les salissures et les dépôts accessibles ; il ne remplace pas une réparation de couverture, une recherche de fuite ou des travaux d'étanchéité. Une tuile cassée ou un défaut repéré doit être traité par le professionnel compétent.",
+      "Pour une demande à Toulouse ou dans l'agglomération, envoyez une vue d'ensemble, des photos des dépôts et une indication de hauteur et d'accès. Nous confirmons la faisabilité avant d'établir le devis et le créneau."
     ],
     treated: [
-      "Tuiles terre cuite et béton",
-      "Ardoises",
-      "Toitures de garages et dépendances",
-      "Gouttières et descentes d'eau",
+      "Couvertures accessibles jusqu'à 3 mètres",
+      "Toitures de garages et dépendances compatibles",
+      "Tuiles ou autres matériaux après diagnostic",
+      "Gouttières accessibles, si prévues au devis"
     ],
     problems: [
-      "Mousses et lichens",
-      "Gouttières obstruées",
-      "Infiltrations liées à l'humidité",
-      "Tuiles noircies",
+      "Mousses et dépôts végétaux accessibles",
+      "Salissures et noircissement de surface",
+      "Feuilles et débris dans les zones convenues",
+      "Besoin d'entretien d'une petite couverture"
     ],
-    priceNote: "Sur devis après visite ou photos — réponse sous 24h.",
+    priceNote: "Sur devis après contrôle de la hauteur, des accès et du support. Interventions limitées à 3 mètres maximum.",
     method: [
-      "Inspection de la couverture et repérage des points fragiles.",
-      "Nettoyage haute pression maîtrisé, du faîtage vers l'égout.",
-      "Application d'un traitement anti-mousse préventif.",
-      "Dégagement des gouttières et évacuation des déchets.",
+      "Vérification de la hauteur (3 m maximum), des accès et de l'état de la couverture.",
+      "Protection des abords et choix d'une méthode compatible.",
+      "Retrait des dépôts et nettoyage des zones prévues au devis.",
+      "Traitement éventuel et finition selon le produit et le périmètre retenus."
     ],
     faq: [
-      { q: "Quel est le prix d'un nettoyage de toiture à Toulouse ?", a: "Le tarif est calculé sur devis après envoi de photos ou visite, selon la surface, la pente et l'état de la toiture. Devis gratuit, réponse sous 24h." },
-      { q: "À quelle fréquence faut-il nettoyer sa toiture ?", a: "Un démoussage tous les 3 à 5 ans est généralement recommandé, plus souvent si votre toiture est exposée à l'humidité ou entourée d'arbres. Le traitement anti-mousse appliqué après le nettoyage prolonge la durée de protection." },
-      { q: "Le nettoyage haute pression endommage-t-il les tuiles ?", a: "Une pression excessive peut endommager une couverture. Nous examinons son état et choisissons une méthode compatible ; la haute pression n’est pas systématique et une intervention inadaptée doit être écartée." },
-      { q: "Le traitement anti-mousse est-il dangereux pour le jardin ?", a: "Un traitement anti-mousse peut présenter des risques pour les végétaux. Les précautions dépendent du produit : protection des plantations, maîtrise des écoulements et respect des consignes du fabricant." },
-      { q: "Intervenez-vous sur les toitures en Haute-Garonne ?", a: "Oui, nous couvrons Toulouse et tout le département 31 : Blagnac, Colomiers, Tournefeuille, Balma, Muret, Cugnaux, Ramonville, Castanet-Tolosan et toutes les communes alentours." },
+      {
+        "q": "Quelles toitures pouvez-vous nettoyer à Toulouse ?",
+        "a": "Nous étudions les petites couvertures accessibles, notamment de garages et dépendances, jusqu'à 3 mètres de hauteur. La prise en charge dépend de la pente, de l'accès et de l'état du matériau. Les travaux au-delà de 3 mètres sont exclus."
+      },
+      {
+        "q": "Quel est le tarif du démoussage ?",
+        "a": "Le prix dépend de la surface, de l'accès, de l'état et de la méthode retenue. Envoyez des photos et une indication de hauteur pour une estimation gratuite sous 24 h, après vérification de la faisabilité."
+      },
+      {
+        "q": "Le nettoyage haute pression est-il systématique ?",
+        "a": "Non. Une pression inadaptée peut détériorer une couverture. Nous choisissons la méthode après examen et écartons une intervention si le support ou les accès ne permettent pas de travailler dans de bonnes conditions."
+      },
+      {
+        "q": "Le traitement anti-mousse est-il inclus ?",
+        "a": "Son éventuelle inclusion et ses conditions d'application sont indiquées au devis. Sa durée d'action dépend du produit, du matériau et de l'exposition ; aucun délai uniforme n'est promis."
+      },
+      {
+        "q": "Le nettoyage résout-il une infiltration ?",
+        "a": "Non, la prestation ne comprend pas de réparation de toiture ni de travaux d'étanchéité. Une fuite, une tuile cassée ou un défaut de couverture nécessitent une évaluation par un professionnel de la couverture."
+      }
     ],
   },
   {
@@ -463,45 +583,57 @@ export const SERVICES: Service[] = [
     navLabel: "Nettoyage façade Toulouse",
     h1: "Nettoyage de façade à Toulouse",
     short: "Nettoyage façade Toulouse",
-    subtitle:
-      "Façades de maisons et d'immeubles nettoyées en profondeur, à Toulouse et dans l'agglomération.",
+    subtitle: "Nettoyage de façades basses, murs de clôture et piliers à Toulouse, jusqu'à 3 mètres de hauteur et sur supports compatibles.",
     metaTitle: "Nettoyage façade Toulouse | Clean&Fresh",
-    metaDescription:
-      "Nettoyage de façade à Toulouse : crépi, enduit, brique et béton. Traitement des mousses et traces noires. Devis gratuit sous 24h.",
+    metaDescription: "Nettoyage de façade à Toulouse jusqu'à 3 m : enduit, brique, béton et murs de clôture. Diagnostic du support et devis gratuit sur photos.",
     group: "batiment",
     intro: [
-      "Pollution, mousses et coulures noircissent les façades toulousaines au fil des années. Notre service de nettoyage de façade à Toulouse redonne leur teinte d'origine aux murs sans travaux lourds ni ravalement complet.",
-      "Nous adaptons la pression et les produits à votre support — crépi, brique, pierre ou béton — pour préserver l'enduit et les joints. Un traitement anti-mousse est appliqué en fin d'intervention pour une protection durable.",
-      "Le nettoyage de façade à Toulouse est souvent envisagé avant une mise en vente d'un bien immobilier, pour une remise en état de copropriété ou simplement pour redonner de l'éclat à un bâtiment vieillissant. Une façade propre valorise immédiatement le bien et améliore l'image du quartier. Nous travaillons régulièrement avec des syndics de copropriété, des agences immobilières et des propriétaires privés de Toulouse et de l'agglomération.",
-      "Avant toute intervention, nous réalisons un test sur une zone témoin pour valider la compatibilité du traitement avec votre support. Les menuiseries, plantations et abords sont protégés avant le début du chantier. Un traitement hydrofuge peut être appliqué en option pour repousser l'eau et retarder l'encrassement sur plusieurs années.",
-      "Particuliers, syndics de copropriété et professionnels : nous intervenons sur tous types de bâtiments à Toulouse et en Haute-Garonne. Devis gratuit selon la surface, la hauteur et la nature du support.",
+      "Clean&Fresh nettoie les façades basses, murs de clôture et piliers à Toulouse, jusqu'à 3 mètres de hauteur. Le traitement vise les salissures, coulures et dépôts présents sur les supports compatibles, après examen de leur état.",
+      "Crépi, enduit, brique, pierre et béton demandent des méthodes différentes. Un test sur une zone discrète permet de vérifier la réaction du matériau ; la pression et les produits sont ensuite adaptés. Les travaux à plus de 3 mètres ne sont pas proposés.",
+      "Les menuiseries, plantations et abords sont pris en compte dans la préparation du chantier. Le devis indique les zones accessibles, le nettoyage retenu et tout traitement complémentaire éventuel, selon la nature des dépôts et l'exposition du mur.",
+      "La prestation ne constitue pas un ravalement : elle ne répare pas les fissures, les enduits qui se décollent ou les défauts de peinture. Certaines traces anciennes ou décolorations peuvent rester visibles après retrait des salissures.",
+      "Envoyez des photos d'ensemble et des détails des zones à nettoyer, avec une indication de hauteur, pour votre maison, votre mur de clôture ou les parties basses d'une copropriété à Toulouse et alentours. La faisabilité et le périmètre sont confirmés avant intervention."
     ],
     treated: [
-      "Crépi et enduit",
-      "Brique foraine et pierre",
-      "Béton et bardage",
-      "Murs de clôture et piliers",
-      "Immeubles et copropriétés",
+      "Façades et murs accessibles jusqu'à 3 mètres",
+      "Crépi et enduit en état compatible",
+      "Brique, pierre et béton après test",
+      "Murs de clôture, piliers et parties basses de bâtiments"
     ],
     problems: [
-      "Traces noires de pollution",
-      "Mousses et végétation",
-      "Coulures et salissures de pluie",
-      "Graffitis (sur devis)",
+      "Traces noires et salissures de surface",
+      "Mousses et dépôts végétaux",
+      "Coulures et traces de pluie",
+      "Encrassement de murs de clôture et piliers"
     ],
-    priceNote: "Sur devis selon la surface, la hauteur et le support.",
+    priceNote: "Sur devis selon la surface, l'accès et le support. Hauteur d'intervention limitée à 3 mètres maximum.",
     method: [
-      "Diagnostic du support et test sur une zone témoin.",
-      "Protection des menuiseries et plantations.",
-      "Nettoyage haute pression ou basse pression selon la fragilité.",
-      "Traitement anti-mousse et rinçage final.",
+      "Contrôle du support, des accès et de la hauteur, puis test sur une zone discrète.",
+      "Protection des menuiseries, plantations et abords concernés.",
+      "Nettoyage avec méthode et pression adaptées aux surfaces prévues au devis.",
+      "Finition, traitement complémentaire éventuel et contrôle du résultat."
     ],
     faq: [
-      { q: "Combien coûte un nettoyage de façade à Toulouse ?", a: "Le tarif est calculé sur devis selon la surface, la hauteur et le type de support. Envoyez-nous des photos pour une estimation gratuite sous 24h." },
-      { q: "Quelle est la différence entre nettoyage haute et basse pression pour une façade ?", a: "La haute pression convient aux supports durs (béton, dallage). La basse pression est préférée pour les matériaux fragiles comme le crépi, l'enduit ou la brique afin d'éviter toute dégradation." },
-      { q: "Combien de temps dure l'effet du nettoyage de façade ?", a: "Avec un traitement hydrofuge et anti-mousse, l'effet protecteur dure de 3 à 7 ans selon le type de façade et l'exposition. Sans traitement, comptez 1 à 3 ans." },
-      { q: "Faites-vous les copropriétés et les immeubles à Toulouse ?", a: "Oui, nous travaillons avec des syndics de copropriété et des gestionnaires immobiliers pour le nettoyage de façades d'immeubles à Toulouse et dans l'agglomération." },
-      { q: "Intervenez-vous pour les particuliers et les professionnels ?", a: "Oui, pour toutes les typologies : maisons individuelles, immeubles, commerces et bâtiments tertiaires. Contactez-nous pour un devis adapté à votre projet." },
+      {
+        "q": "Combien coûte un nettoyage de façade à Toulouse ?",
+        "a": "Le tarif dépend de la surface, du matériau, de l'état et de l'accessibilité. Envoyez des photos et une indication de hauteur pour une estimation gratuite. Les interventions sont limitées à 3 mètres maximum."
+      },
+      {
+        "q": "Nettoyez-vous les façades d'immeubles ?",
+        "a": "Nous pouvons étudier les parties basses accessibles, jusqu'à 3 mètres, ainsi que les murs de clôture et piliers. Le nettoyage en hauteur au-delà de cette limite n'est pas proposé."
+      },
+      {
+        "q": "La haute pression convient-elle à tous les enduits ?",
+        "a": "Non. Un test et un examen du support sont nécessaires. La pression, le produit et la méthode sont adaptés à l'état de l'enduit, de la brique ou de la pierre ; un support trop fragile peut ne pas être nettoyable."
+      },
+      {
+        "q": "Le nettoyage remplace-t-il un ravalement ?",
+        "a": "Non. Il traite les salissures compatibles avec la méthode choisie, mais ne répare pas les fissures, l'enduit décollé ou les peintures abîmées. Les décolorations anciennes peuvent rester visibles."
+      },
+      {
+        "q": "Le traitement anti-mousse ou hydrofuge est-il compris ?",
+        "a": "Un traitement complémentaire est étudié selon le support et figure au devis lorsqu'il est retenu. Son effet et sa durée dépendent du produit, de l'exposition et de l'entretien."
+      }
     ],
   },
   {
@@ -516,18 +648,18 @@ export const SERVICES: Service[] = [
       "Nettoyage complet de maison ou appartement à Toulouse : grand ménage, déménagement et remise en état. Devis gratuit sous 24h.",
     group: "batiment",
     intro: [
-      "Grand ménage de printemps, remise en état avant l'entrée d'un locataire, nettoyage après déménagement ou entretien régulier : notre service de nettoyage d'appartement et de maison à Toulouse prend en charge l'ensemble du logement.",
-      "Produits professionnels sélectionnés, matériel de pointe et une équipe qui traite chaque pièce dans le détail — cuisine, salle de bain, sols, vitres, plinthes. Aucun angle mort, résultat soigné.",
-      "Le grand ménage ponctuel est idéal pour les situations qui dépassent l'entretien courant : logement laissé sale par un précédent locataire, maison après un déménagement, nettoyage avant ou après une fête, ménage de printemps complet. Nous intervenons aussi pour les particuliers qui manquent de temps et souhaitent déléguer l'entretien régulier de leur logement à une équipe professionnelle.",
-      "Pour les professionnels, nous proposons le nettoyage de bureaux, de salles de réunion, de locaux commerciaux et d'espaces de coworking à Toulouse. Le nettoyage de locaux professionnels comprend le nettoyage des sols — carrelage, parquet, lino — ainsi que le nettoyage des surfaces de travail, sanitaires et vitrages intérieurs. Nos équipes interviennent en dehors de vos heures d'activité pour ne pas perturber votre organisation. Contrats d'entretien hebdomadaire ou mensuel disponibles avec tarif dégressif.",
-      "Nous intervenons sur Toulouse et toute l'agglomération — Blagnac, Colomiers, Tournefeuille, Ramonville, Balma, Muret, Cugnaux, Castanet-Tolosan, Plaisance-du-Touch, Labège, Portet-sur-Garonne et alentours. Devis gratuit selon la surface et le niveau de prestation, ponctuel ou récurrent.",
+      "Grand ménage ponctuel, entrée dans un logement ou entretien régulier : Clean&Fresh nettoie les appartements et maisons à Toulouse selon un périmètre défini avec vous. La surface, l'état des pièces et vos priorités permettent de préparer une prestation adaptée.",
+      "Le devis détaille les zones à nettoyer : sols, surfaces accessibles, cuisine, salle de bain, WC, vitres et intérieur des placards selon le besoin. Les équipements à dégraisser ou détartrer sont précisés pour connaître exactement les prestations comprises.",
+      "Le nettoyage de murs et plafonds est proposé uniquement en option après vérification de la compatibilité du revêtement. Canapés, matelas, tapis et moquettes nécessitent une prestation textile distincte, que vous pouvez ajouter à votre demande.",
+      "Un logement peut rester meublé si les zones à traiter sont accessibles. Pour une remise en état plus complète, retirez les objets fragiles et videz les placards ou appareils dont vous souhaitez faire nettoyer l'intérieur. L'accès à l'eau et à l'électricité doit être maintenu.",
+      "Nous établissons des devis à Toulouse et dans les communes voisines pour les particuliers comme pour des bureaux et locaux professionnels compatibles. Indiquez l'adresse, la surface approximative, la date souhaitée et joignez quelques photos pour recevoir une proposition claire."
     ],
     treated: [
-      "Cuisine : plans de travail, électroménager, hotte, placards",
-      "Salle de bain et WC : détartrage complet",
-      "Sols, plinthes, portes et interrupteurs",
-      "Vitres intérieures et menuiseries",
-      "Locaux professionnels et bureaux",
+      "Cuisine : surfaces, évier, placards et appareils prévus au devis",
+      "Salle de bain et WC : nettoyage et détartrage adaptés",
+      "Sols, plinthes, portes et interrupteurs accessibles",
+      "Vitres et menuiseries selon le périmètre retenu",
+      "Bureaux et locaux professionnels compatibles sur devis"
     ],
     problems: [
       "Calcaire et graisses accumulées",
@@ -543,11 +675,30 @@ export const SERVICES: Service[] = [
       "Contrôle qualité final avec vous.",
     ],
     faq: [
-      { q: "Quel est le prix d'un nettoyage d'appartement à Toulouse ?", a: "Le tarif est calculé sur devis selon la surface, le nombre de pièces et le niveau de prestation. Nous proposons des prestations ponctuelles et des formules d'entretien régulier. Devis gratuit sous 24h." },
-      { q: "Faut-il vider le logement avant votre intervention ?", a: "Non, pas nécessairement. Nous travaillons autour du mobilier en place. Pour un grand ménage très complet, nous recommandons de dégager les plans de travail et les sols pour un accès facilité." },
-      { q: "Pouvez-vous intervenir entre deux locataires ?", a: "Oui, c'est l'une de nos prestations phares. Nous remettons le logement en état entre deux locations : cuisine dégraissée, salle de bain détartrée, sols nettoyés, vitres impeccables." },
-      { q: "Quels produits utilisez-vous pour le nettoyage des appartements ?", a: "Des produits professionnels sélectionnés, dont certaines références certifiées Écolabel, utilisés conformément aux recommandations du fabricant. Efficaces sur les graisses, le calcaire, les moisissures et les bactéries." },
-      { q: "Intervenez-vous le week-end pour le ménage à Toulouse ?", a: "Oui, nous sommes disponibles en semaine et le week-end selon les créneaux. Contactez-nous pour vérifier les disponibilités et réserver votre intervention." },
+      {
+        "q": "Quel est le prix d'un nettoyage d'appartement à Toulouse ?",
+        "a": "Le tarif dépend de la surface, de l'état et des prestations souhaitées. Un grand ménage ponctuel et un entretien régulier n'ont pas le même périmètre. Envoyez quelques photos pour un devis gratuit sous 24 h."
+      },
+      {
+        "q": "Les murs, plafonds et textiles sont-ils inclus ?",
+        "a": "Les murs et plafonds sont exclus du nettoyage standard ; une option peut être étudiée après contrôle de compatibilité. Canapés, matelas, tapis et moquettes font l'objet de prestations distinctes à préciser dans la demande."
+      },
+      {
+        "q": "Faut-il vider le logement avant le nettoyage ?",
+        "a": "Pas nécessairement. Dégagez les surfaces et les sols à traiter, retirez les objets fragiles et videz les placards ou appareils si leur intérieur doit être nettoyé. Les meubles lourds ne sont pas déplacés sans accord préalable."
+      },
+      {
+        "q": "Intervenez-vous avant une entrée ou après un déménagement ?",
+        "a": "Oui. Nous pouvons préparer un logement avant votre installation ou nettoyer après le départ d'un occupant. Pour un état des lieux de sortie, précisez la date et les priorités afin d'établir le devis fin de bail adapté."
+      },
+      {
+        "q": "Proposez-vous un ménage régulier ?",
+        "a": "Un entretien régulier peut être étudié selon l'adresse, la fréquence, les tâches et les disponibilités. Le devis précise la durée et le contenu de chaque passage."
+      },
+      {
+        "q": "Comment confirmer un créneau pour un nettoyage sur devis ?",
+        "a": "Après accord sur le devis et l'horaire, l'acompte demandé permet de bloquer définitivement le créneau. Le solde est réglé en fin de prestation selon les conditions indiquées sur le devis."
+      }
     ],
   },
   {
@@ -555,18 +706,16 @@ export const SERVICES: Service[] = [
     navLabel: "Nettoyage de fin de chantier Toulouse",
     h1: "Nettoyage de fin de chantier à Toulouse",
     short: "Nettoyage Fin de chantier Toulouse",
-    subtitle:
-      "Poussières, résidus et traces de peinture éliminés après vos travaux, à Toulouse et en Haute-Garonne.",
+    subtitle: "Nettoyage après travaux à Toulouse : poussières, sols, vitres et surfaces accessibles, avec un périmètre précisé sur devis.",
     metaTitle: "Nettoyage fin de chantier Toulouse | Clean&Fresh",
-    metaDescription:
-      "Nettoyage après travaux à Toulouse : poussières, résidus de peinture, vitres. Particuliers et professionnels. Livraison prête sous 24-48h. Devis gratuit rapide.",
+    metaDescription: "Nettoyage de fin de chantier à Toulouse : poussières après travaux, sols, vitres et surfaces. Diagnostic des résidus et devis gratuit sous 24 h.",
     group: "batiment",
     intro: [
-      "Après des travaux, la poussière de plâtre s'infiltre partout et les résidus de colle ou de peinture s'incrustent sur les sols et les vitres. Notre service de nettoyage fin de chantier à Toulouse livre un chantier prêt à l'emménagement.",
-      "Nous travaillons avec des particuliers, des artisans, des architectes et des promoteurs avec des délais courts et une équipe rigoureuse. Sols décapés, vitres nettoyées, traces de peinture et de colle retirées — chaque détail est traité.",
-      "Le nettoyage de fin de chantier à Toulouse est une prestation spécialisée qui ne s'improvise pas. La poussière de ponçage et de plâtre est ultrafine et se dépose sur toutes les surfaces horizontales, dans les rails de fenêtres, derrière les radiateurs et à l'intérieur des placards. Notre équipe utilise des aspirateurs industriels à filtration HEPA et des produits décapants adaptés à chaque type de sol pour un résultat impeccable.",
-      "Nous intervenons après tous types de travaux : rénovation complète, pose de carrelage, peinture, plâtrerie, création de salle de bain ou de cuisine. Les promoteurs immobiliers, les agences de construction et les architectes d'intérieur de Toulouse font régulièrement appel à nos services pour la livraison de leurs chantiers dans les délais.",
-      "Intervention rapide sur Toulouse et dans tout le département 31. Devis gratuit selon la surface et l'ampleur des travaux, réponse sous 24h.",
+      "Après une rénovation, Clean&Fresh réalise le nettoyage de fin de chantier à Toulouse pour préparer les pièces à leur utilisation. Nous traitons les poussières de travaux, sols, vitres et surfaces accessibles selon le périmètre retenu au devis.",
+      "Cuisine, salle de bain, placards, plinthes, radiateurs et rails de fenêtres sont repérés avec vous. Les résidus de colle, peinture ou enduit font l'objet d'un diagnostic pour choisir une méthode compatible avec le revêtement neuf.",
+      "Le nettoyage est organisé après le départ des artisans afin de limiter les nouveaux dépôts de poussière. Les gravats, déchets lourds et travaux inachevés ne relèvent pas d'un nettoyage courant : leur prise en charge éventuelle doit être précisée séparément.",
+      "Un test est réalisé avant de traiter une trace adhérente. Le nettoyage ne corrige pas une rayure, un défaut de pose ou un dommage sur le sol ou le vitrage. Murs et plafonds ne sont traités que si une option compatible a été convenue au devis.",
+      "Pour estimer l'intervention à Toulouse et alentours, transmettez la surface, la nature des travaux, des photos et la date de livraison souhaitée. Nous confirmons les disponibilités et les besoins d'accès à l'eau et à l'électricité avant de fixer le créneau."
     ],
     treated: [
       "Sols : carrelage, parquet, béton ciré",
@@ -581,19 +730,38 @@ export const SERVICES: Service[] = [
       "Résidus de colle et d'adhésif",
       "Étiquettes et films de protection",
     ],
-    priceNote: "Sur devis selon la surface et l'ampleur du chantier — intervention rapide.",
+    priceNote: "Sur devis selon la surface, les résidus à traiter et les accès. Date d'intervention confirmée selon les disponibilités.",
     method: [
-      "Évacuation des derniers déchets légers.",
-      "Dépoussiérage complet du haut vers le bas.",
-      "Décapage des sols et retrait des traces de peinture et colle.",
-      "Nettoyage des vitres et finition avant livraison.",
+      "Repérage des surfaces, des résidus et du périmètre après la fin des travaux.",
+      "Aspiration et dépoussiérage des zones accessibles, du haut vers le bas.",
+      "Traitement compatible des sols et des traces prévues au devis, après test.",
+      "Nettoyage des vitres et finitions, puis contrôle avec vous avant restitution."
     ],
     faq: [
-      { q: "Quel est le prix d'un nettoyage fin de chantier à Toulouse ?", a: "Le tarif est établi sur devis selon la surface du chantier, l'ampleur des saletés et les surfaces à traiter. Réponse gratuite sous 24h." },
-      { q: "Intervenez-vous en urgence après des travaux ?", a: "Oui, nous pouvons intervenir rapidement sur Toulouse et le 31, souvent sous 24 à 48h selon nos disponibilités. Contactez-nous avec les détails du chantier pour un planning accéléré." },
-      { q: "Nettoyez-vous après tous types de travaux ?", a: "Oui : peinture, carrelage, rénovation complète, ponçage, plâtrerie, pose de cuisine ou salle de bain. Nous traitons les poussières fines, les traces de peinture et les résidus de colle." },
-      { q: "Faut-il que le chantier soit terminé avant votre intervention ?", a: "Oui, nous intervenons quand tous les artisans ont terminé. Le local doit être chauffé et électrifié pour permettre l'utilisation de notre matériel." },
-      { q: "Travaillez-vous pour les professionnels du bâtiment à Toulouse ?", a: "Oui, nous collaborons avec des artisans, architectes, promoteurs et maîtres d'ouvrage. Facturation professionnelle, délais respectés, rapport qualité-prix compétitif." },
+      {
+        "q": "Quel est le prix d'un nettoyage de fin de chantier à Toulouse ?",
+        "a": "Le devis dépend de la surface, du type de travaux, de la quantité de poussière et des résidus à retirer. Des photos des pièces et des zones les plus marquées permettent une estimation gratuite sous 24 h."
+      },
+      {
+        "q": "Quand faut-il programmer le nettoyage après travaux ?",
+        "a": "Prévoyez le passage après la fin des travaux et le départ des artisans, avant l'installation du mobilier si possible. Indiquez la date de livraison souhaitée ; le créneau est confirmé selon les disponibilités."
+      },
+      {
+        "q": "Pouvez-vous retirer les traces de peinture ou de colle ?",
+        "a": "Nous étudions les traces selon leur nature et le support. Un test de compatibilité précède le traitement. Les marques qui nécessiteraient d'abîmer le revêtement ou qui correspondent à un défaut de surface ne peuvent pas être garanties comme éliminables."
+      },
+      {
+        "q": "Les gravats, murs et plafonds sont-ils compris ?",
+        "a": "Les gravats et déchets lourds ne sont pas inclus dans le nettoyage courant. Murs et plafonds ne sont traités que sur option après contrôle de compatibilité. Le devis précise les zones et les prestations retenues."
+      },
+      {
+        "q": "Quels accès faut-il prévoir sur le chantier ?",
+        "a": "Les pièces doivent être accessibles et les travaux terminés. Maintenez l'eau et l'électricité, dégagez les surfaces à nettoyer et signalez les matériaux fragiles ou les consignes des poseurs."
+      },
+      {
+        "q": "Intervenez-vous pour les artisans et les agences ?",
+        "a": "Oui, une prestation peut être organisée pour un particulier, un artisan, une agence ou un gestionnaire de locaux. Nous définissons le périmètre et les conditions d'accès avec la personne responsable du chantier."
+      }
     ],
   },
   {
@@ -601,45 +769,62 @@ export const SERVICES: Service[] = [
     navLabel: "Nettoyage fin de bail Toulouse",
     h1: "Nettoyage fin de bail à Toulouse",
     short: "Nettoyage Fin de bail Toulouse",
-    subtitle:
-      "Remise en état complète de votre logement pour l'état des lieux de sortie, à Toulouse et en Haute-Garonne.",
+    subtitle: "Nettoyage avant état des lieux à Toulouse : cuisine, sanitaires, sols, surfaces et vitres selon devis. Murs et plafonds en option après vérification.",
     metaTitle: "Nettoyage fin de bail Toulouse | Clean&Fresh",
-    metaDescription:
-      "Nettoyage de fin de bail à Toulouse : remise en état complète avant l'état des lieux de sortie. Intervention rapide et devis sous 24h.",
+    metaDescription: "Nettoyage de fin de bail à Toulouse avant l'état des lieux : cuisine, sanitaires, sols et vitres. Devis détaillé gratuit sous 24 h.",
     group: "batiment",
     intro: [
-      "Vous quittez votre logement et voulez récupérer votre dépôt de garantie intégralement ? Notre service de nettoyage fin de bail à Toulouse prend en charge la remise en état complète avant l'état des lieux de sortie : cuisine, salle de bain, sols, vitres et parties communes.",
-      "Une prestation rigoureuse, conforme aux exigences des agences immobilières et des propriétaires à Toulouse. Nous connaissons les points de contrôle des états des lieux et ne laissons aucun détail au hasard.",
-      "Le nettoyage avant état des lieux de sortie à Toulouse est un investissement qui se justifie financièrement : le coût d'une prestation professionnelle est généralement inférieur aux retenues effectuées sur le dépôt de garantie pour un logement non rendu propre. Les agences immobilières et les propriétaires sont de plus en plus exigeants sur l'état de propreté lors des sorties de bail.",
-      "Nos équipes connaissent précisément les points vérifiés lors d'un état des lieux : calcaire dans les robinets et les joints, graisses sur la hotte et le four, traces sur les murs et les portes, rails de fenêtres, joints de salle de bain, propreté de la baignoire et des WC. Chaque élément est traité selon les standards professionnels attendus par les agences immobilières de Toulouse.",
-      "Intervention disponible sous 48h sur Toulouse et dans toute la Haute-Garonne. Devis gratuit sur photos ou visite — tarif selon la surface et l'état du logement.",
+      "Préparez votre état des lieux de sortie avec un nettoyage de fin de bail à Toulouse. Clean&Fresh intervient dans les appartements et maisons pour remettre au propre les zones prévues au devis, selon la surface, l'état du logement et votre date de départ.",
+      "Le périmètre standard comprend les sols, surfaces accessibles, cuisine, salle de bain, WC, vitres, interrupteurs, radiateurs et intérieur des placards. Le devis précise les appareils et équipements à nettoyer, notamment le four, la hotte ou le réfrigérateur lorsqu'ils sont concernés.",
+      "Les murs et plafonds sont exclus de la prestation standard. Leur nettoyage peut être ajouté en option après vérification de la matière et de la tenue de la peinture. Les textiles — canapé, matelas, tapis ou moquette — sont à signaler pour une prestation distincte.",
+      "Nous traitons les graisses, le calcaire et les salissures avec des méthodes adaptées aux supports. Le nettoyage ne répare pas les rayures du parquet, les trous, les joints dégradés ou les peintures abîmées. La restitution du dépôt de garantie reste une décision du bailleur, indépendante de la seule propreté.",
+      "Envoyez la surface approximative, quelques photos, l'adresse et la date de l'état des lieux. Prévoyez un logement dégagé, l'eau et l'électricité disponibles. Après accord et réception de l'acompte, le créneau convenu est définitivement bloqué."
     ],
     treated: [
-      "Cuisine : dégraissage complet, hotte, four, réfrigérateur",
-      "Salle de bain et WC : détartrage, joints, carrelage",
-      "Sols et plinthes : carrelage, parquet, moquette",
-      "Vitres et menuiseries intérieures",
-      "Murs et portes : retrait des marques et traces",
+      "Cuisine : évier, surfaces et équipements précisés au devis",
+      "Salle de bain et WC : nettoyage et détartrage compatibles",
+      "Sols, plinthes et surfaces accessibles",
+      "Vitres, menuiseries intérieures et interrupteurs",
+      "Radiateurs et intérieur des placards accessibles"
     ],
     problems: [
-      "Dépôt de garantie en jeu",
-      "Cuisine et salle de bain incrustées",
-      "Sols tachés ou rayés",
-      "Logement encrassé après plusieurs années",
+      "Graisses et calcaire avant l'état des lieux",
+      "Cuisine et salle de bain encrassées",
+      "Traces et salissures sur les sols",
+      "Logement à remettre au propre après un déménagement"
     ],
-    priceNote: "Sur devis selon la surface et l'état du logement — intervention disponible sous 48h.",
+    priceNote: "Devis détaillé selon la surface et l'état. Murs et plafonds exclus ; option possible après vérification de compatibilité.",
     method: [
-      "Visite ou photos pour évaluation précise.",
-      "Nettoyage pièce par pièce, du plafond au sol.",
-      "Détartrage, dégraissage et désinfection des zones sensibles.",
-      "Contrôle qualité final, prêt pour l'état des lieux.",
+      "Évaluation sur photos ou visite et définition des prestations comprises au devis.",
+      "Nettoyage des pièces et surfaces convenues, avec respect des revêtements.",
+      "Dégraissage et détartrage des équipements compatibles ; options uniquement si retenues.",
+      "Contrôle final avec vous et signalement des traces ou dégradations restantes."
     ],
     faq: [
-      { q: "Quel est le prix d'un nettoyage fin de bail à Toulouse ?", a: "Le tarif est calculé sur devis selon la surface, le nombre de pièces et l'état du logement. Nous vous répondons gratuitement sous 24h sur la base de photos ou d'une visite." },
-      { q: "Que comprend un nettoyage avant état des lieux à Toulouse ?", a: "Notre prestation couvre l'ensemble du logement : dégraissage complet de la cuisine (hotte, four, réfrigérateur), détartrage de la salle de bain, nettoyage des sols, vitres, plinthes, portes et murs. Chaque point de contrôle d'un état des lieux est traité." },
-      { q: "Puis-je récupérer mon dépôt de garantie grâce à votre intervention ?", a: "Nous effectuons un nettoyage professionnel et rigoureux conforme aux attentes des agences et propriétaires. Le résultat met toutes les chances de votre côté pour l'état des lieux, mais nous ne pouvons pas garantir la décision du bailleur." },
-      { q: "Combien de temps dure un nettoyage fin de bail ?", a: "De 3 à 8 heures selon la surface et l'état du logement. Nous pouvons intervenir la veille de l'état des lieux si le logement est libéré." },
-      { q: "Intervenez-vous dans toute l'agglomération toulousaine pour le nettoyage fin de bail ?", a: "Oui, nous couvrons Toulouse et toutes les communes du 31 : Colomiers, Blagnac, Tournefeuille, Muret, Cugnaux, Balma, Castanet-Tolosan, L'Union, Ramonville et bien d'autres." },
+      {
+        "q": "Quel est le prix d'un nettoyage de fin de bail à Toulouse ?",
+        "a": "Il dépend de la surface, de l'état et des équipements à traiter. Envoyez quelques photos, la surface approximative et la date souhaitée pour recevoir un devis détaillé gratuit sous 24 h."
+      },
+      {
+        "q": "Que comprend le nettoyage avant état des lieux ?",
+        "a": "Le périmètre standard comprend sols, surfaces accessibles, cuisine, salle de bain, WC, vitres, interrupteurs, radiateurs et intérieur des placards. Le devis détaille les équipements, notamment l'électroménager, et les prestations effectivement retenues."
+      },
+      {
+        "q": "Le nettoyage des murs et plafonds est-il inclus ?",
+        "a": "Non, les murs et plafonds sont exclus de la formule standard. Une option peut être étudiée après vérification de la compatibilité du revêtement et de la peinture. Elle doit figurer au devis avant l'intervention."
+      },
+      {
+        "q": "Nettoyez-vous aussi le canapé, le matelas ou les tapis ?",
+        "a": "Ces textiles font l'objet d'une prestation distincte. Mentionnez-les dans votre demande avec leur format et leur état pour les intégrer au devis si vous le souhaitez."
+      },
+      {
+        "q": "Le nettoyage garantit-il la restitution de ma caution ?",
+        "a": "La prestation prépare le logement sur le plan de la propreté, mais la décision appartient au bailleur. Les rayures, l'usure, les peintures abîmées et les réparations ne sont pas corrigées par le nettoyage."
+      },
+      {
+        "q": "Comment préparer le logement et confirmer le créneau ?",
+        "a": "Dégagez les surfaces, videz les placards et appareils concernés et maintenez l'eau et l'électricité. Après accord sur le devis et réception de l'acompte, le créneau convenu est définitivement bloqué ; le solde est payé en fin de prestation."
+      }
     ],
   },
   {
@@ -650,42 +835,60 @@ export const SERVICES: Service[] = [
     subtitle:
       "Désencombrement, débarras et remise en état de logements en syndrome de Diogène, à Toulouse et en Haute-Garonne.",
     metaTitle: "Nettoyage Diogène Toulouse | Clean&Fresh",
-    metaDescription:
-      "Spécialiste du nettoyage de logements Diogène à Toulouse. Débarras, désinfection et remise en état avec discrétion et bienveillance. Devis confidentiel sous 24h.",
+    metaDescription: "Nettoyage Diogène à Toulouse : tri, débarras et remise au propre selon devis. Évaluation confidentielle, intervention discrète et sans jugement.",
     group: "batiment",
     intro: [
-      "Le syndrome de Diogène se caractérise par une accumulation extrême d'objets et de déchets dans un logement. Notre service de nettoyage Diogène à Toulouse intervient avec discrétion, sans jugement, pour désencombrer, nettoyer et remettre le logement en état habitable.",
-      "Notre équipe, équipée en protection individuelle, prend en charge le tri, l'évacuation et la désinfection complète — du sol au plafond. Nous travaillons en coordination avec les familles, les services sociaux ou les notaires pour les successions.",
-      "Le nettoyage d'un logement en syndrome de Diogène nécessite une expertise spécifique. Les risques sanitaires sont réels : moisissures, insectes, rongeurs, odeurs très fortes. Nos intervenants sont formés et équipés en conséquence. Nous collaborons régulièrement avec des assistantes sociales, des tuteurs légaux, des curateurs et des notaires dans le cadre de successions ou de remises en état de logements sociaux à Toulouse et dans le 31.",
-      "Une fois l'évacuation terminée, le logement est entièrement nettoyé et désinfecté : sols, murs, plafonds, sanitaires, cuisine. Un traitement des odeurs par neutralisation moléculaire est systématiquement réalisé pour permettre la réoccupation ou la mise en location du bien dans les meilleures conditions.",
-      "Intervention confidentielle et rapide à Toulouse et dans tout le 31. Devis sur photos ou visite, réponse sous 24h.",
+      "Clean&Fresh accompagne les demandes de nettoyage de logements en situation de Diogène à Toulouse avec discrétion et sans jugement. L'intervention est préparée avec la personne concernée ou son représentant afin de définir les zones à traiter et les objets à conserver.",
+      "Le devis distingue le tri, le débarras, l'évacuation, le nettoyage des surfaces compatibles et les traitements complémentaires nécessaires. Le volume, l'accessibilité et l'état du logement déterminent l'organisation et la durée du chantier.",
+      "Avant tout enlèvement, les consignes concernant les documents, souvenirs et effets personnels sont convenues avec vous. Nous avançons selon ce périmètre ; un logement très encombré peut demander plusieurs étapes avant le nettoyage proprement dit.",
+      "La désinfection et le traitement des odeurs sont définis selon le diagnostic et les surfaces accessibles. Les murs et plafonds nécessitent une vérification et un accord au devis. En présence de nuisibles, de déchets particuliers ou de supports dégradés, un traitement spécialisé ou des travaux distincts peuvent être nécessaires.",
+      "Pour une première évaluation à Toulouse ou alentours, indiquez la surface, les accès, le volume approximatif et joignez des photos. Les informations sont utilisées pour préparer le devis et organiser une intervention adaptée à la situation."
     ],
     treated: [
-      "Logements en accumulation extrême",
-      "Appartements et maisons insalubres",
-      "Débarras complet et évacuation des encombrants",
-      "Désinfection et traitement des odeurs",
-      "Remise en état avant vente, location ou succession",
+      "Logements fortement encombrés après évaluation",
+      "Tri et débarras selon les consignes convenues",
+      "Évacuation des encombrants identifiés au devis",
+      "Nettoyage des sols, sanitaires et surfaces compatibles",
+      "Désinfection et traitement des odeurs selon le besoin"
     ],
     problems: [
-      "Accumulation massive de déchets et d'objets",
-      "Odeurs très fortes et persistantes",
-      "Moisissures, humidité et risque sanitaire",
-      "Présence de nuisibles",
+      "Accumulation d'objets et de déchets",
+      "Zones de vie difficiles d'accès",
+      "Salissures importantes et odeurs persistantes",
+      "Logement à préparer avant une remise en usage"
     ],
     priceNote: "Sur devis confidentiel après évaluation — intervention rapide et discrète.",
     method: [
-      "Évaluation confidentielle sur place ou par photos.",
-      "Tri, débarras et évacuation en filière adaptée.",
-      "Nettoyage complet en profondeur, sols, murs et sanitaires.",
-      "Désinfection, traitement des odeurs et assainissement de l'air.",
+      "Évaluation confidentielle et définition des objets à conserver et du périmètre.",
+      "Tri, débarras et évacuation des éléments prévus au devis.",
+      "Nettoyage progressif des zones accessibles et compatibles.",
+      "Traitements complémentaires retenus, contrôle et bilan des besoins restants."
     ],
     faq: [
-      { q: "Intervenez-vous pour le syndrome de Diogène à Toulouse ?", a: "Oui, c'est l'une de nos spécialités. Nous intervenons avec discrétion et sans jugement pour le tri, le débarras et la remise en état complète des logements en syndrome de Diogène." },
-      { q: "Comment se déroule une intervention Diogène ?", a: "Après une évaluation confidentielle (sur photos ou visite), nous établissons un devis précis. L'équipe intervient équipée en protection individuelle : tri des objets, évacuation des déchets, nettoyage en profondeur et désinfection complète." },
-      { q: "Travaillez-vous avec les familles, tutelles et services sociaux ?", a: "Oui, nous collaborons régulièrement avec des familles, des tuteurs, des curateurs, des assistantes sociales et des agences immobilières pour les situations complexes ou les successions." },
-      { q: "La prestation Diogène est-elle confidentielle ?", a: "Absolument. Nous intervenons avec discrétion et ne communiquons aucune information sur nos clients ou les situations traitées. La confidentialité fait partie de notre engagement." },
-      { q: "Quel est le prix d'une intervention Diogène à Toulouse ?", a: "Le tarif est établi sur devis confidentiel après évaluation. Il dépend du volume à évacuer, de la surface et de l'état du logement. Contactez-nous pour un échange sans engagement." },
+      {
+        "q": "Comment commence une intervention Diogène à Toulouse ?",
+        "a": "Nous échangeons sur la situation, les accès et les priorités, à partir de photos ou d'une visite. Un devis précise les étapes, le tri, le volume à évacuer et les zones à nettoyer avant de confirmer l'intervention."
+      },
+      {
+        "q": "Comment sont gérés les objets à conserver ?",
+        "a": "Les documents, effets personnels et objets à garder sont identifiés avec la personne concernée ou son représentant avant le débarras. Les consignes sont définies en amont pour distinguer ce qui doit être conservé de ce qui peut être évacué."
+      },
+      {
+        "q": "Le nettoyage comprend-il les murs et plafonds ?",
+        "a": "Uniquement si leur traitement est prévu au devis et compatible avec les revêtements. Un mur dégradé, une peinture fragile ou une contamination profonde peuvent nécessiter un autre traitement ou des travaux."
+      },
+      {
+        "q": "Pouvez-vous traiter les odeurs et les nuisibles ?",
+        "a": "Le traitement des odeurs peut être inclus selon le diagnostic. La présence de nuisibles doit être signalée avant l'intervention : une désinsectisation ou dératisation spécialisée peut être nécessaire séparément du nettoyage."
+      },
+      {
+        "q": "Quel est le prix d'un nettoyage Diogène ?",
+        "a": "Le prix dépend de la surface, du volume à trier et à évacuer, de l'accès et de l'état des supports. Une évaluation confidentielle permet de préparer un devis adapté, sans tarif forfaitaire annoncé avant examen."
+      },
+      {
+        "q": "Puis-je organiser l'intervention pour un proche ?",
+        "a": "Oui, nous pouvons échanger avec la famille ou le représentant chargé du logement, avec les accords nécessaires. Les décisions sur les biens à conserver et les accès sont clarifiées avant le début du chantier."
+      }
     ],
   },
   {
@@ -700,38 +903,57 @@ export const SERVICES: Service[] = [
       "Nettoyage extrême à Toulouse : logement insalubre, squatté ou abandonné. Débarras et désinfection, intervention discrète, devis sous 24h.",
     group: "batiment",
     intro: [
-      "Logement très encombré, insalubre ou laissé à l'abandon : notre service de nettoyage extrême à Toulouse prend en charge les situations que personne ne veut traiter, avec discrétion et sans jugement.",
-      "Équipe équipée en protection individuelle, débarras complet, nettoyage en profondeur et désinfection approfondie du logement — sols, murs, sanitaires, pièces encombrées. Nous évacuons les déchets en filière adaptée et réglementée.",
-      "Le nettoyage extrême concerne les logements dont l'état dépasse largement ce qu'un nettoyage classique peut prendre en charge : logement squatté, appartement abandonné pendant plusieurs années, habitation insalubre suite à un sinistre ou à une situation de grande précarité. Notre équipe est formée à ces interventions lourdes et dispose du matériel adapté : combinaisons de protection, masques, aspirateurs industriels et produits désinfectants professionnels.",
-      "Nous intervenons pour des bailleurs sociaux, des agences immobilières, des syndics de copropriété, des particuliers et des notaires dans le cadre de successions. Chaque intervention est traitée avec le même niveau de discrétion et de professionnalisme, quelle que soit la situation. L'évacuation des encombrants se fait en filière réglementée, avec document de traçabilité si nécessaire.",
-      "Nous intervenons rapidement à Toulouse et dans tout le département 31. Évaluation confidentielle sur photos ou sur place, devis sous 24h.",
+      "Un appartement très sale, abandonné ou fortement encombré demande une préparation différente d'un ménage courant. Clean&Fresh réalise le nettoyage extrême à Toulouse après évaluation de l'état des pièces, des accès et des surfaces à remettre au propre.",
+      "La prestation peut associer débarras, dégraissage, détartrage et nettoyage approfondi des zones compatibles. Le devis distingue chaque étape, l'évacuation éventuelle et les traitements complémentaires pour adapter l'intervention à votre besoin réel.",
+      "Après un départ de locataire ou une période d'inoccupation, les priorités sont définies avec le propriétaire ou la personne responsable du logement. Les biens à conserver sont identifiés avant tout débarras. L'eau, l'électricité et un accès sûr doivent être disponibles pour les opérations prévues.",
+      "Le nettoyage ne constitue pas une rénovation du bâtiment. Les surfaces dégradées, moisissures profondes, nuisibles ou déchets particuliers doivent être signalés dès la demande : une intervention spécialisée ou des réparations peuvent être nécessaires. Les murs et plafonds sont étudiés séparément selon leur compatibilité.",
+      "Adresse, surface approximative, photos et contraintes d'accès permettent de préparer un devis confidentiel à Toulouse et dans l'agglomération. Le créneau et la durée sont confirmés après examen de la situation et accord sur les prestations."
     ],
     treated: [
-      "Logements en syndrome de Diogène",
-      "Appartements insalubres ou squattés",
-      "Débarras et évacuation d'encombrants",
-      "Désinfection et traitement des odeurs",
-      "Remise en état avant vente ou location",
+      "Appartements très encrassés ou laissés à l'abandon",
+      "Logements encombrés après évaluation",
+      "Débarras des éléments prévus au devis",
+      "Cuisine, sanitaires, sols et surfaces compatibles",
+      "Désinfection et traitement des odeurs selon diagnostic"
     ],
     problems: [
-      "Accumulation extrême de déchets",
-      "Moisissures et humidité",
-      "Odeurs très fortes et persistantes",
-      "Risque sanitaire et nuisibles",
+      "Accumulation importante de déchets et d'objets",
+      "Graisses et dépôts fortement incrustés",
+      "Odeurs persistantes selon leur origine",
+      "Logement à remettre au propre avant travaux ou réutilisation"
     ],
     priceNote: "Sur devis après évaluation confidentielle — intervention rapide et discrète.",
     method: [
-      "Évaluation confidentielle sur place ou par photos.",
-      "Tri, débarras et évacuation en filière adaptée.",
-      "Nettoyage complet en profondeur, sols, murs et sanitaires.",
-      "Désinfection, traitement des odeurs et assainissement de l'air.",
+      "Évaluation confidentielle des accès, supports et besoins particuliers.",
+      "Tri et évacuation des éléments convenus avec la personne responsable.",
+      "Nettoyage approfondi des surfaces compatibles prévues au devis.",
+      "Traitements complémentaires retenus et contrôle des zones nettoyées."
     ],
     faq: [
-      { q: "Faites-vous les logements très insalubres à Toulouse ?", a: "Oui, c'est notre cœur de métier pour le nettoyage extrême. Nous intervenons sur les logements très dégradés, insalubres, encombrés ou laissés à l'abandon, avec le matériel et les protections adaptés." },
-      { q: "Intervenez-vous après un squat ou une expulsion ?", a: "Oui, nous remettons en état les logements après squat, expulsion ou abandon. Nous évacuons les encombrants, nettoyons en profondeur et désinfectons l'ensemble du logement." },
-      { q: "Comment évaluer le coût d'un nettoyage extrême ?", a: "Envoyez-nous des photos ou demandez une visite sur place pour une évaluation confidentielle. Le tarif dépend du volume à traiter, de la surface et de l'état du logement. Devis sous 24h." },
-      { q: "Travaillez-vous pour des bailleurs sociaux et des agences immobilières ?", a: "Oui, nous collaborons avec des bailleurs sociaux, des agences immobilières, des syndics et des propriétaires privés pour la remise en état de logements très dégradés." },
-      { q: "L'intervention de nettoyage extrême est-elle discrète ?", a: "Oui, nos équipes interviennent en tenue professionnelle sobre et sans signalétique visible. Nous respectons la confidentialité des situations traitées et travaillons avec efficacité et discrétion." },
+      {
+        "q": "Quelle différence entre grand ménage et nettoyage extrême ?",
+        "a": "Le nettoyage extrême concerne un état d'encrassement ou d'encombrement qui demande davantage de préparation, de matériel et de temps. Une évaluation permet de distinguer nettoyage, débarras et traitements spécifiques."
+      },
+      {
+        "q": "Intervenez-vous dans un logement abandonné ou après un départ difficile ?",
+        "a": "Oui, après vérification des accès, de la situation et du périmètre. La personne responsable du logement doit pouvoir autoriser l'accès et préciser les objets à conserver avant toute évacuation."
+      },
+      {
+        "q": "Comment obtenir un devis à Toulouse ?",
+        "a": "Envoyez la surface approximative, l'adresse, des photos représentatives et les contraintes d'accès. Le montant dépend de l'état, du volume éventuel à évacuer et des surfaces à traiter."
+      },
+      {
+        "q": "Le nettoyage suffit-il pour rendre le logement habitable ?",
+        "a": "Cela dépend de son état. Le nettoyage traite les salissures prévues au devis ; il ne corrige pas les défauts du bâtiment ni les dégradations. Des travaux ou un traitement spécialisé peuvent rester nécessaires."
+      },
+      {
+        "q": "Les murs, plafonds et nuisibles sont-ils pris en charge ?",
+        "a": "Les murs et plafonds sont étudiés après vérification de compatibilité et uniquement selon le devis. Les nuisibles doivent être signalés : leur traitement peut nécessiter un prestataire spécialisé distinct du nettoyage."
+      },
+      {
+        "q": "L'évaluation est-elle confidentielle ?",
+        "a": "Nous traitons la demande avec discrétion et utilisons les informations et photos pour préparer l'intervention. Les modalités d'accès et les personnes à contacter sont définies avec vous."
+      }
     ],
   },
   {
@@ -742,29 +964,27 @@ export const SERVICES: Service[] = [
     subtitle:
       "Shampouinage et nettoyage en profondeur de moquettes et sols textiles à domicile à Toulouse et dans toute la Haute-Garonne.",
     metaTitle: "Nettoyage moquette Toulouse dès 99 € | Clean&Fresh",
-    metaDescription:
-      "Nettoyage de moquette à domicile à Toulouse dès 99 €. Petite surface, surface standard ou grande surface. Réservation en ligne et intervention à domicile.",
+    metaDescription: "Nettoyage de moquette à Toulouse dès 99 € pour moins de 12 m². Injection-extraction sur fibres compatibles, tarifs par surface et réservation à domicile.",
     group: "textile",
     booking: true,
     intro: [
-      "Votre moquette accumule poussières, allergènes, taches et mauvaises odeurs au fil du temps. Notre service de nettoyage moquette à Toulouse intervient directement chez vous, sans déplacer les meubles, pour un shampouinage professionnel en profondeur.",
-      "La méthode injection-extraction que nous utilisons injecte une solution nettoyante dans les fibres de la moquette, puis l'aspire avec les salissures et l'eau. Résultat : une moquette assainie, sans résidu, qui sèche en 2 à 5 heures selon l'épaisseur. Cette technique est bien plus efficace qu'un simple aspirateur ou qu'un nettoyeur vapeur — elle élimine ce qui est incrusté en profondeur.",
-      "Nous intervenons sur les moquettes compatibles après identification de la fibre. Les supports délicats, comme le sisal, demandent un diagnostic et peuvent nécessiter une méthode différente de l'injection-extraction.",
-      "Pour les professionnels à Toulouse — bureaux, hôtels, cabinets, commerces — nous proposons des contrats d'entretien régulier à tarif dégressif, en dehors des horaires d'activité. Les produits sont sélectionnés selon la fibre et employés conformément à leurs notices.",
-      "Si vous cherchez une shampouineuse moquette à louer ou un nettoyeur moquette, notre prestation par injecteur extracteur donne des résultats bien supérieurs à ceux d'une shampouineuse moquette professionnelle standard. L'injection-extraction extrait réellement les salissures incrustées dans les fibres — résultat net et fibres assainies en profondeur.",
-      "Clean&Fresh intervient sur les moquettes de toute l'agglomération toulousaine et du département 31 — Blagnac, Colomiers, Tournefeuille, Muret, Balma, Cugnaux, Labège, Castelginest et l'ensemble des communes du 31. Choisissez votre surface et votre créneau directement en ligne.",
+      "Clean&Fresh nettoie les moquettes d'appartements, maisons et bureaux à Toulouse pour retirer les salissures accumulées dans les fibres. Choisissez la formule selon la surface à traiter, puis les options utiles avant de réserver votre créneau.",
+      "L'injection-extraction est réalisée sur les moquettes compatibles après examen de la fibre, du dossier et de l'état de pose. Le nettoyage courant des taches est compris ; les traitements intensifs, anti-odeur ou autres compléments sont choisis selon le besoin.",
+      "Une zone de passage encrassée, des traces de café ou des salissures d'animaux ne demandent pas toujours le même traitement. Indiquez l'origine des taches et les produits déjà utilisés. L'usure, les décolorations et certaines marques anciennes ne peuvent pas être réparées par le nettoyage.",
+      "La surface accessible doit être dégagée avant l'arrivée. Signalez les meubles lourds, les raccords fragiles et les fibres naturelles comme le sisal : leur compatibilité avec un nettoyage humide doit être vérifiée et une autre solution peut être nécessaire.",
+      "Le séchage prend généralement 2 à 5 heures, parfois davantage selon l'épaisseur, le support et l'aération. Pour un bureau ou un commerce, prévoyez un créneau permettant de limiter le passage sur la moquette humide. Les grandes surfaces et besoins particuliers sont vérifiés sur photos."
     ],
     treated: [
-      "Moquettes velours ras et bouclées",
-      "Moquettes en dalles (bureaux, commerces)",
-      "Sols textiles en sisal et fibres naturelles",
-      "Moquettes en rouleau toutes surfaces",
+      "Moquettes velours ras et bouclées compatibles",
+      "Dalles de moquette de bureaux et commerces",
+      "Moquettes en rouleau après contrôle du support",
+      "Fibres délicates ou naturelles sur diagnostic préalable"
     ],
     problems: [
-      "Taches incrustées de café, vin, urine",
-      "Odeurs persistantes et renfermées",
-      "Acariens et allergènes dans les fibres",
-      "Grisaille et ternissement par l'usage",
+      "Taches de café, boissons ou urine",
+      "Odeurs et salissures des zones de passage",
+      "Poussières accumulées dans les fibres",
+      "Encrassement et aspect terni par l'usage"
     ],
     prices: [
       { label: "Petite surface (< 12 m²)", price: "99 €", items: ["Nettoyage par injection-extraction", "Traitement courant des taches et auréoles", "Séchage généralement en 2 à 5h"], formuleId: "moquette-petite" },
@@ -774,49 +994,67 @@ export const SERVICES: Service[] = [
     priceNote: "Tarifs pour moquettes standards compatibles. Surface atypique, fibre délicate ou état exceptionnel : vérification préalable sur photos.",
     soils: ["Café et thé", "Vin et jus", "Urine", "Graisses", "Sable et boue"],
     method: [
-      "Aspiration haute puissance pour retirer les salissures de surface.",
-      "Détachage ciblé des zones les plus marquées avant shampouinage.",
-      "Injection-extraction en profondeur sur l'ensemble de la surface.",
-      "Neutralisation des odeurs et séchage accéléré.",
+      "Diagnostic de la fibre et du support, puis aspiration des zones accessibles.",
+      "Traitement ciblé des taches et application des options retenues.",
+      "Injection-extraction sur les surfaces compatibles, avec maîtrise de l'humidité.",
+      "Extraction finale, contrôle et conseils de séchage avant remise en circulation."
     ],
     faq: [
-      { q: "Combien coûte un nettoyage de moquette à Toulouse ?", a: "Le tarif est de 99 € pour une petite surface de moins de 12 m², 149 € pour une surface standard de 12 à 20 m² et 199 € pour une grande surface de plus de 20 m². La réservation s'effectue directement en ligne." },
-      { q: "Combien de temps met une moquette à sécher après le nettoyage ?", a: "En général 2 à 5 heures selon l'épaisseur de la moquette et la ventilation de la pièce. Nous conseillons d'aérer la pièce ou d'activer le chauffage après l'intervention pour accélérer le séchage." },
-      { q: "Peut-on enlever des taches anciennes de café ou de vin sur une moquette ?", a: "Oui, dans la majorité des cas. Notre technique d'injection-extraction et nos produits professionnels traitent efficacement les taches incrustées. Plus la tache est ancienne, plus le prétraitement est intensif — mais les résultats sont souvent remarquables, même sur des taches de plusieurs années." },
-      { q: "Nettoyez-vous les moquettes de bureaux et de commerces à Toulouse ?", a: "Oui, nous intervenons pour les professionnels : bureaux, hôtels, cabinets médicaux, commerces. Nous proposons des contrats d'entretien régulier en dehors des heures d'activité, avec tarifs dégressifs pour les grandes surfaces." },
-      { q: "Quelle différence entre un nettoyage vapeur et votre méthode injection-extraction ?", a: "La vapeur humidifie en surface sans vraiment extraire les salissures. L'injection-extraction injecte une solution nettoyante dans les fibres et l'aspire avec les saletés — résultat plus profond, fibres réellement nettoyées et séchage comparable." },
+      {
+        "q": "Combien coûte un nettoyage de moquette à Toulouse ?",
+        "a": "La petite surface de moins de 12 m² est à 99 €, la surface standard de 12 à 20 m² à 149 € et la grande surface de plus de 20 m² à 199 €. Une surface atypique, une fibre délicate ou un état exceptionnel nécessite une vérification préalable sur photos."
+      },
+      {
+        "q": "Faut-il déplacer les meubles avant l'intervention ?",
+        "a": "Dégagez la surface à nettoyer et retirez les objets au sol. Signalez les meubles lourds ou fixes pour définir la zone accessible et l'organisation ; leur déplacement n'est pas présumé inclus."
+      },
+      {
+        "q": "Quand peut-on remarcher sur la moquette ?",
+        "a": "Attendez le séchage complet, généralement 2 à 5 heures et parfois davantage selon l'épaisseur, le support et la ventilation. Limitez les passages pendant le séchage pour éviter de redéposer des salissures."
+      },
+      {
+        "q": "Les anciennes taches de café ou de vin vont-elles disparaître ?",
+        "a": "Le résultat dépend de l'ancienneté de la tache, de la fibre et des produits déjà appliqués. Un détachage ciblé peut être utile, mais une décoloration ou une marque fixée peut rester visible."
+      },
+      {
+        "q": "Nettoyez-vous les moquettes de bureaux et de commerces ?",
+        "a": "Oui, selon la surface, l'état et les contraintes d'accès. Pour une grande surface ou des passages réguliers, envoyez des photos et vos horaires afin d'établir un devis adapté."
+      },
+      {
+        "q": "Le sisal et les fibres naturelles peuvent-ils être nettoyés à l'eau ?",
+        "a": "Pas systématiquement. Ces supports peuvent réagir à l'humidité ; envoyez des photos et les informations de matière avant de réserver. La méthode est confirmée après diagnostic et certaines fibres ne conviennent pas à l'injection-extraction."
+      }
     ],
   },
   {
     slug: "/nettoyage-cuir-toulouse",
     navLabel: "Nettoyage cuir Toulouse",
-    h1: "Nettoyage cuir professionnel à Toulouse – Canapé, fauteuil et sièges auto",
+    h1: "Nettoyage de cuir à domicile à Toulouse",
     short: "Nettoyage cuir Toulouse",
     subtitle:
       "Nettoyage manuel doux de vos canapés, fauteuils et sièges auto en cuir. Soin nourrissant et protecteur en option.",
-    metaTitle: "Nettoyage cuir Toulouse | Canapé, fauteuil & sièges auto",
-    metaDescription:
-      "Nettoyage professionnel du cuir à Toulouse : canapé, fauteuil et sièges auto. Nettoyage doux à domicile, soin nourrissant et protecteur en option.",
+    metaTitle: "Nettoyage cuir Toulouse dès 49 € | Clean&Fresh",
+    metaDescription: "Nettoyage de canapé, fauteuil et sièges en cuir à Toulouse dès 49 €. Méthode manuelle douce, soin protecteur en option, réservation à domicile.",
     group: "textile",
     booking: true,
     intro: [
-      "Clean&Fresh réalise le nettoyage professionnel du cuir à Toulouse et en Haute-Garonne : canapés, fauteuils, chaises et sièges automobiles.",
-      "Le cuir bénéficie d’un protocole spécifique avec nettoyage manuel doux, brosse adaptée et produit professionnel, sans injection-extraction sur le cuir véritable.",
-      "Soin nourrissant & protecteur du cuir disponible en option après nettoyage.",
-      "Nous adaptons nos techniques et produits professionnels (pH neutre) pour éliminer les salissures de surface et les traces de gras sans abîmer ou assécher la matière.",
-      "Chaque cuir est identifié et testé avant intervention. Les cuirs particulièrement délicats peuvent nécessiter un protocole spécifique.",
+      "Clean&Fresh nettoie à domicile les canapés, fauteuils, chaises et sièges auto en cuir à Toulouse. La prestation retire les salissures de surface avec une méthode manuelle, une brosse adaptée et des produits choisis selon la finition du revêtement.",
+      "Choisissez le format de votre mobilier puis, si vous le souhaitez, le soin nourrissant et protecteur proposé en option. Le nettoyage du cuir est distinct du shampouinage des textiles : nous n'utilisons pas l'injection-extraction sur le cuir véritable.",
+      "Avant de commencer, nous vérifions la matière, les coutures et les zones usées, puis réalisons un test discret. Un cuir pigmenté, un revêtement synthétique et une finition délicate ne réagissent pas de la même façon. Signalez tout traitement antérieur et envoyez des photos si la surface pèle ou se décolore.",
+      "Le nettoyage vise les traces de gras, les salissures et l'aspect encrassé. Il ne répare pas les craquelures, les déchirures ou les zones dépigmentées et ne comprend pas de recoloration. Le soin complémentaire est appliqué uniquement lorsqu'il convient à la matière.",
+      "Dégagez l'accès au canapé ou aux fauteuils, puis laissez les surfaces sécher avant de les réutiliser. Vous pouvez regrouper plusieurs éléments dans une réservation à Toulouse et dans l'agglomération ; le récapitulatif précise les formules et options choisies."
     ],
     treated: [
-      "Canapés et fauteuils en cuir véritable",
-      "Sièges auto en cuir",
-      "Simili-cuir et éco-cuir de qualité",
+      "Canapés et fauteuils en cuir compatible",
       "Chaises et poufs en cuir",
+      "Sièges automobiles en cuir",
+      "Simili-cuir et autres finitions après diagnostic"
     ],
     problems: [
-      "Cuir encrassé et terne",
+      "Salissures de surface et aspect encrassé",
       "Traces de transpiration et de gras",
-      "Manque de souplesse",
-      "Taches légères et salissures du quotidien",
+      "Dépôts sur les zones de contact",
+      "Besoin d'entretien du revêtement"
     ],
     prices: [
       { label: "Fauteuil cuir", price: "49 €", items: ["Nettoyage manuel doux", "Brosse adaptée", "Réutilisation après séchage du cuir"], formuleId: "cuir-fauteuil" },
@@ -837,14 +1075,36 @@ export const SERVICES: Service[] = [
       "Résidus gras",
     ],
     method: [
-      "Diagnostic du type de cuir (véritable, synthétique).",
-      "Nettoyage manuel à l'aide de brosses souples et de nettoyant doux pH neutre.",
-      "Essuyage avec microfibres propres.",
-      "Optionnel : application d'une lotion nourrissante et protectrice pour assouplir le cuir.",
+      "Identification du revêtement, examen de l'usure et test sur une zone discrète.",
+      "Nettoyage manuel avec une brosse et un produit adaptés.",
+      "Essuyage des salissures avec des microfibres propres.",
+      "Soin nourrissant et protecteur si choisi et compatible, puis conseils de séchage."
     ],
     faq: [
-      { q: "Pourquoi ne pas utiliser l'injection-extraction sur le cuir ?", a: "L'injection-extraction gorge la matière d'eau, ce qui détruit le cuir naturel en l'asséchant au séchage. Le cuir nécessite un nettoyage de surface manuel avec une hydratation adaptée." },
-      { q: "Proposez-vous une prestation pour reteindre le cuir ?", a: "Non, notre prestation comprend un nettoyage professionnel ; le soin nourrissant et protecteur est proposé en option. Nous ne réalisons pas de rénovation pigmentaire ou de recoloration de cuir abîmé." },
+      {
+        "q": "Combien coûte un nettoyage de canapé en cuir à Toulouse ?",
+        "a": "Le fauteuil est à 49 €, le canapé cuir 2/3 places à 79 €, le canapé 4/5 places ou d'angle/en U à 99 €. Les chaises, poufs et sièges auto disposent de formules dédiées. Le soin nourrissant et protecteur est en option."
+      },
+      {
+        "q": "Le soin du cuir est-il inclus dans le nettoyage ?",
+        "a": "La formule comprend le nettoyage manuel doux. Le soin nourrissant et protecteur est une option distincte, appliquée après nettoyage si elle est choisie et adaptée au revêtement."
+      },
+      {
+        "q": "Pourquoi ne pas utiliser une shampouineuse sur le cuir ?",
+        "a": "L'injection-extraction apporte une humidité inadaptée au cuir véritable. Nous privilégions un nettoyage de surface manuel et contrôlé, après test, avec un produit adapté à la finition."
+      },
+      {
+        "q": "Pouvez-vous réparer les craquelures ou recolorer le cuir ?",
+        "a": "Non. La prestation nettoie les salissures et peut inclure un soin d'entretien, mais ne répare pas les craquelures, les déchirures ou les pertes de couleur. Une restauration spécialisée est nécessaire pour ces défauts."
+      },
+      {
+        "q": "Nettoyez-vous le simili-cuir et les cuirs délicats ?",
+        "a": "La prise en charge dépend de leur état et de leur finition. Envoyez des photos si le revêtement pèle, se décolore ou présente une usure marquée ; un diagnostic et un test déterminent la méthode possible."
+      },
+      {
+        "q": "Quand puis-je réutiliser mon canapé en cuir ?",
+        "a": "Après séchage complet du nettoyage et, le cas échéant, du soin appliqué. Le délai dépend du revêtement et du produit ; les conseils sont donnés à la fin de l'intervention."
+      }
     ],
   },
 ];

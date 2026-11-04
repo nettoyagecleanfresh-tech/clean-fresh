@@ -26,13 +26,13 @@ const DESC = "Découvrez les services Clean&Fresh à Toulouse : canapé, matelas
 export const Route = createFileRoute("/nos-services")({
   head: () => ({
     meta: [
-      { title: `Nos Services de Nettoyage à Toulouse — Canapé, Matelas, Auto | Clean&Fresh` },
-      { name: "description", content: `Découvrez tous les services Clean&Fresh : nettoyage canapé, matelas, tapis, moquette, auto, vitres, terrasse, façade, fin de chantier. À domicile Toulouse et 31.` },
-      { property: "og:title", content: `Nos Services de Nettoyage à Toulouse — Canapé, Matelas, Auto | Clean&Fresh` },
-      { property: "og:description", content: `Découvrez tous les services Clean&Fresh : nettoyage canapé, matelas, tapis, moquette, auto, vitres, terrasse, façade, fin de chantier. À domicile Toulouse et 31.` },
+      { title: TITLE },
+      { name: "description", content: DESC },
+      { property: "og:title", content: TITLE },
+      { property: "og:description", content: DESC },
       { property: "og:url", content: `https://cleanetfresh.fr/nos-services` },
-      { name: "twitter:title", content: `Nos Services de Nettoyage à Toulouse — Canapé, Matelas, Auto | Clean&Fresh` },
-      { name: "twitter:description", content: `Découvrez tous les services Clean&Fresh : nettoyage canapé, matelas, tapis, moquette, auto, vitres, terrasse, façade, fin de chantier. À domicile Toulouse et 31.` },
+      { name: "twitter:title", content: TITLE },
+      { name: "twitter:description", content: DESC },
     ],
     links: [{ rel: "canonical", href: `https://cleanetfresh.fr/nos-services` }],
   }),
@@ -43,6 +43,8 @@ const SERVICE_ICONS: Record<string, React.ReactNode> = {
   "/nettoyage-canape-toulouse": <Armchair className="size-7 stroke-[1.4]" />,
   "/nettoyage-matelas-toulouse": <BedDouble className="size-7 stroke-[1.4]" />,
   "/nettoyage-tapis-toulouse": <Layers className="size-7 stroke-[1.4]" />,
+  "/nettoyage-moquette-toulouse": <Layers className="size-7 stroke-[1.4]" />,
+  "/nettoyage-cuir-toulouse": <Armchair className="size-7 stroke-[1.4]" />,
   "/nettoyage-auto-a-domicile-toulouse": <Car className="size-7 stroke-[1.4]" />,
   "/nettoyage-de-vitres-toulouse": <Droplets className="size-7 stroke-[1.4]" />,
   "/nettoyage-terrasse-toulouse": <Sun className="size-7 stroke-[1.4]" />,
@@ -86,11 +88,11 @@ function ServicesPage() {
           Nos prestations
         </span>
         <h1 className="mt-5 font-display text-5xl font-bold tracking-tight md:text-6xl lg:text-7xl">
-          15 services de nettoyage
+          15 services de nettoyage à Toulouse
         </h1>
         <p className="mx-auto mt-4 max-w-xl text-base text-muted-foreground leading-relaxed">
           À domicile ou sur site, pour particuliers et professionnels à Toulouse et sa banlieue.
-          L'excellence du détail, sans compromis.
+          Choisissez une formule pour vos textiles ou votre véhicule, ou un devis adapté à votre logement.
         </p>
       </div>
 
@@ -116,9 +118,9 @@ function ServicesPage() {
             >
               <div className="absolute inset-0 bg-ink/60" />
               <div className="relative p-6">
-                <h3 className="text-2xl font-bold text-white leading-tight">Haute Clarté</h3>
+                <h3 className="text-2xl font-bold text-white leading-tight">Textiles & auto à domicile</h3>
                 <p className="mt-1.5 text-sm text-white/70">
-                  On redonne vie à vos intérieurs avec une précision absolue.
+                  Des formules claires, des options adaptées et un créneau choisi en ligne.
                 </p>
                 <Button
                   asChild

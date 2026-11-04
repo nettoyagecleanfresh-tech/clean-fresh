@@ -19,12 +19,12 @@ export function selectedPhotos(slug: string, booking: string | null) {
   return [];
 }
 
-function ProofPhoto({ photo, enlarged = false }: { photo: Realisation; enlarged?: boolean }) {
+export function ProofPhoto({ photo, enlarged = false, thumbnail = false }: { photo: Realisation; enlarged?: boolean; thumbnail?: boolean }) {
   const sources = photo.beforeSrc ? [photo.beforeSrc, photo.src] : [photo.src];
   return <div className={`relative overflow-hidden bg-slate-100 ${photo.phone ? 'aspect-[3/4]' : ''} ${photo.beforeSrc ? 'grid grid-cols-2 gap-1' : ''}`}>
     {sources.map((src, index) => <picture key={src}>
       
-      <img {...responsiveRealisation(src, enlarged ? '(max-width: 1023px) 90vw, 900px' : '64px')} width={realisationDimensions[src]?.[0]} height={realisationDimensions[src]?.[1]} alt={photo.beforeSrc ? `${index === 0 ? 'Avant' : 'Après'} — ${photo.title}` : `${photo.title} — comparaison avant / après`} loading="lazy" decoding="async" className={photo.phone ? 'absolute left-0 top-[-33.48%] h-auto w-full max-w-none' : 'block h-auto w-full'} />
+      <img {...responsiveRealisation(src, enlarged ? '(max-width: 1023px) 90vw, 900px' : thumbnail ? '64px' : '(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 400px')} width={realisationDimensions[src]?.[0]} height={realisationDimensions[src]?.[1]} alt={photo.beforeSrc ? `${index === 0 ? 'Avant' : 'Après'} — ${photo.title}` : photo.title} loading="lazy" decoding="async" className={photo.phone ? 'absolute left-0 top-[-33.48%] h-auto w-full max-w-none' : 'block h-auto w-full'} />
     </picture>)}
   </div>;
 }
@@ -41,7 +41,7 @@ export function DesktopServiceProof({ slug, bookingServiceId }: { slug: string; 
           <DialogTrigger asChild>
             <button type="button" className="group flex w-full flex-wrap items-center gap-3 rounded-2xl lg:flex-nowrap lg:gap-5 border border-blue-100 bg-white px-3 py-3 text-left lg:px-5 transition hover:border-blue-300 hover:shadow-sm focus-visible:outline-2 focus-visible:outline-blue-700">
               <span aria-hidden="true" className="flex shrink-0 -space-x-3">
-                {photos.slice(0, 3).map(photo => <span key={photo.src} className="block h-12 w-10 lg:h-16 lg:w-14 overflow-hidden rounded-lg border-2 border-white bg-slate-100 shadow-sm"><ProofPhoto photo={photo} /></span>)}
+                {photos.slice(0, 3).map(photo => <span key={photo.src} className="block h-12 w-10 lg:h-16 lg:w-14 overflow-hidden rounded-lg border-2 border-white bg-slate-100 shadow-sm"><ProofPhoto photo={photo} thumbnail /></span>)}
               </span>
               <span className="min-w-0 flex-1"><span className="block text-sm font-bold lg:text-base text-blue-950">Nos résultats avant / après</span><span className="mt-1 block text-xs lg:text-sm text-slate-600">Photos réelles de nos interventions · cliquez pour découvrir les résultats.</span></span>
               <span className="inline-flex w-full shrink-0 justify-center items-center gap-2 rounded-xl lg:w-auto bg-blue-950 px-4 py-3 text-sm font-bold text-white group-hover:bg-blue-900"><Images className="size-4" /> Voir les {photos.length} avant / après <ArrowRight className="size-4" /></span>

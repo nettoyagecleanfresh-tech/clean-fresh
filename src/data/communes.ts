@@ -1,42 +1,41 @@
+import { DISPLACEMENT_RULES } from "@/data/site";
+
 export type CommuneData = {
   name: string;
   slug: string;
   postalCode: string;
-  /** Court texte qui décrit la ville (ce qui la rend unique) */
   cityContext: string;
-  /** Paragraph 1 — présence de Clean&Fresh dans la ville */
   para1: string;
-  /** Paragraph 2 — contexte local, types de clients */
   para2: string;
-  /** 3 FAQ locales */
   faq: { q: string; a: string }[];
-  /** Villes voisines mentionnées pour le maillage interne */
   nearby: string[];
 };
 
+export const LOCAL_TRAVEL_NOTE = `Déplacement offert jusqu’à ${DISPLACEMENT_RULES.freeKm} km. Au-delà, un supplément est calculé selon l’adresse et confirmé avant votre accord.`;
+
+// These pages describe service coverage, not local branches or unverified customer history.
 export const COMMUNES_DATA: CommuneData[] = [
   {
     name: "Toulouse",
     slug: "nettoyage-toulouse",
     postalCode: "31000",
-    cityContext:
-      "Toulouse, la Ville Rose et quatrième ville de France, concentre plus de 480 000 habitants répartis dans ses 8 secteurs.",
+    cityContext: "Intervention à domicile à Toulouse (31000), sur rendez-vous.",
     para1:
-      "Clean&Fresh est basé à Toulouse et y réalise plusieurs interventions par semaine dans tous les quartiers : Compans-Caffarelli, Saint-Cyprien, Minimes, Rangueil, Lardenne, Purpan, Mirail, Côte Pavée. Du studio étudiant au duplex des bords de Garonne, nous traitons canapés, matelas, tapis et véhicules avec le même niveau d'exigence.",
+      "Canapé dans un appartement, intérieur de voiture ou logement à préparer avant un état des lieux : choisissez une réservation directe pour les textiles et l’auto, ou un devis pour le logement.",
     para2:
-      "La métropole toulousaine abrite une clientèle variée — étudiants, familles, cadres de l'aéronautique et propriétaires bailleurs — qui font confiance à nos produits professionnels sélectionnés, dont certaines références certifiées Écolabel, et à notre matériel adapté au support. Intervention le jour même ou le lendemain selon les créneaux. Devis gratuit sous 24h.",
+      "En centre-ville comme dans les autres quartiers, indiquez l’étage, l’ascenseur, le digicode et les possibilités de stationnement. Ces informations permettent de préparer le transport du matériel jusqu’à votre porte.",
     faq: [
       {
-        q: "Intervenez-vous dans tous les quartiers de Toulouse ?",
-        a: "Oui, nous couvrons l'ensemble des quartiers de Toulouse : centre-ville, Minimes, Rangueil, Saint-Cyprien, Lardenne, Cote Pavée, Mirail, Compans-Caffarelli, Purpan, Sept-Deniers et tous les autres. Aucun frais de déplacement.",
+        q: "Comment préparer une intervention dans un appartement ?",
+        a: "Dégagez le passage et l’espace autour des éléments à nettoyer. Signalez les escaliers ou un stationnement éloigné ; un point d’eau et une prise électrique accessibles sont nécessaires.",
       },
       {
-        q: "Quel est le délai pour une intervention à Toulouse ?",
-        a: "Généralement sous 24 à 48h selon les créneaux. En semaine et le week-end. Contactez-nous pour vérifier nos disponibilités.",
+        q: "Comment connaître le prix du déplacement à Toulouse ?",
+        a: LOCAL_TRAVEL_NOTE,
       },
       {
-        q: "Travaillez-vous aussi pour les propriétaires bailleurs à Toulouse ?",
-        a: "Oui, nous intervenons entre deux locations pour remettre en état canapés, matelas et moquettes. Nous proposons également des prestations de fin de bail complètes.",
+        q: "Comment choisir un créneau à Toulouse ?",
+        a: "Les disponibilités des prestations réservables sont affichées en ligne après votre sélection. Pour les nettoyages sur devis, indiquez la date souhaitée ; le créneau est convenu avec vous après validation de la prestation.",
       },
     ],
     nearby: ["Blagnac", "Colomiers", "Tournefeuille", "Balma"],
@@ -45,24 +44,23 @@ export const COMMUNES_DATA: CommuneData[] = [
     name: "Colomiers",
     slug: "nettoyage-colomiers",
     postalCode: "31770",
-    cityContext:
-      "Colomiers est la deuxième ville du département avec plus de 40 000 habitants et abrite de nombreux salariés du secteur aéronautique (Airbus, Ratier-Figeac).",
+    cityContext: "Intervention à domicile à Colomiers (31770), sur rendez-vous.",
     para1:
-      "Clean&Fresh intervient régulièrement à Colomiers, dans les quartiers du Perget, de la Pyrénéenne et de la Plaine. Nos techniciens traitent canapés en tissu et en cuir, matelas, tapis de salon et habitacles de véhicules dans les pavillons et appartements de cette commune dynamique.",
+      "À Colomiers, Clean&Fresh se déplace pour nettoyer vos textiles et l’intérieur de votre véhicule. Vous pouvez réunir canapé, matelas et auto dans une même demande.",
     para2:
-      "Les familles colomériennes, souvent bi-actives avec peu de temps disponible, apprécient notre service à domicile clé en main : pas de transport, pas de débarras de meubles, technicien qui vient avec tout le matériel. Zéro frais de déplacement depuis Toulouse.",
+      "Pour une intervention automobile à domicile ou au travail, vérifiez que le véhicule reste accessible pendant tout le rendez-vous et que le stationnement permet d’ouvrir les portes.",
     faq: [
       {
-        q: "Intervenez-vous à Colomiers gratuitement ?",
-        a: "Oui, Colomiers est dans notre zone de déplacement gratuite (moins de 20 km de notre base). Aucun frais supplémentaire.",
+        q: "Peut-on faire nettoyer sa voiture sur son lieu de travail à Colomiers ?",
+        a: "Oui, si l’emplacement est autorisé, accessible et adapté au travail autour du véhicule. Prévoyez un point d’eau et une prise électrique accessibles ; précisez ces conditions avant le rendez-vous.",
       },
       {
-        q: "Peut-on réserver en ligne pour Colomiers ?",
-        a: "Oui, via notre plateforme de réservation en ligne sur /formules. Choisissez votre service et un créneau adapté à votre emploi du temps.",
+        q: "Comment connaître le prix du déplacement à Colomiers ?",
+        a: LOCAL_TRAVEL_NOTE,
       },
       {
-        q: "Nettoyez-vous les canapés en cuir à Colomiers ?",
-        a: "Oui, nous utilisons des nettoyants adaptés au cuir après diagnostic. Le soin nourrissant et protecteur est proposé en option, avec votre accord.",
+        q: "Comment choisir un créneau à Colomiers ?",
+        a: "Les disponibilités des prestations réservables sont affichées en ligne après votre sélection. Pour les nettoyages sur devis, indiquez la date souhaitée ; le créneau est convenu avec vous après validation de la prestation.",
       },
     ],
     nearby: ["Toulouse", "Plaisance-du-Touch", "Léguevin", "Cornebarrieu"],
@@ -71,24 +69,23 @@ export const COMMUNES_DATA: CommuneData[] = [
     name: "Tournefeuille",
     slug: "nettoyage-tournefeuille",
     postalCode: "31170",
-    cityContext:
-      "Tournefeuille, avec ses 27 000 habitants, est l'une des communes résidentielles les plus prisées de l'ouest toulousain, connue pour son cadre de vie verdoyant.",
+    cityContext: "Intervention à domicile à Tournefeuille (31170), sur rendez-vous.",
     para1:
-      "Tournefeuille figure parmi nos zones d'intervention les plus actives. Nos techniciens interviennent dans les lotissements du Perroquet, de Ramelet-Moundi et du secteur Pahin sur des canapés tissu et cuir, matelas king size et tapis de salon — sans que vous n'ayez à déplacer un seul meuble.",
+      "À Tournefeuille, faites entretenir canapé, fauteuils, matelas et tapis sans les transporter. La formule se choisit selon le mobilier, sa matière et son état.",
     para2:
-      "Les familles de Tournefeuille — souvent propriétaires de maisons individuelles avec des textiles d'ameublement de qualité — font régulièrement appel à nos services pour l'entretien saisonnier de leurs canapés et matelas, ou pour éliminer des taches persistantes après les fêtes. Nos produits Écolabel sont sans danger pour les enfants et les animaux.",
+      "Pour plusieurs textiles dans une même maison, ajoutez chaque élément à la réservation. Préparez les pièces pour laisser circuler l’air après le nettoyage et attendez le séchage complet avant de réutiliser le mobilier.",
     faq: [
       {
-        q: "Intervenez-vous à Tournefeuille le week-end ?",
-        a: "Oui, nous sommes disponibles le samedi et le dimanche matin à Tournefeuille. Réservez en ligne ou appelez-nous pour vérifier les créneaux.",
+        q: "Peut-on nettoyer un canapé et plusieurs matelas lors du même passage ?",
+        a: "Oui, ajoutez les prestations souhaitées à la réservation. Le temps nécessaire et le total sont calculés en fonction de votre sélection ; signalez les matières délicates ou les taches importantes en amont.",
       },
       {
-        q: "Quelle est la durée d'intervention pour un canapé à Tournefeuille ?",
-        a: "Entre 45 minutes et 1h30 selon la taille. Le technicien apporte tout le matériel. Séchage en 2 à 4h.",
+        q: "Comment connaître le prix du déplacement à Tournefeuille ?",
+        a: LOCAL_TRAVEL_NOTE,
       },
       {
-        q: "Nettoyez-vous aussi les moquettes à Tournefeuille ?",
-        a: "Oui, nous réalisons le shampouinage de moquettes pour particuliers et professionnels. Devis sur photos ou visite, réponse sous 24h.",
+        q: "Comment choisir un créneau à Tournefeuille ?",
+        a: "Les disponibilités des prestations réservables sont affichées en ligne après votre sélection. Pour les nettoyages sur devis, indiquez la date souhaitée ; le créneau est convenu avec vous après validation de la prestation.",
       },
     ],
     nearby: ["Toulouse", "Colomiers", "Plaisance-du-Touch", "Fonsorbes"],
@@ -97,24 +94,23 @@ export const COMMUNES_DATA: CommuneData[] = [
     name: "Blagnac",
     slug: "nettoyage-blagnac",
     postalCode: "31700",
-    cityContext:
-      "Blagnac abrite le siège d'Airbus et l'aéroport international Toulouse-Blagnac. Ses 25 000 habitants vivent souvent dans des logements modernes aux textiles soignés.",
+    cityContext: "Intervention à domicile à Blagnac (31700), sur rendez-vous.",
     para1:
-      "À 9 km au nord-ouest de Toulouse, Blagnac est l'une de nos zones d'intervention prioritaires. Nos techniciens y interviennent plusieurs fois par semaine : canapés en tissu et cuir dans les appartements du centre, matelas dans les pavillons du Ritouret, tapis dans les villas du secteur Andromède.",
+      "Clean&Fresh intervient à Blagnac pour les textiles du logement, l’intérieur des véhicules et les besoins de nettoyage des professionnels, sur rendez-vous.",
     para2:
-      "Les résidents blagnacais — souvent des professionnels de l'aéronautique avec des intérieurs soignés — apprécient notre rigueur et la qualité des produits Écolabel. Nos machines d'injection-extraction haute puissance permettent un nettoyage en profondeur ; le séchage dépend du support et de l’aération. Zéro frais de déplacement.",
+      "Sur un parking d’entreprise ou dans un bâtiment avec contrôle d’accès, prévenez la personne responsable et transmettez les consignes d’arrivée. Pour des fauteuils ou une moquette de bureau, indiquez la quantité et la plage horaire souhaitée.",
     faq: [
       {
-        q: "Clean&Fresh intervient-il à Blagnac pour les entreprises ?",
-        a: "Oui, nous traitons les sièges de bureaux, fauteuils de direction et moquettes d'espaces professionnels pour les sociétés de Blagnac. Intervention en dehors des heures d'ouverture possible.",
+        q: "Comment organiser un nettoyage dans des locaux professionnels à Blagnac ?",
+        a: "Envoyez la surface ou le nombre d’assises, quelques photos et les contraintes d’accès. Nous vérifions le besoin de séchage et les horaires possibles avant de confirmer le devis.",
       },
       {
-        q: "Quel est le tarif pour un nettoyage de canapé à Blagnac ?",
-        a: "À partir de 79 € pour un canapé 2/3 places. Même tarif qu'à Toulouse — aucun frais de déplacement pour Blagnac.",
+        q: "Comment connaître le prix du déplacement à Blagnac ?",
+        a: LOCAL_TRAVEL_NOTE,
       },
       {
-        q: "Nettoyez-vous les véhicules à domicile à Blagnac ?",
-        a: "Oui, nous venons directement à votre adresse ou sur le parking de votre entreprise à Blagnac. Pack Bronze à 69 €, Argent à 99 €, Or à 129 €.",
+        q: "Comment choisir un créneau à Blagnac ?",
+        a: "Les disponibilités des prestations réservables sont affichées en ligne après votre sélection. Pour les nettoyages sur devis, indiquez la date souhaitée ; le créneau est convenu avec vous après validation de la prestation.",
       },
     ],
     nearby: ["Toulouse", "Cornebarrieu", "Beauzelle", "Aussonne"],
@@ -123,24 +119,23 @@ export const COMMUNES_DATA: CommuneData[] = [
     name: "Muret",
     slug: "nettoyage-muret",
     postalCode: "31600",
-    cityContext:
-      "Muret est la sous-préfecture de Haute-Garonne avec 25 000 habitants. Ville dynamique au sud de Toulouse, elle attire de nombreuses familles pour son cadre de vie et ses prix immobiliers accessibles.",
+    cityContext: "Intervention à domicile à Muret (31600), sur rendez-vous.",
     para1:
-      "Clean&Fresh couvre Muret et ses environs : Seysses, Eaunes, Pins-Justaret, Roques. Nos techniciens s'y rendent régulièrement pour des nettoyages de canapés, matelas et voitures à domicile. Le déplacement depuis Toulouse est inclus dans nos tarifs.",
+      "Pour votre logement à Muret, Clean&Fresh propose le nettoyage des textiles, de l’intérieur automobile et les remises en état sur devis.",
     para2:
-      "Les familles murelloises, souvent propriétaires de maisons avec jardin, font appel à nous pour les grands ménages saisonniers, le nettoyage après les fêtes ou l'entretien régulier de leurs canapés et matelas. Nous intervenons aussi pour les entreprises et les bailleurs de Muret.",
+      "Une fin de bail et un nettoyage de canapé n’ont pas le même périmètre. Précisez séparément les pièces, les équipements et les textiles concernés pour recevoir une proposition adaptée à l’ensemble de votre besoin.",
     faq: [
       {
-        q: "Y a-t-il des frais de déplacement pour Muret ?",
-        a: "Muret est situé à environ 22 km de Toulouse. Un forfait déplacement de 10 € peut s'appliquer. Contactez-nous pour confirmation selon votre adresse exacte.",
+        q: "Que faut-il envoyer pour un devis de fin de bail à Muret ?",
+        a: "La surface, la date souhaitée, l’état du logement et des photos de la cuisine, des sanitaires, des sols et des vitrages accessibles. Les murs, plafonds et textiles sont à signaler séparément pour vérification.",
       },
       {
-        q: "Intervenez-vous pour les fin de bail à Muret ?",
-        a: "Oui, nous réalisons des nettoyages complets avant état des lieux de sortie à Muret. Cuisine, salle de bain, sols, vitres — tout est pris en charge.",
+        q: "Comment connaître le prix du déplacement à Muret ?",
+        a: LOCAL_TRAVEL_NOTE,
       },
       {
-        q: "Pouvez-vous nettoyer une terrasse à Muret ?",
-        a: "Oui, nous réalisons le nettoyage haute pression de terrasses à Muret et dans les communes environnantes. Devis gratuit sur photos, réponse sous 24h.",
+        q: "Comment choisir un créneau à Muret ?",
+        a: "Les disponibilités des prestations réservables sont affichées en ligne après votre sélection. Pour les nettoyages sur devis, indiquez la date souhaitée ; le créneau est convenu avec vous après validation de la prestation.",
       },
     ],
     nearby: ["Toulouse", "Seysses", "Eaunes", "Portet-sur-Garonne"],
@@ -149,24 +144,23 @@ export const COMMUNES_DATA: CommuneData[] = [
     name: "Cugnaux",
     slug: "nettoyage-cugnaux",
     postalCode: "31270",
-    cityContext:
-      "Cugnaux est une commune résidentielle du sud-ouest toulousain d'environ 17 000 habitants, prisée pour ses maisons individuelles et sa tranquillité.",
+    cityContext: "Intervention à domicile à Cugnaux (31270), sur rendez-vous.",
     para1:
-      "Cugnaux fait partie de notre circuit sud-ouest. Nos techniciens interviennent dans les quartiers de la Croix de Pierre et du Mirouillet pour le nettoyage de canapés, matelas, tapis et voitures à domicile.",
+      "À Cugnaux, réservez le nettoyage de votre canapé ou de votre literie, ou demandez un devis pour remettre votre logement au propre après un départ ou des travaux.",
     para2:
-      "La population de Cugnaux est majoritairement composée de propriétaires en maison individuelle, un profil de client qui apprécie particulièrement notre service tout compris à domicile — sans avoir à transporter leurs meubles ou leur véhicule.",
+      "Pour un logement vide, gardez l’eau et l’électricité en service jusqu’à l’intervention. Si vous avez déjà déménagé, précisez les modalités de remise et de restitution des clés.",
     faq: [
       {
-        q: "Intervenez-vous à Cugnaux pour les nettoyages de fin de bail ?",
-        a: "Oui, nous proposons des remises en état complètes avant état des lieux de sortie à Cugnaux. Devis gratuit sous 24h.",
+        q: "Le logement doit-il être vide pour une remise en état ?",
+        a: "Un logement vide facilite l’accès aux sols et aux placards. S’il reste meublé, envoyez des photos et indiquez les surfaces à traiter : nous adaptons le périmètre du devis à ce qui est accessible.",
       },
       {
-        q: "Quel est le délai d'intervention à Cugnaux ?",
-        a: "Généralement sous 24 à 48h. Disponibles en semaine et le week-end selon les créneaux.",
+        q: "Comment connaître le prix du déplacement à Cugnaux ?",
+        a: LOCAL_TRAVEL_NOTE,
       },
       {
-        q: "Nettoyez-vous les canapés en velours à Cugnaux ?",
-        a: "Oui, nous traitons toutes les matières : tissu, microfibre, velours, cuir. Chaque matière requiert un produit et une technique adaptés.",
+        q: "Comment choisir un créneau à Cugnaux ?",
+        a: "Les disponibilités des prestations réservables sont affichées en ligne après votre sélection. Pour les nettoyages sur devis, indiquez la date souhaitée ; le créneau est convenu avec vous après validation de la prestation.",
       },
     ],
     nearby: ["Toulouse", "Villeneuve-Tolosane", "Frouzins", "Muret"],
@@ -175,24 +169,23 @@ export const COMMUNES_DATA: CommuneData[] = [
     name: "Balma",
     slug: "nettoyage-balma",
     postalCode: "31130",
-    cityContext:
-      "Balma est une commune de l'est toulousain d'environ 15 000 habitants, jouxtant directement Toulouse et très bien desservie par le métro ligne A.",
+    cityContext: "Intervention à domicile à Balma (31130), sur rendez-vous.",
     para1:
-      "Balma est dans notre circuit est. Nous intervenons dans les résidences du Rivel, de Jonquières et du secteur la Jonquère pour des nettoyages de canapés, matelas, tapis et habitacles de véhicules.",
+      "Clean&Fresh intervient à Balma pour nettoyer les canapés, matelas, tapis, moquettes et intérieurs automobiles. Les besoins de logement ou de vitrerie sont étudiés sur devis.",
     para2:
-      "La proximité de Balma avec Toulouse (moins de 5 km du centre) en fait une zone à forte densité de copropriétés modernes. Nos interventions concernent aussi bien des appartements que des maisons individuelles. Réponse sous 24h. Le séchage dépend de la matière, de la température et de l’aération ; attendez le séchage complet avant de réutiliser votre canapé ou votre matelas.",
+      "Pour une moquette, indiquez la surface et les meubles qui resteront en place. Une photo des zones marquées aide à choisir le traitement et à prévoir le temps nécessaire.",
     faq: [
       {
-        q: "Y a-t-il des frais de déplacement pour Balma ?",
-        a: "Non, Balma est dans notre zone gratuite. Aucun supplément de déplacement.",
+        q: "Comment préparer une pièce avant un nettoyage de moquette à Balma ?",
+        a: "Retirez les petits objets et dégagez les zones à traiter. Signalez les meubles lourds qui ne peuvent pas être déplacés et prévoyez une aération ainsi qu’un temps de séchage avant de marcher à nouveau sur la surface.",
       },
       {
-        q: "Intervenez-vous dans les copropriétés de Balma ?",
-        a: "Oui, nous intervenons dans les appartements en copropriété. Notre matériel est compact et ne nécessite pas d'ascenseur surdimensionné.",
+        q: "Comment connaître le prix du déplacement à Balma ?",
+        a: LOCAL_TRAVEL_NOTE,
       },
       {
-        q: "Nettoyez-vous les tapis orientaux à Balma ?",
-        a: "La prise en charge dépend de la fibre et de l’état du tapis. Pour la laine, la viscose ou toute fibre délicate, une estimation sur photos et un diagnostic de compatibilité sont nécessaires avant de confirmer la méthode.",
+        q: "Comment choisir un créneau à Balma ?",
+        a: "Les disponibilités des prestations réservables sont affichées en ligne après votre sélection. Pour les nettoyages sur devis, indiquez la date souhaitée ; le créneau est convenu avec vous après validation de la prestation.",
       },
     ],
     nearby: ["Toulouse", "Quint-Fonsegrives", "Escalquens", "Castanet-Tolosan"],
@@ -201,24 +194,23 @@ export const COMMUNES_DATA: CommuneData[] = [
     name: "Ramonville-Saint-Agne",
     slug: "nettoyage-ramonville-saint-agne",
     postalCode: "31520",
-    cityContext:
-      "Ramonville-Saint-Agne, au bord du canal du Midi, est une ville résidentielle du sud-est toulousain de 15 000 habitants, terminus de la ligne B du métro.",
+    cityContext: "Intervention à domicile à Ramonville-Saint-Agne (31520), sur rendez-vous.",
     para1:
-      "Ramonville-Saint-Agne est l'une de nos communes d'intervention du sud-est. Nos techniciens traitent les canapés, matelas et tapis des appartements du Parc du Canal et des maisons du quartier Sainte-Agne.",
+      "À Ramonville-Saint-Agne, nous intervenons à domicile pour les canapés, la literie, les tapis et les véhicules, ainsi que pour le nettoyage du logement sur devis.",
     para2:
-      "La clientèle de Ramonville est diverse : étudiants en résidence, familles dans les maisons individuelles du bord du Canal du Midi, retraités dans les copropriétés proches du métro. Nos produits Écolabel conviennent à tous les profils, y compris les personnes allergiques aux acariens.",
+      "Dans une résidence, indiquez le bâtiment et l’étage en plus de l’adresse. Pour un matelas, retirez les draps avant notre arrivée et prévoyez de ne pas l’utiliser tant que les deux faces ne sont pas sèches.",
     faq: [
       {
-        q: "Intervenez-vous à Ramonville-Saint-Agne sans frais ?",
-        a: "Oui, Ramonville est dans notre zone gratuite. Aucun frais de déplacement.",
+        q: "Les deux faces du matelas sont-elles nettoyées ?",
+        a: "Les formules matelas incluent les deux faces. Nous vérifions la compatibilité du revêtement et l’accès au matelas ; indiquez toute particularité de manipulation ou de matière avant le rendez-vous.",
       },
       {
-        q: "Proposez-vous le traitement anti-acariens à Ramonville ?",
-        a: "Oui, le traitement anti-acariens est disponible en option sur les matelas et canapés. Particulièrement recommandé pour les personnes souffrant d'allergies respiratoires.",
+        q: "Comment connaître le prix du déplacement à Ramonville-Saint-Agne ?",
+        a: LOCAL_TRAVEL_NOTE,
       },
       {
-        q: "Nettoyez-vous les fins de bail à Ramonville ?",
-        a: "Oui, nous prenons en charge la remise en état complète avant l'état des lieux de sortie. Délai d'intervention possible sous 48h.",
+        q: "Comment choisir un créneau à Ramonville-Saint-Agne ?",
+        a: "Les disponibilités des prestations réservables sont affichées en ligne après votre sélection. Pour les nettoyages sur devis, indiquez la date souhaitée ; le créneau est convenu avec vous après validation de la prestation.",
       },
     ],
     nearby: ["Toulouse", "Castanet-Tolosan", "Auzeville-Tolosane", "Saint-Orens-de-Gameville"],
@@ -227,24 +219,23 @@ export const COMMUNES_DATA: CommuneData[] = [
     name: "Castanet-Tolosan",
     slug: "nettoyage-castanet-tolosan",
     postalCode: "31320",
-    cityContext:
-      "Castanet-Tolosan est une ville résidentielle du sud-est toulousain de 14 000 habitants, avec de nombreux lotissements récents et un tissu pavillonnaire dense.",
+    cityContext: "Intervention à domicile à Castanet-Tolosan (31320), sur rendez-vous.",
     para1:
-      "Castanet-Tolosan est dans notre secteur sud-est. Nous intervenons régulièrement pour le nettoyage de canapés, matelas et tapis dans les maisons individuelles et les résidences récentes de la ville.",
+      "À Castanet-Tolosan, Clean&Fresh prend en charge les textiles et l’auto à domicile. Pour un nettoyage avant emménagement ou après déménagement, demandez un devis sur photos.",
     para2:
-      "Les propriétaires de Castanet-Tolosan — souvent en maison individuelle avec des canapés en tissu ou en cuir — apprécient notre passage à domicile sans contrainte : le technicien arrive avec son matériel, protège les zones autour du meuble et livre un résultat propre en une heure.",
+      "Avant l’arrivée des meubles, il est plus simple d’accéder aux plinthes, placards et sols. Indiquez la date de remise des clés pour convenir d’un créneau compatible avec votre organisation.",
     faq: [
       {
-        q: "Y a-t-il des frais de déplacement pour Castanet-Tolosan ?",
-        a: "Non, Castanet-Tolosan est dans notre zone gratuite. Aucun supplément.",
+        q: "Quand prévoir le nettoyage avant un emménagement ?",
+        a: "Privilégiez un créneau après les derniers travaux et avant l’installation des meubles, avec eau et électricité disponibles. La date et le périmètre sont confirmés avec le devis.",
       },
       {
-        q: "Intervenez-vous pour le nettoyage d'auto à Castanet-Tolosan ?",
-        a: "Oui, nous venons directement chez vous à Castanet-Tolosan. Pack Bronze à 69 €, Argent à 99 €, Or à 129 €.",
+        q: "Comment connaître le prix du déplacement à Castanet-Tolosan ?",
+        a: LOCAL_TRAVEL_NOTE,
       },
       {
-        q: "Pouvez-vous nettoyer une terrasse à Castanet-Tolosan ?",
-        a: "Oui, nettoyage haute pression de terrasses, dalles et bois. Devis gratuit sur photos sous 24h.",
+        q: "Comment choisir un créneau à Castanet-Tolosan ?",
+        a: "Les disponibilités des prestations réservables sont affichées en ligne après votre sélection. Pour les nettoyages sur devis, indiquez la date souhaitée ; le créneau est convenu avec vous après validation de la prestation.",
       },
     ],
     nearby: ["Toulouse", "Auzeville-Tolosane", "Ramonville-Saint-Agne", "Escalquens"],
@@ -253,24 +244,23 @@ export const COMMUNES_DATA: CommuneData[] = [
     name: "Plaisance-du-Touch",
     slug: "nettoyage-plaisance-du-touch",
     postalCode: "31830",
-    cityContext:
-      "Plaisance-du-Touch, connue pour son ZooParc, est une ville de 17 000 habitants à l'ouest de Toulouse, très prisée des familles pour ses grands espaces.",
+    cityContext: "Intervention à domicile à Plaisance-du-Touch (31830), sur rendez-vous.",
     para1:
-      "Plaisance-du-Touch est dans notre circuit ouest. Nous intervenons dans les quartiers du Bois du Roi et du secteur Aéroconstellation pour le nettoyage de canapés, matelas, tapis et voitures à domicile.",
+      "À Plaisance-du-Touch, choisissez un nettoyage de canapé, de matelas, de tapis ou d’auto à domicile. Les surfaces du logement et les extérieurs font l’objet d’un devis.",
     para2:
-      "La présence de nombreuses familles à Plaisance-du-Touch — avec enfants et souvent des animaux — génère une forte demande pour nos traitements anti-acariens et anti-odeur. Nos produits Écolabel sont sans danger pour les enfants et les animaux domestiques.",
+      "Pour une terrasse, une vue d’ensemble et une photo rapprochée du revêtement sont utiles. Précisez la surface approximative et l’accès à l’eau ; la méthode est choisie après vérification du support.",
     faq: [
       {
-        q: "Y a-t-il des frais de déplacement pour Plaisance-du-Touch ?",
-        a: "Non, Plaisance-du-Touch est dans notre zone gratuite. Même tarif qu'à Toulouse.",
+        q: "Peut-on prévoir une terrasse et des textiles dans la même demande ?",
+        a: "Oui, détaillez les éléments à nettoyer et joignez des photos. Les textiles et la terrasse nécessitent des méthodes et des durées différentes : nous confirmons le périmètre et l’organisation avant intervention.",
       },
       {
-        q: "Nettoyez-vous les tapis à Plaisance-du-Touch ?",
-        a: "Oui, shampouinage professionnel par injection-extraction pour tous types de tapis. À partir de 49 €.",
+        q: "Comment connaître le prix du déplacement à Plaisance-du-Touch ?",
+        a: LOCAL_TRAVEL_NOTE,
       },
       {
-        q: "Intervenez-vous le week-end à Plaisance-du-Touch ?",
-        a: "Oui, disponible le samedi et le dimanche matin selon les créneaux.",
+        q: "Comment choisir un créneau à Plaisance-du-Touch ?",
+        a: "Les disponibilités des prestations réservables sont affichées en ligne après votre sélection. Pour les nettoyages sur devis, indiquez la date souhaitée ; le créneau est convenu avec vous après validation de la prestation.",
       },
     ],
     nearby: ["Toulouse", "Colomiers", "Tournefeuille", "Léguevin"],
@@ -279,24 +269,23 @@ export const COMMUNES_DATA: CommuneData[] = [
     name: "Saint-Orens-de-Gameville",
     slug: "nettoyage-saint-orens-de-gameville",
     postalCode: "31650",
-    cityContext:
-      "Saint-Orens-de-Gameville est une commune résidentielle du sud-est de Toulouse d'environ 12 000 habitants, appréciée pour son calme et ses lotissements.",
+    cityContext: "Intervention à domicile à Saint-Orens-de-Gameville (31650), sur rendez-vous.",
     para1:
-      "Saint-Orens-de-Gameville fait partie de notre tournée sud-est. Nos techniciens y interviennent pour le nettoyage de canapés, matelas, tapis et habitacles de véhicules dans les maisons individuelles du secteur.",
+      "Clean&Fresh se déplace à Saint-Orens-de-Gameville pour le nettoyage du mobilier textile, de la literie et des habitacles automobiles, sur rendez-vous.",
     para2:
-      "La commune de Saint-Orens attire beaucoup de jeunes familles avec enfants. Nos nettoyages de matelas avec traitement anti-acariens sont particulièrement recommandés dans ce contexte pour améliorer la qualité de l'air intérieur et réduire les allergènes.",
+      "Si vous avez des animaux, précisez la présence de poils ou d’odeurs lors de la réservation. Le nettoyage courant et les traitements intensifs sont distingués pour sélectionner les options adaptées.",
     faq: [
       {
-        q: "Intervenez-vous sans frais à Saint-Orens-de-Gameville ?",
-        a: "Oui, Saint-Orens est dans notre zone gratuite. Aucun supplément de déplacement.",
+        q: "Quelle option choisir en présence de poils d’animaux ?",
+        a: "Signalez les poils sur le canapé, les tapis ou les sièges de voiture et ajoutez l’option correspondante si nécessaire. Une photo permet de vérifier l’état et le temps à prévoir ; les odeurs persistantes peuvent demander un traitement distinct.",
       },
       {
-        q: "Quel est le délai pour une intervention à Saint-Orens ?",
-        a: "Sous 24 à 48h selon les créneaux. Semaine et week-end selon disponibilités.",
+        q: "Comment connaître le prix du déplacement à Saint-Orens-de-Gameville ?",
+        a: LOCAL_TRAVEL_NOTE,
       },
       {
-        q: "Proposez-vous le nettoyage de matelas à Saint-Orens-de-Gameville ?",
-        a: "Oui, dès 49 € pour un matelas enfant, 69 € pour 1 place, 99 € pour 2 places. Traitement anti-acariens disponible en option.",
+        q: "Comment choisir un créneau à Saint-Orens-de-Gameville ?",
+        a: "Les disponibilités des prestations réservables sont affichées en ligne après votre sélection. Pour les nettoyages sur devis, indiquez la date souhaitée ; le créneau est convenu avec vous après validation de la prestation.",
       },
     ],
     nearby: ["Toulouse", "Ramonville-Saint-Agne", "Castanet-Tolosan", "Escalquens"],
@@ -305,24 +294,23 @@ export const COMMUNES_DATA: CommuneData[] = [
     name: "L'Union",
     slug: "nettoyage-l-union",
     postalCode: "31240",
-    cityContext:
-      "L'Union est une commune du nord-est toulousain d'environ 12 000 habitants, bien reliée à Toulouse par la voie rapide, avec un tissu résidentiel dense.",
+    cityContext: "Intervention à domicile à L'Union (31240), sur rendez-vous.",
     para1:
-      "L'Union est dans notre circuit nord-est. Nous intervenons dans les quartiers résidentiels pour le nettoyage de canapés, matelas, tapis et voitures directement à votre domicile.",
+      "À L’Union, nous proposons le nettoyage à domicile des textiles et des véhicules. Les vitres, le logement et les remises en état sont chiffrés selon votre besoin.",
     para2:
-      "La commune accueille de nombreux propriétaires de maisons individuelles qui font confiance à notre service à domicile pour entretenir leurs textiles sans contrainte logistique. Devis gratuit sous 24h.",
+      "Pour un canapé en cuir, une photo de l’ensemble et des zones marquées permet de distinguer salissures et usure. Le cuir reçoit un nettoyage manuel adapté, différent du shampouinage d’un tissu.",
     faq: [
       {
-        q: "Y a-t-il des frais de déplacement pour L'Union ?",
-        a: "Non, L'Union est dans notre zone gratuite. Aucun supplément.",
+        q: "Le nettoyage peut-il réparer un cuir usé ou rayé ?",
+        a: "Non, le nettoyage traite les salissures. Les rayures, craquelures et pertes de couleur relèvent d’une réparation ou d’une rénovation distincte. Le soin nourrissant et protecteur est proposé en option selon le revêtement.",
       },
       {
-        q: "Nettoyez-vous les canapés en microfibre à L'Union ?",
-        a: "Oui, la microfibre est l'une de nos spécialités. Résultat impeccable sans laisser de traces ni altérer la texture.",
+        q: "Comment connaître le prix du déplacement à L'Union ?",
+        a: LOCAL_TRAVEL_NOTE,
       },
       {
-        q: "Proposez-vous le nettoyage auto à L'Union ?",
-        a: "Oui, intervention directement à votre domicile. Prise de rendez-vous en ligne ou par téléphone.",
+        q: "Comment choisir un créneau à L'Union ?",
+        a: "Les disponibilités des prestations réservables sont affichées en ligne après votre sélection. Pour les nettoyages sur devis, indiquez la date souhaitée ; le créneau est convenu avec vous après validation de la prestation.",
       },
     ],
     nearby: ["Toulouse", "Saint-Jean", "Aucamville", "Launaguet"],
@@ -331,24 +319,23 @@ export const COMMUNES_DATA: CommuneData[] = [
     name: "Fonsorbes",
     slug: "nettoyage-fonsorbes",
     postalCode: "31470",
-    cityContext:
-      "Fonsorbes est une commune de l'ouest toulousain d'environ 10 000 habitants, à mi-chemin entre Toulouse et Saint-Lys.",
+    cityContext: "Intervention à domicile à Fonsorbes (31470), sur rendez-vous.",
     para1:
-      "Fonsorbes est dans notre circuit ouest. Nos techniciens s'y rendent pour le nettoyage de canapés, matelas, tapis et intérieurs de voitures dans les lotissements résidentiels.",
+      "Clean&Fresh intervient à Fonsorbes sur rendez-vous pour les textiles, l’intérieur automobile et les besoins de nettoyage du logement sur devis.",
     para2:
-      "À Fonsorbes, les maisons individuelles sont majoritaires. Les familles font appel à nous pour l'entretien saisonnier de leurs canapés et matelas, ou pour des taches ponctuelles. Zéro frais de déplacement.",
+      "Pour regrouper plusieurs éléments, indiquez dès la demande le nombre de canapés, matelas ou tapis et l’adresse complète. Cela permet de prévoir le bon temps de présence et de confirmer les éventuels frais de déplacement.",
     faq: [
       {
-        q: "Y a-t-il des frais de déplacement pour Fonsorbes ?",
-        a: "Fonsorbes est à environ 18 km de Toulouse — dans notre zone gratuite. Aucun supplément.",
+        q: "Comment faire une demande pour plusieurs pièces à Fonsorbes ?",
+        a: "Listez chaque élément et sa taille, puis ajoutez des photos si l’état est particulier. Vous pouvez réunir plusieurs prestations réservables dans le même panier ; les remises en état du logement restent sur devis.",
       },
       {
-        q: "Intervenez-vous le week-end à Fonsorbes ?",
-        a: "Oui, disponible le samedi selon les créneaux. Réservez en ligne pour vérifier les disponibilités.",
+        q: "Comment connaître le prix du déplacement à Fonsorbes ?",
+        a: LOCAL_TRAVEL_NOTE,
       },
       {
-        q: "Nettoyez-vous les moquettes à Fonsorbes ?",
-        a: "Oui, shampouinage par injection-extraction pour moquettes de toutes surfaces. À partir de 99 € pour une petite pièce.",
+        q: "Comment choisir un créneau à Fonsorbes ?",
+        a: "Les disponibilités des prestations réservables sont affichées en ligne après votre sélection. Pour les nettoyages sur devis, indiquez la date souhaitée ; le créneau est convenu avec vous après validation de la prestation.",
       },
     ],
     nearby: ["Toulouse", "Colomiers", "Saint-Lys", "Léguevin"],
@@ -357,24 +344,23 @@ export const COMMUNES_DATA: CommuneData[] = [
     name: "Villeneuve-Tolosane",
     slug: "nettoyage-villeneuve-tolosane",
     postalCode: "31270",
-    cityContext:
-      "Villeneuve-Tolosane est une commune du sud-ouest toulousain d'environ 10 000 habitants, à proximité de Cugnaux et de l'Aéroport de Toulouse-Blagnac.",
+    cityContext: "Intervention à domicile à Villeneuve-Tolosane (31270), sur rendez-vous.",
     para1:
-      "Villeneuve-Tolosane fait partie de notre circuit sud-ouest. Nous intervenons pour le nettoyage de canapés, matelas et tapis dans les maisons et appartements de la commune.",
+      "À Villeneuve-Tolosane, faites nettoyer canapé, matelas, tapis et intérieur de voiture directement à votre adresse. Nous étudions aussi les nettoyages de logement avant ou après un déménagement.",
     para2:
-      "La commune est en forte croissance résidentielle. Les nouveaux propriétaires font régulièrement appel à nous pour l'entretien de leurs canapés neufs ou pour des remises en état lors d'un déménagement.",
+      "Un textile d’occasion peut demander un diagnostic avant nettoyage : précisez sa matière, les taches visibles et les produits déjà appliqués. Une photo de l’étiquette d’entretien est utile si elle est disponible.",
     faq: [
       {
-        q: "Y a-t-il des frais de déplacement pour Villeneuve-Tolosane ?",
-        a: "Non, Villeneuve-Tolosane est dans notre zone gratuite. Même tarif qu'à Toulouse.",
+        q: "Faut-il nous signaler un détachant déjà utilisé ?",
+        a: "Oui. Indiquez les produits appliqués, notamment sur une auréole ou une tache ancienne. Ces informations aident à vérifier la compatibilité et à éviter de multiplier des traitements inadaptés.",
       },
       {
-        q: "Proposez-vous le nettoyage auto à Villeneuve-Tolosane ?",
-        a: "Oui, nous venons directement chez vous. Pack Bronze à 69 €, Argent à 99 €, Or à 129 €.",
+        q: "Comment connaître le prix du déplacement à Villeneuve-Tolosane ?",
+        a: LOCAL_TRAVEL_NOTE,
       },
       {
-        q: "Quel est le tarif pour un matelas 2 places à Villeneuve-Tolosane ?",
-        a: "99 € pour un matelas 2 places, 69 € pour 1 place, 49 € pour un matelas enfant. Traitement anti-acariens en option.",
+        q: "Comment choisir un créneau à Villeneuve-Tolosane ?",
+        a: "Les disponibilités des prestations réservables sont affichées en ligne après votre sélection. Pour les nettoyages sur devis, indiquez la date souhaitée ; le créneau est convenu avec vous après validation de la prestation.",
       },
     ],
     nearby: ["Toulouse", "Cugnaux", "Frouzins", "Muret"],
@@ -383,24 +369,23 @@ export const COMMUNES_DATA: CommuneData[] = [
     name: "Portet-sur-Garonne",
     slug: "nettoyage-portet-sur-garonne",
     postalCode: "31120",
-    cityContext:
-      "Portet-sur-Garonne est une commune de 9 000 habitants au sud de Toulouse, le long de la Garonne, connue pour son centre commercial et son tissu industriel.",
+    cityContext: "Intervention à domicile à Portet-sur-Garonne (31120), sur rendez-vous.",
     para1:
-      "Portet-sur-Garonne est dans notre tournée sud. Nous intervenons à domicile pour le nettoyage de canapés, matelas, tapis et voitures dans les maisons et appartements de la commune.",
+      "À Portet-sur-Garonne, Clean&Fresh propose les nettoyages textiles et automobiles à domicile, ainsi que les interventions dans les locaux professionnels sur devis.",
     para2:
-      "La commune accueille de nombreux salariés de la zone industrielle qui apprécient notre service flexible en soirée et le week-end. Devis gratuit sous 24h, intervention rapide.",
+      "Pour des assises ou une moquette d’entreprise, précisez les horaires d’ouverture et les zones qui doivent rester accessibles. Le séchage doit être intégré à l’organisation de la reprise d’activité.",
     faq: [
       {
-        q: "Y a-t-il des frais de déplacement pour Portet-sur-Garonne ?",
-        a: "Portet-sur-Garonne est à environ 10 km de Toulouse — zone gratuite. Aucun supplément.",
+        q: "Peut-on organiser le nettoyage de sièges de bureau ?",
+        a: "Oui, transmettez le nombre de sièges, leur revêtement et quelques photos. Nous établissons un devis et vérifions un créneau compatible avec l’accès aux locaux et le temps de séchage.",
       },
       {
-        q: "Intervenez-vous en soirée à Portet-sur-Garonne ?",
-        a: "Oui, selon les créneaux disponibles. Contactez-nous pour un rendez-vous en soirée ou le week-end.",
+        q: "Comment connaître le prix du déplacement à Portet-sur-Garonne ?",
+        a: LOCAL_TRAVEL_NOTE,
       },
       {
-        q: "Nettoyez-vous les terrasses à Portet-sur-Garonne ?",
-        a: "Oui, nettoyage haute pression de terrasses et façades. Devis gratuit sur photos sous 24h.",
+        q: "Comment choisir un créneau à Portet-sur-Garonne ?",
+        a: "Les disponibilités des prestations réservables sont affichées en ligne après votre sélection. Pour les nettoyages sur devis, indiquez la date souhaitée ; le créneau est convenu avec vous après validation de la prestation.",
       },
     ],
     nearby: ["Toulouse", "Muret", "Roques", "Seysses"],
@@ -409,24 +394,23 @@ export const COMMUNES_DATA: CommuneData[] = [
     name: "Aucamville",
     slug: "nettoyage-aucamville",
     postalCode: "31140",
-    cityContext:
-      "Aucamville est une commune du nord de Toulouse d'environ 8 000 habitants, en pleine croissance résidentielle, proche de Launaguet et de Saint-Alban.",
+    cityContext: "Intervention à domicile à Aucamville (31140), sur rendez-vous.",
     para1:
-      "Aucamville est dans notre circuit nord de Toulouse. Nos techniciens interviennent dans les lotissements résidentiels pour le nettoyage de canapés, matelas, tapis et habitacles de véhicules à domicile.",
+      "À Aucamville, réservez le nettoyage de vos assises, de votre literie ou de vos tapis. L’intervention se déroule chez vous avec un matériel adapté aux supports compatibles.",
     para2:
-      "La commune attire de jeunes familles installées dans des maisons individuelles récentes, qui cherchent une entreprise locale fiable pour l'entretien de leurs textiles. Nos produits Écolabel et notre méthode d'injection-extraction permettent un nettoyage adapté ; le séchage dépend du support et de l’aération.",
+      "Une tache récente, une auréole ancienne et une odeur persistante ne se traitent pas de la même façon. Décrivez leur origine si vous la connaissez, sans ajouter de mélange de produits avant notre passage.",
     faq: [
       {
-        q: "Y a-t-il des frais de déplacement pour Aucamville ?",
-        a: "Non, Aucamville est dans notre zone gratuite (moins de 20 km de Toulouse). Aucun supplément.",
+        q: "Peut-on garantir la disparition de toutes les taches ?",
+        a: "Le résultat dépend de la matière, de l’ancienneté et des produits déjà utilisés. Nous évaluons les marques avant traitement et travaillons à améliorer l’état du textile, sans promettre un rattrapage à 100 %.",
       },
       {
-        q: "Intervenez-vous à Aucamville pour les entreprises ?",
-        a: "Oui, nettoyage de sièges de bureaux et de moquettes professionnels. Intervention en dehors des heures d'activité possible.",
+        q: "Comment connaître le prix du déplacement à Aucamville ?",
+        a: LOCAL_TRAVEL_NOTE,
       },
       {
-        q: "Quel est le tarif pour un nettoyage de canapé à Aucamville ?",
-        a: "À partir de 79 € pour un canapé 2/3 places. Devis gratuit sous 24h.",
+        q: "Comment choisir un créneau à Aucamville ?",
+        a: "Les disponibilités des prestations réservables sont affichées en ligne après votre sélection. Pour les nettoyages sur devis, indiquez la date souhaitée ; le créneau est convenu avec vous après validation de la prestation.",
       },
     ],
     nearby: ["Toulouse", "Launaguet", "Saint-Alban", "Castelginest"],
@@ -435,24 +419,23 @@ export const COMMUNES_DATA: CommuneData[] = [
     name: "Castelginest",
     slug: "nettoyage-castelginest",
     postalCode: "31780",
-    cityContext:
-      "Castelginest est une commune résidentielle du nord toulousain d'environ 10 000 habitants, à 15 min de Toulouse par la rocade.",
+    cityContext: "Intervention à domicile à Castelginest (31780), sur rendez-vous.",
     para1:
-      "Castelginest fait partie de notre circuit nord. Nous intervenons régulièrement dans les maisons et appartements de la commune pour le nettoyage de canapés, matelas, tapis et voitures.",
+      "Clean&Fresh intervient à Castelginest pour le nettoyage de canapés, matelas, tapis, moquettes et intérieurs de véhicules.",
     para2:
-      "La commune de Castelginest est essentiellement résidentielle avec un fort taux de propriétaires. Nos interventions à domicile — sans déplacement du client — sont particulièrement appréciées dans ce contexte pavillonnaire.",
+      "Pour un tapis, précisez ses dimensions et sa matière. Les formules standards couvrent les formats compatibles indiqués à la réservation ; les tapis de valeur, fibres délicates ou grands formats nécessitent une vérification préalable.",
     faq: [
       {
-        q: "Y a-t-il des frais de déplacement pour Castelginest ?",
-        a: "Non, Castelginest est dans notre zone gratuite. Aucun supplément.",
+        q: "Comment réserver pour un tapis de grande taille ?",
+        a: "Envoyez ses dimensions et des photos avant de sélectionner une formule standard. Nous vérifions la fibre, les couleurs et les conditions de nettoyage à domicile, puis confirmons le tarif adapté.",
       },
       {
-        q: "Nettoyez-vous les matelas à Castelginest ?",
-        a: "Oui, dès 49 € (matelas enfant), 69 € (1 place), 99 € (2 places). Anti-acariens en option.",
+        q: "Comment connaître le prix du déplacement à Castelginest ?",
+        a: LOCAL_TRAVEL_NOTE,
       },
       {
-        q: "Pouvez-vous intervenir rapidement à Castelginest ?",
-        a: "Oui, généralement sous 24-48h. Contactez-nous pour vérifier les créneaux disponibles.",
+        q: "Comment choisir un créneau à Castelginest ?",
+        a: "Les disponibilités des prestations réservables sont affichées en ligne après votre sélection. Pour les nettoyages sur devis, indiquez la date souhaitée ; le créneau est convenu avec vous après validation de la prestation.",
       },
     ],
     nearby: ["Toulouse", "Aucamville", "Launaguet", "Fenouillet"],
@@ -461,24 +444,23 @@ export const COMMUNES_DATA: CommuneData[] = [
     name: "Launaguet",
     slug: "nettoyage-launaguet",
     postalCode: "31140",
-    cityContext:
-      "Launaguet est une commune du nord de Toulouse d'environ 6 000 habitants, jouxtant Aucamville et Saint-Alban.",
+    cityContext: "Intervention à domicile à Launaguet (31140), sur rendez-vous.",
     para1:
-      "Launaguet est dans notre tournée nord. Nos techniciens s'y rendent pour le nettoyage de canapés, matelas, tapis et intérieurs de véhicules directement chez vous.",
+      "À Launaguet, nous nettoyons les textiles et l’intérieur des véhicules à domicile. Pour les besoins plus larges du logement, une demande sur photos permet d’établir le devis.",
     para2:
-      "Commune résidentielle à densité modérée, Launaguet accueille des familles qui apprécient notre service clé en main. Devis gratuit sous 24h, intervention rapide.",
+      "Vous souhaitez traiter plusieurs chambres ? Indiquez le nombre et la taille des matelas, puis préparez un espace accessible autour de chaque lit. La durée de séchage dépend notamment de la matière et de l’aération.",
     faq: [
       {
-        q: "Y a-t-il des frais de déplacement pour Launaguet ?",
-        a: "Non, Launaguet est dans notre zone gratuite.",
+        q: "Peut-on dormir sur le matelas juste après le nettoyage ?",
+        a: "Attendez le séchage complet des faces nettoyées. La durée varie selon le garnissage, la température et la ventilation ; prévoyez une solution de couchage si le matelas n’est pas encore sec.",
       },
       {
-        q: "Nettoyez-vous les voitures à Launaguet ?",
-        a: "Oui, nous venons directement chez vous. Bronze 69 €, Argent 99 €, Or 129 €.",
+        q: "Comment connaître le prix du déplacement à Launaguet ?",
+        a: LOCAL_TRAVEL_NOTE,
       },
       {
-        q: "Quel est le délai pour une intervention à Launaguet ?",
-        a: "Généralement sous 24-48h. Semaine et week-end selon disponibilités.",
+        q: "Comment choisir un créneau à Launaguet ?",
+        a: "Les disponibilités des prestations réservables sont affichées en ligne après votre sélection. Pour les nettoyages sur devis, indiquez la date souhaitée ; le créneau est convenu avec vous après validation de la prestation.",
       },
     ],
     nearby: ["Toulouse", "Aucamville", "Saint-Alban", "Castelginest"],
@@ -487,24 +469,23 @@ export const COMMUNES_DATA: CommuneData[] = [
     name: "Saint-Jean",
     slug: "nettoyage-saint-jean",
     postalCode: "31240",
-    cityContext:
-      "Saint-Jean est une commune du nord-est toulousain d'environ 8 000 habitants, proche de L'Union et de Launaguet.",
+    cityContext: "Intervention à domicile à Saint-Jean (31240), sur rendez-vous.",
     para1:
-      "Saint-Jean fait partie de notre circuit nord-est. Nous intervenons dans les maisons et lotissements résidentiels pour le nettoyage de canapés, matelas et tapis.",
+      "À Saint-Jean, Clean&Fresh se déplace pour les canapés, fauteuils, tapis, matelas et habitacles automobiles. Les prestations de logement et de vitres sont sur devis.",
     para2:
-      "La commune de Saint-Jean est en croissance résidentielle, avec de nombreux jeunes propriétaires qui font appel à nos services pour l'entretien de leurs textiles. Produits Écolabel, séchage rapide.",
+      "Pour un fauteuil ou un canapé déhoussable, laissez les éléments en place pour le diagnostic sauf consigne contraire. Précisez les matières différentes présentes sur le même meuble.",
     faq: [
       {
-        q: "Y a-t-il des frais de déplacement pour Saint-Jean ?",
-        a: "Non, Saint-Jean est dans notre zone gratuite.",
+        q: "Faut-il enlever les housses du canapé avant l’intervention ?",
+        a: "Non, pas sans vérification. Le nettoyage est adapté à l’étiquette, au revêtement et au garnissage ; certaines housses ne supportent pas un lavage séparé. Dégagez surtout les coussins décoratifs et les petits objets.",
       },
       {
-        q: "Nettoyez-vous les canapés en velours à Saint-Jean ?",
-        a: "Oui, velours, microfibre, tissu, cuir. Chaque matière est traitée avec les produits adaptés.",
+        q: "Comment connaître le prix du déplacement à Saint-Jean ?",
+        a: LOCAL_TRAVEL_NOTE,
       },
       {
-        q: "Proposez-vous le nettoyage auto à Saint-Jean ?",
-        a: "Oui, directement à votre domicile à Saint-Jean.",
+        q: "Comment choisir un créneau à Saint-Jean ?",
+        a: "Les disponibilités des prestations réservables sont affichées en ligne après votre sélection. Pour les nettoyages sur devis, indiquez la date souhaitée ; le créneau est convenu avec vous après validation de la prestation.",
       },
     ],
     nearby: ["Toulouse", "L'Union", "Aucamville", "Launaguet"],
@@ -513,24 +494,23 @@ export const COMMUNES_DATA: CommuneData[] = [
     name: "Frouzins",
     slug: "nettoyage-frouzins",
     postalCode: "31270",
-    cityContext:
-      "Frouzins est une commune résidentielle du sud-ouest toulousain d'environ 5 000 habitants, proche de Cugnaux et Villeneuve-Tolosane.",
+    cityContext: "Intervention à domicile à Frouzins (31270), sur rendez-vous.",
     para1:
-      "Frouzins est dans notre tournée sud-ouest. Nous intervenons à domicile pour le nettoyage de canapés, matelas et tapis dans les maisons individuelles de la commune.",
+      "À Frouzins, choisissez un nettoyage à domicile pour votre canapé, votre literie, vos tapis ou l’intérieur de votre voiture.",
     para2:
-      "Commune à forte proportion de maisons individuelles, Frouzins compte des familles qui privilégient les prestataires à domicile pour leurs entretiens. Nos tarifs sont identiques à ceux pratiqués à Toulouse.",
+      "Pour un véhicule utilisé avec des enfants ou des animaux, photographiez les sièges et les sols si l’état est important. Cela aide à sélectionner la formule selon les surfaces à traiter, puis les éventuelles options.",
     faq: [
       {
-        q: "Y a-t-il des frais de déplacement pour Frouzins ?",
-        a: "Non, Frouzins est dans notre zone gratuite.",
+        q: "Quelle formule auto comprend les moquettes et les tapis ?",
+        a: "Le Pack Or comprend les prestations du Pack Argent ainsi que les moquettes, tapis et contours indiqués dans la formule. Les poils, odeurs persistantes et salissures exceptionnelles sont à signaler pour vérifier les options nécessaires.",
       },
       {
-        q: "Nettoyez-vous les matelas à Frouzins ?",
-        a: "Oui, dès 49 € pour un matelas enfant. Anti-acariens disponible en option.",
+        q: "Comment connaître le prix du déplacement à Frouzins ?",
+        a: LOCAL_TRAVEL_NOTE,
       },
       {
-        q: "Intervenez-vous le week-end à Frouzins ?",
-        a: "Oui, disponible le samedi selon les créneaux.",
+        q: "Comment choisir un créneau à Frouzins ?",
+        a: "Les disponibilités des prestations réservables sont affichées en ligne après votre sélection. Pour les nettoyages sur devis, indiquez la date souhaitée ; le créneau est convenu avec vous après validation de la prestation.",
       },
     ],
     nearby: ["Toulouse", "Cugnaux", "Villeneuve-Tolosane", "Muret"],
@@ -539,24 +519,23 @@ export const COMMUNES_DATA: CommuneData[] = [
     name: "Seysses",
     slug: "nettoyage-seysses",
     postalCode: "31600",
-    cityContext:
-      "Seysses est une commune du sud toulousain d'environ 10 000 habitants, proche de Muret, dans une zone pavillonnaire en développement.",
+    cityContext: "Intervention à domicile à Seysses (31600), sur rendez-vous.",
     para1:
-      "Seysses est dans notre circuit sud. Nos techniciens interviennent régulièrement pour le nettoyage de canapés, matelas, tapis et voitures dans les maisons individuelles de la commune.",
+      "Clean&Fresh intervient à Seysses pour nettoyer les textiles et les intérieurs automobiles, et pour les remises en état du logement sur devis.",
     para2:
-      "La commune de Seysses attire des familles qui y trouvent des logements spacieux à prix abordables. Nos interventions à domicile sont particulièrement appréciées pour éviter tout transport de mobilier lourd.",
+      "Après des travaux, indiquez si le chantier est terminé et quelles traces restent sur les surfaces. Les gravats, résidus de peinture, poussières et textiles exposés doivent être décrits séparément.",
     faq: [
       {
-        q: "Y a-t-il des frais de déplacement pour Seysses ?",
-        a: "Seysses est à environ 20 km de Toulouse. La prestation est gratuite ou avec un léger forfait selon votre adresse exacte — contactez-nous.",
+        q: "Quelles informations donner après des travaux à Seysses ?",
+        a: "Envoyez la surface, des photos des résidus et la nature des sols ou vitrages. Précisez les travaux encore prévus et les contraintes d’accès pour définir un périmètre réaliste et le bon moment d’intervention.",
       },
       {
-        q: "Nettoyez-vous les terrasses à Seysses ?",
-        a: "Oui, nettoyage haute pression de terrasses. Devis gratuit sur photos.",
+        q: "Comment connaître le prix du déplacement à Seysses ?",
+        a: LOCAL_TRAVEL_NOTE,
       },
       {
-        q: "Proposez-vous le nettoyage fin de bail à Seysses ?",
-        a: "Oui, remise en état complète avant état des lieux. Intervention possible sous 48h.",
+        q: "Comment choisir un créneau à Seysses ?",
+        a: "Les disponibilités des prestations réservables sont affichées en ligne après votre sélection. Pour les nettoyages sur devis, indiquez la date souhaitée ; le créneau est convenu avec vous après validation de la prestation.",
       },
     ],
     nearby: ["Toulouse", "Muret", "Portet-sur-Garonne", "Roques"],
@@ -565,24 +544,23 @@ export const COMMUNES_DATA: CommuneData[] = [
     name: "Cornebarrieu",
     slug: "nettoyage-cornebarrieu",
     postalCode: "31700",
-    cityContext:
-      "Cornebarrieu est une commune du nord-ouest de Toulouse d'environ 8 000 habitants, jouxtant Blagnac et l'aéroport international.",
+    cityContext: "Intervention à domicile à Cornebarrieu (31700), sur rendez-vous.",
     para1:
-      "Cornebarrieu est dans notre circuit nord-ouest, à deux pas de Blagnac et de l'aéroport. Nos techniciens interviennent dans les logements modernes et les résidences neuves de la commune.",
+      "À Cornebarrieu, faites nettoyer votre canapé, vos matelas, tapis ou votre intérieur automobile directement sur le lieu convenu.",
     para2:
-      "La proximité de l'aéroport et de la zone aéronautique attire des locataires et propriétaires souvent exigeants. Nos nettoyages de canapés et matelas répondent à leurs attentes de qualité et de rapidité.",
+      "Pour une intervention sur un site professionnel, vérifiez les règles du parking et l’accès aux équipements nécessaires. Un emplacement couvert peut être utile selon la météo et la prestation retenue.",
     faq: [
       {
-        q: "Y a-t-il des frais de déplacement pour Cornebarrieu ?",
-        a: "Non, Cornebarrieu est dans notre zone gratuite.",
+        q: "Que prévoir pour un nettoyage auto sur parking ?",
+        a: "Un emplacement autorisé où les portes peuvent s’ouvrir, un accès au véhicule, une prise électrique et un point d’eau accessibles. Décrivez la distance jusqu’aux branchements pour que nous vérifiions la faisabilité.",
       },
       {
-        q: "Nettoyez-vous les sièges de bureau à Cornebarrieu ?",
-        a: "Oui, pour les entreprises et les professionnels. Devis sur mesure.",
+        q: "Comment connaître le prix du déplacement à Cornebarrieu ?",
+        a: LOCAL_TRAVEL_NOTE,
       },
       {
-        q: "Quel est le délai d'intervention à Cornebarrieu ?",
-        a: "Sous 24-48h selon les créneaux disponibles.",
+        q: "Comment choisir un créneau à Cornebarrieu ?",
+        a: "Les disponibilités des prestations réservables sont affichées en ligne après votre sélection. Pour les nettoyages sur devis, indiquez la date souhaitée ; le créneau est convenu avec vous après validation de la prestation.",
       },
     ],
     nearby: ["Toulouse", "Blagnac", "Beauzelle", "Aussonne"],
@@ -591,24 +569,23 @@ export const COMMUNES_DATA: CommuneData[] = [
     name: "Beauzelle",
     slug: "nettoyage-beauzelle",
     postalCode: "31700",
-    cityContext:
-      "Beauzelle est une commune du nord-ouest de Toulouse d'environ 7 000 habitants, au bord de la Garonne, proche de Blagnac.",
+    cityContext: "Intervention à domicile à Beauzelle (31700), sur rendez-vous.",
     para1:
-      "Beauzelle est dans notre circuit nord-ouest. Nous intervenons à domicile pour le nettoyage de canapés, matelas et tapis dans les maisons et appartements au bord de la Garonne.",
+      "À Beauzelle, Clean&Fresh propose le nettoyage des textiles et de la literie à domicile, ainsi que l’entretien des habitacles automobiles.",
     para2:
-      "Commune à fort développement résidentiel, Beauzelle voit arriver de nombreuses familles qui font confiance à nos services pour l'entretien de leurs textiles. Produits Écolabel, résultat selon l’état et la matière du support.",
+      "Dans un immeuble, indiquez la résidence, le bâtiment et l’étage, ainsi que le fonctionnement de l’ascenseur. Nous pouvons ainsi préparer l’accès au matériel sans vous demander de transporter les meubles.",
     faq: [
       {
-        q: "Y a-t-il des frais de déplacement pour Beauzelle ?",
-        a: "Non, Beauzelle est dans notre zone gratuite.",
+        q: "Faut-il déplacer le canapé hors du logement ?",
+        a: "Non, le nettoyage se fait à domicile. Prévoyez un passage dégagé et un accès autour du canapé ; précisez les contraintes de manipulation si vous souhaitez traiter une zone difficilement accessible.",
       },
       {
-        q: "Nettoyez-vous les canapés en cuir à Beauzelle ?",
-        a: "Oui, avec des produits adaptés au cuir après diagnostic. Le soin nourrissant et protecteur est proposé en option, avec votre accord.",
+        q: "Comment connaître le prix du déplacement à Beauzelle ?",
+        a: LOCAL_TRAVEL_NOTE,
       },
       {
-        q: "Proposez-vous le nettoyage auto à Beauzelle ?",
-        a: "Oui, directement à votre domicile ou sur votre lieu de travail.",
+        q: "Comment choisir un créneau à Beauzelle ?",
+        a: "Les disponibilités des prestations réservables sont affichées en ligne après votre sélection. Pour les nettoyages sur devis, indiquez la date souhaitée ; le créneau est convenu avec vous après validation de la prestation.",
       },
     ],
     nearby: ["Toulouse", "Blagnac", "Cornebarrieu", "Aussonne"],
@@ -617,24 +594,23 @@ export const COMMUNES_DATA: CommuneData[] = [
     name: "Aussonne",
     slug: "nettoyage-aussonne",
     postalCode: "31840",
-    cityContext:
-      "Aussonne est une commune rurale de 4 000 habitants au nord-ouest de Toulouse, connue pour ses paysages de campagne toulousaine.",
+    cityContext: "Intervention à domicile à Aussonne (31840), sur rendez-vous.",
     para1:
-      "Aussonne est dans notre circuit nord-ouest. Nos techniciens s'y rendent pour le nettoyage de canapés, matelas et tapis dans les maisons individuelles et les fermes rénovées de la commune.",
+      "Clean&Fresh se déplace à Aussonne sur rendez-vous pour les textiles, l’intérieur des véhicules et les nettoyages sur devis.",
     para2:
-      "Les habitants d'Aussonne, souvent propriétaires de grandes maisons, font appel à nos services pour l'entretien de leurs meubles rembourrés et de leurs tapis de salon. Devis gratuit, réponse sous 24h.",
+      "Si l’adresse comporte un accès privé ou un portail, précisez le point d’entrée et où stationner. Une adresse complète permet aussi de confirmer les frais éventuels avant votre accord.",
     faq: [
       {
-        q: "Y a-t-il des frais de déplacement pour Aussonne ?",
-        a: "Aussonne est à environ 18 km de Toulouse — zone gratuite. Aucun supplément.",
+        q: "Comment préparer une intervention dans une maison avec portail ?",
+        a: "Indiquez le code ou les modalités d’ouverture, l’emplacement de stationnement et l’accès à l’eau et à l’électricité. Libérez le passage entre le véhicule d’intervention et les éléments à nettoyer.",
       },
       {
-        q: "Nettoyez-vous les tapis anciens à Aussonne ?",
-        a: "Oui, y compris les tapis en laine et les tapis anciens de valeur. Test de compatibilité systématique avant traitement.",
+        q: "Comment connaître le prix du déplacement à Aussonne ?",
+        a: LOCAL_TRAVEL_NOTE,
       },
       {
-        q: "Intervenez-vous pour les fins de chantier à Aussonne ?",
-        a: "Oui, nettoyage après travaux pour les particuliers et les professionnels. Devis rapide.",
+        q: "Comment choisir un créneau à Aussonne ?",
+        a: "Les disponibilités des prestations réservables sont affichées en ligne après votre sélection. Pour les nettoyages sur devis, indiquez la date souhaitée ; le créneau est convenu avec vous après validation de la prestation.",
       },
     ],
     nearby: ["Toulouse", "Blagnac", "Beauzelle", "Cornebarrieu"],
@@ -643,24 +619,23 @@ export const COMMUNES_DATA: CommuneData[] = [
     name: "Pibrac",
     slug: "nettoyage-pibrac",
     postalCode: "31820",
-    cityContext:
-      "Pibrac est une commune du nord-ouest de Toulouse d'environ 8 000 habitants, connue pour son pèlerinage dédié à Sainte Germaine Cousin.",
+    cityContext: "Intervention à domicile à Pibrac (31820), sur rendez-vous.",
     para1:
-      "Pibrac est dans notre circuit nord-ouest. Nous intervenons dans les maisons individuelles et les lotissements pour le nettoyage de canapés, matelas, tapis et habitacles de voitures.",
+      "À Pibrac, nous proposons le nettoyage de canapés, fauteuils, matelas et tapis, ainsi que l’intérieur automobile à domicile.",
     para2:
-      "La commune de Pibrac est résidentielle et verdoyante, avec un fort tissu pavillonnaire. Nos interventions à domicile s'adaptent aux contraintes des familles actives. Zéro frais de déplacement.",
+      "Pour une assise en velours ou un textile délicat, envoyez une photo de l’étiquette et du meuble. Le choix du produit, de l’humidité et de la méthode dépend du revêtement, pas seulement de la tache.",
     faq: [
       {
-        q: "Y a-t-il des frais de déplacement pour Pibrac ?",
-        a: "Non, Pibrac est dans notre zone gratuite.",
+        q: "Le velours peut-il être nettoyé par injection-extraction ?",
+        a: "Cela dépend de sa composition et des consignes d’entretien. Une vérification et un essai sur une zone discrète permettent de choisir une méthode adaptée ; la vapeur n’est pas systématique.",
       },
       {
-        q: "Nettoyez-vous les matelas à Pibrac ?",
-        a: "Oui, dès 49 € (enfant), 69 € (1 place), 99 € (2 places). Résultat rapide.",
+        q: "Comment connaître le prix du déplacement à Pibrac ?",
+        a: LOCAL_TRAVEL_NOTE,
       },
       {
-        q: "Intervenez-vous le week-end à Pibrac ?",
-        a: "Oui, le samedi et parfois le dimanche selon les créneaux.",
+        q: "Comment choisir un créneau à Pibrac ?",
+        a: "Les disponibilités des prestations réservables sont affichées en ligne après votre sélection. Pour les nettoyages sur devis, indiquez la date souhaitée ; le créneau est convenu avec vous après validation de la prestation.",
       },
     ],
     nearby: ["Toulouse", "Léguevin", "Cornebarrieu", "La Salvetat-Saint-Gilles"],
@@ -669,24 +644,23 @@ export const COMMUNES_DATA: CommuneData[] = [
     name: "Léguevin",
     slug: "nettoyage-leguevin",
     postalCode: "31490",
-    cityContext:
-      "Léguevin est une commune de l'ouest toulousain d'environ 9 000 habitants, à 25 km de Toulouse, appréciée pour son calme et son développement résidentiel.",
+    cityContext: "Intervention à domicile à Léguevin (31490), sur rendez-vous.",
     para1:
-      "Léguevin est dans notre circuit ouest étendu. Nos techniciens interviennent dans les lotissements et maisons individuelles de la commune pour le nettoyage de canapés, matelas et tapis.",
+      "Clean&Fresh intervient à Léguevin sur rendez-vous pour le nettoyage des textiles, des habitacles automobiles et les besoins du logement sur devis.",
     para2:
-      "La commune de Léguevin, à mi-chemin entre Toulouse et l'Ariège, attire des familles qui cherchent plus d'espace. Nos services à domicile leur évitent tout déplacement — le technicien vient avec son matériel complet.",
+      "Indiquez l’adresse exacte dès la demande pour valider le déplacement. Si plusieurs éléments sont à traiter au même endroit, ajoutez-les ensemble afin de prévoir une durée suffisante.",
     faq: [
       {
-        q: "Y a-t-il des frais de déplacement pour Léguevin ?",
-        a: "Léguevin est à environ 25 km de Toulouse. Un forfait déplacement de 10 € peut s'appliquer. Contactez-nous pour confirmation.",
+        q: "Pourquoi faut-il préciser l’adresse avant de confirmer ?",
+        a: "Le lieu exact permet de vérifier la zone desservie, l’accès et le supplément éventuel de déplacement. Celui-ci est confirmé avant votre accord ; il ne dépend pas uniquement du nom de la commune.",
       },
       {
-        q: "Nettoyez-vous les canapés à Léguevin ?",
-        a: "Oui, toutes matières : tissu, microfibre, velours, cuir. À partir de 79 € pour un 2/3 places.",
+        q: "Comment connaître le prix du déplacement à Léguevin ?",
+        a: LOCAL_TRAVEL_NOTE,
       },
       {
-        q: "Intervenez-vous à Léguevin pour le nettoyage auto ?",
-        a: "Oui, nous venons directement chez vous. Pack Bronze à 69 €.",
+        q: "Comment choisir un créneau à Léguevin ?",
+        a: "Les disponibilités des prestations réservables sont affichées en ligne après votre sélection. Pour les nettoyages sur devis, indiquez la date souhaitée ; le créneau est convenu avec vous après validation de la prestation.",
       },
     ],
     nearby: ["Toulouse", "Pibrac", "Fonsorbes", "La Salvetat-Saint-Gilles"],
@@ -695,24 +669,23 @@ export const COMMUNES_DATA: CommuneData[] = [
     name: "Escalquens",
     slug: "nettoyage-escalquens",
     postalCode: "31750",
-    cityContext:
-      "Escalquens est une commune du sud-est toulousain d'environ 7 000 habitants, dans la plaine de la Haute-Garonne, proche de Labège.",
+    cityContext: "Intervention à domicile à Escalquens (31750), sur rendez-vous.",
     para1:
-      "Escalquens est dans notre circuit sud-est. Nous intervenons dans les maisons et lotissements de la commune pour le nettoyage de canapés, matelas et tapis à domicile.",
+      "À Escalquens, Clean&Fresh se déplace pour le nettoyage des textiles et de la literie, de l’intérieur automobile et pour les remises en état sur devis.",
     para2:
-      "La commune d'Escalquens est résidentielle avec un fort taux de propriétaires en maison individuelle. Nos interventions à domicile sont appréciées pour leur praticité et leur efficacité.",
+      "Pour des taches sur un matelas, précisez leur origine et leur ancienneté si vous les connaissez. Les traitements intensifs ou enzymatiques sont à distinguer du nettoyage courant.",
     faq: [
       {
-        q: "Y a-t-il des frais de déplacement pour Escalquens ?",
-        a: "Non, Escalquens est dans notre zone gratuite.",
+        q: "Une odeur sur un matelas demande-t-elle une option particulière ?",
+        a: "Une odeur persistante peut nécessiter un traitement adapté à son origine et au garnissage. Décrivez la situation avant le rendez-vous ; nous vérifions le besoin d’option et les limites possibles du traitement.",
       },
       {
-        q: "Nettoyez-vous les tapis à Escalquens ?",
-        a: "À partir de 49 € pour un tapis compatible jusqu’à 4 m². Grand format, fibre délicate ou état exceptionnel : estimation préalable sur photos.",
+        q: "Comment connaître le prix du déplacement à Escalquens ?",
+        a: LOCAL_TRAVEL_NOTE,
       },
       {
-        q: "Proposez-vous le nettoyage fin de bail à Escalquens ?",
-        a: "Oui, remise en état complète avant état des lieux.",
+        q: "Comment choisir un créneau à Escalquens ?",
+        a: "Les disponibilités des prestations réservables sont affichées en ligne après votre sélection. Pour les nettoyages sur devis, indiquez la date souhaitée ; le créneau est convenu avec vous après validation de la prestation.",
       },
     ],
     nearby: ["Toulouse", "Labège", "Castanet-Tolosan", "Auzeville-Tolosane"],
@@ -721,24 +694,23 @@ export const COMMUNES_DATA: CommuneData[] = [
     name: "Labège",
     slug: "nettoyage-labege",
     postalCode: "31670",
-    cityContext:
-      "Labège est une commune du sud-est toulousain d'environ 5 000 habitants, célèbre pour sa zone commerciale et d'activités INNOPOLE, pôle technologique majeur.",
+    cityContext: "Intervention à domicile à Labège (31670), sur rendez-vous.",
     para1:
-      "Labège est dans notre circuit sud-est. Nous intervenons à domicile et pour les entreprises de la zone INNOPOLE pour le nettoyage de canapés, sièges de bureau, matelas et habitacles de voitures.",
+      "À Labège, Clean&Fresh propose le nettoyage des textiles à domicile et des assises ou moquettes de locaux professionnels sur devis, ainsi que l’intérieur automobile.",
     para2:
-      "La présence d'importantes entreprises technologiques à Labège génère une demande professionnelle pour l'entretien des sièges de bureau et moquettes. Nous proposons des contrats d'entretien régulier pour les PME et les grands comptes.",
+      "Pour un bureau, un commerce ou une salle d’attente, indiquez les horaires d’accès, la surface à libérer et la date de réouverture. Cela permet d’intégrer le séchage à l’organisation de l’intervention.",
     faq: [
       {
-        q: "Y a-t-il des frais de déplacement pour Labège ?",
-        a: "Non, Labège est dans notre zone gratuite.",
+        q: "Peut-on nettoyer une moquette de bureau sans interrompre toute l’activité ?",
+        a: "Nous étudions les zones, les horaires et les possibilités d’accès avec vous. Un devis précise la surface traitée ; la circulation doit être limitée sur les parties encore humides jusqu’au séchage complet.",
       },
       {
-        q: "Proposez-vous des contrats d'entretien pour les entreprises de Labège ?",
-        a: "Oui, contrats d'entretien mensuel ou trimestriel avec tarif dégressif. Devis personnalisé.",
+        q: "Comment connaître le prix du déplacement à Labège ?",
+        a: LOCAL_TRAVEL_NOTE,
       },
       {
-        q: "Nettoyez-vous les moquettes de bureaux à Labège ?",
-        a: "Oui, intervention en dehors des heures d'activité si nécessaire.",
+        q: "Comment choisir un créneau à Labège ?",
+        a: "Les disponibilités des prestations réservables sont affichées en ligne après votre sélection. Pour les nettoyages sur devis, indiquez la date souhaitée ; le créneau est convenu avec vous après validation de la prestation.",
       },
     ],
     nearby: ["Toulouse", "Escalquens", "Castanet-Tolosan", "Auzeville-Tolosane"],
@@ -747,24 +719,23 @@ export const COMMUNES_DATA: CommuneData[] = [
     name: "Saint-Alban",
     slug: "nettoyage-saint-alban",
     postalCode: "31140",
-    cityContext:
-      "Saint-Alban est une commune du nord de Toulouse d'environ 5 000 habitants, proche d'Aucamville et de Launaguet.",
+    cityContext: "Intervention à domicile à Saint-Alban (31140), sur rendez-vous.",
     para1:
-      "Saint-Alban est dans notre circuit nord. Nos techniciens interviennent dans les maisons individuelles et les appartements pour le nettoyage de canapés, matelas et tapis.",
+      "À Saint-Alban, faites entretenir canapé, fauteuils, tapis et matelas à votre domicile. Les intérieurs automobiles sont réservables selon la formule choisie.",
     para2:
-      "Commune résidentielle calme, Saint-Alban attire des familles qui apprécient notre sérieux et notre ponctualité. Devis gratuit sous 24h.",
+      "Vous avez des chaises rembourrées ? Précisez le nombre et le revêtement de l’assise et du dossier. Des photos de plusieurs chaises permettent de vérifier si leur état est comparable.",
     faq: [
       {
-        q: "Y a-t-il des frais de déplacement pour Saint-Alban ?",
-        a: "Non, Saint-Alban est dans notre zone gratuite.",
+        q: "Comment demander un nettoyage de chaises en tissu ?",
+        a: "Indiquez la quantité, la matière et les taches visibles. Les formules par lot et les éventuelles chaises supplémentaires sont détaillées dans la réservation ; un état exceptionnel est à vérifier sur photos.",
       },
       {
-        q: "Nettoyez-vous les canapés à Saint-Alban ?",
-        a: "Oui, à partir de 49 € pour un fauteuil, 79 € pour un canapé 2/3 places.",
+        q: "Comment connaître le prix du déplacement à Saint-Alban ?",
+        a: LOCAL_TRAVEL_NOTE,
       },
       {
-        q: "Intervenez-vous le week-end à Saint-Alban ?",
-        a: "Oui, le samedi selon les créneaux disponibles.",
+        q: "Comment choisir un créneau à Saint-Alban ?",
+        a: "Les disponibilités des prestations réservables sont affichées en ligne après votre sélection. Pour les nettoyages sur devis, indiquez la date souhaitée ; le créneau est convenu avec vous après validation de la prestation.",
       },
     ],
     nearby: ["Toulouse", "Aucamville", "Launaguet", "Castelginest"],
@@ -773,24 +744,23 @@ export const COMMUNES_DATA: CommuneData[] = [
     name: "Fenouillet",
     slug: "nettoyage-fenouillet",
     postalCode: "31150",
-    cityContext:
-      "Fenouillet est une commune du nord de Toulouse d'environ 5 000 habitants, proche de Bruguières et Castelginest.",
+    cityContext: "Intervention à domicile à Fenouillet (31150), sur rendez-vous.",
     para1:
-      "Fenouillet fait partie de notre circuit nord. Nous intervenons pour le nettoyage de canapés, matelas, tapis et voitures dans les maisons et appartements de la commune.",
+      "Clean&Fresh intervient à Fenouillet pour le nettoyage des textiles, des véhicules et les remises en état du logement sur devis.",
     para2:
-      "La commune de Fenouillet est en développement résidentiel avec des quartiers récents. Nos services sont appréciés par les nouveaux propriétaires qui souhaitent maintenir l'état de leurs textiles.",
+      "Pour un véhicule familial, indiquez le nombre de places et l’état du coffre en plus des sièges. Les éléments encombrants et objets personnels doivent être retirés pour accéder aux surfaces.",
     faq: [
       {
-        q: "Y a-t-il des frais de déplacement pour Fenouillet ?",
-        a: "Non, Fenouillet est dans notre zone gratuite.",
+        q: "Faut-il vider la voiture avant le nettoyage ?",
+        a: "Oui, retirez les objets personnels et videz le coffre autant que possible. Signalez les sièges enfants ou équipements qui gênent l’accès ; leur démontage et remontage doivent être organisés avec vous.",
       },
       {
-        q: "Nettoyez-vous les matelas à Fenouillet ?",
-        a: "Oui, à partir de 49 € pour un matelas enfant.",
+        q: "Comment connaître le prix du déplacement à Fenouillet ?",
+        a: LOCAL_TRAVEL_NOTE,
       },
       {
-        q: "Proposez-vous le nettoyage auto à Fenouillet ?",
-        a: "Oui, directement à votre domicile.",
+        q: "Comment choisir un créneau à Fenouillet ?",
+        a: "Les disponibilités des prestations réservables sont affichées en ligne après votre sélection. Pour les nettoyages sur devis, indiquez la date souhaitée ; le créneau est convenu avec vous après validation de la prestation.",
       },
     ],
     nearby: ["Toulouse", "Castelginest", "Bruguières", "Launaguet"],
@@ -799,24 +769,23 @@ export const COMMUNES_DATA: CommuneData[] = [
     name: "Quint-Fonsegrives",
     slug: "nettoyage-quint-fonsegrives",
     postalCode: "31130",
-    cityContext:
-      "Quint-Fonsegrives est une commune de l'est toulousain d'environ 5 000 habitants, jouxtant Balma, dans un cadre verdoyant.",
+    cityContext: "Intervention à domicile à Quint-Fonsegrives (31130), sur rendez-vous.",
     para1:
-      "Quint-Fonsegrives est dans notre circuit est. Nous intervenons dans les maisons et lotissements pour le nettoyage de canapés, matelas, tapis et habitacles de voitures.",
+      "À Quint-Fonsegrives, Clean&Fresh propose le nettoyage du mobilier textile, de la literie et de l’intérieur des véhicules à domicile.",
     para2:
-      "Commune prisée des familles pour sa qualité de vie, Quint-Fonsegrives compte des propriétaires qui font appel à nos services pour l'entretien saisonnier de leurs textiles. Produits Écolabel, résultat selon l’état et la matière du support.",
+      "Pour un ensemble composé de cuir et de tissu, décrivez chaque partie. Nous distinguons les méthodes de nettoyage et les options pour respecter les différents matériaux.",
     faq: [
       {
-        q: "Y a-t-il des frais de déplacement pour Quint-Fonsegrives ?",
-        a: "Non, Quint-Fonsegrives est dans notre zone gratuite.",
+        q: "Peut-on nettoyer du cuir et du tissu lors du même passage ?",
+        a: "Oui, en sélectionnant les prestations adaptées. Le cuir est traité manuellement avec des produits appropriés, tandis que l’injection-extraction est réservée aux textiles compatibles.",
       },
       {
-        q: "Nettoyez-vous les tapis orientaux à Quint-Fonsegrives ?",
-        a: "La prise en charge dépend de la fibre et de l’état du tapis. Les fibres délicates nécessitent une estimation sur photos et un diagnostic de compatibilité avant confirmation.",
+        q: "Comment connaître le prix du déplacement à Quint-Fonsegrives ?",
+        a: LOCAL_TRAVEL_NOTE,
       },
       {
-        q: "Quel est le délai pour une intervention à Quint-Fonsegrives ?",
-        a: "Sous 24-48h selon les créneaux.",
+        q: "Comment choisir un créneau à Quint-Fonsegrives ?",
+        a: "Les disponibilités des prestations réservables sont affichées en ligne après votre sélection. Pour les nettoyages sur devis, indiquez la date souhaitée ; le créneau est convenu avec vous après validation de la prestation.",
       },
     ],
     nearby: ["Toulouse", "Balma", "Escalquens", "Castanet-Tolosan"],
@@ -825,24 +794,23 @@ export const COMMUNES_DATA: CommuneData[] = [
     name: "Saint-Lys",
     slug: "nettoyage-saint-lys",
     postalCode: "31470",
-    cityContext:
-      "Saint-Lys est une commune de l'ouest toulousain d'environ 10 000 habitants, carrefour entre Toulouse et la Gascogne.",
+    cityContext: "Intervention à domicile à Saint-Lys (31470), sur rendez-vous.",
     para1:
-      "Saint-Lys est dans notre circuit ouest. Nous intervenons pour le nettoyage de canapés, matelas, tapis et voitures dans les maisons individuelles de la commune.",
+      "Clean&Fresh se déplace à Saint-Lys sur rendez-vous pour les textiles, les véhicules et les besoins de nettoyage du logement sur devis.",
     para2:
-      "Commune en croissance, Saint-Lys attire des familles qui apprécient l'espace et le calme. Nos services à domicile leur évitent tout déplacement. Devis gratuit sous 24h.",
+      "Pour préparer le déplacement, indiquez l’adresse et l’ensemble des éléments à traiter. Les créneaux disponibles et le total avec les éventuels frais sont confirmés avant la réservation.",
     faq: [
       {
-        q: "Y a-t-il des frais de déplacement pour Saint-Lys ?",
-        a: "Saint-Lys est à environ 22 km de Toulouse. Un forfait de 10 € peut s'appliquer selon l'adresse exacte.",
+        q: "Peut-on réunir plusieurs nettoyages à la même adresse ?",
+        a: "Oui, vous pouvez ajouter plusieurs prestations dans une réservation. Cela permet de prévoir le temps de travail nécessaire pour l’ensemble ; les besoins sur devis sont à nous transmettre avec des photos.",
       },
       {
-        q: "Nettoyez-vous les canapés à Saint-Lys ?",
-        a: "Oui, à partir de 79 € pour un canapé 2/3 places.",
+        q: "Comment connaître le prix du déplacement à Saint-Lys ?",
+        a: LOCAL_TRAVEL_NOTE,
       },
       {
-        q: "Intervenez-vous le week-end à Saint-Lys ?",
-        a: "Oui, le samedi selon disponibilités.",
+        q: "Comment choisir un créneau à Saint-Lys ?",
+        a: "Les disponibilités des prestations réservables sont affichées en ligne après votre sélection. Pour les nettoyages sur devis, indiquez la date souhaitée ; le créneau est convenu avec vous après validation de la prestation.",
       },
     ],
     nearby: ["Toulouse", "Fonsorbes", "Léguevin", "La Salvetat-Saint-Gilles"],
@@ -851,24 +819,23 @@ export const COMMUNES_DATA: CommuneData[] = [
     name: "Eaunes",
     slug: "nettoyage-eaunes",
     postalCode: "31600",
-    cityContext:
-      "Eaunes est une commune de 4 000 habitants au sud de Toulouse, proche de Muret, dans un cadre rural et résidentiel.",
+    cityContext: "Intervention à domicile à Eaunes (31600), sur rendez-vous.",
     para1:
-      "Eaunes est dans notre circuit sud, à proximité de Muret. Nos techniciens interviennent dans les maisons individuelles pour le nettoyage de canapés, matelas et tapis.",
+      "À Eaunes, nous proposons le nettoyage de canapés, matelas et tapis à domicile, ainsi que l’intérieur automobile et les prestations de logement sur devis.",
     para2:
-      "Commune rurale avec un fort taux de maisons individuelles, Eaunes accueille des familles qui font appel à nos services pour l'entretien de leurs textiles. Nos tarifs sont identiques à ceux de Toulouse.",
+      "Pour un déménagement, précisez si le nettoyage intervient dans l’ancien ou le nouveau logement et à quelle date les clés seront disponibles. Une prestation à deux adresses doit être organisée séparément.",
     faq: [
       {
-        q: "Y a-t-il des frais de déplacement pour Eaunes ?",
-        a: "Eaunes est à environ 22 km de Toulouse. Un forfait de 10 € peut s'appliquer selon l'adresse.",
+        q: "Peut-on nettoyer les textiles avant de les déménager ?",
+        a: "Oui, prévoyez assez de temps pour leur séchage complet avant emballage et transport. Indiquez la date du déménagement afin de vérifier un créneau adapté.",
       },
       {
-        q: "Nettoyez-vous les matelas à Eaunes ?",
-        a: "Oui, dès 49 € (enfant), 69 € (1 place), 99 € (2 places).",
+        q: "Comment connaître le prix du déplacement à Eaunes ?",
+        a: LOCAL_TRAVEL_NOTE,
       },
       {
-        q: "Proposez-vous le nettoyage de terrasse à Eaunes ?",
-        a: "Oui, nettoyage haute pression. Devis gratuit sur photos.",
+        q: "Comment choisir un créneau à Eaunes ?",
+        a: "Les disponibilités des prestations réservables sont affichées en ligne après votre sélection. Pour les nettoyages sur devis, indiquez la date souhaitée ; le créneau est convenu avec vous après validation de la prestation.",
       },
     ],
     nearby: ["Toulouse", "Muret", "Seysses", "Portet-sur-Garonne"],
@@ -877,24 +844,23 @@ export const COMMUNES_DATA: CommuneData[] = [
     name: "Roques",
     slug: "nettoyage-roques",
     postalCode: "31120",
-    cityContext:
-      "Roques est une commune de 6 000 habitants au sud de Toulouse, entre Portet-sur-Garonne et Muret, le long de la Garonne.",
+    cityContext: "Intervention à domicile à Roques (31120), sur rendez-vous.",
     para1:
-      "Roques est dans notre circuit sud. Nous intervenons pour le nettoyage de canapés, matelas, tapis et voitures dans les maisons et résidences de la commune.",
+      "À Roques, Clean&Fresh intervient pour les textiles du logement, les habitacles de voiture et les remises en état sur devis.",
     para2:
-      "Commune résidentielle en bord de Garonne, Roques accueille des familles qui apprécient notre service à domicile rapide et sans contrainte.",
+      "Si vous souhaitez traiter un coffre et des tapis automobiles très chargés en poussière ou poils, envoyez une photo avant de choisir votre formule. Le volume et l’état influent sur la préparation.",
     faq: [
       {
-        q: "Y a-t-il des frais de déplacement pour Roques ?",
-        a: "Roques est à environ 15 km de Toulouse — zone gratuite.",
+        q: "Le coffre est-il compris dans le nettoyage auto ?",
+        a: "L’aspiration du coffre fait partie du Pack Bronze ; le shampouinage de sa moquette relève du Pack Or. Vérifiez le détail de la formule et signalez les poils ou autres salissures importantes.",
       },
       {
-        q: "Nettoyez-vous les canapés à Roques ?",
-        a: "Oui, à partir de 79 € pour un canapé 2/3 places.",
+        q: "Comment connaître le prix du déplacement à Roques ?",
+        a: LOCAL_TRAVEL_NOTE,
       },
       {
-        q: "Intervenez-vous le week-end à Roques ?",
-        a: "Oui, selon les créneaux disponibles.",
+        q: "Comment choisir un créneau à Roques ?",
+        a: "Les disponibilités des prestations réservables sont affichées en ligne après votre sélection. Pour les nettoyages sur devis, indiquez la date souhaitée ; le créneau est convenu avec vous après validation de la prestation.",
       },
     ],
     nearby: ["Toulouse", "Portet-sur-Garonne", "Muret", "Eaunes"],
@@ -903,24 +869,23 @@ export const COMMUNES_DATA: CommuneData[] = [
     name: "Bruguières",
     slug: "nettoyage-bruguieres",
     postalCode: "31150",
-    cityContext:
-      "Bruguières est une commune du nord de Toulouse d'environ 5 000 habitants, à 15 km, proche de Fenouillet et de Castelginest.",
+    cityContext: "Intervention à domicile à Bruguières (31150), sur rendez-vous.",
     para1:
-      "Bruguières est dans notre circuit nord. Nos techniciens interviennent dans les maisons et lotissements de la commune pour le nettoyage de canapés, matelas et tapis.",
+      "À Bruguières, réservez le nettoyage de vos canapés, matelas, tapis et intérieurs automobiles. Les locaux et les logements se traitent sur devis selon leur état.",
     para2:
-      "Commune résidentielle avec un développement pavillonnaire soutenu, Bruguières voit arriver de nombreuses familles qui font confiance à nos services pour l'entretien de leurs textiles.",
+      "Pour une prestation en entreprise, précisez le contact sur place, les horaires de présence et les conditions d’accès. Une liste des assises ou des surfaces évite les oublis dans le chiffrage.",
     faq: [
       {
-        q: "Y a-t-il des frais de déplacement pour Bruguières ?",
-        a: "Non, Bruguières est dans notre zone gratuite.",
+        q: "Comment obtenir un devis pour plusieurs fauteuils professionnels ?",
+        a: "Envoyez leur nombre, la matière, des photos et l’adresse d’intervention. Nous vérifions le temps nécessaire et un créneau compatible avec l’activité et le séchage.",
       },
       {
-        q: "Nettoyez-vous les tapis à Bruguières ?",
-        a: "Oui, à partir de 49 € pour 1 tapis.",
+        q: "Comment connaître le prix du déplacement à Bruguières ?",
+        a: LOCAL_TRAVEL_NOTE,
       },
       {
-        q: "Proposez-vous le nettoyage auto à Bruguières ?",
-        a: "Oui, directement à votre domicile.",
+        q: "Comment choisir un créneau à Bruguières ?",
+        a: "Les disponibilités des prestations réservables sont affichées en ligne après votre sélection. Pour les nettoyages sur devis, indiquez la date souhaitée ; le créneau est convenu avec vous après validation de la prestation.",
       },
     ],
     nearby: ["Toulouse", "Fenouillet", "Castelginest", "Launaguet"],
@@ -929,24 +894,23 @@ export const COMMUNES_DATA: CommuneData[] = [
     name: "La Salvetat-Saint-Gilles",
     slug: "nettoyage-la-salvetat-saint-gilles",
     postalCode: "31880",
-    cityContext:
-      "La Salvetat-Saint-Gilles est une commune de l'ouest toulousain d'environ 6 000 habitants, entre Pibrac et Léguevin, dans un cadre verdoyant.",
+    cityContext: "Intervention à domicile à La Salvetat-Saint-Gilles (31880), sur rendez-vous.",
     para1:
-      "La Salvetat-Saint-Gilles est dans notre circuit ouest. Nous intervenons dans les maisons individuelles de la commune pour le nettoyage de canapés, matelas, tapis et habitacles de voitures.",
+      "Clean&Fresh intervient à La Salvetat-Saint-Gilles pour le nettoyage des textiles, de la literie et de l’intérieur des véhicules à domicile.",
     para2:
-      "Commune résidentielle verdoyante, La Salvetat accueille des familles qui apprécient le service clé en main à domicile. Devis gratuit, réponse sous 24h.",
+      "Un grand canapé d’angle peut avoir des éléments amovibles ou des revêtements différents. Envoyez une vue d’ensemble et indiquez la matière pour sélectionner la formule appropriée.",
     faq: [
       {
-        q: "Y a-t-il des frais de déplacement pour La Salvetat-Saint-Gilles ?",
-        a: "Non, La Salvetat est dans notre zone gratuite.",
+        q: "Comment choisir la formule d’un canapé modulable ?",
+        a: "Basez votre choix sur la configuration complète à nettoyer et vérifiez les formats proposés. En cas de doute, envoyez une photo d’ensemble avant de réserver pour confirmer la catégorie et les options utiles.",
       },
       {
-        q: "Nettoyez-vous les canapés à La Salvetat-Saint-Gilles ?",
-        a: "Oui, à partir de 79 € pour un canapé 2/3 places.",
+        q: "Comment connaître le prix du déplacement à La Salvetat-Saint-Gilles ?",
+        a: LOCAL_TRAVEL_NOTE,
       },
       {
-        q: "Intervenez-vous pour les fins de chantier à La Salvetat ?",
-        a: "Oui, nettoyage après travaux pour particuliers. Devis rapide.",
+        q: "Comment choisir un créneau à La Salvetat-Saint-Gilles ?",
+        a: "Les disponibilités des prestations réservables sont affichées en ligne après votre sélection. Pour les nettoyages sur devis, indiquez la date souhaitée ; le créneau est convenu avec vous après validation de la prestation.",
       },
     ],
     nearby: ["Toulouse", "Pibrac", "Léguevin", "Cornebarrieu"],
@@ -955,24 +919,23 @@ export const COMMUNES_DATA: CommuneData[] = [
     name: "Castelmaurou",
     slug: "nettoyage-castelmaurou",
     postalCode: "31180",
-    cityContext:
-      "Castelmaurou est une commune du nord-est toulousain d'environ 4 000 habitants, dans un cadre rural et résidentiel.",
+    cityContext: "Intervention à domicile à Castelmaurou (31180), sur rendez-vous.",
     para1:
-      "Castelmaurou est dans notre circuit nord-est. Nous intervenons à domicile pour le nettoyage de canapés, matelas et tapis dans les maisons de la commune.",
+      "À Castelmaurou, Clean&Fresh propose les nettoyages textiles et automobiles à votre adresse, ainsi que les remises en état du logement sur devis.",
     para2:
-      "Commune rurale et calme, Castelmaurou attire des familles qui cherchent à entretenir leurs textiles sans avoir à se déplacer. Nos techniciens viennent avec tout le matériel.",
+      "Pour un tapis ancien ou de valeur, signalez sa matière et les traitements déjà reçus. Une intervention standard n’est pas retenue sans vérification si les fibres ou les couleurs présentent une sensibilité particulière.",
     faq: [
       {
-        q: "Y a-t-il des frais de déplacement pour Castelmaurou ?",
-        a: "Castelmaurou est à environ 17 km de Toulouse — zone gratuite.",
+        q: "Peut-on réserver directement pour un tapis délicat ?",
+        a: "Contactez-nous d’abord avec ses dimensions et des photos, idéalement de l’étiquette et du revers. Nous vérifions si une intervention à domicile est adaptée avant de confirmer le tarif.",
       },
       {
-        q: "Nettoyez-vous les matelas à Castelmaurou ?",
-        a: "Oui, à partir de 49 € pour un matelas enfant.",
+        q: "Comment connaître le prix du déplacement à Castelmaurou ?",
+        a: LOCAL_TRAVEL_NOTE,
       },
       {
-        q: "Intervenez-vous le week-end à Castelmaurou ?",
-        a: "Oui, le samedi selon disponibilités.",
+        q: "Comment choisir un créneau à Castelmaurou ?",
+        a: "Les disponibilités des prestations réservables sont affichées en ligne après votre sélection. Pour les nettoyages sur devis, indiquez la date souhaitée ; le créneau est convenu avec vous après validation de la prestation.",
       },
     ],
     nearby: ["Toulouse", "L'Union", "Saint-Jean", "Quint-Fonsegrives"],
@@ -981,24 +944,23 @@ export const COMMUNES_DATA: CommuneData[] = [
     name: "Auzeville-Tolosane",
     slug: "nettoyage-auzeville-tolosane",
     postalCode: "31320",
-    cityContext:
-      "Auzeville-Tolosane est une commune du sud-est toulousain d'environ 3 000 habitants, entre Ramonville et Castanet-Tolosan.",
+    cityContext: "Intervention à domicile à Auzeville-Tolosane (31320), sur rendez-vous.",
     para1:
-      "Auzeville-Tolosane est dans notre circuit sud-est. Nous intervenons pour le nettoyage de canapés, matelas et tapis dans les maisons individuelles de cette commune résidentielle.",
+      "À Auzeville-Tolosane, Clean&Fresh nettoie les textiles du logement et les intérieurs automobiles à domicile. Les besoins avant un état des lieux sont étudiés sur devis.",
     para2:
-      "Proche du pôle universitaire de Rangueil, Auzeville-Tolosane accueille des familles et des scientifiques du secteur agri-environnemental. Nos produits Écolabel sont en phase avec leur sensibilité environnementale.",
+      "Pour une petite surface, détaillez surtout l’état de la cuisine et des sanitaires : la durée de remise en état dépend aussi de l’encrassement et des équipements, pas seulement des mètres carrés.",
     faq: [
       {
-        q: "Y a-t-il des frais de déplacement pour Auzeville-Tolosane ?",
-        a: "Non, Auzeville-Tolosane est dans notre zone gratuite.",
+        q: "Une petite surface suffit-elle pour établir le devis ?",
+        a: "La surface est un point de départ. Ajoutez des photos, la liste des équipements à nettoyer et la date souhaitée afin d’évaluer le travail réel et les éventuelles options.",
       },
       {
-        q: "Nettoyez-vous les canapés à Auzeville-Tolosane ?",
-        a: "Oui, à partir de 79 € pour un canapé 2/3 places.",
+        q: "Comment connaître le prix du déplacement à Auzeville-Tolosane ?",
+        a: LOCAL_TRAVEL_NOTE,
       },
       {
-        q: "Proposez-vous le nettoyage auto à Auzeville-Tolosane ?",
-        a: "Oui, directement à votre domicile.",
+        q: "Comment choisir un créneau à Auzeville-Tolosane ?",
+        a: "Les disponibilités des prestations réservables sont affichées en ligne après votre sélection. Pour les nettoyages sur devis, indiquez la date souhaitée ; le créneau est convenu avec vous après validation de la prestation.",
       },
     ],
     nearby: ["Toulouse", "Ramonville-Saint-Agne", "Castanet-Tolosan", "Escalquens"],
@@ -1007,24 +969,23 @@ export const COMMUNES_DATA: CommuneData[] = [
     name: "Pins-Justaret",
     slug: "nettoyage-pins-justaret",
     postalCode: "31860",
-    cityContext:
-      "Pins-Justaret est une commune de 5 000 habitants au sud de Toulouse, entre Muret et Portet-sur-Garonne, dans un environnement verdoyant.",
+    cityContext: "Intervention à domicile à Pins-Justaret (31860), sur rendez-vous.",
     para1:
-      "Pins-Justaret est dans notre circuit sud. Nos techniciens interviennent dans les maisons individuelles et les lotissements pour le nettoyage de canapés, matelas et tapis.",
+      "Clean&Fresh intervient à Pins-Justaret pour nettoyer canapé, literie, tapis et intérieur automobile, et pour les prestations de logement sur devis.",
     para2:
-      "Commune prisée pour sa tranquillité, Pins-Justaret accueille des familles en maison individuelle qui apprécient notre service clé en main. Tarifs identiques à Toulouse.",
+      "Avant notre passage, repérez un point d’eau et une prise accessibles près de la zone de travail. Indiquez les escaliers ou la distance à parcourir avec le matériel depuis le stationnement.",
     faq: [
       {
-        q: "Y a-t-il des frais de déplacement pour Pins-Justaret ?",
-        a: "Pins-Justaret est à environ 18 km de Toulouse — zone gratuite.",
+        q: "Faut-il prévoir de l’eau et de l’électricité ?",
+        a: "Oui, prévoyez des accès disponibles pendant l’intervention. Signalez toute difficulté ou distance importante avant le rendez-vous afin que nous puissions vérifier la faisabilité avec le matériel prévu.",
       },
       {
-        q: "Nettoyez-vous les matelas à Pins-Justaret ?",
-        a: "Oui, dès 49 € pour un matelas enfant.",
+        q: "Comment connaître le prix du déplacement à Pins-Justaret ?",
+        a: LOCAL_TRAVEL_NOTE,
       },
       {
-        q: "Intervenez-vous le week-end à Pins-Justaret ?",
-        a: "Oui, le samedi selon disponibilités.",
+        q: "Comment choisir un créneau à Pins-Justaret ?",
+        a: "Les disponibilités des prestations réservables sont affichées en ligne après votre sélection. Pour les nettoyages sur devis, indiquez la date souhaitée ; le créneau est convenu avec vous après validation de la prestation.",
       },
     ],
     nearby: ["Toulouse", "Muret", "Portet-sur-Garonne", "Eaunes"],
@@ -1033,24 +994,23 @@ export const COMMUNES_DATA: CommuneData[] = [
     name: "Gratentour",
     slug: "nettoyage-gratentour",
     postalCode: "31150",
-    cityContext:
-      "Gratentour est une commune du nord de Toulouse d'environ 4 000 habitants, proche de Bruguières et de Fenouillet.",
+    cityContext: "Intervention à domicile à Gratentour (31150), sur rendez-vous.",
     para1:
-      "Gratentour est dans notre circuit nord. Nous intervenons à domicile pour le nettoyage de canapés, matelas et tapis dans les maisons individuelles de la commune.",
+      "À Gratentour, Clean&Fresh propose le nettoyage à domicile des textiles et des véhicules, ainsi que les remises en état du logement sur devis.",
     para2:
-      "Commune rurale en développement résidentiel, Gratentour accueille des familles qui font confiance à notre sérieux et notre ponctualité. Devis gratuit, réponse sous 24h.",
+      "Pour un canapé et un tapis dans la même pièce, dégagez les petits meubles et objets. Précisez si le tapis se trouve sous un meuble lourd pour définir les zones accessibles avant intervention.",
     faq: [
       {
-        q: "Y a-t-il des frais de déplacement pour Gratentour ?",
-        a: "Non, Gratentour est dans notre zone gratuite.",
+        q: "Le mobilier lourd est-il déplacé pour nettoyer un tapis ?",
+        a: "Le déplacement de mobilier lourd n’est pas à supposer inclus. Envoyez une photo de la configuration et précisez les zones souhaitées : nous vérifions ensemble l’accès et la préparation à prévoir.",
       },
       {
-        q: "Nettoyez-vous les canapés à Gratentour ?",
-        a: "Oui, à partir de 79 € pour un canapé 2/3 places.",
+        q: "Comment connaître le prix du déplacement à Gratentour ?",
+        a: LOCAL_TRAVEL_NOTE,
       },
       {
-        q: "Proposez-vous le nettoyage tapis à Gratentour ?",
-        a: "Oui, à partir de 49 € pour 1 tapis.",
+        q: "Comment choisir un créneau à Gratentour ?",
+        a: "Les disponibilités des prestations réservables sont affichées en ligne après votre sélection. Pour les nettoyages sur devis, indiquez la date souhaitée ; le créneau est convenu avec vous après validation de la prestation.",
       },
     ],
     nearby: ["Toulouse", "Bruguières", "Fenouillet", "Castelginest"],
@@ -1058,5 +1018,5 @@ export const COMMUNES_DATA: CommuneData[] = [
 ];
 
 export function getCommuneData(slug: string): CommuneData | undefined {
-  return COMMUNES_DATA.find((c) => c.slug === slug);
+  return COMMUNES_DATA.find((commune) => commune.slug === slug);
 }

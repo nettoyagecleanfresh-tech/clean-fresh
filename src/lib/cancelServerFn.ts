@@ -8,6 +8,7 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import { authorizeCalendarManagement, deleteCalendarEvent } from "@/lib/gcal-server";
+import { journalConversion } from "./metricJournal";
 
 const CancelInputSchema = z.object({
   management_token: z.string().min(1).max(4096),
@@ -39,6 +40,7 @@ export const cancelBookingServerFn = createServerFn({ method: "POST" })
     }
 
     if (!gcal_deleted) throw new Error("CANCELLATION_FAILED");
+    await journalConversion('booking_cancelled', data.gcal_event_id!);
 
     // Envoyer l'email d'annulation (au client ET à l'admin)
     try {

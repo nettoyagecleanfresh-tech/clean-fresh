@@ -28,7 +28,7 @@ function AboutPage() {
     <div className="pb-24 lg:pb-0">
       <div className="mx-auto max-w-3xl px-4 pt-16 pb-10 text-center">
         <h1 className="text-4xl font-bold leading-tight tracking-tight md:text-5xl">
-          Notre philosophie : clarté, efficacité, transparence
+          Clean&Fresh, votre entreprise de nettoyage à Toulouse
         </h1>
         <p className="mt-4 text-muted-foreground leading-relaxed max-w-xl mx-auto">
           Clean&Fresh est une entreprise locale et artisanale dirigée par Sébastian Isidro Heredia. À Toulouse et dans son agglomération, nous intervenons à domicile pour prendre soin de vos textiles, de votre véhicule et de vos locaux.

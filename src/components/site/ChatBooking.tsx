@@ -1,4 +1,5 @@
-import { useBookingMetrics, bookingMetric } from "@/lib/bookingMetrics";
+import { useBookingMetrics, bookingMetric, bookingConfirmedMetric } from "@/lib/bookingMetrics";
+import { analyticsTestMode } from "@/lib/analyticsPolicy";
 import { useEffect, useRef, useState } from 'react';
 import { SERVICES, type CartItem, type ServiceDef, type Formule } from '@/data/bookingCatalogue';
 import { optionDescription } from '@/data/optionDescriptions';
@@ -100,7 +101,7 @@ export function ChatBooking({ onBusy }: { onBusy: (busy: boolean) => void }) {
         booking_date: date, booking_time: time, client_name: details.name.trim(), client_phone: details.phone.trim(),
         client_email: details.email.trim(), client_street: details.street.trim(), client_zip: details.zip.trim(), client_city: details.city.trim(),
         auto_access: hasAuto ? { electricity: access.electricity === 'yes', water: access.water === 'yes' } : undefined,
-        gcal_event_id: eventId.current, cancel_token: 'pending',
+        gcal_event_id: eventId.current, cancel_token: 'pending', analytics_test: analyticsTestMode(),
       }, { create: createBookingServerFn });
       if (result.error === 'SLOT_TAKEN') {
         bookingMetric('booking_error', 'assistant', 'date');
@@ -108,7 +109,7 @@ export function ChatBooking({ onBusy }: { onBusy: (busy: boolean) => void }) {
         setError('Ce créneau vient de devenir indisponible. Choisissez un autre horaire ou recherchez le prochain créneau compatible.');
       } else if (!result.success || !result.gcal_event_id) {
         setError('La réservation n’a pas été confirmée. Contactez-nous au 07 67 12 75 00 avant de recommencer.');
-      } else { setEmailSent(result.emailSent); setCancelToken(result.cancel_token); setStage('done'); }
+      } else { bookingConfirmedMetric(result, 'assistant'); setEmailSent(result.emailSent); setCancelToken(result.cancel_token); setStage('done'); }
     } catch { setError('La confirmation n’a pas pu être vérifiée. Vérifiez vos emails ou appelez le 07 67 12 75 00 avant de recommencer.'); }
     finally { setSending(false); inFlight.current = false; }
   };

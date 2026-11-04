@@ -1,4 +1,5 @@
-import { SITE_URL, COMPANY, SERVICES, type Service } from "@/data/site";
+import { buildLocalBusinessSchema } from "@/lib/businessSchema";
+import { SITE_URL, COMPANY, type Service } from "@/data/site";
 import { buildServiceSchema } from "@/lib/serviceSchema";
 
 // ──────────────────────────────────────────────────────────────────────────────
@@ -11,61 +12,7 @@ import { buildServiceSchema } from "@/lib/serviceSchema";
 
 /** LocalBusiness — homepage only */
 export function SchemaLocalBusiness() {
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "@id": `${SITE_URL}/#business`,
-    name: COMPANY.name,
-    description:
-      "Entreprise de nettoyage professionnelle à Toulouse et Haute-Garonne. Canapé, matelas, tapis, auto, vitres, façade, fin de chantier, fin de bail, Diogène.",
-    url: SITE_URL,
-    telephone: COMPANY.phoneHref.replace("tel:", ""),
-    email: COMPANY.email,
-    logo: `${SITE_URL}/logo.png`,
-    image: `${SITE_URL}/realisations/photo-02.webp`,
-    priceRange: "€€",
-    currenciesAccepted: "EUR",
-    paymentAccepted: "Cash, Credit Card",
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Toulouse",
-      addressRegion: "Haute-Garonne",
-      postalCode: "31000",
-      addressCountry: "FR",
-    },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: 43.6047,
-      longitude: 1.4442,
-    },
-    areaServed: {
-      "@type": "GeoCircle",
-      geoMidpoint: {
-        "@type": "GeoCoordinates",
-        latitude: 43.6047,
-        longitude: 1.4442,
-      },
-      geoRadius: "30000",
-    },
-    openingHoursSpecification: [{
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-      opens: "08:00",
-      closes: "21:00",
-    }],
-    sameAs: [
-      "https://www.instagram.com/cleanetfresh31",
-      "https://www.facebook.com/profile.php?id=61579620873055",
-    ],
-    hasOfferCatalog: {
-      "@type": "OfferCatalog",
-      name: "Services de nettoyage",
-      itemListElement: SERVICES.map(service => ({
-        "@type": "Offer",
-        "itemOffered": { "@type": "Service", "@id": `${SITE_URL}${service.slug}#service`, name: service.h1, url: `${SITE_URL}${service.slug}` },
-      })),
-    },
-  };
+  const schema = buildLocalBusinessSchema();
 
   return (
     <script

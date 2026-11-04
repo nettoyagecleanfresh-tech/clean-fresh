@@ -13,6 +13,7 @@ import { signManagementToken, createCalendarEvent, buildEventDescription, checkS
 
 import { sendBookingEmailsRaw } from "./emailService";
 import { ensureEventActions, eventLinks, patchEvent } from "./calendarLifecycle";
+import { journalConversion } from "./metricJournal";
 
 // ─── Schéma de validation ────────────────────────────────────────────────────
 
@@ -39,6 +40,7 @@ export const BookingInputSchema = z.object({
   auto_access: z.object({ electricity: z.boolean(), water: z.boolean() }).optional(),
   cancel_token: z.string().min(1).max(3000), // token base64 déjà généré côté client
   gcal_event_id: z.string().regex(/^[a-v0-9]{5,1024}$/),
+  analytics_test: z.boolean().optional(),
 });
 
 export type BookingInput = z.infer<typeof BookingInputSchema>;
@@ -187,7 +189,7 @@ export const createBookingServerFn = createServerFn({ method: "POST" })
       const summaryTitle = data.items.length > 1 ? `${firstItem?.formule_name} + ${data.items.length - 1} autre(s)` : firstItem?.formule_name;
       
       const gcalEvent = {
-        extendedProperties: { private: { cfConfirmationPending: "true", cfTotalPrice: String(data.total_price), cfPaymentAtEnd: "true" } },
+        extendedProperties: { private: { cfConfirmationPending: "true", cfTotalPrice: String(data.total_price), cfPaymentAtEnd: "true", cfAnalyticsSource: "website", cfAnalyticsTest: data.analytics_test ? "true" : "false" } },
         id: data.gcal_event_id,
         summary: `${emoji} ${summaryTitle} — ${data.client_name}`,
         description,
@@ -213,6 +215,7 @@ export const createBookingServerFn = createServerFn({ method: "POST" })
       const gcal_event_id = await createCalendarEvent(gcalEvent);
 
       if (!gcal_event_id) throw new Error("CALENDAR_UNAVAILABLE");
+      await journalConversion('booking_confirmed', gcal_event_id, data.analytics_test === true);
       let emailSent = false;
       try {
         await ensureEventActions(gcalEvent);

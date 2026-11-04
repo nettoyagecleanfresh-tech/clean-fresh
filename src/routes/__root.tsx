@@ -1,5 +1,6 @@
 import { ConversionTracking } from "@/components/site/ConversionTracking";
 import { AudienceConsent } from "@/components/site/AudienceConsent";
+import { sanitizeAnalyticsEvent } from "@/lib/analyticsPolicy";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
@@ -244,8 +245,8 @@ function RootComponent() {
       <Toaster />
       <ConversionTracking />
       <AudienceConsent />
-      {location.pathname !== "/envoyer-avis" && <Analytics />}
-      {location.pathname !== "/envoyer-avis" && <SpeedInsights />}
+      <Analytics beforeSend={sanitizeAnalyticsEvent} />
+      <SpeedInsights beforeSend={sanitizeAnalyticsEvent} />
     </QueryClientProvider>
   );
 }

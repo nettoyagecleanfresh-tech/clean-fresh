@@ -1,4 +1,5 @@
-import { conversionMetric } from "@/lib/conversionMetrics";
+import { conversionMetric, quoteConfirmedMetric } from "@/lib/conversionMetrics";
+import { analyticsTestMode } from "@/lib/analyticsPolicy";
 import { useEffect, useRef, useState } from "react";
 import { prepareQuotePhotos, validateQuotePhotos } from "@/lib/quotePhotos";
 import { createFileRoute } from "@tanstack/react-router";
@@ -59,6 +60,7 @@ function ContactPage() {
   const { service: requestedService } = Route.useSearch();
   const [selectedService, setSelectedService] = useState(QUOTE_SERVICES[requestedService ?? ""] ?? "");
   const quoteStarted = useRef(false);
+  const measurementId = useRef<string | undefined>(undefined);
   useEffect(() => { setSelectedService(QUOTE_SERVICES[requestedService ?? ""] ?? ""); }, [requestedService]);
   const [photoCount, setPhotoCount] = useState(0);
 
@@ -109,17 +111,20 @@ function ContactPage() {
         reader.onerror = () => reject(new Error('Lecture des photos impossible.'));
         reader.readAsDataURL(attachment);
       }) : null;
+      // Keep the same measurement ID on retry; it contains no form data.
+      try { measurementId.current ??= crypto.randomUUID(); } catch { /* Server supplies the ID if unavailable. */ }
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...result.data, photoCount: photos.length, pdf }),
+        body: JSON.stringify({ ...result.data, photoCount: photos.length, pdf, measurement_id: measurementId.current, analytics_test: analyticsTestMode() }),
       });
 
       const resData = await response.json();
 
       if (response.ok && resData.success) {
         toast.success("Votre message a été envoyé avec succès. Nous vous répondons sous 24h.");
-        conversionMetric("quote_submitted", { has_photos: photos.length > 0 });
+        quoteConfirmedMetric(resData, photos.length > 0);
+        measurementId.current = undefined;
         quoteStarted.current = false;
         form.reset();
         setSelectedService("");

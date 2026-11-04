@@ -1,3 +1,4 @@
+import { buildLocalBusinessSchema } from "@/lib/businessSchema";
 import { DesktopBookingChoices } from "@/components/site/DesktopBookingChoices";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
@@ -59,59 +60,7 @@ export const Route = createFileRoute("/")({
     scripts: [
       {
         type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "LocalBusiness",
-          "@id": `${SITE_URL}/#business`,
-          name: "Clean&Fresh",
-          description: "Entreprise de nettoyage professionnelle à Toulouse et Haute-Garonne. Canapé, matelas, tapis, auto, vitres, façade, fin de chantier, fin de bail, Diogène.",
-          url: SITE_URL,
-          telephone: "+33767127500",
-          email: "nettoyagecleanfresh@gmail.com",
-          logo: `${SITE_URL}/logo.webp`,
-          image: `${SITE_URL}/realisations/photo-02.webp`,
-          priceRange: "€€",
-          currenciesAccepted: "EUR",
-          paymentAccepted: "Cash, Credit Card",
-          address: {
-            "@type": "PostalAddress",
-            addressLocality: "Toulouse",
-            addressRegion: "Haute-Garonne",
-            postalCode: "31000",
-            addressCountry: "FR",
-          },
-          geo: {
-            "@type": "GeoCoordinates",
-            latitude: 43.6047,
-            longitude: 1.4442,
-          },
-          areaServed: {
-            "@type": "GeoCircle",
-            geoMidpoint: { "@type": "GeoCoordinates", latitude: 43.6047, longitude: 1.4442 },
-            geoRadius: "30000",
-          },
-          openingHoursSpecification: [{
-            "@type": "OpeningHoursSpecification",
-            dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-            opens: "08:00",
-            closes: "21:00",
-          }],
-          sameAs: [
-            "https://www.instagram.com/cleanetfresh31",
-            "https://www.facebook.com/profile.php?id=61579620873055",
-          ],
-          hasOfferCatalog: {
-            "@type": "OfferCatalog",
-            name: "Services de nettoyage",
-            itemListElement: [
-              { "@type": "Offer", itemOffered: { "@type": "Service", name: "Nettoyage canapé Toulouse" } },
-              { "@type": "Offer", itemOffered: { "@type": "Service", name: "Nettoyage matelas Toulouse" } },
-              { "@type": "Offer", itemOffered: { "@type": "Service", name: "Nettoyage fin de bail Toulouse" } },
-              { "@type": "Offer", itemOffered: { "@type": "Service", name: "Nettoyage auto Toulouse" } },
-              { "@type": "Offer", itemOffered: { "@type": "Service", name: "Nettoyage Diogène Toulouse" } },
-            ],
-          },
-        }),
+        children: JSON.stringify(buildLocalBusinessSchema()),
       },
     ],
   }),

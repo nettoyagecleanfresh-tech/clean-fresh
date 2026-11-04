@@ -1,5 +1,6 @@
 import { DesktopPriceSummary } from "@/components/site/DesktopPriceSummary";
-import { useBookingMetrics, bookingMetric } from "@/lib/bookingMetrics";
+import { useBookingMetrics, bookingMetric, bookingConfirmedMetric } from "@/lib/bookingMetrics";
+import { analyticsTestMode } from "@/lib/analyticsPolicy";
 import { optionDescription } from "@/data/optionDescriptions";
 import { useEffect, useLayoutEffect, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
@@ -483,6 +484,7 @@ function ReserverPage() {
           auto_access: hasAuto ? { electricity: autoAccess.electricity === "yes", water: autoAccess.water === "yes" } : undefined,
           cancel_token: cancelToken,
           gcal_event_id: preGeneratedGcalId,
+          analytics_test: analyticsTestMode(),
         },
       });
 
@@ -503,6 +505,7 @@ function ReserverPage() {
         return;
       }
       gcalId = serverResult.gcal_event_id;
+      bookingConfirmedMetric(serverResult, "form");
       serverCancelToken = serverResult.cancel_token;
       setEmailSent(serverResult.emailSent === true);
       if (gcalId) setGcalEventId(gcalId);
@@ -522,7 +525,7 @@ function ReserverPage() {
     setDone(true);
     setSubmitting(false);
 
-    // useBookingMetrics emits booking_complete once on the confirmed done state.
+    // booking_complete is emitted once from the successful server response above.
     // A reservation is NOT a purchase: payment is collected after the service.
     // Do not emit ecommerce revenue or the customer's calendar event identifier.
   };

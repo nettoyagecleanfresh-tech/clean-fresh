@@ -1,12 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SITE_URL } from "@/data/site";
+import { buildLocalBusinessSchema } from "@/lib/businessSchema";
 import { getCommuneData } from "@/data/communes";
 import { LocalCityPage } from "@/components/site/LocalCityPage";
 
 const CITY = "Balma";
 const SLUG = "/nettoyage-balma";
 const TITLE = `Nettoyage à domicile à ${CITY} | Clean&Fresh`;
-const DESC = `Nettoyage canapé, matelas, tapis et auto à domicile à ${CITY}. Tarifs clairs, produits professionnels et devis gratuit sous 24h.`;
+const DESC = getCommuneData(SLUG.slice(1))!.para1;
 
 export const Route = createFileRoute("/nettoyage-balma")({
   head: () => ({
@@ -35,14 +36,8 @@ export const Route = createFileRoute("/nettoyage-balma")({
       {
         type: "application/ld+json",
         children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "LocalBusiness",
-          name: "Clean&Fresh",
-          url: `https://cleanetfresh.fr${SLUG}`,
-          telephone: "+33767127500",
+          ...buildLocalBusinessSchema(),
           areaServed: { "@type": "City", name: CITY },
-          address: { "@type": "PostalAddress", addressLocality: "Toulouse", addressRegion: "Haute-Garonne", postalCode: "31000", addressCountry: "FR" },
-          priceRange: "€€",
         }),
       },
     ],

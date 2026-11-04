@@ -1,5 +1,7 @@
 import { quoteSchema } from '../src/lib/quoteSchema.js';
 import { sendQuoteMail } from '../src/lib/quoteMailer.js';
+import { journalConversion } from '../src/lib/metricJournal.js';
+import { randomUUID } from 'node:crypto';
 
 const escape = (value: string) => value.replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]!);
 const attempts = new Map<string, { count: number; until: number }>();
@@ -30,7 +32,12 @@ export default async function handler(request: any, response: any) {
     const html = `<div style="font-family:Arial,sans-serif;color:#102a43;max-width:650px;margin:auto"><h1>Nouvelle demande de devis</h1>${Object.entries(parsed.data).map(([key, value]) => `<p><strong>${labels[key]}</strong><br>${escape(value).replace(/\n/g, '<br>')}</p>`).join('')}<p>${count} photo(s) jointe(s)${count ? ' dans le PDF.' : '.'}</p><hr><p>Clean&Fresh Toulouse</p></div>`;
     const result = await sendQuoteMail({ to: process.env.VITE_OWNER_EMAIL ?? 'nettoyagecleanfresh@gmail.com', subject: `Demande de devis — ${parsed.data.nom.replace(/[\r\n]/g, ' ')}`, html, clientEmail: parsed.data.email, attachment });
     if (!result.success) return response.status(502).json({ success: false, message: 'Envoi non confirmé. Vos informations sont conservées.' });
-    return response.status(200).json({ success: true });
+    let measurement_id: string | undefined;
+    try {
+      measurement_id = typeof body.measurement_id === 'string' && /^[a-zA-Z0-9_-]{5,128}$/.test(body.measurement_id) ? body.measurement_id : randomUUID();
+      await journalConversion('quote_submitted', measurement_id, body.analytics_test === true);
+    } catch { /* Measurement cannot invalidate a quote email already accepted. */ }
+    return response.status(200).json({ success: true, measurement_id });
   } catch {
     return response.status(500).json({ success: false, message: 'Envoi non confirmé. Veuillez réessayer.' });
   }

@@ -1,3 +1,6 @@
+import { analyticsTestMode, customerAnalyticsAllowed, productionAnalyticsOrigin, publicAnalyticsPath } from './analyticsPolicy';
+export { productionAnalyticsOrigin, publicAnalyticsPath } from './analyticsPolicy';
+
 export const GA_ID = 'G-QQZDL9DTSB';
 export const CONSENT_KEY = 'cleanfresh-audience-v1';
 const MAX_AGE = 180 * 24 * 60 * 60 * 1000;
@@ -6,11 +9,6 @@ let active = false;
 let initialized = false;
 let previousPath = '';
 let initialReferrer = '';
-
-/** Do not mix preview, localhost or third-party hosts with customer visits. */
-export function productionAnalyticsOrigin(origin: string): boolean {
-  return origin === 'https://cleanetfresh.fr' || origin === 'https://www.cleanetfresh.fr';
-}
 
 export function audienceChoice(): boolean | null {
   try {
@@ -22,11 +20,8 @@ export function audienceChoice(): boolean | null {
 export function rememberAudience(allowed: boolean) {
   try { localStorage.setItem(CONSENT_KEY, JSON.stringify({ allowed, at: Date.now() })); } catch { /* Session-only choice if storage is unavailable. */ }
 }
-export function publicAnalyticsPath(path: string) {
-  return !/^\/(envoyer-avis|annuler|reprogrammer|upsell|api|admin)(\/|$)/.test(path);
-}
 export function setAudienceEnabled(enabled: boolean, path: string) {
-  active = enabled && productionAnalyticsOrigin(location.origin) && publicAnalyticsPath(path);
+  active = enabled && productionAnalyticsOrigin(location.origin) && publicAnalyticsPath(path) && !analyticsTestMode();
   (window as unknown as Record<string, unknown>)[`ga-disable-${GA_ID}`] = !active;
   if (!active) { previousPath = ''; return; }
   const w = window as AnalyticsWindow;
@@ -53,7 +48,7 @@ export function setAudienceEnabled(enabled: boolean, path: string) {
 }
 /** Only fixed-label events; never forward query strings, forms or customer details. */
 export function googleMetric(event: string, properties: Record<string, string | boolean>) {
-  if (typeof window === 'undefined' || !active || !productionAnalyticsOrigin(location.origin) || !publicAnalyticsPath(location.pathname)) return;
+  if (!active || !customerAnalyticsAllowed()) return;
   (window as AnalyticsWindow).gtag?.('event', event, { ...properties, send_to: GA_ID, page_location: location.origin + location.pathname, page_referrer: '' });
 }
 export function removeAudienceCookies() {

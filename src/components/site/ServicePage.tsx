@@ -1,5 +1,6 @@
-import { DesktopServiceProof, selectedPhotos } from "@/components/site/DesktopServiceProof";
-import { responsiveRealisation } from "@/lib/responsiveRealisation";
+import { DesktopServiceProof, ProofPhoto, selectedPhotos } from "@/components/site/DesktopServiceProof";
+import { ServiceEssentials } from "@/components/site/ServiceEssentials";
+import { serviceHeroPrices, serviceDisplayOptions } from "@/components/site/servicePresentation";
 import { serviceIntent } from "@/lib/serviceIntent";
 import { relatedServices } from "@/lib/relatedServices";
 import { optionDescription } from "@/data/optionDescriptions";
@@ -119,7 +120,8 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
   others: Service[];
   bookingServiceId: string | null;
 }) {
-  const serviceOptions = bookingServiceId ? (OPTIONS_BY_SERVICE[bookingServiceId] ?? []) : [];
+  const serviceOptions = serviceDisplayOptions(bookingServiceId) ?? (bookingServiceId ? (OPTIONS_BY_SERVICE[bookingServiceId] ?? []) : []);
+  const heroPrices = serviceHeroPrices(bookingServiceId);
   const intent = serviceIntent(service.slug);
   const quoteSearch = intent.kind === "quote" ? { service: intent.service } : {};
   const quickPrices = bookingServiceId === 'canape'
@@ -157,8 +159,13 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
           <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-ink-foreground/75 md:mt-5 md:text-base">
             {service.subtitle}
           </p>
-          {quickPrices && <div className="mx-auto mt-5 max-w-xl rounded-2xl border border-white/20 bg-white/10 px-4 py-4 text-left shadow-sm">
-            <p className="text-sm font-bold leading-6 text-white">{quickPrices}</p>
+          {(quickPrices || heroPrices) && <div className="mx-auto mt-5 max-w-2xl rounded-2xl border border-white/20 bg-white/10 px-4 py-4 text-left shadow-sm">
+            {heroPrices ? <dl className="grid grid-cols-1 divide-y divide-white/15 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+              {heroPrices.map(price => <div key={price.label} className="flex items-center justify-between gap-3 py-2 first:pt-0 last:pb-0 sm:flex-col sm:items-start sm:gap-1 sm:px-3 sm:py-0 sm:first:pl-0">
+                <dt className="text-xs leading-5 text-white/80">{price.label}</dt>
+                <dd className="shrink-0 text-xl font-bold text-white">{price.price}</dd>
+              </div>)}
+            </dl> : <p className="text-sm font-bold leading-6 text-white">{quickPrices}</p>}
             <p className="mt-1 text-xs leading-5 text-white/80">Selon la formule et les options choisies. Aucun paiement en ligne : règlement en fin de prestation.</p>
             <p className="mt-3 flex items-center gap-2 text-xs font-semibold text-white"><Star className="size-4 fill-amber-300 text-amber-300" aria-hidden="true" />{GOOGLE_REVIEW_RATING}/5 · {GOOGLE_REVIEW_COUNT} avis Google</p>
           </div>}
@@ -199,6 +206,7 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
       </section>
 
       <DesktopServiceProof slug={service.slug} bookingServiceId={bookingServiceId} />
+      <ServiceEssentials serviceId={bookingServiceId} />
 
       {/* ── DETAIL + TARIFS côte à côte ── */}
       <FadeIn delay={0.1}>
@@ -215,14 +223,16 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
               ))}
               {service.intro.length > 2 && (
                 <>
-                  <div className={introExpanded ? "block" : "hidden"}>
+                  <div id="service-intro-details" className={introExpanded ? "block" : "hidden"}>
                     {service.intro.slice(2).map((p) => (
                       <p key={p} className="mt-4 text-muted-foreground leading-relaxed">{p}</p>
                     ))}
                   </div>
                   <button
                     onClick={() => setIntroExpanded(!introExpanded)}
-                    className="mt-3 flex items-center gap-1 text-sm font-semibold text-primary hover:underline"
+                    aria-expanded={introExpanded}
+                    aria-controls="service-intro-details"
+                    className="mt-3 flex min-h-11 items-center gap-1 text-sm font-semibold text-primary hover:underline"
                   >
                     {introExpanded ? "Réduire" : "Lire la suite"}
                     <ChevronDown className={`size-4 transition-transform ${introExpanded ? "rotate-180" : ""}`} />
@@ -285,7 +295,7 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
                               <img src={img} alt={row.label} className="w-full h-full object-contain mix-blend-multiply group-hover:scale-110 transition-transform duration-200" loading="lazy" decoding="async" />
                             </div>
                           )}
-                          <p className="text-xs font-semibold leading-tight line-clamp-2">{row.label}</p>
+                          <p className="text-sm font-semibold leading-snug">{row.label}</p>
                           {row.note && row.formuleId !== "canape-angle" && <p className="text-[10px] text-primary font-medium mt-0.5">{row.note}</p>}
                           <span className={`font-bold text-primary mt-1 ${isGrid ? "text-xl" : "text-2xl"}`}>{row.price}</span>
                           {bookingServiceId === "auto" && row.items && (
@@ -300,11 +310,11 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
                           )}
                           <Button
                             asChild
-                            className="mt-2 w-full bg-accent-gradient text-accent-foreground font-semibold hover:opacity-90 h-8 text-xs"
+                            className="mt-2 w-full bg-accent-gradient text-accent-foreground font-semibold hover:opacity-90 min-h-11 text-xs"
                             size="sm"
                           >
                             {bookingServiceId ? (
-                              <Link to="/reserver" search={{ service: bookingServiceId, formule: row.formuleId ?? "", from: "" }}>
+                              <Link to="/reserver" search={{ service: bookingServiceId, formule: row.formuleId ?? "", from: "service_page" }}>
                                 <CalendarCheck className="size-3 mr-1" /> Réserver
                               </Link>
                             ) : (
@@ -391,16 +401,16 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
 
       {/* ── OPTIONS ── */}
       {serviceOptions.length > 0 && (
-        <section className="bg-secondary/60 py-16 lg:hidden">
+        <section className={`bg-secondary/60 py-12 md:py-16 ${heroPrices ? "" : "lg:hidden"}`}>
           <div className="mx-auto max-w-6xl px-4">
             <h3 className="text-xl font-bold mb-1">
               Personnalisez votre soin{" "}
               <span className="text-primary">{service.short}</span>
             </h3>
             <p className="text-sm text-muted-foreground mb-5">
-              Options à ajouter lors de la réservation en ligne.
+              Options facultatives à ajouter lors de la réservation. Le prix exact dépend de la formule sélectionnée.
             </p>
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {serviceOptions.map((opt) => (
                 <div
                   key={opt.name}
@@ -483,27 +493,23 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
           <p className="mt-3 text-muted-foreground">
             Photos réelles prises sur nos chantiers à Toulouse et dans l'agglomération.
           </p>
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className={`mt-8 grid items-start gap-5 ${categoryImages.length === 1 ? "mx-auto max-w-xl" : "sm:grid-cols-2"}`}>
             {categoryImages.map((photo) => (
               <figure
                 key={photo.src}
                 className="overflow-hidden rounded-2xl border border-border bg-card shadow-[var(--shadow-soft)] transition-transform hover:-translate-y-0.5"
               >
-                <img
-                  {...responsiveRealisation(photo.src)}
-                  alt={photo.title}
-                  loading="lazy"
-                  decoding="async"
-                  width={1000}
-                  height={800}
-                  className="h-48 w-full object-cover"
-                />
-                <figcaption className="p-3 text-sm text-center">
+                <ProofPhoto photo={photo} />
+                <figcaption className="p-5 text-sm">
                   <p className="font-semibold text-foreground">{photo.title}</p>
-                  <p className="mt-1 text-xs text-muted-foreground">{photo.description}</p>
+                  <p className="mt-2 text-sm leading-6 text-muted-foreground">{photo.description}</p>
                 </figcaption>
               </figure>
             ))}
+          </div>
+          <div className="mt-6 flex flex-wrap items-center justify-between gap-3">
+            <p className="max-w-2xl text-xs leading-5 text-muted-foreground">Chaque support réagit différemment : le résultat dépend de la matière, de l’état initial et de l’ancienneté des taches.</p>
+            <Link to="/nos-realisations" className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-primary hover:underline">Voir toutes nos réalisations <ArrowRight className="size-4" aria-hidden="true" /></Link>
           </div>
             </div>
         </section>
@@ -609,7 +615,8 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
       {/* ── AUTRES SERVICES ── */}
       <FadeIn delay={0.1}>
         <section className="mx-auto max-w-6xl px-4 pb-16">
-          <h2 className="text-2xl font-bold tracking-tight">Nos autres services</h2>
+          <h2 className="text-2xl font-bold tracking-tight">Pour vos autres besoins de nettoyage</h2>
+          <p className="mt-2 text-sm leading-6 text-muted-foreground">Retrouvez les prestations complémentaires à domicile et nos services de remise en état à Toulouse.</p>
         <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {others.map((s) => (
             <Link
@@ -625,6 +632,7 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
             </Link>
           ))}
         </div>
+        <Link to="/nos-services" className="mt-5 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-primary hover:underline">Voir tous nos services à Toulouse <ArrowRight className="size-4" aria-hidden="true" /></Link>
       </section>
       </FadeIn>
     </div>

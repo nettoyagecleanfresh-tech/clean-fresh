@@ -13,7 +13,7 @@ import { BookingAvailabilityBanner } from "@/components/BookingAvailabilityBanne
 import { BookingTrustBanner } from "@/components/BookingTrustBanner";
 
 const TITLE = "Réserver un nettoyage à Toulouse | Clean&Fresh";
-const DESC = "Réservez en ligne votre nettoyage à domicile à Toulouse : canapé dès 49 €, matelas dès 49 €, tapis dès 49 € et auto dès 69 €.";
+const DESC = "Réservez votre nettoyage à Toulouse : canapé dès 79 €, matelas et tapis dès 49 €, auto dès 69 €. Cuir et moquette : formules et créneaux en ligne.";
 
 type FormulesSearch = {
   service?: string;
@@ -27,13 +27,13 @@ export const Route = createFileRoute("/formules")({
   },
   head: () => ({
     meta: [
-      { title: `Réserver un Nettoyage à Toulouse — Canapé, Matelas, Auto | Clean&Fresh` },
-      { name: "description", content: `Réservez votre nettoyage en ligne : canapé dès 79 €, matelas dès 49 €, auto dès 69 €. Intervention à domicile à Toulouse et agglomération. Simple et rapide.` },
-      { property: "og:title", content: `Réserver un Nettoyage à Toulouse — Canapé, Matelas, Auto | Clean&Fresh` },
-      { property: "og:description", content: `Réservez votre nettoyage en ligne : canapé dès 79 €, matelas dès 49 €, auto dès 69 €. Intervention à domicile à Toulouse et agglomération. Simple et rapide.` },
+      { title: TITLE },
+      { name: "description", content: DESC },
+      { property: "og:title", content: TITLE },
+      { property: "og:description", content: DESC },
       { property: "og:url", content: `https://cleanetfresh.fr/formules` },
-      { name: "twitter:title", content: `Réserver un Nettoyage à Toulouse — Canapé, Matelas, Auto | Clean&Fresh` },
-      { name: "twitter:description", content: `Réservez votre nettoyage en ligne : canapé dès 79 €, matelas dès 49 €, auto dès 69 €. Intervention à domicile à Toulouse et agglomération. Simple et rapide.` },
+      { name: "twitter:title", content: TITLE },
+      { name: "twitter:description", content: DESC },
     ],
     links: [{ rel: "canonical", href: `https://cleanetfresh.fr/formules` }],
   }),
@@ -101,6 +101,7 @@ const MATELAS_OPTIONS = [
   { name: "Traitement anti-acariens et bactériens", price: 19, desc: "Élimination des acariens et bactéries (traitement professionnel). Indispensable pour les allergiques.", popular: true },
   { name: "Détachage intensif", price: 19, desc: "Traitement ciblé pour les tâches résistantes (transpiration, sang…)." },
   { name: "Traitement anti-odeur", price: 15, desc: "Neutralisation moléculaire des mauvaises odeurs incrustées.", popular: true },
+  { name: "Traitement enzymatique intensif", price: 19, desc: "Traitement ciblé des résidus organiques sur les textiles compatibles." },
 ];
 
 const AUTO_PACKS = [

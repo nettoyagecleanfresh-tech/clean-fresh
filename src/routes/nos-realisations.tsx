@@ -33,8 +33,13 @@ function Photo({ photo }: { photo: Realisation }) {
 }
 
 function serviceLink(photo: Realisation) {
-  const section: Record<string, string> = { Canapés: 'canape', Matelas: 'matelas', Auto: 'auto', Tapis: /moquette/i.test(photo.title) ? 'moquette' : 'tapis' };
-  return section[photo.category] ? `/tarifs#section-${section[photo.category]}` : '/contactez-nous';
+  const pages: Record<string, string> = {
+    Canapés: '/nettoyage-canape-toulouse',
+    Matelas: '/nettoyage-matelas-toulouse',
+    Auto: '/nettoyage-auto-a-domicile-toulouse',
+    Tapis: /moquette/i.test(photo.title) ? '/nettoyage-moquette-toulouse' : '/nettoyage-tapis-toulouse',
+  };
+  return pages[photo.category] ?? '/nettoyage-dappartement-ou-maison';
 }
 
 function GaleriePage() {
@@ -69,7 +74,7 @@ function GaleriePage() {
             <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-blue-900">{photo.category} · {photo.layout === 'single' ? 'Sur le terrain' : 'Avant / Après'}</p>
             <h2 className="mt-2 text-lg font-bold leading-snug text-slate-900">{photo.title}</h2>
             <p className="mt-2 text-sm leading-relaxed text-slate-600">{photo.description}</p>
-            <a href={serviceLink(photo)} className="mt-4 inline-flex min-h-11 items-center gap-1 text-sm font-bold text-blue-900 underline-offset-4 hover:underline">{photo.category === 'Logements' ? 'Demander un devis' : 'Voir la prestation'}<ArrowUpRight className="size-4" /></a>
+            <a href={serviceLink(photo)} className="mt-4 inline-flex min-h-11 items-center gap-1 text-sm font-bold text-blue-900 underline-offset-4 hover:underline">Voir la prestation<ArrowUpRight className="size-4" /></a>
           </figcaption>
         </figure>)}
       </div>

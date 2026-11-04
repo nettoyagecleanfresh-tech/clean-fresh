@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { SITE_URL } from "@/data/site";
+import { SITE_URL, COMPANY } from "@/data/site";
 import { FadeIn } from "@/components/ui/fade-in";
 
 const TITLE = "Mentions Légales — Clean&Fresh Toulouse";
@@ -36,8 +36,8 @@ function MentionsLegalesPage() {
             <p>
               Le site <strong>Clean&Fresh</strong> est édité par :<br />
               <strong>Sébastian Isidro HEREDIA (EI)</strong><br />
-              173 avenue Jean Chaubet<br />
-              31500 Toulouse, France<br />
+              {COMPANY.streetAddress}<br />
+              {COMPANY.postalCode} {COMPANY.city}, France<br />
               Numéro SIRET : 990 390 122 00028<br />
               TVA : Non applicable (art 293 B CGI)<br />
               Email : nettoyagecleanfresh@gmail.com<br />
