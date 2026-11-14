@@ -13,7 +13,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { COMMUNES, COMPANY, SITE_URL } from "@/data/site";
 
 const TITLE = "Contactez Clean&Fresh — Devis gratuit nettoyage Toulouse";
-const DESC = "Demandez un devis nettoyage à Toulouse pour un logement, un débarras Diogène, des vitres ou une fin de bail. Indiquez la surface et joignez vos photos.";
+const DESC = "Demandez un devis nettoyage à Toulouse pour un logement, un débarras Diogène, des vitres ou une fin de bail. Décrivez votre besoin. Les photos sont facultatives.";
 
 const QUOTE_SERVICES: Record<string, string> = { logement: "Nettoyage appartement / maison", diogene: "Nettoyage Diogène / logement insalubre", extreme: "Nettoyage extrême", chantier: "Nettoyage fin de chantier", bail: "Nettoyage fin de bail", vitres: "Nettoyage de vitres", terrasse: "Nettoyage terrasse", toiture: "Nettoyage toiture", facade: "Nettoyage façade" };
 
@@ -22,12 +22,12 @@ export const Route = createFileRoute("/contactez-nous")({
   head: () => ({
     meta: [
       { title: `Contactez Clean&Fresh — Devis gratuit nettoyage Toulouse` },
-      { name: "description", content: `Demandez un devis nettoyage à Toulouse pour un logement, un débarras Diogène, des vitres ou une fin de bail. Indiquez la surface et joignez vos photos.` },
+      { name: "description", content: `Demandez un devis nettoyage à Toulouse pour un logement, un débarras Diogène, des vitres ou une fin de bail. Décrivez votre besoin. Les photos sont facultatives.` },
       { property: "og:title", content: `Contactez Clean&Fresh — Devis gratuit nettoyage Toulouse` },
-      { property: "og:description", content: `Demandez un devis nettoyage à Toulouse pour un logement, un débarras Diogène, des vitres ou une fin de bail. Indiquez la surface et joignez vos photos.` },
+      { property: "og:description", content: `Demandez un devis nettoyage à Toulouse pour un logement, un débarras Diogène, des vitres ou une fin de bail. Décrivez votre besoin. Les photos sont facultatives.` },
       { property: "og:url", content: `https://cleanetfresh.fr/contactez-nous` },
       { name: "twitter:title", content: `Contactez Clean&Fresh — Devis gratuit nettoyage Toulouse` },
-      { name: "twitter:description", content: `Demandez un devis nettoyage à Toulouse pour un logement, un débarras Diogène, des vitres ou une fin de bail. Indiquez la surface et joignez vos photos.` },
+      { name: "twitter:description", content: `Demandez un devis nettoyage à Toulouse pour un logement, un débarras Diogène, des vitres ou une fin de bail. Décrivez votre besoin. Les photos sont facultatives.` },
     ],
     scripts: [{
       type: "application/ld+json",
@@ -164,7 +164,7 @@ function ContactPage() {
 
       <section aria-label="Un devis adapté à votre situation" className="mx-auto mb-6 max-w-5xl px-4 lg:mb-10">
         <div className="grid items-center gap-4 lg:grid-cols-[1fr_auto] lg:gap-8 rounded-3xl border border-blue-100 bg-blue-950 p-4 text-white lg:p-7">
-          <div><p className="text-xs font-bold uppercase tracking-widest text-blue-200">Simple, gratuit et sans engagement</p><h2 className="mt-2 text-lg font-bold lg:text-2xl">Montrez-nous votre besoin. Nous chiffrons la solution.</h2><p className="mt-3 text-sm leading-6 text-blue-100">1. Décrivez les surfaces · 2. Ajoutez quelques photos · 3. Recevez votre devis sous 24 h.</p></div>
+          <div><p className="text-xs font-bold uppercase tracking-widest text-blue-200">Simple, gratuit et sans engagement</p><h2 className="mt-2 text-lg font-bold lg:text-2xl">Que souhaitez-vous faire nettoyer ?</h2><p className="mt-3 text-sm leading-6 text-blue-100">Précisez les pièces ou les surfaces concernées et les conditions d’accès. Vous pouvez envoyer votre demande sans photo et en discuter avec nous par téléphone.</p></div>
           <a href="#photos" className="inline-flex w-fit items-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-bold text-blue-950 hover:bg-blue-100"><Camera className="size-4" /> Ajouter mes photos</a>
         </div>
       </section>
