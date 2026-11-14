@@ -222,6 +222,7 @@ export const createBookingServerFn = createServerFn({ method: "POST" })
         // Utiliser le modèle détaillé bleu/blanc avec deux contenus séparés :
         // le client ne reçoit jamais les actions privées du propriétaire.
         await sendBookingEmailsRaw({
+          auto_access: data.auto_access,
           items: data.items,
           total_price: data.total_price,
           booking_date: data.booking_date,
