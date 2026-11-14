@@ -13,7 +13,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { COMMUNES, COMPANY, SITE_URL } from "@/data/site";
 
 const TITLE = "Contactez Clean&Fresh — Devis gratuit nettoyage Toulouse";
-const DESC = "Contactez Clean&Fresh pour un devis gratuit sous 24h : nettoyage canapé, matelas, tapis, auto à domicile à Toulouse. Réponse rapide, tarifs clairs.";
+const DESC = "Demandez un devis nettoyage à Toulouse pour un logement, un débarras Diogène, des vitres ou une fin de bail. Indiquez la surface et joignez vos photos.";
 
 const QUOTE_SERVICES: Record<string, string> = { logement: "Nettoyage appartement / maison", diogene: "Nettoyage Diogène / logement insalubre", extreme: "Nettoyage extrême", chantier: "Nettoyage fin de chantier", bail: "Nettoyage fin de bail", vitres: "Nettoyage de vitres", terrasse: "Nettoyage terrasse", toiture: "Nettoyage toiture", facade: "Nettoyage façade" };
 
@@ -22,13 +22,21 @@ export const Route = createFileRoute("/contactez-nous")({
   head: () => ({
     meta: [
       { title: `Contactez Clean&Fresh — Devis gratuit nettoyage Toulouse` },
-      { name: "description", content: `Contactez Clean&Fresh pour un devis gratuit sous 24h : nettoyage canapé, matelas, tapis, auto à domicile à Toulouse. Réponse rapide, tarifs clairs.` },
+      { name: "description", content: `Demandez un devis nettoyage à Toulouse pour un logement, un débarras Diogène, des vitres ou une fin de bail. Indiquez la surface et joignez vos photos.` },
       { property: "og:title", content: `Contactez Clean&Fresh — Devis gratuit nettoyage Toulouse` },
-      { property: "og:description", content: `Contactez Clean&Fresh pour un devis gratuit sous 24h : nettoyage canapé, matelas, tapis, auto à domicile à Toulouse. Réponse rapide, tarifs clairs.` },
+      { property: "og:description", content: `Demandez un devis nettoyage à Toulouse pour un logement, un débarras Diogène, des vitres ou une fin de bail. Indiquez la surface et joignez vos photos.` },
       { property: "og:url", content: `https://cleanetfresh.fr/contactez-nous` },
       { name: "twitter:title", content: `Contactez Clean&Fresh — Devis gratuit nettoyage Toulouse` },
-      { name: "twitter:description", content: `Contactez Clean&Fresh pour un devis gratuit sous 24h : nettoyage canapé, matelas, tapis, auto à domicile à Toulouse. Réponse rapide, tarifs clairs.` },
+      { name: "twitter:description", content: `Demandez un devis nettoyage à Toulouse pour un logement, un débarras Diogène, des vitres ou une fin de bail. Indiquez la surface et joignez vos photos.` },
     ],
+    scripts: [{
+      type: "application/ld+json",
+      children: JSON.stringify({
+        "@context": "https://schema.org", "@type": "ContactPage",
+        url: SITE_URL + "/contactez-nous", name: TITLE,
+        about: { "@type": "LocalBusiness", name: "Clean&Fresh", url: SITE_URL },
+      }),
+    }],
     links: [{ rel: "canonical", href: `https://cleanetfresh.fr/contactez-nous` }],
   }),
   component: ContactPage,
