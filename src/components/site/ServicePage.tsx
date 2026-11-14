@@ -588,7 +588,7 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
             <p className="mx-auto mt-3 max-w-xl text-ink-foreground/75">
               {bookingServiceId
                 ? "Choisissez votre formule et consultez les créneaux disponibles, ou appelez-nous pour être conseillé."
-                : "Décrivez votre besoin et ajoutez des photos pour recevoir un devis gratuit sous 24h. Le créneau est confirmé après accord et réception de l’acompte."}
+                : "Décrivez votre besoin pour recevoir un devis gratuit sous 24h. Les photos sont facultatives. Le créneau est confirmé après accord et réception de l’acompte."}
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <Button
