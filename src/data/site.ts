@@ -914,7 +914,7 @@ export const SERVICES: Service[] = [
       "Le devis distingue le tri, le débarras, l'évacuation, le nettoyage des surfaces compatibles et les traitements complémentaires nécessaires. Le volume, l'accessibilité et l'état du logement déterminent l'organisation et la durée du chantier.",
       "Avant tout enlèvement, les consignes concernant les documents, souvenirs et effets personnels sont convenues avec vous. Nous avançons selon ce périmètre ; un logement très encombré peut demander plusieurs étapes avant le nettoyage proprement dit.",
       "La désinfection et le traitement des odeurs sont définis selon le diagnostic et les surfaces accessibles. Les murs et plafonds nécessitent une vérification et un accord au devis. En présence de nuisibles, de déchets particuliers ou de supports dégradés, un traitement spécialisé ou des travaux distincts peuvent être nécessaires.",
-      "Pour une première évaluation à Toulouse ou alentours, indiquez la surface, les accès, le volume approximatif et joignez des photos. Les informations sont utilisées pour préparer le devis et organiser une intervention adaptée à la situation."
+      "Pour un premier échange, décrivez les pièces concernées et précisez qui nous pouvons rappeler et à quel moment. Si vous souhaitez joindre des photos, une vue générale de la pièce suffit pour commencer. Évitez de photographier les personnes et les documents personnels."
     ],
     treated: [
       "Logements fortement encombrés après évaluation",
@@ -929,18 +929,18 @@ export const SERVICES: Service[] = [
       "Salissures importantes et odeurs persistantes",
       "Logement à préparer avant une remise en usage"
     ],
-    priceNote: "Le tarif dépend du volume à évacuer, des accès et du nettoyage après débarras. Envoyez la surface et des photos pour un devis confidentiel.",
+    priceNote: "À surface égale, un appartement au quatrième étage sans ascenseur peut demander davantage de manutention qu’un rez-de-chaussée. Le devis distingue le tri, le transport des encombrants et le nettoyage des pièces dégagées. Pour une première estimation, indiquez les pièces concernées, l’étage et les accès.",
     method: [
-      "Évaluation confidentielle et définition des objets à conserver et du périmètre.",
-      "Tri, débarras et évacuation des éléments prévus au devis.",
-      "Nettoyage progressif des zones accessibles et compatibles.",
-      "Traitements complémentaires retenus, contrôle et bilan des besoins restants."
+      "Premier échange. Indiquez votre commune, les pièces auxquelles vous pouvez accéder et votre priorité, par exemple dégager le passage jusqu’à la salle de bains. Vous pouvez commencer par téléphone, sans photo.",
+      "Préparation du tri. Avec la personne concernée ou son représentant, indiquez quels papiers, clés, photos et souvenirs mettre de côté. Précisez qui appeler si un objet soulève un doute.",
+      "Intervention. Convenez avec nous de la remise des clés et des accès. Nous évacuons les éléments prévus au devis, puis nettoyons les sols, les sanitaires et les surfaces dégagées.",
+      "Fin de chantier. Nous faisons le point avec vous sur les pièces traitées, les objets conservés et les éventuels travaux à prévoir."
     ],
     faq: [
       { q: "Qui organise le tri après un syndrome de Diogène ?", a: "La personne concernée, son proche ou son représentant nous indique quels papiers, photographies et objets garder. Avant le débarras, nous convenons ensemble des pièces accessibles et des consignes à suivre en cas de doute." },
       { q: "Comment est calculé le tarif du nettoyage Diogène ?", a: "Deux logements de même surface peuvent demander des interventions différentes. Le devis tient compte du volume à sortir, du trajet jusqu’au véhicule, des passages nécessaires et de l’état des sols et sanitaires une fois dégagés. Une vue de chaque pièce et des accès aide à distinguer débarras et nettoyage." },
       { q: "Faut-il trier soi-même avant une intervention Diogène ?", a: "Ce n’est pas une condition systématique. Le devis peut prévoir un tri selon vos consignes. Identifiez autant que possible les papiers, objets personnels et souvenirs à conserver ; les étapes sont convenues avant de commencer." },
-      { q: "Pourquoi le volume à évacuer compte-t-il autant que la surface ?", a: "Deux logements de même surface peuvent nécessiter des interventions très différentes selon l’encombrement, l’accès et les salissures. Le volume à trier et à transporter permet de préparer les moyens, les étapes et un devis adapté." },
+      { q: "Puis-je prendre contact sans envoyer de photos du logement ?", a: "Oui. Appelez-nous ou décrivez la situation dans le formulaire en laissant le champ photos vide. Un premier échange permet de déterminer ensemble quels renseignements seront utiles pour établir le devis." },
       {
         "q": "Comment commence une intervention Diogène à Toulouse ?",
         "a": "Nous échangeons sur la situation, les accès et les priorités, à partir de photos ou d'une visite. Un devis précise les étapes, le tri, le volume à évacuer et les zones à nettoyer avant de confirmer l'intervention."

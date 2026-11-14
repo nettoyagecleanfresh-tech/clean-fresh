@@ -397,7 +397,7 @@ function Index() {
               </h1>
 
               <p className="mt-3 text-sm text-white/90 leading-relaxed font-medium md:mt-6 md:text-lg">
-                Réservez le nettoyage de vos textiles ou de votre intérieur auto. Pour un logement encombré, des vitres ou une remise en état, demandez un devis sur photos.
+                Réservez le nettoyage de vos textiles ou de votre intérieur auto. Pour un logement encombré, des vitres ou une remise en état, demandez un devis personnalisé.
               </p>
 
 
@@ -577,7 +577,7 @@ function Index() {
           Notre approche du nettoyage à Toulouse
         </h2>
         <p className="mx-auto mt-5 max-w-3xl text-base leading-relaxed text-muted-foreground">
-          Choisissez votre prestation et consultez son prix avant de réserver. Nous venons chez vous avec le matériel adapté, vérifions la matière et expliquons les éventuelles limites du nettoyage. Les options sont choisies avec votre accord et le résultat est vérifié ensemble en fin d’intervention. Pour les logements et remises en état, demandez un devis sur photos.
+          Pour un <Link to="/nettoyage-canape-toulouse" className="text-primary underline">nettoyage de canapé à Toulouse</Link> ou un <Link to="/nettoyage-tapis-toulouse" className="text-primary underline">nettoyage de tapis à domicile</Link>, consultez les matières traitées et les tarifs selon le format. Pour votre véhicule, comparez les formules de <Link to="/nettoyage-auto-a-domicile-toulouse" className="text-primary underline">nettoyage intérieur de voiture à domicile</Link> avant de choisir un créneau. Pour un logement encombré, la page <Link to="/nettoyage-diogene-toulouse" className="text-primary underline">nettoyage Diogène à Toulouse</Link> explique comment préparer le tri et demander un devis confidentiel.
         </p>
         </section>
       </FadeIn>

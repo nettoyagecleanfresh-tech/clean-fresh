@@ -188,7 +188,7 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
               </Button>
             ) : (
               <Button asChild variant="cta" size="xl" className="px-4 md:px-6 h-10 md:h-12 text-xs md:text-sm">
-                <Link to="/contactez-nous" search={quoteSearch}>{service.slug === "/nettoyage-diogene-toulouse" ? "Devis confidentiel sur photos" : "Devis gratuit sous 24h"}</Link>
+                <Link to="/contactez-nous" search={quoteSearch}>{service.slug === "/nettoyage-diogene-toulouse" ? "Demander un devis confidentiel" : "Devis gratuit sous 24h"}</Link>
               </Button>
             )}
             <Button asChild variant="onDark" size="xl" className="px-4 md:px-6 h-10 md:h-12 text-xs md:text-sm">
@@ -222,7 +222,7 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
                 <p key={p} className="mt-4 text-muted-foreground leading-relaxed">{p}</p>
               ))}
               {service.slug === "/nettoyage-diogene-toulouse" && (
-                <p className="mt-4 text-muted-foreground">Les pièces sont accessibles mais très encrassées ? Consultez notre <Link to="/nettoyage-extreme-toulouse" className="text-primary underline">nettoyage extrême à Toulouse</Link>.</p>
+                <p className="mt-4 text-muted-foreground">Pour un logement insalubre dont les pièces restent accessibles, consultez notre <Link to="/nettoyage-extreme-toulouse" className="text-primary underline">nettoyage extrême à Toulouse</Link>.</p>
               )}
               {service.slug === "/nettoyage-extreme-toulouse" && (
                 <p className="mt-4 text-muted-foreground">Lorsque des objets accumulés empêchent l’accès aux pièces, découvrez comment nous organisons le <Link to="/nettoyage-diogene-toulouse" className="text-primary underline">tri et le débarras après un syndrome de Diogène</Link>.</p>
@@ -588,7 +588,7 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
             <p className="mx-auto mt-3 max-w-xl text-ink-foreground/75">
               {bookingServiceId
                 ? "Choisissez votre formule et consultez les créneaux disponibles, ou appelez-nous pour être conseillé."
-                : "Décrivez votre besoin et ajoutez des photos pour recevoir un devis gratuit sous 24h. Le créneau est confirmé après accord et réception de l’acompte."}
+                : "Décrivez votre besoin pour recevoir un devis gratuit sous 24h. Les photos sont facultatives. Le créneau est confirmé après accord et réception de l’acompte."}
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <Button
