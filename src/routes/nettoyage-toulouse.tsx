@@ -6,8 +6,8 @@ import { LocalCityPage } from "@/components/site/LocalCityPage";
 
 const CITY = "Toulouse";
 const SLUG = "/nettoyage-toulouse";
-const TITLE = `Nettoyage à domicile à ${CITY} | Clean&Fresh`;
-const DESC = getCommuneData(SLUG.slice(1))!.para1;
+const TITLE = `Nettoyage à domicile à ${CITY} : canapé, matelas, auto`;
+const DESC = "Toutes les prestations à Toulouse : canapé, matelas, tapis, moquette, auto, vitres et logement. Réservez en ligne ou demandez un devis sous 24 h.";
 
 export const Route = createFileRoute("/nettoyage-toulouse")({
   head: () => ({
