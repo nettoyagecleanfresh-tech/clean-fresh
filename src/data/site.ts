@@ -158,6 +158,7 @@ export const SERVICES: Service[] = [
       "Extraction de l’humidité et conseils de séchage. Les odeurs incrustées peuvent nécessiter un traitement complémentaire.",
     ],
     faq: [
+      { q: "Quelle formule choisir pour un canapé avec méridienne ?", a: "Pour un canapé textile d’angle ou en U, sélectionnez la formule angle/U à 99 €. Indiquez la matière du revêtement et les zones marquées. Pour un modèle droit de deux ou trois places, la formule est à 79 €." },
       { q: "Peut-on nettoyer un canapé non déhoussable à domicile ?", a: "Oui, si la matière et les consignes du fabricant le permettent. Le nettoyage porte sur les parties accessibles, sans avoir à laver les housses en machine. Envoyez une photo de l’ensemble et de l’étiquette en cas de doute sur le tissu." },
       { q: "Faut-il choisir la vapeur ou le shampouinage du canapé ?", a: "Le choix dépend du revêtement. L’injection-extraction sert à retirer la solution de nettoyage et les salissures des tissus compatibles ; la vapeur peut être un complément. Une matière fragile ou un canapé en cuir demande une autre méthode." },
       {
@@ -240,6 +241,7 @@ export const SERVICES: Service[] = [
       "Extraction finale, contrôle du résultat et conseils de séchage avant réutilisation."
     ],
     faq: [
+      { q: "Que faut-il prévoir pour sécher un matelas nettoyé sur ses deux faces ?", a: "Prévoyez une pièce ventilée et attendez que les deux faces soient sèches avant de remettre l’alèse et les draps. Signalez les auréoles ou odeurs dès la réservation pour permettre une évaluation du tissu." },
       { q: "Peut-on nettoyer un matelas jauni par la transpiration ?", a: "Les auréoles peuvent être atténuées par un traitement adapté après diagnostic. Le résultat dépend de l’ancienneté des traces, du tissu et des produits déjà utilisés. Le nettoyage ne garantit pas le retour à une couleur blanche uniforme." },
       { q: "Nettoyez-vous un matelas de canapé convertible ?", a: "La possibilité dépend de son format, de son épaisseur et de son accessibilité. Indiquez qu’il s’agit d’un convertible et transmettez une photo avant de choisir une formule. Le nettoyage de l’assise du canapé est une prestation distincte." },
       {
@@ -315,6 +317,7 @@ export const SERVICES: Service[] = [
       "Extraction de l'humidité, finition et conseils pour un séchage complet."
     ],
     faq: [
+      { q: "Comment faire nettoyer plusieurs tapis dans un établissement ?", a: "Pour un hôtel, un restaurant ou une salle de spectacle, indiquez le nombre de tapis, leurs dimensions et les heures où la zone peut rester libre pour sécher. À Toulouse, Clean&Fresh est intervenu sur six tapis du Théâtre du Capitole. Les lots professionnels sont évalués selon les fibres et les contraintes d’accès." },
       { q: "Nettoyez-vous les tapis à poils longs ?", a: "La faisabilité dépend de la fibre, de la densité et de l’envers. Un tapis épais retient davantage l’humidité et peut demander un séchage plus long. Une photo et l’étiquette permettent de vérifier si la formule standard convient." },
       { q: "Quelle prestation choisir pour une moquette fixée au sol ?", a: "Choisissez le nettoyage de moquette, tarifé selon la surface accessible. Les formules 1, 2 ou 3 tapis concernent des tapis amovibles jusqu’à 4 m² chacun ; elles ne correspondent pas au nettoyage d’une pièce entièrement moquettée." },
       {
@@ -393,6 +396,7 @@ export const SERVICES: Service[] = [
       "Contrôle avec vous et conseils de séchage pour les textiles nettoyés."
     ],
     faq: [
+      { q: "Quel pack réserver pour nettoyer les sièges et la moquette de ma voiture ?", a: "Le pack Argent ajoute le nettoyage des sièges et des vitres aux prestations du Bronze. Si les tapis et la moquette du plancher sont également à traiter, sélectionnez le pack Or. Précisez si les sièges sont en cuir." },
       { q: "Le lavage extérieur de la voiture est-il compris ?", a: "Les packs présentés ici concernent le nettoyage intérieur. Ils ne comprennent pas un lavage de carrosserie, un polissage ou une rénovation de peinture. Le récapitulatif décrit les zones de l’habitacle prises en charge." },
       { q: "Quelle formule choisir avant de vendre ma voiture ?", a: "Argent convient si vous souhaitez ajouter les sièges et les vitres à l’aspiration et aux plastiques. Or comprend aussi les moquettes, tapis et contours prévus dans la formule. Les poils ou odeurs persistantes peuvent nécessiter une option ; le choix dépend de l’état du véhicule." },
       {
@@ -431,8 +435,8 @@ export const SERVICES: Service[] = [
     h1: "Nettoyage de vitres à Toulouse",
     short: "Nettoyage vitres Toulouse",
     subtitle: "Nettoyage de fenêtres, baies vitrées et vitrines à Toulouse. Faces accessibles, encadrements et rails selon le devis.",
-    metaTitle: "Nettoyage vitres et vitrines Toulouse | Clean&Fresh",
-    metaDescription: "Lavage de fenêtres, baies vitrées et vitrines à Toulouse. Faces accessibles, rails et encadrements selon devis. Passage ponctuel ou entretien régulier.",
+    metaTitle: "Nettoyage de vitres à Toulouse | Fenêtres, baies et vitrines",
+    metaDescription: "Lavage de vitres à Toulouse pour particuliers et professionnels. Fenêtres, baies et vitrines, faces accessibles et rails selon devis. Demandez un devis sur photos.",
     group: "batiment",
     detailTitle: "Fenêtres, baies vitrées et vitrines",
     methodTitle: "Notre méthode de lavage des vitres",
@@ -465,6 +469,7 @@ export const SERVICES: Service[] = [
       "Essuyage des finitions et contrôle des traces résiduelles."
     ],
     faq: [
+      { q: "Que montrer sur les photos pour un devis de lavage de fenêtres ?", a: "Une vue d’ensemble permet de compter les ouvrants et les baies fixes. Précisez les faces accessibles, la hauteur, les rails à traiter et la présence éventuelle d’une véranda ou d’une vitrine." },
       { q: "Nettoyez-vous les baies vitrées d’un appartement occupé ?", a: "Oui, si les faces concernées sont accessibles. Dégagez les abords et signalez les meubles, stores ou objets fragiles. Quelques photos d’ensemble permettent de préciser le périmètre sans demander systématiquement les dimensions de chaque fenêtre." },
       { q: "Les traces entre les deux parois d’un double vitrage peuvent-elles partir ?", a: "Non, un lavage traite les faces accessibles du vitrage. Une buée ou des marques situées à l’intérieur du double vitrage relèvent d’un problème distinct à faire examiner par un professionnel de la menuiserie ou du vitrage." },
       {
@@ -924,7 +929,7 @@ export const SERVICES: Service[] = [
       "Salissures importantes et odeurs persistantes",
       "Logement à préparer avant une remise en usage"
     ],
-    priceNote: "Sur devis confidentiel après évaluation — intervention rapide et discrète.",
+    priceNote: "Le tarif dépend du volume à évacuer, des accès et du nettoyage après débarras. Envoyez la surface et des photos pour un devis confidentiel.",
     method: [
       "Évaluation confidentielle et définition des objets à conserver et du périmètre.",
       "Tri, débarras et évacuation des éléments prévus au devis.",
@@ -932,6 +937,8 @@ export const SERVICES: Service[] = [
       "Traitements complémentaires retenus, contrôle et bilan des besoins restants."
     ],
     faq: [
+      { q: "Qui organise le tri après un syndrome de Diogène ?", a: "La personne concernée, son proche ou son représentant nous indique quels papiers, photographies et objets garder. Avant le débarras, nous convenons ensemble des pièces accessibles et des consignes à suivre en cas de doute." },
+      { q: "Comment est calculé le tarif du nettoyage Diogène ?", a: "Deux logements de même surface peuvent demander des interventions différentes. Le devis tient compte du volume à sortir, du trajet jusqu’au véhicule, des passages nécessaires et de l’état des sols et sanitaires une fois dégagés. Une vue de chaque pièce et des accès aide à distinguer débarras et nettoyage." },
       { q: "Faut-il trier soi-même avant une intervention Diogène ?", a: "Ce n’est pas une condition systématique. Le devis peut prévoir un tri selon vos consignes. Identifiez autant que possible les papiers, objets personnels et souvenirs à conserver ; les étapes sont convenues avant de commencer." },
       { q: "Pourquoi le volume à évacuer compte-t-il autant que la surface ?", a: "Deux logements de même surface peuvent nécessiter des interventions très différentes selon l’encombrement, l’accès et les salissures. Le volume à trier et à transporter permet de préparer les moyens, les étapes et un devis adapté." },
       {
@@ -1002,6 +1009,7 @@ export const SERVICES: Service[] = [
       "Traitements complémentaires retenus et contrôle des zones nettoyées."
     ],
     faq: [
+      { q: "Comment préparer un logement très encrassé ?", a: "Signalez les pièces à traiter, les surfaces fragiles, la présence d’eau ou d’électricité et les objets à laisser en place. Des photos d’ensemble puis des zones les plus marquées permettent de préciser les traitements au devis." },
       { q: "Quelle différence entre nettoyage extrême et nettoyage Diogène ?", a: "Le nettoyage extrême concerne un niveau important de salissures ou un logement très dégradé. Une situation de Diogène peut aussi impliquer un encombrement et un tri à organiser avec la personne concernée. Le diagnostic détermine les étapes nécessaires, sans déduire la situation personnelle de l’état du logement." },
       { q: "Un logement très sale peut-il être remis en usage en un passage ?", a: "Cela dépend de son état et des opérations nécessaires. Un nettoyage ne remet pas en état une installation défectueuse ni un revêtement irrécupérable. Le devis indique les travaux de nettoyage retenus et les éventuels besoins distincts à traiter avant la remise en usage." },
       {
@@ -1078,6 +1086,7 @@ export const SERVICES: Service[] = [
       "Extraction finale, contrôle et conseils de séchage avant remise en circulation."
     ],
     faq: [
+      { q: "Comment organiser le nettoyage de moquette dans des bureaux ouverts ?", a: "Indiquez la surface accessible, les couloirs les plus fréquentés et les horaires de réouverture. Précisez où le mobilier peut être déplacé pour organiser les zones de passage et leur séchage." },
       { q: "Comment estimer la surface de moquette à nettoyer ?", a: "Indiquez la surface des pièces concernées et les zones rendues inaccessibles par du mobilier fixe. Pour plusieurs pièces ou un bureau, joignez un plan simple ou des photos. Une surface atypique est vérifiée avant confirmation de la formule." },
       { q: "Peut-on nettoyer des dalles de moquette sans les déposer ?", a: "Oui, lorsque la fibre, l’envers et la pose sont compatibles. Les dalles sont examinées avant le nettoyage ; signalez celles qui se décollent ou dont les raccords sont fragiles. La prestation ne comprend pas la réparation de la pose." },
       {

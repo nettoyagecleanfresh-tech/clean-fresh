@@ -20,7 +20,7 @@ import { Button } from "@/components/ui/button";
 import { COMPANY, SITE_URL, SERVICES } from "@/data/site";
 import heroImg from "@/assets/hero-nettoyage.webp";
 
-const TITLE = "Services de nettoyage Toulouse | Clean&Fresh";
+const TITLE = "Nos 15 services de nettoyage à Toulouse | Clean&Fresh";
 const DESC = "Découvrez les services Clean&Fresh à Toulouse : canapé, matelas, tapis, auto, vitres, terrasse, façade et remise en état.";
 
 export const Route = createFileRoute("/nos-services")({
@@ -34,6 +34,17 @@ export const Route = createFileRoute("/nos-services")({
       { name: "twitter:title", content: TITLE },
       { name: "twitter:description", content: DESC },
     ],
+    scripts: [{
+      type: "application/ld+json",
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        name: TITLE,
+        itemListElement: SERVICES.map((service, index) => ({
+          "@type": "ListItem", position: index + 1, name: service.h1, url: SITE_URL + service.slug,
+        })),
+      }),
+    }],
     links: [{ rel: "canonical", href: `https://cleanetfresh.fr/nos-services` }],
   }),
   component: ServicesPage,

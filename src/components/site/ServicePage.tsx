@@ -188,7 +188,7 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
               </Button>
             ) : (
               <Button asChild variant="cta" size="xl" className="px-4 md:px-6 h-10 md:h-12 text-xs md:text-sm">
-                <Link to="/contactez-nous" search={quoteSearch}>Devis gratuit sous 24h</Link>
+                <Link to="/contactez-nous" search={quoteSearch}>{service.slug === "/nettoyage-diogene-toulouse" ? "Devis confidentiel sur photos" : "Devis gratuit sous 24h"}</Link>
               </Button>
             )}
             <Button asChild variant="onDark" size="xl" className="px-4 md:px-6 h-10 md:h-12 text-xs md:text-sm">
@@ -221,6 +221,15 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
               {service.intro.slice(0, 2).map((p) => (
                 <p key={p} className="mt-4 text-muted-foreground leading-relaxed">{p}</p>
               ))}
+              {service.slug === "/nettoyage-diogene-toulouse" && (
+                <p className="mt-4 text-muted-foreground">Les pièces sont accessibles mais très encrassées ? Consultez notre <Link to="/nettoyage-extreme-toulouse" className="text-primary underline">nettoyage extrême à Toulouse</Link>.</p>
+              )}
+              {service.slug === "/nettoyage-extreme-toulouse" && (
+                <p className="mt-4 text-muted-foreground">Lorsque des objets accumulés empêchent l’accès aux pièces, découvrez comment nous organisons le <Link to="/nettoyage-diogene-toulouse" className="text-primary underline">tri et le débarras après un syndrome de Diogène</Link>.</p>
+              )}
+              {service.slug === "/nettoyage-dappartement-ou-maison" && (
+                <p className="mt-4 text-muted-foreground">Pour un <Link to="/nettoyage-extreme-toulouse" className="text-primary underline">logement insalubre ou très encrassé</Link>, précisez l’état des surfaces pour obtenir un devis adapté.</p>
+              )}
               {service.intro.length > 2 && (
                 <>
                   <div id="service-intro-details" className={introExpanded ? "block" : "hidden"}>

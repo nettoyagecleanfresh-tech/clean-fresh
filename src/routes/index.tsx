@@ -41,7 +41,7 @@ import { FadeIn } from "@/components/ui/fade-in";
 
 const TITLE = "Entreprise de nettoyage à Toulouse | Clean&Fresh";
 const DESC =
-  "Clean&Fresh intervient à Toulouse pour le nettoyage de canapés, matelas, tapis, autos et logements. Devis gratuit sous 24h.";
+  "Nettoyage à domicile à Toulouse : canapé dès 79 €, matelas et tapis dès 49 €, intérieur auto dès 69 €. Réservez en ligne ou demandez un devis pour un logement.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -89,7 +89,7 @@ const QUICK_SERVICES = [
   { slug: "/nettoyage-matelas-toulouse",         line1: "Nettoyage",    line2: "Matelas",            short: "Matelas",   icon: <BedDouble className="size-5 md:size-7 stroke-[1.4]" /> },
   { slug: "/nettoyage-tapis-toulouse",           line1: "Nettoyage",    line2: "Tapis",              short: "Tapis",     icon: <Layers  className="size-5 md:size-7 stroke-[1.4]" /> },
   { slug: "/nettoyage-fin-de-bail-toulouse",     line1: "Nettoyage",    line2: "Fin de bail",        short: "Bail",      icon: <KeyRound className="size-5 md:size-7 stroke-[1.4]" /> },
-  { slug: "/nettoyage-diogene-toulouse",         line1: "Nettoyage",    line2: "Diogène / Extrême",  short: "Diogène",   icon: <PackageOpen className="size-5 md:size-7 stroke-[1.4]" /> },
+  { slug: "/nettoyage-diogene-toulouse",         line1: "Nettoyage",    line2: "Diogène et débarras",  short: "Diogène",   icon: <PackageOpen className="size-5 md:size-7 stroke-[1.4]" /> },
 ];
 
 const STATS = [
@@ -397,7 +397,7 @@ function Index() {
               </h1>
 
               <p className="mt-3 text-sm text-white/90 leading-relaxed font-medium md:mt-6 md:text-lg">
-                Nettoyage professionnel à domicile pour canapés, matelas, tapis, véhicules, logements et remises en état à Toulouse et en Haute-Garonne.
+                Réservez le nettoyage de vos textiles ou de votre intérieur auto. Pour un logement encombré, des vitres ou une remise en état, demandez un devis sur photos.
               </p>
 
 
