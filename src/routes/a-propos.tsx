@@ -18,6 +18,14 @@ export const Route = createFileRoute("/a-propos")({
       { name: "twitter:title", content: `À propos de Clean&Fresh — Entreprise de nettoyage Toulouse` },
       { name: "twitter:description", content: DESC },
     ],
+    scripts: [{
+      type: "application/ld+json",
+      children: JSON.stringify({
+        "@context": "https://schema.org", "@type": "AboutPage",
+        url: SITE_URL + "/a-propos", name: TITLE,
+        about: { "@type": "LocalBusiness", name: "Clean&Fresh", url: SITE_URL },
+      }),
+    }],
     links: [{ rel: "canonical", href: `https://cleanetfresh.fr/a-propos` }],
   }),
   component: AboutPage,
