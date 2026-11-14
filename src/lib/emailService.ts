@@ -23,6 +23,7 @@ const SERVICE_TIP: Record<string, string> = {
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 export type BookingPayload = {
+  auto_access?: { electricity: boolean; water: boolean };
   items: {
     service_id: string;
     service_name: string;
@@ -350,6 +351,16 @@ export async function sendBookingEmailsRaw(b: BookingPayload): Promise<string> {
               <td width="140" style="padding:6px 0;font-size:13px;color:#336699;">Durée estimée</td>
               <td style="padding:6px 0;font-size:14px;color:#003d70;">${duration}</td>
             </tr>
+            ${b.auto_access && b.items.some(item => item.service_id === "auto") ? `
+            <tr>
+              <td width="140" style="padding:6px 0;font-size:13px;color:#336699;">Prise électrique à moins de 60 m du véhicule</td>
+              <td style="padding:6px 0;font-size:14px;color:#003d70;">${b.auto_access.electricity ? "Oui" : "Non"}</td>
+            </tr>
+            <tr>
+              <td width="140" style="padding:6px 0;font-size:13px;color:#336699;">Accès à l’eau à proximité</td>
+              <td style="padding:6px 0;font-size:14px;color:#003d70;">${b.auto_access.water ? "Oui" : "Non"}</td>
+            </tr>
+            ` : ""}
           </table>
         </td></tr>
       </table>
