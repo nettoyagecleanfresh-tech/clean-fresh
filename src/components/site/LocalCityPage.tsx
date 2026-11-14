@@ -97,7 +97,7 @@ type Props = { commune: CommuneData };
 export function LocalCityPage({ commune }: Props) {
   const { name, slug, postalCode, para1, para2, faq, nearby } = commune;
   const localIntervention = LOCAL_INTERVENTIONS[slug];
-  const nearbyCommunes = nearby.flatMap((city) => {
+  const nearbyCommunes = name === "Toulouse" ? COMMUNES_DATA.filter((city) => city.slug !== slug) : nearby.flatMap((city) => {
     const match = COMMUNES_DATA.find((item) => item.name === city);
     return match ? [match] : [];
   });
@@ -213,7 +213,7 @@ export function LocalCityPage({ commune }: Props) {
 
       <section className="mx-auto max-w-4xl px-4 pb-12" aria-labelledby="local-services">
         <h2 id="local-services" className="text-2xl font-bold">
-          Choisir votre nettoyage à domicile
+          {name === "Toulouse" ? "Choisir votre prestation à Toulouse" : "Choisir votre nettoyage à domicile"}
         </h2>
         <p className="mt-3 text-sm leading-7 text-muted-foreground md:text-base">
           Pour les textiles et l’auto, consultez le détail de la prestation puis choisissez votre
