@@ -52,7 +52,7 @@ function GaleriePage() {
   return <div className="bg-slate-50 pb-24 lg:pb-12">
     <header className="mx-auto max-w-4xl px-5 pb-10 pt-14 text-center sm:pt-20">
       <p className="text-xs font-bold uppercase tracking-[0.2em] text-blue-900">Clean&Fresh · Toulouse et son agglomération</p>
-      <h1 className="mt-5 font-display text-4xl font-bold tracking-tight text-slate-900 sm:text-6xl">Nos réalisations.<br /><span className="text-blue-900">Le résultat en images.</span></h1>
+      <h1 className="mt-5 font-display text-4xl font-bold tracking-tight text-slate-900 sm:text-6xl">Nos réalisations à Toulouse<br /><span className="text-blue-900">Nettoyages avant et après</span></h1>
       <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-slate-600">Canapés tachés, matelas auréolés, tapis et intérieurs de voiture : découvrez nos interventions avant et après nettoyage. Chaque photo vous permet de voir le travail réalisé sur le support.</p>
       <div className="mt-7 flex flex-wrap justify-center gap-3">
         <Link to="/tarifs" resetScroll className="rounded-full bg-blue-950 px-6 py-3 font-bold text-white hover:bg-blue-950">Voir les tarifs et réserver</Link>
@@ -72,7 +72,7 @@ function GaleriePage() {
           </button>
           <figcaption className="p-5">
             <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-blue-900">{photo.category} · {photo.layout === 'single' ? 'Sur le terrain' : 'Avant / Après'}</p>
-            <h2 className="mt-2 text-lg font-bold leading-snug text-slate-900">{photo.title}</h2>
+            <p className="mt-2 text-lg font-bold leading-snug text-slate-900">{photo.title}</p>
             <p className="mt-2 text-sm leading-relaxed text-slate-600">{photo.description}</p>
             <a href={serviceLink(photo)} className="mt-4 inline-flex min-h-11 items-center gap-1 text-sm font-bold text-blue-900 underline-offset-4 hover:underline">Voir la prestation<ArrowUpRight className="size-4" /></a>
           </figcaption>
