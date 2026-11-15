@@ -349,21 +349,21 @@ export const SERVICES: Service[] = [
   {
     slug: "/nettoyage-auto-a-domicile-toulouse",
     navLabel: "Nettoyage auto à domicile Toulouse",
-    h1: "Nettoyage intérieur auto à domicile à Toulouse",
+    h1: "Nettoyage de voiture à Toulouse – intérieur à domicile",
     short: "Nettoyage auto Toulouse",
     subtitle:
       "Nettoyage complet de l'habitacle de votre véhicule, chez vous ou sur votre lieu de travail, à Toulouse et son agglomération.",
-    metaTitle: "Nettoyage intérieur voiture Toulouse dès 69 € | Clean&Fresh",
-    metaDescription: "Nettoyage intérieur auto à domicile à Toulouse : Bronze 69 €, Argent 99 €, Or 129 €. Sièges, plastiques et moquettes selon le pack. Réservez en ligne.",
+    metaTitle: "Nettoyage de voiture à Toulouse dès 69 € | Clean&Fresh",
+    metaDescription: "Faites nettoyer l’intérieur de votre voiture à domicile à Toulouse. Comparez les trois packs de 69 à 129 €, de 1 h à 2 h, et réservez votre créneau en ligne.",
     group: "textile",
     booking: true,
     detailTitle: "Choisir le nettoyage intérieur de votre voiture",
     methodTitle: "Les étapes du nettoyage de l’habitacle",
     relatedSlugs: ["/nettoyage-cuir-toulouse", "/nettoyage-canape-toulouse", "/nettoyage-tapis-toulouse", "/nettoyage-matelas-toulouse", "/nettoyage-moquette-toulouse", "/nettoyage-dappartement-ou-maison"],
     intro: [
-      "Clean&Fresh réalise le nettoyage intérieur de votre voiture à domicile ou sur votre lieu de travail à Toulouse. Le véhicule reste sur place, dans un espace où l'intervention est autorisée et où les portes peuvent être ouvertes facilement.",
+      "Pour retirer les miettes, le sable et la poussière des plastiques, comptez environ 1 h avec le pack Bronze. Pour nettoyer aussi les sièges et les vitres, prévoyez 1 h 30 avec le pack Argent. Pour shampouiner également les tapis et les moquettes, comptez 2 h avec le pack Or, hors séchage.",
       "Cette prestation concerne l’intérieur du véhicule, et non un passage en station de lavage extérieur. Pour préparer une vente, choisissez les zones à remettre au propre : sièges, plastiques, coffre, moquettes et tapis selon le pack. Signalez les poils incrustés et les odeurs avant le rendez-vous pour prévoir les options et le temps nécessaires.",
-      "Comparez les trois packs : Bronze pour l'aspiration et les plastiques, Argent pour ajouter les sièges et les vitres, Or pour ajouter les moquettes, les tapis et les contours de portes et de coffre. Les options permettent de traiter les poils d'animaux, les taches tenaces, les odeurs ou le ciel de toit.",
+      "Nous intervenons aussi dans l’agglomération toulousaine. Nous avons notamment nettoyé un intérieur de voiture à Colomiers en septembre 2026 et un autre à Tournefeuille en octobre 2026.",
       "Les sièges en tissu compatibles sont traités par injection-extraction. Le cuir bénéficie d'un nettoyage manuel adapté, avec un soin nourrissant proposé en option. La formule de nettoyage des sièges ne comprend pas de réparation des coutures, de recoloration ni de restauration des revêtements usés.",
       "Avant une vente, après des trajets avec des animaux ou pour entretenir l'habitacle, choisissez le pack selon les zones à nettoyer. Une odeur de tabac ou d'urine peut avoir plusieurs sources : le traitement complète le nettoyage des surfaces accessibles et son efficacité dépend de l'état des matériaux.",
       "Videz les objets personnels et prévoyez un accès à l'eau ainsi qu'une prise électrique à moins de 60 mètres. Signalez un SUV, un utilitaire ou un état particulièrement encrassé pour une estimation adaptée. Après un shampouinage, laissez les textiles sécher complètement avant utilisation."
