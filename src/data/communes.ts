@@ -5,6 +5,7 @@ export type CommuneData = {
   slug: string;
   postalCode: string;
   cityContext: string;
+  featuredService?: string;
   para1: string;
   para2: string;
   faq: { q: string; a: string }[];
@@ -18,6 +19,7 @@ export const COMMUNES_DATA: CommuneData[] = [
   {
     name: "Toulouse",
     slug: "nettoyage-toulouse",
+    featuredService: "/nettoyage-dappartement-ou-maison",
     postalCode: "31000",
     cityContext: "Intervention à domicile à Toulouse (31000), sur rendez-vous.",
     para1:
@@ -93,6 +95,7 @@ export const COMMUNES_DATA: CommuneData[] = [
   {
     name: "Blagnac",
     slug: "nettoyage-blagnac",
+    featuredService: "/nettoyage-auto-a-domicile-toulouse",
     postalCode: "31700",
     cityContext: "Intervention à domicile à Blagnac (31700), sur rendez-vous.",
     para1:
@@ -118,6 +121,7 @@ export const COMMUNES_DATA: CommuneData[] = [
   {
     name: "Muret",
     slug: "nettoyage-muret",
+    featuredService: "/nettoyage-fin-de-bail-toulouse",
     postalCode: "31600",
     cityContext: "Intervention à domicile à Muret (31600), sur rendez-vous.",
     para1:
@@ -143,6 +147,7 @@ export const COMMUNES_DATA: CommuneData[] = [
   {
     name: "Cugnaux",
     slug: "nettoyage-cugnaux",
+    featuredService: "/nettoyage-fin-de-bail-toulouse",
     postalCode: "31270",
     cityContext: "Intervention à domicile à Cugnaux (31270), sur rendez-vous.",
     para1:
@@ -168,6 +173,7 @@ export const COMMUNES_DATA: CommuneData[] = [
   {
     name: "Balma",
     slug: "nettoyage-balma",
+    featuredService: "/nettoyage-moquette-toulouse",
     postalCode: "31130",
     cityContext: "Intervention à domicile à Balma (31130), sur rendez-vous.",
     para1:
@@ -193,6 +199,7 @@ export const COMMUNES_DATA: CommuneData[] = [
   {
     name: "Ramonville-Saint-Agne",
     slug: "nettoyage-ramonville-saint-agne",
+    featuredService: "/nettoyage-matelas-toulouse",
     postalCode: "31520",
     cityContext: "Intervention à domicile à Ramonville-Saint-Agne (31520), sur rendez-vous.",
     para1:
@@ -218,6 +225,7 @@ export const COMMUNES_DATA: CommuneData[] = [
   {
     name: "Castanet-Tolosan",
     slug: "nettoyage-castanet-tolosan",
+    featuredService: "/nettoyage-dappartement-ou-maison",
     postalCode: "31320",
     cityContext: "Intervention à domicile à Castanet-Tolosan (31320), sur rendez-vous.",
     para1:
@@ -243,6 +251,7 @@ export const COMMUNES_DATA: CommuneData[] = [
   {
     name: "Plaisance-du-Touch",
     slug: "nettoyage-plaisance-du-touch",
+    featuredService: "/nettoyage-terrasse-toulouse",
     postalCode: "31830",
     cityContext: "Intervention à domicile à Plaisance-du-Touch (31830), sur rendez-vous.",
     para1:
@@ -268,6 +277,7 @@ export const COMMUNES_DATA: CommuneData[] = [
   {
     name: "Saint-Orens-de-Gameville",
     slug: "nettoyage-saint-orens-de-gameville",
+    featuredService: "/nettoyage-canape-toulouse",
     postalCode: "31650",
     cityContext: "Intervention à domicile à Saint-Orens-de-Gameville (31650), sur rendez-vous.",
     para1:
@@ -293,6 +303,7 @@ export const COMMUNES_DATA: CommuneData[] = [
   {
     name: "L'Union",
     slug: "nettoyage-l-union",
+    featuredService: "/nettoyage-cuir-toulouse",
     postalCode: "31240",
     cityContext: "Intervention à domicile à L'Union (31240), sur rendez-vous.",
     para1:
@@ -343,6 +354,7 @@ export const COMMUNES_DATA: CommuneData[] = [
   {
     name: "Villeneuve-Tolosane",
     slug: "nettoyage-villeneuve-tolosane",
+    featuredService: "/nettoyage-canape-toulouse",
     postalCode: "31270",
     cityContext: "Intervention à domicile à Villeneuve-Tolosane (31270), sur rendez-vous.",
     para1:
@@ -368,6 +380,7 @@ export const COMMUNES_DATA: CommuneData[] = [
   {
     name: "Portet-sur-Garonne",
     slug: "nettoyage-portet-sur-garonne",
+    featuredService: "/nettoyage-moquette-toulouse",
     postalCode: "31120",
     cityContext: "Intervention à domicile à Portet-sur-Garonne (31120), sur rendez-vous.",
     para1:
@@ -393,6 +406,7 @@ export const COMMUNES_DATA: CommuneData[] = [
   {
     name: "Aucamville",
     slug: "nettoyage-aucamville",
+    featuredService: "/nettoyage-canape-toulouse",
     postalCode: "31140",
     cityContext: "Intervention à domicile à Aucamville (31140), sur rendez-vous.",
     para1:
@@ -418,6 +432,7 @@ export const COMMUNES_DATA: CommuneData[] = [
   {
     name: "Castelginest",
     slug: "nettoyage-castelginest",
+    featuredService: "/nettoyage-tapis-toulouse",
     postalCode: "31780",
     cityContext: "Intervention à domicile à Castelginest (31780), sur rendez-vous.",
     para1:
@@ -443,6 +458,7 @@ export const COMMUNES_DATA: CommuneData[] = [
   {
     name: "Launaguet",
     slug: "nettoyage-launaguet",
+    featuredService: "/nettoyage-matelas-toulouse",
     postalCode: "31140",
     cityContext: "Intervention à domicile à Launaguet (31140), sur rendez-vous.",
     para1:
@@ -468,6 +484,7 @@ export const COMMUNES_DATA: CommuneData[] = [
   {
     name: "Saint-Jean",
     slug: "nettoyage-saint-jean",
+    featuredService: "/nettoyage-canape-toulouse",
     postalCode: "31240",
     cityContext: "Intervention à domicile à Saint-Jean (31240), sur rendez-vous.",
     para1:
@@ -493,6 +510,7 @@ export const COMMUNES_DATA: CommuneData[] = [
   {
     name: "Frouzins",
     slug: "nettoyage-frouzins",
+    featuredService: "/nettoyage-auto-a-domicile-toulouse",
     postalCode: "31270",
     cityContext: "Intervention à domicile à Frouzins (31270), sur rendez-vous.",
     para1:
@@ -518,6 +536,7 @@ export const COMMUNES_DATA: CommuneData[] = [
   {
     name: "Seysses",
     slug: "nettoyage-seysses",
+    featuredService: "/nettoyage-de-fin-de-chantier-toulouse",
     postalCode: "31600",
     cityContext: "Intervention à domicile à Seysses (31600), sur rendez-vous.",
     para1:
@@ -543,6 +562,7 @@ export const COMMUNES_DATA: CommuneData[] = [
   {
     name: "Cornebarrieu",
     slug: "nettoyage-cornebarrieu",
+    featuredService: "/nettoyage-auto-a-domicile-toulouse",
     postalCode: "31700",
     cityContext: "Intervention à domicile à Cornebarrieu (31700), sur rendez-vous.",
     para1:
@@ -568,6 +588,7 @@ export const COMMUNES_DATA: CommuneData[] = [
   {
     name: "Beauzelle",
     slug: "nettoyage-beauzelle",
+    featuredService: "/nettoyage-dappartement-ou-maison",
     postalCode: "31700",
     cityContext: "Intervention à domicile à Beauzelle (31700), sur rendez-vous.",
     para1:
@@ -593,6 +614,7 @@ export const COMMUNES_DATA: CommuneData[] = [
   {
     name: "Aussonne",
     slug: "nettoyage-aussonne",
+    featuredService: "/nettoyage-auto-a-domicile-toulouse",
     postalCode: "31840",
     cityContext: "Intervention à domicile à Aussonne (31840), sur rendez-vous.",
     para1:
@@ -618,6 +640,7 @@ export const COMMUNES_DATA: CommuneData[] = [
   {
     name: "Pibrac",
     slug: "nettoyage-pibrac",
+    featuredService: "/nettoyage-canape-toulouse",
     postalCode: "31820",
     cityContext: "Intervention à domicile à Pibrac (31820), sur rendez-vous.",
     para1:
@@ -668,6 +691,7 @@ export const COMMUNES_DATA: CommuneData[] = [
   {
     name: "Escalquens",
     slug: "nettoyage-escalquens",
+    featuredService: "/nettoyage-matelas-toulouse",
     postalCode: "31750",
     cityContext: "Intervention à domicile à Escalquens (31750), sur rendez-vous.",
     para1:
@@ -693,6 +717,7 @@ export const COMMUNES_DATA: CommuneData[] = [
   {
     name: "Labège",
     slug: "nettoyage-labege",
+    featuredService: "/nettoyage-moquette-toulouse",
     postalCode: "31670",
     cityContext: "Intervention à domicile à Labège (31670), sur rendez-vous.",
     para1:
@@ -718,6 +743,7 @@ export const COMMUNES_DATA: CommuneData[] = [
   {
     name: "Saint-Alban",
     slug: "nettoyage-saint-alban",
+    featuredService: "/nettoyage-canape-toulouse",
     postalCode: "31140",
     cityContext: "Intervention à domicile à Saint-Alban (31140), sur rendez-vous.",
     para1:
@@ -743,6 +769,7 @@ export const COMMUNES_DATA: CommuneData[] = [
   {
     name: "Fenouillet",
     slug: "nettoyage-fenouillet",
+    featuredService: "/nettoyage-auto-a-domicile-toulouse",
     postalCode: "31150",
     cityContext: "Intervention à domicile à Fenouillet (31150), sur rendez-vous.",
     para1:
@@ -768,6 +795,7 @@ export const COMMUNES_DATA: CommuneData[] = [
   {
     name: "Quint-Fonsegrives",
     slug: "nettoyage-quint-fonsegrives",
+    featuredService: "/nettoyage-cuir-toulouse",
     postalCode: "31130",
     cityContext: "Intervention à domicile à Quint-Fonsegrives (31130), sur rendez-vous.",
     para1:
@@ -818,6 +846,7 @@ export const COMMUNES_DATA: CommuneData[] = [
   {
     name: "Eaunes",
     slug: "nettoyage-eaunes",
+    featuredService: "/nettoyage-fin-de-bail-toulouse",
     postalCode: "31600",
     cityContext: "Intervention à domicile à Eaunes (31600), sur rendez-vous.",
     para1:
@@ -843,6 +872,7 @@ export const COMMUNES_DATA: CommuneData[] = [
   {
     name: "Roques",
     slug: "nettoyage-roques",
+    featuredService: "/nettoyage-auto-a-domicile-toulouse",
     postalCode: "31120",
     cityContext: "Intervention à domicile à Roques (31120), sur rendez-vous.",
     para1:
@@ -868,6 +898,7 @@ export const COMMUNES_DATA: CommuneData[] = [
   {
     name: "Bruguières",
     slug: "nettoyage-bruguieres",
+    featuredService: "/nettoyage-dappartement-ou-maison",
     postalCode: "31150",
     cityContext: "Intervention à domicile à Bruguières (31150), sur rendez-vous.",
     para1:
@@ -893,6 +924,7 @@ export const COMMUNES_DATA: CommuneData[] = [
   {
     name: "La Salvetat-Saint-Gilles",
     slug: "nettoyage-la-salvetat-saint-gilles",
+    featuredService: "/nettoyage-canape-toulouse",
     postalCode: "31880",
     cityContext: "Intervention à domicile à La Salvetat-Saint-Gilles (31880), sur rendez-vous.",
     para1:
@@ -918,6 +950,7 @@ export const COMMUNES_DATA: CommuneData[] = [
   {
     name: "Castelmaurou",
     slug: "nettoyage-castelmaurou",
+    featuredService: "/nettoyage-tapis-toulouse",
     postalCode: "31180",
     cityContext: "Intervention à domicile à Castelmaurou (31180), sur rendez-vous.",
     para1:
@@ -943,6 +976,7 @@ export const COMMUNES_DATA: CommuneData[] = [
   {
     name: "Auzeville-Tolosane",
     slug: "nettoyage-auzeville-tolosane",
+    featuredService: "/nettoyage-dappartement-ou-maison",
     postalCode: "31320",
     cityContext: "Intervention à domicile à Auzeville-Tolosane (31320), sur rendez-vous.",
     para1:
@@ -968,6 +1002,7 @@ export const COMMUNES_DATA: CommuneData[] = [
   {
     name: "Pins-Justaret",
     slug: "nettoyage-pins-justaret",
+    featuredService: "/nettoyage-auto-a-domicile-toulouse",
     postalCode: "31860",
     cityContext: "Intervention à domicile à Pins-Justaret (31860), sur rendez-vous.",
     para1:
@@ -993,6 +1028,7 @@ export const COMMUNES_DATA: CommuneData[] = [
   {
     name: "Gratentour",
     slug: "nettoyage-gratentour",
+    featuredService: "/nettoyage-tapis-toulouse",
     postalCode: "31150",
     cityContext: "Intervention à domicile à Gratentour (31150), sur rendez-vous.",
     para1:

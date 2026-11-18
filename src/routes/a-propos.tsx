@@ -23,7 +23,9 @@ export const Route = createFileRoute("/a-propos")({
       children: JSON.stringify({
         "@context": "https://schema.org", "@type": "AboutPage",
         url: SITE_URL + "/a-propos", name: TITLE,
-        about: { "@type": "LocalBusiness", name: "Clean&Fresh", url: SITE_URL },
+        about: { "@type": "LocalBusiness", "@id": SITE_URL + "/#business", name: "Clean&Fresh", url: SITE_URL,
+          employee: { "@type": "Person", name: "Sébastian Isidro Heredia", jobTitle: "Dirigeant" },
+        },
       }),
     }],
     links: [{ rel: "canonical", href: `https://cleanetfresh.fr/a-propos` }],
@@ -49,6 +51,7 @@ function AboutPage() {
             <h2 className="text-2xl font-bold mb-6">Pourquoi Clean&Fresh ?</h2>
             
             <div className="space-y-6 text-muted-foreground leading-relaxed">
+              <p>Au Théâtre du Capitole à Toulouse, notre intervention a porté sur six tapis. La <Link to="/nos-realisations" className="text-primary underline">galerie avant et après nettoyage</Link> montre les tapis sur place. Pour une intervention chez vous, indiquez le nombre de tapis, leur taille et leur matière afin de choisir la <Link to="/nettoyage-tapis-toulouse" className="text-primary underline">formule de nettoyage de tapis</Link> adaptée.</p>
               <p>
                 Avant chaque nettoyage, nous examinons la matière et l'état du support. Nous vous expliquons la méthode adaptée, les résultats possibles et les éventuelles limites : une tache ancienne ou une décoloration peut subsister.
               </p>
@@ -56,7 +59,7 @@ function AboutPage() {
                 Pour les prestations courantes, vous choisissez une formule, les options utiles et un créneau en ligne. Pour une remise en état ou une prestation bâtiment, nous préparons un devis selon les photos, la surface et les accès. Tout supplément est expliqué et accepté avant sa réalisation.
               </p>
               <p>
-                En fin d'intervention, nous vérifions le résultat avec vous et vous donnons les conseils de séchage et d'entretien. Notre assurance responsabilité civile professionnelle et son périmètre sont détaillés dans les mentions légales.
+                En fin d'intervention, nous vérifions le résultat avec vous et vous donnons les conseils de séchage et d'entretien. Notre assurance responsabilité civile professionnelle et son périmètre sont détaillés dans les <Link to="/mentions-legales" className="text-primary underline">mentions légales</Link>.
               </p>
             </div>
           </div>

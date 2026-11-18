@@ -233,6 +233,9 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
               {service.slug === "/nettoyage-dappartement-ou-maison" && (
                 <p className="mt-4 text-muted-foreground">Pour un <Link to="/nettoyage-extreme-toulouse" className="text-primary underline">logement insalubre ou très encrassé</Link>, précisez l’état des surfaces pour obtenir un devis adapté.</p>
               )}
+              {service.guide && (
+                <p className="mt-4 text-muted-foreground">{service.guide.text} <Link to={service.guide.path} className="font-medium text-primary underline">{service.guide.link}</Link>.</p>
+              )}
               {service.intro.length > 2 && (
                 <>
                   <div id="service-intro-details" className={introExpanded ? "block" : "hidden"}>

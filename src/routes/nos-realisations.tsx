@@ -94,6 +94,18 @@ export const Route = createFileRoute('/nos-realisations')({
   head: () => ({ meta: [{ title }, { name: 'description', content: description },
     { property: 'og:title', content: title }, { property: 'og:description', content: description },
     { property: 'og:url', content: `${SITE_URL}/nos-realisations` }],
+    scripts: [{
+      type: 'application/ld+json',
+      children: JSON.stringify({
+        '@context': 'https://schema.org', '@type': 'ImageGallery',
+        name: title, url: SITE_URL + '/nos-realisations',
+        publisher: { '@id': SITE_URL + '/#business' },
+        image: realisations.map(photo => ({
+          '@type': 'ImageObject', contentUrl: SITE_URL + photo.src,
+          caption: photo.title, creator: { '@id': SITE_URL + '/#business' },
+        })),
+      }),
+    }],
     links: [{ rel: 'canonical', href: `${SITE_URL}/nos-realisations` }] }),
   component: GaleriePage,
 });
@@ -120,8 +132,21 @@ function serviceLink(photo: Realisation) {
     Auto: '/nettoyage-auto-a-domicile-toulouse',
     Tapis: /moquette/i.test(photo.title) ? '/nettoyage-moquette-toulouse' : '/nettoyage-tapis-toulouse',
   };
+  if (/cuir/i.test(photo.title)) return '/nettoyage-cuir-toulouse';
+  if (photo.category === 'Logements' && /insalubre|très sale et encombrée/i.test(photo.title)) return '/nettoyage-extreme-toulouse';
   return pages[photo.category] ?? '/nettoyage-dappartement-ou-maison';
 }
+
+const galleryServiceLabels: Record<string, string> = {
+  '/nettoyage-canape-toulouse': 'Nettoyage des canapés et sièges en tissu',
+  '/nettoyage-cuir-toulouse': 'Nettoyage et soin du cuir',
+  '/nettoyage-matelas-toulouse': 'Nettoyage des matelas',
+  '/nettoyage-auto-a-domicile-toulouse': 'Nettoyage intérieur automobile',
+  '/nettoyage-tapis-toulouse': 'Nettoyage des tapis',
+  '/nettoyage-moquette-toulouse': 'Nettoyage de moquette',
+  '/nettoyage-extreme-toulouse': 'Remise en état de logements insalubres',
+  '/nettoyage-dappartement-ou-maison': 'Nettoyage des appartements et maisons',
+};
 
 function GaleriePage() {
   const [category, setCategory] = useState('Tout voir');
@@ -140,6 +165,7 @@ function GaleriePage() {
       </div>
     </header>
     <section className="mx-auto max-w-6xl px-4" aria-label="Galerie de nos réalisations">
+      <h2 className="sr-only">Galerie des interventions par prestation</h2>
       <div aria-label="Filtrer les réalisations" className="mb-5 flex flex-wrap justify-center gap-2">
         {['Tout voir', 'Canapés', 'Matelas', 'Tapis', 'Auto', 'Logements'].map(item => <button key={item} type="button" aria-pressed={category === item} onClick={() => setCategory(item)} className={`min-h-11 rounded-full border px-4 py-2 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-900 ${category === item ? 'border-blue-900 bg-blue-950 text-white' : 'border-slate-200 bg-white text-slate-700 hover:border-blue-900'}`}>{item}</button>)}
       </div>
@@ -152,9 +178,9 @@ function GaleriePage() {
           </button>
           <figcaption className="p-5">
             <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-blue-900">{photo.category} · {photo.layout === 'single' ? 'Sur le terrain' : 'Avant / Après'}</p>
-            <h2 className="mt-2 text-lg font-bold leading-snug text-slate-900">{photo.title}</h2>
+            <h3 className="mt-2 text-lg font-bold leading-snug text-slate-900">{photo.title}</h3>
             <p className="mt-2 text-sm leading-relaxed text-slate-600">{photo.description}</p>
-            <a href={serviceLink(photo)} className="mt-4 inline-flex min-h-11 items-center gap-1 text-sm font-bold text-blue-900 underline-offset-4 hover:underline">Voir la prestation<ArrowUpRight className="size-4" /></a>
+            <a href={serviceLink(photo)} className="mt-4 inline-flex min-h-11 items-center gap-1 text-sm font-bold text-blue-900 underline-offset-4 hover:underline">{galleryServiceLabels[serviceLink(photo)]}<ArrowUpRight className="size-4" /></a>
             <Link to="/formules" resetScroll className="mt-3 flex min-h-11 items-center justify-center rounded-full bg-blue-950 px-5 py-3 text-sm font-bold text-white hover:bg-blue-900">Réserver en ligne<ArrowUpRight className="ml-2 size-4" /></Link>
           </figcaption>
         </figure>)}

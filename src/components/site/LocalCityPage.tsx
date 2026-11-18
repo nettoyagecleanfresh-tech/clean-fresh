@@ -96,6 +96,7 @@ type Props = { commune: CommuneData };
 
 export function LocalCityPage({ commune }: Props) {
   const { name, slug, postalCode, para1, para2, faq, nearby } = commune;
+  const featured = SERVICES.find(service => service.slug === commune.featuredService);
   const localIntervention = LOCAL_INTERVENTIONS[slug];
   const nearbyCommunes = name === "Toulouse" ? COMMUNES_DATA.filter((city) => city.slug !== slug) : nearby.flatMap((city) => {
     const match = COMMUNES_DATA.find((item) => item.name === city);
@@ -162,6 +163,14 @@ export function LocalCityPage({ commune }: Props) {
             {slug === "nettoyage-colomiers" ? "Nettoyage de vitres à Colomiers" : `Préparer votre intervention à ${name}`}
           </h2>
           <p className="mt-4 text-sm leading-7 text-muted-foreground md:text-base">{para2}</p>
+          {!featured && ["nettoyage-fonsorbes", "nettoyage-leguevin", "nettoyage-saint-lys"].includes(slug) && <Link to="/formules" className="mt-3 inline-flex text-sm font-semibold text-primary underline">Choisir plusieurs prestations pour un même passage</Link>}
+          {featured && (
+            <p className="mt-3">
+              <Link to={featured.slug} className="text-sm font-semibold text-primary underline underline-offset-4">
+                {featured.detailTitle}
+              </Link>
+            </p>
+          )}
           {slug === "nettoyage-colomiers" && (
             <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-1">
               <Button asChild>
@@ -190,6 +199,17 @@ export function LocalCityPage({ commune }: Props) {
         </section>
       </FadeIn>
 
+      {name !== "Toulouse" && !localIntervention && nearbyCommunes.some(city => LOCAL_INTERVENTIONS[city.slug]) && (
+        <section aria-label="Exemples à proximité" className="mx-auto max-w-4xl px-4 pb-8">
+          <h2 className="text-xl font-bold">Interventions réalisées près de {name}</h2>
+          <ul className="mt-3 space-y-2">
+            {nearbyCommunes.map(city => {
+              const example = LOCAL_INTERVENTIONS[city.slug];
+              return example && <li key={city.slug}><a className="text-primary underline" href={`/${city.slug}#local-intervention`}>{example.title}</a></li>;
+            })}
+          </ul>
+        </section>
+      )}
       {localIntervention && (
         <section className="mx-auto max-w-4xl px-4 pb-10" aria-labelledby="local-intervention">
           <div className="rounded-2xl border border-primary/20 bg-card p-5 shadow-[var(--shadow-soft)] md:p-7">
@@ -287,7 +307,7 @@ export function LocalCityPage({ commune }: Props) {
         <div className="mt-9 rounded-2xl border border-border bg-muted/30 p-5 md:p-6">
           <h3 className="text-xl font-bold">Logement, travaux, vitres et extérieurs : sur devis</h3>
           <p className="mt-3 text-sm leading-7 text-muted-foreground">
-            Indiquez la surface approximative, l’état actuel et la date souhaitée. Vous pouvez joindre des photos. Le devis
+            Indiquez la surface approximative, l’état actuel et la date souhaitée. Joignez au moins une photo au formulaire de devis. Le devis
             précise les surfaces et équipements retenus. Murs, plafonds, textiles et accès en
             hauteur sont à signaler séparément pour vérifier la compatibilité et la faisabilité.
           </p>
@@ -312,7 +332,7 @@ export function LocalCityPage({ commune }: Props) {
         </div>
       </section>
 
-      <section className="border-y border-border bg-muted/20" aria-labelledby="local-proof">
+      {name === "Toulouse" && <section className="border-y border-border bg-muted/20" aria-labelledby="local-proof">
         <div className="mx-auto max-w-4xl px-4 py-10">
           <p className="text-xs font-semibold uppercase tracking-wider text-primary">
             Photos de nos interventions à Toulouse
@@ -369,7 +389,7 @@ export function LocalCityPage({ commune }: Props) {
             </Link>
           </div>
         </div>
-      </section>
+      </section>}
 
       <section className="mx-auto max-w-4xl px-4 py-10" aria-labelledby="local-steps">
         <h2 id="local-steps" className="text-2xl font-bold">

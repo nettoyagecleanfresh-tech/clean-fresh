@@ -25,7 +25,7 @@ export const Route = createFileRoute("/formules")({
       service: search.service as any,
     };
   },
-  head: () => ({
+  head: ({ match }) => ({
     meta: [
       { title: TITLE },
       { name: "description", content: DESC },
@@ -35,6 +35,21 @@ export const Route = createFileRoute("/formules")({
       { name: "twitter:title", content: TITLE },
       { name: "twitter:description", content: DESC },
     ],
+    scripts: [{
+      type: "application/ld+json",
+      children: JSON.stringify({
+        "@context": "https://schema.org", "@type": "CollectionPage", name: TITLE, url: SITE_URL + "/formules",
+        mainEntity: { "@type": "OfferCatalog", name: "Formules de nettoyage à domicile",
+          itemListElement: CATEGORIES.filter(category => !match.search.service || category.id === match.search.service).map(category => ({
+            "@type": "OfferCatalog", name: category.title,
+            itemListElement: category.offers.map(item => ({
+              "@type": "Offer", name: item.label, price: item.price.replace(" €", ""), priceCurrency: "EUR",
+              url: SITE_URL + "/formules#" + category.id, seller: { "@id": SITE_URL + "/#business" },
+            })),
+          })),
+        },
+      }),
+    }],
     links: [{ rel: "canonical", href: `https://cleanetfresh.fr/formules` }],
   }),
   component: FormulesPage,
@@ -898,6 +913,7 @@ const CATEGORY_CATALOG = [
     priceFrom: "49 €",
     bullets: ["Fauteuil, canapé 2/3, 4/5 places", "Canapé U/angle, pouf, chaise", "Options anti-acariens, anti-odeur"],
     recommended: false,
+    offers: CANAPE_ITEMS,
     content: <CanapeDetail />,
   },
   {
@@ -908,6 +924,7 @@ const CATEGORY_CATALOG = [
     priceFrom: "49 €",
     bullets: ["Matelas enfant, 1 place, 2 places", "Deux faces incluses pour chaque matelas", "Traitement anti-acariens en option"],
     recommended: false,
+    offers: MATELAS_ITEMS,
     content: <MatelasDetail />,
   },
   {
@@ -918,6 +935,7 @@ const CATEGORY_CATALOG = [
     priceFrom: "49 €",
     bullets: ["1 tapis, 2 tapis, 3 tapis", "Format standard jusqu'à 4 m² par tapis", "Options anti-acariens, recto-verso"],
     recommended: false,
+    offers: TAPIS_ITEMS,
     content: <TapisDetail />,
   },
   {
@@ -928,6 +946,7 @@ const CATEGORY_CATALOG = [
     priceFrom: "99 €",
     bullets: ["Moins de 12 m² : 99 €", "De 12 à 20 m² : 149 €", "Plus de 20 m² : 199 €"],
     recommended: false,
+    offers: MOQUETTE_ITEMS.map(item => ({ label: item.label + " · " + item.surface, price: item.price })),
     content: <MoquetteDetail />,
   },
   {
@@ -938,6 +957,7 @@ const CATEGORY_CATALOG = [
     priceFrom: "69 €",
     bullets: ["Bronze : aspiration et plastiques", "Argent : Bronze + sièges et vitres", "Or : Argent + moquettes, tapis et contours"],
     recommended: false,
+    offers: AUTO_PACKS.map(pack => ({ label: pack.name, price: pack.price })),
     content: <AutoDetail />,
   },
   {
@@ -948,6 +968,7 @@ const CATEGORY_CATALOG = [
     priceFrom: "49 €",
     bullets: ["Fauteuil, canapé 2/3, 4/5 places", "Chaises et sièges auto cuir", "Traitement nourrissant en option"],
     recommended: false,
+    offers: CUIR_ITEMS,
     content: <CuirDetail />,
   },
 ];

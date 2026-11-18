@@ -345,6 +345,12 @@ function ContactPage() {
             </div>
           </div>
 
+          <section className="rounded-2xl border border-border bg-card p-6 text-sm leading-relaxed">
+            <h2 className="text-base font-bold">Quelle prestation choisir ?</h2>
+            <p className="mt-3">Pour rendre les clés, consultez le <a href="/nettoyage-fin-de-bail-toulouse" className="text-primary underline">nettoyage de fin de bail</a>. Pour un grand ménage ponctuel, découvrez ce qui est inclus dans le <a href="/nettoyage-dappartement-ou-maison" className="text-primary underline">nettoyage d’appartement ou de maison</a>.</p>
+            <p className="mt-3">Si des pièces sont inaccessibles, décrivez les volumes à trier pour un <a href="/nettoyage-diogene-toulouse" className="text-primary underline">débarras et nettoyage Diogène</a>. Pour des surfaces accessibles mais très encrassées, consultez la <a href="/nettoyage-extreme-toulouse" className="text-primary underline">remise en état de logement insalubre</a>.</p>
+            <p className="mt-3">Pour un canapé, un matelas, un tapis, une moquette, du cuir ou un intérieur de voiture, vous pouvez <a href="/formules" className="font-semibold text-primary underline">consulter les prix et réserver en ligne</a>. Plusieurs prestations peuvent être réunies sur le même créneau.</p>
+          </section>
           {/* Zones */}
           <div className="rounded-2xl border border-border bg-card p-6 shadow-[var(--shadow-soft)]">
             <h2 className="flex items-center gap-2 text-base font-bold">

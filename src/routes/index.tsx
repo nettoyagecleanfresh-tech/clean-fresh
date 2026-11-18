@@ -524,8 +524,8 @@ function Index() {
         <div className="mx-auto grid max-w-6xl gap-6 px-4 py-7 md:grid-cols-2 md:gap-10">
           <div>
             <h2 className="text-xl font-bold">Comment se déroule l’intervention ?</h2>
-            <p className="mt-2 text-sm leading-relaxed text-slate-700">Pour les textiles et l’auto, choisissez votre formule, vos options et votre créneau. Vous pouvez regrouper plusieurs articles dans une seule réservation et régler en fin de prestation.</p>
-            <p className="mt-2 text-sm leading-relaxed text-slate-700">Pour un logement ou un bâtiment, indiquez la surface et votre délai. Nous précisons les tâches et le prix sur le devis, puis convenons du rendez-vous avec vous. Nous venons sur place avec le matériel adapté.</p>
+            <p className="mt-2 text-sm leading-relaxed text-slate-700">Pour les <Link to="/nettoyage-tapis-toulouse" className="text-sky-900 underline">tapis amovibles</Link>, comptez les pièces. Pour une <Link to="/nettoyage-moquette-toulouse" className="text-sky-900 underline">moquette fixée au sol</Link>, mesurez la surface. Choisissez ensuite votre formule et votre créneau. Vous pouvez regrouper plusieurs articles dans une seule réservation et régler en fin de prestation.</p>
+            <p className="mt-2 text-sm leading-relaxed text-slate-700">Pour un <Link to="/nettoyage-dappartement-ou-maison" className="text-sky-900 underline">nettoyage d’appartement ou de maison</Link>, indiquez la surface et votre délai. Nous précisons les tâches et le prix sur le devis, puis convenons du rendez-vous avec vous. Pour un logement très encombré, consultez les étapes du <Link to="/nettoyage-diogene-toulouse" className="text-sky-900 underline">tri et du nettoyage Diogène</Link>.</p>
             <Link to="/tarifs" className="mt-2 inline-block py-1 text-sm font-semibold text-sky-900 underline underline-offset-4">Consulter les tarifs et les options</Link>
           </div>
           <div>
