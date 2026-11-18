@@ -3,7 +3,7 @@ import { analyticsTestMode } from "@/lib/analyticsPolicy";
 import { useEffect, useRef, useState } from "react";
 import { prepareQuotePhotos, validateQuotePhotos } from "@/lib/quotePhotos";
 import { createFileRoute } from "@tanstack/react-router";
-import { Mail, Phone, Clock, MapPin, ArrowRight, Camera } from "lucide-react";
+import { Mail, Phone, Clock, MapPin, Camera } from "lucide-react";
 import { quoteSchema as schema } from "@/lib/quoteSchema";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
@@ -42,26 +42,11 @@ export const Route = createFileRoute("/contactez-nous")({
   component: ContactPage,
 });
 
-const SERVICES_LIST = [
-  "Nettoyage canapé",
-  "Nettoyage matelas",
-  "Nettoyage tapis",
-  "Nettoyage moquette",
-  "Nettoyage cuir",
-  "Nettoyage auto (intérieur)",
-  "Nettoyage de vitres",
-  "Nettoyage terrasse",
-  "Nettoyage toiture",
-  "Nettoyage façade",
-  "Nettoyage appartement / maison",
-  "Nettoyage fin de chantier",
-  "Nettoyage fin de bail",
-  "Nettoyage Diogène / logement insalubre",
-  "Nettoyage extrême",
-  "Autre",
+const QUICK_SERVICES = [
+  "Nettoyage canapé", "Nettoyage matelas", "Nettoyage tapis",
+  "Nettoyage moquette", "Nettoyage cuir", "Nettoyage auto (intérieur)",
 ];
-
-
+const SERVICES_LIST = [...Object.values(QUOTE_SERVICES), "Autre", ...QUICK_SERVICES];
 
 function ContactPage() {
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -72,18 +57,21 @@ function ContactPage() {
   useEffect(() => { setSelectedService(QUOTE_SERVICES[requestedService ?? ""] ?? ""); }, [requestedService]);
   const [photoCount, setPhotoCount] = useState(0);
 
+  const [sendError, setSendError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
   useEffect(() => {
-    const firstError = Object.keys(errors).find(key => errors[key]);
-    if (!firstError) return;
-    const field = formRef.current?.elements.namedItem(firstError);
-    if (field instanceof HTMLElement) field.focus();
+    const field = formRef.current?.querySelector<HTMLElement>('[aria-invalid="true"]');
+    if (!field) return;
+    const details = field.closest("details");
+    if (details) details.open = true;
+    field.focus();
   }, [errors]);
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (isSubmitting) return;
+    setSendError("");
 
     const form = e.currentTarget;
     const data = Object.fromEntries(new FormData(form));
@@ -135,15 +123,18 @@ function ContactPage() {
         measurementId.current = undefined;
         quoteStarted.current = false;
         form.reset();
-        setSelectedService("");
+        setSelectedService(QUOTE_SERVICES[requestedService ?? ""] ?? "");
+        form.querySelector("details")?.removeAttribute("open");
         setPhotoCount(0);
       } else {
-        throw new Error(resData.message || "Envoi non confirmé");
+        conversionMetric("quote_error", { has_photos: photos.length > 0 });
+        setSendError(response.status === 429
+          ? "Plusieurs demandes ont été envoyées récemment. Réessayez dans dix minutes ou appelez-nous."
+          : "L’envoi de votre demande n’a pas été confirmé. Réessayez dans un moment.");
       }
-    } catch (err) {
-      conversionMetric("quote_error");
-      console.error("[Contact] Envoi non confirmé");
-      toast.error("L’envoi a échoué. Vos informations sont conservées : réessayez ou contactez-nous par téléphone.");
+    } catch {
+      conversionMetric("quote_error", { has_photos: photos.length > 0 });
+      setSendError("L’envoi de votre demande n’a pas été confirmé. Vérifiez votre connexion et réessayez.");
     } finally {
       setIsSubmitting(false);
     }
@@ -152,22 +143,14 @@ function ContactPage() {
   return (
     <div className="pb-24 lg:pb-0">
       {/* ── TITLE ── */}
-      <div className="mx-auto max-w-3xl px-4 pt-16 pb-10 text-center">
-        <h1 className="text-4xl font-bold leading-tight tracking-tight md:text-5xl">
+      <div className="mx-auto max-w-3xl px-4 pt-8 pb-6 md:pt-12 md:pb-8 text-center">
+        <h1 className="text-3xl font-bold leading-tight tracking-tight md:text-5xl">
           Obtenez votre devis de nettoyage gratuit sous 24 h
         </h1>
         <p className="mt-4 text-muted-foreground leading-relaxed max-w-xl mx-auto">
-          Donnez-nous les informations utiles et, si possible, quelques photos. Vous recevrez
-          une proposition adaptée sous 24 heures.
+          Pour un logement, des vitres ou un extérieur à Toulouse et aux alentours, indiquez la prestation et la commune. Nous vous répondons par e-mail.
         </p>
       </div>
-
-      <section aria-label="Un devis adapté à votre situation" className="mx-auto mb-6 max-w-5xl px-4 lg:mb-10">
-        <div className="grid items-center gap-4 lg:grid-cols-[1fr_auto] lg:gap-8 rounded-3xl border border-blue-100 bg-blue-950 p-4 text-white lg:p-7">
-          <div><p className="text-xs font-bold uppercase tracking-widest text-blue-200">Simple, gratuit et sans engagement</p><h2 className="mt-2 text-lg font-bold lg:text-2xl">Que souhaitez-vous faire nettoyer ?</h2><p className="mt-3 text-sm leading-6 text-blue-100">Précisez les pièces ou les surfaces concernées et les conditions d’accès. Vous pouvez envoyer votre demande sans photo et en discuter avec nous par téléphone.</p></div>
-          <a href="#photos" className="inline-flex w-fit items-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-bold text-blue-950 hover:bg-blue-100"><Camera className="size-4" /> Ajouter mes photos</a>
-        </div>
-      </section>
 
       {/* ── FORM + SIDEBAR ── */}
       <section className="mx-auto grid max-w-5xl gap-6 px-4 pb-16 md:grid-cols-[1.4fr_1fr] items-start">
@@ -178,41 +161,20 @@ function ContactPage() {
           onSubmit={onSubmit}
           onFocusCapture={() => { if (!quoteStarted.current) { quoteStarted.current = true; conversionMetric("quote_started"); } }}
           noValidate
-          className="space-y-6"
+          className="space-y-4"
         >
           {Object.values(errors).some(Boolean) && (
             <div role="alert" className="rounded-xl border border-destructive/30 bg-destructive/5 p-3 text-sm text-destructive">
               Merci de corriger les champs signalés ci-dessous. Vos informations sont conservées.
             </div>
           )}
-          {/* Nom + Téléphone side by side */}
-          <div className="grid gap-6 sm:grid-cols-2">
-            <div className="grid gap-1">
-              <Label htmlFor="nom" className="text-sm text-muted-foreground font-normal">Nom complet</Label>
-              <Input id="nom" name="nom" aria-invalid={!!errors["nom"]} aria-describedby={errors["nom"] ? "nom-error" : undefined} autoComplete="name" maxLength={100} placeholder="" className="rounded-none border-0 border-b border-border bg-transparent px-0 py-2 text-sm shadow-none focus-visible:ring-0 focus-visible:border-primary transition-colors" />
-              {errors["nom"] && <p id="nom-error" className="text-xs text-destructive">{errors["nom"]}</p>}
-            </div>
-            <div className="grid gap-1">
-              <Label htmlFor="telephone" className="text-sm text-muted-foreground font-normal">Téléphone</Label>
-              <Input id="telephone" name="telephone" aria-invalid={!!errors["telephone"]} aria-describedby={errors["telephone"] ? "telephone-error" : undefined} type="tel" autoComplete="tel" maxLength={20} placeholder="" className="rounded-none border-0 border-b border-border bg-transparent px-0 py-2 text-sm shadow-none focus-visible:ring-0 focus-visible:border-primary transition-colors" />
-              {errors["telephone"] && <p id="telephone-error" className="text-xs text-destructive">{errors["telephone"]}</p>}
-            </div>
-          </div>
-
-          {/* Email */}
-          <div className="grid gap-1">
-            <Label htmlFor="email" className="text-sm text-muted-foreground font-normal">Email</Label>
-            <Input id="email" name="email" aria-invalid={!!errors["email"]} aria-describedby={errors["email"] ? "email-error" : undefined} type="email" autoComplete="email" maxLength={255} placeholder="" className="rounded-none border-0 border-b border-border bg-transparent px-0 py-2 text-sm shadow-none focus-visible:ring-0 focus-visible:border-primary transition-colors" />
-            {errors["email"] && <p id="email-error" className="text-xs text-destructive">{errors["email"]}</p>}
-          </div>
-
           {/* Service select */}
           <div className="grid gap-1">
-            <Label htmlFor="service" className="text-sm text-muted-foreground font-normal">Type de prestation</Label>
+            <Label htmlFor="service" className="text-sm text-muted-foreground font-normal">Que souhaitez-vous faire nettoyer ?</Label>
             <div className="relative">
               <select
                 id="service"
-                name="service" aria-invalid={!!errors["service"]} aria-describedby={errors["service"] ? "service-error" : undefined}
+                name="service" required aria-invalid={!!errors["service"]} aria-describedby={errors["service"] ? "service-error" : undefined}
                 value={selectedService}
                 onChange={(e) => setSelectedService(e.target.value)}
                 className="w-full appearance-none rounded-none border-0 border-b border-border bg-transparent px-0 py-2 text-sm text-foreground shadow-none outline-none focus:border-primary focus:ring-0 transition-colors"
@@ -230,62 +192,96 @@ function ContactPage() {
             {errors["service"] && <p id="service-error" className="text-xs text-destructive">{errors["service"]}</p>}
           </div>
 
-          <div className="grid gap-6 sm:grid-cols-2">
-            <div className="grid gap-1 sm:col-span-2">
-              <Label htmlFor="adresse" className="text-sm text-muted-foreground font-normal">Adresse exacte de l'intervention</Label>
-              <Input id="adresse" name="adresse" aria-invalid={!!errors["adresse"]} aria-describedby={errors["adresse"] ? "adresse-error" : undefined} autoComplete="street-address" maxLength={200} placeholder="Numéro, rue, code postal et ville" className="rounded-none border-0 border-b border-border bg-transparent px-0 py-2 text-sm shadow-none focus-visible:ring-0 focus-visible:border-primary transition-colors" />
-              {errors["adresse"] && <p id="adresse-error" className="text-xs text-destructive">{errors["adresse"]}</p>}
-            </div>
-            <div className="grid gap-1">
-              <Label htmlFor="surface" className="text-sm text-muted-foreground font-normal">Surface ou dimensions</Label>
-              <Input id="surface" name="surface" aria-invalid={!!errors["surface"]} aria-describedby={errors["surface"] ? "surface-error" : undefined} maxLength={100} placeholder="Ex. 60 m², 12 fenêtres…" className="rounded-none border-0 border-b border-border bg-transparent px-0 py-2 text-sm shadow-none focus-visible:ring-0 focus-visible:border-primary transition-colors" />
-              {errors["surface"] && <p id="surface-error" className="text-xs text-destructive">{errors["surface"]}</p>}
-            </div>
-            <div className="grid gap-1">
-              <Label htmlFor="dateSouhaitee" className="text-sm text-muted-foreground font-normal">Date ou délai souhaité</Label>
-              <Input id="dateSouhaitee" name="dateSouhaitee" aria-invalid={!!errors["dateSouhaitee"]} aria-describedby={errors["dateSouhaitee"] ? "dateSouhaitee-error" : undefined} maxLength={100} placeholder="Ex. vendredi prochain ou avant votre état des lieux" className="rounded-none border-0 border-b border-border bg-transparent px-0 py-2 text-sm shadow-none focus-visible:ring-0 focus-visible:border-primary transition-colors" />
-              {errors["dateSouhaitee"] && <p id="dateSouhaitee-error" className="text-xs text-destructive">{errors["dateSouhaitee"]}</p>}
-            </div>
-          </div>
-
-          <div className="grid gap-1">
-            <Label htmlFor="acces" className="text-sm text-muted-foreground font-normal">Accès à l'eau, à l'électricité et au logement</Label>
-            <Input id="acces" name="acces" aria-invalid={!!errors["acces"]} aria-describedby={errors["acces"] ? "acces-error" : undefined} maxLength={300} placeholder="Prises disponibles, point d'eau, étage, ascenseur, stationnement…" className="rounded-none border-0 border-b border-border bg-transparent px-0 py-2 text-sm shadow-none focus-visible:ring-0 focus-visible:border-primary transition-colors" />
-            {errors["acces"] && <p id="acces-error" className="text-xs text-destructive">{errors["acces"]}</p>}
-          </div>
-
-          <div className="grid gap-2 rounded-xl border border-dashed border-border bg-secondary/20 p-4">
-            <Label htmlFor="photos" className="flex items-center gap-2 text-sm font-semibold"><Camera className="size-4 text-primary" />Photos de l'état actuel</Label>
-            <Input id="photos" name="photos" type="file" accept="image/jpeg,image/png,image/webp" multiple disabled={isSubmitting} aria-invalid={!!errors["photos"]} aria-describedby={errors["photos"] ? "photos-help photos-error" : "photos-help"} onChange={(event) => {
-              const files = Array.from(event.target.files ?? []);
-              setPhotoCount(files.length);
-              const error = validateQuotePhotos(files);
-              setErrors(previous => ({ ...previous, photos: error ?? "" }));
-            }} className="cursor-pointer scroll-mt-40 lg:scroll-mt-52" />
-            <p id="photos-help" className="text-xs text-muted-foreground">Jusqu’à 10 photos facultatives (JPG, PNG ou WebP, 20 Mo par photo). Elles sont compressées et regroupées dans un PDF pour l’envoi.</p>
-            <p className="text-xs text-muted-foreground" aria-live="polite">{photoCount > 0 ? `${photoCount} photo${photoCount > 1 ? "s" : ""} sélectionnée${photoCount > 1 ? "s" : ""} / 10` : ""}</p>
-            {errors["photos"] && <p id="photos-error" className="text-xs text-destructive">{errors["photos"]}</p>}
-          </div>
-
-          {["Nettoyage canapé", "Nettoyage matelas", "Nettoyage tapis", "Nettoyage moquette", "Nettoyage cuir", "Nettoyage auto (intérieur)"].includes(selectedService) && (
+          {QUICK_SERVICES.includes(selectedService) && (
             <div className="rounded-xl border border-primary/20 bg-primary/5 p-4 text-sm text-foreground/80">
               Pour cette prestation, vous pouvez aussi consulter les prix, ajouter plusieurs services et choisir votre créneau directement sur la page <a href="/formules" className="font-bold text-primary underline">Réserver en ligne</a>.
             </div>
           )}
 
-          {/* Message */}
-          <div className="grid gap-1">
-            <Label htmlFor="message" className="text-sm text-muted-foreground font-normal">Détails de votre demande</Label>
-            <Textarea
-              id="message"
-              name="message" aria-invalid={!!errors["message"]} aria-describedby={errors["message"] ? "message-error" : undefined}
-              rows={4}
-              maxLength={1000}
-              placeholder=""
-              className="rounded-none border-0 border-b border-border bg-transparent px-0 py-2 text-sm shadow-none focus-visible:ring-0 focus-visible:border-primary resize-none transition-colors"
-            />
-            {errors["message"] && <p id="message-error" className="text-xs text-destructive">{errors["message"]}</p>}
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div className="grid gap-1 sm:col-span-2">
+              <Label htmlFor="adresse" className="text-sm text-muted-foreground font-normal">Commune ou code postal</Label>
+              <Input id="adresse" name="adresse" required aria-invalid={!!errors["adresse"]} aria-describedby={errors["adresse"] ? "adresse-error" : undefined} autoComplete="address-level2" maxLength={200} placeholder="Ex. Balma ou 31130" className="rounded-none border-0 border-b border-border bg-transparent px-0 py-2 text-sm shadow-none focus-visible:ring-0 focus-visible:border-primary transition-colors" />
+              {errors["adresse"] && <p id="adresse-error" className="text-xs text-destructive">{errors["adresse"]}</p>}
+            </div>
+            <div className="grid gap-1">
+              <Label htmlFor="surface" className="text-sm text-muted-foreground font-normal">Surface ou quantité approximative (facultatif)</Label>
+              <Input id="surface" name="surface" aria-invalid={!!errors["surface"]} aria-describedby={errors["surface"] ? "surface-error" : undefined} maxLength={100} placeholder={selectedService === QUOTE_SERVICES.vitres ? "Ex. 6 fenêtres et 2 baies" : "Ex. 52 m²"} className="rounded-none border-0 border-b border-border bg-transparent px-0 py-2 text-sm shadow-none focus-visible:ring-0 focus-visible:border-primary transition-colors" />
+              {errors["surface"] && <p id="surface-error" className="text-xs text-destructive">{errors["surface"]}</p>}
+            </div>
+            <div className="grid gap-1">
+              <Label htmlFor="dateSouhaitee" className="text-sm text-muted-foreground font-normal">Date souhaitée (facultatif)</Label>
+              <Input id="dateSouhaitee" name="dateSouhaitee" aria-invalid={!!errors["dateSouhaitee"]} aria-describedby={errors["dateSouhaitee"] ? "dateSouhaitee-error" : undefined} maxLength={100} placeholder="Ex. avant mon état des lieux de vendredi" className="rounded-none border-0 border-b border-border bg-transparent px-0 py-2 text-sm shadow-none focus-visible:ring-0 focus-visible:border-primary transition-colors" />
+              {errors["dateSouhaitee"] && <p id="dateSouhaitee-error" className="text-xs text-destructive">{errors["dateSouhaitee"]}</p>}
+            </div>
           </div>
+
+          {/* Nom + Téléphone side by side */}
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div className="grid gap-1">
+              <Label htmlFor="nom" className="text-sm text-muted-foreground font-normal">Nom complet</Label>
+              <Input id="nom" name="nom" required aria-invalid={!!errors["nom"]} aria-describedby={errors["nom"] ? "nom-error" : undefined} autoComplete="name" maxLength={100} placeholder="" className="rounded-none border-0 border-b border-border bg-transparent px-0 py-2 text-sm shadow-none focus-visible:ring-0 focus-visible:border-primary transition-colors" />
+              {errors["nom"] && <p id="nom-error" className="text-xs text-destructive">{errors["nom"]}</p>}
+            </div>
+            <div className="grid gap-1">
+              <Label htmlFor="telephone" className="text-sm text-muted-foreground font-normal">Téléphone (facultatif)</Label>
+              <Input id="telephone" name="telephone" aria-invalid={!!errors["telephone"]} aria-describedby={errors["telephone"] ? "telephone-error" : undefined} type="tel" autoComplete="tel" maxLength={20} placeholder="" className="rounded-none border-0 border-b border-border bg-transparent px-0 py-2 text-sm shadow-none focus-visible:ring-0 focus-visible:border-primary transition-colors" />
+              {errors["telephone"] && <p id="telephone-error" className="text-xs text-destructive">{errors["telephone"]}</p>}
+            </div>
+          </div>
+
+          {/* Email */}
+          <div className="grid gap-1">
+            <Label htmlFor="email" className="text-sm text-muted-foreground font-normal">E-mail pour recevoir le devis</Label>
+            <Input id="email" name="email" required aria-invalid={!!errors["email"]} aria-describedby={errors["email"] ? "email-error" : undefined} type="email" autoComplete="email" maxLength={255} placeholder="" className="rounded-none border-0 border-b border-border bg-transparent px-0 py-2 text-sm shadow-none focus-visible:ring-0 focus-visible:border-primary transition-colors" />
+            {errors["email"] && <p id="email-error" className="text-xs text-destructive">{errors["email"]}</p>}
+          </div>
+
+          <details className="rounded-xl border border-border bg-card px-4">
+            <summary className="cursor-pointer py-3 font-semibold">Ajouter des photos ou des précisions <span className="font-normal text-muted-foreground">(facultatif)</span></summary>
+            <div className="space-y-4 pb-4">
+              <div className="grid gap-1">
+                <Label htmlFor="acces" className="text-sm text-muted-foreground font-normal">Précisions sur l’accès</Label>
+                <Input id="acces" name="acces" aria-invalid={!!errors["acces"]} aria-describedby={errors["acces"] ? "acces-error" : undefined} maxLength={300} placeholder="Ex. étage, ascenseur, accès à l’eau ou au stationnement" className="rounded-none border-0 border-b border-border bg-transparent px-0 py-2 text-sm shadow-none focus-visible:ring-0 focus-visible:border-primary transition-colors" />
+                {errors["acces"] && <p id="acces-error" className="text-xs text-destructive">{errors["acces"]}</p>}
+              </div>
+
+              <div className="grid gap-2 rounded-xl border border-dashed border-border bg-secondary/20 p-4">
+                <Label htmlFor="photos" className="flex items-center gap-2 text-sm font-semibold"><Camera className="size-4 text-primary" />Photos de l'état actuel</Label>
+                <Input id="photos" name="photos" type="file" accept="image/jpeg,image/png,image/webp" multiple disabled={isSubmitting} aria-invalid={!!errors["photos"]} aria-describedby={errors["photos"] ? "photos-help photos-error" : "photos-help"} onChange={(event) => {
+                  const files = Array.from(event.target.files ?? []);
+                  setPhotoCount(files.length);
+                  const error = validateQuotePhotos(files);
+                  setErrors(previous => ({ ...previous, photos: error ?? "" }));
+                }} className="cursor-pointer scroll-mt-40 lg:scroll-mt-52" />
+                <p id="photos-help" className="text-xs text-muted-foreground">Jusqu’à 10 photos facultatives (JPG, PNG ou WebP, 20 Mo par photo).</p>
+                <p className="text-xs text-muted-foreground" aria-live="polite">{photoCount > 0 ? `${photoCount} photo${photoCount > 1 ? "s" : ""} sélectionnée${photoCount > 1 ? "s" : ""} / 10` : ""}</p>
+                {photoCount > 0 && <button type="button" disabled={isSubmitting} className="w-fit text-sm font-medium text-primary underline" onClick={() => {
+                  const input = formRef.current?.querySelector<HTMLInputElement>("#photos");
+                  if (input) input.value = "";
+                  setPhotoCount(0);
+                  setErrors(previous => ({ ...previous, photos: "" }));
+                }}>Retirer les photos</button>}
+                {errors["photos"] && <p id="photos-error" className="text-xs text-destructive">{errors["photos"]}</p>}
+              </div>
+
+              {/* Message */}
+              <div className="grid gap-1">
+                <Label htmlFor="message" className="text-sm text-muted-foreground font-normal">Détails de votre demande</Label>
+                <Textarea
+                  id="message"
+                  name="message" aria-invalid={!!errors["message"]} aria-describedby={errors["message"] ? "message-error" : undefined}
+                  rows={4}
+                  maxLength={1000}
+                  placeholder=""
+                  className="rounded-none border-0 border-b border-border bg-transparent px-0 py-2 text-sm shadow-none focus-visible:ring-0 focus-visible:border-primary resize-none transition-colors"
+                />
+                {errors["message"] && <p id="message-error" className="text-xs text-destructive">{errors["message"]}</p>}
+              </div>
+
+            </div>
+          </details>
+          {sendError && <p role="alert" className="rounded-xl border border-destructive/30 p-3 text-sm">{sendError} Vos informations sont conservées. <a className="font-semibold underline" href={COMPANY.phoneHref}>Appeler le {COMPANY.phone}</a></p>}
 
           {/* Submit */}
           <div className="pt-2">

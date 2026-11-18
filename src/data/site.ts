@@ -103,7 +103,7 @@ export const SERVICES: Service[] = [
     h1: "Nettoyage canapé à Toulouse",
     short: "Nettoyage canapés, fauteuils et chaises Toulouse",
     subtitle:
-      "Nettoyage en profondeur de vos canapés, fauteuils et chaises à domicile. À Toulouse et dans toute l'agglomération.",
+      "Canapé en tissu, fauteuil ou chaises rembourrées : choisissez vos assises et regroupez-les dans une seule réservation à domicile.",
     metaTitle: "Nettoyage canapé à domicile Toulouse dès 79 € | Clean&Fresh",
     metaDescription: "Nettoyage de canapé à domicile à Toulouse : 2/3 places 79 €, angle ou U 99 €. Taches, assises et coussins compatibles. Créneaux et réservation en ligne.",
     group: "textile",
@@ -193,7 +193,7 @@ export const SERVICES: Service[] = [
     h1: "Nettoyage matelas à Toulouse",
     short: "Nettoyage matelas Toulouse",
     subtitle:
-      "Nettoyage en profondeur du matelas par injection-extraction, avec les deux faces toujours incluses. Options anti-acariens, anti-odeur et traitement enzymatique.",
+      "Matelas enfant (moins de 90 cm de large), une place ou deux places : choisissez le format de votre couchage. Le nettoyage des deux faces est inclus.",
     metaTitle: "Nettoyage matelas Toulouse : 2 faces dès 49 € | Clean&Fresh",
     metaDescription: "Nettoyage de matelas à Toulouse : enfant 49 €, 1 place 69 €, 2 places 99 €. Deux faces incluses, options selon les taches et réservation à domicile.",
     group: "textile",
@@ -352,8 +352,8 @@ export const SERVICES: Service[] = [
     h1: "Nettoyage de voiture à Toulouse – intérieur à domicile",
     short: "Nettoyage auto Toulouse",
     subtitle:
-      "Nettoyage complet de l'habitacle de votre véhicule, chez vous ou sur votre lieu de travail, à Toulouse et son agglomération.",
-    metaTitle: "Nettoyage de voiture à Toulouse dès 69 € | Clean&Fresh",
+      "Nous nettoyons l’intérieur de votre voiture à domicile ou sur votre lieu de travail. Prévoyez un accès à l’eau et une prise électrique à moins de 60 mètres.",
+    metaTitle: "Nettoyage intérieur de voiture à domicile à Toulouse dès 69 €",
     metaDescription: "Faites nettoyer l’intérieur de votre voiture à domicile à Toulouse. Comparez les trois packs de 69 à 129 €, de 1 h à 2 h, et réservez votre créneau en ligne.",
     group: "textile",
     booking: true,
@@ -461,7 +461,7 @@ export const SERVICES: Service[] = [
       "Traces de doigts sur les vitrines",
       "Résidus de travaux",
     ],
-    priceNote: "Sur devis selon les vitrages, les faces à nettoyer, l'accès et la fréquence. Périmètre confirmé avant intervention.",
+    priceNote: "Indiquez le nombre de fenêtres, baies ou vitrines, les faces à nettoyer et l’accès extérieur. Précisez si vous souhaitez aussi les rails et les encadrements.",
     method: [
       "Repérage des vitrages, de la hauteur et des faces accessibles.",
       "Lavage avec du matériel adapté à la nature et à l'état du verre.",
@@ -527,7 +527,7 @@ export const SERVICES: Service[] = [
       "Traces de terre et de végétaux",
       "Salissures incrustées dans les joints",
     ],
-    priceNote: "Sur devis selon la surface et l'état du support — réponse gratuite sous 24h.",
+    priceNote: "Pour chiffrer votre terrasse, indiquez sa surface approximative, son revêtement (bois, pierre ou carrelage) et l’accès à un point d’eau.",
     method: [
       "Diagnostic du revêtement, des joints, des accès et de l'évacuation des eaux.",
       "Protection des abords et préparation des zones à nettoyer.",
@@ -591,7 +591,7 @@ export const SERVICES: Service[] = [
       "Feuilles et débris dans les zones convenues",
       "Besoin d'entretien d'une petite couverture"
     ],
-    priceNote: "Sur devis après contrôle de la hauteur, des accès et du support. Interventions limitées à 3 mètres maximum.",
+    priceNote: "Précisez la hauteur, le matériau de couverture et l’accès depuis le sol. Une photo d’ensemble aide à vérifier si la petite toiture est accessible dans notre limite de 3 mètres.",
     method: [
       "Vérification de la hauteur (3 m maximum), des accès et de l'état de la couverture.",
       "Protection des abords et choix d'une méthode compatible.",
@@ -655,7 +655,7 @@ export const SERVICES: Service[] = [
       "Coulures et traces de pluie",
       "Encrassement de murs de clôture et piliers"
     ],
-    priceNote: "Sur devis selon la surface, l'accès et le support. Hauteur d'intervention limitée à 3 mètres maximum.",
+    priceNote: "Indiquez la hauteur du mur (jusqu’à 3 mètres), sa longueur approximative et son revêtement. Une photo permet de repérer crépi fragile, traces ou dépôts verts.",
     method: [
       "Contrôle du support, des accès et de la hauteur, puis test sur une zone discrète.",
       "Protection des menuiseries, plantations et abords concernés.",
@@ -693,9 +693,9 @@ export const SERVICES: Service[] = [
     h1: "Nettoyage d'appartement ou de maison à Toulouse",
     short: "Nettoyage Appartement / maison Toulouse",
     subtitle:
-      "Grand ménage ponctuel ou entretien régulier de votre logement, à Toulouse et dans toute l'agglomération.",
+      "Pour un grand ménage ponctuel ou un entretien régulier à Toulouse, indiquez la surface de votre logement et les pièces à traiter en priorité.",
     metaTitle: "Grand nettoyage appartement et maison Toulouse | Clean&Fresh",
-    metaDescription: "Grand ménage et nettoyage d’appartement ou maison à Toulouse. Cuisine, sanitaires, sols et vitres selon devis. Photos, surface et date pour un chiffrage précis.",
+    metaDescription: "Grand ménage à Toulouse avant emménagement ou dans un logement occupé. Cuisine, sanitaires, sols et vitres selon vos priorités. Devis gratuit sous 24 h.",
     group: "batiment",
     detailTitle: "Un grand ménage défini pièce par pièce",
     methodTitle: "Notre organisation du nettoyage de logement",
@@ -790,7 +790,7 @@ export const SERVICES: Service[] = [
       "Résidus de colle et d'adhésif",
       "Étiquettes et films de protection",
     ],
-    priceNote: "Sur devis selon la surface, les résidus à traiter et les accès. Date d'intervention confirmée selon les disponibilités.",
+    priceNote: "Indiquez la surface rénovée, la date de fin des travaux et les résidus visibles (poussière, peinture ou colle). Nous préciserons les surfaces et finitions comprises.",
     method: [
       "Repérage des surfaces, des résidus et du périmètre après la fin des travaux.",
       "Aspiration et dépoussiérage des zones accessibles, du haut vers le bas.",
@@ -973,7 +973,7 @@ export const SERVICES: Service[] = [
     h1: "Nettoyage extrême à Toulouse",
     short: "Nettoyage extrême Toulouse",
     subtitle:
-      "Intervention lourde sur logement très dégradé, insalubre ou encombré, à Toulouse et alentours.",
+      "Remise en état de pièces très encrassées à Toulouse : indiquez celles qui restent accessibles et les surfaces à nettoyer pour obtenir un devis adapté.",
     metaTitle: "Nettoyage logement insalubre Toulouse | Clean&Fresh",
     metaDescription: "Nettoyage extrême d’appartement très sale ou de logement insalubre à Toulouse. Débarras, surfaces et traitements selon diagnostic. Devis discret sur photos.",
     group: "batiment",
@@ -1001,7 +1001,7 @@ export const SERVICES: Service[] = [
       "Odeurs persistantes selon leur origine",
       "Logement à remettre au propre avant travaux ou réutilisation"
     ],
-    priceNote: "Sur devis après évaluation confidentielle — intervention rapide et discrète.",
+    priceNote: "Le devis dépend des pièces à remettre en état et de leur accessibilité. Indiquez les zones très encrassées, la surface et les éventuels objets à évacuer.",
     method: [
       "Évaluation confidentielle des accès, supports et besoins particuliers.",
       "Tri et évacuation des éléments convenus avec la personne responsable.",
@@ -1044,9 +1044,9 @@ export const SERVICES: Service[] = [
     h1: "Nettoyage moquette à Toulouse",
     short: "Nettoyage moquette Toulouse",
     subtitle:
-      "Shampouinage et nettoyage en profondeur de moquettes et sols textiles à domicile à Toulouse et dans toute la Haute-Garonne.",
+      "Moquette posée dans une chambre, un salon ou un bureau : mesurez la surface accessible à nettoyer pour choisir votre formule.",
     metaTitle: "Nettoyage moquette Toulouse : domicile et bureaux | Clean&Fresh",
-    metaDescription: "Nettoyage de moquette à Toulouse dès 99 € : pièces, bureaux et sols textiles compatibles. Formule selon la surface, détachage et conseils de séchage.",
+    metaDescription: "Nettoyage de moquette à Toulouse pour salon, chambre ou bureau. Moins de 12 m² : 99 €. Comparez les trois surfaces et réservez votre intervention à domicile.",
     group: "textile",
     booking: true,
     detailTitle: "Le nettoyage de vos sols en moquette",

@@ -33,10 +33,21 @@ export const SERVICE_ESSENTIALS: Record<string, {
 };
 
 const HERO_FORMULAS: Record<string, string[]> = {
+  canape: ["canape-2", "canape-angle", "fauteuil"],
+  auto: ["bronze", "argent", "or"],
   matelas: ["matelas-enfant", "matelas-1", "matelas-2"],
   tapis: ["tapis-1", "tapis-2", "tapis-3"],
   moquette: ["moquette-petite", "moquette-standard", "moquette-grande"],
   cuir: ["cuir-fauteuil", "cuir-canape-2", "cuir-canape-angle"],
+};
+
+const HERO_LABELS: Record<string, string> = {
+  bronze: "Bronze · Aspiration et plastiques",
+  argent: "Argent · Bronze + sièges et vitres",
+  or: "Or · Argent + moquettes et tapis",
+  "moquette-petite": "Moins de 12 m²",
+  "moquette-standard": "De 12 à 20 m²",
+  "moquette-grande": "Plus de 20 m²",
 };
 
 /** Presentation reads the booking catalogue so prices cannot drift between the two. */
@@ -47,7 +58,7 @@ export function serviceHeroPrices(serviceId: string | null) {
   return selectedIds.map(id => catalogue.formules.find(formule => formule.id === id))
     .filter(formule => formule !== undefined)
     .map(formule => ({
-      label: serviceId === "moquette" ? formule.desc?.replace(/^Surface /, "") ?? formule.name : formule.name,
+      label: HERO_LABELS[formule.id] ?? formule.name,
       price: `${formule.price} €`,
     }));
 }

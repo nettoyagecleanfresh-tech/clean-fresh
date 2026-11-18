@@ -120,15 +120,12 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
   others: Service[];
   bookingServiceId: string | null;
 }) {
-  const serviceOptions = serviceDisplayOptions(bookingServiceId) ?? (bookingServiceId ? (OPTIONS_BY_SERVICE[bookingServiceId] ?? []) : []);
+  const catalogueOptions = serviceDisplayOptions(bookingServiceId);
+  const serviceOptions = catalogueOptions ?? (bookingServiceId ? (OPTIONS_BY_SERVICE[bookingServiceId] ?? []) : []);
   const heroPrices = serviceHeroPrices(bookingServiceId);
   const intent = serviceIntent(service.slug);
   const quoteSearch = intent.kind === "quote" ? { service: intent.service } : {};
-  const quickPrices = bookingServiceId === 'canape'
-    ? 'Fauteuil 49 € · Canapé 2/3 places 79 € · Angle / U 99 €'
-    : bookingServiceId === 'auto'
-      ? 'Bronze 69 € · Argent 99 € · Or 129 €'
-      : null;
+
   
   const categoryImages = selectedPhotos(service.slug, bookingServiceId).slice(0, 4);
 
@@ -159,13 +156,13 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
           <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-ink-foreground/75 md:mt-5 md:text-base">
             {service.subtitle}
           </p>
-          {(quickPrices || heroPrices) && <div className="mx-auto mt-5 max-w-2xl rounded-2xl border border-white/20 bg-white/10 px-4 py-4 text-left shadow-sm">
-            {heroPrices ? <dl className="grid grid-cols-1 divide-y divide-white/15 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+          {heroPrices && <div className="mx-auto mt-5 max-w-2xl rounded-2xl border border-white/20 bg-white/10 px-4 py-4 text-left shadow-sm">
+            <dl className="grid grid-cols-1 divide-y divide-white/15 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
               {heroPrices.map(price => <div key={price.label} className="flex items-center justify-between gap-3 py-2 first:pt-0 last:pb-0 sm:flex-col sm:items-start sm:gap-1 sm:px-3 sm:py-0 sm:first:pl-0">
                 <dt className="text-xs leading-5 text-white/80">{price.label}</dt>
                 <dd className="shrink-0 text-xl font-bold text-white">{price.price}</dd>
               </div>)}
-            </dl> : <p className="text-sm font-bold leading-6 text-white">{quickPrices}</p>}
+            </dl>
             <p className="mt-1 text-xs leading-5 text-white/80">Selon la formule et les options choisies. Aucun paiement en ligne : règlement en fin de prestation.</p>
             <p className="mt-3 flex items-center gap-2 text-xs font-semibold text-white"><Star className="size-4 fill-amber-300 text-amber-300" aria-hidden="true" />{GOOGLE_REVIEW_RATING}/5 · {GOOGLE_REVIEW_COUNT} avis Google</p>
           </div>}
@@ -197,6 +194,12 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
               </a>
             </Button>
           </div>
+          {service.slug === "/nettoyage-dappartement-ou-maison" && (
+            <p className="mx-auto mt-4 max-w-xl text-sm leading-6 text-white/85">
+              Vous rendez les clés ? Consultez le <Link to="/nettoyage-fin-de-bail-toulouse" className="font-semibold text-white underline underline-offset-4">nettoyage de fin de bail</Link>.
+              {" "}Le chantier se termine ? Découvrez le <Link to="/nettoyage-de-fin-de-chantier-toulouse" className="font-semibold text-white underline underline-offset-4">nettoyage après travaux</Link>.
+            </p>
+          )}
           <div className="hidden md:flex mt-6 flex-wrap justify-center gap-4 text-xs text-ink-foreground/60">
             <span className="inline-flex items-center gap-1"><Clock className="size-3" /> Devis sous 24h</span>
             <span className="inline-flex items-center gap-1"><Check className="size-3" /> Séchage rapide</span>
@@ -398,6 +401,12 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
                 <div className="mt-4 rounded-2xl border border-border bg-card p-6 shadow-[var(--shadow-soft)]">
                   <p className="text-xl font-bold">Prestation sur devis personnalisé</p>
                   <p className="mt-2 text-muted-foreground">{service.priceNote}</p>
+                  {service.slug === "/nettoyage-fin-de-bail-toulouse" && (
+                    <aside className="mt-4 border-l-2 border-primary pl-4">
+                      <h3 className="font-semibold">Exemple de fin de bail : un duplex de 52 m²</h3>
+                      <p className="mt-1 text-sm leading-relaxed text-muted-foreground">500 € facturés pour cette intervention. Le devis comprenait notamment les sols des deux niveaux, l’escalier, la cuisine hors électroménager, les placards vidés, les sanitaires et la vitrerie. Votre prix dépend des tâches retenues et de l’état du logement.</p>
+                    </aside>
+                  )}
                   <Button asChild size="lg" className="mt-5 w-full bg-primary-gradient text-primary-foreground font-semibold hover:opacity-90">
                     <Link to="/contactez-nous" search={quoteSearch}>Demander mon devis gratuit</Link>
                   </Button>
@@ -410,7 +419,7 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
 
       {/* ── OPTIONS ── */}
       {serviceOptions.length > 0 && (
-        <section className={`bg-secondary/60 py-12 md:py-16 ${heroPrices ? "" : "lg:hidden"}`}>
+        <section className={`bg-secondary/60 py-12 md:py-16 ${catalogueOptions ? "" : "lg:hidden"}`}>
           <div className="mx-auto max-w-6xl px-4">
             <h3 className="text-xl font-bold mb-1">
               Personnalisez votre soin{" "}

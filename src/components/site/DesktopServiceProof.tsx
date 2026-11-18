@@ -1,6 +1,6 @@
 import { responsiveRealisation } from '@/lib/responsiveRealisation';
 import { Link } from '@tanstack/react-router';
-import { ArrowRight, Camera, Images, MapPin, Maximize2, Star } from 'lucide-react';
+import { ArrowRight, Camera, Images, Maximize2, Star } from 'lucide-react';
 import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { realisations, type Realisation } from '@/data/realisations';
 import { ALL_REVIEWS } from '@/data/reviews';
@@ -37,19 +37,25 @@ export function DesktopServiceProof({ slug, bookingServiceId }: { slug: string; 
   if (!photos.length) return null;
   return <section id="resultats" aria-label="Avant / Après de nos interventions" className="border-b border-blue-100 bg-slate-50 py-3 lg:py-4">
       <div className="mx-auto max-w-6xl px-4">
+        {bookingServiceId === 'canape' && (
+          <figure className="mb-3 border-l-2 border-blue-300 pl-3 text-sm text-slate-700">
+            <blockquote>« Canapé, fauteuil, et 6 chaises sont maintenant comme neuves. »</blockquote>
+            <figcaption className="mt-1 text-xs text-slate-600">Marie-Pierre · Avis Google</figcaption>
+          </figure>
+        )}
         <Dialog>
           <DialogTrigger asChild>
             <button type="button" className="group flex w-full flex-wrap items-center gap-3 rounded-2xl lg:flex-nowrap lg:gap-5 border border-blue-100 bg-white px-3 py-3 text-left lg:px-5 transition hover:border-blue-300 hover:shadow-sm focus-visible:outline-2 focus-visible:outline-blue-700">
               <span aria-hidden="true" className="flex shrink-0 -space-x-3">
                 {photos.slice(0, 3).map(photo => <span key={photo.src} className="block h-12 w-10 lg:h-16 lg:w-14 overflow-hidden rounded-lg border-2 border-white bg-slate-100 shadow-sm"><ProofPhoto photo={photo} thumbnail /></span>)}
               </span>
-              <span className="min-w-0 flex-1"><span className="block text-sm font-bold lg:text-base text-blue-950">Nos résultats avant / après</span><span className="mt-1 block text-xs lg:text-sm text-slate-600">Photos réelles de nos interventions · cliquez pour découvrir les résultats.</span></span>
-              <span className="inline-flex w-full shrink-0 justify-center items-center gap-2 rounded-xl lg:w-auto bg-blue-950 px-4 py-3 text-sm font-bold text-white group-hover:bg-blue-900"><Images className="size-4" /> Voir les {photos.length} avant / après <ArrowRight className="size-4" /></span>
+              <span className="min-w-0 flex-1"><span className="block text-sm font-bold lg:text-base text-blue-950">Nos résultats avant / après</span><span className="mt-1 block text-xs lg:text-sm text-slate-600">{bookingServiceId === 'tapis' ? 'Découvrez notamment le nettoyage des six tapis du Théâtre du Capitole de Toulouse.' : bookingServiceId === 'moquette' ? 'Une moquette de salon avant et après nettoyage, au pied du canapé.' : 'Découvrez le résultat obtenu sur des interventions réelles.'}</span></span>
+              <span className="inline-flex w-full shrink-0 justify-center items-center gap-2 rounded-xl lg:w-auto bg-blue-950 px-4 py-3 text-sm font-bold text-white group-hover:bg-blue-900"><Images className="size-4" /> {photos.length === 1 ? 'Voir l’avant / après' : `Voir les ${photos.length} avant / après`} <ArrowRight className="size-4" /></span>
             </button>
           </DialogTrigger>
           <DialogContent className="max-h-[90vh] max-w-6xl overflow-y-auto rounded-2xl border-blue-100 bg-white p-4 lg:p-6">
             <DialogTitle className="pr-8 text-2xl font-bold text-blue-950">Nos résultats avant / après</DialogTitle>
-            <DialogDescription>Découvrez les photos de nos interventions à Toulouse. Cliquez sur une réalisation pour l’agrandir.</DialogDescription>
+            <DialogDescription>Découvrez les photos de nos interventions dans l’agglomération toulousaine. Cliquez sur une réalisation pour l’agrandir.</DialogDescription>
         <div className={`gap-5 ${photos.length === 1 ? 'max-w-xl' : photos.length === 4 ? 'columns-1 sm:columns-2' : 'columns-1 sm:columns-2 lg:columns-3'}`}>
           {photos.map((photo, index) => <figure key={photo.src} className="mb-5 break-inside-avoid overflow-hidden rounded-2xl border border-blue-100 bg-white shadow-[0_10px_35px_-18px_rgba(23,37,84,.3)]">
             <Dialog>
@@ -63,7 +69,7 @@ export function DesktopServiceProof({ slug, bookingServiceId }: { slug: string; 
                 <div className="mx-auto w-full max-w-lg"><ProofPhoto photo={photo} enlarged /></div>
               </DialogContent>
             </Dialog>
-            <figcaption className="p-5"><p className="mb-2 flex items-center justify-between text-[10px] font-bold uppercase tracking-widest text-blue-700"><span>Avant / Après</span><span>{String(index + 1).padStart(2, '0')}</span></p><h3 className="text-base font-bold leading-6 text-slate-900">{photo.title}</h3><p className="mt-2 text-sm leading-6 text-slate-600">{photo.description}</p><span className="mt-3 flex items-center gap-1 text-xs text-slate-500"><MapPin className="size-3" /> Intervention à Toulouse</span></figcaption>
+            <figcaption className="p-5"><p className="mb-2 flex items-center justify-between text-[10px] font-bold uppercase tracking-widest text-blue-700"><span>Avant / Après</span><span>{String(index + 1).padStart(2, '0')}</span></p><h3 className="text-base font-bold leading-6 text-slate-900">{photo.title}</h3><p className="mt-2 text-sm leading-6 text-slate-600">{photo.description}</p></figcaption>
           </figure>)}
         </div>
         <p className="mt-3 text-xs text-slate-500">Le résultat dépend de la matière, de l’état initial et de l’ancienneté des taches. Ces photos présentent des résultats déjà obtenus.</p>

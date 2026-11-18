@@ -48,7 +48,7 @@ const BOOKABLE_SERVICES = [
     path: "/nettoyage-moquette-toulouse",
     id: "moquette",
     detail:
-      "Choisissez la surface et indiquez les zones accessibles ainsi que les meubles restant en place.",
+      "La moquette se réserve en ligne selon la surface de la pièce. Dégagez les zones à traiter avant le passage.",
   },
   {
     title: "Cuir",
@@ -159,9 +159,27 @@ export function LocalCityPage({ commune }: Props) {
           aria-labelledby="local-preparation"
         >
           <h2 id="local-preparation" className="text-2xl font-bold">
-            Préparer votre intervention à {name}
+            {slug === "nettoyage-colomiers" ? "Nettoyage de vitres à Colomiers" : `Préparer votre intervention à ${name}`}
           </h2>
           <p className="mt-4 text-sm leading-7 text-muted-foreground md:text-base">{para2}</p>
+          {slug === "nettoyage-colomiers" && (
+            <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-1">
+              <Button asChild>
+                <Link to="/contactez-nous" search={{ service: "vitres" }} data-conversion-location="local_glass_quote">
+                  Demander un devis vitres
+                </Link>
+              </Button>
+              <Link to="/nettoyage-de-vitres-toulouse" className="inline-flex min-h-11 items-center text-sm font-semibold text-primary underline underline-offset-4">
+                Voir le détail du nettoyage de vitres
+              </Link>
+            </div>
+          )}
+          {slug === "nettoyage-tournefeuille" && (
+            <p className="mt-3 flex flex-wrap gap-x-5 text-sm font-semibold text-primary">
+              <Link to="/nettoyage-tapis-toulouse" className="inline-flex min-h-11 items-center underline underline-offset-4">Tarifs par nombre de tapis</Link>
+              <Link to="/nettoyage-moquette-toulouse" className="inline-flex min-h-11 items-center underline underline-offset-4">Tarifs par surface de moquette</Link>
+            </p>
+          )}
           <div className="mt-5 rounded-2xl border border-primary/15 bg-primary/5 p-5">
             <p className="font-semibold">Adresse, accès et déplacement</p>
             <p className="mt-2 text-sm leading-6 text-muted-foreground">
@@ -269,7 +287,7 @@ export function LocalCityPage({ commune }: Props) {
         <div className="mt-9 rounded-2xl border border-border bg-muted/30 p-5 md:p-6">
           <h3 className="text-xl font-bold">Logement, travaux, vitres et extérieurs : sur devis</h3>
           <p className="mt-3 text-sm leading-7 text-muted-foreground">
-            Indiquez la surface, l’état actuel et la date souhaitée, avec quelques photos. Le devis
+            Indiquez la surface approximative, l’état actuel et la date souhaitée. Vous pouvez joindre des photos. Le devis
             précise les surfaces et équipements retenus. Murs, plafonds, textiles et accès en
             hauteur sont à signaler séparément pour vérifier la compatibilité et la faisabilité.
           </p>
@@ -288,7 +306,7 @@ export function LocalCityPage({ commune }: Props) {
           </ul>
           <Button asChild className="mt-5">
             <Link to="/contactez-nous" data-conversion-location="local_quote">
-              Demander mon devis sur photos
+              Demander mon devis gratuit
             </Link>
           </Button>
         </div>
@@ -362,7 +380,7 @@ export function LocalCityPage({ commune }: Props) {
             {
               title: "Décrivez votre besoin",
               detail:
-                "Sélectionnez les éléments à nettoyer ou envoyez une demande de devis avec des photos pour un logement, des travaux ou une surface particulière.",
+                "Sélectionnez les éléments à nettoyer ou envoyez une demande de devis pour un logement, des travaux ou une surface particulière. Les photos sont facultatives.",
             },
             {
               title: "Vérifiez le prix et le créneau",

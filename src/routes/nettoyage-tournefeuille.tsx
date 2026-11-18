@@ -6,8 +6,8 @@ import { LocalCityPage } from "@/components/site/LocalCityPage";
 
 const CITY = "Tournefeuille";
 const SLUG = "/nettoyage-tournefeuille";
-const TITLE = `Nettoyage à domicile à ${CITY} | Clean&Fresh`;
-const DESC = getCommuneData(SLUG.slice(1))!.para1;
+const TITLE = "Nettoyage à Tournefeuille : canapé, tapis et moquette | Clean&Fresh";
+const DESC = "Nettoyage de canapé, tapis et moquette à domicile à Tournefeuille. Choisissez votre formule en ligne ou demandez un devis pour une remise en état.";
 
 export const Route = createFileRoute("/nettoyage-tournefeuille")({
   head: () => ({

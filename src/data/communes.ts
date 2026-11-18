@@ -46,9 +46,9 @@ export const COMMUNES_DATA: CommuneData[] = [
     postalCode: "31770",
     cityContext: "Intervention à domicile à Colomiers (31770), sur rendez-vous.",
     para1:
-      "À Colomiers, Clean&Fresh se déplace pour nettoyer vos textiles et l’intérieur de votre véhicule. Vous pouvez réunir canapé, matelas et auto dans une même demande.",
+      "À Colomiers, demandez un devis pour vos vitres, baies vitrées ou vitrines. Pour un canapé, une moquette ou un intérieur de voiture, choisissez votre formule en ligne.",
     para2:
-      "Pour une intervention automobile à domicile ou au travail, vérifiez que le véhicule reste accessible pendant tout le rendez-vous et que le stationnement permet d’ouvrir les portes.",
+      "Pour faire nettoyer les fenêtres de votre logement ou la vitrine de votre commerce, indiquez le nombre approximatif de vitrages, les faces à nettoyer et les conditions d’accès. Une photo suffit souvent à illustrer une baie difficile à décrire.",
     faq: [
       {
         q: "Peut-on faire nettoyer sa voiture sur son lieu de travail à Colomiers ?",
@@ -71,9 +71,9 @@ export const COMMUNES_DATA: CommuneData[] = [
     postalCode: "31170",
     cityContext: "Intervention à domicile à Tournefeuille (31170), sur rendez-vous.",
     para1:
-      "À Tournefeuille, faites entretenir canapé, fauteuils, matelas et tapis sans les transporter. La formule se choisit selon le mobilier, sa matière et son état.",
+      "À Tournefeuille, réservez à domicile le nettoyage de votre canapé, de vos tapis ou de votre moquette. Pour un logement à remettre en état, demandez un devis adapté à sa surface.",
     para2:
-      "Pour plusieurs textiles dans une même maison, ajoutez chaque élément à la réservation. Préparez les pièces pour laisser circuler l’air après le nettoyage et attendez le séchage complet avant de réutiliser le mobilier.",
+      "Pour un tapis que vous pouvez déplacer, la formule dépend du nombre de tapis, jusqu’à 4 m² chacun. Pour une moquette posée au sol, mesurez la surface de la pièce. Vous pouvez regrouper plusieurs textiles dans une même réservation et prévoir le temps de séchage avant de remettre le mobilier en place.",
     faq: [
       {
         q: "Peut-on nettoyer un canapé et plusieurs matelas lors du même passage ?",
@@ -696,13 +696,13 @@ export const COMMUNES_DATA: CommuneData[] = [
     postalCode: "31670",
     cityContext: "Intervention à domicile à Labège (31670), sur rendez-vous.",
     para1:
-      "À Labège, Clean&Fresh propose le nettoyage des textiles à domicile et des assises ou moquettes de locaux professionnels sur devis, ainsi que l’intérieur automobile.",
+      "À Labège, réservez le nettoyage de vos textiles, de votre moquette ou de votre intérieur auto. Pour plusieurs bureaux ou une grande surface avec des contraintes d’accès, décrivez votre besoin afin de préparer l’intervention.",
     para2:
       "Pour un bureau, un commerce ou une salle d’attente, indiquez les horaires d’accès, la surface à libérer et la date de réouverture. Cela permet d’intégrer le séchage à l’organisation de l’intervention.",
     faq: [
       {
         q: "Peut-on nettoyer une moquette de bureau sans interrompre toute l’activité ?",
-        a: "Nous étudions les zones, les horaires et les possibilités d’accès avec vous. Un devis précise la surface traitée ; la circulation doit être limitée sur les parties encore humides jusqu’au séchage complet.",
+        a: "Choisissez la formule selon la surface accessible et prévoyez un créneau qui laisse le temps à la moquette de sécher. Si plusieurs pièces doivent rester en service, indiquez-nous vos contraintes pour organiser le passage.",
       },
       {
         q: "Comment connaître le prix du déplacement à Labège ?",

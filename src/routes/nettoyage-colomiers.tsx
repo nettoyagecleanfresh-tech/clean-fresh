@@ -6,8 +6,8 @@ import { LocalCityPage } from "@/components/site/LocalCityPage";
 
 const CITY = "Colomiers";
 const SLUG = "/nettoyage-colomiers";
-const TITLE = `Nettoyage à domicile à ${CITY} | Clean&Fresh`;
-const DESC = getCommuneData(SLUG.slice(1))!.para1;
+const TITLE = "Nettoyage à Colomiers : vitres, textiles et auto | Clean&Fresh";
+const DESC = "Devis pour vos vitres et vitrines à Colomiers. Canapé, matelas, moquette ou intérieur de voiture à domicile : tarifs et réservation en ligne.";
 
 export const Route = createFileRoute("/nettoyage-colomiers")({
   head: () => ({

@@ -1,5 +1,6 @@
 {
   "redirects": [
+    { "source": "/realisations", "destination": "/nos-realisations", "permanent": true },
     {
       "source": "/nettoyage-de-fin-de-chantier",
       "destination": "/nettoyage-de-fin-de-chantier-toulouse",
