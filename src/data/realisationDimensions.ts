@@ -1,5 +1,23 @@
 // Intrinsic sizes reserve space while the existing gallery photos load.
 export const realisationDimensions: Record<string, [number, number]> = {
+  "/images/realisations-20261118/nettoyage-fauteuil-bleu-avant-apres.webp": [1086, 1448],
+  "/images/realisations-20261118/nettoyage-chaise-jaune-avant-apres.webp": [1086, 1448],
+  "/images/realisations-20261118/nettoyage-fauteuil-gris-a-oreilles-avant-apres.webp": [1200, 1040],
+  "/images/realisations-20261118/nettoyage-sieges-en-tissu-clair-avant-apres.webp": [1086, 1448],
+  "/images/realisations-20261118/nettoyage-fauteuil-orange-avant-apres.webp": [1086, 1448],
+  "/images/realisations-20261118/nettoyage-fauteuil-capitonne-moutarde-avant-apres.webp": [1086, 1448],
+  "/images/realisations-20261118/nettoyage-fauteuil-beige-avant-apres.webp": [1086, 1448],
+  "/images/realisations-20261118/nettoyage-fauteuil-arrondi-gris-avant-apres.webp": [1086, 1448],
+  "/images/realisations-20261118/nettoyage-canape-cotele-brun-avant-apres.webp": [1086, 1448],
+  "/images/realisations-20261118/nettoyage-fauteuil-jaune-arrondi-avant-apres.webp": [1086, 1448],
+  "/images/realisations-20261118/nettoyage-fauteuil-capitonne-bleu-avant-apres.webp": [1086, 1448],
+  "/images/realisations-20261118/nettoyage-canape-convertible-gris-avant-apres.webp": [1086, 1448],
+  "/images/realisations-20261118/nettoyage-banquette-arriere-de-voiture-avant-apres.webp": [1086, 1448],
+  "/images/realisations-20261118/nettoyage-canape-dangle-a-coussins-motifs-avant-apres.webp": [1086, 1448],
+  "/images/realisations-20261118/nettoyage-fauteuil-jaune-a-dossier-haut-avant-apres.webp": [1086, 1448],
+  "/images/realisations-20261118/nettoyage-pommeau-de-levier-de-vitesses-avant-apres.webp": [1086, 1448],
+  "/images/realisations-20261118/nettoyage-habitacle-de-mini-avant-apres.webp": [1086, 1448],
+
   "/images/realisations-20261010/nettoyage-habitacle-dacia.png": [
     1154,
     1536

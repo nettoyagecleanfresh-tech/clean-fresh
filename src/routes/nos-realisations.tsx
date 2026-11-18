@@ -55,8 +55,7 @@ function GaleriePage() {
       <h1 className="mt-5 font-display text-4xl font-bold tracking-tight text-slate-900 sm:text-6xl">Nos réalisations à Toulouse<br /><span className="text-blue-900">Nettoyages avant et après</span></h1>
       <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-slate-600">Canapés tachés, matelas auréolés, tapis et intérieurs de voiture : découvrez nos interventions avant et après nettoyage. Chaque photo vous permet de voir le travail réalisé sur le support.</p>
       <div className="mt-7 flex flex-wrap justify-center gap-3">
-        <Link to="/tarifs" resetScroll className="rounded-full bg-blue-950 px-6 py-3 font-bold text-white hover:bg-blue-950">Voir les tarifs et réserver</Link>
-        <Link to="/contactez-nous" resetScroll className="rounded-full border border-blue-900/25 bg-white px-6 py-3 font-semibold text-blue-900 hover:bg-blue-50">Demander un devis</Link>
+        <Link to="/formules" resetScroll className="rounded-full bg-blue-950 px-6 py-3 font-bold text-white hover:bg-blue-950">Réserver en ligne</Link>
       </div>
     </header>
     <section className="mx-auto max-w-6xl px-4" aria-label="Galerie de nos réalisations">
@@ -72,9 +71,10 @@ function GaleriePage() {
           </button>
           <figcaption className="p-5">
             <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-blue-900">{photo.category} · {photo.layout === 'single' ? 'Sur le terrain' : 'Avant / Après'}</p>
-            <p className="mt-2 text-lg font-bold leading-snug text-slate-900">{photo.title}</p>
+            <h2 className="mt-2 text-lg font-bold leading-snug text-slate-900">{photo.title}</h2>
             <p className="mt-2 text-sm leading-relaxed text-slate-600">{photo.description}</p>
             <a href={serviceLink(photo)} className="mt-4 inline-flex min-h-11 items-center gap-1 text-sm font-bold text-blue-900 underline-offset-4 hover:underline">Voir la prestation<ArrowUpRight className="size-4" /></a>
+            <Link to="/formules" resetScroll className="mt-3 flex min-h-11 items-center justify-center rounded-full bg-blue-950 px-5 py-3 text-sm font-bold text-white hover:bg-blue-900">Réserver en ligne<ArrowUpRight className="ml-2 size-4" /></Link>
           </figcaption>
         </figure>)}
       </div>
@@ -105,13 +105,14 @@ function GaleriePage() {
         <details className="rounded-2xl border bg-white p-5"><summary className="cursor-pointer font-semibold">Retrait des poils de chien et de chat dans une voiture</summary><p className="mt-3 text-sm leading-relaxed text-slate-600">Les poils peuvent s’accrocher aux sièges, aux tapis et à la moquette du coffre. Envoyez une vue d’ensemble et une photo rapprochée des zones concernées pour préciser votre demande de nettoyage intérieur.</p></details>
         <details className="rounded-2xl border bg-white p-5"><summary className="cursor-pointer font-semibold">Traitement des odeurs et des taches d’origine organique</summary><p className="mt-3 text-sm leading-relaxed text-slate-600">Indiquez la source de l’odeur si vous la connaissez, le textile concerné et la date de l’incident. Une tache visible et une odeur persistante nécessitent une évaluation différente : nous vous orientons selon votre situation, sans promettre un résultat identique sur tous les supports.</p></details>
       </div>
-      <div className="mt-8 rounded-3xl bg-slate-900 p-7 text-center text-white sm:p-10"><h2 className="text-2xl font-bold">Et si le prochain avant/après était le vôtre ?</h2><p className="mt-3 leading-relaxed text-slate-300">Décrivez votre besoin et ajoutez jusqu’à 10 photos pour nous montrer les zones à nettoyer.</p><Link to="/contactez-nous" resetScroll className="mt-6 inline-flex min-h-12 items-center rounded-full bg-blue-950 px-6 py-3 font-bold text-white hover:bg-blue-950">Demander mon devis gratuit</Link></div>
+      <div className="mt-8 rounded-3xl bg-slate-900 p-7 text-center text-white sm:p-10"><h2 className="text-2xl font-bold">Et si le prochain avant/après était le vôtre ?</h2><p className="mt-3 leading-relaxed text-slate-300">Choisissez vos prestations, consultez les créneaux disponibles et réservez votre nettoyage en ligne.</p><Link to="/formules" resetScroll className="mt-6 inline-flex min-h-12 items-center rounded-full bg-blue-950 px-6 py-3 font-bold text-white hover:bg-blue-950">Réserver en ligne</Link></div>
     </section>
     <Dialog open={selected !== null} onOpenChange={open => { if (!open) setSelected(null); }}>
       {selected && <DialogContent className="max-h-[94dvh] max-w-3xl overflow-y-auto rounded-2xl p-4 pt-10 sm:p-6 sm:pt-10" onCloseAutoFocus={event => { event.preventDefault(); opener.current?.focus({ preventScroll: true }); }} onKeyDown={event => { if (event.key === 'ArrowLeft') { event.preventDefault(); move(-1); } if (event.key === 'ArrowRight') { event.preventDefault(); move(1); } }}>
         <DialogTitle>{selected.title}</DialogTitle>
         <DialogDescription>{selected.description}</DialogDescription>
         <div className="mx-auto w-full max-w-md overflow-hidden rounded-xl"><Photo photo={selected} /></div>
+        <Link to="/formules" resetScroll className="inline-flex min-h-11 items-center justify-center rounded-full bg-blue-950 px-5 py-3 font-bold text-white">Réserver en ligne</Link>
         <div className="flex items-center justify-between gap-3"><button type="button" onClick={() => move(-1)} aria-label="Photo précédente" className="flex min-h-11 items-center rounded-full border px-4"><ChevronLeft className="size-5" />Précédente</button><span className="text-sm text-slate-500">{position + 1} / {photos.length}</span><button type="button" onClick={() => move(1)} aria-label="Photo suivante" className="flex min-h-11 items-center rounded-full border px-4">Suivante<ChevronRight className="size-5" /></button></div>
       </DialogContent>}
     </Dialog>
