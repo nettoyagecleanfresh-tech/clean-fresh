@@ -2,8 +2,9 @@ import { buildLocalBusinessSchema } from "@/lib/businessSchema";
 import { DesktopBookingChoices } from "@/components/site/DesktopBookingChoices";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { BadgeCheck, CalendarCheck, ChevronLeft, ChevronRight, MapPin, Pause, Phone, Play, Quote, Star } from "lucide-react";
-import { COMMUNES, COMPANY, DISPLACEMENT_RULES, GOOGLE_REVIEW_COUNT, GOOGLE_REVIEW_RATING, GOOGLE_REVIEWS_URL, SITE_URL } from "@/data/site";
+import { Armchair, BadgeCheck, BedDouble, CalendarCheck, Car, CheckCircle2, ChevronLeft, ChevronRight, Clock, Images, KeyRound, Layers, MapPin, PackageOpen, Pause, Phone, Play, Quote, Star } from "lucide-react";
+import { COMMUNES, COMPANY, DISPLACEMENT_RULES, GOOGLE_REVIEW_COUNT, GOOGLE_REVIEW_RATING, SITE_URL } from "@/data/site";
+import { Button } from "@/components/ui/button";
 import { realisationDimensions } from "@/data/realisationDimensions";
 
 const TITLE = "Entreprise de nettoyage à Toulouse | Clean&Fresh";
@@ -33,6 +34,15 @@ export const Route = createFileRoute("/")({
   }),
   component: Index,
 });
+
+const QUICK_SERVICES = [
+  { slug: "/nettoyage-canape-toulouse",          line1: "Nettoyage",    line2: "Canapé",             short: "Canapé",    icon: <Armchair className="size-5 md:size-7 stroke-[1.4]" /> },
+  { slug: "/nettoyage-auto-a-domicile-toulouse", line1: "Nettoyage",    line2: "Intérieur Auto",     short: "Auto",      icon: <Car      className="size-5 md:size-7 stroke-[1.4]" /> },
+  { slug: "/nettoyage-matelas-toulouse",         line1: "Nettoyage",    line2: "Matelas",            short: "Matelas",   icon: <BedDouble className="size-5 md:size-7 stroke-[1.4]" /> },
+  { slug: "/nettoyage-tapis-toulouse",           line1: "Nettoyage",    line2: "Tapis",              short: "Tapis",     icon: <Layers  className="size-5 md:size-7 stroke-[1.4]" /> },
+  { slug: "/nettoyage-fin-de-bail-toulouse",     line1: "Nettoyage",    line2: "Fin de bail",        short: "Bail",      icon: <KeyRound className="size-5 md:size-7 stroke-[1.4]" /> },
+  { slug: "/nettoyage-diogene-toulouse",         line1: "Nettoyage",    line2: "Diogène et débarras",  short: "Diogène",   icon: <PackageOpen className="size-5 md:size-7 stroke-[1.4]" /> },
+];
 
 const HERO_DESKTOP_REVIEWS = [
   {
@@ -265,7 +275,7 @@ function DesktopHeroReviews() {
             <Quote className="size-8 fill-sky-100 text-sky-100" aria-hidden="true" />
           </div>
           <p className="mt-3 text-xs font-bold text-sky-800">{review.theme}</p>
-          <blockquote className="mt-3 h-28 overflow-y-auto text-sm font-medium leading-6 text-slate-800">« {review.text} »</blockquote>
+          <blockquote className="mt-3 h-[216px] overflow-y-auto text-sm font-medium leading-6 text-slate-800">« {review.text} »</blockquote>
           <figcaption className="mt-5 flex items-center gap-3 border-t border-slate-100 pt-5">
             <span className="relative flex size-11 shrink-0 items-center justify-center overflow-hidden rounded-full bg-sky-100 font-bold text-sky-800">
               {review.name.charAt(0)}
@@ -310,22 +320,178 @@ function CityLinks({ cities }: { cities: string[] }) {
 function Index() {
   return (
     <div className="pb-16 lg:pb-0">
-      <section className="bg-gradient-to-br from-[#071e32] via-[#083b54] to-[#08617e] text-white">
-        <div className="mx-auto grid max-w-6xl items-center gap-8 px-4 py-6 sm:py-10 lg:grid-cols-[1fr_320px] lg:gap-16">
-          <div>
-            <p className="flex items-center gap-1.5 text-sm font-medium text-sky-100"><MapPin className="size-4" aria-hidden="true" /> À domicile · Toulouse et son agglomération</p>
-            <h1 className="mt-3 max-w-2xl text-3xl font-bold leading-tight tracking-tight sm:text-5xl lg:text-6xl">Entreprise de nettoyage à Toulouse</h1>
-            <p className="mt-3 max-w-xl text-base leading-relaxed text-sky-50 sm:text-lg">Pour un canapé, un tapis ou l’intérieur de votre voiture, choisissez votre tarif et votre créneau. Pour un logement, des vitres ou une remise en état, recevez un devis gratuit sous 24 h.</p>
-            <div className="mt-5 flex flex-wrap gap-2.5">
-              <Link to="/formules" className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-accent-gradient px-4 py-2.5 text-sm font-bold text-accent-foreground"><CalendarCheck className="size-4" aria-hidden="true" /> Réserver · textile et auto</Link>
-              <Link to="/contactez-nous" className="inline-flex min-h-11 items-center rounded-xl bg-white px-4 py-2.5 text-sm font-bold text-sky-950">Devis · logement et bâtiment</Link>
+      <section
+        className="relative isolate flex flex-col overflow-hidden bg-[#082f49] lg:min-h-[60vh]"
+        style={{ backgroundImage: "radial-gradient(ellipse at top right, #087fa2 0%, transparent 60%), linear-gradient(135deg, #071e32, #083b54)" }}
+      >
+        <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(10,15,30,0.60) 0%, rgba(10,15,30,0.65) 60%, rgba(10,15,30,0.85) 100%)" }} />
+
+        <div className="relative flex-1 flex items-center">
+          <div className="mx-auto w-full max-w-6xl px-4 py-4 md:py-8 lg:py-12 flex flex-col lg:flex-row items-center justify-between gap-10">
+            <div className="flex-1 max-w-3xl text-center md:text-left">
+              <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-white backdrop-blur mx-auto md:mx-0 mb-4 md:mb-6">
+                <MapPin className="size-3" /> Toulouse & Haute-Garonne
+              </span>
+
+              <h1 className="mt-3 text-3xl font-bold leading-[1.1] tracking-tight text-white md:mt-6 md:text-5xl lg:text-6xl">
+                Entreprise de nettoyage à Toulouse
+              </h1>
+
+              <p className="mt-3 text-sm text-white/90 leading-relaxed font-medium md:mt-6 md:text-lg">
+                Réservez le nettoyage de vos textiles ou de votre intérieur auto. Pour un logement encombré, des vitres ou une remise en état, demandez un devis personnalisé.
+              </p>
+
+
+              <div className="hidden md:flex mt-6 flex-wrap gap-4 text-sm text-white/90 font-medium">
+                <span className="inline-flex items-center gap-1.5"><CheckCircle2 className="size-4 text-accent" /> Plus de 500 interventions réalisées</span>
+                <span className="inline-flex items-center gap-1.5"><Clock className="size-4 text-accent" /> Devis gratuit sous 24 h</span>
+                <span className="inline-flex items-center gap-1.5"><MapPin className="size-4 text-accent" /> Intervention à domicile</span>
+                <span className="inline-flex items-center gap-1.5"><CalendarCheck className="size-4 text-accent" /> Réservation en ligne</span>
+              </div>
+
+              <div className="relative hidden md:inline-flex mt-6 items-center gap-2 rounded-full bg-accent/20 border border-accent/40 px-4 py-1.5 text-sm font-bold text-accent">
+                <CalendarCheck className="size-4" />
+                Consultez les prochains créneaux disponibles
+                <Link to="/formules" aria-label="Consulter les créneaux disponibles" className="absolute inset-0 hidden rounded-full focus-visible:outline-2 focus-visible:outline-white lg:block" />
+              </div>
+
+              <div className="mt-8 flex flex-wrap justify-center md:justify-start gap-2.5 md:mt-6">
+                <Button
+                  asChild
+                  size="xl"
+                  className="bg-accent-gradient text-accent-foreground font-bold text-xs md:text-sm lg:text-base shadow-[var(--shadow-card)] hover:opacity-90 px-4 md:px-6 h-10 md:h-12"
+                >
+                  <Link to="/formules">
+                    <CalendarCheck className="size-4 md:size-5 mr-1.5 md:mr-2" /> Réserver en ligne
+                  </Link>
+                </Button>
+                <Button
+                  asChild
+                  size="xl"
+                  className="bg-white text-primary font-bold text-xs md:text-sm lg:text-base hover:bg-gray-100 px-4 md:px-6 h-10 md:h-12"
+                >
+                  <Link to="/contactez-nous">Demander un devis</Link>
+                </Button>
+                <Button
+                  asChild
+                  size="xl"
+                  variant="outline"
+                  className="border-white/40 bg-white/10 text-white font-bold text-xs md:text-sm lg:text-base backdrop-blur hover:bg-white/20 hover:border-white/60 px-4 md:px-6 h-10 md:h-12"
+                >
+                  <a href={COMPANY.phoneHref}><Phone className="size-3.5 md:size-4 mr-1.5 md:mr-2" /> Appeler</a>
+                </Button>
+                <Button asChild size="xl" className="lg:hidden bg-blue-950 text-white font-bold text-xs md:text-sm lg:text-base hover:bg-blue-900 border border-blue-300/40 px-4 md:px-6 h-10 md:h-12">
+                  <Link to="/nos-realisations" resetScroll><Images className="size-4 mr-1.5" /> Avant / Après — Voir les résultats</Link>
+                </Button>
+                <div className="hidden w-full items-center gap-2.5 lg:flex">
+                <Button asChild size="xl" className="bg-blue-950 text-white font-bold text-xs xl:text-sm hover:bg-blue-900 border border-blue-300/40 px-3 xl:px-4 h-10 md:h-12">
+                  <Link to="/nos-realisations" resetScroll><Images className="size-4 mr-1.5" /> Avant / Après — Voir les résultats</Link>
+                </Button>
+              <a
+                href="https://www.google.com/search?q=clean+fresh+toulouse+avis"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-12 shrink-0 items-center gap-2 bg-white w-max px-3 py-2 rounded-2xl shadow-xl hover:scale-105 transition-transform duration-300"
+              >
+                <svg className="w-6 h-6 shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                  <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                  <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                  <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                </svg>
+                <div className="flex flex-col text-left">
+                  <div className="flex items-center gap-1.5 leading-none">
+                    <span className="font-bold text-gray-900 text-[13px]">Avis Google</span>
+                  </div>
+                  <div className="flex items-center gap-1.5 mt-1.5 leading-none">
+                    <span className="font-black text-gray-900 text-base tracking-tight">{GOOGLE_REVIEW_RATING}</span>
+                    <div className="flex text-[#FBBC04] gap-0.5">
+                      <Star className="size-3.5 fill-current" />
+                      <Star className="size-3.5 fill-current" />
+                      <Star className="size-3.5 fill-current" />
+                      <Star className="size-3.5 fill-current" />
+                      <Star className="size-3.5 fill-current" />
+                    </div>
+                    <span className="text-xs text-gray-500 font-medium ml-0.5">({GOOGLE_REVIEW_COUNT} avis)</span>
+                  </div>
+                </div>
+              </a>
+                </div>
+              </div>
+
+              {/* Grand badge Google Avis sous les boutons */}
+              <div className="mt-4 flex justify-center md:justify-start lg:hidden">
+                <a
+                  href="https://www.google.com/search?q=clean+fresh+toulouse+avis"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 bg-white w-max px-4 py-2.5 rounded-2xl shadow-xl hover:scale-105 transition-transform duration-300"
+                >
+                  <svg className="w-7 h-7 shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                  </svg>
+                  <div className="flex flex-col text-left">
+                    <div className="flex items-center gap-1.5 leading-none">
+                      <span className="font-bold text-gray-900 text-[13px]">Avis Google</span>
+                    </div>
+                    <div className="flex items-center gap-1.5 mt-1.5 leading-none">
+                      <span className="font-black text-gray-900 text-base tracking-tight">{GOOGLE_REVIEW_RATING}</span>
+                      <div className="flex text-[#FBBC04] gap-0.5">
+                        <Star className="size-3.5 fill-current" />
+                        <Star className="size-3.5 fill-current" />
+                        <Star className="size-3.5 fill-current" />
+                        <Star className="size-3.5 fill-current" />
+                        <Star className="size-3.5 fill-current" />
+                      </div>
+                      <span className="text-xs text-gray-500 font-medium ml-0.5">({GOOGLE_REVIEW_COUNT} avis)</span>
+                    </div>
+                  </div>
+                </a>
+              </div>
             </div>
-            <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-1 text-sm">
-              <a href={GOOGLE_REVIEWS_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 py-1 underline-offset-4 hover:underline"><Star className="size-4 fill-amber-300 text-amber-300" aria-hidden="true" /> {GOOGLE_REVIEW_RATING.toLocaleString("fr-FR")}/5 · {GOOGLE_REVIEW_COUNT} avis Google</a>
-              <a href={COMPANY.phoneHref} className="inline-flex items-center gap-1.5 py-1 underline-offset-4 hover:underline"><Phone className="size-4" aria-hidden="true" /> {COMPANY.phone}</a>
+
+            {/* Avis clients — desktop uniquement, colonne droite */}
+            <div className="flex w-full max-w-[340px] shrink-0 flex-col items-center gap-4 lg:items-stretch">
+
+              <div className="hidden w-full lg:block"><DesktopHeroReviews /></div>
             </div>
           </div>
-          <div className="hidden lg:block"><DesktopHeroReviews /></div>
+        </div>
+
+        {/* ── BARRE SERVICES — fondue dans le hero ── */}
+        <div
+          className="relative"
+          style={{ background: "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.55) 35%, rgba(0,0,0,0.80) 100%)" }}
+        >
+          <div className="mx-auto max-w-6xl grid grid-cols-3 md:grid-cols-6">
+            {QUICK_SERVICES.map((s, i) => (
+              <Link
+                key={s.slug}
+                to={s.slug}
+                className={`group flex flex-col items-center gap-2 pt-6 pb-5 px-1 text-center transition-colors hover:bg-white/8 ${
+                  // Add subtle borders for the grid without breaking wrap
+                  "border-white/10" + (i % 3 !== 2 ? " border-r" : "") + (i > 2 ? " border-t md:border-t-0" : "") + (i % 6 !== 5 ? " md:border-r" : " md:border-r-0")
+                }`}
+              >
+                <span className="text-accent transition-transform group-hover:scale-110 duration-200">{s.icon}</span>
+                <span className="hidden md:inline text-[11px] font-bold uppercase tracking-widest text-white/90 leading-tight">
+                  {s.line1}<br />{s.line2}
+                </span>
+                <span className="inline md:hidden text-[9px] font-bold uppercase tracking-wider text-white/90 leading-tight">
+                  {s.short}
+                </span>
+                <span className="block h-0.5 w-6 rounded-full bg-accent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+              </Link>
+            ))}
+          </div>
+          <div className="text-center pb-6">
+            <Link to="/nos-services" className="text-sm font-semibold uppercase tracking-widest text-accent hover:text-white transition-colors underline">
+              Voir toutes nos prestations
+            </Link>
+          </div>
         </div>
       </section>
 
