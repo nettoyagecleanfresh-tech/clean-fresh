@@ -2,6 +2,7 @@
 export const MAX_QUOTE_PHOTOS = 10;
 const MAX_SOURCE_BYTES = 20 * 1024 * 1024;
 export function validateQuotePhotos(files: File[]): string | null {
+  if (!files.length) return 'Joignez au moins une photo de la zone à nettoyer.';
   if (files.length > MAX_QUOTE_PHOTOS) return 'Vous pouvez joindre 10 photos maximum.';
   if (files.some(file => !['image/jpeg', 'image/png', 'image/webp'].includes(file.type))) return 'Choisissez des photos JPG, PNG ou WebP.';
   if (files.some(file => file.size > MAX_SOURCE_BYTES)) return 'Chaque photo doit peser moins de 20 Mo.';
@@ -40,23 +41,22 @@ export function photoPdf(pages: { bytes: Uint8Array; width: number; height: numb
   return output;
 }
 
-export async function prepareQuotePhotos(files: File[]): Promise<File | null> {
+export async function prepareQuotePhotos(files: File[]): Promise<File> {
   const error = validateQuotePhotos(files);
   if (error) throw new Error(error);
-  if (!files.length) return null;
   const pages: { bytes: Uint8Array; width: number; height: number }[] = [];
   // Decode sequentially to limit memory on mobile. No originals leave the device.
   for (const file of files) {
     let bitmap: ImageBitmap;
     try { bitmap = await createImageBitmap(file); }
-    catch { throw new Error('Une photo est illisible. Choisissez une autre photo ou envoyez votre demande sans photo.'); }
+    catch { throw new Error('Une photo est illisible. Choisissez une autre photo.'); }
     try {
       const ratio = Math.min(1, 1400 / Math.max(bitmap.width, bitmap.height));
       const canvas = document.createElement('canvas');
       canvas.width = Math.max(1, Math.round(bitmap.width * ratio));
       canvas.height = Math.max(1, Math.round(bitmap.height * ratio));
       const ctx = canvas.getContext('2d');
-      if (!ctx) throw new Error('Impossible de préparer les photos sur cet appareil. Vous pouvez envoyer votre demande sans photo.');
+      if (!ctx) throw new Error('Impossible de préparer les photos sur cet appareil. Essayez avec un autre navigateur ou appelez-nous.');
       ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, canvas.width, canvas.height);
       ctx.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
       let jpeg: Blob | null = null;

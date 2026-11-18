@@ -380,7 +380,7 @@ export function LocalCityPage({ commune }: Props) {
             {
               title: "Décrivez votre besoin",
               detail:
-                "Sélectionnez les éléments à nettoyer ou envoyez une demande de devis pour un logement, des travaux ou une surface particulière. Les photos sont facultatives.",
+                "Sélectionnez les éléments à nettoyer ou envoyez une demande de devis pour un logement, des travaux ou une surface particulière. Joignez au moins une photo à votre demande de devis en ligne.",
             },
             {
               title: "Vérifiez le prix et le créneau",

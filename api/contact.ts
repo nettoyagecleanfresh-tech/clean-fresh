@@ -20,21 +20,26 @@ export default async function handler(request: any, response: any) {
     const body = typeof request.body === 'string' ? JSON.parse(request.body) : request.body;
     const parsed = quoteSchema.safeParse(body);
     if (!parsed.success) return response.status(400).json({ success: false, message: 'Informations incomplètes.' });
-    const count = body.photoCount ?? 0;
-    if (!Number.isInteger(count) || count < 0 || count > 10) return response.status(400).json({ success: false });
-    let attachment: Buffer | undefined;
-    if (count > 0) {
-      if (typeof body.pdf !== 'string' || body.pdf.length > 2_800_000 || !/^[A-Za-z0-9+/]+={0,2}$/.test(body.pdf)) return response.status(400).json({ success: false });
-      attachment = Buffer.from(body.pdf, 'base64');
-      if (attachment.length > 2_100_000 || attachment.subarray(0, 8).toString() !== '%PDF-1.4' || !attachment.subarray(-10).toString().includes('%%EOF')) return response.status(400).json({ success: false });
-    } else if (body.pdf) return response.status(400).json({ success: false });
-    const labels: Record<string, string> = { nom: 'Nom', telephone: 'Téléphone', email: 'Email', service: 'Prestation', adresse: 'Commune, code postal ou adresse d’intervention', surface: 'Surface ou dimensions', dateSouhaitee: 'Date souhaitée', acces: 'Accès et besoins techniques', message: 'Message' };
-    const html = `<div style="font-family:Arial,sans-serif;color:#102a43;max-width:650px;margin:auto"><h1>Nouvelle demande de devis</h1>${Object.entries(parsed.data).filter(([, value]) => value !== '').map(([key, value]) => `<p><strong>${labels[key]}</strong><br>${escape(value).replace(/\n/g, '<br>')}</p>`).join('')}<p>${count} photo(s) jointe(s)${count ? ' dans le PDF.' : '.'}</p><hr><p>Clean&Fresh Toulouse</p></div>`;
+    const count = body.photoCount;
+    if (!Number.isInteger(count) || count < 1 || count > 10) {
+      return response.status(400).json({ success: false, message: 'Joignez de 1 à 10 photos de la zone à nettoyer.' });
+    }
+    if (typeof body.pdf !== 'string' || body.pdf.length > 2_800_000 || !/^[A-Za-z0-9+/]+={0,2}$/.test(body.pdf)) {
+      return response.status(400).json({ success: false, message: 'Les photos jointes sont illisibles.' });
+    }
+    const attachment = Buffer.from(body.pdf, 'base64');
+    if (attachment.length > 2_100_000 || attachment.subarray(0, 8).toString() !== '%PDF-1.4' || !attachment.subarray(-10).toString().includes('%%EOF')
+      || !attachment.includes(Buffer.from(`/Type /Pages /Count ${count} /Kids [`)) || !attachment.includes(Buffer.from('/Subtype /Image'))) {
+      return response.status(400).json({ success: false, message: 'Le document reçu ne correspond pas aux photos sélectionnées.' });
+    }
+    const labels: Record<string, string> = { nom: 'Nom', telephone: 'Téléphone', email: 'Email', service: 'Prestation', adresse: 'Adresse complète de l’intervention', surface: 'Surface à nettoyer (m²)', etat: 'État actuel de la zone à nettoyer', dateSouhaitee: 'Date souhaitée', acces: 'Accès et besoins techniques', message: 'Message' };
+    const html = `<div style="font-family:Arial,sans-serif;color:#102a43;max-width:650px;margin:auto"><h1>Nouvelle demande de devis</h1>${Object.entries(parsed.data).filter(([, value]) => value !== '').map(([key, value]) => `<p><strong>${labels[key]}</strong><br>${escape(value).replace(/\n/g, '<br>')}</p>`).join('')}<p>${count} photo(s) jointe(s) dans le PDF.</p><hr><p>Clean&Fresh Toulouse</p></div>`;
     const result = await sendQuoteMail({ to: process.env.VITE_OWNER_EMAIL ?? 'nettoyagecleanfresh@gmail.com', subject: `Demande de devis — ${parsed.data.nom.replace(/[\r\n]/g, ' ')}`, html, clientEmail: parsed.data.email, attachment });
     if (!result.success) return response.status(502).json({ success: false, message: 'Envoi non confirmé. Vos informations sont conservées.' });
     let measurement_id: string | undefined;
     try {
-      measurement_id = typeof body.measurement_id === 'string' && /^[a-zA-Z0-9_-]{5,128}$/.test(body.measurement_id) ? body.measurement_id : randomUUID();
+      const clientId: unknown = body.measurement_id;
+      measurement_id = typeof clientId === 'string' && /^[a-zA-Z0-9_-]{5,128}$/.test(clientId) ? clientId : randomUUID();
       await journalConversion('quote_submitted', measurement_id, body.analytics_test === true);
     } catch { /* Measurement cannot invalidate a quote email already accepted. */ }
     return response.status(200).json({ success: true, measurement_id });

@@ -13,7 +13,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { COMMUNES, COMPANY, SITE_URL } from "@/data/site";
 
 const TITLE = "Contactez Clean&Fresh — Devis gratuit nettoyage Toulouse";
-const DESC = "Demandez un devis nettoyage à Toulouse pour un logement, un débarras Diogène, des vitres ou une fin de bail. Décrivez votre besoin. Les photos sont facultatives.";
+const DESC = "Demandez un devis nettoyage à Toulouse pour un logement, un débarras Diogène, des vitres ou une fin de bail. Indiquez la surface à nettoyer, son état et joignez vos photos.";
 
 const QUOTE_SERVICES: Record<string, string> = { logement: "Nettoyage appartement / maison", diogene: "Nettoyage Diogène / logement insalubre", extreme: "Nettoyage extrême", chantier: "Nettoyage fin de chantier", bail: "Nettoyage fin de bail", vitres: "Nettoyage de vitres", terrasse: "Nettoyage terrasse", toiture: "Nettoyage toiture", facade: "Nettoyage façade" };
 
@@ -22,12 +22,12 @@ export const Route = createFileRoute("/contactez-nous")({
   head: () => ({
     meta: [
       { title: `Contactez Clean&Fresh — Devis gratuit nettoyage Toulouse` },
-      { name: "description", content: `Demandez un devis nettoyage à Toulouse pour un logement, un débarras Diogène, des vitres ou une fin de bail. Décrivez votre besoin. Les photos sont facultatives.` },
+      { name: "description", content: `Demandez un devis nettoyage à Toulouse pour un logement, un débarras Diogène, des vitres ou une fin de bail. Indiquez la surface à nettoyer, son état et joignez vos photos.` },
       { property: "og:title", content: `Contactez Clean&Fresh — Devis gratuit nettoyage Toulouse` },
-      { property: "og:description", content: `Demandez un devis nettoyage à Toulouse pour un logement, un débarras Diogène, des vitres ou une fin de bail. Décrivez votre besoin. Les photos sont facultatives.` },
+      { property: "og:description", content: `Demandez un devis nettoyage à Toulouse pour un logement, un débarras Diogène, des vitres ou une fin de bail. Indiquez la surface à nettoyer, son état et joignez vos photos.` },
       { property: "og:url", content: `https://cleanetfresh.fr/contactez-nous` },
       { name: "twitter:title", content: `Contactez Clean&Fresh — Devis gratuit nettoyage Toulouse` },
-      { name: "twitter:description", content: `Demandez un devis nettoyage à Toulouse pour un logement, un débarras Diogène, des vitres ou une fin de bail. Décrivez votre besoin. Les photos sont facultatives.` },
+      { name: "twitter:description", content: `Demandez un devis nettoyage à Toulouse pour un logement, un débarras Diogène, des vitres ou une fin de bail. Indiquez la surface à nettoyer, son état et joignez vos photos.` },
     ],
     scripts: [{
       type: "application/ld+json",
@@ -80,33 +80,32 @@ function ContactPage() {
     const photos = Array.from(form.querySelector<HTMLInputElement>("#photos")?.files ?? []);
 
     const result = schema.safeParse(data);
-    if (!result.success) {
-      const next: Record<string, string> = {};
-      for (const issue of result.error.issues) next[String(issue.path[0])] = issue.message;
-      setErrors(next);
-      return;
-    }
     const photoError = validateQuotePhotos(photos);
-    if (photoError) {
-      setErrors({ photos: photoError });
+    if (!result.success || photoError) {
+      const next: Record<string, string> = {};
+      if (!result.success) {
+        for (const issue of result.error.issues) next[String(issue.path[0])] = issue.message;
+      }
+      if (photoError) next.photos = photoError;
+      setErrors(next);
       return;
     }
     setErrors({});
     setIsSubmitting(true);
 
     try {
-      let attachment: File | null;
+      let attachment: File;
       try { attachment = await prepareQuotePhotos(photos); }
       catch (error) {
         setErrors({ photos: error instanceof Error ? error.message : "Impossible de préparer les photos. Réessayez avec d’autres images." });
         return;
       }
-      const pdf = attachment ? await new Promise<string>((resolve, reject) => {
+      const pdf = await new Promise<string>((resolve, reject) => {
         const reader = new FileReader();
         reader.onload = () => resolve(String(reader.result).split(',')[1] ?? '');
         reader.onerror = () => reject(new Error('Lecture des photos impossible.'));
         reader.readAsDataURL(attachment);
-      }) : null;
+      });
       // Keep the same measurement ID on retry; it contains no form data.
       try { measurementId.current ??= crypto.randomUUID(); } catch { /* Server supplies the ID if unavailable. */ }
       const response = await fetch('/api/contact', {
@@ -141,20 +140,22 @@ function ContactPage() {
   };
 
   return (
-    <div className="pb-24 lg:pb-0">
-      {/* ── TITLE ── */}
-      <div className="mx-auto max-w-3xl px-4 pt-8 pb-6 md:pt-12 md:pb-8 text-center">
-        <h1 className="text-3xl font-bold leading-tight tracking-tight md:text-5xl">
-          Obtenez votre devis de nettoyage gratuit sous 24 h
-        </h1>
-        <p className="mt-4 text-muted-foreground leading-relaxed max-w-xl mx-auto">
-          Pour un logement, des vitres ou un extérieur à Toulouse et aux alentours, indiquez la prestation et la commune. Nous vous répondons par e-mail.
-        </p>
-      </div>
+    <div className="bg-white pb-24 lg:pb-0">
+      <header
+        className="bg-[#082f49] text-white"
+        style={{ backgroundImage: "linear-gradient(to bottom, rgba(10,15,30,0.60) 0%, rgba(10,15,30,0.65) 60%, rgba(10,15,30,0.85) 100%), radial-gradient(ellipse at top right, #087fa2 0%, transparent 60%), linear-gradient(135deg, #071e32, #083b54)" }}
+      >
+        <div className="mx-auto max-w-3xl px-4 py-7 text-center md:py-10">
+          <h1 className="text-3xl font-bold leading-tight tracking-tight md:text-5xl">
+            Obtenez votre devis de nettoyage gratuit sous 24 h
+          </h1>
+          <p className="mx-auto mt-3 max-w-xl leading-relaxed text-white/90">
+            Pour un logement, des vitres ou un extérieur à Toulouse et aux alentours, indiquez la prestation, l’adresse exacte et la surface à nettoyer.
+          </p>
+        </div>
+      </header>
 
-      {/* ── FORM + SIDEBAR ── */}
-      <section className="mx-auto grid max-w-5xl gap-6 px-4 pb-16 md:grid-cols-[1.4fr_1fr] items-start">
-
+      <section className="mx-auto grid max-w-5xl items-start gap-6 px-4 pb-16 pt-6 md:grid-cols-[1.4fr_1fr] md:pt-8">
         {/* Form card */}
         <form
           ref={formRef}
@@ -200,13 +201,13 @@ function ContactPage() {
 
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="grid gap-1 sm:col-span-2">
-              <Label htmlFor="adresse" className="text-sm text-muted-foreground font-normal">Commune ou code postal</Label>
-              <Input id="adresse" name="adresse" required aria-invalid={!!errors["adresse"]} aria-describedby={errors["adresse"] ? "adresse-error" : undefined} autoComplete="address-level2" maxLength={200} placeholder="Ex. Balma ou 31130" className="rounded-none border-0 border-b border-border bg-transparent px-0 py-2 text-sm shadow-none focus-visible:ring-0 focus-visible:border-primary transition-colors" />
+              <Label htmlFor="adresse" className="text-sm text-muted-foreground font-normal">Adresse exacte du lieu à nettoyer</Label>
+              <Input id="adresse" name="adresse" required aria-invalid={!!errors["adresse"]} aria-describedby={errors["adresse"] ? "adresse-error" : undefined} maxLength={200} placeholder="Ex. 12 rue des Lilas, 31130 Balma" className="rounded-none border-0 border-b border-border bg-transparent px-0 py-2 text-sm shadow-none focus-visible:ring-0 focus-visible:border-primary transition-colors" />
               {errors["adresse"] && <p id="adresse-error" className="text-xs text-destructive">{errors["adresse"]}</p>}
             </div>
             <div className="grid gap-1">
-              <Label htmlFor="surface" className="text-sm text-muted-foreground font-normal">Surface ou quantité approximative (facultatif)</Label>
-              <Input id="surface" name="surface" aria-invalid={!!errors["surface"]} aria-describedby={errors["surface"] ? "surface-error" : undefined} maxLength={100} placeholder={selectedService === QUOTE_SERVICES.vitres ? "Ex. 6 fenêtres et 2 baies" : "Ex. 52 m²"} className="rounded-none border-0 border-b border-border bg-transparent px-0 py-2 text-sm shadow-none focus-visible:ring-0 focus-visible:border-primary transition-colors" />
+              <Label htmlFor="surface" className="text-sm text-muted-foreground font-normal">Surface à nettoyer en m² (obligatoire)</Label>
+              <Input id="surface" name="surface" required inputMode="decimal" aria-invalid={!!errors["surface"]} aria-describedby={errors["surface"] ? "surface-error" : undefined} maxLength={100} placeholder="Ex. 52 ou 52,5" className="rounded-none border-0 border-b border-border bg-transparent px-0 py-2 text-sm shadow-none focus-visible:ring-0 focus-visible:border-primary transition-colors" />
               {errors["surface"] && <p id="surface-error" className="text-xs text-destructive">{errors["surface"]}</p>}
             </div>
             <div className="grid gap-1">
@@ -216,53 +217,58 @@ function ContactPage() {
             </div>
           </div>
 
-          {/* Nom + Téléphone side by side */}
-          <div className="grid gap-4 sm:grid-cols-2">
-            <div className="grid gap-1">
+          <div className="grid gap-1">
+            <Label htmlFor="etat" className="text-sm text-muted-foreground font-normal">
+              {["logement", "bail", "diogene", "extreme"].some(key => QUOTE_SERVICES[key] === selectedService) ? "État actuel du logement" : "État actuel du logement ou de la zone à nettoyer"} (obligatoire)
+            </Label>
+            <Textarea id="etat" name="etat" required rows={2} maxLength={1000} aria-invalid={!!errors["etat"]} aria-describedby={errors["etat"] ? "etat-error" : undefined} placeholder="Ex. logement vide, cuisine grasse, traces de calcaire dans la douche…" className="min-h-16 resize-y" />
+            {errors["etat"] && <p id="etat-error" className="text-xs text-destructive">{errors["etat"]}</p>}
+          </div>
+
+          <div className="grid gap-2 rounded-xl border border-dashed border-border bg-secondary/20 p-4">
+            <Label htmlFor="photos" className="flex items-center gap-2 text-sm font-semibold"><Camera className="size-4 text-primary" />Photos de l’état actuel (obligatoires)</Label>
+            <Input id="photos" name="photos" type="file" required accept="image/jpeg,image/png,image/webp" multiple disabled={isSubmitting} aria-invalid={!!errors["photos"]} aria-describedby={errors["photos"] ? "photos-help photos-error" : "photos-help"} onChange={(event) => {
+              const files = Array.from(event.target.files ?? []);
+              setPhotoCount(files.length);
+              const error = validateQuotePhotos(files);
+              setErrors(previous => ({ ...previous, photos: error ?? "" }));
+            }} className="cursor-pointer scroll-mt-40 lg:scroll-mt-52" />
+            <p id="photos-help" className="text-xs text-muted-foreground">Joignez au moins une photo. Idéalement, ajoutez une vue d’ensemble et une ou deux photos des zones à traiter. Jusqu’à 10 photos, en JPG, PNG ou WebP (20 Mo par photo).</p>
+            <p className="text-xs text-muted-foreground" aria-live="polite">{photoCount > 0 ? `${photoCount} photo${photoCount > 1 ? "s" : ""} sélectionnée${photoCount > 1 ? "s" : ""} / 10` : ""}</p>
+            {photoCount > 0 && <button type="button" disabled={isSubmitting} className="w-fit text-sm font-medium text-primary underline" onClick={() => {
+              const input = formRef.current?.querySelector<HTMLInputElement>("#photos");
+              if (input) input.value = "";
+              setPhotoCount(0);
+              setErrors(previous => ({ ...previous, photos: "" }));
+            }}>Retirer les photos</button>}
+            {errors["photos"] && <p id="photos-error" className="text-xs text-destructive">{errors["photos"]}</p>}
+          </div>
+
+          <div className="grid grid-cols-2 gap-x-4 gap-y-3 sm:grid-cols-3">
+            <div className="col-span-2 grid min-w-0 gap-1 sm:col-span-1">
               <Label htmlFor="nom" className="text-sm text-muted-foreground font-normal">Nom complet</Label>
               <Input id="nom" name="nom" required aria-invalid={!!errors["nom"]} aria-describedby={errors["nom"] ? "nom-error" : undefined} autoComplete="name" maxLength={100} placeholder="" className="rounded-none border-0 border-b border-border bg-transparent px-0 py-2 text-sm shadow-none focus-visible:ring-0 focus-visible:border-primary transition-colors" />
               {errors["nom"] && <p id="nom-error" className="text-xs text-destructive">{errors["nom"]}</p>}
             </div>
-            <div className="grid gap-1">
+            <div className="grid min-w-0 gap-1">
+              <Label htmlFor="email" className="text-sm text-muted-foreground font-normal">E-mail</Label>
+              <Input id="email" name="email" required aria-invalid={!!errors["email"]} aria-describedby={errors["email"] ? "email-error" : undefined} type="email" autoComplete="email" maxLength={255} placeholder="" className="rounded-none border-0 border-b border-border bg-transparent px-0 py-2 text-sm shadow-none focus-visible:ring-0 focus-visible:border-primary transition-colors" />
+              {errors["email"] && <p id="email-error" className="text-xs text-destructive">{errors["email"]}</p>}
+            </div>
+            <div className="grid min-w-0 gap-1">
               <Label htmlFor="telephone" className="text-sm text-muted-foreground font-normal">Téléphone (facultatif)</Label>
               <Input id="telephone" name="telephone" aria-invalid={!!errors["telephone"]} aria-describedby={errors["telephone"] ? "telephone-error" : undefined} type="tel" autoComplete="tel" maxLength={20} placeholder="" className="rounded-none border-0 border-b border-border bg-transparent px-0 py-2 text-sm shadow-none focus-visible:ring-0 focus-visible:border-primary transition-colors" />
               {errors["telephone"] && <p id="telephone-error" className="text-xs text-destructive">{errors["telephone"]}</p>}
             </div>
           </div>
 
-          {/* Email */}
-          <div className="grid gap-1">
-            <Label htmlFor="email" className="text-sm text-muted-foreground font-normal">E-mail pour recevoir le devis</Label>
-            <Input id="email" name="email" required aria-invalid={!!errors["email"]} aria-describedby={errors["email"] ? "email-error" : undefined} type="email" autoComplete="email" maxLength={255} placeholder="" className="rounded-none border-0 border-b border-border bg-transparent px-0 py-2 text-sm shadow-none focus-visible:ring-0 focus-visible:border-primary transition-colors" />
-            {errors["email"] && <p id="email-error" className="text-xs text-destructive">{errors["email"]}</p>}
-          </div>
-
           <details className="rounded-xl border border-border bg-card px-4">
-            <summary className="cursor-pointer py-3 font-semibold">Ajouter des photos ou des précisions <span className="font-normal text-muted-foreground">(facultatif)</span></summary>
+            <summary className="cursor-pointer py-3 font-semibold">Précisions complémentaires <span className="font-normal text-muted-foreground">(facultatif)</span></summary>
             <div className="space-y-4 pb-4">
               <div className="grid gap-1">
                 <Label htmlFor="acces" className="text-sm text-muted-foreground font-normal">Précisions sur l’accès</Label>
                 <Input id="acces" name="acces" aria-invalid={!!errors["acces"]} aria-describedby={errors["acces"] ? "acces-error" : undefined} maxLength={300} placeholder="Ex. étage, ascenseur, accès à l’eau ou au stationnement" className="rounded-none border-0 border-b border-border bg-transparent px-0 py-2 text-sm shadow-none focus-visible:ring-0 focus-visible:border-primary transition-colors" />
                 {errors["acces"] && <p id="acces-error" className="text-xs text-destructive">{errors["acces"]}</p>}
-              </div>
-
-              <div className="grid gap-2 rounded-xl border border-dashed border-border bg-secondary/20 p-4">
-                <Label htmlFor="photos" className="flex items-center gap-2 text-sm font-semibold"><Camera className="size-4 text-primary" />Photos de l'état actuel</Label>
-                <Input id="photos" name="photos" type="file" accept="image/jpeg,image/png,image/webp" multiple disabled={isSubmitting} aria-invalid={!!errors["photos"]} aria-describedby={errors["photos"] ? "photos-help photos-error" : "photos-help"} onChange={(event) => {
-                  const files = Array.from(event.target.files ?? []);
-                  setPhotoCount(files.length);
-                  const error = validateQuotePhotos(files);
-                  setErrors(previous => ({ ...previous, photos: error ?? "" }));
-                }} className="cursor-pointer scroll-mt-40 lg:scroll-mt-52" />
-                <p id="photos-help" className="text-xs text-muted-foreground">Jusqu’à 10 photos facultatives (JPG, PNG ou WebP, 20 Mo par photo).</p>
-                <p className="text-xs text-muted-foreground" aria-live="polite">{photoCount > 0 ? `${photoCount} photo${photoCount > 1 ? "s" : ""} sélectionnée${photoCount > 1 ? "s" : ""} / 10` : ""}</p>
-                {photoCount > 0 && <button type="button" disabled={isSubmitting} className="w-fit text-sm font-medium text-primary underline" onClick={() => {
-                  const input = formRef.current?.querySelector<HTMLInputElement>("#photos");
-                  if (input) input.value = "";
-                  setPhotoCount(0);
-                  setErrors(previous => ({ ...previous, photos: "" }));
-                }}>Retirer les photos</button>}
-                {errors["photos"] && <p id="photos-error" className="text-xs text-destructive">{errors["photos"]}</p>}
               </div>
 
               {/* Message */}
