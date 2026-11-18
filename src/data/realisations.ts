@@ -10,8 +10,8 @@ export const realisations: Realisation[] = [
   {
     "src": "/images/realisations-20261118/nettoyage-chaise-jaune-avant-apres.webp",
     "category": "Canapés",
-    "title": "Nettoyage de chaise jaune — secteur Saint-Orens-de-Gameville",
-    "description": "Montage avant/après du nettoyage : chaise jaune. Clean&Fresh propose cette prestation à domicile dans le secteur de Saint-Orens-de-Gameville et de Toulouse.",
+    "title": "Nettoyage de pouf jaune — secteur Saint-Orens-de-Gameville",
+    "description": "Montage avant/après du nettoyage : pouf jaune. Clean&Fresh propose cette prestation à domicile dans le secteur de Saint-Orens-de-Gameville et de Toulouse.",
     "layout": "branded"
   },
   {
@@ -24,36 +24,36 @@ export const realisations: Realisation[] = [
   {
     "src": "/images/realisations-20261118/nettoyage-sieges-en-tissu-clair-avant-apres.webp",
     "category": "Canapés",
-    "title": "Nettoyage de sièges en tissu clair — secteur Toulouse",
-    "description": "Montage avant/après du nettoyage : sièges en tissu clair. Clean&Fresh propose cette prestation à domicile dans le secteur de Toulouse et de Toulouse.",
+    "title": "Nettoyage de chaises en tissu clair — secteur Toulouse",
+    "description": "Montage avant/après du nettoyage : chaises en tissu clair. Clean&Fresh propose cette prestation à domicile dans le secteur de Toulouse et de Toulouse.",
     "layout": "branded"
   },
   {
     "src": "/images/realisations-20261118/nettoyage-fauteuil-orange-avant-apres.webp",
     "category": "Canapés",
-    "title": "Nettoyage de fauteuil orange — secteur Ramonville-Saint-Agne",
-    "description": "Montage avant/après du nettoyage : fauteuil orange. Clean&Fresh propose cette prestation à domicile dans le secteur de Ramonville-Saint-Agne et de Toulouse.",
+    "title": "Nettoyage de chaise orange — secteur Ramonville-Saint-Agne",
+    "description": "Montage avant/après du nettoyage : chaise orange. Clean&Fresh propose cette prestation à domicile dans le secteur de Ramonville-Saint-Agne et de Toulouse.",
     "layout": "branded"
   },
   {
     "src": "/images/realisations-20261118/nettoyage-fauteuil-capitonne-moutarde-avant-apres.webp",
     "category": "Canapés",
-    "title": "Nettoyage de fauteuil capitonné moutarde — secteur Blagnac",
-    "description": "Montage avant/après du nettoyage : fauteuil capitonné moutarde. Clean&Fresh propose cette prestation à domicile dans le secteur de Blagnac et de Toulouse.",
+    "title": "Nettoyage de chaise capitonnée moutarde — secteur Blagnac",
+    "description": "Montage avant/après du nettoyage : chaise capitonnée moutarde. Clean&Fresh propose cette prestation à domicile dans le secteur de Blagnac et de Toulouse.",
     "layout": "branded"
   },
   {
     "src": "/images/realisations-20261118/nettoyage-fauteuil-beige-avant-apres.webp",
     "category": "Canapés",
-    "title": "Nettoyage de fauteuil beige — secteur Colomiers",
-    "description": "Montage avant/après du nettoyage : fauteuil beige. Clean&Fresh propose cette prestation à domicile dans le secteur de Colomiers et de Toulouse.",
+    "title": "Nettoyage de chaise beige — secteur Colomiers",
+    "description": "Montage avant/après du nettoyage : chaise beige. Clean&Fresh propose cette prestation à domicile dans le secteur de Colomiers et de Toulouse.",
     "layout": "branded"
   },
   {
     "src": "/images/realisations-20261118/nettoyage-fauteuil-arrondi-gris-avant-apres.webp",
     "category": "Canapés",
-    "title": "Nettoyage de fauteuil arrondi gris — secteur Tournefeuille",
-    "description": "Montage avant/après du nettoyage : fauteuil arrondi gris. Clean&Fresh propose cette prestation à domicile dans le secteur de Tournefeuille et de Toulouse.",
+    "title": "Nettoyage de chaise grise à dossier arrondi — secteur Tournefeuille",
+    "description": "Montage avant/après du nettoyage : chaise grise à dossier arrondi. Clean&Fresh propose cette prestation à domicile dans le secteur de Tournefeuille et de Toulouse.",
     "layout": "branded"
   },
   {
@@ -66,15 +66,15 @@ export const realisations: Realisation[] = [
   {
     "src": "/images/realisations-20261118/nettoyage-fauteuil-jaune-arrondi-avant-apres.webp",
     "category": "Canapés",
-    "title": "Nettoyage de fauteuil jaune arrondi — secteur Quint-Fonsegrives",
-    "description": "Montage avant/après du nettoyage : fauteuil jaune arrondi. Clean&Fresh propose cette prestation à domicile dans le secteur de Quint-Fonsegrives et de Toulouse.",
+    "title": "Nettoyage de chaise jaune à dossier arrondi — secteur Quint-Fonsegrives",
+    "description": "Montage avant/après du nettoyage : chaise jaune à dossier arrondi. Clean&Fresh propose cette prestation à domicile dans le secteur de Quint-Fonsegrives et de Toulouse.",
     "layout": "branded"
   },
   {
     "src": "/images/realisations-20261118/nettoyage-fauteuil-capitonne-bleu-avant-apres.webp",
     "category": "Canapés",
-    "title": "Nettoyage de fauteuil capitonné bleu — secteur Saint-Jean",
-    "description": "Montage avant/après du nettoyage : fauteuil capitonné bleu. Clean&Fresh propose cette prestation à domicile dans le secteur de Saint-Jean et de Toulouse.",
+    "title": "Nettoyage de chaise capitonnée bleue — secteur Saint-Jean",
+    "description": "Montage avant/après du nettoyage : chaise capitonnée bleue. Clean&Fresh propose cette prestation à domicile dans le secteur de Saint-Jean et de Toulouse.",
     "layout": "branded"
   },
   {
