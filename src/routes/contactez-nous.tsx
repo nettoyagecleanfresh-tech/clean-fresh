@@ -150,7 +150,7 @@ function ContactPage() {
             Obtenez votre devis de nettoyage gratuit sous 24 h
           </h1>
           <p className="mx-auto mt-3 max-w-xl leading-relaxed text-white/90">
-            Pour un logement, des vitres ou un extérieur à Toulouse et aux alentours, indiquez la prestation, l’adresse exacte et la surface à nettoyer.
+            Pour un logement, des vitres ou un extérieur à Toulouse et aux alentours, indiquez la prestation, l’adresse exacte et la surface ou le nombre d’éléments à nettoyer.
           </p>
         </div>
       </header>
@@ -206,8 +206,8 @@ function ContactPage() {
               {errors["adresse"] && <p id="adresse-error" className="text-xs text-destructive">{errors["adresse"]}</p>}
             </div>
             <div className="grid gap-1">
-              <Label htmlFor="surface" className="text-sm text-muted-foreground font-normal">Surface à nettoyer en m² (obligatoire)</Label>
-              <Input id="surface" name="surface" required inputMode="decimal" aria-invalid={!!errors["surface"]} aria-describedby={errors["surface"] ? "surface-error" : undefined} maxLength={100} placeholder="Ex. 52 ou 52,5" className="rounded-none border-0 border-b border-border bg-transparent px-0 py-2 text-sm shadow-none focus-visible:ring-0 focus-visible:border-primary transition-colors" />
+              <Label htmlFor="surface" className="text-sm text-muted-foreground font-normal">Surface ou quantité à nettoyer (obligatoire)</Label>
+              <Input id="surface" name="surface" required aria-invalid={!!errors["surface"]} aria-describedby={errors["surface"] ? "surface-error" : undefined} maxLength={100} placeholder="Ex. 52 m² ou 12 vitres" className="rounded-none border-0 border-b border-border bg-transparent px-0 py-2 text-sm shadow-none focus-visible:ring-0 focus-visible:border-primary transition-colors" />
               {errors["surface"] && <p id="surface-error" className="text-xs text-destructive">{errors["surface"]}</p>}
             </div>
             <div className="grid gap-1">

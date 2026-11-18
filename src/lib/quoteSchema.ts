@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 const addressHint = "Indiquez la rue ou le lieu-dit, le code postal et la ville (ex. 12 rue des Lilas, 31130 Balma).";
-const areaHint = "Indiquez une surface supérieure à zéro en m² (ex. 52 ou 52,5).";
+const measurementHint = "Indiquez une surface ou une quantité supérieure à zéro, par exemple 52 m² ou 12 vitres.";
 
 function hasFullAddress(value: string): boolean {
   const address = value.replace(/\s+/gu, " ").trim();
@@ -25,13 +25,19 @@ function isPositiveArea(value: string): boolean {
   return Number.isFinite(area) && area > 0;
 }
 
+function isAreaOrQuantity(value: string): boolean {
+  if (isPositiveArea(value)) return true;
+  // A count can include the item and its size, e.g. "2 canapés 3 places".
+  return /^[1-9]\d*\s+(?:[x×]\s+)?\p{L}[\p{L}\p{M}\d\s’',.()&+/-]*$/iu.test(value);
+}
+
 export const quoteSchema = z.object({
   nom: z.string().trim().min(2, "Merci d'indiquer votre nom").max(100),
   telephone: z.string().trim().max(20).refine(value => !value || value.length >= 6, "Numéro invalide").default(""),
   email: z.string().trim().email("Adresse email invalide").max(255),
   service: z.string().min(1, "Veuillez sélectionner un service").max(150),
   adresse: z.string({ required_error: addressHint }).trim().max(200).refine(hasFullAddress, addressHint),
-  surface: z.string({ required_error: areaHint }).trim().max(100).refine(isPositiveArea, areaHint),
+  surface: z.string({ required_error: measurementHint }).trim().max(100).refine(isAreaOrQuantity, measurementHint),
   etat: z.string({ required_error: "Décrivez l’état actuel de la zone à nettoyer." }).trim().min(1, "Décrivez l’état actuel de la zone à nettoyer.").max(1000),
   dateSouhaitee: z.string().trim().max(100).default(""),
   acces: z.string().trim().max(300).default(""),
