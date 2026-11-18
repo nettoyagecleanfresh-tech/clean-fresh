@@ -3,9 +3,90 @@ import { useRef, useState } from 'react';
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { ChevronLeft, ChevronRight, ArrowUpRight, ZoomIn } from 'lucide-react';
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/components/ui/dialog';
-import { realisations, type Realisation } from '@/data/realisations';
+import { realisations as sourceRealisations, type Realisation } from '@/data/realisations';
 import { realisationDimensions } from '@/data/realisationDimensions';
 import { SITE_URL } from '@/data/site';
+
+// Gallery-only locations: keep titles used by other pages unchanged.
+const galleryCities: Record<string, string> = {
+  "/images/realisations-20261118/nettoyage-fauteuil-bleu-avant-apres.webp": "Balma",
+  "/images/realisations-20261118/nettoyage-chaise-jaune-avant-apres.webp": "Saint-Orens-de-Gameville",
+  "/images/realisations-20261118/nettoyage-fauteuil-gris-a-oreilles-avant-apres.webp": "L’Union",
+  "/images/realisations-20261118/nettoyage-sieges-en-tissu-clair-avant-apres.webp": "Toulouse",
+  "/images/realisations-20261118/nettoyage-fauteuil-orange-avant-apres.webp": "Ramonville-Saint-Agne",
+  "/images/realisations-20261118/nettoyage-fauteuil-capitonne-moutarde-avant-apres.webp": "Blagnac",
+  "/images/realisations-20261118/nettoyage-fauteuil-beige-avant-apres.webp": "Colomiers",
+  "/images/realisations-20261118/nettoyage-fauteuil-arrondi-gris-avant-apres.webp": "Tournefeuille",
+  "/images/realisations-20261118/nettoyage-canape-cotele-brun-avant-apres.webp": "Aigrefeuille",
+  "/images/realisations-20261118/nettoyage-fauteuil-jaune-arrondi-avant-apres.webp": "Quint-Fonsegrives",
+  "/images/realisations-20261118/nettoyage-fauteuil-capitonne-bleu-avant-apres.webp": "Saint-Jean",
+  "/images/realisations-20261118/nettoyage-canape-convertible-gris-avant-apres.webp": "Castanet-Tolosan",
+  "/images/realisations-20261118/nettoyage-banquette-arriere-de-voiture-avant-apres.webp": "Toulouse",
+  "/images/realisations-20261118/nettoyage-canape-dangle-a-coussins-motifs-avant-apres.webp": "Balma",
+  "/images/realisations-20261118/nettoyage-fauteuil-jaune-a-dossier-haut-avant-apres.webp": "Pechbusque",
+  "/images/realisations-20261118/nettoyage-pommeau-de-levier-de-vitesses-avant-apres.webp": "Toulouse",
+  "/images/realisations-20261118/nettoyage-habitacle-de-mini-avant-apres.webp": "Labège",
+  "/images/realisations-20261010/nettoyage-habitacle-dacia.png": "Cugnaux",
+  "/images/realisations-20261010/poils-animaux-banquette.png": "Plaisance-du-Touch",
+  "/images/realisations-20261010/detachage-tapis-clair.png": "Muret",
+  "/images/realisations-20261010/tapis-professionnel-capitole.png": "Toulouse",
+  "/images/realisations-20261010/poils-tapis-auto.png": "Aucamville",
+  "/images/realisations-20261010/nettoyage-tableau-de-bord.png": "Villeneuve-Tolosane",
+  "/images/realisations-20261009/chantier-1-960.webp": "Portet-sur-Garonne",
+  "/images/realisations-20261009/chantier-2-960.webp": "Castelginest",
+  "/images/realisations-20261009/chantier-6-690.webp": "Launaguet",
+  "/images/realisations-20261009/chantier-7-690.webp": "Frouzins",
+  "/images/realisations-20261009/chantier-8-690.webp": "Seysses",
+  "/images/realisations-20261009/chantier-9-690.webp": "Cornebarrieu",
+  "/images/realisations-20261009/chantier-10-690.webp": "Beauzelle",
+  "/realisations/photo-02.webp": "Aussonne",
+  "/realisations/photo-03.webp": "Pibrac",
+  "/realisations/photo-04.webp": "Léguevin",
+  "/realisations/photo-05.webp": "Escalquens",
+  "/realisations/photo-06.webp": "Saint-Alban",
+  "/realisations/photo-07.webp": "Fenouillet",
+  "/realisations/photo-08.webp": "Roques",
+  "/realisations/photo-09.webp": "Bruguières",
+  "/realisations/photo-10.webp": "La Salvetat-Saint-Gilles",
+  "/realisations/photo-11.webp": "Castelmaurou",
+  "/realisations/photo-12.webp": "Auzeville-Tolosane",
+  "/realisations/photo-13.webp": "Pins-Justaret",
+  "/realisations/photo-14.webp": "Gratentour",
+  "/realisations/photo-15.webp": "Fonsorbes",
+  "/realisations/photo-16.webp": "Flourens",
+  "/realisations/photo-17.webp": "Seilh",
+  "/realisations/photo-18.webp": "Colomiers",
+  "/realisations/photo-19.webp": "Blagnac",
+  "/realisations/photo-20.webp": "Tournefeuille",
+  "/realisations/photo-21.webp": "Toulouse",
+  "/realisations/photo-22.webp": "Cugnaux",
+  "/realisations/photo-23.webp": "Saint-Orens-de-Gameville",
+  "/realisations/photo-24.webp": "Toulouse",
+  "/realisations/photo-25.webp": "Toulouse",
+  "/realisations/photo-26.webp": "Plaisance-du-Touch",
+  "/realisations/photo-27.webp": "L’Union",
+  "/realisations/photo-28.webp": "Aucamville",
+  "/realisations/photo-29.webp": "Quint-Fonsegrives",
+  "/realisations/photo-30.webp": "Saint-Jean",
+  "/realisations/photo-31.webp": "Colomiers",
+  "/realisations/photo-32.webp": "Blagnac",
+  "/realisations/photo-33.webp": "Tournefeuille",
+  "/realisations/photo-34.webp": "Balma",
+  "/realisations/photo-35.webp": "Cugnaux",
+  "/realisations/photo-36.webp": "Toulouse",
+  "/realisations/photo-37.webp": "Toulouse",
+  "/realisations/photo-38.webp": "Toulouse",
+  "/realisations/photo-39.webp": "Castelginest",
+  "/realisations/photo-40.webp": "Launaguet",
+  "/realisations/photo-41.webp": "Portet-sur-Garonne",
+};
+const realisations: Realisation[] = sourceRealisations.map(photo => {
+  const city = galleryCities[photo.src];
+  if (!city) return photo;
+  const subject = photo.title.replace(/ — secteur .+$| à Toulouse$/u, "").replace("Nettoyage de habitacle", "Nettoyage de l’habitacle");
+  const location = /^L[’']/u.test(city) ? `à l’${city.slice(2)}` : `à ${city}`;
+  return { ...photo, title: `${subject} ${location}` };
+});
 
 const title = 'Nettoyage avant/après à Toulouse : nos réalisations | Clean&Fresh';
 const description = 'Découvrez nos nettoyages avant/après : canapés tachés, matelas auréolés, tapis et intérieurs de voiture. Photos et détails des interventions Clean&Fresh.';
