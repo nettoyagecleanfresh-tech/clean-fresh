@@ -2,10 +2,10 @@ import { conversionMetric, quoteConfirmedMetric } from "@/lib/conversionMetrics"
 import { analyticsTestMode } from "@/lib/analyticsPolicy";
 import { useEffect, useRef, useState } from "react";
 import { prepareQuotePhotos, validateQuotePhotos } from "@/lib/quotePhotos";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Mail, Phone, Clock, MapPin, Camera } from "lucide-react";
 import { quoteSchema as schema } from "@/lib/quoteSchema";
-import { toast } from "sonner";
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -15,7 +15,7 @@ import { COMMUNES, COMPANY, SITE_URL } from "@/data/site";
 const TITLE = "Contactez Clean&Fresh — Devis gratuit nettoyage Toulouse";
 const DESC = "Demandez un devis nettoyage à Toulouse pour un logement, un débarras Diogène, des vitres ou une fin de bail. Indiquez la surface à nettoyer, son état et joignez vos photos.";
 
-const QUOTE_SERVICES: Record<string, string> = { logement: "Nettoyage appartement / maison", diogene: "Nettoyage Diogène / logement insalubre", extreme: "Nettoyage extrême", chantier: "Nettoyage fin de chantier", bail: "Nettoyage fin de bail", vitres: "Nettoyage de vitres", terrasse: "Nettoyage terrasse", toiture: "Nettoyage toiture", facade: "Nettoyage façade" };
+const QUOTE_SERVICES: Record<string, string> = { logement: "Nettoyage appartement / maison", diogene: "Tri, débarras et nettoyage Diogène", extreme: "Nettoyage de logement insalubre", chantier: "Nettoyage fin de chantier", bail: "Nettoyage fin de bail", vitres: "Nettoyage de vitres", terrasse: "Nettoyage terrasse", toiture: "Nettoyage toiture", facade: "Nettoyage façade" };
 
 export const Route = createFileRoute("/contactez-nous")({
   validateSearch: (search: Record<string, unknown>): { service?: string } => ({ service: typeof search.service === "string" && Object.hasOwn(QUOTE_SERVICES, search.service) ? search.service : undefined }),
@@ -42,19 +42,23 @@ export const Route = createFileRoute("/contactez-nous")({
   component: ContactPage,
 });
 
-const QUICK_SERVICES = [
-  "Nettoyage canapé", "Nettoyage matelas", "Nettoyage tapis",
-  "Nettoyage moquette", "Nettoyage cuir", "Nettoyage auto (intérieur)",
-];
-const SERVICES_LIST = [...Object.values(QUOTE_SERVICES), "Autre", ...QUICK_SERVICES];
+const QUICK_SERVICES: Record<string, string> = {
+  "Nettoyage canapé": "canape", "Nettoyage matelas": "matelas", "Nettoyage tapis": "tapis",
+  "Nettoyage moquette": "moquette", "Nettoyage cuir": "cuir", "Nettoyage auto (intérieur)": "auto",
+};
+const SERVICES_LIST = [...Object.values(QUOTE_SERVICES), "Autre", ...Object.keys(QUICK_SERVICES)];
 
 function ContactPage() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const { service: requestedService } = Route.useSearch();
   const [selectedService, setSelectedService] = useState(QUOTE_SERVICES[requestedService ?? ""] ?? "");
+  const [sent, setSent] = useState(false);
+  const quoteCategory = Object.keys(QUOTE_SERVICES).find(key => QUOTE_SERVICES[key] === selectedService);
+  const needsDiscretion = quoteCategory === "diogene" || quoteCategory === "extreme";
+  const metricCategory = needsDiscretion ? "remise_en_etat" : quoteCategory ?? (QUICK_SERVICES[selectedService] ? "textile_auto" : "autre");
   const quoteStarted = useRef(false);
   const measurementId = useRef<string | undefined>(undefined);
-  useEffect(() => { setSelectedService(QUOTE_SERVICES[requestedService ?? ""] ?? ""); }, [requestedService]);
+  useEffect(() => { setSelectedService(QUOTE_SERVICES[requestedService ?? ""] ?? ""); setSent(false); }, [requestedService]);
   const [photoCount, setPhotoCount] = useState(0);
 
   const [sendError, setSendError] = useState("");
@@ -117,8 +121,8 @@ function ContactPage() {
       const resData = await response.json();
 
       if (response.ok && resData.success) {
-        toast.success("Votre message a été envoyé avec succès. Nous vous répondons sous 24h.");
-        quoteConfirmedMetric(resData, photos.length > 0);
+        setSent(true);
+        quoteConfirmedMetric(resData, photos.length > 0, metricCategory);
         measurementId.current = undefined;
         quoteStarted.current = false;
         form.reset();
@@ -157,7 +161,15 @@ function ContactPage() {
 
       <section className="mx-auto grid max-w-5xl items-start gap-6 px-4 pb-16 pt-6 md:grid-cols-[1.4fr_1fr] md:pt-8">
         {/* Form card */}
-        <form
+        {sent ? (
+          <div className="space-y-4 rounded-2xl border border-border p-6">
+            <div role="status">
+              <h2 className="text-xl font-bold">Votre demande de devis a bien été envoyée</h2>
+              <p className="mt-2 text-sm">Nous avons reçu votre demande et vos photos. Nous vous répondrons sous 24 h aux coordonnées indiquées.</p>
+            </div>
+            <Button type="button" variant="outline" onClick={() => setSent(false)}>Faire une autre demande</Button>
+          </div>
+        ) : <form
           ref={formRef}
           onSubmit={onSubmit}
           onFocusCapture={() => { if (!quoteStarted.current) { quoteStarted.current = true; conversionMetric("quote_started"); } }}
@@ -193,9 +205,16 @@ function ContactPage() {
             {errors["service"] && <p id="service-error" className="text-xs text-destructive">{errors["service"]}</p>}
           </div>
 
-          {QUICK_SERVICES.includes(selectedService) && (
+          {needsDiscretion && (
+            <div className="rounded-xl border border-border p-4 text-sm">
+              <p>Vous préférez expliquer la situation de vive voix ? Vous pouvez commencer par un appel. Pour un devis en ligne, photographiez les zones à traiter en évitant les visages et les documents personnels.</p>
+              <a href={COMPANY.phoneHref} className="mt-1 inline-flex min-h-11 items-center gap-2 font-semibold text-primary underline"><Phone aria-hidden="true" className="size-4" />Appeler le {COMPANY.phone}</a>
+            </div>
+          )}
+          {QUICK_SERVICES[selectedService] && (
             <div className="rounded-xl border border-primary/20 bg-primary/5 p-4 text-sm text-foreground/80">
-              Pour cette prestation, vous pouvez aussi consulter les prix, ajouter plusieurs services et choisir votre créneau directement sur la page <a href="/formules" className="font-bold text-primary underline">Réserver en ligne</a>.
+              Les tarifs de cette prestation sont disponibles en ligne. Choisissez votre formule et votre créneau, ou ajoutez plusieurs articles au même rendez-vous.
+              <Link to="/reserver" search={{ service: QUICK_SERVICES[selectedService], formule: "", from: "quote_form" }} className="mt-2 flex min-h-11 w-fit items-center font-bold text-primary underline">Voir les prix et réserver</Link>
             </div>
           )}
 
@@ -300,7 +319,7 @@ function ContactPage() {
               {isSubmitting ? "Envoi en cours..." : "Demander un devis"}
             </Button>
           </div>
-        </form>
+        </form>}
 
         {/* Sidebar */}
         <aside className="space-y-4">

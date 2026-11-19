@@ -127,7 +127,7 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
   const quoteSearch = intent.kind === "quote" ? { service: intent.service } : {};
 
   
-  const categoryImages = selectedPhotos(service.slug, bookingServiceId).slice(0, 4);
+  const categoryImages = selectedPhotos(service.slug, bookingServiceId);
 
   return (
     <div className="pb-24 lg:pb-0">
@@ -210,7 +210,7 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
           )}
           <div className="hidden md:flex mt-6 flex-wrap justify-center gap-4 text-xs text-ink-foreground/60">
             <span className="inline-flex items-center gap-1"><Clock className="size-3" /> Devis sous 24h</span>
-            <span className="inline-flex items-center gap-1"><Check className="size-3" /> Séchage rapide</span>
+            <span className="inline-flex items-center gap-1"><Check className="size-3" /> {bookingServiceId ? "Créneau au choix" : "Prestations détaillées au devis"}</span>
             <span className="inline-flex items-center gap-1"><Check className="size-3" /> Produits adaptés au support</span>
           </div>
         </div>
@@ -412,6 +412,17 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
                 <div className="mt-4 rounded-2xl border border-border bg-card p-6 shadow-[var(--shadow-soft)]">
                   <p className="text-xl font-bold">Prestation sur devis personnalisé</p>
                   <p className="mt-2 text-muted-foreground">{service.priceNote}</p>
+                  {(service.slug === "/nettoyage-fin-de-bail-toulouse" || service.slug === "/nettoyage-dappartement-ou-maison") && (
+                    <div className="mt-4">
+                      <h3 className="font-semibold">Comment est calculé votre devis ?</h3>
+                      <ul className="mt-2 list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                        <li>La surface et les pièces à nettoyer, par exemple une cuisine, deux chambres et une salle de bains.</li>
+                        <li>L’état des surfaces et les équipements à traiter, comme un four ou des placards vidés.</li>
+                        <li>L’accès au logement, l’étage, l’ascenseur et les meubles qui resteront en place.</li>
+                        <li>Au moins une photo de l’état actuel. Une vue générale et un détail des zones difficiles facilitent le chiffrage.</li>
+                      </ul>
+                    </div>
+                  )}
                   {service.slug === "/nettoyage-fin-de-bail-toulouse" && (
                     <aside className="mt-4 border-l-2 border-primary pl-4">
                       <h3 className="font-semibold">Exemple de fin de bail : un duplex de 52 m²</h3>

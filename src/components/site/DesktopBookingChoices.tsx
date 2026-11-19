@@ -6,12 +6,12 @@ import { serviceIntent } from '@/lib/serviceIntent';
 
 // Prices come from the catalogue; links open the category without choosing a formula.
 const PICKS = [
-  { service: 'canape', formulas: ['canape-2', 'canape-45', 'canape-angle', 'canape-u'], label: 'Canapé', detail: 'Nettoyage de canapé en tissu' },
-  { service: 'auto', formulas: ['bronze', 'argent', 'or'], label: 'Voiture', detail: 'Packs Bronze, Argent ou Or' },
-  { service: 'matelas', formulas: ['matelas-enfant', 'matelas-1', 'matelas-2'], label: 'Matelas', detail: 'Nettoyage des deux faces' },
-  { service: 'tapis', formulas: ['tapis-1', 'tapis-2', 'tapis-3'], label: 'Tapis', detail: 'Nettoyage de tapis à domicile' },
-  { service: 'cuir', formulas: ['cuir-fauteuil', 'cuir-canape-2', 'cuir-canape-4', 'cuir-canape-angle', 'cuir-chaise', 'cuir-chaises-5', 'cuir-chaises-6', 'cuir-auto'], label: 'Cuir', detail: 'Canapés, fauteuils, chaises et sièges' },
-  { service: 'moquette', formulas: ['moquette-petite', 'moquette-standard', 'moquette-grande'], label: 'Moquette', detail: 'Tarifs selon la surface' },
+  { service: 'canape', formulas: ['canape-2', 'canape-45', 'canape-angle', 'canape-u'], label: 'Nettoyage de canapé', detail: 'Canapé en tissu, droit ou d’angle' },
+  { service: 'auto', formulas: ['bronze', 'argent', 'or'], label: 'Nettoyage auto', detail: 'Packs Bronze, Argent ou Or' },
+  { service: 'matelas', formulas: ['matelas-enfant', 'matelas-1', 'matelas-2'], label: 'Nettoyage de matelas', detail: 'Nettoyage des deux faces' },
+  { service: 'tapis', formulas: ['tapis-1', 'tapis-2', 'tapis-3'], label: 'Nettoyage de tapis', detail: 'Jusqu’à 4 m² par tapis' },
+  { service: 'cuir', formulas: ['cuir-fauteuil', 'cuir-canape-2', 'cuir-canape-4', 'cuir-canape-angle', 'cuir-chaise', 'cuir-chaises-5', 'cuir-chaises-6', 'cuir-auto'], label: 'Nettoyage du cuir', detail: 'Canapés, fauteuils, chaises et sièges' },
+  { service: 'moquette', formulas: ['moquette-petite', 'moquette-standard', 'moquette-grande'], label: 'Nettoyage de moquette', detail: 'Tarifs selon la surface' },
 ];
 
 const quoteLabels: Record<string, string> = {

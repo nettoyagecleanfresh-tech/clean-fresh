@@ -1,3 +1,4 @@
+import { serviceIntent } from "@/lib/serviceIntent";
 import { responsiveRealisation } from '@/lib/responsiveRealisation';
 import { useRef, useState } from 'react';
 import { createFileRoute, Link } from '@tanstack/react-router';
@@ -137,6 +138,16 @@ function serviceLink(photo: Realisation) {
   return pages[photo.category] ?? '/nettoyage-dappartement-ou-maison';
 }
 
+function GalleryBookingLink({ photo }: { photo: Realisation }) {
+  const intent = serviceIntent(serviceLink(photo));
+  const classes = "mt-3 flex min-h-11 items-center justify-center rounded-full bg-blue-950 px-5 py-3 text-sm font-bold text-white hover:bg-blue-900";
+  return intent.kind === "booking" && intent.service ? (
+    <Link to="/reserver" search={{ service: intent.service, formule: "", from: "gallery" }} className={classes}>Réserver en ligne<ArrowUpRight className="ml-2 size-4" /></Link>
+  ) : (
+    <Link to="/formules" resetScroll className={classes}>Réserver en ligne<ArrowUpRight className="ml-2 size-4" /></Link>
+  );
+}
+
 const galleryServiceLabels: Record<string, string> = {
   '/nettoyage-canape-toulouse': 'Nettoyage des canapés et sièges en tissu',
   '/nettoyage-cuir-toulouse': 'Nettoyage et soin du cuir',
@@ -181,7 +192,7 @@ function GaleriePage() {
             <h3 className="mt-2 text-lg font-bold leading-snug text-slate-900">{photo.title}</h3>
             <p className="mt-2 text-sm leading-relaxed text-slate-600">{photo.description}</p>
             <a href={serviceLink(photo)} className="mt-4 inline-flex min-h-11 items-center gap-1 text-sm font-bold text-blue-900 underline-offset-4 hover:underline">{galleryServiceLabels[serviceLink(photo)]}<ArrowUpRight className="size-4" /></a>
-            <Link to="/formules" resetScroll className="mt-3 flex min-h-11 items-center justify-center rounded-full bg-blue-950 px-5 py-3 text-sm font-bold text-white hover:bg-blue-900">Réserver en ligne<ArrowUpRight className="ml-2 size-4" /></Link>
+            <GalleryBookingLink photo={photo} />
           </figcaption>
         </figure>)}
       </div>

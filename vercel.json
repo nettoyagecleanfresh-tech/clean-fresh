@@ -1,5 +1,6 @@
 {
   "redirects": [
+    { "source": "/formules%E2%81%A0", "destination": "/formules", "permanent": true },
     { "source": "/realisations", "destination": "/nos-realisations", "permanent": true },
     {
       "source": "/nettoyage-de-fin-de-chantier",

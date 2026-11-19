@@ -14,7 +14,8 @@ export function selectedPhotos(slug: string, booking: string | null) {
     return realisations.filter(photo => photo.category === CATEGORIES[booking] &&
       (booking === 'moquette' ? /moquette/i.test(photo.title) : booking === 'tapis' ? !/moquette/i.test(photo.title) : true)).slice(0, booking === 'canape' || booking === 'auto' ? 6 : 4);
   }
-  if (/diogene|extreme/.test(slug)) return realisations.filter(photo => /photo-(22|23|39|40)\.webp$/.test(photo.src));
+  if (slug === '/nettoyage-diogene-toulouse') return realisations.filter(photo => /photo-(22|23)\.webp$/.test(photo.src));
+  if (slug === '/nettoyage-extreme-toulouse') return realisations.filter(photo => /photo-(39|40)\.webp$/.test(photo.src));
   if (/appartement|fin-de-bail|fin-de-chantier/.test(slug)) return realisations.filter(photo => /photo-(32|33|35|41)\.webp$/.test(photo.src));
   return [];
 }

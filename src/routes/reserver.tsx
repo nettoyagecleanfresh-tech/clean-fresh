@@ -505,7 +505,7 @@ function ReserverPage() {
         return;
       }
       gcalId = serverResult.gcal_event_id;
-      bookingConfirmedMetric(serverResult, "form");
+      bookingConfirmedMetric(serverResult, "form", allItems.map(item => item.service.id));
       serverCancelToken = serverResult.cancel_token;
       setEmailSent(serverResult.emailSent === true);
       if (gcalId) setGcalEventId(gcalId);

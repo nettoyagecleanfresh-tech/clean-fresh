@@ -109,7 +109,7 @@ export function ChatBooking({ onBusy }: { onBusy: (busy: boolean) => void }) {
         setError('Ce créneau vient de devenir indisponible. Choisissez un autre horaire ou recherchez le prochain créneau compatible.');
       } else if (!result.success || !result.gcal_event_id) {
         setError('La réservation n’a pas été confirmée. Contactez-nous au 07 67 12 75 00 avant de recommencer.');
-      } else { bookingConfirmedMetric(result, 'assistant'); setEmailSent(result.emailSent); setCancelToken(result.cancel_token); setStage('done'); }
+      } else { bookingConfirmedMetric(result, 'assistant', items.map(item => item.service.id)); setEmailSent(result.emailSent); setCancelToken(result.cancel_token); setStage('done'); }
     } catch { setError('La confirmation n’a pas pu être vérifiée. Vérifiez vos emails ou appelez le 07 67 12 75 00 avant de recommencer.'); }
     finally { setSending(false); inFlight.current = false; }
   };

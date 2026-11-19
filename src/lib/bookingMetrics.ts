@@ -7,19 +7,22 @@ import { claimConfirmedMetric } from './metricDeduplication';
 type Channel = 'form' | 'assistant';
 type Step = 'service' | 'formula' | 'options' | 'basket' | 'date' | 'details' | 'review' | 'done';
 /** Fixed labels only: never send customer details, addresses or free text. */
-function emitBookingMetric(event: string, channel: Channel, step: Step) {
+function emitBookingMetric(event: string, channel: Channel, step: Step, serviceGroup?: string) {
   if (!customerAnalyticsAllowed()) return;
-  const device = analyticsDevice();
-  try { track(event, { booking_channel: channel, booking_step: step, device }); } catch { /* Analytics must never block a booking. */ }
-  try { googleMetric(event, { booking_channel: channel, booking_step: step, device }); } catch { /* Keep the booking usable if analytics fails. */ }
+  const properties = { booking_channel: channel, booking_step: step, device: analyticsDevice(), ...(serviceGroup ? { service_group: serviceGroup } : {}) };
+  try { track(event, properties); } catch { /* Analytics must never block a booking. */ }
+  try { googleMetric(event, properties); } catch { /* Keep the booking usable if analytics fails. */ }
 }
 export function bookingMetric(event: 'booking_step_view' | 'booking_exit' | 'booking_error', channel: Channel, step: Step) {
   emitBookingMetric(event, channel, step);
 }
 /** UI completion alone is not a booking. Require the confirmed server event ID. */
-export function bookingConfirmedMetric(result: { success?: boolean; gcal_event_id?: string | null }, channel: Channel) {
+export function bookingConfirmedMetric(result: { success?: boolean; gcal_event_id?: string | null }, channel: Channel, serviceIds: string[] = []) {
   if (!result.success || !customerAnalyticsAllowed() || !claimConfirmedMetric('booking', result.gcal_event_id)) return;
-  emitBookingMetric('booking_complete', channel, 'done');
+  const allowed = ['canape', 'tapis', 'matelas', 'moquette', 'cuir', 'auto'];
+  const services = [...new Set(serviceIds.filter(id => allowed.includes(id)))];
+  const group = services.length > 1 ? 'multi_services' : services[0];
+  emitBookingMetric('booking_complete', channel, 'done', group);
 }
 export function useBookingMetrics(channel: Channel, step: Step) {
   const latest = useRef(step);
