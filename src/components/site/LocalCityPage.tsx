@@ -118,6 +118,7 @@ export function LocalCityPage({ commune }: Props) {
           </h1>
           <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-ink-foreground/80 md:mt-5 md:text-base">
             {para1}
+            {name === "Toulouse" && <> Pour un <Link to="/nettoyage-dappartement-ou-maison" className="font-semibold text-white underline underline-offset-4">nettoyage de logement</Link>, indiquez les pièces à traiter. Si vous rendez les clés, consultez le <Link to="/nettoyage-fin-de-bail-toulouse" className="font-semibold text-white underline underline-offset-4">nettoyage avant état des lieux</Link>.</>}
           </p>
           <div className="mt-4 flex flex-wrap justify-center gap-2.5 md:mt-8">
             <Button
@@ -319,7 +320,7 @@ export function LocalCityPage({ commune }: Props) {
                   className="inline-flex min-h-11 items-center gap-1 text-sm font-medium text-primary hover:underline"
                 >
                   <ChevronRight className="size-4 shrink-0" aria-hidden="true" />
-                  {service.title}
+                  {name === "Toulouse" && service.path === "/nettoyage-extreme-toulouse" ? "Nettoyage de logement insalubre à Toulouse" : service.title}
                 </Link>
               </li>
             ))}

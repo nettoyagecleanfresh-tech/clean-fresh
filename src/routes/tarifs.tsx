@@ -371,8 +371,7 @@ function TarifsPage() {
         <section className="mx-auto max-w-5xl px-4 py-10">
           <h2 className="text-xl font-bold md:text-2xl">Prestations bâtiment — sur devis</h2>
           <p className="mt-2 mb-8 text-sm text-muted-foreground max-w-2xl">
-            Ces prestations sont tarifées sur devis selon la surface, la hauteur et l'état du support.
-            Réponse gratuite sous 24h sur simple demande ou envoi de photos.
+            Pour un <Link to="/nettoyage-dappartement-ou-maison" className="font-medium text-primary underline">grand nettoyage d’appartement ou de maison</Link>, le devis dépend de la surface et de l’état des pièces. Si vous quittez une location, consultez le <Link to="/nettoyage-fin-de-bail-toulouse" className="font-medium text-primary underline">nettoyage avant état des lieux</Link>. Pour les travaux extérieurs, précisez aussi la hauteur et les accès.
           </p>
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

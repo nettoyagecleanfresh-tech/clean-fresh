@@ -705,7 +705,7 @@ export const SERVICES: Service[] = [
     h1: "Nettoyage d'appartement ou de maison à Toulouse",
     short: "Nettoyage Appartement / maison Toulouse",
     subtitle:
-      "Pour un grand ménage ponctuel ou un entretien régulier à Toulouse, indiquez la surface de votre logement et les pièces à traiter en priorité.",
+      "Pour un grand ménage ou un entretien régulier, précisez la surface, l’état des pièces et les accès. Joignez une photo du logement pour recevoir votre devis gratuit sous 24 h.",
     metaTitle: "Grand nettoyage appartement et maison Toulouse | Clean&Fresh",
     metaDescription: "Grand ménage à Toulouse avant emménagement ou dans un logement occupé. Cuisine, sanitaires, sols et vitres selon vos priorités. Devis gratuit sous 24 h.",
     group: "batiment",
@@ -845,7 +845,7 @@ export const SERVICES: Service[] = [
     navLabel: "Nettoyage fin de bail Toulouse",
     h1: "Nettoyage fin de bail à Toulouse",
     short: "Nettoyage Fin de bail Toulouse",
-    subtitle: "Nettoyage avant état des lieux à Toulouse : cuisine, sanitaires, sols, surfaces et vitres selon devis. Murs et plafonds en option après vérification.",
+    subtitle: "Vous rendez les clés ? Indiquez la date de l’état des lieux. Le devis détaille la cuisine, les sanitaires, les placards, les sols et les vitres à nettoyer. Murs et plafonds sur option après vérification.",
     metaTitle: "Nettoyage fin de bail Toulouse | Avant état des lieux",
     metaDescription: "Nettoyage avant état des lieux à Toulouse : cuisine, sanitaires, placards, sols et vitres selon devis. Murs et plafonds en option. Devis gratuit sous 24 h.",
     group: "batiment",
@@ -916,7 +916,7 @@ export const SERVICES: Service[] = [
     h1: "Nettoyage Diogène à Toulouse",
     short: "Nettoyage Syndrome de Diogène Toulouse",
     subtitle:
-      "Désencombrement, débarras et remise en état de logements en syndrome de Diogène, à Toulouse et en Haute-Garonne.",
+      "Nous convenons avec vous des papiers, souvenirs et meubles à garder avant de trier et de débarrasser le logement. Le devis confidentiel tient compte du volume à évacuer et des accès.",
     metaTitle: "Nettoyage Diogène et débarras Toulouse | Clean&Fresh",
     metaDescription: "Nettoyage Diogène à Toulouse : tri, débarras et nettoyage selon l’état du logement. Objets à conserver définis avec vous, devis confidentiel et sans jugement.",
     group: "batiment",
@@ -986,10 +986,10 @@ export const SERVICES: Service[] = [
     slug: "/nettoyage-extreme-toulouse",
     guide: { text: "Pour chiffrer la cuisine ou la salle d’eau, photographiez les surfaces à remettre en état et signalez les pièces déjà dégagées. Pour des salissures courantes, consultez le", path: "/nettoyage-dappartement-ou-maison", link: "grand nettoyage de logement" },
     navLabel: "Nettoyage extrême Toulouse",
-    h1: "Nettoyage extrême à Toulouse",
-    short: "Nettoyage extrême Toulouse",
+    h1: "Nettoyage de logement insalubre à Toulouse",
+    short: "Nettoyage de logement insalubre",
     subtitle:
-      "Remise en état de pièces très encrassées à Toulouse : indiquez celles qui restent accessibles et les surfaces à nettoyer pour obtenir un devis adapté.",
+      "Cuisine encrassée, sanitaires entartrés ou sols souillés : indiquez les pièces accessibles et joignez une photo. Le devis précise les surfaces à remettre au propre et les traitements adaptés.",
     metaTitle: "Nettoyage logement insalubre Toulouse | Clean&Fresh",
     metaDescription: "Nettoyage extrême d’appartement très sale ou de logement insalubre à Toulouse. Débarras, surfaces et traitements selon diagnostic. Devis discret sur photos.",
     group: "batiment",
@@ -997,7 +997,7 @@ export const SERVICES: Service[] = [
     methodTitle: "Les étapes d’un nettoyage extrême",
     relatedSlugs: ["/nettoyage-diogene-toulouse", "/nettoyage-dappartement-ou-maison", "/nettoyage-fin-de-bail-toulouse", "/nettoyage-de-fin-de-chantier-toulouse", "/nettoyage-de-vitres-toulouse", "/nettoyage-moquette-toulouse"],
     intro: [
-      "Un appartement très sale, abandonné ou fortement encombré demande une préparation différente d'un ménage courant. Clean&Fresh réalise le nettoyage extrême à Toulouse après évaluation de l'état des pièces, des accès et des surfaces à remettre au propre.",
+      "Quand un logement est resté longtemps sans entretien, commencez par les pièces dont vous avez besoin en premier. Une vue générale et une photo des dépôts sur les surfaces nous aident à chiffrer la remise au propre de la cuisine, de la salle d’eau ou des sols.",
       "Une remise au propre après une longue période sans entretien demande d’évaluer séparément l’encombrement, les graisses, le calcaire et les surfaces dégradées. Nous distinguons ce qui peut être nettoyé de ce qui nécessite une réparation ou un remplacement. Signalez les accès difficiles, nuisibles et déchets particuliers avant la visite pour éviter de sous-estimer les besoins du chantier.",
       "La prestation peut associer débarras, dégraissage, détartrage et nettoyage approfondi des zones compatibles. Le devis distingue chaque étape, l'évacuation éventuelle et les traitements complémentaires pour adapter l'intervention à votre besoin réel.",
       "Après un départ de locataire ou une période d'inoccupation, les priorités sont définies avec le propriétaire ou la personne responsable du logement. Les biens à conserver sont identifiés avant tout débarras. L'eau, l'électricité et un accès sûr doivent être disponibles pour les opérations prévues.",
@@ -1061,7 +1061,7 @@ export const SERVICES: Service[] = [
     h1: "Nettoyage moquette à Toulouse",
     short: "Nettoyage moquette Toulouse",
     subtitle:
-      "Moquette posée dans une chambre, un salon ou un bureau : mesurez la surface accessible à nettoyer pour choisir votre formule.",
+      "Chez vous ou dans vos bureaux, mesurez la surface de moquette accessible. Pour une pièce de 3 m sur 5 m, par exemple, choisissez la formule de 12 à 20 m².",
     metaTitle: "Nettoyage moquette Toulouse : domicile et bureaux | Clean&Fresh",
     metaDescription: "Nettoyage de moquette à Toulouse pour salon, chambre ou bureau. Moins de 12 m² : 99 €. Comparez les trois surfaces et réservez votre intervention à domicile.",
     group: "textile",
@@ -1135,7 +1135,7 @@ export const SERVICES: Service[] = [
   },
   {
     slug: "/nettoyage-cuir-toulouse",
-    guide: { text: "Pour un ensemble avec des chaises en tissu et des fauteuils en cuir, distinguez les deux revêtements lors de la réservation. Retrouvez les", path: "/nettoyage-canape-toulouse", link: "formules pour les chaises et fauteuils en tissu" },
+    guide: { text: "Vous souhaitez aussi faire nettoyer des assises textiles ? Vous pouvez les ajouter à la même réservation. Découvrez le", path: "/nettoyage-canape-toulouse", link: "nettoyage de canapé, fauteuil et chaises en tissu" },
     navLabel: "Nettoyage cuir Toulouse",
     h1: "Nettoyage de cuir à domicile à Toulouse",
     short: "Nettoyage cuir Toulouse",

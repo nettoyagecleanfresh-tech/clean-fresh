@@ -6,12 +6,12 @@ import { serviceIntent } from '@/lib/serviceIntent';
 
 // Prices come from the catalogue; links open the category without choosing a formula.
 const PICKS = [
-  { service: 'canape', formulas: ['canape-2', 'canape-45', 'canape-angle', 'canape-u'], label: 'Canapé', detail: '2/3 places, grand canapé ou canapé d’angle', action: 'Choisir le format' },
-  { service: 'auto', formulas: ['bronze', 'argent', 'or'], label: 'Voiture', detail: 'Packs Bronze, Argent ou Or', action: 'Comparer les packs' },
-  { service: 'matelas', formulas: ['matelas-enfant', 'matelas-1', 'matelas-2'], label: 'Matelas', detail: 'Enfant, 1 place ou 2 places', action: 'Choisir le format' },
-  { service: 'tapis', formulas: ['tapis-1', 'tapis-2', 'tapis-3'], label: 'Tapis', detail: '1, 2 ou 3 tapis · jusqu’à 4 m² chacun', action: 'Choisir la quantité' },
-  { service: 'cuir', formulas: ['cuir-fauteuil', 'cuir-canape-2', 'cuir-canape-4', 'cuir-canape-angle', 'cuir-chaise', 'cuir-chaises-5', 'cuir-chaises-6', 'cuir-auto'], label: 'Cuir', detail: 'Canapés, fauteuils, chaises et sièges', action: 'Choisir ma prestation' },
-  { service: 'moquette', formulas: ['moquette-petite', 'moquette-standard', 'moquette-grande'], label: 'Moquette', detail: 'Petite, moyenne ou grande pièce', action: 'Choisir la surface' },
+  { service: 'canape', formulas: ['canape-2', 'canape-45', 'canape-angle', 'canape-u'], label: 'Canapé', detail: 'Nettoyage de canapé en tissu' },
+  { service: 'auto', formulas: ['bronze', 'argent', 'or'], label: 'Voiture', detail: 'Packs Bronze, Argent ou Or' },
+  { service: 'matelas', formulas: ['matelas-enfant', 'matelas-1', 'matelas-2'], label: 'Matelas', detail: 'Nettoyage des deux faces' },
+  { service: 'tapis', formulas: ['tapis-1', 'tapis-2', 'tapis-3'], label: 'Tapis', detail: 'Nettoyage de tapis à domicile' },
+  { service: 'cuir', formulas: ['cuir-fauteuil', 'cuir-canape-2', 'cuir-canape-4', 'cuir-canape-angle', 'cuir-chaise', 'cuir-chaises-5', 'cuir-chaises-6', 'cuir-auto'], label: 'Cuir', detail: 'Canapés, fauteuils, chaises et sièges' },
+  { service: 'moquette', formulas: ['moquette-petite', 'moquette-standard', 'moquette-grande'], label: 'Moquette', detail: 'Tarifs selon la surface' },
 ];
 
 const quoteLabels: Record<string, string> = {
@@ -38,16 +38,17 @@ export function DesktopBookingChoices() {
             const info = servicePages.find(page => serviceIntent(page.slug).service === pick.service)!;
             return (
               <article key={pick.service} className="flex min-w-0 flex-col rounded-2xl border border-blue-100 bg-white shadow-sm">
-              <Link to="/reserver" search={{ service: service.id, formule: '', from: 'home_choices' }} data-conversion-location="home_choices" className={`group flex min-w-0 flex-col flex-1 rounded-t-2xl p-3 transition-colors hover:bg-blue-50/50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700 lg:p-3`}>
-                <div className="flex items-center gap-2">
-                  <span aria-hidden="true" className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-blue-900 [&>svg]:size-5">{service.icon}</span>
-                  <h3 className="text-sm font-bold text-slate-950 lg:text-base">{pick.label}</h3>
-                </div>
-                <p className="mt-2 flex-1 text-sm leading-snug text-slate-600">{pick.detail}</p>
-                <p className="mt-2 text-xs text-slate-600">À partir de <strong className="whitespace-nowrap text-xl font-bold tracking-tight text-blue-950 lg:text-2xl">{startingPrice} €</strong></p>
-                <span className="mt-2 flex min-h-8 items-center justify-between gap-1 border-t border-blue-100 pt-2 text-xs font-bold text-blue-900 lg:text-sm">{pick.action}<ArrowUpRight aria-hidden="true" className="size-4 shrink-0" /></span>
-              </Link>
-              <Link to={info.slug} className="block rounded-b-2xl border-t border-blue-50 px-3 py-2 text-xs font-medium leading-relaxed text-sky-900 underline underline-offset-2 hover:bg-sky-50" aria-label={info.navLabel}>Détails du nettoyage {pick.service === 'auto' ? 'auto' : pick.label.toLowerCase()}</Link>
+                <Link to={info.slug} className="group flex min-w-0 flex-1 flex-col rounded-t-2xl p-3 text-slate-950 hover:bg-blue-50/50 focus-visible:outline-2 focus-visible:outline-blue-700">
+                  <div className="flex items-center gap-2">
+                    <span aria-hidden="true" className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-blue-900 [&>svg]:size-5">{service.icon}</span>
+                    <h3 className="text-sm font-bold lg:text-base">{pick.label}</h3>
+                  </div>
+                  <p className="mt-2 text-xs text-slate-600">Dès <strong className="whitespace-nowrap text-xl font-bold text-blue-950">{startingPrice} €</strong></p>
+                  <span className="mt-1 text-xs text-blue-900 underline underline-offset-2">{pick.detail}</span>
+                </Link>
+                <Link to="/reserver" search={{ service: service.id, formule: '', from: 'home_choices' }} data-conversion-location="home_choices" aria-label={`Réserver en ligne : ${pick.label}`} className="flex min-h-11 items-center justify-between gap-1 rounded-b-2xl border-t border-blue-100 px-3 text-sm font-bold text-blue-900 hover:bg-sky-50">
+                  Réserver <ArrowUpRight aria-hidden="true" className="size-4 shrink-0" />
+                </Link>
               </article>
             );
           })}

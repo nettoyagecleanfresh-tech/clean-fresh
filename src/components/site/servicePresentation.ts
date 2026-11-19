@@ -58,6 +58,7 @@ export function serviceHeroPrices(serviceId: string | null) {
   return selectedIds.map(id => catalogue.formules.find(formule => formule.id === id))
     .filter(formule => formule !== undefined)
     .map(formule => ({
+      id: formule.id,
       label: HERO_LABELS[formule.id] ?? formule.name,
       price: `${formule.price} €`,
     }));

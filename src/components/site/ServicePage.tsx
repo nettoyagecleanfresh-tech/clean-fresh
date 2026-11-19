@@ -156,13 +156,21 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
           <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-ink-foreground/75 md:mt-5 md:text-base">
             {service.subtitle}
           </p>
-          {heroPrices && <div className="mx-auto mt-5 max-w-2xl rounded-2xl border border-white/20 bg-white/10 px-4 py-4 text-left shadow-sm">
-            <dl className="grid grid-cols-1 divide-y divide-white/15 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
-              {heroPrices.map(price => <div key={price.label} className="flex items-center justify-between gap-3 py-2 first:pt-0 last:pb-0 sm:flex-col sm:items-start sm:gap-1 sm:px-3 sm:py-0 sm:first:pl-0">
-                <dt className="text-xs leading-5 text-white/80">{price.label}</dt>
-                <dd className="shrink-0 text-xl font-bold text-white">{price.price}</dd>
-              </div>)}
-            </dl>
+          {bookingServiceId === "canape" && (
+            <p className="mt-2 text-sm text-white">Votre canapé est en cuir ? Consultez le <Link to="/nettoyage-cuir-toulouse" className="font-semibold underline underline-offset-4">nettoyage du cuir</Link>.</p>
+          )}
+          {heroPrices && bookingServiceId && <div className="mx-auto mt-5 max-w-2xl rounded-2xl border border-white/20 bg-white/10 px-4 py-4 text-left shadow-sm">
+            <p className="mb-2 text-sm font-semibold text-white">Choisissez votre formule</p>
+            <ul className="grid gap-2 sm:grid-cols-3">
+              {heroPrices.map(price => (
+                <li key={price.id}>
+                  <Link to="/reserver" search={{ service: bookingServiceId, formule: price.id, from: "service_page" }} data-conversion-location="service_hero" className="flex min-h-12 h-full flex-wrap items-center justify-between gap-2 rounded-lg border border-white/25 px-3 py-2 hover:bg-white/15 focus-visible:outline-2 focus-visible:outline-white">
+                    <span className="text-sm leading-5">{price.label}</span>
+                    <strong className="whitespace-nowrap">{price.price} ›</strong>
+                  </Link>
+                </li>
+              ))}
+            </ul>
             <p className="mt-1 text-xs leading-5 text-white/80">Selon la formule et les options choisies. Aucun paiement en ligne : règlement en fin de prestation.</p>
             <p className="mt-3 flex items-center gap-2 text-xs font-semibold text-white"><Star className="size-4 fill-amber-300 text-amber-300" aria-hidden="true" />{GOOGLE_REVIEW_RATING}/5 · {GOOGLE_REVIEW_COUNT} avis Google</p>
           </div>}
@@ -174,8 +182,8 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
                 className="bg-accent-gradient text-accent-foreground font-bold shadow-[var(--shadow-card)] hover:opacity-90 px-4 md:px-6 h-12 text-sm"
               >
                 {bookingServiceId ? (
-                  <Link to="/formules" search={{ service: bookingServiceId }} data-conversion-location="service_hero">
-                    <CalendarCheck className="size-4 mr-1.5" /> Voir les formules et réserver
+                  <Link to="/reserver" search={{ service: bookingServiceId, formule: "", from: "service_page" }} data-conversion-location="service_hero">
+                    <CalendarCheck className="size-4 mr-1.5" /> Voir toutes les formules et réserver
                   </Link>
                 ) : (
                   <Link to="/formules">
@@ -225,7 +233,7 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
                 <p key={p} className="mt-4 text-muted-foreground leading-relaxed">{p}</p>
               ))}
               {service.slug === "/nettoyage-diogene-toulouse" && (
-                <p className="mt-4 text-muted-foreground">Pour un logement insalubre dont les pièces restent accessibles, consultez notre <Link to="/nettoyage-extreme-toulouse" className="text-primary underline">nettoyage extrême à Toulouse</Link>.</p>
+                <p className="mt-4 text-muted-foreground">Pour un logement insalubre dont les pièces restent accessibles, consultez notre <Link to="/nettoyage-extreme-toulouse" className="text-primary underline">nettoyage de logement insalubre à Toulouse</Link>.</p>
               )}
               {service.slug === "/nettoyage-extreme-toulouse" && (
                 <p className="mt-4 text-muted-foreground">Lorsque des objets accumulés empêchent l’accès aux pièces, découvrez comment nous organisons le <Link to="/nettoyage-diogene-toulouse" className="text-primary underline">tri et le débarras après un syndrome de Diogène</Link>.</p>
