@@ -35,3 +35,4 @@ dist-ssr
 .vercel
 .env*
 public/images/optimized-realisations/
+public/images/hero-home/
