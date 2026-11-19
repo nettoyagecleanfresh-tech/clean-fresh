@@ -10,8 +10,6 @@ import { realisationDimensions } from "@/data/realisationDimensions";
 
 const heroSources = [640, 960, 1440, 1920, 3200]
   .map(width => `/images/hero-home/clean-fresh-${width}.avif ${width}w`).join(", ");
-// A 142-byte blurred copy fills the margins when the frame and the photo have different proportions.
-const heroBackdrop = "data:image/webp;base64,UklGRoYAAABXRUJQVlA4IHoAAADwBACdASogABUAPsFUoEqnpSMhsAgA8BgJZwAAWlMCIcXKVTOU+MRouywOFZphOoAA/ueIsdSojdw4KHmwdDzWe5CB2/TDihiScKBz7XLAfZN580qTBsQVbOe2UyJqIef6yfkbR8a59qmoGBqE/1iX9IoI4KugjPtAAA==";
 const TITLE = "Entreprise de nettoyage à Toulouse | Clean&Fresh";
 const DESC =
   "Nettoyage à domicile à Toulouse : canapé dès 79 €, matelas et tapis dès 49 €, intérieur auto dès 69 €. Réservez en ligne ou demandez un devis pour un logement.";
@@ -325,14 +323,11 @@ function CityLinks({ cities }: { cities: string[] }) {
 function Index() {
   return (
     <div className="pb-16 lg:pb-0">
-      <section
-        className="relative isolate flex flex-col overflow-hidden bg-stone-800 bg-cover bg-center lg:min-h-[60vh]"
-        style={{ backgroundImage: `url("${heroBackdrop}")` }}
-      >
+      <section className="relative isolate flex flex-col overflow-hidden bg-stone-800 lg:min-h-[60vh]">
         <picture aria-hidden="true" className="pointer-events-none absolute inset-0">
-          <source type="image/avif" srcSet={heroSources} sizes="(min-width: 1024px) min(100vw, max(1024px, 90vh)), 100vw" />
+          <source type="image/avif" srcSet={heroSources} sizes="(max-width: 767px) max(100vw, 45rem), 100vw" />
           <img src={heroPhoto} alt="" width={1920} height={1281} fetchPriority="high" loading="eager"
-            className="h-full w-full object-contain object-[50%_25%] lg:object-center" />
+            className="block h-full w-full object-cover object-[45%_55%] lg:object-[50%_60%]" />
         </picture>
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(8,14,19,0.58),rgba(8,14,19,0.49)_55%,rgba(8,14,19,0.62))] lg:bg-[linear-gradient(100deg,rgba(8,14,19,0.77),rgba(8,14,19,0.60)_42%,rgba(8,14,19,0.23)_72%,rgba(8,14,19,0.34))]" />
 
