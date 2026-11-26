@@ -261,7 +261,7 @@ export function LocalCityPage({ commune }: Props) {
         </p>
         <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {BOOKABLE_SERVICES.map((service) => {
-            const price = SERVICES.find((item) => item.slug === service.path)?.prices?.[0]?.price;
+            const firstFormula = SERVICES.find((item) => item.slug === service.path)?.prices?.[0];
             return (
               <article
                 key={service.id}
@@ -272,7 +272,7 @@ export function LocalCityPage({ commune }: Props) {
                     {service.title}
                   </Link>
                 </h3>
-                {price && <p className="mt-2 text-lg font-bold text-primary">Dès {price}</p>}
+                {firstFormula && <p className="mt-2 text-sm text-primary"><strong>{firstFormula.price}</strong> · {firstFormula.label}</p>}
                 <p className="mt-3 flex-1 text-sm leading-6 text-muted-foreground">
                   {service.detail}
                 </p>
@@ -306,7 +306,7 @@ export function LocalCityPage({ commune }: Props) {
         </p>
 
         <div className="mt-9 rounded-2xl border border-border bg-muted/30 p-5 md:p-6">
-          <h3 className="text-xl font-bold">Logement, travaux, vitres et extérieurs : sur devis</h3>
+          <h3 className="text-xl font-bold">Logement, travaux, vitres et extérieurs sur devis</h3>
           <p className="mt-3 text-sm leading-7 text-muted-foreground">
             Indiquez la surface approximative, l’état actuel et la date souhaitée. Joignez au moins une photo au formulaire de devis. Le devis
             précise les surfaces et équipements retenus. Murs, plafonds, textiles et accès en

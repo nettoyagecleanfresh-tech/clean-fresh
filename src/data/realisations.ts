@@ -4,119 +4,119 @@ export const realisations: Realisation[] = [
     "src": "/images/realisations-20261118/nettoyage-fauteuil-bleu-avant-apres.webp",
     "category": "Canapés",
     "title": "Nettoyage de fauteuil bleu — secteur Balma",
-    "description": "Montage avant/après du nettoyage : fauteuil bleu. Clean&Fresh propose cette prestation à domicile dans le secteur de Balma et de Toulouse.",
+    "description": "Fauteuil bleu avant et après nettoyage.",
     "layout": "branded"
   },
   {
     "src": "/images/realisations-20261118/nettoyage-chaise-jaune-avant-apres.webp",
     "category": "Canapés",
     "title": "Nettoyage de pouf jaune — secteur Saint-Orens-de-Gameville",
-    "description": "Montage avant/après du nettoyage : pouf jaune. Clean&Fresh propose cette prestation à domicile dans le secteur de Saint-Orens-de-Gameville et de Toulouse.",
+    "description": "Pouf jaune avant et après nettoyage.",
     "layout": "branded"
   },
   {
     "src": "/images/realisations-20261118/nettoyage-fauteuil-gris-a-oreilles-avant-apres.webp",
     "category": "Canapés",
     "title": "Nettoyage de fauteuil gris à oreilles — secteur L’Union",
-    "description": "Montage avant/après du nettoyage : fauteuil gris à oreilles. Clean&Fresh propose cette prestation à domicile dans le secteur de L’Union et de Toulouse.",
+    "description": "Fauteuil gris à oreilles avant et après nettoyage.",
     "layout": "branded"
   },
   {
     "src": "/images/realisations-20261118/nettoyage-sieges-en-tissu-clair-avant-apres.webp",
     "category": "Canapés",
     "title": "Nettoyage de chaises en tissu clair — secteur Toulouse",
-    "description": "Montage avant/après du nettoyage : chaises en tissu clair. Clean&Fresh propose cette prestation à domicile dans le secteur de Toulouse et de Toulouse.",
+    "description": "Chaises en tissu clair avant et après nettoyage.",
     "layout": "branded"
   },
   {
     "src": "/images/realisations-20261118/nettoyage-fauteuil-orange-avant-apres.webp",
     "category": "Canapés",
     "title": "Nettoyage de chaise orange — secteur Ramonville-Saint-Agne",
-    "description": "Montage avant/après du nettoyage : chaise orange. Clean&Fresh propose cette prestation à domicile dans le secteur de Ramonville-Saint-Agne et de Toulouse.",
+    "description": "Chaise orange avant et après nettoyage.",
     "layout": "branded"
   },
   {
     "src": "/images/realisations-20261118/nettoyage-fauteuil-capitonne-moutarde-avant-apres.webp",
     "category": "Canapés",
     "title": "Nettoyage de chaise capitonnée moutarde — secteur Blagnac",
-    "description": "Montage avant/après du nettoyage : chaise capitonnée moutarde. Clean&Fresh propose cette prestation à domicile dans le secteur de Blagnac et de Toulouse.",
+    "description": "Chaise capitonnée moutarde avant et après nettoyage.",
     "layout": "branded"
   },
   {
     "src": "/images/realisations-20261118/nettoyage-fauteuil-beige-avant-apres.webp",
     "category": "Canapés",
     "title": "Nettoyage de chaise beige — secteur Colomiers",
-    "description": "Montage avant/après du nettoyage : chaise beige. Clean&Fresh propose cette prestation à domicile dans le secteur de Colomiers et de Toulouse.",
+    "description": "Chaise beige avant et après nettoyage.",
     "layout": "branded"
   },
   {
     "src": "/images/realisations-20261118/nettoyage-fauteuil-arrondi-gris-avant-apres.webp",
     "category": "Canapés",
     "title": "Nettoyage de chaise grise à dossier arrondi — secteur Tournefeuille",
-    "description": "Montage avant/après du nettoyage : chaise grise à dossier arrondi. Clean&Fresh propose cette prestation à domicile dans le secteur de Tournefeuille et de Toulouse.",
+    "description": "Chaise grise à dossier arrondi avant et après nettoyage.",
     "layout": "branded"
   },
   {
     "src": "/images/realisations-20261118/nettoyage-canape-cotele-brun-avant-apres.webp",
     "category": "Canapés",
     "title": "Nettoyage de canapé côtelé brun — secteur Aigrefeuille",
-    "description": "Montage avant/après du nettoyage : canapé côtelé brun. Clean&Fresh propose cette prestation à domicile dans le secteur de Aigrefeuille et de Toulouse.",
+    "description": "Canapé côtelé brun avant et après nettoyage.",
     "layout": "branded"
   },
   {
     "src": "/images/realisations-20261118/nettoyage-fauteuil-jaune-arrondi-avant-apres.webp",
     "category": "Canapés",
     "title": "Nettoyage de chaise jaune à dossier arrondi — secteur Quint-Fonsegrives",
-    "description": "Montage avant/après du nettoyage : chaise jaune à dossier arrondi. Clean&Fresh propose cette prestation à domicile dans le secteur de Quint-Fonsegrives et de Toulouse.",
+    "description": "Chaise jaune à dossier arrondi avant et après nettoyage.",
     "layout": "branded"
   },
   {
     "src": "/images/realisations-20261118/nettoyage-fauteuil-capitonne-bleu-avant-apres.webp",
     "category": "Canapés",
     "title": "Nettoyage de chaise capitonnée bleue — secteur Saint-Jean",
-    "description": "Montage avant/après du nettoyage : chaise capitonnée bleue. Clean&Fresh propose cette prestation à domicile dans le secteur de Saint-Jean et de Toulouse.",
+    "description": "Chaise capitonnée bleue avant et après nettoyage.",
     "layout": "branded"
   },
   {
     "src": "/images/realisations-20261118/nettoyage-canape-convertible-gris-avant-apres.webp",
     "category": "Canapés",
     "title": "Nettoyage de canapé convertible gris — secteur Castanet-Tolosan",
-    "description": "Montage avant/après du nettoyage : canapé convertible gris. Clean&Fresh propose cette prestation à domicile dans le secteur de Castanet-Tolosan et de Toulouse.",
+    "description": "Canapé convertible gris avant et après nettoyage.",
     "layout": "branded"
   },
   {
     "src": "/images/realisations-20261118/nettoyage-banquette-arriere-de-voiture-avant-apres.webp",
     "category": "Auto",
     "title": "Nettoyage de banquette arrière de voiture — secteur Toulouse",
-    "description": "Montage avant/après du nettoyage : banquette arrière de voiture. Clean&Fresh propose cette prestation à domicile dans le secteur de Toulouse et de Toulouse.",
+    "description": "Banquette arrière de voiture avant et après nettoyage.",
     "layout": "branded"
   },
   {
     "src": "/images/realisations-20261118/nettoyage-canape-dangle-a-coussins-motifs-avant-apres.webp",
     "category": "Canapés",
     "title": "Nettoyage de canapé d’angle à coussins motifs — secteur Balma",
-    "description": "Montage avant/après du nettoyage : canapé d’angle à coussins motifs. Clean&Fresh propose cette prestation à domicile dans le secteur de Balma et de Toulouse.",
+    "description": "Canapé d’angle à coussins motifs avant et après nettoyage.",
     "layout": "branded"
   },
   {
     "src": "/images/realisations-20261118/nettoyage-fauteuil-jaune-a-dossier-haut-avant-apres.webp",
     "category": "Canapés",
     "title": "Nettoyage de fauteuil jaune à dossier haut — secteur Pechbusque",
-    "description": "Montage avant/après du nettoyage : fauteuil jaune à dossier haut. Clean&Fresh propose cette prestation à domicile dans le secteur de Pechbusque et de Toulouse.",
+    "description": "Fauteuil jaune à dossier haut avant et après nettoyage.",
     "layout": "branded"
   },
   {
     "src": "/images/realisations-20261118/nettoyage-pommeau-de-levier-de-vitesses-avant-apres.webp",
     "category": "Auto",
     "title": "Nettoyage de pommeau de levier de vitesses — secteur Toulouse",
-    "description": "Montage avant/après du nettoyage : pommeau de levier de vitesses. Clean&Fresh propose cette prestation à domicile dans le secteur de Toulouse et de Toulouse.",
+    "description": "Pommeau de levier de vitesses avant et après nettoyage.",
     "layout": "branded"
   },
   {
     "src": "/images/realisations-20261118/nettoyage-habitacle-de-mini-avant-apres.webp",
     "category": "Auto",
     "title": "Nettoyage de habitacle de Mini — secteur Labège",
-    "description": "Montage avant/après du nettoyage : habitacle de Mini. Clean&Fresh propose cette prestation à domicile dans le secteur de Labège et de Toulouse.",
+    "description": "Habitacle de Mini avant et après nettoyage.",
     "layout": "branded"
   },
   {

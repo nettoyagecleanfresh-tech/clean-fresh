@@ -4,9 +4,9 @@ import { serviceHeroPrices, serviceDisplayOptions } from "@/components/site/serv
 import { serviceIntent } from "@/lib/serviceIntent";
 import { relatedServices } from "@/lib/relatedServices";
 import { optionDescription } from "@/data/optionDescriptions";
-import { useState, type ReactNode } from "react";
+import { useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { CalendarCheck, Check, MapPin, Phone, Sparkles, ArrowRight, Clock, Shield, PawPrint, Eraser, Wind, RotateCcw, Sofa, Car as CarIcon, Star, ChevronDown } from "lucide-react";
+import { CalendarCheck, Check, MapPin, Phone, Sparkles, ArrowRight, Clock, Star, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { COMMUNES, COMPANY, SERVICES, type Service, GOOGLE_REVIEW_COUNT, GOOGLE_REVIEW_RATING } from "@/data/site";
 import { ReviewsCarousel } from "@/components/site/ReviewsCarousel";
@@ -22,36 +22,6 @@ function getBookingServiceId(slug: string): string | null {
   if (slug.includes("cuir")) return "cuir";
   return null;
 }
-
-type ServiceOption = { name: string; price: number; desc: string; popular?: boolean; icon: ReactNode };
-
-const OPTIONS_BY_SERVICE: Record<string, ServiceOption[]> = {
-  canape: [
-    { icon: <Shield className="size-8" />,    name: "Traitement anti-acariens", price: 19, desc: "Élimination des acariens et bactéries (traitement professionnel). Idéal pour les personnes sensibles.", popular: true },
-    { icon: <PawPrint className="size-8" />,  name: "Élimination des poils d'animaux", price: 15, desc: "Brossage mécanique spécifique avant l'injection-extraction.", popular: true },
-    { icon: <Eraser className="size-8" />,    name: "Détachage intensif", price: 19, desc: "Traitement ciblé pour les tâches anciennes (sang, vin, encre, café)." },
-    { icon: <Wind className="size-8" />,      name: "Traitement anti-odeur", price: 15, desc: "Neutralisation moléculaire des mauvaises odeurs incrustées.", popular: true },
-  ],
-  tapis: [
-    { icon: <Shield className="size-8" />,      name: "Traitement anti-acariens", price: 19, desc: "Élimine les acariens et allergènes présents dans les fibres du tapis.", popular: true },
-    { icon: <RotateCcw className="size-8" />,   name: "Nettoyage recto-verso", price: 25, desc: "Nettoyage des deux faces du tapis pour un résultat total." },
-    { icon: <Eraser className="size-8" />,      name: "Détachage intensif", price: 19, desc: "Traitement ciblé pour les tâches anciennes (sang, vin, encre, café)." },
-    { icon: <Wind className="size-8" />,        name: "Traitement anti-odeur", price: 15, desc: "Neutralisation moléculaire des mauvaises odeurs incrustées.", popular: true },
-  ],
-  matelas: [
-    { icon: <Shield className="size-8" />,  name: "Traitement anti-acariens", price: 19, desc: "Élimination des acariens et bactéries (traitement professionnel). Indispensable pour les allergiques.", popular: true },
-    { icon: <Eraser className="size-8" />,  name: "Détachage intensif", price: 19, desc: "Traitement ciblé pour les tâches résistantes (transpiration, sang…)." },
-    { icon: <Wind className="size-8" />,    name: "Traitement anti-odeur", price: 15, desc: "Neutralisation moléculaire des mauvaises odeurs incrustées.", popular: true },
-  ],
-  auto: [
-    { icon: <Shield className="size-8" />,   name: "Traitement anti-acariens", price: 19, desc: "Élimine les allergènes des textiles de l'habitacle.", popular: true },
-    { icon: <PawPrint className="size-8" />, name: "Élimination des poils d'animaux", price: 25, desc: "Brossage spécifique avant nettoyage des sièges et moquettes.", popular: true },
-    { icon: <Sofa className="size-8" />,     name: "Shampouinage des tapis de sol", price: 15, desc: "Nettoyage injection-extraction des tapis de sol du véhicule." },
-    { icon: <CarIcon className="size-8" />,  name: "Nettoyage du ciel de toit", price: 29, desc: "Nettoyage en profondeur du revêtement du plafond de l'habitacle." },
-    { icon: <Eraser className="size-8" />,   name: "Détachage intensif — siège", price: 19, desc: "Traitement ciblé pour les tâches résistantes sur sièges." },
-    { icon: <Wind className="size-8" />,     name: "Traitement anti-odeur", price: 15, desc: "Neutralisation des mauvaises odeurs incrustées (tabac, animaux…)", popular: true },
-  ],
-};
 
 const FORMULE_IMAGES: Record<string, string> = {
   // Canapé
@@ -120,8 +90,7 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
   others: Service[];
   bookingServiceId: string | null;
 }) {
-  const catalogueOptions = serviceDisplayOptions(bookingServiceId);
-  const serviceOptions = catalogueOptions ?? (bookingServiceId ? (OPTIONS_BY_SERVICE[bookingServiceId] ?? []) : []);
+  const serviceOptions = serviceDisplayOptions(bookingServiceId);
   const heroPrices = serviceHeroPrices(bookingServiceId);
   const intent = serviceIntent(service.slug);
   const quoteSearch = intent.kind === "quote" ? { service: intent.service } : {};
@@ -209,7 +178,7 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
             </p>
           )}
           <div className="hidden md:flex mt-6 flex-wrap justify-center gap-4 text-xs text-ink-foreground/60">
-            <span className="inline-flex items-center gap-1"><Clock className="size-3" /> Devis sous 24h</span>
+            <span className="inline-flex items-center gap-1"><Clock className="size-3" /> {bookingServiceId ? "Tarifs en ligne" : "Devis sous 24 h"}</span>
             <span className="inline-flex items-center gap-1"><Check className="size-3" /> {bookingServiceId ? "Créneau au choix" : "Prestations détaillées au devis"}</span>
             <span className="inline-flex items-center gap-1"><Check className="size-3" /> Produits adaptés au support</span>
           </div>
@@ -240,6 +209,12 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
               )}
               {service.slug === "/nettoyage-dappartement-ou-maison" && (
                 <p className="mt-4 text-muted-foreground">Pour un <Link to="/nettoyage-extreme-toulouse" className="text-primary underline">logement insalubre ou très encrassé</Link>, précisez l’état des surfaces pour obtenir un devis adapté.</p>
+              )}
+              {service.slug === "/nettoyage-dappartement-ou-maison" && (
+                <div id="salle-de-bain" className="mt-6 scroll-mt-24">
+                  <h3 className="text-xl font-bold">Nettoyage de salle de bain à Toulouse</h3>
+                  <p className="mt-2 leading-relaxed text-muted-foreground">Pour faire nettoyer uniquement la salle de bain, indiquez les équipements concernés dans votre demande de devis. Une photo de la paroi de douche, du receveur ou de la robinetterie permet de distinguer les dépôts de calcaire des joints usés. Précisez aussi si le sol et les faïences murales sont à inclure.</p>
+                </div>
               )}
               {service.guide && (
                 <p className="mt-4 text-muted-foreground">{service.guide.text} <Link to={service.guide.path} className="font-medium text-primary underline">{service.guide.link}</Link>.</p>
@@ -441,19 +416,16 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
 
       {/* ── OPTIONS ── */}
       {serviceOptions.length > 0 && (
-        <section className={`bg-secondary/60 py-12 md:py-16 ${catalogueOptions ? "" : "lg:hidden"}`}>
+        <section className="bg-secondary/60 py-12 md:py-16">
           <div className="mx-auto max-w-6xl px-4">
-            <h3 className="text-xl font-bold mb-1">
-              Personnalisez votre soin{" "}
-              <span className="text-primary">{service.short}</span>
-            </h3>
+            <h2 className="text-xl font-bold mb-1">Les options disponibles selon la formule</h2>
             <p className="text-sm text-muted-foreground mb-5">
               Options facultatives à ajouter lors de la réservation. Le prix exact dépend de la formule sélectionnée.
             </p>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {serviceOptions.map((opt) => (
                 <div
-                  key={opt.name}
+                  key={opt.id}
                   className="relative flex flex-col rounded-2xl border border-border bg-card p-5 shadow-[var(--shadow-soft)]"
                 >
                   <div className="flex items-start justify-between mb-3">

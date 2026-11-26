@@ -1,3 +1,4 @@
+import { fixedEuroPrice } from "@/lib/serviceSchema";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { CheckCircle2, Phone, ArrowRight, MessageCircle, Armchair, Layers, Car, BedDouble, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -17,6 +18,7 @@ const TARIF_CATEGORIES = [
     icon: <Armchair className="size-7" />,
     title: "Nettoyage Canapés, Fauteuils & Chaises",
     priceFrom: "49 €",
+    priceLabel: "Fauteuil",
     bullets: ["Fauteuil, canapé 2/3, 4/5 places", "Canapé U/angle, pouf, chaise", "Options anti-acariens, anti-odeur"],
   },
   {
@@ -24,6 +26,7 @@ const TARIF_CATEGORIES = [
     icon: <BedDouble className="size-7" />,
     title: "Nettoyage Matelas",
     priceFrom: "49 €",
+    priceLabel: "Matelas enfant",
     bullets: ["Matelas enfant, 1 place, 2 places", "Deux faces incluses pour chaque matelas", "Traitement anti-acariens en option"],
   },
   {
@@ -31,6 +34,7 @@ const TARIF_CATEGORIES = [
     icon: <Layers className="size-7" />,
     title: "Nettoyage Tapis",
     priceFrom: "49 €",
+    priceLabel: "1 tapis",
     bullets: ["1 tapis, 2 tapis, 3 tapis", "Format standard jusqu'à 4 m² par tapis", "Options anti-acariens, recto-verso"],
   },
   {
@@ -38,6 +42,7 @@ const TARIF_CATEGORIES = [
     icon: <Car className="size-7" />,
     title: "Nettoyage Auto",
     priceFrom: "69 €",
+    priceLabel: "Pack Bronze",
     bullets: ["Bronze : aspiration et plastiques", "Argent : Bronze + sièges et vitres", "Or : Argent + moquettes, tapis et contours"],
   },
   {
@@ -45,6 +50,7 @@ const TARIF_CATEGORIES = [
     icon: <Layers className="size-7" />,
     title: "Nettoyage Moquette",
     priceFrom: "99 €",
+    priceLabel: "Moins de 12 m²",
     bullets: ["Moins de 12 m² : 99 €", "De 12 à 20 m² : 149 €", "Plus de 20 m² : 199 €"],
   },
   {
@@ -52,6 +58,7 @@ const TARIF_CATEGORIES = [
     icon: <Armchair className="size-7" />,
     title: "Nettoyage Cuir — Canapés, Fauteuils & Chaises",
     priceFrom: "49 €",
+    priceLabel: "Fauteuil en cuir",
     bullets: ["Fauteuil, canapé 2/3, 4/5 places", "Chaises et sièges auto cuir", "Soin nourrissant en option"],
   },
 ];
@@ -103,26 +110,20 @@ const priceSchema = {
   name: "Tarifs nettoyage Clean&Fresh Toulouse",
   description:
     "Liste des tarifs de nettoyage professionnel à domicile à Toulouse et agglomération",
-  itemListElement: TEXTILE_SERVICES.flatMap((service, si) =>
-    (service.prices ?? []).map((price, pi) => ({
-      "@type": "ListItem",
-      position: si * 10 + pi + 1,
-      item: {
+  itemListElement: TEXTILE_SERVICES.flatMap(service =>
+    (service.prices ?? []).flatMap(row => {
+      const price = fixedEuroPrice(row.price);
+      return price === undefined ? [] : [{
         "@type": "Offer",
-        name: `${service.short} — ${price.label}`,
-        description: price.items?.join(", "),
-        price: price.price.replace(/[^0-9]/g, ""),
+        name: `${service.short} — ${row.label}`,
+        description: row.items?.join(", "),
+        price,
         priceCurrency: "EUR",
-        url: `${SITE_URL}${service.slug}`,
-        seller: {
-          "@type": "LocalBusiness",
-          name: "Clean&Fresh",
-          telephone: "+33767127500",
-          areaServed: "Toulouse, Haute-Garonne",
-        },
-      },
-    }))
-  ),
+        url: SITE_URL + service.slug,
+        seller: { "@id": SITE_URL + "/#business" },
+      }];
+    })
+  ).map((item, index) => ({ "@type": "ListItem", position: index + 1, item })),
 };
 
 const breadcrumbSchema = {
@@ -282,7 +283,7 @@ function TarifsPage() {
                 {cat.icon}
               </div>
               <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-1">
-                À partir de
+                {cat.priceLabel}
               </p>
               <p className="text-2xl md:text-3xl font-bold text-primary leading-none mb-2">{cat.priceFrom}</p>
               <h2 className="text-xs md:text-sm font-bold leading-snug mb-2 text-foreground">{cat.title}</h2>
@@ -326,7 +327,7 @@ function TarifsPage() {
                 to={service.slug as any}
                 className="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline"
               >
-                Voir la prestation <ArrowRight className="size-3.5" />
+                {service.detailTitle} <ArrowRight className="size-3.5" />
               </Link>
             </div>
 
@@ -393,7 +394,7 @@ function TarifsPage() {
                   {service.subtitle}
                 </p>
                 <p className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-primary">
-                  Voir la prestation <ArrowRight className="size-3" />
+                  {service.detailTitle} <ArrowRight className="size-3" />
                 </p>
               </Link>
             ))}
