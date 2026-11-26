@@ -20,3 +20,25 @@ test('missing rainfall stays missing, measured zero is retained', () => {
   assert.equal(series.size, 1);
   assert.equal(series.get('2026-11-26T09:00:00.000Z'), 0);
 });
+
+import { dryAdvice, rainOverview, rainState } from '../src/lib/autoRain.ts';
+import type { ForecastSlot } from '../src/lib/toulouseWeather.ts';
+test('any forecast rain is flagged, missing data cannot imply a dry day', () => {
+  assert.equal(rainState(0.001), 'wet');
+  assert.equal(rainState(null), 'unknown');
+  const p = (rain: number | null): ForecastSlot => ({ rain, temperature: 6, time: '2026-11-26T08:00:00Z', source: 'MET' });
+  assert.equal(rainOverview([p(0), p(0.01)]), 'mixed');
+  assert.equal(rainOverview([p(0), p(null)]), 'unknown');
+  assert.equal(rainOverview([p(0)]), 'dry');
+  assert.equal(rainOverview([]), 'unknown');
+});
+test('dry recommendations require two consecutive future local daytime hours with hourly coverage', () => {
+  const now = new Date('2026-11-26T05:00:00Z');
+  const first: ForecastSlot = { rain: 0, temperature: 6, time: '2026-11-26T08:00:00Z', source: 'MET' };
+  const second: ForecastSlot = { ...first, time: '2026-11-26T09:00:00Z' };
+  assert.equal(dryAdvice([first, second], now), 'De 9 h à 11 h');
+  assert.equal(dryAdvice([first, { ...second, rain: 0.001 }], now), null);
+  assert.equal(dryAdvice([first, { ...second, source: 'GFS' }], now), null);
+  assert.equal(dryAdvice([first, { ...second, time: '2026-11-26T12:00:00Z' }], now), null);
+  assert.equal(dryAdvice([first,second], new Date('2026-11-26T08:05:00Z')), null);
+});
