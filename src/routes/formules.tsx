@@ -1,3 +1,4 @@
+import { AutoPreparation } from "@/components/site/AutoPreparation";
 import { optionDescription } from "@/data/optionDescriptions";
 import { useState, type ReactNode } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
@@ -958,7 +959,7 @@ const CATEGORY_CATALOG = [
     id: "auto",
     icon: <Car className="size-7" />,
     title: "Nettoyage Auto",
-    sub: "Nettoyage intérieur sur place · Eau, prise et stationnement à prévoir",
+    sub: "Nettoyage intérieur sur place · À domicile ou sur votre lieu de travail",
     priceFrom: "69 €",
     priceLabel: "Pack Bronze",
     bullets: ["Bronze : aspiration et plastiques", "Argent : Bronze + sièges et vitres", "Or : Argent + moquettes, tapis et contours"],
@@ -1070,6 +1071,7 @@ function FormulesPage() {
                   <Link to={cat.page.slug} className="mt-2 inline-block text-sm font-semibold text-primary underline underline-offset-4">{cat.page.detailTitle}</Link>
                 </div>
               </div>
+              {cat.id === "auto" && <AutoPreparation />}
               {cat.content}
             </section>
           </FadeIn>
@@ -1083,7 +1085,7 @@ function FormulesPage() {
           <p className="text-xs font-bold uppercase tracking-widest text-primary mb-2">Sur devis</p>
           <h2 className="text-2xl font-bold tracking-tight">Autres prestations de nettoyage à Toulouse</h2>
           <p className="mt-2 text-sm text-muted-foreground max-w-2xl">
-            Nettoyage de toiture, façade, terrasse, vitrages, appartement, fin de bail, fin de chantier
+            Nettoyage de terrasse, vitrages, appartement, fin de bail, fin de chantier
             et logement insalubre (syndrome de Diogène). Devis gratuit sous 24h.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">

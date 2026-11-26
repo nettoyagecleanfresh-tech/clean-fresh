@@ -47,6 +47,16 @@ function isH3SwallowedErrorBody(body: string): boolean {
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     try {
+      const path = new URL(request.url).pathname;
+      if (/^\/nettoyage-(?:toiture|facade)-toulouse\/?$/.test(path)) {
+        return new Response(request.method === "HEAD" ? null : '<!doctype html><html lang="fr"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Prestation retirée | Clean&amp;Fresh</title><main style="font:1.1rem system-ui;max-width:36rem;margin:12vh auto;padding:1rem"><h1>Cette prestation a été retirée</h1><p>Découvrez les prestations de nettoyage proposées à Toulouse.</p><a href="/nos-services">Voir les prestations Clean&amp;Fresh</a></main></html>', {
+          status: 410, headers: { "Content-Type": "text/html; charset=utf-8", "X-Robots-Tag": "noindex" },
+        });
+      }
+      if (path === "/meteo-toulouse.json") {
+        const { weatherResponse } = await import("./lib/toulouseWeather.server");
+        return weatherResponse(request);
+      }
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
       return await normalizeCatastrophicSsrResponse(response);

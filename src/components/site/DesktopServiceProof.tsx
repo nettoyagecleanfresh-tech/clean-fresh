@@ -37,7 +37,7 @@ export function DesktopServiceProof({ slug, bookingServiceId }: { slug: string; 
   const photos = selectedPhotos(slug, bookingServiceId);
   const reviewCategory = bookingServiceId ?? (/appartement|fin-de-bail/.test(slug) ? 'appartement' : '');
   const review = reviewCategory ? ALL_REVIEWS.find(item => item.stars === 5 && item.categories.includes(reviewCategory)) : undefined;
-  const quoteService = /diogene/.test(slug) ? 'diogene' : /extreme/.test(slug) ? 'extreme' : /fin-de-chantier/.test(slug) ? 'chantier' : /fin-de-bail/.test(slug) ? 'bail' : /appartement/.test(slug) ? 'logement' : /vitres/.test(slug) ? 'vitres' : /terrasse/.test(slug) ? 'terrasse' : /toiture/.test(slug) ? 'toiture' : /facade/.test(slug) ? 'facade' : '';
+  const quoteService = /diogene/.test(slug) ? 'diogene' : /extreme/.test(slug) ? 'extreme' : /fin-de-chantier/.test(slug) ? 'chantier' : /fin-de-bail/.test(slug) ? 'bail' : /appartement/.test(slug) ? 'logement' : /vitres/.test(slug) ? 'vitres' : /terrasse/.test(slug) ? 'terrasse' : '';
   if (!photos.length) return null;
   return <section id="resultats" aria-label="Avant / Après de nos interventions" className="border-b border-blue-100 bg-slate-50 py-3 lg:py-4">
       <div className="mx-auto max-w-6xl px-4">

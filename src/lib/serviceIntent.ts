@@ -15,8 +15,6 @@ const quoteRoutes: Record<string, string> = {
   '/nettoyage-extreme-toulouse': 'extreme',
   '/nettoyage-de-vitres-toulouse': 'vitres',
   '/nettoyage-terrasse-toulouse': 'terrasse',
-  '/nettoyage-toiture-toulouse': 'toiture',
-  '/nettoyage-facade-toulouse': 'facade',
 };
 export function serviceIntent(pathname: string) {
   const path = pathname.replace(/\/+$/, '') || '/';
