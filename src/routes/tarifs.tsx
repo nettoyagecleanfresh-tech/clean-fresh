@@ -231,7 +231,7 @@ function PriceCard({
   if (serviceId && formuleId) {
     return (
       <Link
-        to="/reserver"
+        to="/reserver" reloadDocument
         search={{ service: serviceId, formule: formuleId, from: "tarifs" }}
         className={`${baseClass} cursor-pointer hover:border-primary/40 hover:shadow-lg hover:-translate-y-1 group`}
       >

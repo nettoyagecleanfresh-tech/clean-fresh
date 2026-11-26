@@ -214,7 +214,7 @@ function ContactPage() {
           {QUICK_SERVICES[selectedService] && (
             <div className="rounded-xl border border-primary/20 bg-primary/5 p-4 text-sm text-foreground/80">
               Les tarifs de cette prestation sont disponibles en ligne. Choisissez votre formule et votre créneau, ou ajoutez plusieurs articles au même rendez-vous.
-              <Link to="/reserver" search={{ service: QUICK_SERVICES[selectedService], formule: "", from: "quote_form" }} className="mt-2 flex min-h-11 w-fit items-center font-bold text-primary underline">Voir les prix et réserver</Link>
+              <Link to="/reserver" reloadDocument search={{ service: QUICK_SERVICES[selectedService], formule: "", from: "quote_form" }} className="mt-2 flex min-h-11 w-fit items-center font-bold text-primary underline">Voir les prix et réserver</Link>
             </div>
           )}
 

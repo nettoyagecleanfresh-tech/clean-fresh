@@ -46,7 +46,7 @@ export function DesktopBookingChoices() {
                   <p className="mt-2 text-xs text-slate-600">Dès <strong className="whitespace-nowrap text-xl font-bold text-blue-950">{startingPrice} €</strong></p>
                   <span className="mt-1 text-xs text-blue-900 underline underline-offset-2">{pick.detail}</span>
                 </Link>
-                <Link to="/reserver" search={{ service: service.id, formule: '', from: 'home_choices' }} data-conversion-location="home_choices" aria-label={`Réserver en ligne : ${pick.label}`} className="flex min-h-11 items-center justify-between gap-1 rounded-b-2xl border-t border-blue-100 px-3 text-sm font-bold text-blue-900 hover:bg-sky-50">
+                <Link to="/reserver" reloadDocument search={{ service: service.id, formule: '', from: 'home_choices' }} data-conversion-location="home_choices" aria-label={`Réserver en ligne : ${pick.label}`} className="flex min-h-11 items-center justify-between gap-1 rounded-b-2xl border-t border-blue-100 px-3 text-sm font-bold text-blue-900 hover:bg-sky-50">
                   Réserver <ArrowUpRight aria-hidden="true" className="size-4 shrink-0" />
                 </Link>
               </article>

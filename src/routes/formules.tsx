@@ -211,7 +211,7 @@ function MiniPriceCard({ title, price, items, badge, featured, icon }: {
           </li>
         ))}
       </ul>
-      <Link to="/reserver" search={{ from: "formules" } as any}
+      <Link to="/reserver" reloadDocument search={{ from: "formules" } as any}
         className={[
           "mt-4 inline-flex w-full items-center justify-center gap-1.5 rounded-xl py-2.5 text-xs font-bold transition-opacity hover:opacity-90",
           featured ? "bg-white text-primary" : "bg-primary text-white",
@@ -328,7 +328,7 @@ function CanapeDetail() {
                 </p>
               )}
             </div>
-            <Link to="/reserver" search={{ service: "canape", formule: selected, from: "formules" }} onClick={() => window.scrollTo(0,0)}
+            <Link to="/reserver" reloadDocument search={{ service: "canape", formule: selected, from: "formules" }} onClick={() => window.scrollTo(0,0)}
               className="inline-flex items-center justify-center gap-2 w-full rounded-xl bg-primary px-6 py-3.5 text-sm font-bold text-white shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
               <CalendarCheck className="size-4" /> Je réserve
             </Link>
@@ -418,7 +418,7 @@ function CuirDetail() {
                 </p>
               )}
             </div>
-            <Link to="/reserver" search={{ service: "cuir", formule: selected, from: "formules" }} onClick={() => window.scrollTo(0,0)}
+            <Link to="/reserver" reloadDocument search={{ service: "cuir", formule: selected, from: "formules" }} onClick={() => window.scrollTo(0,0)}
               className="inline-flex items-center justify-center gap-2 w-full rounded-xl bg-primary px-6 py-3.5 text-sm font-bold text-white shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
               <CalendarCheck className="size-4" /> Je réserve
             </Link>
@@ -631,7 +631,7 @@ function TapisDetail() {
                 </p>
               )}
             </div>
-            <Link to="/reserver" search={{ service: "tapis", formule: selected, from: "formules" }} onClick={() => window.scrollTo(0,0)}
+            <Link to="/reserver" reloadDocument search={{ service: "tapis", formule: selected, from: "formules" }} onClick={() => window.scrollTo(0,0)}
               className="inline-flex items-center justify-center gap-2 w-full rounded-xl bg-primary px-6 py-3.5 text-sm font-bold text-white shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
               <CalendarCheck className="size-4" /> Je réserve
             </Link>
@@ -748,7 +748,7 @@ function AutoDetail() {
                 </p>
               )}
             </div>
-            <Link to="/reserver" search={{ service: "auto", formule: selected, from: "formules" }} onClick={() => window.scrollTo(0,0)}
+            <Link to="/reserver" reloadDocument search={{ service: "auto", formule: selected, from: "formules" }} onClick={() => window.scrollTo(0,0)}
               className="inline-flex items-center justify-center gap-2 w-full rounded-xl bg-primary px-6 py-3.5 text-sm font-bold text-white shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
               <CalendarCheck className="size-4" /> Je réserve
             </Link>
@@ -845,7 +845,7 @@ function MatelasDetail() {
                 </p>
               )}
             </div>
-            <Link to="/reserver" search={{ service: "matelas", formule: selected, from: "formules" }} onClick={() => window.scrollTo(0,0)}
+            <Link to="/reserver" reloadDocument search={{ service: "matelas", formule: selected, from: "formules" }} onClick={() => window.scrollTo(0,0)}
               className="inline-flex items-center justify-center gap-2 w-full rounded-xl bg-primary px-6 py-3.5 text-sm font-bold text-white shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
               <CalendarCheck className="size-4" /> Je réserve
             </Link>
@@ -891,7 +891,7 @@ function MoquetteDetail() {
             <li className="flex gap-2"><CheckCircle2 className="mt-0.5 size-4 shrink-0 text-primary" /> Options spécialisées disponibles</li>
           </ul>
           <Link
-            to="/reserver"
+            to="/reserver" reloadDocument
             search={{ service: "moquette", formule: item.id, from: "formules" }}
             onClick={() => window.scrollTo(0, 0)}
             className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-bold text-white shadow-md transition-all hover:-translate-y-0.5 hover:shadow-lg"
@@ -1021,7 +1021,7 @@ function FormulesPage() {
               {CATEGORIES.map((cat) => (
                 <Link
                   key={cat.id}
-                  to="/reserver"
+                  to="/reserver" reloadDocument
                   search={{ service: cat.id, formule: "", from: "formules" }}
                   onClick={() => window.scrollTo(0, 0)}
                   className="relative flex flex-col rounded-2xl border border-border bg-white p-4 md:p-5 text-left transition-all shadow-sm hover:shadow-md hover:border-primary/40 hover:-translate-y-0.5 group"
@@ -1138,7 +1138,7 @@ function FormulesPage() {
         <p className="mt-1 text-sm text-muted-foreground">Réservation en ligne en 2 minutes, confirmation immédiate.</p>
         <div className="mt-5 flex flex-wrap gap-3 justify-center">
           <Button asChild size="xl" className="font-bold">
-            <Link to="/reserver" search={{ from: "formules" } as any}><CalendarCheck className="size-5" /> Réserver maintenant</Link>
+            <Link to="/reserver" reloadDocument search={{ from: "formules" } as any}><CalendarCheck className="size-5" /> Réserver maintenant</Link>
           </Button>
           <Button asChild variant="outline" size="xl">
             <a href={COMPANY.phoneHref}><Phone className="size-4" /> {COMPANY.phone}</a>

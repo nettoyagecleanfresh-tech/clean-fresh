@@ -136,7 +136,7 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
             <ul className="grid gap-2 sm:grid-cols-3">
               {heroPrices.map(price => (
                 <li key={price.id}>
-                  <Link to="/reserver" search={{ service: bookingServiceId, formule: price.id, from: "service_page" }} data-conversion-location="service_hero" className="flex min-h-12 h-full flex-wrap items-center justify-between gap-2 rounded-lg border border-white/25 px-3 py-2 hover:bg-white/15 focus-visible:outline-2 focus-visible:outline-white">
+                  <Link to="/reserver" reloadDocument search={{ service: bookingServiceId, formule: price.id, from: "service_page" }} data-conversion-location="service_hero" className="flex min-h-12 h-full flex-wrap items-center justify-between gap-2 rounded-lg border border-white/25 px-3 py-2 hover:bg-white/15 focus-visible:outline-2 focus-visible:outline-white">
                     <span className="text-sm leading-5">{price.label}</span>
                     <strong className="whitespace-nowrap">{price.price} ›</strong>
                   </Link>
@@ -154,7 +154,7 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
                 className="bg-accent-gradient text-accent-foreground font-bold shadow-[var(--shadow-card)] hover:opacity-90 px-4 md:px-6 h-12 text-sm"
               >
                 {bookingServiceId ? (
-                  <Link to="/reserver" search={{ service: bookingServiceId, formule: "", from: "service_page" }} data-conversion-location="service_hero">
+                  <Link to="/reserver" reloadDocument search={{ service: bookingServiceId, formule: "", from: "service_page" }} data-conversion-location="service_hero">
                     <CalendarCheck className="size-4 mr-1.5" /> Voir toutes les formules et réserver
                   </Link>
                 ) : (
@@ -206,7 +206,14 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
                 <p key={p} className="mt-4 text-muted-foreground leading-relaxed">{p}</p>
               ))}
               {service.slug === "/nettoyage-diogene-toulouse" && (
+                <>
+                <article className="mt-6">
+                  <h3 className="text-xl font-bold">Une chambre très encombrée, avant et après notre passage</h3>
+                  <p className="mt-2 leading-relaxed text-muted-foreground">La première photo montre l’encombrement de la chambre. La seconde montre la même pièce après notre intervention. Si vous nous contactez pour un proche, indiquez dès la demande quels meubles, papiers ou effets personnels vous souhaitez conserver.</p>
+                  <a href="/nos-realisations#chambre-encombree" className="inline-flex min-h-11 items-center font-semibold text-primary underline">Voir l’avant/après de la chambre</a>
+                </article>
                 <p className="mt-4 text-muted-foreground">Pour un logement insalubre dont les pièces restent accessibles, consultez notre <Link to="/nettoyage-extreme-toulouse" className="text-primary underline">nettoyage de logement insalubre à Toulouse</Link>.</p>
+                </>
               )}
               {service.slug === "/nettoyage-extreme-toulouse" && (
                 <p className="mt-4 text-muted-foreground">Lorsque des objets accumulés empêchent l’accès aux pièces, découvrez comment nous organisons le <Link to="/nettoyage-diogene-toulouse" className="text-primary underline">tri et le débarras après un syndrome de Diogène</Link>.</p>
@@ -316,7 +323,7 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
                             size="sm"
                           >
                             {bookingServiceId ? (
-                              <Link to="/reserver" search={{ service: bookingServiceId, formule: row.formuleId ?? "", from: "service_page" }}>
+                              <Link to="/reserver" reloadDocument search={{ service: bookingServiceId, formule: row.formuleId ?? "", from: "service_page" }}>
                                 <CalendarCheck className="size-3 mr-1" /> Réserver
                               </Link>
                             ) : (

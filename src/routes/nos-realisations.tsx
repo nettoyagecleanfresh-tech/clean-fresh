@@ -133,22 +133,34 @@ function serviceLink(photo: Realisation) {
     Auto: '/nettoyage-auto-a-domicile-toulouse',
     Tapis: /moquette/i.test(photo.title) ? '/nettoyage-moquette-toulouse' : '/nettoyage-tapis-toulouse',
   };
-  if (/cuir/i.test(photo.title)) return '/nettoyage-cuir-toulouse';
+  if (photo.src === "/realisations/photo-22.webp") return "/nettoyage-diogene-toulouse";
+  if (/cuir/i.test(photo.title) && photo.category === "Canapés") return '/nettoyage-cuir-toulouse';
   if (photo.category === 'Logements' && /insalubre|très sale et encombrée/i.test(photo.title)) return '/nettoyage-extreme-toulouse';
   return pages[photo.category] ?? '/nettoyage-dappartement-ou-maison';
+}
+
+// Select a formula only when the published caption identifies it.
+function galleryFormula(photo: Realisation, service: string) {
+  if (service === "tapis" && /d[’']un tapis\b/i.test(photo.title)) return "tapis-1";
+  if (service !== "canape") return "";
+  if (/\bfauteuil\b/i.test(photo.title)) return "fauteuil";
+  if (/canapé d[’']angle/i.test(photo.title)) return "canape-angle";
+  if (/canapé (?:deux|trois|2|3) places/i.test(photo.title)) return "canape-2";
+  return "";
 }
 
 function GalleryBookingLink({ photo }: { photo: Realisation }) {
   const intent = serviceIntent(serviceLink(photo));
   const classes = "mt-3 flex min-h-11 items-center justify-center rounded-full bg-blue-950 px-5 py-3 text-sm font-bold text-white hover:bg-blue-900";
   return intent.kind === "booking" && intent.service ? (
-    <Link to="/reserver" search={{ service: intent.service, formule: "", from: "gallery" }} className={classes}>Réserver en ligne<ArrowUpRight className="ml-2 size-4" /></Link>
+    <Link to="/reserver" reloadDocument search={{ service: intent.service, formule: galleryFormula(photo, intent.service), from: "gallery" }} className={classes}>Réserver en ligne<ArrowUpRight className="ml-2 size-4" /></Link>
   ) : (
     <Link to="/formules" resetScroll className={classes}>Réserver en ligne<ArrowUpRight className="ml-2 size-4" /></Link>
   );
 }
 
 const galleryServiceLabels: Record<string, string> = {
+  '/nettoyage-diogene-toulouse': 'Nettoyage de logement très encombré',
   '/nettoyage-canape-toulouse': 'Nettoyage des canapés et sièges en tissu',
   '/nettoyage-cuir-toulouse': 'Nettoyage et soin du cuir',
   '/nettoyage-matelas-toulouse': 'Nettoyage des matelas',
@@ -182,7 +194,7 @@ function GaleriePage() {
       </div>
       <p aria-live="polite" className="mb-6 text-center text-sm text-slate-600">{photos.length} réalisations · Appuyez sur une photo pour l’agrandir</p>
       <div className="columns-1 gap-6 sm:columns-2 lg:columns-3">
-        {photos.map(photo => <figure key={photo.src} className="mb-6 break-inside-avoid overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-sm">
+        {photos.map(photo => <figure key={photo.src} id={photo.src === "/realisations/photo-22.webp" ? "chambre-encombree" : undefined} className="mb-6 scroll-mt-24 break-inside-avoid overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-sm">
           <button type="button" onClick={event => { opener.current = event.currentTarget; setSelected(photo); }} aria-label={`Agrandir : ${photo.title}`} className="group relative block w-full cursor-zoom-in text-left focus-visible:outline-4 focus-visible:-outline-offset-4 focus-visible:outline-blue-900">
             <Photo photo={photo} />
             <span aria-hidden="true" className="absolute bottom-3 right-3 rounded-full bg-white/95 p-2 text-slate-800 shadow-sm transition-transform group-hover:scale-110"><ZoomIn className="size-4" /></span>
@@ -230,7 +242,7 @@ function GaleriePage() {
         <DialogTitle>{selected.title}</DialogTitle>
         <DialogDescription>{selected.description}</DialogDescription>
         <div className="mx-auto w-full max-w-md overflow-hidden rounded-xl"><Photo photo={selected} /></div>
-        <Link to="/formules" resetScroll className="inline-flex min-h-11 items-center justify-center rounded-full bg-blue-950 px-5 py-3 font-bold text-white">Réserver en ligne</Link>
+        <GalleryBookingLink photo={selected} />
         <div className="flex items-center justify-between gap-3"><button type="button" onClick={() => move(-1)} aria-label="Photo précédente" className="flex min-h-11 items-center rounded-full border px-4"><ChevronLeft className="size-5" />Précédente</button><span className="text-sm text-slate-500">{position + 1} / {photos.length}</span><button type="button" onClick={() => move(1)} aria-label="Photo suivante" className="flex min-h-11 items-center rounded-full border px-4">Suivante<ChevronRight className="size-5" /></button></div>
       </DialogContent>}
     </Dialog>
