@@ -2,7 +2,11 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ServicePage } from "@/components/site/ServicePage";
 import { getService, SITE_URL } from "@/data/site";
 
-const service = getService("/nettoyage-tapis-toulouse");
+const service = {
+  ...getService("/nettoyage-tapis-toulouse"),
+  subtitle: "À domicile à Toulouse, nous nettoyons 1 à 3 tapis jusqu’à 4 m² chacun, avec une méthode adaptée à la fibre. Déplacement offert jusqu’à 20 km de Toulouse. Au-delà, un supplément dépend de votre adresse.",
+  metaDescription: "Nettoyage de tapis à domicile à Toulouse dès 49 €. Trois tapis à 99 €, jusqu’à 4 m² chacun. Déplacement offert jusqu’à 20 km. Réservez votre créneau en ligne.",
+};
 
 export const Route = createFileRoute("/nettoyage-tapis-toulouse")({
   head: () => ({
