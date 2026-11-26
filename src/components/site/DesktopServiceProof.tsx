@@ -10,9 +10,12 @@ import { realisationDimensions } from '@/data/realisationDimensions';
 const CATEGORIES: Record<string, string> = { canape: 'Canapés', auto: 'Auto', matelas: 'Matelas', tapis: 'Tapis', moquette: 'Tapis' };
 
 export function selectedPhotos(slug: string, booking: string | null) {
+  if (booking === 'canape') {
+    return realisations.filter(photo => photo.category === CATEGORIES.canape && /\bcanapés?(?!\p{L})/iu.test(photo.title)).slice(0, 6);
+  }
   if (booking && CATEGORIES[booking]) {
     return realisations.filter(photo => photo.category === CATEGORIES[booking] &&
-      (booking === 'moquette' ? /moquette/i.test(photo.title) : booking === 'tapis' ? !/moquette/i.test(photo.title) : true)).slice(0, booking === 'canape' || booking === 'auto' ? 6 : 4);
+      (booking === 'moquette' ? /moquette/i.test(photo.title) : booking === 'tapis' ? !/moquette/i.test(photo.title) : true)).slice(0, booking === 'auto' ? 6 : 4);
   }
   if (slug === '/nettoyage-diogene-toulouse') return realisations.filter(photo => /photo-(22|23)\.webp$/.test(photo.src));
   if (slug === '/nettoyage-extreme-toulouse') return realisations.filter(photo => /photo-(39|40)\.webp$/.test(photo.src));
