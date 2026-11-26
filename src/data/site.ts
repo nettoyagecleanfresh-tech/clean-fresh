@@ -3,7 +3,7 @@ export const OG_IMAGE = `${SITE_URL}/realisations/photo-02.webp`;
 export const GOOGLE_REVIEWS_URL = "https://www.google.com/search?q=clean+fresh+toulouse+avis";
 
 /** Nombre d'avis Google — à mettre à jour ici pour propager partout */
-export const GOOGLE_REVIEW_COUNT = 141;
+export const GOOGLE_REVIEW_COUNT = 142;
 export const GOOGLE_REVIEW_RATING = 4.9;
 
 export const COMPANY = {
@@ -282,7 +282,7 @@ export const SERVICES: Service[] = [
     short: "Nettoyage de tapis à domicile",
     subtitle: "Nettoyage de tapis à domicile à Toulouse : 1, 2 ou 3 tapis jusqu'à 4 m² chacun. Méthode adaptée à la fibre après diagnostic.",
     metaTitle: "Nettoyage tapis à domicile Toulouse dès 49 € | Clean&Fresh",
-    metaDescription: "Faites nettoyer vos tapis à domicile à Toulouse : 1 tapis 49 €, 2 tapis 79 €, 3 tapis 99 €, jusqu’à 4 m² chacun. Matière vérifiée, options au choix.",
+    metaDescription: "Nettoyage de tapis à domicile à Toulouse. 1 tapis 49 €, 2 tapis 79 €, 3 tapis 99 €, jusqu’à 4 m² chacun. Choisissez votre créneau en ligne.",
     group: "textile",
     booking: true,
     detailTitle: "Le nettoyage de tapis selon la fibre",

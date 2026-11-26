@@ -1,10 +1,22 @@
 import { useState } from "react";
-import { Link } from "@tanstack/react-router";
+import { Link, useLocation } from "@tanstack/react-router";
 import { CalendarCheck, X } from "lucide-react";
+import { serviceIntent } from "@/lib/serviceIntent";
 
+const bookingLabels: Record<string, string> = {
+  canape: "Réserver mon nettoyage de canapé",
+  matelas: "Réserver mon nettoyage de matelas",
+  tapis: "Réserver mon nettoyage de tapis",
+  auto: "Réserver mon nettoyage auto",
+  moquette: "Réserver mon nettoyage de moquette",
+  cuir: "Réserver mon nettoyage de cuir",
+};
 
 export function TopBanner() {
   const [visible, setVisible] = useState(true);
+  const pathname = useLocation({ select: location => location.pathname });
+  const intent = serviceIntent(pathname);
+  const service = intent.kind === "booking" ? intent.service : undefined;
   if (!visible) return null;
 
   return (
@@ -14,14 +26,15 @@ export function TopBanner() {
         <p className="text-sm font-semibold hidden sm:block">
           Consultez les prochains créneaux disponibles — réservez votre nettoyage en ligne en 2 minutes
         </p>
-        <p className="text-xs font-semibold sm:hidden">
+        {!service && <p className="text-xs font-semibold sm:hidden">
           Nettoyage à domicile
-        </p>
+        </p>}
         <Link
           to="/formules"
-          className="inline-flex min-h-9 items-center shrink-0 rounded-full border border-accent-foreground/40 bg-accent-foreground/20 px-3 py-1 text-xs font-bold uppercase tracking-wider hover:bg-accent-foreground/30 transition-colors"
+          search={service ? { service } : {}}
+          className="inline-flex min-h-11 min-w-0 items-center justify-center text-center rounded-full border border-accent-foreground/40 bg-accent-foreground/20 px-3 py-1 text-xs font-bold uppercase tracking-wider hover:bg-accent-foreground/30 transition-colors"
         >
-          Réserver →
+          {service ? bookingLabels[service] : "Réserver →"}
         </Link>
       </div>
       <button
