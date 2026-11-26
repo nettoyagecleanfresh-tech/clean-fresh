@@ -63,18 +63,19 @@ export function DesktopBookingChoices() {
             <h2 className="text-xl font-bold">Un logement ou un bâtiment à nettoyer ?</h2>
             <Link to="/contactez-nous" className="py-1 text-sm font-semibold text-white underline underline-offset-4">Demander un devis gratuit</Link>
           </div>
-          <p className="mt-1 text-sm leading-relaxed text-sky-100">Choisissez le type de nettoyage pour préciser votre besoin et recevoir un devis sous 24 h.</p>
-          <div className="mt-3 flex flex-wrap gap-2">
-            {Object.entries(quoteLabels).map(([service, label]) => (
-              <Link key={service} to="/contactez-nous" search={{ service }} data-conversion-location="home_choices" className="inline-flex min-h-10 items-center rounded-lg border border-sky-600 bg-sky-900 px-3 py-2 text-sm font-semibold hover:bg-sky-800">{label}</Link>
-            ))}
-          </div>
-          <details className="mt-3 border-t border-white/20">
-            <summary className="cursor-pointer pt-3 text-sm font-semibold">Ce qui est inclus selon la prestation</summary>
-            <ul className="mt-2 columns-1 sm:columns-2 lg:columns-3">
-              {servicePages.filter(page => !page.booking).map(page => <li key={page.slug} className="break-inside-avoid"><Link to={page.slug} className="inline-block py-1.5 text-sm text-sky-100 underline underline-offset-4">{page.navLabel}</Link></li>)}
-            </ul>
-          </details>
+          <p className="mt-1 text-sm leading-relaxed text-sky-100">Consultez le détail de l’intervention ou demandez directement un devis sous 24 h.</p>
+          <ul className="mt-3 grid grid-cols-1 gap-2 min-[420px]:grid-cols-2 lg:grid-cols-3">
+            {servicePages.filter(page => !page.booking).map(page => {
+              const service = serviceIntent(page.slug).service!;
+              const label = quoteLabels[service];
+              return (
+                <li key={page.slug} className="flex items-center justify-between gap-1 rounded-lg border border-sky-600 bg-sky-900">
+                  <Link to={page.slug} className="flex min-h-11 flex-1 items-center rounded-l-lg px-3 text-sm font-semibold underline-offset-4 hover:underline">{label}</Link>
+                  <Link to="/contactez-nous" search={{ service }} data-conversion-location="home_choices" aria-label={`Demander un devis pour la prestation ${label}`} className="flex min-h-11 items-center rounded-r-lg px-3 text-xs text-sky-100 underline underline-offset-4 hover:bg-sky-800">Devis</Link>
+                </li>
+              );
+            })}
+          </ul>
         </div>
       </div>
     </section>

@@ -19,7 +19,7 @@ export function selectedPhotos(slug: string, booking: string | null) {
   }
   if (slug === '/nettoyage-diogene-toulouse') return realisations.filter(photo => /photo-(22|23)\.webp$/.test(photo.src));
   if (slug === '/nettoyage-extreme-toulouse') return realisations.filter(photo => /photo-(39|40)\.webp$/.test(photo.src));
-  if (/appartement|fin-de-bail|fin-de-chantier/.test(slug)) return realisations.filter(photo => /photo-(32|33|35|41)\.webp$/.test(photo.src));
+  if (/appartement|fin-de-bail/.test(slug)) return realisations.filter(photo => /photo-(32|33|35|41)\.webp$/.test(photo.src));
   return [];
 }
 

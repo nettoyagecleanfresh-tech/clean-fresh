@@ -530,7 +530,7 @@ function Index() {
           <div>
             <h2 className="text-xl font-bold">Comment se déroule l’intervention ?</h2>
             <p className="mt-2 text-sm leading-relaxed text-slate-700">Pour vos textiles, choisissez la prestation et le créneau en ligne. Vous pouvez regrouper plusieurs articles dans le même rendez-vous et régler en fin de prestation.</p>
-            <p className="mt-2 text-sm leading-relaxed text-slate-700">Pour un <Link to="/nettoyage-dappartement-ou-maison" className="text-sky-900 underline">nettoyage d’appartement ou de maison</Link>, indiquez la surface et votre délai. Nous précisons les tâches et le prix sur le devis, puis convenons du rendez-vous avec vous. Pour un logement très encombré, consultez les étapes du <Link to="/nettoyage-diogene-toulouse" className="text-sky-900 underline">tri et du nettoyage Diogène</Link>.</p>
+            <p className="mt-2 text-sm leading-relaxed text-slate-700">Pour un <Link to="/nettoyage-dappartement-ou-maison" className="text-sky-900 underline">nettoyage d’appartement ou de maison</Link>, indiquez la surface et votre délai. Nous précisons les tâches et le prix sur le devis, puis convenons du rendez-vous avec vous. Pour une seule pièce, consultez le <Link to="/nettoyage-dappartement-ou-maison" hash="salle-de-bain" className="text-sky-900 underline">nettoyage de salle de bain</Link>. Pour un logement très encombré, consultez les étapes du <Link to="/nettoyage-diogene-toulouse" className="text-sky-900 underline">tri et du nettoyage Diogène</Link>.</p>
             <Link to="/tarifs" className="mt-2 inline-block py-1 text-sm font-semibold text-sky-900 underline underline-offset-4">Consulter les tarifs et les options</Link>
           </div>
           <div>

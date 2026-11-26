@@ -65,7 +65,6 @@ export function serviceHeroPrices(serviceId: string | null) {
 }
 
 export function serviceDisplayOptions(serviceId: string | null) {
-  if (!serviceId || !SERVICE_ESSENTIALS[serviceId]) return null;
   const catalogue = BOOKING_SERVICES.find(service => service.id === serviceId);
   const allOptions = catalogue?.formules.flatMap(formule => formule.options) ?? [];
   return [...new Map(allOptions.map(option => [option.id, option])).values()].map(option => {

@@ -16,7 +16,7 @@ export const COMPANY = {
   streetAddress: "173 avenue Jean Chaubet",
   postalCode: "31500",
   region: "Haute-Garonne",
-  booking: "https://app.dispoo.fr/website/385-clean-fresh",
+  booking: "https://cleanetfresh.fr/formules",
 };
 
 export const DISPLACEMENT_RULES = {
@@ -103,7 +103,7 @@ export const SERVICES: Service[] = [
     guide: { text: "Un canapé avec des assises en cuir demande un nettoyage manuel. Si votre canapé mélange cuir et tissu, signalez les deux matières avant de choisir la formule. Consultez le", path: "/nettoyage-cuir-toulouse", link: "nettoyage des assises en cuir" },
     navLabel: "Nettoyage canapé Toulouse",
     h1: "Nettoyage canapé à Toulouse",
-    short: "Nettoyage canapés, fauteuils et chaises Toulouse",
+    short: "Canapés, fauteuils et chaises en tissu",
     subtitle:
       "Canapé en tissu, fauteuil ou chaises rembourrées : choisissez vos assises et regroupez-les dans une seule réservation à domicile.",
     metaTitle: "Nettoyage canapé à domicile Toulouse dès 79 € | Clean&Fresh",
@@ -118,7 +118,7 @@ export const SERVICES: Service[] = [
       "Un canapé non déhoussable peut être nettoyé sur place lorsque son revêtement le permet. Précisez le nombre de places, la présence d’une méridienne et l’état des coussins pour choisir la bonne formule. Pour des auréoles apparues après un nettoyage maison, signalez les produits utilisés : un traitement homogène de la zone peut être préférable à un détachage ponctuel.",
       "Choisissez le format de votre canapé, puis les options utiles : poils d'animaux, détachage intensif, traitement anti-odeur ou anti-acariens. Le prix de la formule et des suppléments est visible avant de réserver ; le règlement s'effectue en fin de prestation.",
       "Sur les tissus compatibles, l'injection-extraction associe une solution nettoyante et l'aspiration des salissures. La fibre, les couleurs et l'étiquette d'entretien sont vérifiées au préalable. La vapeur est un complément réservé aux matières qui la supportent. Un canapé en cuir reçoit un nettoyage manuel spécifique.",
-      "Les photos avant/après présentent des assises, dossiers et méridiennes nettoyés lors de nos interventions. Une tache ancienne, une décoloration ou une usure peuvent rester visibles : nous expliquons les possibilités de traitement après diagnostic, sans promettre un résultat identique sur tous les meubles.",
+      "La galerie permet notamment de comparer le résultat sur un canapé côtelé, un convertible gris et un canapé d’angle à coussins. Une tache ancienne, une décoloration ou une usure peuvent rester visibles : nous expliquons les possibilités de traitement après diagnostic, sans promettre un résultat identique sur tous les meubles.",
       "Préparez l'accès au canapé, retirez les objets et prévoyez de l'eau et une prise électrique. Le séchage demande généralement 2 à 4 heures, parfois davantage selon le tissu et l'aération. Les créneaux disponibles à Toulouse, Blagnac, Colomiers, Balma et alentours se consultent directement en ligne."
     ],
     treated: [
@@ -194,7 +194,7 @@ export const SERVICES: Service[] = [
     guide: { text: "Pour un canapé convertible, mesurez le matelas déplié. Si les accoudoirs ou les coussins doivent aussi être nettoyés, ajoutez le", path: "/nettoyage-canape-toulouse", link: "nettoyage de la partie canapé" },
     navLabel: "Nettoyage matelas Toulouse",
     h1: "Nettoyage matelas à Toulouse",
-    short: "Nettoyage matelas Toulouse",
+    short: "Nettoyage de matelas",
     subtitle:
       "Matelas enfant (moins de 90 cm de large), une place ou deux places : choisissez le format de votre couchage. Le nettoyage des deux faces est inclus.",
     metaTitle: "Nettoyage matelas Toulouse : 2 faces dès 49 € | Clean&Fresh",
@@ -206,7 +206,7 @@ export const SERVICES: Service[] = [
     relatedSlugs: ["/nettoyage-canape-toulouse", "/nettoyage-tapis-toulouse", "/nettoyage-moquette-toulouse", "/nettoyage-cuir-toulouse", "/nettoyage-dappartement-ou-maison", "/nettoyage-fin-de-bail-toulouse"],
     intro: [
       "Clean&Fresh nettoie votre matelas à domicile à Toulouse, avec les deux faces incluses pour chaque format : enfant, une place ou deux places. Nous traitons les poussières et les salissures du couchage après vérification du revêtement et des recommandations d'entretien.",
-      "La galerie montre deux situations différentes : des auréoles sur le plateau du matelas et des traces sur les côtés. Avant notre passage, retirez les draps et laissez les côtés accessibles. Signalez aussi les produits déjà appliqués pour guider le choix du traitement.",
+      "Les photos montrent des auréoles sur la face de couchage et des traces sur les côtés. Pour deux matelas séparés sur un même sommier, relevez la largeur de chaque matelas avant de choisir les quantités. Avant notre passage, retirez les draps et laissez les côtés accessibles. Signalez aussi les produits déjà appliqués pour guider le choix du traitement.",
       "Pour un matelas jauni ou marqué par la transpiration, l’objectif est de nettoyer le textile compatible et de traiter les salissures, pas de blanchir la matière à tout prix. Une trace visible peut persister même après le nettoyage. Prévoyez le passage assez tôt et une pièce aérée pour laisser sécher les deux faces avant de remettre une alèse et les draps.",
       "La formule comprend l'injection-extraction des textiles compatibles et le traitement courant des taches et auréoles. Vous pouvez ajouter un détachage intensif, un traitement anti-odeur, anti-acariens ou enzymatique selon le besoin. Les options sélectionnées figurent dans le récapitulatif de réservation.",
       "Pour les traces d'urine ou de transpiration, précisez l'ancienneté de la tache et les produits déjà appliqués. Le traitement dépend de la fibre et de la profondeur des salissures. Les photos avant/après de matelas présentées sur cette page illustrent des résultats obtenus, sans garantir la disparition de toutes les auréoles.",
@@ -279,7 +279,7 @@ export const SERVICES: Service[] = [
     guide: { text: "Les formules tapis concernent les pièces que vous pouvez soulever. Si le revêtement est fixé au sol, mesurez la longueur et la largeur de la pièce pour choisir le", path: "/nettoyage-moquette-toulouse", link: "forfait moquette selon la surface" },
     navLabel: "Nettoyage tapis Toulouse",
     h1: "Nettoyage de tapis à domicile à Toulouse",
-    short: "Nettoyage tapis Toulouse",
+    short: "Nettoyage de tapis à domicile",
     subtitle: "Nettoyage de tapis à domicile à Toulouse : 1, 2 ou 3 tapis jusqu'à 4 m² chacun. Méthode adaptée à la fibre après diagnostic.",
     metaTitle: "Nettoyage tapis à domicile Toulouse dès 49 € | Clean&Fresh",
     metaDescription: "Faites nettoyer vos tapis à domicile à Toulouse : 1 tapis 49 €, 2 tapis 79 €, 3 tapis 99 €, jusqu’à 4 m² chacun. Matière vérifiée, options au choix.",
@@ -290,7 +290,7 @@ export const SERVICES: Service[] = [
     relatedSlugs: ["/nettoyage-moquette-toulouse", "/nettoyage-canape-toulouse", "/nettoyage-matelas-toulouse", "/nettoyage-cuir-toulouse", "/nettoyage-dappartement-ou-maison", "/nettoyage-fin-de-bail-toulouse"],
     intro: [
       "Clean&Fresh nettoie vos tapis de salon, descentes de lit et tapis d'entrée directement à domicile à Toulouse. Les formules couvrent 1, 2 ou 3 tapis jusqu'à 4 m² chacun, avec un diagnostic préalable de la fibre, des couleurs et de l'envers.",
-      "Au Théâtre du Capitole de Toulouse, nous avons nettoyé six tapis. Pour plusieurs tapis sur un même site, indiquez le nombre de pièces, leurs dimensions et le temps disponible avant la réouverture. Les photos de cette intervention figurent dans notre galerie.",
+      "Au Théâtre du Capitole de Toulouse, nous avons nettoyé six tapis. Les photos de cette intervention figurent dans la galerie. Pour un hôtel, une salle de spectacle ou un restaurant, relevez les dimensions de chaque tapis et indiquez l’heure de réouverture. Nous pourrons organiser le passage pièce par pièce et prévoir où les tapis pourront sécher.",
       "Un tapis amovible se distingue d’une moquette fixée au sol : son envers, ses franges et le sol situé dessous doivent être examinés. Pour un tapis à poils longs, signalez l’épaisseur et les zones tassées. Les formules par quantité concernent des tapis standards ; un tapis ancien, fragile ou de grande valeur nécessite une évaluation avant toute réservation.",
       "Le nettoyage courant traite les poussières et les salissures du tapis. Le détachage intensif, le traitement anti-odeur ou anti-acariens et le nettoyage recto-verso sont proposés en option selon la compatibilité. Les grands formats et les fibres délicates demandent une estimation sur photos.",
       "L'injection-extraction est utilisée sur les tapis qui la supportent : une solution nettoyante est appliquée puis aspirée avec les salissures. La laine, la viscose, la soie ou un tapis artisanal exigent une attention particulière. Nous ne confirmons pas une méthode uniquement à partir de l'apparence du tapis.",
@@ -357,7 +357,7 @@ export const SERVICES: Service[] = [
     guide: { text: "Si votre demande concerne uniquement des sièges en cuir, indiquez leur état et le nombre de places. Vous trouverez aussi le détail du", path: "/nettoyage-cuir-toulouse", link: "nettoyage des sièges en cuir" },
     navLabel: "Nettoyage auto à domicile Toulouse",
     h1: "Nettoyage de voiture à Toulouse – intérieur à domicile",
-    short: "Nettoyage auto Toulouse",
+    short: "Nettoyage intérieur de voiture",
     subtitle:
       "Nous nettoyons l’intérieur de votre voiture à domicile ou sur votre lieu de travail. Prévoyez un accès à l’eau et une prise électrique à moins de 60 mètres.",
     metaTitle: "Nettoyage intérieur de voiture à domicile à Toulouse dès 69 €",
@@ -369,7 +369,7 @@ export const SERVICES: Service[] = [
     relatedSlugs: ["/nettoyage-cuir-toulouse", "/nettoyage-canape-toulouse", "/nettoyage-tapis-toulouse", "/nettoyage-matelas-toulouse", "/nettoyage-moquette-toulouse", "/nettoyage-dappartement-ou-maison"],
     intro: [
       "Pour retirer les miettes, le sable et la poussière des plastiques, comptez environ 1 h avec le pack Bronze. Pour nettoyer aussi les sièges et les vitres, prévoyez 1 h 30 avec le pack Argent. Pour shampouiner également les tapis et les moquettes, comptez 2 h avec le pack Or, hors séchage.",
-      "Cette prestation concerne l’intérieur du véhicule, et non un passage en station de lavage extérieur. Pour préparer une vente, choisissez les zones à remettre au propre : sièges, plastiques, coffre, moquettes et tapis selon le pack. Signalez les poils incrustés et les odeurs avant le rendez-vous pour prévoir les options et le temps nécessaires.",
+      "Si seuls vos sièges sont tachés, la formule sièges auto permet de les réserver séparément. Pour les sièges et les vitres intérieures, choisissez le pack Argent. Pour préparer une vente, choisissez les zones à remettre au propre : sièges, plastiques, coffre, moquettes et tapis selon le pack. Signalez les poils incrustés et les odeurs avant le rendez-vous pour prévoir les options et le temps nécessaires.",
       "Nous intervenons aussi dans l’agglomération toulousaine. Nous avons notamment nettoyé un intérieur de voiture à Colomiers en septembre 2026 et un autre à Tournefeuille en octobre 2026.",
       "Les sièges en tissu compatibles sont traités par injection-extraction. Le cuir bénéficie d'un nettoyage manuel adapté, avec un soin nourrissant proposé en option. La formule de nettoyage des sièges ne comprend pas de réparation des coutures, de recoloration ni de restauration des revêtements usés.",
       "Avant une vente, après des trajets avec des animaux ou pour entretenir l'habitacle, choisissez le pack selon les zones à nettoyer. Une odeur de tabac ou d'urine peut avoir plusieurs sources : le traitement complète le nettoyage des surfaces accessibles et son efficacité dépend de l'état des matériaux.",
@@ -441,7 +441,7 @@ export const SERVICES: Service[] = [
     guide: { text: "Avant une remise de clés, le lavage des vitres peut être chiffré avec la cuisine, les sanitaires et les sols dans un", path: "/nettoyage-fin-de-bail-toulouse", link: "devis de nettoyage de fin de bail" },
     navLabel: "Nettoyage de vitres Toulouse",
     h1: "Nettoyage de vitres à Toulouse",
-    short: "Nettoyage vitres Toulouse",
+    short: "Lavage de vitres et de vitrines",
     subtitle: "Nettoyage de fenêtres, baies vitrées et vitrines à Toulouse. Faces accessibles, encadrements et rails selon le devis.",
     metaTitle: "Nettoyage de vitres à Toulouse | Fenêtres, baies et vitrines",
     metaDescription: "Lavage de vitres à Toulouse pour particuliers et professionnels. Fenêtres, baies et vitrines, faces accessibles et rails selon devis. Demandez un devis sur photos.",
@@ -507,7 +507,7 @@ export const SERVICES: Service[] = [
     guide: { text: "Si des projections ont aussi marqué un muret ou le soubassement de la maison, joignez une photo de la surface verticale pour chiffrer le", path: "/nettoyage-facade-toulouse", link: "nettoyage de façade basse" },
     navLabel: "Nettoyage terrasse Toulouse",
     h1: "Nettoyage de terrasse à Toulouse",
-    short: "Nettoyage terrasse Toulouse",
+    short: "Nettoyage de terrasses et de dalles",
     subtitle: "Nettoyage de terrasses, dalles et sols extérieurs à Toulouse. Pression et méthode choisies selon le revêtement.",
     metaTitle: "Nettoyage terrasse et dalles Toulouse | Clean&Fresh",
     metaDescription: "Nettoyage de terrasse, dalles et allées à Toulouse. Bois, carrelage ou béton : méthode adaptée au support et à ses joints. Devis gratuit sur photos.",
@@ -573,7 +573,7 @@ export const SERVICES: Service[] = [
     guide: { text: "Joignez une photo prise depuis le sol montrant la hauteur et les accès. Si vos traces se trouvent sur un mur vertical, consultez le", path: "/nettoyage-facade-toulouse", link: "nettoyage des façades accessibles" },
     navLabel: "Nettoyage toiture Toulouse",
     h1: "Nettoyage de toiture à Toulouse",
-    short: "Nettoyage toiture Toulouse",
+    short: "Nettoyage de toiture accessible",
     subtitle: "Nettoyage et démoussage de couvertures accessibles jusqu'à 3 mètres à Toulouse, après vérification du support et des accès.",
     metaTitle: "Nettoyage toiture Toulouse jusqu’à 3 m | Clean&Fresh",
     metaDescription: "Nettoyage et démoussage de petites toitures à Toulouse, jusqu’à 3 m. Garages et dépendances : accès et matériau vérifiés avant devis sur photos.",
@@ -638,7 +638,7 @@ export const SERVICES: Service[] = [
     guide: { text: "Indiquez séparément la hauteur du mur et la surface du sol attenant. Un dallage à traiter relève du", path: "/nettoyage-terrasse-toulouse", link: "nettoyage de terrasse" },
     navLabel: "Nettoyage façade Toulouse",
     h1: "Nettoyage de façade à Toulouse",
-    short: "Nettoyage façade Toulouse",
+    short: "Nettoyage de façades et de murets",
     subtitle: "Nettoyage de façades basses, murs de clôture et piliers à Toulouse, jusqu'à 3 mètres de hauteur et sur supports compatibles.",
     metaTitle: "Nettoyage façade et murs Toulouse jusqu’à 3 m | Clean&Fresh",
     metaDescription: "Nettoyage de façades basses, crépis et murs de clôture à Toulouse jusqu’à 3 m. Test du support, méthode adaptée et devis gratuit sur photos.",
@@ -703,7 +703,7 @@ export const SERVICES: Service[] = [
     guide: { text: "Pour un emménagement, signalez les placards encore vides et les appareils à nettoyer avant la livraison des meubles. Si vous rendez les clés à un propriétaire, consultez le", path: "/nettoyage-fin-de-bail-toulouse", link: "nettoyage avant état des lieux" },
     navLabel: "Nettoyage d'appartement ou maison Toulouse",
     h1: "Nettoyage d'appartement ou de maison à Toulouse",
-    short: "Nettoyage Appartement / maison Toulouse",
+    short: "Grand nettoyage d’appartement et de maison",
     subtitle:
       "Pour un grand ménage ou un entretien régulier, précisez la surface, l’état des pièces et les accès. Joignez une photo du logement pour recevoir votre devis gratuit sous 24 h.",
     metaTitle: "Grand nettoyage appartement et maison Toulouse | Clean&Fresh",
@@ -774,9 +774,9 @@ export const SERVICES: Service[] = [
     guide: { text: "Sur les fenêtres neuves, précisez si des films, adhésifs ou traces de peinture restent en place. Pour un entretien de vitrages hors chantier, consultez le", path: "/nettoyage-de-vitres-toulouse", link: "lavage de vitres et de baies vitrées" },
     navLabel: "Nettoyage de fin de chantier Toulouse",
     h1: "Nettoyage de fin de chantier à Toulouse",
-    short: "Nettoyage Fin de chantier Toulouse",
+    short: "Nettoyage de fin de chantier",
     subtitle: "Nettoyage après travaux à Toulouse : poussières, sols, vitres et surfaces accessibles, avec un périmètre précisé sur devis.",
-    metaTitle: "Nettoyage après travaux Toulouse | Fin de chantier",
+    metaTitle: "Nettoyage de fin de chantier à Toulouse | Après travaux",
     metaDescription: "Nettoyage de fin de chantier à Toulouse après rénovation : poussières, sols, vitres et résidus compatibles. Devis détaillé pour particuliers et professionnels.",
     group: "batiment",
     detailTitle: "La remise au propre après vos travaux",
@@ -811,7 +811,6 @@ export const SERVICES: Service[] = [
       "Nettoyage des vitres et finitions, puis contrôle avec vous avant restitution."
     ],
     faq: [
-      { q: "Quand prévoir le nettoyage après une rénovation ?", a: "Lorsque les travaux salissants sont terminés et les pièces libérées. Vérifiez avec les artisans les délais de séchage des peintures, joints et revêtements. Une intervention avant la fin des travaux peut nécessiter un nouveau passage, à chiffrer séparément." },
       { q: "Le nettoyage enlève-t-il un voile de ciment sur le carrelage ?", a: "La possibilité dépend du résidu et du matériau. Envoyez des photos et les références du revêtement si vous les avez. Un test est nécessaire : certains produits adaptés au ciment peuvent endommager une pierre naturelle ou des joints fragiles." },
       {
         "q": "Quel est le prix d'un nettoyage de fin de chantier à Toulouse ?",
@@ -844,7 +843,7 @@ export const SERVICES: Service[] = [
     guide: { text: "Les traces de plâtre, de peinture ou de colle après des travaux demandent un diagnostic différent. Pour les inclure dans le chiffrage, consultez le", path: "/nettoyage-de-fin-de-chantier-toulouse", link: "nettoyage après travaux" },
     navLabel: "Nettoyage fin de bail Toulouse",
     h1: "Nettoyage fin de bail à Toulouse",
-    short: "Nettoyage Fin de bail Toulouse",
+    short: "Nettoyage de fin de bail",
     subtitle: "Vous rendez les clés ? Indiquez la date de l’état des lieux. Le devis détaille la cuisine, les sanitaires, les placards, les sols et les vitres à nettoyer. Murs et plafonds sur option après vérification.",
     metaTitle: "Nettoyage fin de bail Toulouse | Avant état des lieux",
     metaDescription: "Nettoyage avant état des lieux à Toulouse : cuisine, sanitaires, placards, sols et vitres selon devis. Murs et plafonds en option. Devis gratuit sous 24 h.",
@@ -914,13 +913,13 @@ export const SERVICES: Service[] = [
     guide: { text: "Avant le tri, identifiez les documents, objets personnels et meubles à conserver. Une fois les pièces dégagées, le périmètre peut inclure le", path: "/nettoyage-dappartement-ou-maison", link: "nettoyage des pièces du logement" },
     navLabel: "Nettoyage Diogène Toulouse",
     h1: "Nettoyage Diogène à Toulouse",
-    short: "Nettoyage Syndrome de Diogène Toulouse",
+    short: "Débarras et nettoyage après un syndrome de Diogène",
     subtitle:
       "Nous convenons avec vous des papiers, souvenirs et meubles à garder avant de trier et de débarrasser le logement. Le devis confidentiel tient compte du volume à évacuer et des accès.",
     metaTitle: "Nettoyage Diogène et débarras Toulouse | Clean&Fresh",
     metaDescription: "Nettoyage Diogène à Toulouse : tri, débarras et nettoyage selon l’état du logement. Objets à conserver définis avec vous, devis confidentiel et sans jugement.",
     group: "batiment",
-    detailTitle: "Tri et nettoyage d’un logement encombré",
+    detailTitle: "Après un syndrome de Diogène, que comprend le nettoyage ?",
     methodTitle: "Une intervention Diogène préparée avec vous",
     relatedSlugs: ["/nettoyage-extreme-toulouse", "/nettoyage-dappartement-ou-maison", "/nettoyage-fin-de-bail-toulouse", "/nettoyage-de-vitres-toulouse", "/nettoyage-moquette-toulouse", "/nettoyage-de-fin-de-chantier-toulouse"],
     intro: [
@@ -1059,20 +1058,20 @@ export const SERVICES: Service[] = [
     guide: { text: "Mesurez les parties de sol accessibles et précisez les meubles qui resteront en place. Si un tapis est simplement posé sur la moquette, il relève des", path: "/nettoyage-tapis-toulouse", link: "formules de nettoyage de tapis" },
     navLabel: "Nettoyage moquette Toulouse",
     h1: "Nettoyage moquette à Toulouse",
-    short: "Nettoyage moquette Toulouse",
+    short: "Nettoyage de moquette",
     subtitle:
       "Chez vous ou dans vos bureaux, mesurez la surface de moquette accessible. Pour une pièce de 3 m sur 5 m, par exemple, choisissez la formule de 12 à 20 m².",
     metaTitle: "Nettoyage moquette Toulouse : domicile et bureaux | Clean&Fresh",
     metaDescription: "Nettoyage de moquette à Toulouse pour salon, chambre ou bureau. Moins de 12 m² : 99 €. Comparez les trois surfaces et réservez votre intervention à domicile.",
     group: "textile",
     booking: true,
-    detailTitle: "Le nettoyage de vos sols en moquette",
+    detailTitle: "Moquette de bureau ou de logement : quelle surface mesurer ?",
     methodTitle: "Notre méthode d’entretien des moquettes",
     relatedSlugs: ["/nettoyage-tapis-toulouse", "/nettoyage-canape-toulouse", "/nettoyage-matelas-toulouse", "/nettoyage-dappartement-ou-maison", "/nettoyage-de-fin-de-chantier-toulouse", "/nettoyage-fin-de-bail-toulouse"],
     intro: [
       "Clean&Fresh nettoie les moquettes d'appartements, maisons et bureaux à Toulouse pour retirer les salissures accumulées dans les fibres. Choisissez la formule selon la surface à traiter, puis les options utiles avant de réserver votre créneau.",
       "À Balma, nous sommes intervenus en octobre 2026 sur une petite moquette. Pour préparer une demande comparable, mesurez la pièce et indiquez quels meubles resteront en place. Ces éléments permettent de déterminer la formule et les zones accessibles.",
-      "La prestation concerne la moquette posée au sol et se choisit selon les mètres carrés accessibles, contrairement aux formules par nombre de tapis. Dans un bureau, les passages près des postes de travail peuvent être plus marqués que le reste de la pièce. Signalez les zones de circulation, les dalles décollées et le mobilier fixe pour préparer un nettoyage cohérent avec l’usage des locaux.",
+      "La prestation concerne la moquette posée au sol et se choisit selon les mètres carrés accessibles, contrairement aux formules par nombre de tapis. Pour des bureaux ouverts au public, relevez séparément les couloirs, l’accueil et les postes de travail. Indiquez dans quel ordre les zones doivent rouvrir pour que nous puissions prévoir le séchage et maintenir un passage accessible. Signalez les zones de circulation, les dalles décollées et le mobilier fixe pour préparer un nettoyage cohérent avec l’usage des locaux.",
       "L'injection-extraction est réalisée sur les moquettes compatibles après examen de la fibre, du dossier et de l'état de pose. Le nettoyage courant des taches est compris ; les traitements intensifs, anti-odeur ou autres compléments sont choisis selon le besoin.",
       "Une zone de passage encrassée, des traces de café ou des salissures d'animaux ne demandent pas toujours le même traitement. Indiquez l'origine des taches et les produits déjà utilisés. L'usure, les décolorations et certaines marques anciennes ne peuvent pas être réparées par le nettoyage.",
       "La surface accessible doit être dégagée avant l'arrivée. Signalez les meubles lourds, les raccords fragiles et les fibres naturelles comme le sisal : leur compatibilité avec un nettoyage humide doit être vérifiée et une autre solution peut être nécessaire.",
@@ -1138,7 +1137,7 @@ export const SERVICES: Service[] = [
     guide: { text: "Vous souhaitez aussi faire nettoyer des assises textiles ? Vous pouvez les ajouter à la même réservation. Découvrez le", path: "/nettoyage-canape-toulouse", link: "nettoyage de canapé, fauteuil et chaises en tissu" },
     navLabel: "Nettoyage cuir Toulouse",
     h1: "Nettoyage de cuir à domicile à Toulouse",
-    short: "Nettoyage cuir Toulouse",
+    short: "Nettoyage du mobilier en cuir",
     subtitle:
       "Nettoyage manuel doux de vos canapés, fauteuils et sièges auto en cuir. Soin nourrissant et protecteur en option.",
     metaTitle: "Nettoyage canapé et fauteuil cuir Toulouse | Clean&Fresh",
@@ -1193,8 +1192,6 @@ export const SERVICES: Service[] = [
       "Soin nourrissant et protecteur si choisi et compatible, puis conseils de séchage."
     ],
     faq: [
-      { q: "Le nettoyage peut-il réparer un canapé en cuir craquelé ?", a: "Non. Il retire les salissures compatibles avec la méthode retenue, mais ne répare pas les craquelures, les déchirures ou les pertes de couleur. Envoyez des photos des zones usées afin de vérifier si un nettoyage reste approprié." },
-      { q: "Un canapé en simili cuir se nettoie-t-il comme du cuir véritable ?", a: "Pas systématiquement. Le matériau et sa finition doivent être identifiés, surtout si la surface pèle. Un soin destiné au cuir véritable n’est pas appliqué automatiquement sur un revêtement synthétique ; la méthode est confirmée après diagnostic." },
       {
         "q": "Combien coûte un nettoyage de canapé en cuir à Toulouse ?",
         "a": "Le fauteuil est à 49 €, le canapé cuir 2/3 places à 79 €, le canapé 4/5 places ou d'angle/en U à 99 €. Les chaises, poufs et sièges auto disposent de formules dédiées. Le soin nourrissant et protecteur est en option."

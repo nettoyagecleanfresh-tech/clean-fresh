@@ -7,7 +7,8 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { COMPANY, SITE_URL } from "@/data/site";
+import { serviceIntent } from "@/lib/serviceIntent";
+import { COMPANY, SITE_URL, SERVICES } from "@/data/site";
 import { FadeIn } from "@/components/ui/fade-in";
 import { BookingAvailabilityBanner } from "@/components/BookingAvailabilityBanner";
 import { BookingTrustBanner } from "@/components/BookingTrustBanner";
@@ -22,7 +23,7 @@ type FormulesSearch = {
 export const Route = createFileRoute("/formules")({
   validateSearch: (search: Record<string, unknown>): FormulesSearch => {
     return {
-      service: search.service as any,
+      service: typeof search.service === "string" && CATEGORIES.some(category => category.id === search.service) ? search.service : undefined,
     };
   },
   head: ({ match }) => ({
@@ -911,6 +912,7 @@ const CATEGORY_CATALOG = [
     title: "Nettoyage Canapés, Fauteuils & Chaises",
     sub: "Injection-extraction sur textiles compatibles",
     priceFrom: "49 €",
+    priceLabel: "Fauteuil",
     bullets: ["Fauteuil, canapé 2/3, 4/5 places", "Canapé U/angle, pouf, chaise", "Options anti-acariens, anti-odeur"],
     recommended: false,
     offers: CANAPE_ITEMS,
@@ -922,6 +924,7 @@ const CATEGORY_CATALOG = [
     title: "Nettoyage Matelas",
     sub: "Nettoyage des deux faces toujours inclus · Option anti-acariens",
     priceFrom: "49 €",
+    priceLabel: "Matelas enfant",
     bullets: ["Matelas enfant, 1 place, 2 places", "Deux faces incluses pour chaque matelas", "Traitement anti-acariens en option"],
     recommended: false,
     offers: MATELAS_ITEMS,
@@ -931,8 +934,9 @@ const CATEGORY_CATALOG = [
     id: "tapis",
     icon: <Layers className="size-7" />,
     title: "Nettoyage Tapis",
-    sub: "Fibres ravivées · Séchage dans la journée",
+    sub: "Méthode selon la fibre · Séchage selon l’épaisseur et l’aération",
     priceFrom: "49 €",
+    priceLabel: "1 tapis",
     bullets: ["1 tapis, 2 tapis, 3 tapis", "Format standard jusqu'à 4 m² par tapis", "Options anti-acariens, recto-verso"],
     recommended: false,
     offers: TAPIS_ITEMS,
@@ -944,6 +948,7 @@ const CATEGORY_CATALOG = [
     title: "Nettoyage Moquette",
     sub: "Injection-extraction · Réservation en ligne",
     priceFrom: "99 €",
+    priceLabel: "Moins de 12 m²",
     bullets: ["Moins de 12 m² : 99 €", "De 12 à 20 m² : 149 €", "Plus de 20 m² : 199 €"],
     recommended: false,
     offers: MOQUETTE_ITEMS.map(item => ({ label: item.label + " · " + item.surface, price: item.price })),
@@ -953,8 +958,9 @@ const CATEGORY_CATALOG = [
     id: "auto",
     icon: <Car className="size-7" />,
     title: "Nettoyage Auto",
-    sub: "À domicile ou sur parking · Tous véhicules",
+    sub: "Nettoyage intérieur sur place · Eau, prise et stationnement à prévoir",
     priceFrom: "69 €",
+    priceLabel: "Pack Bronze",
     bullets: ["Bronze : aspiration et plastiques", "Argent : Bronze + sièges et vitres", "Or : Argent + moquettes, tapis et contours"],
     recommended: false,
     offers: AUTO_PACKS.map(pack => ({ label: pack.name, price: pack.price })),
@@ -964,8 +970,9 @@ const CATEGORY_CATALOG = [
     id: "cuir",
     icon: <Armchair className="size-7" />,
     title: "Nettoyage Cuir — Canapés, Fauteuils & Chaises",
-    sub: "Nettoyage manuel doux · Soin nourrissant",
+    sub: "Nettoyage manuel doux · Soin nourrissant en option",
     priceFrom: "49 €",
+    priceLabel: "Fauteuil en cuir",
     bullets: ["Fauteuil, canapé 2/3, 4/5 places", "Chaises et sièges auto cuir", "Traitement nourrissant en option"],
     recommended: false,
     offers: CUIR_ITEMS,
@@ -976,7 +983,11 @@ const CATEGORY_CATALOG = [
 // Même ordre partout : première page « Réserver », détails et tunnel.
 const CATEGORIES = ["canape", "matelas", "tapis", "auto", "cuir", "moquette"]
   .map((id) => CATEGORY_CATALOG.find((category) => category.id === id))
-  .filter((category): category is (typeof CATEGORY_CATALOG)[number] => Boolean(category));
+  .filter((category): category is (typeof CATEGORY_CATALOG)[number] => Boolean(category))
+  .map(category => ({
+    ...category,
+    page: SERVICES.find(page => page.booking && serviceIntent(page.slug).service === category.id)!,
+  }));
 
 // ─── PAGE ─────────────────────────────────────────────────────────────────────
 
@@ -1023,7 +1034,7 @@ function FormulesPage() {
                     {cat.icon}
                   </div>
                   <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-1">
-                    À partir de
+                    {cat.priceLabel}
                   </p>
                   <p className="text-2xl md:text-3xl font-bold text-primary leading-none mb-2">{cat.priceFrom}</p>
                   <h2 className="text-xs md:text-sm font-bold leading-snug mb-2 text-foreground">{cat.title}</h2>
@@ -1056,6 +1067,7 @@ function FormulesPage() {
                 <div>
                   <h2 className="text-xl font-bold leading-tight">{cat.title}</h2>
                   <p className="text-xs text-muted-foreground mt-0.5">{cat.sub}</p>
+                  <Link to={cat.page.slug} className="mt-2 inline-block text-sm font-semibold text-primary underline underline-offset-4">{cat.page.detailTitle}</Link>
                 </div>
               </div>
               {cat.content}
