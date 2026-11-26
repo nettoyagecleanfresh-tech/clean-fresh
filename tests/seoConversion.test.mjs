@@ -32,11 +32,12 @@ test('sitemap contains unique canonical URLs and no private booking routes', () 
   const xml = readFileSync(new URL('../public/sitemap.xml', import.meta.url), 'utf8');
   const urls = [...xml.matchAll(/<loc>(.*?)<\/loc>/g)].map(match => match[1]);
   assert.equal(urls.length, new Set(urls).size);
-  assert.ok(urls.length >= 62);
+  assert.ok(urls.length >= 60);
   for (const value of urls) {
     const url = new URL(value);
     assert.equal(url.origin, 'https://cleanetfresh.fr');
     assert.equal(url.search, '');
+    assert.doesNotMatch(url.pathname, /nettoyage-(toiture|facade)-toulouse/);
     assert.doesNotMatch(url.pathname, /^\/(reserver|annuler|upsell|envoyer-avis)(\/|$)/);
   }
 });

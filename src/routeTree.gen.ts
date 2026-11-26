@@ -40,7 +40,6 @@ import { Route as NettoyageDiogeneToulouseRouteImport } from './routes/nettoyage
 import { Route as NettoyageEaunesRouteImport } from './routes/nettoyage-eaunes'
 import { Route as NettoyageEscalquensRouteImport } from './routes/nettoyage-escalquens'
 import { Route as NettoyageExtremeToulouseRouteImport } from './routes/nettoyage-extreme-toulouse'
-import { Route as NettoyageFacadeToulouseRouteImport } from './routes/nettoyage-facade-toulouse'
 import { Route as NettoyageFenouilletRouteImport } from './routes/nettoyage-fenouillet'
 import { Route as NettoyageFinDeBailToulouseRouteImport } from './routes/nettoyage-fin-de-bail-toulouse'
 import { Route as NettoyageFonsorbesRouteImport } from './routes/nettoyage-fonsorbes'
@@ -68,7 +67,6 @@ import { Route as NettoyageSaintOrensDeGamevilleRouteImport } from './routes/net
 import { Route as NettoyageSeyssesRouteImport } from './routes/nettoyage-seysses'
 import { Route as NettoyageTapisToulouseRouteImport } from './routes/nettoyage-tapis-toulouse'
 import { Route as NettoyageTerrasseToulouseRouteImport } from './routes/nettoyage-terrasse-toulouse'
-import { Route as NettoyageToitureToulouseRouteImport } from './routes/nettoyage-toiture-toulouse'
 import { Route as NettoyageToulouseRouteImport } from './routes/nettoyage-toulouse'
 import { Route as NettoyageTournefeuilleRouteImport } from './routes/nettoyage-tournefeuille'
 import { Route as NettoyageVilleneuveTolosaneRouteImport } from './routes/nettoyage-villeneuve-tolosane'
@@ -242,11 +240,6 @@ const NettoyageExtremeToulouseRoute =
     path: '/nettoyage-extreme-toulouse',
     getParentRoute: () => rootRouteImport,
   } as any)
-const NettoyageFacadeToulouseRoute = NettoyageFacadeToulouseRouteImport.update({
-  id: '/nettoyage-facade-toulouse',
-  path: '/nettoyage-facade-toulouse',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const NettoyageFenouilletRoute = NettoyageFenouilletRouteImport.update({
   id: '/nettoyage-fenouillet',
   path: '/nettoyage-fenouillet',
@@ -392,12 +385,6 @@ const NettoyageTerrasseToulouseRoute =
     path: '/nettoyage-terrasse-toulouse',
     getParentRoute: () => rootRouteImport,
   } as any)
-const NettoyageToitureToulouseRoute =
-  NettoyageToitureToulouseRouteImport.update({
-    id: '/nettoyage-toiture-toulouse',
-    path: '/nettoyage-toiture-toulouse',
-    getParentRoute: () => rootRouteImport,
-  } as any)
 const NettoyageToulouseRoute = NettoyageToulouseRouteImport.update({
   id: '/nettoyage-toulouse',
   path: '/nettoyage-toulouse',
@@ -478,7 +465,6 @@ export interface FileRoutesByFullPath {
   '/nettoyage-eaunes': typeof NettoyageEaunesRoute
   '/nettoyage-escalquens': typeof NettoyageEscalquensRoute
   '/nettoyage-extreme-toulouse': typeof NettoyageExtremeToulouseRoute
-  '/nettoyage-facade-toulouse': typeof NettoyageFacadeToulouseRoute
   '/nettoyage-fenouillet': typeof NettoyageFenouilletRoute
   '/nettoyage-fin-de-bail-toulouse': typeof NettoyageFinDeBailToulouseRoute
   '/nettoyage-fonsorbes': typeof NettoyageFonsorbesRoute
@@ -506,7 +492,6 @@ export interface FileRoutesByFullPath {
   '/nettoyage-seysses': typeof NettoyageSeyssesRoute
   '/nettoyage-tapis-toulouse': typeof NettoyageTapisToulouseRoute
   '/nettoyage-terrasse-toulouse': typeof NettoyageTerrasseToulouseRoute
-  '/nettoyage-toiture-toulouse': typeof NettoyageToitureToulouseRoute
   '/nettoyage-toulouse': typeof NettoyageToulouseRoute
   '/nettoyage-tournefeuille': typeof NettoyageTournefeuilleRoute
   '/nettoyage-villeneuve-tolosane': typeof NettoyageVilleneuveTolosaneRoute
@@ -549,7 +534,6 @@ export interface FileRoutesByTo {
   '/nettoyage-eaunes': typeof NettoyageEaunesRoute
   '/nettoyage-escalquens': typeof NettoyageEscalquensRoute
   '/nettoyage-extreme-toulouse': typeof NettoyageExtremeToulouseRoute
-  '/nettoyage-facade-toulouse': typeof NettoyageFacadeToulouseRoute
   '/nettoyage-fenouillet': typeof NettoyageFenouilletRoute
   '/nettoyage-fin-de-bail-toulouse': typeof NettoyageFinDeBailToulouseRoute
   '/nettoyage-fonsorbes': typeof NettoyageFonsorbesRoute
@@ -577,7 +561,6 @@ export interface FileRoutesByTo {
   '/nettoyage-seysses': typeof NettoyageSeyssesRoute
   '/nettoyage-tapis-toulouse': typeof NettoyageTapisToulouseRoute
   '/nettoyage-terrasse-toulouse': typeof NettoyageTerrasseToulouseRoute
-  '/nettoyage-toiture-toulouse': typeof NettoyageToitureToulouseRoute
   '/nettoyage-toulouse': typeof NettoyageToulouseRoute
   '/nettoyage-tournefeuille': typeof NettoyageTournefeuilleRoute
   '/nettoyage-villeneuve-tolosane': typeof NettoyageVilleneuveTolosaneRoute
@@ -621,7 +604,6 @@ export interface FileRoutesById {
   '/nettoyage-eaunes': typeof NettoyageEaunesRoute
   '/nettoyage-escalquens': typeof NettoyageEscalquensRoute
   '/nettoyage-extreme-toulouse': typeof NettoyageExtremeToulouseRoute
-  '/nettoyage-facade-toulouse': typeof NettoyageFacadeToulouseRoute
   '/nettoyage-fenouillet': typeof NettoyageFenouilletRoute
   '/nettoyage-fin-de-bail-toulouse': typeof NettoyageFinDeBailToulouseRoute
   '/nettoyage-fonsorbes': typeof NettoyageFonsorbesRoute
@@ -649,7 +631,6 @@ export interface FileRoutesById {
   '/nettoyage-seysses': typeof NettoyageSeyssesRoute
   '/nettoyage-tapis-toulouse': typeof NettoyageTapisToulouseRoute
   '/nettoyage-terrasse-toulouse': typeof NettoyageTerrasseToulouseRoute
-  '/nettoyage-toiture-toulouse': typeof NettoyageToitureToulouseRoute
   '/nettoyage-toulouse': typeof NettoyageToulouseRoute
   '/nettoyage-tournefeuille': typeof NettoyageTournefeuilleRoute
   '/nettoyage-villeneuve-tolosane': typeof NettoyageVilleneuveTolosaneRoute
@@ -694,7 +675,6 @@ export interface FileRouteTypes {
     | '/nettoyage-eaunes'
     | '/nettoyage-escalquens'
     | '/nettoyage-extreme-toulouse'
-    | '/nettoyage-facade-toulouse'
     | '/nettoyage-fenouillet'
     | '/nettoyage-fin-de-bail-toulouse'
     | '/nettoyage-fonsorbes'
@@ -722,7 +702,6 @@ export interface FileRouteTypes {
     | '/nettoyage-seysses'
     | '/nettoyage-tapis-toulouse'
     | '/nettoyage-terrasse-toulouse'
-    | '/nettoyage-toiture-toulouse'
     | '/nettoyage-toulouse'
     | '/nettoyage-tournefeuille'
     | '/nettoyage-villeneuve-tolosane'
@@ -765,7 +744,6 @@ export interface FileRouteTypes {
     | '/nettoyage-eaunes'
     | '/nettoyage-escalquens'
     | '/nettoyage-extreme-toulouse'
-    | '/nettoyage-facade-toulouse'
     | '/nettoyage-fenouillet'
     | '/nettoyage-fin-de-bail-toulouse'
     | '/nettoyage-fonsorbes'
@@ -793,7 +771,6 @@ export interface FileRouteTypes {
     | '/nettoyage-seysses'
     | '/nettoyage-tapis-toulouse'
     | '/nettoyage-terrasse-toulouse'
-    | '/nettoyage-toiture-toulouse'
     | '/nettoyage-toulouse'
     | '/nettoyage-tournefeuille'
     | '/nettoyage-villeneuve-tolosane'
@@ -836,7 +813,6 @@ export interface FileRouteTypes {
     | '/nettoyage-eaunes'
     | '/nettoyage-escalquens'
     | '/nettoyage-extreme-toulouse'
-    | '/nettoyage-facade-toulouse'
     | '/nettoyage-fenouillet'
     | '/nettoyage-fin-de-bail-toulouse'
     | '/nettoyage-fonsorbes'
@@ -864,7 +840,6 @@ export interface FileRouteTypes {
     | '/nettoyage-seysses'
     | '/nettoyage-tapis-toulouse'
     | '/nettoyage-terrasse-toulouse'
-    | '/nettoyage-toiture-toulouse'
     | '/nettoyage-toulouse'
     | '/nettoyage-tournefeuille'
     | '/nettoyage-villeneuve-tolosane'
@@ -908,7 +883,6 @@ export interface RootRouteChildren {
   NettoyageEaunesRoute: typeof NettoyageEaunesRoute
   NettoyageEscalquensRoute: typeof NettoyageEscalquensRoute
   NettoyageExtremeToulouseRoute: typeof NettoyageExtremeToulouseRoute
-  NettoyageFacadeToulouseRoute: typeof NettoyageFacadeToulouseRoute
   NettoyageFenouilletRoute: typeof NettoyageFenouilletRoute
   NettoyageFinDeBailToulouseRoute: typeof NettoyageFinDeBailToulouseRoute
   NettoyageFonsorbesRoute: typeof NettoyageFonsorbesRoute
@@ -936,7 +910,6 @@ export interface RootRouteChildren {
   NettoyageSeyssesRoute: typeof NettoyageSeyssesRoute
   NettoyageTapisToulouseRoute: typeof NettoyageTapisToulouseRoute
   NettoyageTerrasseToulouseRoute: typeof NettoyageTerrasseToulouseRoute
-  NettoyageToitureToulouseRoute: typeof NettoyageToitureToulouseRoute
   NettoyageToulouseRoute: typeof NettoyageToulouseRoute
   NettoyageTournefeuilleRoute: typeof NettoyageTournefeuilleRoute
   NettoyageVilleneuveTolosaneRoute: typeof NettoyageVilleneuveTolosaneRoute
@@ -1167,13 +1140,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NettoyageExtremeToulouseRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/nettoyage-facade-toulouse': {
-      id: '/nettoyage-facade-toulouse'
-      path: '/nettoyage-facade-toulouse'
-      fullPath: '/nettoyage-facade-toulouse'
-      preLoaderRoute: typeof NettoyageFacadeToulouseRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/nettoyage-fenouillet': {
       id: '/nettoyage-fenouillet'
       path: '/nettoyage-fenouillet'
@@ -1363,13 +1329,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NettoyageTerrasseToulouseRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/nettoyage-toiture-toulouse': {
-      id: '/nettoyage-toiture-toulouse'
-      path: '/nettoyage-toiture-toulouse'
-      fullPath: '/nettoyage-toiture-toulouse'
-      preLoaderRoute: typeof NettoyageToitureToulouseRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/nettoyage-toulouse': {
       id: '/nettoyage-toulouse'
       path: '/nettoyage-toulouse'
@@ -1468,7 +1427,6 @@ const rootRouteChildren: RootRouteChildren = {
   NettoyageEaunesRoute: NettoyageEaunesRoute,
   NettoyageEscalquensRoute: NettoyageEscalquensRoute,
   NettoyageExtremeToulouseRoute: NettoyageExtremeToulouseRoute,
-  NettoyageFacadeToulouseRoute: NettoyageFacadeToulouseRoute,
   NettoyageFenouilletRoute: NettoyageFenouilletRoute,
   NettoyageFinDeBailToulouseRoute: NettoyageFinDeBailToulouseRoute,
   NettoyageFonsorbesRoute: NettoyageFonsorbesRoute,
@@ -1496,7 +1454,6 @@ const rootRouteChildren: RootRouteChildren = {
   NettoyageSeyssesRoute: NettoyageSeyssesRoute,
   NettoyageTapisToulouseRoute: NettoyageTapisToulouseRoute,
   NettoyageTerrasseToulouseRoute: NettoyageTerrasseToulouseRoute,
-  NettoyageToitureToulouseRoute: NettoyageToitureToulouseRoute,
   NettoyageToulouseRoute: NettoyageToulouseRoute,
   NettoyageTournefeuilleRoute: NettoyageTournefeuilleRoute,
   NettoyageVilleneuveTolosaneRoute: NettoyageVilleneuveTolosaneRoute,

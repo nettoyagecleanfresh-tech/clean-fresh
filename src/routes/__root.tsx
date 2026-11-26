@@ -168,9 +168,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "Nettoyage à domicile à Toulouse — Clean&Fresh Haute-Garonne" },
       { property: "og:title", content: "Nettoyage à domicile à Toulouse — Clean&Fresh Haute-Garonne" },
       { name: "twitter:title", content: "Nettoyage à domicile à Toulouse — Clean&Fresh Haute-Garonne" },
-      { name: "description", content: "Clean&Fresh, entreprise de nettoyage à Toulouse : canapé, matelas, tapis, auto, vitres, façade, fin de chantier. Résultat soigné. Devis gratuit sous 24h !" },
-      { property: "og:description", content: "Clean&Fresh, entreprise de nettoyage à Toulouse : canapé, matelas, tapis, auto, vitres, façade, fin de chantier. Résultat soigné. Devis gratuit sous 24h !" },
-      { name: "twitter:description", content: "Clean&Fresh, entreprise de nettoyage à Toulouse : canapé, matelas, tapis, auto, vitres, façade, fin de chantier. Résultat soigné. Devis gratuit sous 24h !" },
+      { name: "description", content: "Clean&Fresh, entreprise de nettoyage à Toulouse : canapé, matelas, tapis, auto, vitres, Diogène, fin de chantier. Résultat soigné. Devis gratuit sous 24h !" },
+      { property: "og:description", content: "Clean&Fresh, entreprise de nettoyage à Toulouse : canapé, matelas, tapis, auto, vitres, Diogène, fin de chantier. Résultat soigné. Devis gratuit sous 24h !" },
+      { name: "twitter:description", content: "Clean&Fresh, entreprise de nettoyage à Toulouse : canapé, matelas, tapis, auto, vitres, Diogène, fin de chantier. Résultat soigné. Devis gratuit sous 24h !" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },

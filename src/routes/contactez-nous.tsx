@@ -15,7 +15,7 @@ import { COMMUNES, COMPANY, SITE_URL } from "@/data/site";
 const TITLE = "Contactez Clean&Fresh — Devis gratuit nettoyage Toulouse";
 const DESC = "Demandez un devis nettoyage à Toulouse pour un logement, un débarras Diogène, des vitres ou une fin de bail. Indiquez la surface à nettoyer, son état et joignez vos photos.";
 
-const QUOTE_SERVICES: Record<string, string> = { logement: "Nettoyage appartement / maison", diogene: "Tri, débarras et nettoyage Diogène", extreme: "Nettoyage de logement insalubre", chantier: "Nettoyage fin de chantier", bail: "Nettoyage fin de bail", vitres: "Nettoyage de vitres", terrasse: "Nettoyage terrasse", toiture: "Nettoyage toiture", facade: "Nettoyage façade" };
+const QUOTE_SERVICES: Record<string, string> = { logement: "Nettoyage appartement / maison", diogene: "Tri, débarras et nettoyage Diogène", extreme: "Nettoyage de logement insalubre", chantier: "Nettoyage fin de chantier", bail: "Nettoyage fin de bail", vitres: "Nettoyage de vitres", terrasse: "Nettoyage terrasse" };
 
 export const Route = createFileRoute("/contactez-nous")({
   validateSearch: (search: Record<string, unknown>): { service?: string } => ({ service: typeof search.service === "string" && Object.hasOwn(QUOTE_SERVICES, search.service) ? search.service : undefined }),

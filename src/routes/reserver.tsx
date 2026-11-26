@@ -1,3 +1,4 @@
+import { AutoPreparation } from "@/components/site/AutoPreparation";
 import { DesktopPriceSummary } from "@/components/site/DesktopPriceSummary";
 import { useBookingMetrics, bookingMetric, bookingConfirmedMetric } from "@/lib/bookingMetrics";
 import { analyticsTestMode } from "@/lib/analyticsPolicy";
@@ -760,6 +761,7 @@ function ReserverPage() {
                 className="w-full"
               >
 
+            {hasAuto && step <= 3 && !showCategories && <AutoPreparation />}
             {/* ─ ÉTAPE 1 : Catégorie ─ */}
             {step === 1 && showCategories && (
               <>

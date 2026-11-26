@@ -65,8 +65,6 @@ const QUOTE_SERVICES = [
   { title: "Fin de chantier", path: "/nettoyage-de-fin-de-chantier-toulouse" },
   { title: "Vitres & vitrines", path: "/nettoyage-de-vitres-toulouse" },
   { title: "Terrasse", path: "/nettoyage-terrasse-toulouse" },
-  { title: "Façade", path: "/nettoyage-facade-toulouse" },
-  { title: "Toiture", path: "/nettoyage-toiture-toulouse" },
   { title: "Diogène", path: "/nettoyage-diogene-toulouse" },
   { title: "Nettoyage extrême", path: "/nettoyage-extreme-toulouse" },
 ] as const;

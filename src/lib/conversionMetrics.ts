@@ -17,7 +17,7 @@ export function conversionMetric(event: ConversionEvent, details: ConversionDeta
 /** A quote counts only after the server acknowledges its email was accepted. */
 export function quoteConfirmedMetric(result: { success?: boolean; measurement_id?: string }, hasPhotos: boolean, serviceGroup = "autre") {
   if (!result.success || !customerAnalyticsAllowed() || !claimConfirmedMetric('quote', result.measurement_id)) return;
-  const allowed = ["remise_en_etat", "logement", "chantier", "bail", "vitres", "terrasse", "toiture", "facade", "textile_auto"];
+  const allowed = ["remise_en_etat", "logement", "chantier", "bail", "vitres", "terrasse", "textile_auto"];
   const properties = { has_photos: hasPhotos, service_group: allowed.includes(serviceGroup) ? serviceGroup : "autre", device: analyticsDevice() };
   try { track('quote_submitted', properties); } catch { /* Keep the quote usable. */ }
   try { googleMetric('quote_submitted', properties); } catch { /* Keep the quote usable. */ }

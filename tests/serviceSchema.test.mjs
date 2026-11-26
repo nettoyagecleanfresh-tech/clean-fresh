@@ -3,8 +3,8 @@ import assert from 'node:assert/strict';
 import { SERVICES, SITE_URL, COMPANY } from '../src/data/site.ts';
 import { buildServiceSchema, fixedEuroPrice } from '../src/lib/serviceSchema.ts';
 
-test('schema uses precise service names and truthful prices for all 15 services', () => {
-  assert.equal(SERVICES.length, 15);
+test('schema uses precise service names and truthful prices for all 13 services', () => {
+  assert.equal(SERVICES.length, 13);
   for (const service of SERVICES) {
     const schema = buildServiceSchema(service, SITE_URL, COMPANY.name);
     assert.equal(schema.serviceType, service.navLabel);

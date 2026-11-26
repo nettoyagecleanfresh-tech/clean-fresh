@@ -2,13 +2,14 @@ import { SERVICES, COMPANY, COMMUNES, DISPLACEMENT_RULES, GOOGLE_REVIEW_COUNT, G
 
 export type ChatReply = { text: string; service?: string; actions?: { label: string; href: string }[]; suggestions?: string[] };
 const normalize = (s: string) => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+const retiredCleaning = /\b(toitures?|facades?|demoussage de toit)\b/;
 const aliases = [
   ['canape', 'canap|fauteuil|sofa|divan|pouf'], ['matelas', 'matela|literie'],
   ['moquette', 'moquette'], ['tapis', 'tapis'], ['cuir', 'cuir'],
   ['auto', 'voiture|vehicule|auto|siege|bronze|argent|pack or'],
   ['vitres', 'vitre|vitrage|fenetre|baie|veranda'], ['fin-de-bail', 'fin de bail|etat des lieux|demenag'],
   ['fin-de-chantier', 'chantier|travaux'], ['diogene', 'diogene'], ['extreme', 'insalubre|extreme'],
-  ['terrasse', 'terrasse'], ['toiture', 'toiture|toit'], ['facade', 'facade'],
+  ['terrasse', 'terrasse'],
   ['dappartement-ou-maison', 'appartement|maison|menage'],
 ] as const;
 const booking = { label: 'Voir les prix et réserver', href: '/tarifs' };
@@ -21,7 +22,7 @@ export const welcome: ChatReply = {
 
 export function shouldStartBooking(query: string, previousService?: string) {
   const q = normalize(query);
-  if (/annul|report|modifi|decal|devis/.test(q)) return false;
+  if (retiredCleaning.test(q) || /annul|report|modifi|decal|devis/.test(q)) return false;
   const quoteService = aliases.some(([key, pattern]) => !['canape','matelas','tapis','moquette','cuir','auto'].includes(key) && new RegExp(pattern).test(q));
   const explicitBookingService = aliases.some(([key, pattern]) => ['canape','matelas','tapis','moquette','cuir','auto'].includes(key) && new RegExp(pattern).test(q));
   if (quoteService || (!explicitBookingService && SERVICES.some(s => s.slug === previousService && !s.booking))) return false;
@@ -30,6 +31,7 @@ export function shouldStartBooking(query: string, previousService?: string) {
 
 export function answerCustomer(query: string, previousService?: string): ChatReply {
   const q = normalize(query).slice(0, 1500);
+  if (retiredCleaning.test(q)) return { text: "Clean&Fresh a arrêté ces prestations. Retrouvez les nettoyages disponibles dans notre catalogue.", actions: [{ label: "Voir nos prestations", href: "/nos-services" }] };
   const hits = aliases.filter(([, pattern]) => new RegExp(pattern).test(q));
   const key = hits.find(([key]) => key === 'cuir')?.[0] ?? hits[0]?.[0];
   const current = key ? SERVICES.find(s => key === 'auto' ? s.slug.includes('nettoyage-auto-') : key === 'vitres' ? s.slug.includes('nettoyage-de-vitres') : key === 'fin-de-chantier' ? s.slug.includes('nettoyage-de-fin-de-chantier') : s.slug.includes(`nettoyage-${key}`)) : SERVICES.find(s => s.slug === previousService);

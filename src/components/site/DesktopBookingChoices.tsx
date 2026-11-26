@@ -17,7 +17,7 @@ const PICKS = [
 const quoteLabels: Record<string, string> = {
   logement: 'Appartement ou maison', bail: 'Fin de bail', chantier: 'Après travaux',
   diogene: 'Diogène et débarras', extreme: 'Logement insalubre', vitres: 'Vitres et vitrines',
-  terrasse: 'Terrasse', facade: 'Façade', toiture: 'Toiture',
+  terrasse: 'Terrasse',
 };
 
 export function DesktopBookingChoices() {

@@ -1,3 +1,5 @@
+import { AutoPreparation } from "@/components/site/AutoPreparation";
+import { AutoWeather } from "@/components/site/AutoWeather";
 import { DesktopServiceProof, ProofPhoto, selectedPhotos } from "@/components/site/DesktopServiceProof";
 import { ServiceEssentials } from "@/components/site/ServiceEssentials";
 import { serviceHeroPrices, serviceDisplayOptions } from "@/components/site/servicePresentation";
@@ -128,6 +130,7 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
           {bookingServiceId === "canape" && (
             <p className="mt-2 text-sm text-white">Votre canapé est en cuir ? Consultez le <Link to="/nettoyage-cuir-toulouse" className="font-semibold underline underline-offset-4">nettoyage du cuir</Link>.</p>
           )}
+          {bookingServiceId === "auto" && <div className="mx-auto max-w-2xl"><AutoPreparation onAutoPage /></div>}
           {heroPrices && bookingServiceId && <div className="mx-auto mt-5 max-w-2xl rounded-2xl border border-white/20 bg-white/10 px-4 py-4 text-left shadow-sm">
             <p className="mb-2 text-sm font-semibold text-white">Choisissez votre formule</p>
             <ul className="grid gap-2 sm:grid-cols-3">
@@ -185,6 +188,7 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
         </div>
       </section>
 
+      {bookingServiceId === "auto" && <AutoWeather />}
       <DesktopServiceProof slug={service.slug} bookingServiceId={bookingServiceId} />
       <ServiceEssentials serviceId={bookingServiceId} />
 

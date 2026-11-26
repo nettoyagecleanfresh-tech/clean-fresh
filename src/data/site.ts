@@ -359,7 +359,7 @@ export const SERVICES: Service[] = [
     h1: "Nettoyage de voiture à Toulouse – intérieur à domicile",
     short: "Nettoyage intérieur de voiture",
     subtitle:
-      "Nous nettoyons l’intérieur de votre voiture à domicile ou sur votre lieu de travail. Prévoyez un accès à l’eau et une prise électrique à moins de 60 mètres.",
+      "Nettoyage intérieur à domicile ou sur votre lieu de travail à Toulouse. Choisissez la formule adaptée aux sièges, aux tapis et au coffre de votre véhicule.",
     metaTitle: "Nettoyage intérieur de voiture à domicile à Toulouse dès 69 €",
     metaDescription: "Faites nettoyer l’intérieur de votre voiture à domicile à Toulouse. Comparez les trois packs de 69 à 129 €, de 1 h à 2 h, et réservez votre créneau en ligne.",
     group: "textile",
@@ -373,7 +373,7 @@ export const SERVICES: Service[] = [
       "Nous intervenons aussi dans l’agglomération toulousaine. Nous avons notamment nettoyé un intérieur de voiture à Colomiers en septembre 2026 et un autre à Tournefeuille en octobre 2026.",
       "Les sièges en tissu compatibles sont traités par injection-extraction. Le cuir bénéficie d'un nettoyage manuel adapté, avec un soin nourrissant proposé en option. La formule de nettoyage des sièges ne comprend pas de réparation des coutures, de recoloration ni de restauration des revêtements usés.",
       "Avant une vente, après des trajets avec des animaux ou pour entretenir l'habitacle, choisissez le pack selon les zones à nettoyer. Une odeur de tabac ou d'urine peut avoir plusieurs sources : le traitement complète le nettoyage des surfaces accessibles et son efficacité dépend de l'état des matériaux.",
-      "Videz les objets personnels et prévoyez un accès à l'eau ainsi qu'une prise électrique à moins de 60 mètres. Signalez un SUV, un utilitaire ou un état particulièrement encrassé pour une estimation adaptée. Après un shampouinage, laissez les textiles sécher complètement avant utilisation."
+      "Avant notre arrivée, videz entièrement l’habitacle et le coffre de vos effets personnels. Prévoyez un accès à l’eau et une prise électrique disponible à moins de 60 m du véhicule. Signalez un SUV, un utilitaire ou un état particulièrement encrassé pour une estimation adaptée. Après un shampouinage, laissez les textiles sécher complètement avant utilisation."
     ],
     treated: [
       "Habitacle et coffre : aspiration selon le pack",
@@ -404,6 +404,7 @@ export const SERVICES: Service[] = [
     ],
     faq: [
       { q: "Quel pack réserver pour nettoyer les sièges et la moquette de ma voiture ?", a: "Le pack Argent ajoute le nettoyage des sièges et des vitres aux prestations du Bronze. Si les tapis et la moquette du plancher sont également à traiter, sélectionnez le pack Or. Précisez si les sièges sont en cuir." },
+      { q: "Quel créneau choisir pour un nettoyage de voiture à Toulouse en hiver ?", a: "Privilégiez le matin ou le début d’après-midi afin de terminer en plein jour. Après 18 h, l’obscurité complique le nettoyage. Consultez les prévisions de pluie sur cette page et vérifiez-les la veille du rendez-vous." },
       { q: "Le lavage extérieur de la voiture est-il compris ?", a: "Les packs présentés ici concernent le nettoyage intérieur. Ils ne comprennent pas un lavage de carrosserie, un polissage ou une rénovation de peinture. Le récapitulatif décrit les zones de l’habitacle prises en charge." },
       { q: "Quelle formule choisir avant de vendre ma voiture ?", a: "Argent convient si vous souhaitez ajouter les sièges et les vitres à l’aspiration et aux plastiques. Or comprend aussi les moquettes, tapis et contours prévus dans la formule. Les poils ou odeurs persistantes peuvent nécessiter une option ; le choix dépend de l’état du véhicule." },
       {
@@ -420,7 +421,7 @@ export const SERVICES: Service[] = [
       },
       {
         "q": "Que faut-il prévoir pour un nettoyage auto à domicile ?",
-        "a": "Un stationnement autorisé avec assez de place autour du véhicule, un accès à l'eau et une prise électrique à moins de 60 mètres. Retirez les objets personnels et signalez toute difficulté d'accès avant l'intervention."
+        "a": "Prévoyez un stationnement autorisé, assez de place pour ouvrir les portes, un accès à l’eau et une prise électrique à moins de 60 mètres du véhicule. Avant notre arrivée, retirez tous vos effets personnels de l’habitacle et du coffre."
       },
       {
         "q": "Le traitement anti-odeur enlève-t-il toujours le tabac ou les odeurs d'animaux ?",
@@ -448,7 +449,7 @@ export const SERVICES: Service[] = [
     group: "batiment",
     detailTitle: "Fenêtres, baies vitrées et vitrines",
     methodTitle: "Notre méthode de lavage des vitres",
-    relatedSlugs: ["/nettoyage-dappartement-ou-maison", "/nettoyage-fin-de-bail-toulouse", "/nettoyage-de-fin-de-chantier-toulouse", "/nettoyage-facade-toulouse", "/nettoyage-terrasse-toulouse", "/nettoyage-moquette-toulouse"],
+    relatedSlugs: ["/nettoyage-dappartement-ou-maison", "/nettoyage-fin-de-bail-toulouse", "/nettoyage-de-fin-de-chantier-toulouse", "/nettoyage-terrasse-toulouse", "/nettoyage-moquette-toulouse"],
     intro: [
       "Clean&Fresh réalise le nettoyage de vitres à Toulouse pour les appartements, maisons, commerces et bureaux. Fenêtres, baies vitrées et vitrines sont nettoyées avec du matériel professionnel adapté à leur état et à leur accessibilité.",
       "Pour une vitrine de commerce, un passage régulier peut limiter l’accumulation de traces et s’organiser selon les horaires d’ouverture. Dans un logement, précisez si vous souhaitez seulement les vitrages ou aussi les rails et encadrements. Les doubles vitrages présentant des traces entre les deux parois ne peuvent pas être nettoyés à cet endroit par un lavage de surface.",
@@ -504,7 +505,7 @@ export const SERVICES: Service[] = [
   },
   {
     slug: "/nettoyage-terrasse-toulouse",
-    guide: { text: "Si des projections ont aussi marqué un muret ou le soubassement de la maison, joignez une photo de la surface verticale pour chiffrer le", path: "/nettoyage-facade-toulouse", link: "nettoyage de façade basse" },
+    guide: { text: "Pour une terrasse attenante à une véranda, indiquez sa surface au sol. Si les baies vitrées sont aussi à nettoyer, consultez notre prestation de", path: "/nettoyage-de-vitres-toulouse", link: "nettoyage des vitres à Toulouse" },
     navLabel: "Nettoyage terrasse Toulouse",
     h1: "Nettoyage de terrasse à Toulouse",
     short: "Nettoyage de terrasses et de dalles",
@@ -514,7 +515,7 @@ export const SERVICES: Service[] = [
     group: "batiment",
     detailTitle: "Un nettoyage adapté à votre sol extérieur",
     methodTitle: "Préparation et nettoyage de la terrasse",
-    relatedSlugs: ["/nettoyage-facade-toulouse", "/nettoyage-toiture-toulouse", "/nettoyage-de-vitres-toulouse", "/nettoyage-dappartement-ou-maison", "/nettoyage-de-fin-de-chantier-toulouse", "/nettoyage-fin-de-bail-toulouse"],
+    relatedSlugs: ["/nettoyage-de-vitres-toulouse", "/nettoyage-dappartement-ou-maison", "/nettoyage-de-fin-de-chantier-toulouse", "/nettoyage-fin-de-bail-toulouse"],
     intro: [
       "Redonnez un aspect propre à votre terrasse, votre cour ou vos allées avec un nettoyage adapté au revêtement. Clean&Fresh intervient à Toulouse pour retirer les salissures, traces de végétaux et dépôts présents sur les sols extérieurs compatibles.",
       "Une terrasse ombragée peut accumuler des dépôts verts, tandis qu’une allée très passante retient davantage la terre et les traces d’usage. La surface visible ne suffit donc pas à fixer le tarif : les joints, la pente et l’écoulement des eaux comptent aussi. Le résultat et l’entretien à prévoir sont expliqués selon le matériau, sans promettre une protection permanente contre les mousses.",
@@ -565,136 +566,6 @@ export const SERVICES: Service[] = [
       {
         "q": "Comment préparer la terrasse avant votre venue ?",
         "a": "Retirez le mobilier et les objets, rendez l'accès à l'eau disponible et indiquez les surfaces ou équipements fragiles. La possibilité d'évacuer les eaux de lavage est vérifiée avant confirmation."
-      }
-    ],
-  },
-  {
-    slug: "/nettoyage-toiture-toulouse",
-    guide: { text: "Joignez une photo prise depuis le sol montrant la hauteur et les accès. Si vos traces se trouvent sur un mur vertical, consultez le", path: "/nettoyage-facade-toulouse", link: "nettoyage des façades accessibles" },
-    navLabel: "Nettoyage toiture Toulouse",
-    h1: "Nettoyage de toiture à Toulouse",
-    short: "Nettoyage de toiture accessible",
-    subtitle: "Nettoyage et démoussage de couvertures accessibles jusqu'à 3 mètres à Toulouse, après vérification du support et des accès.",
-    metaTitle: "Nettoyage toiture Toulouse jusqu’à 3 m | Clean&Fresh",
-    metaDescription: "Nettoyage et démoussage de petites toitures à Toulouse, jusqu’à 3 m. Garages et dépendances : accès et matériau vérifiés avant devis sur photos.",
-    group: "batiment",
-    detailTitle: "Petites toitures et couvertures accessibles",
-    methodTitle: "Les étapes de l’entretien de couverture",
-    relatedSlugs: ["/nettoyage-facade-toulouse", "/nettoyage-terrasse-toulouse", "/nettoyage-de-vitres-toulouse", "/nettoyage-de-fin-de-chantier-toulouse", "/nettoyage-dappartement-ou-maison", "/nettoyage-fin-de-bail-toulouse"],
-    intro: [
-      "Clean&Fresh propose le nettoyage de petites couvertures et toitures accessibles à Toulouse, dans la limite de 3 mètres de hauteur. Garages et dépendances peuvent être étudiés sur photos, selon la pente, l'accès et l'état du matériau.",
-      "La hauteur et les conditions d’accès sont vérifiées avant de proposer un démoussage. Une couverture de garage ou d’abri ne relève pas automatiquement d’une intervention possible : la pente, la fragilité du matériau et les abords doivent aussi convenir. Pour une toiture de maison hors de notre limite de hauteur, adressez-vous à un professionnel équipé pour ces travaux.",
-      "Le diagnostic détermine si le nettoyage peut être réalisé et avec quelle méthode. La haute pression n'est pas systématique. Les surfaces fragiles ou dégradées et les interventions au-delà de 3 mètres ne sont pas prises en charge.",
-      "Le devis précise les zones à traiter, le retrait des dépôts et tout éventuel traitement anti-mousse. La présence de végétation, les gouttières et les écoulements sont examinés pour préparer l'intervention et protéger les abords.",
-      "Le nettoyage porte sur les salissures et les dépôts accessibles ; il ne remplace pas une réparation de couverture, une recherche de fuite ou des travaux d'étanchéité. Une tuile cassée ou un défaut repéré doit être traité par le professionnel compétent.",
-      "Pour une demande à Toulouse ou dans l'agglomération, envoyez une vue d'ensemble, des photos des dépôts et une indication de hauteur et d'accès. Nous confirmons la faisabilité avant d'établir le devis et le créneau."
-    ],
-    treated: [
-      "Couvertures accessibles jusqu'à 3 mètres",
-      "Toitures de garages et dépendances compatibles",
-      "Tuiles ou autres matériaux après diagnostic",
-      "Gouttières accessibles, si prévues au devis"
-    ],
-    problems: [
-      "Mousses et dépôts végétaux accessibles",
-      "Salissures et noircissement de surface",
-      "Feuilles et débris dans les zones convenues",
-      "Besoin d'entretien d'une petite couverture"
-    ],
-    priceNote: "Précisez la hauteur, le matériau de couverture et l’accès depuis le sol. Une photo d’ensemble aide à vérifier si la petite toiture est accessible dans notre limite de 3 mètres.",
-    method: [
-      "Vérification de la hauteur (3 m maximum), des accès et de l'état de la couverture.",
-      "Protection des abords et choix d'une méthode compatible.",
-      "Retrait des dépôts et nettoyage des zones prévues au devis.",
-      "Traitement éventuel et finition selon le produit et le périmètre retenus."
-    ],
-    faq: [
-      { q: "Peut-on nettoyer la toiture d’un garage ou d’un abri ?", a: "La demande est étudiée si la couverture est accessible et ne dépasse pas 3 mètres de hauteur. Envoyez des vues de la toiture et de ses abords. La compatibilité du matériau, son état et les conditions d’accès déterminent la faisabilité." },
-      { q: "Que faire si la couverture semble fragile ou endommagée ?", a: "Signalez-le dès la demande et évitez de monter dessus. Un nettoyage ne corrige pas un défaut de couverture ; une réparation ou une expertise du matériau peut être nécessaire avant toute intervention. Le devis n’est établi qu’après vérification du périmètre réalisable." },
-      {
-        "q": "Quelles toitures pouvez-vous nettoyer à Toulouse ?",
-        "a": "Nous étudions les petites couvertures accessibles, notamment de garages et dépendances, jusqu'à 3 mètres de hauteur. La prise en charge dépend de la pente, de l'accès et de l'état du matériau. Les travaux au-delà de 3 mètres sont exclus."
-      },
-      {
-        "q": "Quel est le tarif du démoussage ?",
-        "a": "Le prix dépend de la surface, de l'accès, de l'état et de la méthode retenue. Envoyez des photos et une indication de hauteur pour une estimation gratuite sous 24 h, après vérification de la faisabilité."
-      },
-      {
-        "q": "Le nettoyage haute pression est-il systématique ?",
-        "a": "Non. Une pression inadaptée peut détériorer une couverture. Nous choisissons la méthode après examen et écartons une intervention si le support ou les accès ne permettent pas de travailler dans de bonnes conditions."
-      },
-      {
-        "q": "Le traitement anti-mousse est-il inclus ?",
-        "a": "Son éventuelle inclusion et ses conditions d'application sont indiquées au devis. Sa durée d'action dépend du produit, du matériau et de l'exposition ; aucun délai uniforme n'est promis."
-      },
-      {
-        "q": "Le nettoyage résout-il une infiltration ?",
-        "a": "Non, la prestation ne comprend pas de réparation de toiture ni de travaux d'étanchéité. Une fuite, une tuile cassée ou un défaut de couverture nécessitent une évaluation par un professionnel de la couverture."
-      }
-    ],
-  },
-  {
-    slug: "/nettoyage-facade-toulouse",
-    guide: { text: "Indiquez séparément la hauteur du mur et la surface du sol attenant. Un dallage à traiter relève du", path: "/nettoyage-terrasse-toulouse", link: "nettoyage de terrasse" },
-    navLabel: "Nettoyage façade Toulouse",
-    h1: "Nettoyage de façade à Toulouse",
-    short: "Nettoyage de façades et de murets",
-    subtitle: "Nettoyage de façades basses, murs de clôture et piliers à Toulouse, jusqu'à 3 mètres de hauteur et sur supports compatibles.",
-    metaTitle: "Nettoyage façade et murs Toulouse jusqu’à 3 m | Clean&Fresh",
-    metaDescription: "Nettoyage de façades basses, crépis et murs de clôture à Toulouse jusqu’à 3 m. Test du support, méthode adaptée et devis gratuit sur photos.",
-    group: "batiment",
-    detailTitle: "Façades basses, crépis et murs de clôture",
-    methodTitle: "Notre méthode pour les murs extérieurs",
-    relatedSlugs: ["/nettoyage-terrasse-toulouse", "/nettoyage-toiture-toulouse", "/nettoyage-de-vitres-toulouse", "/nettoyage-de-fin-de-chantier-toulouse", "/nettoyage-dappartement-ou-maison", "/nettoyage-fin-de-bail-toulouse"],
-    intro: [
-      "Clean&Fresh nettoie les façades basses, murs de clôture et piliers à Toulouse, jusqu'à 3 mètres de hauteur. Le traitement vise les salissures, coulures et dépôts présents sur les supports compatibles, après examen de leur état.",
-      "Pour nettoyer un mur de clôture ou le bas d’une façade, nous distinguons les dépôts de surface des dégradations de l’enduit. Les traces sombres ou vertes ne demandent pas toutes le même traitement. Précisez les zones proches de fenêtres, portails et plantations afin d’organiser les protections et de chiffrer uniquement les surfaces accessibles.",
-      "Crépi, enduit, brique, pierre et béton demandent des méthodes différentes. Un test sur une zone discrète permet de vérifier la réaction du matériau ; la pression et les produits sont ensuite adaptés. Les travaux à plus de 3 mètres ne sont pas proposés.",
-      "Les menuiseries, plantations et abords sont pris en compte dans la préparation du chantier. Le devis indique les zones accessibles, le nettoyage retenu et tout traitement complémentaire éventuel, selon la nature des dépôts et l'exposition du mur.",
-      "La prestation ne constitue pas un ravalement : elle ne répare pas les fissures, les enduits qui se décollent ou les défauts de peinture. Certaines traces anciennes ou décolorations peuvent rester visibles après retrait des salissures.",
-      "Envoyez des photos d'ensemble et des détails des zones à nettoyer, avec une indication de hauteur, pour votre maison, votre mur de clôture ou les parties basses d'une copropriété à Toulouse et alentours. La faisabilité et le périmètre sont confirmés avant intervention."
-    ],
-    treated: [
-      "Façades et murs accessibles jusqu'à 3 mètres",
-      "Crépi et enduit en état compatible",
-      "Brique, pierre et béton après test",
-      "Murs de clôture, piliers et parties basses de bâtiments"
-    ],
-    problems: [
-      "Traces noires et salissures de surface",
-      "Mousses et dépôts végétaux",
-      "Coulures et traces de pluie",
-      "Encrassement de murs de clôture et piliers"
-    ],
-    priceNote: "Indiquez la hauteur du mur (jusqu’à 3 mètres), sa longueur approximative et son revêtement. Une photo permet de repérer crépi fragile, traces ou dépôts verts.",
-    method: [
-      "Contrôle du support, des accès et de la hauteur, puis test sur une zone discrète.",
-      "Protection des menuiseries, plantations et abords concernés.",
-      "Nettoyage avec méthode et pression adaptées aux surfaces prévues au devis.",
-      "Finition, traitement complémentaire éventuel et contrôle du résultat."
-    ],
-    faq: [
-      { q: "Nettoyez-vous les murs de clôture et les piliers de portail ?", a: "Oui, dans la limite de 3 mètres et après vérification du matériau et des accès. Précisez les deux faces éventuelles du mur, les éléments à protéger et les salissures visibles. Le devis décrit les surfaces retenues." },
-      { q: "Peut-on retirer des traces noires sur un crépi ?", a: "Un nettoyage peut traiter les dépôts de surface si le crépi est compatible et en bon état. Un test permet d’adapter la méthode. Une coloration ancienne, une infiltration ou un enduit dégradé peuvent laisser des traces et demander des travaux distincts." },
-      {
-        "q": "Combien coûte un nettoyage de façade à Toulouse ?",
-        "a": "Le tarif dépend de la surface, du matériau, de l'état et de l'accessibilité. Envoyez des photos et une indication de hauteur pour une estimation gratuite. Les interventions sont limitées à 3 mètres maximum."
-      },
-      {
-        "q": "Nettoyez-vous les façades d'immeubles ?",
-        "a": "Nous pouvons étudier les parties basses accessibles, jusqu'à 3 mètres, ainsi que les murs de clôture et piliers. Le nettoyage en hauteur au-delà de cette limite n'est pas proposé."
-      },
-      {
-        "q": "La haute pression convient-elle à tous les enduits ?",
-        "a": "Non. Un test et un examen du support sont nécessaires. La pression, le produit et la méthode sont adaptés à l'état de l'enduit, de la brique ou de la pierre ; un support trop fragile peut ne pas être nettoyable."
-      },
-      {
-        "q": "Le nettoyage remplace-t-il un ravalement ?",
-        "a": "Non. Il traite les salissures compatibles avec la méthode choisie, mais ne répare pas les fissures, l'enduit décollé ou les peintures abîmées. Les décolorations anciennes peuvent rester visibles."
-      },
-      {
-        "q": "Le traitement anti-mousse ou hydrofuge est-il compris ?",
-        "a": "Un traitement complémentaire est étudié selon le support et figure au devis lorsqu'il est retenu. Son effet et sa durée dépendent du produit, de l'exposition et de l'entretien."
       }
     ],
   },
@@ -781,7 +652,7 @@ export const SERVICES: Service[] = [
     group: "batiment",
     detailTitle: "La remise au propre après vos travaux",
     methodTitle: "Les étapes du nettoyage de fin de chantier",
-    relatedSlugs: ["/nettoyage-de-vitres-toulouse", "/nettoyage-dappartement-ou-maison", "/nettoyage-fin-de-bail-toulouse", "/nettoyage-moquette-toulouse", "/nettoyage-terrasse-toulouse", "/nettoyage-facade-toulouse"],
+    relatedSlugs: ["/nettoyage-de-vitres-toulouse", "/nettoyage-dappartement-ou-maison", "/nettoyage-fin-de-bail-toulouse", "/nettoyage-moquette-toulouse", "/nettoyage-terrasse-toulouse"],
     intro: [
       "Après une rénovation, Clean&Fresh réalise le nettoyage de fin de chantier à Toulouse pour préparer les pièces à leur utilisation. Nous traitons les poussières de travaux, sols, vitres et surfaces accessibles selon le périmètre retenu au devis.",
       "Un nettoyage après travaux ne se limite pas au lavage des sols : la poussière peut se redéposer depuis les rebords, les plinthes et les surfaces hautes accessibles prévues au devis. Nous préparons l’ordre de passage selon les matériaux et les travaux effectués. Mentionnez les consignes des artisans concernant les peintures, les joints et les sols récemment posés.",

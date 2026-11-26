@@ -1,3 +1,4 @@
+import { AutoPreparation } from "@/components/site/AutoPreparation";
 import { useBookingMetrics, bookingMetric, bookingConfirmedMetric } from "@/lib/bookingMetrics";
 import { analyticsTestMode } from "@/lib/analyticsPolicy";
 import { useEffect, useRef, useState } from 'react';
@@ -155,6 +156,7 @@ export function ChatBooking({ onBusy }: { onBusy: (busy: boolean) => void }) {
       <button className={button} disabled={items.length >= 20} onClick={() => changeStage('service')}>+ Ajouter une prestation</button>
       <button className={primary} disabled={!items.length} onClick={() => changeStage('date')}>Choisir mon rendez-vous</button>
     </>}
+    {((stage === 'formula' && service?.id === 'auto') || (stage === 'date' && hasAuto)) && <AutoPreparation />}
     {stage === 'date' && <>
       <h3 className="font-semibold">Quand souhaitez-vous notre intervention ?</h3>
       <button className={primary} disabled={loading} onClick={nextAvailable}>{loading ? 'Vérification du calendrier…' : 'Prochain créneau compatible'}</button>

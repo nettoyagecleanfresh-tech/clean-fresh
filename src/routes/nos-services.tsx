@@ -6,11 +6,9 @@ import {
   Car,
   Droplets,
   Sun,
-  Home,
   Building2,
   Wrench,
   Zap,
-  Building,
   ArrowRight,
   CalendarCheck,
   KeyRound,
@@ -20,8 +18,8 @@ import { Button } from "@/components/ui/button";
 import { COMPANY, SITE_URL, SERVICES } from "@/data/site";
 import heroImg from "@/assets/hero-nettoyage.webp";
 
-const TITLE = "Nos 15 services de nettoyage à Toulouse | Clean&Fresh";
-const DESC = "Découvrez les services Clean&Fresh à Toulouse : canapé, matelas, tapis, auto, vitres, terrasse, façade et remise en état.";
+const TITLE = `Nos ${SERVICES.length} services de nettoyage à Toulouse | Clean&Fresh`;
+const DESC = "Découvrez les services Clean&Fresh à Toulouse : canapé, matelas, tapis, auto, vitres, terrasse et remise en état.";
 
 export const Route = createFileRoute("/nos-services")({
   head: () => ({
@@ -59,8 +57,6 @@ const SERVICE_ICONS: Record<string, React.ReactNode> = {
   "/nettoyage-auto-a-domicile-toulouse": <Car className="size-7 stroke-[1.4]" />,
   "/nettoyage-de-vitres-toulouse": <Droplets className="size-7 stroke-[1.4]" />,
   "/nettoyage-terrasse-toulouse": <Sun className="size-7 stroke-[1.4]" />,
-  "/nettoyage-toiture-toulouse": <Home className="size-7 stroke-[1.4]" />,
-  "/nettoyage-facade-toulouse": <Building className="size-7 stroke-[1.4]" />,
   "/nettoyage-dappartement-ou-maison": <Building2 className="size-7 stroke-[1.4]" />,
   "/nettoyage-de-fin-de-chantier-toulouse": <Wrench className="size-7 stroke-[1.4]" />,
   "/nettoyage-fin-de-bail-toulouse": <KeyRound className="size-7 stroke-[1.4]" />,
@@ -87,7 +83,6 @@ function ServiceCard({ slug, short, subtitle }: { slug: string; short: string; s
 }
 
 const textile = SERVICES.filter((s) => s.group === "textile");
-// Bâtiment: merge toiture + façade visually, keep others separate
 const batiment = SERVICES.filter((s) => s.group === "batiment");
 
 function ServicesPage() {
@@ -99,7 +94,7 @@ function ServicesPage() {
           Nos prestations
         </span>
         <h1 className="mt-5 font-display text-5xl font-bold tracking-tight md:text-6xl lg:text-7xl">
-          15 services de nettoyage à Toulouse
+          {SERVICES.length} services de nettoyage à Toulouse
         </h1>
         <p className="mx-auto mt-4 max-w-xl text-base text-muted-foreground leading-relaxed">
           À domicile ou sur site, pour particuliers et professionnels à Toulouse et sa banlieue.
