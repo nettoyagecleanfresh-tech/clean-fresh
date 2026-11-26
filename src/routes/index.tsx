@@ -343,7 +343,7 @@ function Index() {
               </h1>
 
               <p className="mt-3 text-sm text-white/90 leading-relaxed font-medium md:mt-6 md:text-lg">
-                Réservez le nettoyage de vos textiles ou de votre intérieur auto. Pour un logement encombré, le <Link to="/nettoyage-de-vitres-toulouse" className="underline underline-offset-4">lavage de vitres</Link> ou un <Link to="/nettoyage-de-fin-de-chantier-toulouse" className="underline underline-offset-4">nettoyage de fin de chantier</Link>, demandez un devis personnalisé.
+                Demandez un devis confidentiel pour un <Link to="/nettoyage-diogene-toulouse" className="underline underline-offset-4">nettoyage Diogène</Link> ou la <Link to="/nettoyage-extreme-toulouse" className="underline underline-offset-4">remise en état d’un logement insalubre</Link>. Pour vos textiles et votre intérieur auto, réservez en ligne.
               </p>
 
 
