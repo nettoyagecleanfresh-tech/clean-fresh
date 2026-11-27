@@ -1,4 +1,4 @@
-import { COMPANY, SERVICES, SITE_URL } from '../data/site';
+import { COMPANY, GOOGLE_REVIEWS_URL, SERVICES, SITE_URL } from '../data/site';
 
 /** One public business identity, shared by the homepage and reusable schema. */
 export function buildLocalBusinessSchema() {
@@ -32,6 +32,7 @@ export function buildLocalBusinessSchema() {
       opens: '08:00',
       closes: '21:00',
     }],
+    hasMap: GOOGLE_REVIEWS_URL,
     sameAs: [
       'https://www.instagram.com/cleanetfresh31',
       'https://www.facebook.com/profile.php?id=61579620873055',

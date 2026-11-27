@@ -1,7 +1,7 @@
 import { Star, ExternalLink, ChevronRight, ChevronLeft } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 import { useCallback, useEffect, useState } from "react";
-import { GOOGLE_REVIEW_COUNT, GOOGLE_REVIEW_RATING } from "@/data/site";
+import { GOOGLE_REVIEW_COUNT, GOOGLE_REVIEW_RATING, GOOGLE_REVIEWS_URL } from "@/data/site";
 
 import { ALL_REVIEWS } from "@/data/reviews";
 
@@ -155,7 +155,7 @@ export function ReviewsCarousel({ category }: { category?: string }) {
 
       <div className="mx-auto max-w-6xl px-4 mt-10 text-center">
         <a
-          href="https://www.google.com/search?q=clean+fresh+toulouse+avis"
+          href={GOOGLE_REVIEWS_URL}
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-6 py-3 text-sm font-bold text-foreground shadow-sm transition-all hover:border-primary/40 hover:text-primary hover:shadow-md"

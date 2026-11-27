@@ -4,7 +4,7 @@ import { DesktopBookingChoices } from "@/components/site/DesktopBookingChoices";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { Armchair, BadgeCheck, BedDouble, CalendarCheck, Car, CheckCircle2, ChevronLeft, ChevronRight, Clock, Images, KeyRound, Layers, MapPin, PackageOpen, Pause, Phone, Play, Quote, Star } from "lucide-react";
-import { COMMUNES, COMPANY, DISPLACEMENT_RULES, GOOGLE_REVIEW_COUNT, GOOGLE_REVIEW_RATING, SITE_URL } from "@/data/site";
+import { COMMUNES, COMPANY, DISPLACEMENT_RULES, GOOGLE_REVIEW_COUNT, GOOGLE_REVIEW_RATING, GOOGLE_REVIEWS_URL, SITE_URL } from "@/data/site";
 import { Button } from "@/components/ui/button";
 import { realisationDimensions } from "@/data/realisationDimensions";
 
@@ -291,7 +291,7 @@ function DesktopHeroReviews() {
           </figcaption>
         </figure>
         <div className="flex items-center justify-between border-t border-slate-100 bg-slate-50 px-5 py-3">
-          <a href="https://www.google.com/search?q=clean+fresh+toulouse+avis" target="_blank" rel="noopener noreferrer" className="shrink-0 whitespace-nowrap rounded text-[11px] font-bold text-sky-800 underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-sky-600">Voir les avis Google ↗</a>
+          <a href={GOOGLE_REVIEWS_URL} target="_blank" rel="noopener noreferrer" className="shrink-0 whitespace-nowrap rounded text-[11px] font-bold text-sky-800 underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-sky-600">Voir les avis Google ↗</a>
           <div className="flex items-center gap-1">
             <button type="button" onClick={() => setPaused((value) => !value)} aria-label={paused ? "Activer le défilement automatique" : "Mettre les avis en pause"} className="flex size-8 items-center justify-center rounded-full text-slate-700 hover:bg-sky-100 focus-visible:outline-2 focus-visible:outline-sky-600">{paused ? <Play className="size-3.5" /> : <Pause className="size-3.5" />}</button>
             <button type="button" onClick={() => changeReview(-1)} aria-label="Avis précédent" className="flex size-8 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 hover:bg-sky-100 focus-visible:outline-2 focus-visible:outline-sky-600"><ChevronLeft className="size-4" /></button>
@@ -393,7 +393,7 @@ function Index() {
                   <Link to="/nos-realisations" resetScroll><Images className="size-4 mr-1.5" /> Avant / Après — Voir les résultats</Link>
                 </Button>
               <a
-                href="https://www.google.com/search?q=clean+fresh+toulouse+avis"
+                href={GOOGLE_REVIEWS_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex h-12 shrink-0 items-center gap-2 bg-white w-max px-3 py-2 rounded-2xl shadow-xl hover:scale-105 transition-transform duration-300"
@@ -427,7 +427,7 @@ function Index() {
               {/* Grand badge Google Avis sous les boutons */}
               <div className="mt-4 flex justify-center md:justify-start lg:hidden">
                 <a
-                  href="https://www.google.com/search?q=clean+fresh+toulouse+avis"
+                  href={GOOGLE_REVIEWS_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 bg-white w-max px-4 py-2.5 rounded-2xl shadow-xl hover:scale-105 transition-transform duration-300"

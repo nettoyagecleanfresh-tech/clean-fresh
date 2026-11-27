@@ -10,7 +10,7 @@ import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { CalendarCheck, Check, MapPin, Phone, Sparkles, ArrowRight, Clock, Star, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { COMMUNES, COMPANY, SERVICES, type Service, GOOGLE_REVIEW_COUNT, GOOGLE_REVIEW_RATING } from "@/data/site";
+import { COMMUNES, COMPANY, SERVICES, type Service, GOOGLE_REVIEW_COUNT, GOOGLE_REVIEW_RATING, GOOGLE_REVIEWS_URL } from "@/data/site";
 import { ReviewsCarousel } from "@/components/site/ReviewsCarousel";
 import { FadeIn } from "@/components/ui/fade-in";
 import { SchemaService, SchemaFAQ, SchemaBreadcrumb } from "@/components/site/SchemaOrg";
@@ -342,7 +342,7 @@ function ServicePageContent({ service, introExpanded, setIntroExpanded, others, 
 
                   {/* Badge avis Google */}
                   <a
-                    href="https://www.google.com/search?q=clean+fresh+toulouse+avis"
+                    href={GOOGLE_REVIEWS_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="mt-5 flex items-center gap-3 rounded-xl border border-border bg-card px-4 py-3 shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-card)] transition-shadow"
