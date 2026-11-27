@@ -21,18 +21,21 @@ const BOOKABLE_SERVICES = [
     title: "Canapés, fauteuils & chaises",
     path: "/nettoyage-canape-toulouse",
     id: "canape",
+    featuredFormula: "canape-2",
     detail: "Nettoyage des assises et dossiers, après vérification du textile et des taches.",
   },
   {
     title: "Matelas",
     path: "/nettoyage-matelas-toulouse",
     id: "matelas",
+    featuredFormula: "matelas-2",
     detail: "Les deux faces sont incluses. Le format et les traitements se choisissent en ligne.",
   },
   {
     title: "Tapis",
     path: "/nettoyage-tapis-toulouse",
     id: "tapis",
+    featuredFormula: "tapis-1",
     detail:
       "Formats standards jusqu’à 4 m² par tapis ; grand format ou fibre délicate à vérifier sur photos.",
   },
@@ -40,6 +43,7 @@ const BOOKABLE_SERVICES = [
     title: "Intérieur automobile",
     path: "/nettoyage-auto-a-domicile-toulouse",
     id: "auto",
+    featuredFormula: "bronze",
     detail:
       "Choisissez les surfaces à traiter : habitacle, sièges, moquettes et tapis selon la formule.",
   },
@@ -47,6 +51,7 @@ const BOOKABLE_SERVICES = [
     title: "Moquettes",
     path: "/nettoyage-moquette-toulouse",
     id: "moquette",
+    featuredFormula: "moquette-petite",
     detail:
       "La moquette se réserve en ligne selon la surface de la pièce. Dégagez les zones à traiter avant le passage.",
   },
@@ -54,6 +59,7 @@ const BOOKABLE_SERVICES = [
     title: "Cuir",
     path: "/nettoyage-cuir-toulouse",
     id: "cuir",
+    featuredFormula: "cuir-canape-2",
     detail:
       "Nettoyage manuel adapté aux canapés, fauteuils ou sièges auto ; soin protecteur en option.",
   },
@@ -66,7 +72,7 @@ const QUOTE_SERVICES = [
   { title: "Vitres & vitrines", path: "/nettoyage-de-vitres-toulouse" },
   { title: "Terrasse", path: "/nettoyage-terrasse-toulouse" },
   { title: "Diogène", path: "/nettoyage-diogene-toulouse" },
-  { title: "Nettoyage extrême", path: "/nettoyage-extreme-toulouse" },
+  { title: "Nettoyage de logement insalubre", path: "/nettoyage-extreme-toulouse" },
 ] as const;
 
 const PROOF_PHOTOS = [
@@ -259,7 +265,7 @@ export function LocalCityPage({ commune }: Props) {
         </p>
         <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {BOOKABLE_SERVICES.map((service) => {
-            const firstFormula = SERVICES.find((item) => item.slug === service.path)?.prices?.[0];
+            const displayedFormula = SERVICES.find((item) => item.slug === service.path)?.prices?.find((price) => price.formuleId === service.featuredFormula);
             return (
               <article
                 key={service.id}
@@ -270,7 +276,7 @@ export function LocalCityPage({ commune }: Props) {
                     {service.title}
                   </Link>
                 </h3>
-                {firstFormula && <p className="mt-2 text-sm text-primary"><strong>{firstFormula.price}</strong> · {firstFormula.label}</p>}
+                {displayedFormula && <p className="mt-2 text-sm text-primary"><strong>{displayedFormula.price}</strong> · {displayedFormula.label}</p>}
                 <p className="mt-3 flex-1 text-sm leading-6 text-muted-foreground">
                   {service.detail}
                 </p>
@@ -294,7 +300,7 @@ export function LocalCityPage({ commune }: Props) {
           })}
         </div>
         <p className="mt-4 text-xs leading-6 text-muted-foreground">
-          Prix de départ selon le format indiqué dans chaque prestation, pour un état standard.
+          Tarifs pour les formats indiqués et pour un état standard.
           Options et déplacement éventuel en supplément. Matière délicate ou état exceptionnel :
           vérification préalable sur photos.{" "}
           <Link to="/tarifs" className="font-semibold text-primary hover:underline">

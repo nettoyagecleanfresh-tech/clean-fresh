@@ -1,9 +1,9 @@
 export const SITE_URL = "https://cleanetfresh.fr";
 export const OG_IMAGE = `${SITE_URL}/realisations/photo-02.webp`;
-export const GOOGLE_REVIEWS_URL = "https://www.google.com/search?q=clean+fresh+toulouse+avis";
+export const GOOGLE_REVIEWS_URL = "https://www.google.com/maps?cid=13567664120853672354";
 
 /** Nombre d'avis Google — à mettre à jour ici pour propager partout */
-export const GOOGLE_REVIEW_COUNT = 142;
+export const GOOGLE_REVIEW_COUNT = 143;
 export const GOOGLE_REVIEW_RATING = 4.9;
 
 export const COMPANY = {
@@ -855,7 +855,7 @@ export const SERVICES: Service[] = [
   {
     slug: "/nettoyage-extreme-toulouse",
     guide: { text: "Pour chiffrer la cuisine ou la salle d’eau, photographiez les surfaces à remettre en état et signalez les pièces déjà dégagées. Pour des salissures courantes, consultez le", path: "/nettoyage-dappartement-ou-maison", link: "grand nettoyage de logement" },
-    navLabel: "Nettoyage extrême Toulouse",
+    navLabel: "Nettoyage de logement insalubre à Toulouse",
     h1: "Nettoyage de logement insalubre à Toulouse",
     short: "Nettoyage de logement insalubre",
     subtitle:
